@@ -31,11 +31,16 @@ Reusable workflow for independent sculpture colorization projects.
 Stage 1 of the personal isekai project, started 2026-11-10. On 2026-11-11 the
 owner redirected it to a close-up MVP (v0.2): one walled city, five villages and
 some wildlife, every inhabitant simulated minute by minute, no tile grid, and the
-painted look of the art bible's Zoom 01–03. Other cities and species, the text
-RPG, the AI agents and anything commercial are deferred. The continent-scale
+painted look of the art bible's Zoom 01–03. The same day the owner chose to
+deepen this region rather than add another: v0.3 adds simple building interiors
+and a closed, more realistic economy (employers, rents, taxes, prices) and keeps
+the 48-day year. v0.35 (same day) concentrates on the people: timetables by
+trade and season, trades that follow demand, death from many causes, crime, the
+law and abuses of power, and the weather of the year. Other cities and species, the protagonist and text RPG ("much
+later"), the AI agents and anything commercial are deferred. The continent-scale
 v0.1 is kept in `projects/world-in-dreams/archive/v1-continent/`.
 
 - Project brief and how to run: `projects/world-in-dreams/README.md`
-- Rules, data model, open questions: `projects/world-in-dreams/docs/design.md`
+- Rules, data model, the owner's answers: `projects/world-in-dreams/docs/design.md`
 - Workspace card: `workspace/2026-11-10_world-in-dreams/PROJECT.md`
 - Source GDD v0.2 (Spanish): Google Doc linked in the project README

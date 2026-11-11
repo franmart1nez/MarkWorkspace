@@ -8,6 +8,11 @@ export { DAY, WEEK, SEASON_DAYS, YEAR_DAYS, SEASONS, dateOf, dayOf, seasonOf, ge
 export { SPECIES, JOBS, jobOf, ACT_TEXT } from './people.js';
 export { BEASTS } from './wild.js';
 export { fullName, isNotable } from './fate.js';
+export { moneyTotal, summary as economySummary, foodPrice, rentOf, housePrice, ownerOf, bizKind, luxOf, GOODS_PRICE } from './economy.js';
+export { interiorOf, toWorld } from './interior.js';
+export { planOf, sunOf } from './schedule.js';
+export { honesty, temper } from './crime.js';
+export { ILLS } from './ills.js';
 
 /** The whole dynamic world as JSON. The region itself is rebuilt from the seed on load. */
 export function serialize(state) {
@@ -16,7 +21,21 @@ export function serialize(state) {
 
 export function deserialize(json) {
   const state = typeof json === 'string' ? JSON.parse(json) : json;
-  if (!state || state.version !== 2 || !Array.isArray(state.people)) throw new Error('Not a World in Dreams save (version 2).');
+  if (!state || state.version !== 4 || !Array.isArray(state.people)) {
+    const old = { 2: 'version 0.2, before interiors and the economy', 3: 'version 0.3, before daily timetables, crime and illness' }[state && state.version];
+    throw new Error(old ? `This save is from ${old}; start a new world.` : 'Not a World in Dreams save (version 4).');
+  }
+  const obj = (v) => v && typeof v === 'object' && !Array.isArray(v), num = Number.isFinite;
+  const bad = !obj(state.biz) || !obj(state.own) || !obj(state.seats) || !obj(state.econ) || !Number.isInteger(state.lord)
+    || !num(state.econ.inflow) || !num(state.econ.outflow) || !Array.isArray(state.econ.hist)
+    || !Array.isArray(state.households) || state.households.some((h) => !h || !num(h.coins) || !num(h.goods) || !num(h.arrears) || !Array.isArray(h.m))
+    || Object.values(state.biz).some((b) => !obj(b) || !num(b.coins) || !num(b.stock))
+    || !Array.isArray(state.sites) || state.sites.some((s) => !s || !num(s.coins) || !num(s.price))
+    || state.people.some((p) => !p || !Number.isInteger(p.seat));
+  if (bad) throw new Error('This save is incomplete or damaged: its economy or interiors are missing.');
+  const lives = !obj(state.law) || !Array.isArray(state.gallows) || !Array.isArray(state.rites) || !Array.isArray(state.ills) || !obj(state.tally) || !obj(state.weather)
+    || state.people.some((p) => !num(p.jail) || !num(p.sick) || !num(p.debt) || !num(p.zs));
+  if (lives) throw new Error('This save is incomplete or damaged: its timetables, crime or illness records are missing.');
   return state;
 }
 
@@ -43,6 +62,7 @@ export function placeName(L, b, p) {
 /** One line on what a person is doing right now. */
 export function describe(S, L, p) {
   if (!p.alive) return p.gone ? 'Left the region' : 'Dead';
+  if (p.jail > S.t && !p.route) return 'Held in the cells';
   if (p.away) return 'Travelling in far lands';
   if (p.route) {
     const to = p.db >= 0 ? placeName(L, L.blds[p.db], p) : GOING[p.na] || 'somewhere';

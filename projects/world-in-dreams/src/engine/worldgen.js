@@ -5,6 +5,8 @@ import { personName, placeName, ARCHETYPES, GOALS } from './names.js';
 import { SPECIES, SPECIES_MIX, TRAITS } from './people.js';
 import { DAY, YEAR_DAYS, dayOf, log, census } from './core.js';
 import { addHerd } from './wild.js';
+import { setupEconomy } from './economy.js';
+import { rollYear } from './ills.js';
 
 /** Meals one person eats in a day, and the relative yield of each crop. */
 export const MEALS = 3;
@@ -21,7 +23,8 @@ export function makePerson(S, o) {
     x: 0, y: 0, in: -1, n: -1, act: 'idle', until: 0, route: null, ri: 0, na: 'idle', nu: 0, nd: 0, db: -1, dn: -1, ws: 0,
     ate: S.t - 500, miss: 0, soc: randInt(S, 30, 80), hurt: 0, off: randInt(S, -25, 25),
     traits, arch: pick(S, ARCHETYPES), goal: pick(S, GOALS), spouse: -1, mom: -1, dad: -1, friends: [], hist: [],
-    alive: true, away: false, shift: 0, post: -1, fi: -1, farm: -1, load: 0, cart: false, wild: false, q: -1, tg: -1, to: 0, hunts: 0, stage: 0,
+    alive: true, away: false, seat: -1, shift: 0, post: -1, fi: -1, farm: -1, load: 0, cart: false, wild: false, q: -1, tg: -1, to: 0, hunts: 0, stage: 0,
+    zs: 0, debt: 0, nn: 0, jail: 0, sick: 0, ill: -1, imm: 0, plan: null, wd: -1, died: -1, gone: false,
   };
   S.people.push(p);
   return p;
@@ -37,7 +40,7 @@ export function pickSpecies(S, village) {
 /** Create a household in building b. kind: 'family' | 'couple' | 'single' | 'elders' | 'three'. */
 export function settle(S, L, b, kind, sp) {
   const fam = placeName(S, SPECIES[sp].style);
-  const hh = { id: S.households.length, home: b.id, site: b.site, m: [], pantry: 0, coins: Math.round(randRange(S, 40, 170)), fam, shopT: 0 };
+  const hh = { id: S.households.length, home: b.id, site: b.site, m: [], pantry: 0, coins: Math.round(randRange(S, 40, 170)), fam, shopT: 0, goods: 0, arrears: 0, owed: 0, goodsT: 0 };
   S.households.push(hh);
   S.occ[b.id] = hh.id;
   const add = (age, o = {}) => {
@@ -61,6 +64,7 @@ export function settle(S, L, b, kind, sp) {
     if (kind === 'three') add(randInt(S, 62, 80));
   }
   hh.pantry = hh.m.length * MEALS * randInt(S, 2, 5);
+  hh.goods = hh.m.length;
   return hh;
 }
 
@@ -72,11 +76,12 @@ export function createWorld(seedInput = 'dreams') {
   const seed = hashSeed(seedText);
   const L = layoutFor(seed);
   const S = {
-    version: 2, seedText, seed, rng: (seed ^ 0x2545f491) | 0, t: 5 * 60,
-    people: [], households: [], occ: {}, animals: [], herds: [], quests: [], nextA: 0, nextQ: 0,
+    version: 4, seedText, seed, rng: (seed ^ 0x2545f491) | 0, t: 5 * 60,
+    people: [], households: [], occ: {}, seats: {}, animals: [], herds: [], quests: [], nextA: 0, nextQ: 0,
     sites: L.sites.map(() => ({ food: 0, coins: 600, wood: 300, fear: 0, short: false, sow: 1, reap: 1 })),
     fields: L.fields.map((f) => ({ st: f.crop === 'pasture' ? 4 : f.crop === 'orchard' ? 1 : 0, w: 0, g: 0, h: 0 })),
     events: [], eventCount: 0, fv: 0, tune: { yield: 0 }, wolfBack: 0, born: 0, died: 0,
+    law: {}, gallows: [], rites: [], ills: [], nextIll: 0, levyDay: -99, weather: null, tally: { y: 0, cur: {}, prev: null },
   };
 
   // ---- households ---------------------------------------------------------------
@@ -179,6 +184,8 @@ export function createWorld(seedInput = 'dreams') {
     Object.assign(p, { job: 'trader', site: -1, away: true, until: S.t + randInt(S, 1, 5 * DAY), cart: true });
   }
 
+  setupEconomy(S, L);
+  rollYear(S);
   for (const p of S.people) if (!p.away) p.until = S.t + randInt(S, 0, 30);
   const city = L.sites[0];
   log(S, 'town', 2, `The chronicle of ${city.name} and its ${L.sites.length - 1} villages begins: ${pop.toLocaleString('en-US')} souls.`, 0, 0);

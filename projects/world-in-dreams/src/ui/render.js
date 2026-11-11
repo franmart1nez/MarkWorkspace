@@ -405,6 +405,125 @@ export class Painter {
   }
 }
 
+// ---- interiors: the roof lifted off --------------------------------------------------
+
+const FLOOR = { wood: ['#c99a62', '#b9895a'], stone: ['#ddd3ba', '#cbbf9f'], earth: ['#c8ae7e', '#b89c6c'] };
+const WOOD = '#8a5a33', WOOD_D = '#5e3b20', WOOD_L = '#ad7a49';
+const BLANKET = ['#b2443a', '#4f74a8', '#5b8a4a', '#c08a3a'];
+
+/**
+ * Draw building b with its roof removed: floors, walls, the street door and the
+ * furniture of plan I, centred on screen point (sx, sy) at s pixels per metre.
+ */
+export function drawInterior(g, b, I, s, sx, sy, alpha = 1, warm = 0) {
+  g.save();
+  g.globalAlpha = alpha;
+  g.translate(sx, sy);
+  g.scale(s, s);
+  g.rotate(b.a);
+  const hw = b.w / 2, hd = b.d / 2;
+  // outer wall mass
+  g.fillStyle = '#efe3c6';
+  g.fillRect(-hw, -hd, b.w, b.d);
+  for (const r of I.rooms) {
+    const [f1, f2] = FLOOR[r.floor] || FLOOR.wood;
+    g.fillStyle = f1;
+    g.fillRect(r.x - r.w / 2, r.y - r.d / 2, r.w, r.d);
+    if (s >= 5) {
+      g.strokeStyle = f2; g.lineWidth = 0.05;
+      g.beginPath();
+      if (r.floor === 'stone') {
+        for (let x = r.x - r.w / 2 + 1; x < r.x + r.w / 2; x += 1) { g.moveTo(x, r.y - r.d / 2); g.lineTo(x, r.y + r.d / 2); }
+        for (let y = r.y - r.d / 2 + 1; y < r.y + r.d / 2; y += 1) { g.moveTo(r.x - r.w / 2, y); g.lineTo(r.x + r.w / 2, y); }
+      } else if (r.floor === 'wood') {
+        for (let y = r.y - r.d / 2 + 0.3; y < r.y + r.d / 2; y += 0.3) { g.moveTo(r.x - r.w / 2, y); g.lineTo(r.x + r.w / 2, y); }
+      }
+      g.stroke();
+    }
+  }
+  if (warm > 0) { g.fillStyle = `rgba(255,190,90,${0.18 * warm})`; g.fillRect(-hw, -hd, b.w, b.d); }
+  for (const it of I.items) furniture(g, it, s);
+  // inner walls
+  g.strokeStyle = '#efe3c6'; g.lineWidth = 0.22; g.lineCap = 'butt';
+  g.beginPath();
+  for (const w of I.walls) { g.moveTo(w[0], w[1]); g.lineTo(w[2], w[3]); }
+  g.stroke();
+  g.strokeStyle = 'rgba(90,42,28,0.55)'; g.lineWidth = 0.05;
+  g.stroke();
+  // outer walls with the street door
+  g.strokeStyle = '#efe3c6'; g.lineWidth = 0.5;
+  g.strokeRect(-hw + 0.17, -hd + 0.17, b.w - 0.34, b.d - 0.34);
+  g.strokeStyle = INK; g.lineWidth = 0.07;
+  g.strokeRect(-hw, -hd, b.w, b.d);
+  g.strokeRect(-hw + 0.35, -hd + 0.35, b.w - 0.7, b.d - 0.7);
+  const d = I.door;
+  g.save(); g.translate(d.x, d.y); g.rotate(d.a);
+  g.fillStyle = WOOD_L; g.fillRect(-0.55, -0.4, 1.1, 0.5);
+  g.restore();
+  g.restore();
+}
+
+function furniture(g, it, s) {
+  g.save();
+  g.translate(it.x, it.y);
+  g.rotate(it.a || 0);
+  const w = it.w, d = it.d, x = -w / 2, y = -d / 2;
+  g.lineWidth = 0.05;
+  g.strokeStyle = WOOD_D;
+  const box = (fill) => { g.fillStyle = fill; g.fillRect(x, y, w, d); g.strokeRect(x, y, w, d); };
+  switch (it.k) {
+    case 'table': case 'desk': box(WOOD_L); if (s >= 6) { g.strokeStyle = 'rgba(94,59,32,0.35)'; g.beginPath(); g.moveTo(x + 0.1, 0); g.lineTo(-x - 0.1, 0); g.stroke(); } break;
+    case 'chair': g.fillStyle = WOOD; g.fillRect(x, y, w, d); g.fillStyle = WOOD_D; g.fillRect(x, y, 0.1, d); break;
+    case 'bed': case 'bunk':
+      box(WOOD);
+      g.fillStyle = BLANKET[(it.tone || 0) % 4]; g.fillRect(x + 0.08, y + 0.55, w - 0.16, d - 0.63);
+      g.fillStyle = '#f4efe2'; g.fillRect(x + 0.12, y + 0.1, w - 0.24, 0.38);
+      break;
+    case 'hearth': case 'oven': case 'forge': case 'kiln':
+      g.fillStyle = '#8c8378'; g.strokeStyle = '#4b453e'; g.fillRect(x, y, w, d); g.strokeRect(x, y, w, d);
+      g.fillStyle = '#f08a3c'; g.beginPath(); g.ellipse(0, 0, w * 0.28, d * 0.28, 0, 0, TAU); g.fill();
+      g.fillStyle = '#ffd27a'; g.beginPath(); g.ellipse(0, 0, w * 0.13, d * 0.13, 0, 0, TAU); g.fill();
+      break;
+    case 'counter': box('#7a4f2e'); g.fillStyle = WOOD_L; g.fillRect(x + 0.06, y + 0.06, w - 0.12, d - 0.12); break;
+    case 'shelf': case 'rack': box(WOOD_D); g.fillStyle = it.k === 'rack' ? '#9aa3ad' : '#d9c79a'; for (let i = 0; i < 6; i++) g.fillRect(x + 0.08, y + 0.1 + i * (d - 0.2) / 6, w - 0.16, (d - 0.2) / 12); break;
+    case 'pew': box(WOOD); break;
+    case 'altar': box('#f4efe2'); g.fillStyle = '#c9a43c'; g.fillRect(x + w * 0.35, y, w * 0.3, d); break;
+    case 'candles': g.fillStyle = '#ffd27a'; g.beginPath(); g.arc(0, 0, 0.18, 0, TAU); g.fill(); break;
+    case 'throne': box('#8e3fa8'); g.fillStyle = '#e9c04e'; g.fillRect(x, y, w, 0.25); break;
+    case 'carpet': g.fillStyle = 'rgba(158,52,52,0.75)'; g.fillRect(x, y, w, d); g.strokeStyle = '#e9c04e'; g.lineWidth = 0.08; g.strokeRect(x + 0.15, y + 0.15, w - 0.3, d - 0.3); break;
+    case 'ring': g.strokeStyle = '#a07a4a'; g.lineWidth = 0.12; g.fillStyle = 'rgba(214,190,140,0.6)'; g.beginPath(); g.ellipse(0, 0, w / 2, d / 2, 0, 0, TAU); g.fill(); g.stroke(); break;
+    case 'board': g.fillStyle = WOOD_D; g.fillRect(x, y, w, d); g.fillStyle = '#f1e6c8'; for (let i = 0; i < 5; i++) g.fillRect(x + 0.15 + i * (w - 0.3) / 5, y - 0.12, (w - 0.3) / 7, 0.18); break;
+    case 'chest': box('#7a4f2e'); g.fillStyle = '#c9a43c'; g.fillRect(-0.06, y, 0.12, d); break;
+    case 'sacks': case 'millstone': {
+      const n = it.k === 'millstone' ? 1 : 4;
+      for (let i = 0; i < n; i++) {
+        const cx = n === 1 ? 0 : (i % 2 - 0.5) * w * 0.5, cy = n === 1 ? 0 : (Math.floor(i / 2) - 0.5) * d * 0.5;
+        g.fillStyle = it.k === 'millstone' ? '#a8a29a' : ['#d8c79a', '#cdb886', '#e2d3a8'][((it.tone || 0) + i) % 3];
+        g.strokeStyle = '#8a7650';
+        g.beginPath(); g.ellipse(cx, cy, (n === 1 ? w : w * 0.5) * 0.45, (n === 1 ? d : d * 0.5) * 0.45, 0, 0, TAU); g.fill(); g.stroke();
+      }
+      break;
+    }
+    case 'crates': case 'barrels': case 'barrel': case 'vat': {
+      const round = it.k !== 'crates';
+      const nx = Math.max(1, Math.round(w / 0.75)), ny = Math.max(1, Math.round(d / 0.75));
+      for (let i = 0; i < nx; i++) for (let j = 0; j < ny; j++) {
+        const cx = x + (w / nx) * (i + 0.5), cy = y + (d / ny) * (j + 0.5), r = Math.min(w / nx, d / ny) * 0.45;
+        g.fillStyle = round ? '#9a6a3e' : ['#b08850', '#a27c46', '#bb9358'][((it.tone || 0) + i + j) % 3];
+        if (round) { g.beginPath(); g.arc(cx, cy, r, 0, TAU); g.fill(); g.stroke(); } else { g.fillRect(cx - r, cy - r, r * 2, r * 2); g.strokeRect(cx - r, cy - r, r * 2, r * 2); g.beginPath(); g.moveTo(cx - r, cy - r); g.lineTo(cx + r, cy + r); g.stroke(); }
+      }
+      break;
+    }
+    case 'anvil': g.fillStyle = '#4f5257'; g.fillRect(x + w * 0.2, y + d * 0.2, w * 0.6, d * 0.6); break;
+    case 'wheel': g.fillStyle = '#9a6a3e'; g.beginPath(); g.arc(0, 0, Math.min(w, d) * 0.45, 0, TAU); g.fill(); g.stroke(); g.fillStyle = '#c47a4a'; g.beginPath(); g.arc(0, 0, Math.min(w, d) * 0.2, 0, TAU); g.fill(); break;
+    case 'loom': box(WOOD); g.strokeStyle = '#e6d8b8'; g.beginPath(); for (let i = 1; i < 6; i++) { g.moveTo(x + (w * i) / 6, y); g.lineTo(x + (w * i) / 6, -y); } g.stroke(); break;
+    case 'block': box('#b98a5e'); g.fillStyle = '#b8473a'; g.fillRect(x + w * 0.3, y + d * 0.3, w * 0.25, d * 0.2); break;
+    case 'cart': box('#8a5f3a'); g.fillStyle = '#5c4230'; g.fillRect(x - 0.1, y - 0.15, 0.4, 0.3); g.fillRect(x - 0.1, -y - 0.15, 0.4, 0.3); break;
+    default: box(WOOD);
+  }
+  g.restore();
+}
+
 // ---- the living things, drawn every frame ----------------------------------------
 
 export const CLOTH = {
@@ -478,8 +597,16 @@ export function drawAnimal(g, sx, sy, s, a, heading, time) {
   g.restore();
 }
 
-/** Darkness for a minute of the day, 0 at noon to about 0.6 in deep night. */
-export function nightOf(minute) {
+/**
+ * Darkness for a minute of the day, 0 at noon to about 0.6 in deep night.
+ * With `sun` ({rise, set} in minutes, from the engine) dusk and dawn follow the
+ * season: long summer evenings, early winter nights.
+ */
+export function nightOf(minute, sun) {
+  if (sun) {
+    const dusk = (minute - (sun.set - 30)) / 150, dawn = ((sun.rise + 30) - minute) / 120;
+    return Math.max(0, Math.min(1, Math.max(dusk, dawn))) * 0.6;
+  }
   const h = minute / 60;
   if (h >= 6.5 && h <= 18) return 0;
   if (h > 18 && h < 20.5) return ((h - 18) / 2.5) * 0.6;

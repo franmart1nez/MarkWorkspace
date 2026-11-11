@@ -3,7 +3,7 @@
     {
       "id": "world-in-dreams",
       "title": "World in Dreams",
-      "description": "Close-up living simulation of one walled city and five villages: every inhabitant has a home, trade and daily routine; fields follow the seasons; wildlife roams. No tile grid; painted after the art bible. RPG and AI agents deferred.",
+      "description": "Close-up living simulation of one walled city and five villages: every inhabitant has a home, trade and daily routine, and a place inside buildings with interiors; everyone keeps the hours of their trade and season; money circulates in a closed economy with rents, taxes and prices; trades follow demand; people fall ill, have accidents and die; some steal, fight and kill, and those in power abuse it; fields follow the seasons and the weather of the year; wildlife roams. No tile grid; painted after the art bible. Protagonist, RPG and AI agents much later.",
       "type": "group",
       "category": "game",
       "created": "2026-11-10",
@@ -17,6 +17,10 @@
         {
           "name": "Getting started",
           "path": "GETTING_STARTED.md"
+        },
+        {
+          "name": "Quality of life",
+          "path": "QUALITY_OF_LIFE.md"
         },
         {
           "name": "Simulation",

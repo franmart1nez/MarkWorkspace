@@ -107,7 +107,7 @@ export function routeLength(L, from, to) {
 
 // ---- chronicle ----------------------------------------------------------------
 
-/** type: life | work | town | wild | quest. imp: 0 everyday .. 3 memorable. */
+/** type: life | work | town | wild | quest | crime. imp: 0 everyday .. 3 memorable. */
 export function log(S, type, imp, text, x, y, who) {
   const ev = { n: ++S.eventCount, t: S.t, type, imp, text };
   if (x !== undefined) { ev.x = Math.round(x); ev.y = Math.round(y); }
@@ -126,6 +126,14 @@ export function note(S, p, text) {
 export function census(S) {
   for (const s of S.sites) s.pop = 0;
   for (const p of S.people) if (p.alive && !p.away && S.sites[p.site]) S.sites[p.site].pop++;
+}
+
+/** Count something that happened this year (deaths by cause, crimes, bankruptcies...). Last year's counts are kept in S.tally.prev. */
+export function tally(S, group, key, n = 1) {
+  const y = Math.floor(dayOf(S.t) / YEAR_DAYS);
+  if (!S.tally || S.tally.y !== y) S.tally = { y, cur: {}, prev: S.tally ? S.tally.cur : null };
+  const g = (S.tally.cur[group] ||= {});
+  g[key] = (g[key] || 0) + n;
 }
 
 export const ageOf = (S, p) => Math.floor((dayOf(S.t) - p.born) / YEAR_DAYS);

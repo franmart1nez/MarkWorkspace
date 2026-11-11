@@ -17,7 +17,7 @@ Run them inside `projects/world-in-dreams/`.
 | Command | What it does |
 | --- | --- |
 | `npm start` | Starts the local server; open <http://localhost:5179> |
-| `npm test` | Runs the 8 engine tests |
+| `npm test` | Runs the engine and viewer-helper tests |
 | `npm run sim -- dreams 48 1` | Headless run: seed `dreams`, 48 days (one year), prints events of importance 1 or higher |
 | `node scripts/layout-stats.mjs dreams` | Counts what the region generator produced for a seed |
 
@@ -31,18 +31,52 @@ Run them inside `projects/world-in-dreams/`.
 | Double-click a person | Follow them; the camera keeps them centred |
 | `Space` | Pause / resume |
 | `1` – `6` | Speed: ¼, 1, 6, 30 game minutes, 3 or 12 game hours per second |
-| `.` | Advance one minute |
+| `.` | Pause and advance exactly one minute |
+| Arrow keys | Pan the map |
+| `+` / `-` | Zoom in / out |
+| `/` | Open and focus people search |
+| `?` / `H` | Open controls help; playback resumes when help closes |
 | `C` / `R` | Frame the city / the whole region |
-| `F` / `Esc` | Follow the selected person / deselect |
+| `F` / `Esc` | Toggle following the selected person / close help or deselect |
+| **Panel** | Hide or show the sidebar |
 | **Names**, **Night** | Show place names; darken the map at night |
+| **Interiors** | Close up, lift the roofs to show rooms, furniture and the people inside (a selected building always opens) |
 | **New world** | Generate the region for the typed seed |
 | **Save / Load** | Store in the browser |
+| `Ctrl` / `Cmd` + `S` | Save the manual browser checkpoint |
 | **Export / Import** | Save to or load from a JSON file |
 
 People appear in the streets once you zoom in past roughly the whole-city view.
-The **Region** tab lists settlements, food stores, wildlife and open quests;
-the **People** tab searches inhabitants by name or trade. Clicking a chronicle
-entry jumps to the person or place.
+The **Region** tab lists settlements, food stores, wildlife and open quests,
+and **This year**: the harvest outlook, illness going round, deaths by cause,
+crimes, the law's work, abuses of power, trades, misfortune and vice.
+Inspecting a person shows their nature (honest or crooked, mild or quick to
+anger), the hours they keep and their record with the law; a closed workshop
+says so. The chronicle has a **crime** filter. The **People** tab searches inhabitants by name, trade, species or settlement.
+Combine words, filter by settlement and indoor/outdoor/away location, and use
+Previous/Next to reach every result. Reset clears the search and filters.
+Clicking a chronicle entry jumps to the person or place; new events preserve
+your reading position. Links and chronicle entries also work with the keyboard.
+
+Names, night lighting, chronicle filters and sidebar visibility are remembered
+in this browser. Map shortcuts stay inactive while you type or use a select.
+
+## Saving and recovery
+
+**Save** keeps a manual checkpoint. A separate automatic recovery copy is saved
+every 30 seconds and when the page is hidden or closed, when browser storage is
+available. The status beside the toolbar reports success or a storage failure.
+**Export** downloads a JSON copy independent of browser storage.
+
+If an old recovery copy exists on startup, the banner offers **Restore** or
+**Keep current world**. It protects that old copy until you choose. Restoring,
+loading, importing or creating a world leaves playback paused. Replacing changed
+progress offers Cancel, Save & continue, or Continue without saving.
+
+The last seconds before a browser/process crash may be lost. If recovery cannot
+be saved, use Export. Save-version compatibility is controlled by the engine.
+
+See [Quality of life](QUALITY_OF_LIFE.md) for the implementation and checks.
 
 The same seed always produces the same region **and** the same history.
 
@@ -75,5 +109,7 @@ shows it instead of the coloured disc.
 
 - **Port in use:** another copy is already running; open the address above or
   close the other window.
-- **A save does not load:** only version 2 saves are accepted. Saves of the old
-  continent version belong to `archive/v1-continent/index.html`.
+- **A save does not load:** follow the version message shown by the current
+  engine. Saves of the old continent version belong to
+  `archive/v1-continent/index.html`. Invalid or incomplete imports leave the
+  current world in place.

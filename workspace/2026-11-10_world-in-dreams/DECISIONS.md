@@ -3,7 +3,10 @@
 **In short:** on 2026-11-11 the owner redirected the project from a
 continent-scale simulation to a close-up one: one city and a few villages with
 some wildlife, no tile grid, and the look of the art bible's zoom images. v0.2
-implements that; five questions are waiting for the owner.
+implements that. The owner then answered the five open questions; v0.3 adds
+interiors and a closed economy. For v0.35 the owner asked to concentrate on the
+people: realistic timetables, trades that follow demand, death, and the bad
+things of the world. Nothing is waiting on the owner.
 
 ## Decisions made on 2026-11-11
 
@@ -28,27 +31,56 @@ implements that; five questions are waiting for the owner.
 ## Deferred by decision
 
 - Other cities, realms and the remaining 27 species.
-- The RPG: player, turns, combat, skills, loot, magic, progression.
+- The protagonist and the RPG: player, turns, combat, skills, loot, magic,
+  progression ("much later", owner, 2026-11-11).
 - The AI agents: interpreter, narrator, director, chronicler…
-- Building interiors.
 - Anything commercial (never planned).
 
-## Open questions for the owner
+## The owner's answers (2026-11-11)
 
-| # | Question | Today |
+| # | Question | Answer | v0.3 |
+| --- | --- | --- | --- |
+| 1 | A second region, or deepen this one? | Deepen this one: it is already large; make it work realistically | Done: interiors and economy |
+| 2 | Interiors? | Yes, simple for now, but they must exist | Rooms, furniture and a spot for everyone indoors; roofs lift off close up |
+| 3 | Rents, taxes, price pressure? | Start a more realistic economy | Closed money: employers, rents, evictions, house sales, taxes, tolls, tribute, levy, alms, poor relief, moving prices |
+| 4 | Keep the 48-day year? | Yes, for now | Unchanged |
+| 5 | Where does the protagonist enter? | Much later; the world and this region first | Not started |
+
+## Economy decisions (v0.3)
+
+| Topic | Decision | Why |
 | --- | --- | --- |
-| 1 | **The rest of the world:** a second region next, or make this one deeper first? | One region |
-| 2 | **Interiors:** should houses, taverns and the guild get interiors? | People vanish inside buildings |
-| 3 | **Money:** add rents, taxes and price pressure? | Households and villages grow steadily richer |
-| 4 | **Time scale:** keep the 48-day year? | Seasons pass in 12 days |
-| 5 | **The player:** where does the protagonist enter? | Not started |
+| Money | Never created by work; only merchants, newcomers and leavers move money across the region's edge, and that is counted | Fixes the steadily growing purses of v0.2 |
+| Wages | Paid by treasuries, businesses, temple, guild or lord, as far as they can | Every coin has a source |
+| City watch | Paid by the city treasury, not the lord | The lord's rents and tribute could not cover it |
+| City and lord | The city pays a fixed weekly farm; villages pay seasonal tribute | A share of the city treasury made prices swing |
+| Redistribution | Poor relief from treasuries, temple alms, village harvest shares, a tallage on savings | Without them a quarter of families ended penniless |
+| Prices | Treasuries aim at six days of wages and watch their trend; workshops price by stock and till | Steadier prices than a stock-only rule |
+
+## v0.35 decisions (people and their harsher world)
+
+| Topic | Decision | Why |
+| --- | --- | --- |
+| Timetables | Worked out from date, trade, age, traits and sleep debt at every decision; nothing stored but the sleep start and debt | Keeps the save small and the rules in one place |
+| Daylight | A cosine over the 48-day year, 16 hours at midsummer to 8½ at midwinter; the viewer's dusk uses the same times | Farmers' hours and bedtimes follow the season |
+| Meals | Three at set points of the waking day instead of every 4.5 hours | Supper no longer falls at 22:00; work breaks for dinner |
+| Character | Honesty and temper worked out from the three existing traits | No new random draws per person; the inspector can explain behaviour |
+| Crime | Real night trips for burglary and murder; purse-cutting, shoplifting, brawls, dice and drink resolved where they happen | People can be seen prowling at night; daytime crime costs nothing extra |
+| Justice | Restitution, fines, the cells in the barracks, banishment after repeated crimes, the gallows for murder; bribes for corrupt watchmen | Gives crime consequences without a separate trial system |
+| Illness | Contagion inside households is strong and between neighbours weak | A first tuning (20% between neighbours) infected the whole city and starved it |
+| Weather | One roll per year for the region, ±8% per settlement; the first year is ordinary | Some years are hungry without collapsing the region at once |
+| Famine prices | The scarcity multiplier can reach 3, and free meals stop under eight days of food | Hunger reaches the poor first, as it should |
+| Trades | Customers weigh trade demand and price; weekly staff review with layoffs, closures, hiring and reopenings; a building keeps its trade | The tools in each workshop's interior come from its trade |
+| Performance | Every new field is declared when a person, household or business is created | Adding and deleting properties on the fly made V8 run the tick about twice as slow |
 
 ## Roadmap
 
-1. **Watch and tune.** Several seeds through a few seasons; note what feels wrong.
-2. **Decide.** Answer the five questions above.
-3. **Visuals.** Character and building sprites on top of the painted style; portraits.
-4. **Then the game.** RPG layer and AI agents on top of `src/engine/index.js`.
+1. **Deepen this region.** More life inside buildings (cooking, visitors at the
+   table), the first-winter dip of the poorest, the first spring's food price
+   peak; watch several seeds.
+2. **Visuals.** Character and building sprites on top of the painted style; portraits.
+3. **Much later.** The protagonist, the RPG layer and the AI agents on top of
+   `src/engine/index.js`.
 
 ## Not yet verified
 
