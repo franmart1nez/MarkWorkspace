@@ -13,6 +13,12 @@ interface TopbarProps {
 }
 
 export default function Topbar({ entity, stepIndex, onStep, onHome, reportUrl }: TopbarProps) {
+  const steps = entity?.steps ?? []
+  // Resolve only direct children of a root tab; malformed/orphaned steps stay visible.
+  const parentIndex = (index: number) => steps.findIndex(s => !s.parent && s.path === steps[index]?.parent)
+  const selectedParent = parentIndex(stepIndex)
+  const activeRoot = selectedParent >= 0 ? selectedParent : stepIndex
+  const children = steps.map((step, index) => ({ step, index })).filter(({ index }) => parentIndex(index) === activeRoot && activeRoot >= 0)
   return (
     <div className="topbar">
       <nav className="breadcrumb" aria-label="Breadcrumb">
@@ -31,15 +37,15 @@ export default function Topbar({ entity, stepIndex, onStep, onHome, reportUrl }:
       </nav>
 
       {entity && (
-        <div className="topbar-right">
+        <div className={`topbar-right${children.length ? ' has-subtabs' : ''}`}>
           {entity.steps.length > 0 && (
-            <div className="step-tabs" role="tablist">
-              {entity.steps.map((s, i) => (
+            <div className="step-tabs" role="tablist" aria-label="Project tabs">
+              {entity.steps.map((s, i) => parentIndex(i) >= 0 ? null : (
                 <button
                   key={i}
                   role="tab"
-                  aria-selected={i === stepIndex}
-                  className={`step-tab${i === stepIndex ? ' active' : ''}`}
+                  aria-selected={i === activeRoot}
+                  className={`step-tab${i === activeRoot ? ' active' : ''}`}
                   onClick={() => onStep(entity.id, i)}
                   title={s.name}
                 >
@@ -48,6 +54,9 @@ export default function Topbar({ entity, stepIndex, onStep, onHome, reportUrl }:
               ))}
             </div>
           )}
+          {children.length > 0 && <div className="step-tabs step-subtabs" role="tablist" aria-label={`${steps[activeRoot].name} sections`}>
+            {[{ step: steps[activeRoot], index: activeRoot }, ...children].map(({ step, index }) => <button key={step.path} role="tab" aria-selected={index === stepIndex} className={`step-tab${index === stepIndex ? ' active' : ''}`} onClick={() => onStep(entity.id, index)}>{index === activeRoot ? 'Overview' : step.name}</button>)}
+          </div>}
           {reportUrl && (
             <a
               className="open-ext"

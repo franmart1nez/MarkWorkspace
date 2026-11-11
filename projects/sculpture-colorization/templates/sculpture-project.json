@@ -1,0 +1,44 @@
+{
+  "version": 3,
+  "id": null,
+  "title": null,
+  "created": null,
+  "status": "awaiting-inputs",
+  "finish": "realistic-according-to-finished-composite-01",
+  "providerPolicy": "../../project.json#/providerPolicy",
+  "workflowPolicy": "../../project.json#/workflowPolicy",
+  "workflowRevision": "2026-11-08",
+  "sharedQualityReferences": "../../shared/approved-client-work",
+  "inputs": {
+    "finishedComposite01": "inputs/reference-composite-01",
+    "compositePsds": "inputs/composites-psd"
+  },
+  "appearanceMaster": {
+    "compositeId": "01",
+    "role": "supplied-finished-read-only-highest-appearance-authority",
+    "file": null,
+    "sha256": null,
+    "preview": null,
+    "canvas": null,
+    "intakeVerified": false
+  },
+  "work": {
+    "previews": "work/psd-previews",
+    "cropPlans": "work/crop-plans",
+    "sourceCrops": "work/crops/source",
+    "colorizedCrops": "work/crops/colorized",
+    "masks": "work/crops/masks",
+    "reviewEvidence": "work/qa",
+    "batchManifest": "work/batch.json"
+  },
+  "outputs": {
+    "editableAssembly": "outputs/photoshop",
+    "review": "outputs/review",
+    "approved": "outputs/approved",
+    "exports": "outputs/exports"
+  },
+  "composites": [],
+  "model": null,
+  "creditLimit": null,
+  "handoff": "START_HERE.md"
+}

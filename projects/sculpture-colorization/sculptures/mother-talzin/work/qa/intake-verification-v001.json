@@ -1,0 +1,80 @@
+{
+  "originalSourcePassesRehashedUnchanged": 168,
+  "masterRehashedUnchanged": true,
+  "coverage": [
+    {
+      "view": "02",
+      "uncoveredSourceMaskPixels": 0,
+      "cropCount": 2
+    },
+    {
+      "view": "03",
+      "uncoveredSourceMaskPixels": 0,
+      "cropCount": 2
+    },
+    {
+      "view": "04",
+      "uncoveredSourceMaskPixels": 0,
+      "cropCount": 2
+    },
+    {
+      "view": "05",
+      "uncoveredSourceMaskPixels": 0,
+      "cropCount": 3
+    },
+    {
+      "view": "06",
+      "uncoveredSourceMaskPixels": 0,
+      "cropCount": 3
+    },
+    {
+      "view": "07",
+      "uncoveredSourceMaskPixels": 0,
+      "cropCount": 1
+    },
+    {
+      "view": "08",
+      "uncoveredSourceMaskPixels": 0,
+      "cropCount": 1
+    },
+    {
+      "view": "09",
+      "uncoveredSourceMaskPixels": 0,
+      "cropCount": 1
+    },
+    {
+      "view": "10",
+      "uncoveredSourceMaskPixels": 0,
+      "cropCount": 3
+    },
+    {
+      "view": "11",
+      "uncoveredSourceMaskPixels": 0,
+      "cropCount": 3
+    },
+    {
+      "view": "12",
+      "uncoveredSourceMaskPixels": 0,
+      "cropCount": 3
+    },
+    {
+      "view": "13",
+      "uncoveredSourceMaskPixels": 0,
+      "cropCount": 2
+    },
+    {
+      "view": "14",
+      "uncoveredSourceMaskPixels": 0,
+      "cropCount": 3
+    },
+    {
+      "view": "15",
+      "uncoveredSourceMaskPixels": 0,
+      "cropCount": 3
+    }
+  ],
+  "generatedCandidates": 2,
+  "selectedReviewedCrops": 0,
+  "allViewsGeneratedCropsReviewed": false,
+  "photoshopUsed": false
+}

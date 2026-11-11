@@ -12,6 +12,10 @@ export default function DesktopApp() {
   const state = useDesktop()
   useEffect(() => { startDesktop() }, [])
   useEffect(() => {
+    document.documentElement.style.zoom = surface === 'workspace' ? String((state.settings.interfaceZoom || 100) / 100) : ''
+    return () => { document.documentElement.style.zoom = '' }
+  }, [state.settings.interfaceZoom])
+  useEffect(() => {
     if (surface !== 'workspace') return
     const route = () => sendEvent({ type: 'workspace-route', route: location.hash })
     window.addEventListener('hashchange', route)

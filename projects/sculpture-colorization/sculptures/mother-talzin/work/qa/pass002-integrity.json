@@ -1,0 +1,88 @@
+{
+  "sourcePassesRehashedUnchanged": 168,
+  "masterAndQualityReferencesUnchanged": true,
+  "requiredSelectedReviewedCrops": 35,
+  "currentPassGenerationAttempts": 39,
+  "rejectedTakesRetained": 4,
+  "selectedNativePixels": 55045592,
+  "unresolvedNativeGenerationReceipts": 0,
+  "views": [
+    {
+      "id": "02",
+      "selectedCropCount": 3,
+      "sourceMaskUncoveredPixels": 0
+    },
+    {
+      "id": "03",
+      "selectedCropCount": 3,
+      "sourceMaskUncoveredPixels": 0
+    },
+    {
+      "id": "04",
+      "selectedCropCount": 3,
+      "sourceMaskUncoveredPixels": 0
+    },
+    {
+      "id": "05",
+      "selectedCropCount": 3,
+      "sourceMaskUncoveredPixels": 0
+    },
+    {
+      "id": "06",
+      "selectedCropCount": 3,
+      "sourceMaskUncoveredPixels": 0
+    },
+    {
+      "id": "07",
+      "selectedCropCount": 1,
+      "sourceMaskUncoveredPixels": 0
+    },
+    {
+      "id": "08",
+      "selectedCropCount": 1,
+      "sourceMaskUncoveredPixels": 0
+    },
+    {
+      "id": "09",
+      "selectedCropCount": 1,
+      "sourceMaskUncoveredPixels": 0
+    },
+    {
+      "id": "10",
+      "selectedCropCount": 3,
+      "sourceMaskUncoveredPixels": 0
+    },
+    {
+      "id": "11",
+      "selectedCropCount": 3,
+      "sourceMaskUncoveredPixels": 0
+    },
+    {
+      "id": "12",
+      "selectedCropCount": 3,
+      "sourceMaskUncoveredPixels": 0
+    },
+    {
+      "id": "13",
+      "selectedCropCount": 2,
+      "sourceMaskUncoveredPixels": 0
+    },
+    {
+      "id": "14",
+      "selectedCropCount": 3,
+      "sourceMaskUncoveredPixels": 0
+    },
+    {
+      "id": "15",
+      "selectedCropCount": 3,
+      "sourceMaskUncoveredPixels": 0
+    }
+  ],
+  "view02UpperCropNativePixelsPerSourcePixel": {
+    "previous": 0.6095444685466378,
+    "current": 0.9801512287334594,
+    "linearRatio": 1.6080061083491983
+  },
+  "assemblyVerified": false,
+  "userAcceptance": "pending"
+}

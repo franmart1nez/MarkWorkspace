@@ -1,0 +1,35 @@
+{
+  "version": 3,
+  "sculptureId": null,
+  "compositeId": null,
+  "sourcePsd": null,
+  "sourcePreview": null,
+  "sourceSha256": null,
+  "previewSha256": null,
+  "coordinateSystem": "integer pixels; origin at top-left of original target canvas",
+  "canvas": {
+    "width": null,
+    "height": null,
+    "colorProfile": null,
+    "bitDepth": null
+  },
+  "planningBasis": "direct-target-source-size-detail-and-coverage",
+  "appearanceMaster": null,
+  "qualityReferences": [],
+  "cropCountRationale": null,
+  "regions": [],
+  "coverageReviewed": false,
+  "requiredCropIds": [],
+  "allRequiredCropsReviewed": false,
+  "assembly": {
+    "application": "Photoshop",
+    "editableDocument": null,
+    "reviewExport": null,
+    "sourceReference": null,
+    "sourceMasks": [],
+    "colorLightingAdjustments": false,
+    "shapeReview": "pending",
+    "diskReopenReview": "pending",
+    "approvalStatus": "pending"
+  }
+}

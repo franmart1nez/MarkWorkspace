@@ -1,0 +1,40 @@
+{
+  "C01": {
+    "sourceSize": [
+      1844,
+      2296
+    ],
+    "nativeGeneratedSize": [
+      1124,
+      1399
+    ],
+    "proportionalScaleToSource": 1.6405693950177935,
+    "heightAfterUniformScale": 2295,
+    "aspectRatioRelativeError": 0.0003675,
+    "foregroundIoUByBrightnessThreshold": {
+      "16": 0.8428,
+      "32": 0.77767,
+      "64": 0.63796
+    },
+    "metricLimit": "Emission can extend outside source silhouette; source masks govern assembly. IoU is supporting evidence, not detail validation."
+  },
+  "C02": {
+    "sourceSize": [
+      1844,
+      1946
+    ],
+    "nativeGeneratedSize": [
+      1221,
+      1289
+    ],
+    "proportionalScaleToSource": 1.5102375102375103,
+    "heightAfterUniformScale": 1947,
+    "aspectRatioRelativeError": 0.0003576,
+    "foregroundIoUByBrightnessThreshold": {
+      "16": 0.93445,
+      "32": 0.88054,
+      "64": 0.71661
+    },
+    "metricLimit": "Emission can extend outside source silhouette; source masks govern assembly. IoU is supporting evidence, not detail validation."
+  }
+}

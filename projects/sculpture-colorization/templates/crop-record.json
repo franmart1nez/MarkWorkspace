@@ -1,0 +1,47 @@
+{
+  "version": 3,
+  "id": null,
+  "compositeId": null,
+  "label": null,
+  "sourceRect": {
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null
+  },
+  "pasteRect": {
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null
+  },
+  "overlapPixels": null,
+  "sourceCrop": null,
+  "sourceSha256": null,
+  "mask": null,
+  "finishedComposite01Reference": null,
+  "masterSha256": null,
+  "qualityReferences": [],
+  "provider": null,
+  "requestedModel": "gpt-image-2.6-sunburst",
+  "requestedQuality": "max",
+  "actualModel": null,
+  "actualQuality": null,
+  "selectionVerification": "pending; unexposed selectors remain unverified",
+  "prompt": null,
+  "seed": null,
+  "jobReceipt": null,
+  "nativeOutputDimensions": null,
+  "versions": [],
+  "selectedOutput": null,
+  "review": {
+    "sourceAlignment": "pending",
+    "silhouette": "pending",
+    "sculptedDetail": "pending",
+    "clientQualityBenchmark": "pending",
+    "composite01Consistency": "pending",
+    "seams": "pending",
+    "notes": null,
+    "selectedForAssembly": false
+  }
+}

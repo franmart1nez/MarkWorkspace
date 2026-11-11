@@ -11,7 +11,7 @@ from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parent.parent
 SKILLS = (
-    '3d-production-routing', 'blender-game-animation', 'character-sheet-pipeline',
+    '3d-production-routing', 'affinity-native-assembly', 'blender-game-animation', 'character-sheet-pipeline',
     'fal-ai-generation', 'feature-handoff', 'game-animation-integration',
     'game-audio-workflow', 'game-level-design', 'game-ui-workflow',
     'game-vfx-workflow', 'gameplay-visual-review', 'higgsfield-workflow',
@@ -20,7 +20,7 @@ SKILLS = (
     'workspace-authoring',
 )
 SUPPORT = (
-    'docs/skills.md', 'processes/creative-production.md',
+    'docs/skills.md', 'processes/creative-production.md', 'processes/affinity-native-assembly.md',
     'docs/editable-cards.md', 'desktop/service/card-schema.mjs',
     'docs/assets/editable-cards-editor.png',
     'docs/assets/editable-cards-gallery.png',

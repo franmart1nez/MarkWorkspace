@@ -1,6 +1,8 @@
 export interface WorkspaceStep {
   name: string
   path: string
+  /** Parent tab's path, for one level of nested tabs. Indices/URLs stay stable. */
+  parent?: string
   /**
    * Omitted = HTML in an iframe, formatted Markdown, or an image preview,
    * selected by file extension. `compare3d` = a Compare3DManifest JSON and

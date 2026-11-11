@@ -439,6 +439,9 @@ button:focus-visible {
   max-width: 100%;
 }
 .step-tabs::-webkit-scrollbar { display: none; }
+.topbar-right.has-subtabs { flex-wrap: wrap; }
+.topbar-right.has-subtabs > .step-tabs { flex-basis: 100% !important; }
+.topbar-right.has-subtabs > .step-subtabs { padding-top: 7px !important; border-top: 1px solid var(--hairline) !important; border-radius: 0; }
 .app-layout:not([data-entity="my-dream-game"]) .topbar:has(.step-tabs){align-items:flex-start;gap:10px 20px}
 .app-layout:not([data-entity="my-dream-game"]) .topbar:has(.step-tabs) .breadcrumb{width:100%;min-height:24px}
 .app-layout:not([data-entity="my-dream-game"]) .topbar:has(.step-tabs) .topbar-right{width:100%;margin:0;align-items:flex-start}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "sculptureId": null,
+  "appearanceMaster": null,
+  "views": [],
+  "allViewsGeneratedCropsReviewed": false,
+  "cropReadinessNotified": false,
+  "photoshopReadiness": "not-checked",
+  "assemblyQueue": [],
+  "currentView": null,
+  "instructions": "Each view records requiredCropIds, selectedOutput and review state per crop, cropPlan, editableDocument, diskReopenReview and user acceptance. Only reviewed generated crops satisfy readiness."
+}

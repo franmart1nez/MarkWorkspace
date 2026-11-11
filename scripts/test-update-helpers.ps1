@@ -3,7 +3,7 @@ $ErrorActionPreference = 'Stop'
 $taskFixture = @(
   [pscustomobject]@{ Name='mrmak-workspace.exe'; ProcessId=101; ParentProcessId=1; ExecutablePath='D:\My Apps\Mak\mrmak-workspace.exe' },
   [pscustomobject]@{ Name='node.exe'; ProcessId=102; ParentProcessId=101; ExecutablePath='D:\My Apps\Mak\runtime\node.exe' },
-  [pscustomobject]@{ Name='powershell.exe'; ProcessId=103; ParentProcessId=102; ExecutablePath='C:\Windows\powershell.exe' },
+  [pscustomobject]@{ Name='pwsh.exe'; ProcessId=103; ParentProcessId=102; ExecutablePath='C:\Program Files\PowerShell\7\pwsh.exe' },
   [pscustomobject]@{ Name='node.exe'; ProcessId=104; ParentProcessId=1; ExecutablePath='C:\Program Files\nodejs\node.exe' }
 )
 if (-not (Test-MakAncestor $taskFixture 103)) { throw 'Managed terminal was not detected.' }

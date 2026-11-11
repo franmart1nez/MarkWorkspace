@@ -290,7 +290,7 @@ Terminal text settings let you adjust readability. In agent chats, Ctrl+C copies
 selected text; PowerShell keeps normal shell behavior. On macOS, ⌘C and ⌘V copy
 and paste, and Ctrl+C reaches the CLI as in Terminal.app.
 Click web links in chats or cards to open your default browser. New Codex and
-Claude chats start with `xhigh` effort; saved effort choices are preserved.
+Claude chats start with `medium` effort; saved effort choices are preserved.
 OpenCode keeps its own model and reasoning configuration.
 
 ## Optional asset delivery evidence

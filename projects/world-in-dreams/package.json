@@ -1,0 +1,12 @@
+{
+  "name": "world-in-dreams",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Close-up living simulation of a fantasy city and its villages, with a painted top-down viewer.",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test test/*.test.mjs",
+    "sim": "node scripts/sim.mjs"
+  }
+}

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>World in Dreams</title>
+  <link rel="stylesheet" href="src/ui/style.css">
+</head>
+<body>
+  <header id="bar">
+    <strong class="brand">World in Dreams</strong>
+    <span id="date" class="date"></span>
+    <div class="group" id="speeds" title="Space pauses, 1-4 set the speed, . advances one day">
+      <button data-speed="0" title="Pause">❚❚</button>
+      <button data-speed="2" title="2 days per second">▶</button>
+      <button data-speed="10" title="10 days per second">▶▶</button>
+      <button data-speed="45" title="45 days per second">▶▶▶</button>
+      <button data-speed="180" title="Half a year per second">⏩</button>
+      <button id="stepDay" title="Advance one day">+1 day</button>
+    </div>
+    <div class="group">
+      <label><input type="checkbox" id="lyTerritory" checked> Realms</label>
+      <label><input type="checkbox" id="lyRoads" checked> Roads</label>
+      <label><input type="checkbox" id="lyLabels" checked> Names</label>
+      <label><input type="checkbox" id="lyParties" checked> Travellers</label>
+    </div>
+    <div class="group right">
+      <input id="seed" size="12" placeholder="seed" title="World seed: the same seed always creates the same world and history">
+      <button id="newWorld">New world</button>
+      <button id="save" title="Save in this browser">Save</button>
+      <button id="load" title="Load the browser save">Load</button>
+      <button id="export" title="Download the world as a JSON file">Export</button>
+      <button id="import" title="Open a JSON save file">Import</button>
+      <input type="file" id="file" accept=".json,application/json" hidden>
+    </div>
+  </header>
+  <main>
+    <div id="stage">
+      <canvas id="map"></canvas>
+      <div id="hint">Drag to pan · wheel to zoom · click anything to inspect</div>
+      <div id="toast" hidden></div>
+    </div>
+    <aside id="side">
+      <nav id="tabs">
+        <button data-tab="inspect" class="on">Inspect</button>
+        <button data-tab="world">World</button>
+        <button data-tab="species">Species</button>
+      </nav>
+      <section id="panel"></section>
+      <section id="chronicle">
+        <div class="chron-head">
+          <strong>Chronicle</strong>
+          <span id="filters"></span>
+          <label title="Show minor everyday events"><input type="checkbox" id="minor"> minor</label>
+        </div>
+        <ol id="events"></ol>
+      </section>
+    </aside>
+  </main>
+  <script type="module" src="src/ui/main.js"></script>
+</body>
+</html>

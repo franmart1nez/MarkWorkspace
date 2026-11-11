@@ -1,0 +1,2805 @@
+{
+  "sculptureId": "mother-talzin",
+  "master": {
+    "compositeId": "01",
+    "role": "supplied-finished-read-only-highest-appearance-authority",
+    "file": "inputs/reference-composite-01/061126 SW3D - Mother Talzin Sculpt Image 001.jpg",
+    "sha256": "5c09e07e4adf33cf763358fb399ce2307a3ec2defc1a50d85f34e566d4dd0319",
+    "preview": "work/qa/master-preview.jpg",
+    "canvas": {
+      "width": 3240,
+      "height": 4050,
+      "bitDepth": 8,
+      "colorProfile": "sRGB IEC61966-2.1"
+    },
+    "intakeVerified": true
+  },
+  "views": [
+    {
+      "id": "02",
+      "passes": [
+        {
+          "file": "inputs/composites-psd/02/AO.psd",
+          "sha256": "9e70b3c0e438fcc1f0bdb3a5f5e2c7497f580af42571334c9a86a16d811fd99f",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/02/Composite.psd",
+          "sha256": "00efbd44b66428adb9bf8ca99afe78520939064a103b497479928f411f8aa3a2",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/02/Depth.psd",
+          "sha256": "1d6af6f3ef8e6f9d2781d49bcc19d18b8ee36df926e0ec85bb059ac6d1820de0",
+          "bytes": 26244040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 16,
+            "channels": 1,
+            "colorMode": 1,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/02/Double.psd",
+          "sha256": "f9c7a6aa62e38d83d32d8e543e2cd754213567c31978884d9abaeddf87fd8d39",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/02/ID.psd",
+          "sha256": "2ff3c99a85e71f132a955188c6eb64fede72218a8f9571fbefe0a23da251360d",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/02/Mask.psd",
+          "sha256": "1354a5c095bea70245a271c56cb24b7c26b9c754ff5a337c6d165d98b0322df4",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/02/Metal.psd",
+          "sha256": "c25286d163ddde016fa556ef288db466d58cf8934d86c77bd07535695b923f79",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/02/Normal.psd",
+          "sha256": "32fbfa03e28b64f1f3c5aa926d5dfb02a90594a9ffade590fdc846d5e0928739",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/02/Shade.psd",
+          "sha256": "0df2a9a55556726ecdd0408f6de3e3bba5db460339ae6eb0328f2e2ae00dcced",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/02/Shadows.psd",
+          "sha256": "1930237601e52e3aa2d6e32c7f0c9d6dc95ec04b33f503949e671bb0889f0147",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/02/SSS.psd",
+          "sha256": "c2821946f01d6dbd22b7d07e868460c7ed328226f5860bff947f31745effe163",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/02/ZDocument.psd",
+          "sha256": "a6b6134dc6ea39b9a78ec87fed0bf05e2dcce1b4d3eb2e543c4f8034acf4715e",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        }
+      ],
+      "preview": "work/psd-previews/02-source.png",
+      "cropCount": 2
+    },
+    {
+      "id": "03",
+      "passes": [
+        {
+          "file": "inputs/composites-psd/03/AO.psd",
+          "sha256": "49c67befc8a4ebc514750ee9d1e2037793e7b6cd1911e4e98a6b1607282b8dda",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/03/Composite.psd",
+          "sha256": "0c7a68429a84ebff7ed18e1dd6b245d653337ae1cc153879db6d689eac4eebf5",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/03/Depth.psd",
+          "sha256": "0a5c4fc91d8abd1f26781e6588ab5707181d246a9687b0eac6136c284486f92a",
+          "bytes": 26244040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 16,
+            "channels": 1,
+            "colorMode": 1,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/03/Double.psd",
+          "sha256": "1dbbf52bfc99bfbd453b993768383d630d467c022bada5cad9bffaf195d28dc4",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/03/ID.psd",
+          "sha256": "157cb31984d813372d8650a6abdf06686a0d686bfaa018f91598db80bbcf6b2a",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/03/Mask.psd",
+          "sha256": "f839a852c2ffd8ee35695efcfe4e3f2e8e8971278e02c14a968da29424aab016",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/03/Metal.psd",
+          "sha256": "526b2d07c4536e3c6731127ae061537b1a9626a2ed17ab1e347e19e6641e8b40",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/03/Normal.psd",
+          "sha256": "cd421db9227cdf69992fb9870fcc53b15514574841706a3f9bc1c1ef8f26b580",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/03/Shade.psd",
+          "sha256": "1c3f43723212e249002d415db9450c8558badd1d89b612d02458b1b86f4383da",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/03/Shadows.psd",
+          "sha256": "013f45c689bb3286571bd9305173fbaa98933521e6fc6931da70e94253aab0b4",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/03/SSS.psd",
+          "sha256": "698af0c1a54d9e9e5a0a33eaf6ae1a88d1955fcf8c4deae074b61a1574573b98",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/03/ZDocument.psd",
+          "sha256": "4f645886bc7d896dd3eb2737d1e1f512dd1c40f78d4a207b4e0c4c4f944ae09f",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        }
+      ],
+      "preview": "work/psd-previews/03-source.png",
+      "cropCount": 2
+    },
+    {
+      "id": "04",
+      "passes": [
+        {
+          "file": "inputs/composites-psd/04/AO.psd",
+          "sha256": "c5bd2bcb84f0a7faa8e55d1ab0c01b7ec48ee12bebbf5fa2b449dddd094b5c99",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/04/Composite.psd",
+          "sha256": "2e0fed62962a6f03e5757b86519ed5498823cdad7ff3eeefcb903f055419e0f5",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/04/Depth.psd",
+          "sha256": "73e235b7a7727485ee1eb9361869edfaf55345f118fa7d3ea7768c883a80eaa3",
+          "bytes": 26244040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 16,
+            "channels": 1,
+            "colorMode": 1,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/04/Double.psd",
+          "sha256": "5d9ea78febb089869c2558864479b73b9b1188fe5350649580a2e1fe1e68d2cb",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/04/ID.psd",
+          "sha256": "f1c644b6bc8f6e048914e807821e18f0b0cbb2c839f04cd6e793b82711c2d16f",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/04/Mask.psd",
+          "sha256": "28a14f036f54561859af1ef77d9f14c087c7d3cc76f30f74357fdcf5283c1a43",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/04/Metal.psd",
+          "sha256": "d0f8d4967d350bff89869e2227fc3cef3bacca2da06707a42b028cf7d0aff7be",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/04/Normal.psd",
+          "sha256": "5c6a8e86bcf66ffe5f0dea8cb93943eaed1832b3a92796bc4b6f4ec0a38e199e",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/04/Shade.psd",
+          "sha256": "5713a376b3b5987484025c3bf01ada4b083c30d2a9f84eaa95771208476adf29",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/04/Shadows.psd",
+          "sha256": "ebc3c981b2253dae97cd81cac10817669d7ce03c11970bd196911594b612f323",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/04/SSS.psd",
+          "sha256": "a344e0b1654fa170ffacd21735dca2fe9dc354564df274301be5ae7ccd7957a9",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/04/ZDocument.psd",
+          "sha256": "c8ae6f9060f7d3bbbca4d2d94c2f2f513c9ec7ac092f25ce0f84038357cb475f",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        }
+      ],
+      "preview": "work/psd-previews/04-source.png",
+      "cropCount": 2
+    },
+    {
+      "id": "05",
+      "passes": [
+        {
+          "file": "inputs/composites-psd/05/AO.psd",
+          "sha256": "66dbbcf178ea361c6b148e4923eb5ed29c6a4b9c03f3f49b3fac2a216698d753",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/05/Composite.psd",
+          "sha256": "51577eb8efe0663b7cfa22a152b1a2dd78c31c0b4823882b41b18529407423af",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/05/Depth.psd",
+          "sha256": "836db830df8bbeca8f74b2856e0694f846e9038c9759d798b1170638469fec80",
+          "bytes": 26244040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 16,
+            "channels": 1,
+            "colorMode": 1,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/05/Double.psd",
+          "sha256": "21bd3004ffab20f161bcace4f460f86e509b312d4b87a711afaa2311ba876127",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/05/ID.psd",
+          "sha256": "ca669b58714c1e7d1760b4bc4a5213e5f71a6d7f481e5568ebfb9f395b7fe897",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/05/Mask.psd",
+          "sha256": "bc889bc146685103e08c01941de7f8b34d88b059f3f5fd9cadd21366bcf34edd",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/05/Metal.psd",
+          "sha256": "de972aa2836d9b1c3d7fecfdff9a030877f8739e356001fec7ec58c7a3955c04",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/05/Normal.psd",
+          "sha256": "cd8663456b8ebf390b21d011cc203d2f8683cd91909169613108c63ce86ba290",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/05/Shade.psd",
+          "sha256": "27fe08216c3adc8eac8aa68e5ad74b8e0d67067ad92750ad1856b59fbc8c251a",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/05/Shadows.psd",
+          "sha256": "bb9760feb09b046c53769311074b422e0b73d74fa779bbc3f6d4e22b1b5fa887",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/05/SSS.psd",
+          "sha256": "9ecc3a30587cd5f67d662e4861e0f59910826570198eaf658e97d437aecc0edc",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/05/ZDocument.psd",
+          "sha256": "ca09fec472b1d80968ea6b60335cd876c760d7340e53118b87e078adf377e426",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        }
+      ],
+      "preview": "work/psd-previews/05-source.png",
+      "cropCount": 3
+    },
+    {
+      "id": "06",
+      "passes": [
+        {
+          "file": "inputs/composites-psd/06/AO.psd",
+          "sha256": "4f43d43d967b3cd0519492dc49e67e95051b7b2e006e8483d18ed0470ea2b396",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/06/Composite.psd",
+          "sha256": "4ec309d544124567d0c94c769a3665dab59811d9fdc641fd389701f6139a61ad",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/06/Depth.psd",
+          "sha256": "fb7c81e0b224c4dcaaf63e32f695e644abf416fb56a045aaee7b188af2cd6a3a",
+          "bytes": 26244040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 16,
+            "channels": 1,
+            "colorMode": 1,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/06/Double.psd",
+          "sha256": "be85cabad3e55a963c1938d98d8410af7f516c86367eafd379a2f1c6eb1e873f",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/06/ID.psd",
+          "sha256": "d4558a4cede6348ca70790354129228f7db8c65a929bf15a223900e8113ceb8b",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/06/Mask.psd",
+          "sha256": "af8072892a9849786761f58aa36ab1d06547f7156d0e7806c05074a0eda0dd45",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/06/Metal.psd",
+          "sha256": "566df52af9b8601f8cfea615c7a2e8e482ad36cb787446c807d8339566de2137",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/06/Normal.psd",
+          "sha256": "fe81b69e3a3c66cf2cf437ae2021ce6ecb327d580812f788655ade27459a73c1",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/06/Shade.psd",
+          "sha256": "88e28b35dbd738deb2d869ec748bab1bb44383f00a138c13bfe53fa9ec17e6b5",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/06/Shadows.psd",
+          "sha256": "4a91657094644344e8f3e08a7d3bf605f02bc05db7ed7ffe626b6eda2b9dca84",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/06/SSS.psd",
+          "sha256": "42c5a89c41b0ba0fe5eb683d23cea0e8b025ac0fdf06e8853515a7fcaa0b8d69",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/06/ZDocument.psd",
+          "sha256": "9307b75edcabe496817bb5f780e1d131d15b4ecf23a25fb45bdc716839ad954d",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        }
+      ],
+      "preview": "work/psd-previews/06-source.png",
+      "cropCount": 3
+    },
+    {
+      "id": "07",
+      "passes": [
+        {
+          "file": "inputs/composites-psd/07/AO.psd",
+          "sha256": "4e4b57b80af0093de8f1b3f9e1b46ecd6d7e1bd76af7aba6edc5ad428a13c40c",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/07/Composite.psd",
+          "sha256": "70167cc8f943934699075139d7fad37258f4c046cc703c893dbf76140c30b22d",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/07/Depth.psd",
+          "sha256": "5880e193e78e3eb94af106a01532c32b11361d8a267deb509ad81e47d352db3c",
+          "bytes": 26244040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 16,
+            "channels": 1,
+            "colorMode": 1,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/07/Double.psd",
+          "sha256": "7632e458b1f855dc14493590e7519641372bb1807494eb3c0862238c5aa0c39b",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/07/ID.psd",
+          "sha256": "22b13bd8682bf856e1f6fb95755c60650041a4132cde60a9b1153c5b89b814d0",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/07/Mask.psd",
+          "sha256": "92dc258b9de8b8bb1dfb310583ddbbb315d42218c1c8995c9833a787c167da6d",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/07/Metal.psd",
+          "sha256": "086f0fed30056739f9773d6b35daeb45f9fa7de20d0808a044fc9d515ce8794a",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/07/Normal.psd",
+          "sha256": "cf70594f865d5c808d0ef314cba013a1a15bd9d4ddc9fa52b8f7ef1187e737d5",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/07/Shade.psd",
+          "sha256": "e34ce14d1aa4988ae6a553cea416ef360b6d03e1b0ad3807b9e8d580781f4f5b",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/07/Shadows.psd",
+          "sha256": "7f0dc37b81ca64be198c1a357615b917529688fe0ac13e6b4589167a17fd2b96",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/07/SSS.psd",
+          "sha256": "84715bfa2ddb8be4728b700d17c93832e475c3528e87dfb83385874294a318bf",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/07/ZDocument.psd",
+          "sha256": "28afda6799f4722632b34e527deb24d35480410f2db43f7f8fde5bd1daa20ab0",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        }
+      ],
+      "preview": "work/psd-previews/07-source.png",
+      "cropCount": 1
+    },
+    {
+      "id": "08",
+      "passes": [
+        {
+          "file": "inputs/composites-psd/08/AO.psd",
+          "sha256": "e66a93714c9c41526fc68ef6257877a3dc5515e7a2d10c5b1047c4d18891eedc",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/08/Composite.psd",
+          "sha256": "2f92d35cd039f0f2479641aa2812d3e65c12420a9871b968938725d975b37011",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/08/Depth.psd",
+          "sha256": "1b49bba3f78c10bd7b8f223d4fdf95bf2f55f33429b80a6cf7d50ef672d72bae",
+          "bytes": 26244040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 16,
+            "channels": 1,
+            "colorMode": 1,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/08/Double.psd",
+          "sha256": "f93e84e44237c0f752505e866b7b89de39706f0e3a89f6189b076c8fe242264a",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/08/ID.psd",
+          "sha256": "a5b99da54229a01f5ca89ea5f7fec3c3a47bdf30f1d80f772cbe8a9899da9bc8",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/08/Mask.psd",
+          "sha256": "d2951af191b409d2a84dca3e557622794f8c2825401e531a7878503352b66223",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/08/Metal.psd",
+          "sha256": "2531ecf4575a19daeffbdd0ffa071d56197712dfa443094a7ffcf0c4e7944bfd",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/08/Normal.psd",
+          "sha256": "295318e25c812dedc015c9ebe0a2b69a0fc5588d021e756924d43d10db7f433c",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/08/Shade.psd",
+          "sha256": "2623be52cb6467a7b7be828b419028d1d27599a80663b1e26d8188c9ee9da5f2",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/08/Shadows.psd",
+          "sha256": "8f35d4145d1bd6efe97d639ea82582db8ac0ea4406657f466d6b17f4e010f3a4",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/08/SSS.psd",
+          "sha256": "b460297390fbc926d525b18ef666641c3d9e511ebeca9847ea3abe5b9442d102",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/08/ZDocument.psd",
+          "sha256": "41f1c33c26065d44b1fabc02043bc63860ec223b2ddab36b8fe1b0af71db637d",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        }
+      ],
+      "preview": "work/psd-previews/08-source.png",
+      "cropCount": 1
+    },
+    {
+      "id": "09",
+      "passes": [
+        {
+          "file": "inputs/composites-psd/09/AO.psd",
+          "sha256": "a1e39214a63410d099b3a99d23828b407569220886938dbee6368c2589066a35",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/09/Composite.psd",
+          "sha256": "e991f9525ac31f81906bc000d3b6e75e60abc3f4edb418f8626d74c97aabd224",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/09/Depth.psd",
+          "sha256": "29131cd1aeda143d0787bd1993df286a79caa6f010c7e7ba46bc18a3e865edbc",
+          "bytes": 26244040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 16,
+            "channels": 1,
+            "colorMode": 1,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/09/Double.psd",
+          "sha256": "e255fe011b2f806630c801753aa8570d7a356c5c30e8dcae2437659df3d5f818",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/09/ID.psd",
+          "sha256": "a3bafa7c8212e3f5f93a9bd0f5ac0ce7852508dc53b298a6fd16cd974f64032d",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/09/Mask.psd",
+          "sha256": "137f33fb8bd45ad46ac2f1592e8b512926bc962cf1e6184e1afc8358d3a7b6b9",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/09/Metal.psd",
+          "sha256": "237f77cecda13e556a457a639b1636c09ab5d1edb455554b56a600f810cf1c5a",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/09/Normal.psd",
+          "sha256": "3e3e50ede202ca27698b122464c72d468e0365eefc57ef0784799a07992283b8",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/09/Shade.psd",
+          "sha256": "92dd5cb1c2f4a35f8d28a23277222064c56c608c9a67bdf4f5657efd6a2c7601",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/09/Shadows.psd",
+          "sha256": "5befa571ff229d6ceef8d16bebe2deb011f8cd20f53f6602ff86e976a6f8bd7f",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/09/SSS.psd",
+          "sha256": "a0d2f09ead3e6210f33b3379e8355a7592477e5cbd555b0f89c55d4857f1a53d",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/09/ZDocument.psd",
+          "sha256": "7fac089e3cdbcb5df6002b1c7c298bcd15bb38d6c374dedb4d192eeeba2723e5",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        }
+      ],
+      "preview": "work/psd-previews/09-source.png",
+      "cropCount": 1
+    },
+    {
+      "id": "10",
+      "passes": [
+        {
+          "file": "inputs/composites-psd/10/AO.psd",
+          "sha256": "9bf7d74578454253f6b664c9b10a309a8496e3b85a5d78707849a0615811cb1c",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/10/Composite.psd",
+          "sha256": "5e0baadaa02a3afbf99518911bdbd449545f214582b3f5f2f7df0992e4313524",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/10/Depth.psd",
+          "sha256": "7b09d2ab8fab4c2b78a06c88c06e788b5cd0695301516c16f031c34db524603a",
+          "bytes": 26244040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 16,
+            "channels": 1,
+            "colorMode": 1,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/10/Double.psd",
+          "sha256": "e0e522a0106222e91baa138f94b3c390cbb650374891a4a2f4c65bfeb33d32d2",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/10/ID.psd",
+          "sha256": "e672de85f4756b0a9f01e296276df8c91b710add42752446362ad3c27cd1b715",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/10/Mask.psd",
+          "sha256": "48771c8963b326dcbab051c0ffc609b157999cac8d9f2c2a59b1e0f88753bbbf",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/10/Metal.psd",
+          "sha256": "944c038c9fe949e0a3292131b41c907bf7eef848432428842a2c759f3659d061",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/10/Normal.psd",
+          "sha256": "b3f8f3e0cd9cfce0679442b4324d30e7ee0845b8ae17ec9f6455c6f6c71d91e6",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/10/Shade.psd",
+          "sha256": "f1aae00c03e8309b6c3b84077ca1cfc5a035939e39be1217006bc6c2032666cf",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/10/Shadows.psd",
+          "sha256": "ae090dea567cb4ffb0a8f2df1b5a76791f4fd5ea0b03333690de2aae4763892f",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/10/SSS.psd",
+          "sha256": "a65fb0421c2124c20b10a2f9d6f7273c944254afc0a72780fdb426dbcf316f5e",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/10/ZDocument.psd",
+          "sha256": "c7593eb68b043246080d14afe2a42c416a1da6d88bea1605a9ea1ae675c70c76",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        }
+      ],
+      "preview": "work/psd-previews/10-source.png",
+      "cropCount": 3
+    },
+    {
+      "id": "11",
+      "passes": [
+        {
+          "file": "inputs/composites-psd/11/AO.psd",
+          "sha256": "9b067ec934a5ecc4107b46b02f50100f8fab0507eb4052ffa24cd049e398e412",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/11/Composite.psd",
+          "sha256": "83af6950cfb370babbbdb361c6d911e37444ee8943a0f7e651d11721b089627c",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/11/Depth.psd",
+          "sha256": "30cfa5900c8a4cc40df08e16e6e99ecfb39fec1917743003bc69370c93b43cba",
+          "bytes": 26244040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 16,
+            "channels": 1,
+            "colorMode": 1,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/11/Double.psd",
+          "sha256": "9e6f544351faeac042d0865fcab076950cf874183de7e47bf456e34d678bb910",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/11/ID.psd",
+          "sha256": "6f5b862ae9720a3a82674a85f7ed094668a6cf64d7bffe7228b99cd57f785508",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/11/Mask.psd",
+          "sha256": "5193ba820429b4d5c7352aa693c374aaa40f112b4357d1e8ebd2e12b6e97feba",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/11/Metal.psd",
+          "sha256": "08646baa5ab9ffe6db9ab5ec1771788b125129382515110c47f93f1a5f0b00ff",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/11/Normal.psd",
+          "sha256": "292558ef302b4ce882b29de9f909856ef27f8213efdf1fbb4e5ad8f4b36a8a0e",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/11/Shade.psd",
+          "sha256": "24ce249756d0f9c6f6119c89f8666ffcfad146fd4be7a93fc4a57860ee6824f2",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/11/Shadows.psd",
+          "sha256": "c790861095d8bb08b02ed7f77e8ba54342d9b4f6745f3a4dfc393e76aa90b878",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/11/SSS.psd",
+          "sha256": "3300b91cead45accec270a54d6860d7257c4fb24a58563b1a35bc888445daf35",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/11/ZDocument.psd",
+          "sha256": "4f54f04a4bd42ace0c729374dea5815f75ddf0adf9fbe2b9dcb563446ae693c2",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        }
+      ],
+      "preview": "work/psd-previews/11-source.png",
+      "cropCount": 3
+    },
+    {
+      "id": "12",
+      "passes": [
+        {
+          "file": "inputs/composites-psd/12/AO.psd",
+          "sha256": "0fec4083800f0e40c3d6183152b1f3c25b33445623170dee567cd031aa7613f3",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/12/Composite.psd",
+          "sha256": "9d54dc4b101b2296356d96fe83e2dc5ad108091e45cf8fbc3e1ff113d93b0aa3",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/12/Depth.psd",
+          "sha256": "4a139fe946de81074d89b6d2646a9d5199ed7e9a7ec9b6232b6a8b75e891eda0",
+          "bytes": 26244040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 16,
+            "channels": 1,
+            "colorMode": 1,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/12/Double.psd",
+          "sha256": "cc696df28dcc3e1cdc5762567069be1227840c62f3ad480fba7320659a55fb5c",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/12/ID.psd",
+          "sha256": "bf4459fe56a818c7732e57c60950ea32d78961e878732ca5172e0b397d82d803",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/12/Mask.psd",
+          "sha256": "eea0af8779212cddefc581160112199a77b4ac941c4cec3e69a19b70ab16a098",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/12/Metal.psd",
+          "sha256": "8d54f99853ccf70ad4389853a59ddd65d27ed0ff867fcb02f251c4a8f50e4728",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/12/Normal.psd",
+          "sha256": "c876da50c088a8162befa88b2d1e6008622349ea4b7a9289877c4f88e13cbebd",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/12/Shade.psd",
+          "sha256": "93c36dc751524a351acb6ed0f769fee4eaf4d8ac94c2bdaf32be2c592737e5a1",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/12/Shadows.psd",
+          "sha256": "8d53c927b18c0094a0fc818d99e0df31c34e09da6f62b60fc2ef79abc526612a",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/12/SSS.psd",
+          "sha256": "7edfedd0bb78c38d25a89203be8bc80af8bcc7ce186939bd8d7e6fb63325d5e8",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/12/ZDocument.psd",
+          "sha256": "f84c664d5bb839143f5a9502c8c7e3b3f424eaaf1986e91bf14b38c0e90c5da7",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        }
+      ],
+      "preview": "work/psd-previews/12-source.png",
+      "cropCount": 3
+    },
+    {
+      "id": "13",
+      "passes": [
+        {
+          "file": "inputs/composites-psd/13/AO.psd",
+          "sha256": "3f37495f2daa91897856705364067f79e671901988b33b59bf3f59bf14050c2e",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/13/Composite.psd",
+          "sha256": "551f5918bf9a6c1ca7518e3b29a2abc19c7ee7580e1968d52eb7570d01a1adcb",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/13/Depth.psd",
+          "sha256": "60329f9114de013c1eb143c36c529c8d979872fc9e123695bfd136fdb83f3d2c",
+          "bytes": 26244040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 16,
+            "channels": 1,
+            "colorMode": 1,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/13/Double.psd",
+          "sha256": "89b123d87344a4ec5bbea13653f7b3977dfd9f3507e77629cb3efc1ef6c34332",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/13/ID.psd",
+          "sha256": "dcdc1a7afd27361ef310d3cc88116c6bb425e7726bf7e0d797d326b9415617a8",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/13/Mask.psd",
+          "sha256": "c02e819a4fad6e9778cf17ed13c56dbaf930d993f1898e0da0ffc19a6c76cd9e",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/13/Metal.psd",
+          "sha256": "c37e2c79e340bd9d8397dc19da83a312fab7a36f9aa8865ee606564201411af6",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/13/Normal.psd",
+          "sha256": "66ed42f9fcc957bc7fcb84ba3053352f09a24d367807b79ae1204a40c8068808",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/13/Shade.psd",
+          "sha256": "38f3a1dc720bb2fe05a63354488259828d66fc9ed8e6a75b18ac9dc3bb5b398b",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/13/Shadows.psd",
+          "sha256": "6c5d1bbb70b408333b0d57cd88c11aa8b182b5e46d5420ad0774c65bd831360a",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/13/SSS.psd",
+          "sha256": "f6a7e676e66d7b03fef5575bc4a97698895641228dc69e12cf7ddc791334a4c5",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/13/ZDocument.psd",
+          "sha256": "3f863e83614f15b7a4e384a901e25d45b80652435e5c7444014d86e52b22e784",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        }
+      ],
+      "preview": "work/psd-previews/13-source.png",
+      "cropCount": 2
+    },
+    {
+      "id": "14",
+      "passes": [
+        {
+          "file": "inputs/composites-psd/14/AO.psd",
+          "sha256": "821e37ba82a04b343db8e54fd640092395a5d68af44d476da0e634bdba97f6a9",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/14/Composite.psd",
+          "sha256": "2c8451900d6fa9f62c57a984b947941e9030b77e89725fd8250e1a61041cc6ec",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/14/Depth.psd",
+          "sha256": "c391551ec97f50bfd035b4aa88c97ea655e0e8b1bfeff66cd4dc35d395f13fcf",
+          "bytes": 26244040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 16,
+            "channels": 1,
+            "colorMode": 1,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/14/Double.psd",
+          "sha256": "86b57dcb3c7b975677af27039dd7823baaf78a6cc0618bfee43bc7efa0403f1b",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/14/ID.psd",
+          "sha256": "909f6f36fb596faa6f918ca32027650124b8c4d0f317617512c22d50b40f73de",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/14/Mask.psd",
+          "sha256": "d949c6e5e64abbdda2613f8215b07cc33d605ac006166fac70cd375b63d3309a",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/14/Metal.psd",
+          "sha256": "00d107e6ed5167dbe04208c306080f26ba1dccf57eceafcf01d5ea8f55eceafc",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/14/Normal.psd",
+          "sha256": "4c8db98a120def00f083f5c6e3f30f3195d94385d0e43b836bbaae50ea817f26",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/14/Shade.psd",
+          "sha256": "6b4a3680fc533d6c8b1503422ec3dffa4892124db65948f0155f1a2be47e3c55",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/14/Shadows.psd",
+          "sha256": "20484ae53617d17e60b46b48d4e3d39d872c4de5973e81218a1051a440b59e6b",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/14/SSS.psd",
+          "sha256": "6ddf3f0aee6b39ed4509e074cdee02c1ef38ded923e8c6310726b8455bbb0b1d",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/14/ZDocument.psd",
+          "sha256": "95aa2464fe32a869b6819d5db85cc30ad37a7339ac679eb65d29c0c36cd0cd06",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        }
+      ],
+      "preview": "work/psd-previews/14-source.png",
+      "cropCount": 3
+    },
+    {
+      "id": "15",
+      "passes": [
+        {
+          "file": "inputs/composites-psd/15/AO.psd",
+          "sha256": "79fc665fbc2f119f7c468a9f5da7ea4a3d1fe1b3dfabfa06671bc47e52146d9c",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/15/Composite.psd",
+          "sha256": "0014ebb80f00ff0d41e2606cb6ef5445ac48aac5a835eb7f2da140ea62ce4236",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/15/Depth.psd",
+          "sha256": "f6cac63f25fa4f900986c7d3fde7d7831e37e3569c0cdbcb2f5a38d46eedb095",
+          "bytes": 26244040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 16,
+            "channels": 1,
+            "colorMode": 1,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/15/Double.psd",
+          "sha256": "da25b8d133b18a327f13c3f2c53497dcd3567525819fe5a61643e4b701baef35",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/15/ID.psd",
+          "sha256": "7a41e8d0b7fc0411bc64ee5e06aadf49dbaffe6fe7199a6a36067eb510ed0f78",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/15/Mask.psd",
+          "sha256": "de0dda3458e7b3ec001f529d3e4600838ee605ba51116d8ce592c06ed65f8bbb",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/15/Metal.psd",
+          "sha256": "c2a7efb093ba82eacf3dd85abac2c500a5f9cf6082a62cba982040246b40731f",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/15/Normal.psd",
+          "sha256": "c3af7c47936a8cbed74425b78fb1dba7bd16619b1e60d97a149f2fbf8f980e26",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/15/Shade.psd",
+          "sha256": "354776f695a415ea3faabc4e6890c485f0d414ab07503ee5d130fb818440ee55",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/15/Shadows.psd",
+          "sha256": "b63866baea015c2690a82f8500fb0aa6a344ae3e78477dea85bdadc15d46661d",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/15/SSS.psd",
+          "sha256": "e13aba90a7f723042b9c555c0058afb916400fe8f53e2af346a46672775f4089",
+          "bytes": 13122040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 1,
+            "colorMode": 7,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        },
+        {
+          "file": "inputs/composites-psd/15/ZDocument.psd",
+          "sha256": "515c6d4987586ac2436e3bb0a96ca8440d50a3025bff625f38305682a2076ce6",
+          "bytes": 39366040,
+          "header": {
+            "width": 3240,
+            "height": 4050,
+            "depth": 8,
+            "channels": 3,
+            "colorMode": 3,
+            "compression": 0,
+            "layerSectionBytes": 0,
+            "imageDataOffset": 40
+          },
+          "colorProfile": "untagged; no embedded ICC"
+        }
+      ],
+      "preview": "work/psd-previews/15-source.png",
+      "cropCount": 3
+    }
+  ]
+}

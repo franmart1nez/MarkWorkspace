@@ -1,6 +1,18 @@
 [CmdletBinding()]
 param([ValidateSet('Check', 'Preview', 'Desktop', 'Update')][string]$Mode = 'Check', [string]$InstallDirectory)
 $ErrorActionPreference = 'Stop'
+# Run setup under PowerShell 7 when it is installed, even when Windows
+# PowerShell opened this script.
+if ($PSVersionTable.PSEdition -ne 'Core') {
+  $taskPwsh = Get-Command pwsh -CommandType Application -ErrorAction SilentlyContinue
+  if ($taskPwsh) {
+    $taskPwshArgs = @('-NoLogo', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', $PSCommandPath)
+    if ($PSBoundParameters.ContainsKey('Mode')) { $taskPwshArgs += @('-Mode', $Mode) }
+    if ($PSBoundParameters.ContainsKey('InstallDirectory')) { $taskPwshArgs += @('-InstallDirectory', $InstallDirectory) }
+    & $taskPwsh.Source @taskPwshArgs
+    exit $LASTEXITCODE
+  }
+}
 $taskRoot = [System.IO.Path]::GetFullPath($PSScriptRoot)
 . (Join-Path $taskRoot 'scripts/update-helpers.ps1')
 # Quitting the app terminates its entire managed process tree, including an
@@ -8,7 +20,7 @@ $taskRoot = [System.IO.Path]::GetFullPath($PSScriptRoot)
 if ($Mode -eq 'Update') {
   $taskProcesses = @(Get-CimInstance Win32_Process -ErrorAction Stop)
   if ($env:MRMAK_PARENT_PID -or (Test-MakAncestor $taskProcesses $PID)) {
-    throw 'Run Setup.ps1 -Mode Update in a separate Windows PowerShell window opened from Start, outside Mr. Mak. Quitting Mr. Mak would stop an updater launched in its chat.'
+    throw 'Run Setup.ps1 -Mode Update in a separate PowerShell 7 window opened from Start, outside Mr. Mak. Quitting Mr. Mak would stop an updater launched in its chat.'
   }
   if (-not $InstallDirectory) { $InstallDirectory = Get-MakInstallDirectory }
   $InstallDirectory = [IO.Path]::GetFullPath($InstallDirectory)
