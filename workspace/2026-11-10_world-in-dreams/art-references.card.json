@@ -1,0 +1,129 @@
+{
+  "format": "mrmak-card",
+  "version": 1,
+  "template": "research",
+  "title": "Art bible · Early references",
+  "summary": "Collected references for World in Dreams. The owner selected **Isekai 01 — Axel** for settlement-scale composition and **Isekai 04 + 05 — Re:Zero and Overlord** for more distant world views. These are source images, separate from the generated concepts in Art bible → Overview.\n\nAll twelve references and their original source notes are preserved.",
+  "items": [
+    {
+      "id": "konosuba-axel",
+      "title": "Isekai 01 · KonoSuba — Axel",
+      "image": "media/art-references/konosuba-axel.jpg",
+      "alt": "Aerial anime city: a compact walled footprint, dense warm roofs, a river and roads radiating through districts.",
+      "body": "**Classic isekai references · primary inspiration**\n\n**Visible in this image:** Aerial anime city: a compact walled footprint, dense warm roofs, a river and roads radiating through districts.\n\n**Top-down translation — proposal:** Use as the main everyday adventurer-town mood reference. In top-down, preserve the relationship between river, bridges, gates and streets; vary the outline and districts with terrain.\n\n**Source and camera limits:** Anime image reproduced in a secondary architecture blog. The image has an oblique aerial camera and strong sun streaks; neither is the target camera or lighting treatment.\n\nExisting reference artwork; rights remain with its respective owners. This is not a generated World in Dreams asset.",
+      "url": "https://psycho-frame.blogspot.com/2020/04/generic-isekai-town.html",
+      "linkLabel": "Reference image context and source",
+      "status": "review"
+    },
+    {
+      "id": "overlord-city-plan",
+      "title": "Isekai 02 · Overlord — E-Rantel city plan",
+      "image": "media/art-references/overlord-city-plan.jpg",
+      "alt": "A near-plan view shows concentric defensive rings and radial connections, with part of the plan obscured by a foreground character.",
+      "body": "**Classic isekai references · primary inspiration**\n\n**Visible in this image:** A near-plan view shows concentric defensive rings and radial connections, with part of the plan obscured by a foreground character.\n\n**Top-down translation — proposal:** Study controlled entrances, defensive depth and districts. Translate those into a readable top-down fortified city template.\n\n**Source and camera limits:** A fan-shared image identified as E-Rantel by its uploader. Episode and original publication provenance have not been independently verified; this is not presented as a complete surveyed map.\n\nExisting reference artwork; rights remain with its respective owners. This is not a generated World in Dreams asset.",
+      "url": "https://imgur.com/gallery/overlord-e-rantel-map-up-close-fZAedmo",
+      "linkLabel": "Reference image context and source",
+      "status": "review"
+    },
+    {
+      "id": "rezero-priestella-aerial",
+      "title": "Isekai 03 · Re:Zero — Priestella",
+      "image": "media/art-references/rezero-priestella-aerial.jpg",
+      "alt": "A high aerial view reveals a circular urban footprint, waterways and strong connections between sectors.",
+      "body": "**Classic isekai references · primary inspiration**\n\n**Visible in this image:** A high aerial view reveals a circular urban footprint, waterways and strong connections between sectors.\n\n**Top-down translation — proposal:** A water-city template: canals separate districts while bridges and gates become clear route bottlenecks.\n\n**Source and camera limits:** Teaser-PV frame reproduced by Comic Natalie. Near-overhead perspective is useful, but foreground feathers and cinematic light obscure parts of the plan; omit those in future top-down concepts.\n\nExisting reference artwork; rights remain with its respective owners. This is not a generated World in Dreams asset.",
+      "url": "https://natalie.mu/comic/gallery/news/562763/2026413",
+      "linkLabel": "Reference image context and source",
+      "status": "review"
+    },
+    {
+      "id": "rezero-regional-map",
+      "title": "Isekai 04 · Re:Zero — regional world view",
+      "image": "media/art-references/rezero-regional-map.jpg",
+      "alt": "An illustrated regional map connects small settlement symbols, woodland masses, mountains and dotted travel routes.",
+      "body": "**Classic isekai references · primary inspiration**\n\n**Visible in this image:** An illustrated regional map connects small settlement symbols, woodland masses, mountains and dotted travel routes.\n\n**Top-down translation — proposal:** Use for world-scale hierarchy: a city, village, estate and landmark should read differently before zooming into architecture.\n\n**Source and camera limits:** Reproduced in AnimeClick coverage of the game-map reveal. This is a game-associated illustrated map, not an exhaustive world atlas; do not infer precise geography or distances from it.\n\nExisting reference artwork; rights remain with its respective owners. This is not a generated World in Dreams asset.",
+      "url": "https://www.animeclick.it/news/90376-rezero-rivelata-la-mappa-ufficiale-della-serie",
+      "linkLabel": "Reference image context and source",
+      "status": "review"
+    },
+    {
+      "id": "overlord-region",
+      "title": "Isekai 05 · Overlord — regional geography",
+      "image": "media/art-references/overlord-region.jpg",
+      "alt": "A parchment-like regional map uses different settlement symbols, mountain chains, forests and boundaries.",
+      "body": "**Classic isekai references · primary inspiration**\n\n**Visible in this image:** A parchment-like regional map uses different settlement symbols, mountain chains, forests and boundaries.\n\n**Top-down translation — proposal:** Use for the relation between realms, terrain barriers and settlement hierarchy. The current world viewer can keep terrain colours while borrowing the symbol hierarchy.\n\n**Source and camera limits:** Anime map reproduced in a secondary episode blog. This studies cartographic organisation, not a proposed parchment filter for the game.\n\nExisting reference artwork; rights remain with its respective owners. This is not a generated World in Dreams asset.",
+      "url": "https://ameblo.jp/7vt/entry-12344084879.html",
+      "linkLabel": "Reference image context and source",
+      "status": "review"
+    },
+    {
+      "id": "foundation-village",
+      "title": "01 · Rural beginnings",
+      "image": "media/art-references/foundation-village.jpg",
+      "alt": "A small clearing with a few buildings and branching paths.",
+      "body": "**Early references · Foundation**\n\n**What to study:** A small clearing with a few buildings and branching paths.\n\n**World in Dreams use:** Human and halfling villages: leave space for fields, storage and later growth.\n\n**Boundary:** The quiet, rounded forms are useful; the sparse clearing alone does not explain a complete food-producing village.\n\nPublisher-provided screenshot, retained here as a local research reference. Artwork belongs to its respective owners; it is not an original project asset.",
+      "url": "https://store.steampowered.com/app/690830/",
+      "linkLabel": "Original game and screenshot gallery",
+      "status": "review"
+    },
+    {
+      "id": "foundation-town",
+      "title": "02 · A town with a readable centre",
+      "image": "media/art-references/foundation-town.jpg",
+      "alt": "Warm roof groups, timber framing and a taller civic landmark organise the streets.",
+      "body": "**Early references · Foundation**\n\n**What to study:** Warm roof groups, timber framing and a taller civic landmark organise the streets.\n\n**World in Dreams use:** Human towns and mixed trading cities: group houses into neighbourhoods and give the market a clear centre.\n\n**Boundary:** Study massing and street hierarchy; do not reproduce the specific buildings or the interface.\n\nPublisher-provided screenshot, retained here as a local research reference. Artwork belongs to its respective owners; it is not an original project asset.",
+      "url": "https://store.steampowered.com/app/690830/",
+      "linkLabel": "Original game and screenshot gallery",
+      "status": "review"
+    },
+    {
+      "id": "pagonia-coastal-village",
+      "title": "03 · A working coastal settlement",
+      "image": "media/art-references/pagonia-coastal-village.jpg",
+      "alt": "Fields, houses, a landing and wooded slopes form one connected settlement.",
+      "body": "**Early references · Pioneers of Pagonia**\n\n**What to study:** Fields, houses, a landing and wooded slopes form one connected settlement.\n\n**World in Dreams use:** A village that supplies a nearby city: make the route from production to storage to transport visible.\n\n**Boundary:** Secondary reference for visible production and settlement organisation. Classic isekai images above now lead the visual direction.\n\nPublisher-provided screenshot, retained here as a local research reference. Artwork belongs to its respective owners; it is not an original project asset.",
+      "url": "https://store.steampowered.com/app/2155180/",
+      "linkLabel": "Original game and screenshot gallery",
+      "status": "review"
+    },
+    {
+      "id": "dorfromantik-region",
+      "title": "04 · The world at a glance",
+      "image": "media/art-references/dorfromantik-region.jpg",
+      "alt": "Forests, rivers, fields and roof clusters form distinct colour masses from above.",
+      "body": "**Early references · Dorfromantik**\n\n**What to study:** Forests, rivers, fields and roof clusters form distinct colour masses from above.\n\n**World in Dreams use:** The regional overview: biomes and settlement density must stay legible before individual roofs matter.\n\n**Boundary:** Use this degree of simplification for the distant map only; hexagonal tiles and railways are not proposed for this project.\n\nPublisher-provided screenshot, retained here as a local research reference. Artwork belongs to its respective owners; it is not an original project asset.",
+      "url": "https://store.steampowered.com/app/1455840/",
+      "linkLabel": "Original game and screenshot gallery",
+      "status": "review"
+    },
+    {
+      "id": "trine-enchanted-forest",
+      "title": "05 · A little enchantment",
+      "image": "media/art-references/trine-enchanted-forest.jpg",
+      "alt": "A luminous forest uses warm focal light, cool vegetation and oversized organic shapes.",
+      "body": "**Early references · Trine 4: The Nightmare Prince**\n\n**What to study:** A luminous forest uses warm focal light, cool vegetation and oversized organic shapes.\n\n**World in Dreams use:** Elven, dryad and fairy habitats: architecture may follow trunks, roots and clearings.\n\n**Boundary:** Lighting and habitat reference, not a settlement layout. Reduce glow and foreground clutter in overhead concepts.\n\nPublisher-provided screenshot, retained here as a local research reference. Artwork belongs to its respective owners; it is not an original project asset.",
+      "url": "https://store.steampowered.com/app/690640/",
+      "linkLabel": "Original game and screenshot gallery",
+      "status": "review"
+    },
+    {
+      "id": "trine-fantasy-city",
+      "title": "06 · A more fantastic city silhouette",
+      "image": "media/art-references/trine-fantasy-city.jpg",
+      "alt": "Bridges, towers and layered architecture emerge through coloured atmospheric depth.",
+      "body": "**Early references · Trine 4: The Nightmare Prince**\n\n**What to study:** Bridges, towers and layered architecture emerge through coloured atmospheric depth.\n\n**World in Dreams use:** A city-scale fantasy accent: one memorable skyline feature can distinguish a settlement.\n\n**Boundary:** This is the most ornate edge of the selection. Keep ordinary districts simpler and use less fog so roads remain readable.\n\nPublisher-provided screenshot, retained here as a local research reference. Artwork belongs to its respective owners; it is not an original project asset.",
+      "url": "https://store.steampowered.com/app/690640/",
+      "linkLabel": "Original game and screenshot gallery",
+      "status": "review"
+    },
+    {
+      "id": "timberborn-habitat",
+      "title": "07 · Architecture shaped by its inhabitants",
+      "image": "media/art-references/timberborn-habitat.jpg",
+      "alt": "Water, terraces, cultivation and buildings visibly depend on each other.",
+      "body": "**Early references · Timberborn**\n\n**What to study:** Water, terraces, cultivation and buildings visibly depend on each other.\n\n**World in Dreams use:** A method for nonhuman settlements: adapt entrances, circulation, height and materials to the species and biome.\n\n**Boundary:** Spatial reference only. Mechanical industry and beaver architecture are not part of the World in Dreams brief.\n\nPublisher-provided screenshot, retained here as a local research reference. Artwork belongs to its respective owners; it is not an original project asset.",
+      "url": "https://store.steampowered.com/app/1062090/",
+      "linkLabel": "Original game and screenshot gallery",
+      "status": "review"
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "retrieved": "2026-11-11",
+  "purpose": "Classic isekai visual research and secondary game references; no generated artwork",
+  "sources": [
+    {
+      "id": "foundation-village",
+      "game": "Foundation",
+      "sourcePage": "https://store.steampowered.com/app/690830/",
+      "imageUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/690830/ss_2a8289eaca31fa5b81f379b42c47010bb8070f15.1920x1080.jpg?t=1793626905",
+      "localFile": "media/art-references/foundation-village.jpg",
+      "retrieved": "2026-11-11"
+    },
+    {
+      "id": "foundation-town",
+      "game": "Foundation",
+      "sourcePage": "https://store.steampowered.com/app/690830/",
+      "imageUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/690830/ss_dbc1c23ffd249f0c8b07aae6312f33aa63a0e8eb.1920x1080.jpg?t=1793626905",
+      "localFile": "media/art-references/foundation-town.jpg",
+      "retrieved": "2026-11-11"
+    },
+    {
+      "id": "pagonia-coastal-village",
+      "game": "Pioneers of Pagonia",
+      "sourcePage": "https://store.steampowered.com/app/2155180/",
+      "imageUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2155180/ea787513d046299ad2d2007dd4c2d8e49d9bed83/ss_ea787513d046299ad2d2007dd4c2d8e49d9bed83.1920x1080.jpg?t=1790173245",
+      "localFile": "media/art-references/pagonia-coastal-village.jpg",
+      "retrieved": "2026-11-11"
+    },
+    {
+      "id": "dorfromantik-region",
+      "game": "Dorfromantik",
+      "sourcePage": "https://store.steampowered.com/app/1455840/",
+      "imageUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1455840/ss_5388583373f0895184a83c4db492e6f6dff5af2d.1920x1080.jpg?t=1786951108",
+      "localFile": "media/art-references/dorfromantik-region.jpg",
+      "retrieved": "2026-11-11"
+    },
+    {
+      "id": "trine-enchanted-forest",
+      "game": "Trine 4: The Nightmare Prince",
+      "sourcePage": "https://store.steampowered.com/app/690640/",
+      "imageUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/690640/ss_8b631c2d9da13ef9976860a19a8e156466771035.1920x1080.jpg?t=1793616299",
+      "localFile": "media/art-references/trine-enchanted-forest.jpg",
+      "retrieved": "2026-11-11"
+    },
+    {
+      "id": "trine-fantasy-city",
+      "game": "Trine 4: The Nightmare Prince",
+      "sourcePage": "https://store.steampowered.com/app/690640/",
+      "imageUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/690640/ss_b5102032d5d378f96a247b8c6ecaa8bd5a6f8cbc.1920x1080.jpg?t=1793616299",
+      "localFile": "media/art-references/trine-fantasy-city.jpg",
+      "retrieved": "2026-11-11"
+    },
+    {
+      "id": "timberborn-habitat",
+      "game": "Timberborn",
+      "sourcePage": "https://store.steampowered.com/app/1062090/",
+      "imageUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1062090/154bdaa6fc267e89d57592015268f8c0b59924e1/ss_154bdaa6fc267e89d57592015268f8c0b59924e1.1920x1080.jpg?t=1788438437",
+      "localFile": "media/art-references/timberborn-habitat.jpg",
+      "retrieved": "2026-11-11"
+    },
+    {
+      "id": "overlord-city-plan",
+      "title": "Overlord - shared city plan",
+      "imageUrl": "https://i.imgur.com/qH9Jmpi_d.webp?fidelity=grand&maxwidth=760",
+      "sourcePage": "https://imgur.com/gallery/overlord-e-rantel-map-up-close-fZAedmo",
+      "dimensions": [
+        760,
+        416
+      ],
+      "localFile": "media/art-references/overlord-city-plan.jpg",
+      "retrieved": "2026-11-11"
+    },
+    {
+      "id": "rezero-priestella-aerial",
+      "title": "Re:Zero - Priestella aerial",
+      "imageUrl": "https://ogre.natalie.mu/media/news/comic/2023/0325/rezero3_teaserpv1.jpg?imdensity=1&impolicy=hq&imwidth=1460",
+      "sourcePage": "https://natalie.mu/comic/gallery/news/562763/2026413",
+      "dimensions": [
+        1460,
+        821
+      ],
+      "localFile": "media/art-references/rezero-priestella-aerial.jpg",
+      "retrieved": "2026-11-11"
+    },
+    {
+      "id": "rezero-regional-map",
+      "title": "Re:Zero - regional map",
+      "imageUrl": "https://www.animeclick.it/prove/img_tmp/202105/1re-zero-mappa.jpg",
+      "sourcePage": "https://www.animeclick.it/news/90376-rezero-rivelata-la-mappa-ufficiale-della-serie",
+      "dimensions": [
+        800,
+        447
+      ],
+      "localFile": "media/art-references/rezero-regional-map.jpg",
+      "retrieved": "2026-11-11"
+    },
+    {
+      "id": "konosuba-axel",
+      "title": "KonoSuba - Axel",
+      "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJpQzuVvNEOZnUltjXduizv3Dz5ED636EUQ7XUK_VBaeEFkFTNj9QPum1lV55RbaX9hlPcDVbAti1wW_1ytIZqARj6Fqza3YAwJ75LcWb7la-F0oK40_VdIcXPl07b_r9lnqxwB-bw3FM/s1600/Konosuba.jpg",
+      "sourcePage": "https://psycho-frame.blogspot.com/2020/04/generic-isekai-town.html",
+      "dimensions": [
+        848,
+        480
+      ],
+      "localFile": "media/art-references/konosuba-axel.jpg",
+      "retrieved": "2026-11-11"
+    },
+    {
+      "id": "overlord-region",
+      "title": "Overlord - regional geography",
+      "imageUrl": "https://stat.ameba.jp/user_images/20180113/15/7vt/b2/a1/p/o1500080414111085512.png?caw=800",
+      "sourcePage": "https://ameblo.jp/7vt/entry-12344084879.html",
+      "dimensions": [
+        800,
+        429
+      ],
+      "localFile": "media/art-references/overlord-region.jpg",
+      "retrieved": "2026-11-11"
+    }
+  ]
+}

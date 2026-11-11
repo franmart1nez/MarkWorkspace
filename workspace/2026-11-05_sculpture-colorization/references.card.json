@@ -1,0 +1,33 @@
+{
+  "format": "mrmak-card",
+  "version": 1,
+  "template": "gallery",
+  "title": "Sculpture appearance references",
+  "summary": "Mother Talzin is active. Its supplied finished Composite 01 is the highest appearance reference; shared approved examples guide material and detail quality.",
+  "items": [
+    {
+      "id": "composite01-approved-master",
+      "title": "Supplied finished Composite 01",
+      "status": "done",
+      "body": "Selected and visually inspected for Mother Talzin; original hash, canvas and sRGB profile recorded in its manifest. The original remains read-only.",
+      "image": "media/mother-talzin/master.jpg",
+      "alt": "Supplied finished Mother Talzin Composite 01"
+    },
+    {
+      "id": "shared-client-quality",
+      "title": "Shared client-approved quality benchmark",
+      "status": "done",
+      "body": "Reusable client-approved examples remain in projects/sculpture-colorization/shared/approved-client-work/. Select relevant files for realism, texture fidelity and material separation. Finished Composite 01 takes priority for appearance.",
+      "image": "media/shared-quality-preview.jpg",
+      "alt": "Contact sheet of shared client-approved sculpture quality examples"
+    },
+    {
+      "id": "target-source-geometry",
+      "title": "Original target composites",
+      "status": "done",
+      "body": "Views 02\u201315 and all 168 original PSD passes inventoried and rehashed unchanged after assembly. Each target controls its own geometry and camera. All 35 generated crops passed agent review; fourteen layered Photoshop assemblies are saved, reopened and verified. User acceptance pending.",
+      "image": "media/mother-talzin/sources.jpg",
+      "alt": "Fourteen original Mother Talzin target views"
+    }
+  ]
+}

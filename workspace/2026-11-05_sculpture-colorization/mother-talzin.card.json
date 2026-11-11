@@ -1,0 +1,755 @@
+{
+  "format": "mrmak-card",
+  "version": 1,
+  "template": "gallery",
+  "title": "Mother Talzin \u2014 finished views and production evidence",
+  "summary": "User-requested three-crop pass: 35/35 crops generated and 35/35 agent-selected. Views 02\u201304 use three crops each. 14/14 views assembled in Photoshop, saved as editable PSDs, reopened and verified with 0 render differences. User acceptance remains pending.",
+  "items": [
+    {
+      "id": "mother-talzin-native-assembly-overview-v001",
+      "title": "All fourteen Photoshop views / overview",
+      "status": "review",
+      "image": "media/mother-talzin/native-assembly-overview-v001.jpg",
+      "alt": "Contact sheet of fourteen colorized Mother Talzin views, 02 through 15",
+      "body": "14 layered PSDs and 14 full-resolution PNGs. All reopened Photoshop renders match their pre-save renders exactly. 35 editable crop masks and 154 hidden source-pass Smart Objects retained. Agent review passed; user acceptance pending."
+    },
+    {
+      "id": "mother-talzin-master",
+      "title": "Supplied finished Composite 01",
+      "status": "done",
+      "image": "media/mother-talzin/master.jpg",
+      "alt": "Finished Mother Talzin reference with red robe, pale skin, green energy and teal temple base",
+      "body": "Read-only appearance master, visually inspected and SHA-256 recorded. Original: 3240 \u00d7 4050, RGB 8-bit, embedded sRGB IEC61966-2.1. This gallery image is a display preview."
+    },
+    {
+      "id": "mother-talzin-sources",
+      "title": "14 original target views: 02\u201315",
+      "status": "done",
+      "image": "media/mother-talzin/sources.jpg",
+      "alt": "Contact sheet of the fourteen original grayscale sculpture views",
+      "body": "Each view is 3240 \u00d7 4050, RGB 8-bit without embedded ICC. All 168 supplied PSD passes were inventoried and rehashed unchanged. Original geometry, camera and part placement remain authoritative."
+    },
+    {
+      "id": "mother-talzin-02-assembled-v001",
+      "title": "View 02 / Photoshop assembly",
+      "status": "review",
+      "image": "media/mother-talzin/mother-talzin-02-colorized-v001-sRGB.png",
+      "alt": "Complete colorized Mother Talzin view 02 rendered from the reopened layered Photoshop document",
+      "body": "3240 \u00d7 4050. 3 crop Smart Objects and enabled editable masks; 11 hidden source-pass Smart Objects plus the unchanged original composite. Saved PSD reopened in Photoshop; 0 changed pixels against the pre-save render. Agent visual review passed. User acceptance pending. Editable source: outputs/photoshop/mother-talzin-02-colorized-v001.psd."
+    },
+    {
+      "id": "mother-talzin-03-assembled-v001",
+      "title": "View 03 / Photoshop assembly",
+      "status": "review",
+      "image": "media/mother-talzin/mother-talzin-03-colorized-v001-sRGB.png",
+      "alt": "Complete colorized Mother Talzin view 03 rendered from the reopened layered Photoshop document",
+      "body": "3240 \u00d7 4050. 3 crop Smart Objects and enabled editable masks; 11 hidden source-pass Smart Objects plus the unchanged original composite. Saved PSD reopened in Photoshop; 0 changed pixels against the pre-save render. Agent visual review passed. User acceptance pending. Editable source: outputs/photoshop/mother-talzin-03-colorized-v001.psd."
+    },
+    {
+      "id": "mother-talzin-04-assembled-v001",
+      "title": "View 04 / Photoshop assembly",
+      "status": "review",
+      "image": "media/mother-talzin/mother-talzin-04-colorized-v001-sRGB.png",
+      "alt": "Complete colorized Mother Talzin view 04 rendered from the reopened layered Photoshop document",
+      "body": "3240 \u00d7 4050. 3 crop Smart Objects and enabled editable masks; 11 hidden source-pass Smart Objects plus the unchanged original composite. Saved PSD reopened in Photoshop; 0 changed pixels against the pre-save render. Agent visual review passed. User acceptance pending. Editable source: outputs/photoshop/mother-talzin-04-colorized-v001.psd."
+    },
+    {
+      "id": "mother-talzin-05-assembled-v001",
+      "title": "View 05 / Photoshop assembly",
+      "status": "review",
+      "image": "media/mother-talzin/mother-talzin-05-colorized-v001-sRGB.png",
+      "alt": "Complete colorized Mother Talzin view 05 rendered from the reopened layered Photoshop document",
+      "body": "3240 \u00d7 4050. 3 crop Smart Objects and enabled editable masks; 11 hidden source-pass Smart Objects plus the unchanged original composite. Saved PSD reopened in Photoshop; 0 changed pixels against the pre-save render. Agent visual review passed. User acceptance pending. Editable source: outputs/photoshop/mother-talzin-05-colorized-v001.psd."
+    },
+    {
+      "id": "mother-talzin-06-assembled-v001",
+      "title": "View 06 / Photoshop assembly",
+      "status": "review",
+      "image": "media/mother-talzin/mother-talzin-06-colorized-v001-sRGB.png",
+      "alt": "Complete colorized Mother Talzin view 06 rendered from the reopened layered Photoshop document",
+      "body": "3240 \u00d7 4050. 3 crop Smart Objects and enabled editable masks; 11 hidden source-pass Smart Objects plus the unchanged original composite. Saved PSD reopened in Photoshop; 0 changed pixels against the pre-save render. Agent visual review passed. User acceptance pending. Editable source: outputs/photoshop/mother-talzin-06-colorized-v001.psd."
+    },
+    {
+      "id": "mother-talzin-07-assembled-v001",
+      "title": "View 07 / Photoshop assembly",
+      "status": "review",
+      "image": "media/mother-talzin/mother-talzin-07-colorized-v001-sRGB.png",
+      "alt": "Complete colorized Mother Talzin view 07 rendered from the reopened layered Photoshop document",
+      "body": "3240 \u00d7 4050. 1 crop Smart Objects and enabled editable masks; 11 hidden source-pass Smart Objects plus the unchanged original composite. Saved PSD reopened in Photoshop; 0 changed pixels against the pre-save render. Agent visual review passed. User acceptance pending. Editable source: outputs/photoshop/mother-talzin-07-colorized-v001.psd."
+    },
+    {
+      "id": "mother-talzin-08-assembled-v001",
+      "title": "View 08 / Photoshop assembly",
+      "status": "review",
+      "image": "media/mother-talzin/mother-talzin-08-colorized-v001-sRGB.png",
+      "alt": "Complete colorized Mother Talzin view 08 rendered from the reopened layered Photoshop document",
+      "body": "3240 \u00d7 4050. 1 crop Smart Objects and enabled editable masks; 11 hidden source-pass Smart Objects plus the unchanged original composite. Saved PSD reopened in Photoshop; 0 changed pixels against the pre-save render. Agent visual review passed. User acceptance pending. Editable source: outputs/photoshop/mother-talzin-08-colorized-v001.psd."
+    },
+    {
+      "id": "mother-talzin-09-assembled-v001",
+      "title": "View 09 / Photoshop assembly",
+      "status": "review",
+      "image": "media/mother-talzin/mother-talzin-09-colorized-v001-sRGB.png",
+      "alt": "Complete colorized Mother Talzin view 09 rendered from the reopened layered Photoshop document",
+      "body": "3240 \u00d7 4050. 1 crop Smart Objects and enabled editable masks; 11 hidden source-pass Smart Objects plus the unchanged original composite. Saved PSD reopened in Photoshop; 0 changed pixels against the pre-save render. Agent visual review passed. User acceptance pending. Editable source: outputs/photoshop/mother-talzin-09-colorized-v001.psd."
+    },
+    {
+      "id": "mother-talzin-10-assembled-v001",
+      "title": "View 10 / Photoshop assembly",
+      "status": "review",
+      "image": "media/mother-talzin/mother-talzin-10-colorized-v001-sRGB.png",
+      "alt": "Complete colorized Mother Talzin view 10 rendered from the reopened layered Photoshop document",
+      "body": "3240 \u00d7 4050. 3 crop Smart Objects and enabled editable masks; 11 hidden source-pass Smart Objects plus the unchanged original composite. Saved PSD reopened in Photoshop; 0 changed pixels against the pre-save render. Agent visual review passed. User acceptance pending. Editable source: outputs/photoshop/mother-talzin-10-colorized-v001.psd."
+    },
+    {
+      "id": "mother-talzin-11-assembled-v001",
+      "title": "View 11 / Photoshop assembly",
+      "status": "review",
+      "image": "media/mother-talzin/mother-talzin-11-colorized-v001-sRGB.png",
+      "alt": "Complete colorized Mother Talzin view 11 rendered from the reopened layered Photoshop document",
+      "body": "3240 \u00d7 4050. 3 crop Smart Objects and enabled editable masks; 11 hidden source-pass Smart Objects plus the unchanged original composite. Saved PSD reopened in Photoshop; 0 changed pixels against the pre-save render. Agent visual review passed. User acceptance pending. Editable source: outputs/photoshop/mother-talzin-11-colorized-v001.psd."
+    },
+    {
+      "id": "mother-talzin-12-assembled-v001",
+      "title": "View 12 / Photoshop assembly",
+      "status": "review",
+      "image": "media/mother-talzin/mother-talzin-12-colorized-v002-sRGB.png",
+      "alt": "Complete colorized Mother Talzin view 12 rendered from the reopened layered Photoshop document",
+      "body": "3240 \u00d7 4050. 3 crop Smart Objects and enabled editable masks; 11 hidden source-pass Smart Objects plus the unchanged original composite. Saved PSD reopened in Photoshop; 0 changed pixels against the pre-save render. Agent visual review passed. User acceptance pending. Editable source: outputs/photoshop/mother-talzin-12-colorized-v002.psd."
+    },
+    {
+      "id": "mother-talzin-13-assembled-v001",
+      "title": "View 13 / Photoshop assembly",
+      "status": "review",
+      "image": "media/mother-talzin/mother-talzin-13-colorized-v001-sRGB.png",
+      "alt": "Complete colorized Mother Talzin view 13 rendered from the reopened layered Photoshop document",
+      "body": "3240 \u00d7 4050. 2 crop Smart Objects and enabled editable masks; 11 hidden source-pass Smart Objects plus the unchanged original composite. Saved PSD reopened in Photoshop; 0 changed pixels against the pre-save render. Agent visual review passed. User acceptance pending. Editable source: outputs/photoshop/mother-talzin-13-colorized-v001.psd."
+    },
+    {
+      "id": "mother-talzin-14-assembled-v001",
+      "title": "View 14 / Photoshop assembly",
+      "status": "review",
+      "image": "media/mother-talzin/mother-talzin-14-colorized-v001-sRGB.png",
+      "alt": "Complete colorized Mother Talzin view 14 rendered from the reopened layered Photoshop document",
+      "body": "3240 \u00d7 4050. 3 crop Smart Objects and enabled editable masks; 11 hidden source-pass Smart Objects plus the unchanged original composite. Saved PSD reopened in Photoshop; 0 changed pixels against the pre-save render. Agent visual review passed. User acceptance pending. Editable source: outputs/photoshop/mother-talzin-14-colorized-v001.psd."
+    },
+    {
+      "id": "mother-talzin-15-assembled-v001",
+      "title": "View 15 / Photoshop assembly",
+      "status": "review",
+      "image": "media/mother-talzin/mother-talzin-15-colorized-v001-sRGB.png",
+      "alt": "Complete colorized Mother Talzin view 15 rendered from the reopened layered Photoshop document",
+      "body": "3240 \u00d7 4050. 3 crop Smart Objects and enabled editable masks; 11 hidden source-pass Smart Objects plus the unchanged original composite. Saved PSD reopened in Photoshop; 0 changed pixels against the pre-save render. Agent visual review passed. User acceptance pending. Editable source: outputs/photoshop/mother-talzin-15-colorized-v001.psd."
+    },
+    {
+      "id": "mother-talzin-crop-plan-v002",
+      "title": "35 source crops \u2014 three per complete sculpture",
+      "status": "done",
+      "image": "media/mother-talzin/crop-plan-v002.jpg",
+      "alt": "Revised source crop boundaries for all fourteen views",
+      "body": "User-requested revision: views 02\u201304 now use three regions, 192 px overlaps and per-region empty-margin reduction. All source-mask foreground is covered. Other views retain size/detail-dependent plans."
+    },
+    {
+      "id": "mother-talzin-02-c01-v002",
+      "title": "View 02 / C01 / v002",
+      "status": "review",
+      "image": "media/mother-talzin/02-C01-v002.png",
+      "alt": "Colorized production crop C01 of Mother Talzin view 02",
+      "body": "Native output 1037 \u00d7 1516. Agent review: agent-pass. Source plan: work/crop-plans/02-v002.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 02, crop C01.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x1033 y0 width1058 height1546 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 1058:1546 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-02-c02-v002",
+      "title": "View 02 / C02 / v002",
+      "status": "review",
+      "image": "media/mother-talzin/02-C02-v002.png",
+      "alt": "Colorized production crop C02 of Mother Talzin view 02",
+      "body": "Native output 1375 \u00d7 1144. Agent review: agent-pass. Source plan: work/crop-plans/02-v002.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 02, crop C02.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x934 y1354 width1433 height1192 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 1433:1192 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-02-c03-v002",
+      "title": "View 02 / C03 / v002",
+      "status": "review",
+      "image": "media/mother-talzin/02-C03-v002.png",
+      "alt": "Colorized production crop C03 of Mother Talzin view 02",
+      "body": "Native output 1308 \u00d7 1202. Agent review: agent-pass. Source plan: work/crop-plans/02-v002.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 02, crop C03.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x774 y2354 width1844 height1696 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 1844:1696 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-02-pass002-comparison",
+      "title": "View 02 / Source comparison",
+      "status": "review",
+      "image": "media/mother-talzin/02-pass002-comparison.jpg",
+      "alt": "Source comparison for Mother Talzin view 02",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-02-pass002-overlaps",
+      "title": "View 02 / Separate overlap strips",
+      "status": "review",
+      "image": "media/mother-talzin/02-pass002-overlaps.jpg",
+      "alt": "Separate overlap strips for Mother Talzin view 02",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-03-c01-v002",
+      "title": "View 03 / C01 / v002",
+      "status": "review",
+      "image": "media/mother-talzin/03-C01-v002.png",
+      "alt": "Colorized production crop C01 of Mother Talzin view 03",
+      "body": "Native output 1415 \u00d7 1111. Agent review: agent-pass. Source plan: work/crop-plans/03-v002.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 03, crop C01.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x691 y0 width1970 height1546 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 1970:1546 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-03-c02-v002",
+      "title": "View 03 / C02 / v002",
+      "status": "review",
+      "image": "media/mother-talzin/03-C02-v002.png",
+      "alt": "Colorized production crop C02 of Mother Talzin view 03",
+      "body": "Native output 1654 \u00d7 951. Agent review: agent-pass. Source plan: work/crop-plans/03-v002.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 03, crop C02.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x649 y1354 width2072 height1192 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 2072:1192 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-03-c03-v002",
+      "title": "View 03 / C03 / v002",
+      "status": "review",
+      "image": "media/mother-talzin/03-C03-v002.png",
+      "alt": "Colorized production crop C03 of Mother Talzin view 03",
+      "body": "Native output 1389 \u00d7 1132. Agent review: agent-pass. Source plan: work/crop-plans/03-v002.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 03, crop C03.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x649 y2354 width2081 height1696 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 2081:1696 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-03-pass002-comparison",
+      "title": "View 03 / Source comparison",
+      "status": "review",
+      "image": "media/mother-talzin/03-pass002-comparison.jpg",
+      "alt": "Source comparison for Mother Talzin view 03",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-03-pass002-overlaps",
+      "title": "View 03 / Separate overlap strips",
+      "status": "review",
+      "image": "media/mother-talzin/03-pass002-overlaps.jpg",
+      "alt": "Separate overlap strips for Mother Talzin view 03",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-04-c01-v002",
+      "title": "View 04 / C01 / v002",
+      "status": "review",
+      "image": "media/mother-talzin/04-C01-v002.png",
+      "alt": "Colorized production crop C01 of Mother Talzin view 04",
+      "body": "Native output 960 \u00d7 1637. Agent review: agent-pass. Source plan: work/crop-plans/04-v002.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 04, crop C01.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x1082 y0 width907 height1546 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 907:1546 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-04-c02-v002",
+      "title": "View 04 / C02 / v002",
+      "status": "review",
+      "image": "media/mother-talzin/04-C02-v002.png",
+      "alt": "Colorized production crop C02 of Mother Talzin view 04",
+      "body": "Native output 1410 \u00d7 1115. Agent review: agent-pass. Source plan: work/crop-plans/04-v002.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 04, crop C02.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x775 y1354 width1508 height1192 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 1508:1192 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-04-c03-v002",
+      "title": "View 04 / C03 / v002",
+      "status": "review",
+      "image": "media/mother-talzin/04-C03-v002.png",
+      "alt": "Colorized production crop C03 of Mother Talzin view 04",
+      "body": "Native output 1324 \u00d7 1188. Agent review: agent-pass. Source plan: work/crop-plans/04-v002.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 04, crop C03.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x577 y2354 width1892 height1696 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 1892:1696 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-04-pass002-comparison",
+      "title": "View 04 / Source comparison",
+      "status": "review",
+      "image": "media/mother-talzin/04-pass002-comparison.jpg",
+      "alt": "Source comparison for Mother Talzin view 04",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-04-pass002-overlaps",
+      "title": "View 04 / Separate overlap strips",
+      "status": "review",
+      "image": "media/mother-talzin/04-pass002-overlaps.jpg",
+      "alt": "Separate overlap strips for Mother Talzin view 04",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-05-c01-v001",
+      "title": "View 05 / C01 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/05-C01-v001.png",
+      "alt": "Colorized production crop C01 of Mother Talzin view 05",
+      "body": "Native output 1685 \u00d7 934. Agent review: agent-pass. Source plan: work/crop-plans/05-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 05, crop C01.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y0 width3240 height1796 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1796 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-05-c02-v001",
+      "title": "View 05 / C02 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/05-C02-v001.png",
+      "alt": "Colorized production crop C02 of Mother Talzin view 05",
+      "body": "Native output 1789 \u00d7 879. Agent review: agent-pass. Source plan: work/crop-plans/05-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 05, crop C02.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y1604 width3240 height1592 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1592 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-05-c03-v001",
+      "title": "View 05 / C03 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/05-C03-v001.png",
+      "alt": "Colorized production crop C03 of Mother Talzin view 05",
+      "body": "Native output 2231 \u00d7 705. Agent review: agent-pass. Source plan: work/crop-plans/05-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 05, crop C03.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y3004 width3240 height1046 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1046 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-05-pass002-comparison",
+      "title": "View 05 / Source comparison",
+      "status": "review",
+      "image": "media/mother-talzin/05-pass002-comparison.jpg",
+      "alt": "Source comparison for Mother Talzin view 05",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-05-pass002-overlaps",
+      "title": "View 05 / Separate overlap strips",
+      "status": "review",
+      "image": "media/mother-talzin/05-pass002-overlaps.jpg",
+      "alt": "Separate overlap strips for Mother Talzin view 05",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-06-c01-v001",
+      "title": "View 06 / C01 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/06-C01-v001.png",
+      "alt": "Colorized production crop C01 of Mother Talzin view 06",
+      "body": "Native output 1685 \u00d7 934. Agent review: agent-pass. Source plan: work/crop-plans/06-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 06, crop C01.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y0 width3240 height1796 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1796 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-06-c02-v001",
+      "title": "View 06 / C02 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/06-C02-v001.png",
+      "alt": "Colorized production crop C02 of Mother Talzin view 06",
+      "body": "Native output 1789 \u00d7 879. Agent review: agent-pass. Source plan: work/crop-plans/06-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 06, crop C02.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y1604 width3240 height1592 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1592 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-06-c03-v001",
+      "title": "View 06 / C03 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/06-C03-v001.png",
+      "alt": "Colorized production crop C03 of Mother Talzin view 06",
+      "body": "Native output 2206 \u00d7 713. Agent review: agent-pass. Source plan: work/crop-plans/06-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 06, crop C03.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y3004 width3240 height1046 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1046 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-06-pass002-comparison",
+      "title": "View 06 / Source comparison",
+      "status": "review",
+      "image": "media/mother-talzin/06-pass002-comparison.jpg",
+      "alt": "Source comparison for Mother Talzin view 06",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-06-pass002-overlaps",
+      "title": "View 06 / Separate overlap strips",
+      "status": "review",
+      "image": "media/mother-talzin/06-pass002-overlaps.jpg",
+      "alt": "Separate overlap strips for Mother Talzin view 06",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-07-c01-v001",
+      "title": "View 07 / C01 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/07-C01-v001.png",
+      "alt": "Colorized production crop C01 of Mother Talzin view 07",
+      "body": "Native output 1121 \u00d7 1403. Agent review: agent-pass. Source plan: work/crop-plans/07-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 07, crop C01.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y0 width3240 height4050 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:4050 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-07-pass002-comparison",
+      "title": "View 07 / Source comparison",
+      "status": "review",
+      "image": "media/mother-talzin/07-pass002-comparison.jpg",
+      "alt": "Source comparison for Mother Talzin view 07",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-08-c01-v001",
+      "title": "View 08 / C01 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/08-C01-v001.png",
+      "alt": "Colorized production crop C01 of Mother Talzin view 08",
+      "body": "Native output 1121 \u00d7 1403. Agent review: agent-pass. Source plan: work/crop-plans/08-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 08, crop C01.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y0 width3240 height4050 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:4050 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-08-pass002-comparison",
+      "title": "View 08 / Source comparison",
+      "status": "review",
+      "image": "media/mother-talzin/08-pass002-comparison.jpg",
+      "alt": "Source comparison for Mother Talzin view 08",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-09-c01-v001",
+      "title": "View 09 / C01 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/09-C01-v001.png",
+      "alt": "Colorized production crop C01 of Mother Talzin view 09",
+      "body": "Native output 1121 \u00d7 1403. Agent review: agent-pass. Source plan: work/crop-plans/09-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 09, crop C01.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y0 width3240 height4050 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:4050 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-09-pass002-comparison",
+      "title": "View 09 / Source comparison",
+      "status": "review",
+      "image": "media/mother-talzin/09-pass002-comparison.jpg",
+      "alt": "Source comparison for Mother Talzin view 09",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-10-c01-v001",
+      "title": "View 10 / C01 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/10-C01-v001.png",
+      "alt": "Colorized production crop C01 of Mother Talzin view 10",
+      "body": "Native output 1786 \u00d7 880. Agent review: agent-pass. Source plan: work/crop-plans/10-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 10, crop C01.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y0 width3240 height1596 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1596 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-10-c02-v001",
+      "title": "View 10 / C02 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/10-C02-v001.png",
+      "alt": "Colorized production crop C02 of Mother Talzin view 10",
+      "body": "Native output 1789 \u00d7 879. Agent review: agent-pass. Source plan: work/crop-plans/10-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 10, crop C02.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y1404 width3240 height1592 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1592 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-10-c03-v001",
+      "title": "View 10 / C03 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/10-C03-v001.png",
+      "alt": "Colorized production crop C03 of Mother Talzin view 10",
+      "body": "Native output 2022 \u00d7 778. Agent review: agent-pass. Source plan: work/crop-plans/10-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 10, crop C03.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y2804 width3240 height1246 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1246 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-10-pass002-comparison",
+      "title": "View 10 / Source comparison",
+      "status": "review",
+      "image": "media/mother-talzin/10-pass002-comparison.jpg",
+      "alt": "Source comparison for Mother Talzin view 10",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-10-pass002-overlaps",
+      "title": "View 10 / Separate overlap strips",
+      "status": "review",
+      "image": "media/mother-talzin/10-pass002-overlaps.jpg",
+      "alt": "Separate overlap strips for Mother Talzin view 10",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-11-c01-v001",
+      "title": "View 11 / C01 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/11-C01-v001.png",
+      "alt": "Colorized production crop C01 of Mother Talzin view 11",
+      "body": "Native output 1786 \u00d7 881. Agent review: agent-pass. Source plan: work/crop-plans/11-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 11, crop C01.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y0 width3240 height1596 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1596 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-11-c02-v001",
+      "title": "View 11 / C02 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/11-C02-v001.png",
+      "alt": "Colorized production crop C02 of Mother Talzin view 11",
+      "body": "Native output 1686 \u00d7 933. Agent review: agent-pass. Source plan: work/crop-plans/11-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 11, crop C02.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y1404 width3240 height1792 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1792 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-11-c03-v002",
+      "title": "View 11 / C03 / v002",
+      "status": "review",
+      "image": "media/mother-talzin/11-C03-v002.png",
+      "alt": "Colorized production crop C03 of Mother Talzin view 11",
+      "body": "Native output 2207 \u00d7 712. Agent review: agent-pass. Source plan: work/crop-plans/11-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 11, crop C03.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y3004 width3240 height1046 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1046 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\nCritical crop-specific requirement: This is the FRONT base with its existing mask and narrow vertical mouth/channel already present in image 1. Match the finished master: dark aged bronze mask with restrained gold edging, and intense luminous RED emission inside the existing mouth/channel down to its existing bottom notch, with localized red bounce on nearby teal/bronze surfaces. Keep all geometry unchanged. Do not omit this red light. Do not extend a new beam or add geometry across the black background. Existing smoke at the top remains green/cyan. Preserve every source glyph/panel/step and source framing.\n"
+    },
+    {
+      "id": "mother-talzin-11-pass002-comparison",
+      "title": "View 11 / Source comparison",
+      "status": "review",
+      "image": "media/mother-talzin/11-pass002-comparison.jpg",
+      "alt": "Source comparison for Mother Talzin view 11",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-11-pass002-overlaps",
+      "title": "View 11 / Separate overlap strips",
+      "status": "review",
+      "image": "media/mother-talzin/11-pass002-overlaps.jpg",
+      "alt": "Separate overlap strips for Mother Talzin view 11",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-12-c01-v001",
+      "title": "View 12 / C01 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/12-C01-v001.png",
+      "alt": "Colorized production crop C01 of Mother Talzin view 12",
+      "body": "Native output 1786 \u00d7 881. Agent review: agent-pass. Source plan: work/crop-plans/12-v002.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 12, crop C01.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y0 width3240 height1596 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1596 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-12-c02-v001",
+      "title": "View 12 / C02 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/12-C02-v001.png",
+      "alt": "Colorized production crop C02 of Mother Talzin view 12",
+      "body": "Native output 1686 \u00d7 933. Agent review: agent-pass. Source plan: work/crop-plans/12-v002.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 12, crop C02.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y1404 width3240 height1792 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1792 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-12-c03-v002",
+      "title": "View 12 / C03 / v002",
+      "status": "review",
+      "image": "media/mother-talzin/12-C03-v002.png",
+      "alt": "Colorized production crop C03 of Mother Talzin view 12",
+      "body": "Native output 2172 \u00d7 724. Agent review: agent-pass. Source plan: work/crop-plans/12-v002.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 12, crop C03.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y2970 width3240 height1080 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1080 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\nCritical crop-specific requirement: The hanging hand at image left is critical: preserve its exact original wrist, palm outline, TWO spread downward fingers and FULL pointed nail tips, spacing, coordinates and black gap. Do not shorten, merge, hide, darken to black, reposition or redesign any finger. The center hand above the gold column has pale flesh with bone-colored nails. This exact 3:1 crop includes all intended source context: do not stretch, recenter or reframe the object. Only color the existing surfaces. Preserve the exact source silhouette and all architectural dimensions.\n"
+    },
+    {
+      "id": "mother-talzin-12-pass002-comparison",
+      "title": "View 12 / Source comparison",
+      "status": "review",
+      "image": "media/mother-talzin/12-pass002-comparison.jpg",
+      "alt": "Source comparison for Mother Talzin view 12",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-12-pass002-overlaps",
+      "title": "View 12 / Separate overlap strips",
+      "status": "review",
+      "image": "media/mother-talzin/12-pass002-overlaps.jpg",
+      "alt": "Separate overlap strips for Mother Talzin view 12",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-13-c01-v001",
+      "title": "View 13 / C01 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/13-C01-v001.png",
+      "alt": "Colorized production crop C01 of Mother Talzin view 13",
+      "body": "Native output 1315 \u00d7 1196. Agent review: agent-pass. Source plan: work/crop-plans/13-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 13, crop C01.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y0 width3240 height2946 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:2946 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-13-c02-v001",
+      "title": "View 13 / C02 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/13-C02-v001.png",
+      "alt": "Colorized production crop C02 of Mother Talzin view 13",
+      "body": "Native output 1983 \u00d7 793. Agent review: agent-pass. Source plan: work/crop-plans/13-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 13, crop C02.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y2754 width3240 height1296 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1296 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\nCritical crop-specific requirement: Where the existing frontal mask and its vertical mouth/channel are visible in this oblique source, match the master: dark aged bronze mask, restrained gold edges, vivid RED emission only inside the existing mouth/channel and its existing base notch, with localized red reflection on surrounding surfaces. Keep the source oblique camera and geometry. Do not invent additional mask parts, beam, or new red forms outside the source. Smoke remains green/cyan; skin remains flesh rather than metal.\n"
+    },
+    {
+      "id": "mother-talzin-13-pass002-comparison",
+      "title": "View 13 / Source comparison",
+      "status": "review",
+      "image": "media/mother-talzin/13-pass002-comparison.jpg",
+      "alt": "Source comparison for Mother Talzin view 13",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-13-pass002-overlaps",
+      "title": "View 13 / Separate overlap strips",
+      "status": "review",
+      "image": "media/mother-talzin/13-pass002-overlaps.jpg",
+      "alt": "Separate overlap strips for Mother Talzin view 13",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-14-c01-v001",
+      "title": "View 14 / C01 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/14-C01-v001.png",
+      "alt": "Colorized production crop C01 of Mother Talzin view 14",
+      "body": "Native output 1684 \u00d7 934. Agent review: agent-pass. Source plan: work/crop-plans/14-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 14, crop C01.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y0 width3240 height1796 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1796 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-14-c02-v001",
+      "title": "View 14 / C02 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/14-C02-v001.png",
+      "alt": "Colorized production crop C02 of Mother Talzin view 14",
+      "body": "Native output 1789 \u00d7 879. Agent review: agent-pass. Source plan: work/crop-plans/14-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 14, crop C02.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y1604 width3240 height1592 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1592 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-14-c03-v001",
+      "title": "View 14 / C03 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/14-C03-v001.png",
+      "alt": "Colorized production crop C03 of Mother Talzin view 14",
+      "body": "Native output 2206 \u00d7 713. Agent review: agent-pass. Source plan: work/crop-plans/14-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 14, crop C03.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y3004 width3240 height1046 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1046 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-14-pass002-comparison",
+      "title": "View 14 / Source comparison",
+      "status": "review",
+      "image": "media/mother-talzin/14-pass002-comparison.jpg",
+      "alt": "Source comparison for Mother Talzin view 14",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-14-pass002-overlaps",
+      "title": "View 14 / Separate overlap strips",
+      "status": "review",
+      "image": "media/mother-talzin/14-pass002-overlaps.jpg",
+      "alt": "Separate overlap strips for Mother Talzin view 14",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-15-c01-v003",
+      "title": "View 15 / C01 / v003",
+      "status": "review",
+      "image": "media/mother-talzin/15-C01-v003.png",
+      "alt": "Colorized production crop C01 of Mother Talzin view 15",
+      "body": "Native output 1685 \u00d7 934. Agent review: agent-pass. Source plan: work/crop-plans/15-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 15, crop C01.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y0 width3240 height1796 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1796 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\nCritical crop-specific requirement: Match the MASTER light intensity of the two existing angular lightning structures: give EVERY existing rod a NEAR-WHITE luminous central core surrounded by vivid acid/lime green ON THE ROD SURFACE, so the rods visibly emit bright light rather than merely reflecting green. Keep the source angular rod geometry exactly. The large left polygon interior and every gap between rods must remain PURE BLACK AND EMPTY, with no new lightning filaments, no vapor, no mist, no gaseous plasma and no smoke. Confine the white core and lime-green luminous material to the existing rod shapes; a narrow edge halo is enough. Do not reduce brightness to unlit reflective resin. Preserve source hand/finger positions, back hood, collar and framing.\n"
+    },
+    {
+      "id": "mother-talzin-15-c02-v002",
+      "title": "View 15 / C02 / v002",
+      "status": "review",
+      "image": "media/mother-talzin/15-C02-v002.png",
+      "alt": "Colorized production crop C02 of Mother Talzin view 15",
+      "body": "Native output 1789 \u00d7 879. Agent review: agent-pass. Source plan: work/crop-plans/15-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 15, crop C02.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y1604 width3240 height1592 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1592 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\nCritical crop-specific requirement: This crop shows the BACK of the fully clothed figure. Every central upper-back/neck/hood surface, including the small area at the TOP CENTER between the raised embroidered collar panels, is CLOTH and must be crimson or dark burgundy, never exposed pale skin. There is NO exposed neck or face in the central back region. Only an actually visible wrist/hand at a far outer boundary may have skin. Preserve the original fabric/embossed geometry and crossed back panels, belt, folds and framing. No ivory/white/flesh-colored patch anywhere in the center upper overlap.\n"
+    },
+    {
+      "id": "mother-talzin-15-c03-v001",
+      "title": "View 15 / C03 / v001",
+      "status": "review",
+      "image": "media/mother-talzin/15-C03-v001.png",
+      "alt": "Colorized production crop C03 of Mother Talzin view 15",
+      "body": "Native output 2231 \u00d7 705. Agent review: agent-pass. Source plan: work/crop-plans/15-v001.json. Assembly: saved-reopened-agent-reviewed. User acceptance pending. Actual native model/quality are not exposed.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 15, crop C03.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y3004 width3240 height1046 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1046 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-15-pass002-comparison",
+      "title": "View 15 / Source comparison",
+      "status": "review",
+      "image": "media/mother-talzin/15-pass002-comparison.jpg",
+      "alt": "Source comparison for Mother Talzin view 15",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-15-pass002-overlaps",
+      "title": "View 15 / Separate overlap strips",
+      "status": "review",
+      "image": "media/mother-talzin/15-pass002-overlaps.jpg",
+      "alt": "Separate overlap strips for Mother Talzin view 15",
+      "body": "Agent review evidence only. This is not an assembled full view. Native Photoshop joins, saved-file verification and user acceptance remain separate."
+    },
+    {
+      "id": "mother-talzin-11-c03-v001",
+      "title": "Rejected / View 11 / C03 / v001",
+      "status": "idea",
+      "image": "media/mother-talzin/11-C03-v001.png",
+      "alt": "Rejected colorization take for view 11 crop C03",
+      "body": "Missing the master-defined red emission in the existing frontal mouth/channel. Retain geometry; regenerate only this crop.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 11, crop C03.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y3004 width3240 height1046 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1046 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-12-c03-v001",
+      "title": "Rejected / View 12 / C03 / v001",
+      "status": "idea",
+      "image": "media/mother-talzin/12-C03-v001.png",
+      "alt": "Rejected colorization take for view 12 crop C03",
+      "body": "Native source-silhouette montage exposed displaced/shortened lateral hand fingertips. Actual native aspect differed by 3.203% from the source crop. Retained with rejected PSD v001 and native hand detail evidence; do not use.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 12, crop C03.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y3004 width3240 height1046 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1046 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-15-c01-v001",
+      "title": "Rejected / View 15 / C01 / v001",
+      "status": "idea",
+      "image": "media/mother-talzin/15-C01-v001.png",
+      "alt": "Rejected colorization take for view 15 crop C01",
+      "body": "Added wispy green filaments/haze inside the large left lightning polygon negative space; preserve the original black openings. Regenerate this crop only.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 15, crop C01.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y0 width3240 height1796 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1796 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-15-c01-v002",
+      "title": "Rejected / View 15 / C01 / v002",
+      "status": "idea",
+      "image": "media/mother-talzin/15-C01-v002.png",
+      "alt": "Rejected colorization take for view 15 crop C01",
+      "body": "Negative spaces corrected, but energy rods became reflective green rather than the master-defined near-white/lime emissive cores. Retain black openings while restoring emission on existing rods only.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 15, crop C01.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y0 width3240 height1796 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1796 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\nCritical crop-specific requirement: The two angular lightning structures must remain solid angular sculpted rods in exactly their source positions, colored bright green. The large left polygon has a PURE BLACK EMPTY INTERIOR. Keep that interior and all gaps between the existing rods pure black: zero filaments, zero new lightning strokes, zero green smoke, zero mist, zero haze, zero added tendrils. Limit visible glow to the surfaces of the existing sculpted rods and narrow edge highlights; do not use a gaseous plasma or vapor effect. Retain all source fingers, back hood and fins exactly.\n"
+    },
+    {
+      "id": "mother-talzin-15-c02-v001",
+      "title": "Rejected / View 15 / C02 / v001",
+      "status": "idea",
+      "image": "media/mother-talzin/15-C02-v001.png",
+      "alt": "Rejected colorization take for view 15 crop C02",
+      "body": "Upper-central back hood fabric was misclassified as a pale skin patch in overlap. All central hood/back surfaces must be crimson/burgundy fabric. Regenerate this crop only.",
+      "prompt": "Use case: precise-object-edit. High-fidelity sculpture colorization, production view 15, crop C02.\nImage 1 is the ONLY edit target and geometry authority: an original grayscale render crop at x0 y1604 width3240 height1592 on a 3240x4050 canvas. Keep EXACTLY its camera, framing, shapes, facial identity, expression, fingers, anatomy, part positions, sculpted folds, embossed patterns, edges, smoke lobes, lightning branches, architectural panels and symbols. Apply color/material appearance to those exact existing surfaces, without re-sculpting, adding pattern relief, smoothing or replacing fine detail.\nImage 2 is the supplied FINISHED Composite 01 of THIS SAME sculpture. It is the highest authority for palette, material finish, lighting character and contrast: vivid crimson robe/hood/armor and red leather wraps, deep burgundy recesses, pale ivory/gray face and hands with dark eye/lip makeup, lime-green and cyan luminous translucent magic with bright lime cores, pale decayed undead flesh with faded red cloth and dark straps, weathered dark teal temple stone/metal with restrained aged bronze trim. Match these materials wherever the matching existing source parts occur. Preserve the source's own light direction and relief. Keep the magic's sculpted volumes legible instead of replacing them with diffuse fog. Source side/back panels retain their own ornaments; never invent the master's front doorway, frontal mask or red beam on another side.\nImages 3 and 4 are client-approved QUALITY references only: fine skin/fabric/material detail and material separation, with no palette, object, camera or geometry authority.\nReturn exactly one full-bleed colorized version of IMAGE 1 ALONE, with its precise 3240:1592 aspect ratio, no zoom or framing change. Request maximum available native resolution, quality and source-detail fidelity; make all existing small details crisp, without inventing new ones. Retain the PURE BLACK source background and every original negative space. Do not copy the master's frontal composition, teal backdrop, logo, typography or labels. Do not invent additional smoke, lightning, limbs, fabric, props or ornament. No comparison collage, border, text or watermark. Keep boundary landmarks and the 192-pixel source overlap context stable for joining adjacent crops. No later manual color or lighting correction is planned.\n"
+    },
+    {
+      "id": "mother-talzin-02-c01-v001",
+      "title": "Historical / View 02 / C01 / candidate v001",
+      "status": "idea",
+      "image": "media/mother-talzin/02-C01-v001.png",
+      "alt": "First colorized candidate for view 02 crop C01",
+      "body": "Superseded by the user-requested three-crop pass. Retained for comparison; excluded from current batch readiness.",
+      "prompt": "Use case: precise-object-edit. Production colorization of a sculpture crop.\nImage 1 is the ONLY edit target: Mother Talzin view 02 crop C01, original canvas rectangle x774 y0 width1844 height2296 from a 3240x4050 canvas. Preserve its exact side camera, every shape, mesh fold, seam, sculpted pattern, fingers, visible face profile, thin lightning branch, hood points, proportions and object positions. The source is a grayscale render on pure black. Change surface appearance only.\nImage 2 is the supplied FINISHED Composite 01 of the SAME sculpture, and the highest authority for appearance. Transfer its vivid crimson red cloth and armor, darker burgundy inner folds, pale ivory skin, dark eye/lip makeup, red leather footwear and luminous acid-green magic to the matching EXISTING forms of image 1. Use master-level realistic painted resin/material detail, coherent contrast, shadows and subtle reflected green light. Preserve the source's existing light direction and sculpted relief. The small smoke parts along the bottom edge become translucent green/cyan with bright green cores just like the master, keeping every existing smoke lobe.\nImages 3 and 4 are shared client-approved work: quality references for fine skin/material texture and clear material separation only. Do not copy their palette, objects, anatomy or backgrounds.\nReturn exactly one full-bleed colorized version of IMAGE 1 alone, with precisely its 1844:2296 aspect ratio and framing. Maximum available native resolution, detail and fidelity. Maintain the original pure-black backdrop and original silhouette including negative spaces; no fog or new branches outside source geometry. Do not copy the master's frontal pose, composition, teal backdrop, labels, logos or text. No added objects, comparison collage, crop labels, border, zoom, warp or reconstruction. Keep boundary landmarks and the bottom 192 source pixels usable for overlap with the lower crop. There will be no later manual color/lighting correction.\n"
+    },
+    {
+      "id": "mother-talzin-02-c01-comparison",
+      "title": "Historical / View 02 / C01 / source comparison",
+      "status": "idea",
+      "image": "media/mother-talzin/02-C01-comparison.jpg",
+      "alt": "Original source and generated C01 candidate side by side",
+      "body": "Superseded by the user-requested three-crop pass. Retained for comparison; excluded from current batch readiness."
+    },
+    {
+      "id": "mother-talzin-02-c02-v001",
+      "title": "Historical / View 02 / C02 / candidate v001",
+      "status": "idea",
+      "image": "media/mother-talzin/02-C02-v001.png",
+      "alt": "First colorized candidate for view 02 crop C02",
+      "body": "Superseded by the user-requested three-crop pass. Retained for comparison; excluded from current batch readiness.",
+      "prompt": "Use case: precise-object-edit. Exact sculpture surface colorization.\nImage 1 is the ONLY edit target: Mother Talzin view 02 crop C02, rectangle x774 y2104 width1844 height1946 on a 3240x4050 original. Preserve this exact side view, framing, silhouette and every existing smoke lobe, boot wrap, zombie face, eye socket, mouth, teeth, fingers, arm, cloth strip, architectural panel and recessed symbol. Keep both existing undead figures in precisely their positions. Change only color and material appearance on existing geometry.\nImage 2 is the supplied FINISHED Composite 01 of this same sculpture, the supreme appearance authority. Match its luminous lime/acid-green and cyan translucent magic smoke with light cores, localized green/cyan bounce, realistic pale decayed flesh on the two undead figures, faded red cloth with dark charcoal/green leather straps, dark red boots, and weathered dark teal temple base with restrained aged bronze/gold trim. The base is this source's SIDE panel: color its own existing ornaments, never add the master's frontal mask, doorway, red beam or any other front-side features.\nImages 3 and 4 are client-approved quality examples only, for fine material/skin detail and material separation. Do not copy objects or their color palette.\nReturn a SINGLE full-bleed colorized image of image 1 alone, exactly 1844:1946 aspect ratio and original framing. Request maximum available native detail, resolution and edit fidelity. Preserve the source's light direction and relief while matching the finished master's contrast and material finish. Preserve all original black negative spaces and pure-black backdrop. Green emission must stay on existing smoke forms, without inventing smoke wisps or replacing the lobes with unstructured fog. Keep the top 192 source pixels of boots and smoke stable for joining the upper crop. No warp, zoom, moving forms, added text, logos, border or collage. No later manual color/lighting correction will be applied.\n"
+    },
+    {
+      "id": "mother-talzin-02-c02-comparison",
+      "title": "Historical / View 02 / C02 / source comparison",
+      "status": "idea",
+      "image": "media/mother-talzin/02-C02-comparison.jpg",
+      "alt": "Original source and generated C02 candidate side by side",
+      "body": "Superseded by the user-requested three-crop pass. Retained for comparison; excluded from current batch readiness."
+    },
+    {
+      "id": "mother-talzin-02-overlap",
+      "title": "Historical / View 02 / 192 px overlap review",
+      "status": "idea",
+      "image": "media/mother-talzin/02-overlap.jpg",
+      "alt": "Separate strips showing the shared source region in both generated candidates",
+      "body": "Superseded by the user-requested three-crop pass. Retained for comparison; excluded from current batch readiness."
+    }
+  ]
+}
