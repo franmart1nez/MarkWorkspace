@@ -1,0 +1,273 @@
+{
+  "version": 3,
+  "sculptureId": "mother-talzin",
+  "compositeId": "15",
+  "sourcePsd": "inputs/composites-psd/15/Composite.psd",
+  "sourcePreview": "work/psd-previews/15-source.png",
+  "sourceSha256": "0014ebb80f00ff0d41e2606cb6ef5445ac48aac5a835eb7f2da140ea62ce4236",
+  "previewSha256": "42c8f29bda1cc946766be70eaa95d859702c75087782ed3d7c8640b0ff5c4e34",
+  "coordinateSystem": "integer pixels; origin at top-left of original target canvas",
+  "canvas": {
+    "width": 3240,
+    "height": 4050,
+    "colorProfile": "untagged; no embedded ICC",
+    "bitDepth": 8,
+    "psdColorMode": 3
+  },
+  "planningBasis": "direct-target-source-size-detail-and-coverage",
+  "appearanceMaster": {
+    "compositeId": "01",
+    "role": "supplied-finished-read-only-highest-appearance-authority",
+    "file": "inputs/reference-composite-01/061126 SW3D - Mother Talzin Sculpt Image 001.jpg",
+    "sha256": "5c09e07e4adf33cf763358fb399ce2307a3ec2defc1a50d85f34e566d4dd0319",
+    "preview": "work/qa/master-preview.jpg",
+    "canvas": {
+      "width": 3240,
+      "height": 4050,
+      "bitDepth": 8,
+      "colorProfile": "sRGB IEC61966-2.1"
+    },
+    "intakeVerified": true
+  },
+  "qualityReferences": [
+    {
+      "file": "../../shared/approved-client-work/Phantom of the Opera (3).png",
+      "sha256": "301c5719022e3b513aec5b82484e2f9de4c53487920cf8f9806f7adf0b4b4ada",
+      "role": "quality-only; surface detail and material separation; never geometry or palette"
+    },
+    {
+      "file": "../../shared/approved-client-work/Exogorth Diorama (13).png",
+      "sha256": "907b86322a3e80df7bb510a6c0346710c40956e0a1d2bd6b096adbe4e16452ab",
+      "role": "quality-only; surface detail and material separation; never geometry or palette"
+    }
+  ],
+  "cropCountRationale": "Native 3240 x 4050 canvas; 3 direct production crops. Full-width horizontal regions retain focal faces and adjacent context; 192 px overlap.",
+  "regions": [
+    {
+      "id": "C01",
+      "coreRect": {
+        "x": 0,
+        "y": 0,
+        "width": 3240,
+        "height": 1700
+      },
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 3240,
+        "height": 1796
+      },
+      "pasteRect": {
+        "x": 0,
+        "y": 0,
+        "width": 3240,
+        "height": 1796
+      },
+      "overlapPixels": 192,
+      "sourceCrop": "work/crops/source/15-v001/C01.png",
+      "sourceSha256": "cdb372b52b3ba1ebf982bb7f3a61554f71a6d691a1dfe43cf9d38b8de19c7d07",
+      "mask": "work/crops/masks/15-v001/C01.png",
+      "maskSha256": "0345e932f1b7fb734386814ff10bd58cc1f511950ae4c4101f3b53e7cb9915e9",
+      "sourceMask": "inputs/composites-psd/15/Mask.psd",
+      "selectedOutput": "work/crops/colorized/15-C01-v003.png",
+      "review": "agent-pass",
+      "stage": "reviewed",
+      "candidates": [
+        {
+          "file": "work/crops/colorized/15-C01-v001.png",
+          "sha256": "9f9755e2412737961f1c39c0b4d0ec873a37c0603bf1d66b205e158b0d602f4a",
+          "nativeDimensions": [
+            1685,
+            934
+          ],
+          "tool": "image_gen.imagegen",
+          "prompt": "work/prompts/15-C01-v001.txt",
+          "requestedModel": "gpt-image-2.6-sunburst",
+          "requestedQuality": "max",
+          "actualModel": "not exposed",
+          "actualQuality": "not exposed",
+          "review": "rejected",
+          "reviewNotes": "Added wispy green filaments/haze inside the large left lightning polygon negative space; preserve the original black openings. Regenerate this crop only."
+        },
+        {
+          "file": "work/crops/colorized/15-C01-v002.png",
+          "sha256": "d3fa5f2e0a2c6adf79db53cb0866a74563e9637d59bf53f3abc98912c58beb59",
+          "nativeDimensions": [
+            1684,
+            934
+          ],
+          "tool": "image_gen.imagegen",
+          "prompt": "work/prompts/15-C01-v002.txt",
+          "requestedModel": "gpt-image-2.6-sunburst",
+          "requestedQuality": "max",
+          "actualModel": "not exposed",
+          "actualQuality": "not exposed",
+          "review": "rejected",
+          "reviewNotes": "Negative spaces corrected, but energy rods became reflective green rather than the master-defined near-white/lime emissive cores. Retain black openings while restoring emission on existing rods only."
+        },
+        {
+          "file": "work/crops/colorized/15-C01-v003.png",
+          "sha256": "55c7e0a22d81d297ed7b6dcd40365d1f2a3f6bf7e6b2acc758a3e7228ac30c90",
+          "nativeDimensions": [
+            1685,
+            934
+          ],
+          "tool": "image_gen.imagegen",
+          "prompt": "work/prompts/15-C01-v003.txt",
+          "requestedModel": "gpt-image-2.6-sunburst",
+          "requestedQuality": "max",
+          "actualModel": "not exposed",
+          "actualQuality": "not exposed",
+          "review": "agent-pass",
+          "reviewNotes": "Final current native outputs, source comparisons and both overlap pairs inspected. C01 v003 preserves black polygon openings and master-like white/lime emissive cores; earlier takes retained/rejected with reasons. C02 v002 removes the upper-central fabric-to-skin misclassification. C03 retains skirt folds/seams and small smoke forms. Back hood/collar, fingers, crossing panels, belt, sash and framing coherent. No manual color/lighting corrections; native montage and disk fidelity remain to verify.",
+          "reviewEvidence": "work/qa/15-pass002-comparison.jpg"
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "coreRect": {
+        "x": 0,
+        "y": 1700,
+        "width": 3240,
+        "height": 1400
+      },
+      "sourceRect": {
+        "x": 0,
+        "y": 1604,
+        "width": 3240,
+        "height": 1592
+      },
+      "pasteRect": {
+        "x": 0,
+        "y": 1604,
+        "width": 3240,
+        "height": 1592
+      },
+      "overlapPixels": 192,
+      "sourceCrop": "work/crops/source/15-v001/C02.png",
+      "sourceSha256": "80895be9bb9674bd15d34330a491340a2af17a28070e9de5533a69f1b63bca28",
+      "mask": "work/crops/masks/15-v001/C02.png",
+      "maskSha256": "0efdeb6c5aafed37972d8e04fd3bbc4ae7fd2ef745a8af5b4194c8b6c540d449",
+      "sourceMask": "inputs/composites-psd/15/Mask.psd",
+      "selectedOutput": "work/crops/colorized/15-C02-v002.png",
+      "review": "agent-pass",
+      "stage": "reviewed",
+      "candidates": [
+        {
+          "file": "work/crops/colorized/15-C02-v001.png",
+          "sha256": "defeba64a45d0f2e43705f82272cfab91ee0ce5cc869e06bdf07780891a0a747",
+          "nativeDimensions": [
+            1789,
+            879
+          ],
+          "tool": "image_gen.imagegen",
+          "prompt": "work/prompts/15-C02-v001.txt",
+          "requestedModel": "gpt-image-2.6-sunburst",
+          "requestedQuality": "max",
+          "actualModel": "not exposed",
+          "actualQuality": "not exposed",
+          "review": "rejected",
+          "reviewNotes": "Upper-central back hood fabric was misclassified as a pale skin patch in overlap. All central hood/back surfaces must be crimson/burgundy fabric. Regenerate this crop only."
+        },
+        {
+          "file": "work/crops/colorized/15-C02-v002.png",
+          "sha256": "15cdc8687511c49e3856bd72b26b8287a103442e002a63569d4139a6686a1956",
+          "nativeDimensions": [
+            1789,
+            879
+          ],
+          "tool": "image_gen.imagegen",
+          "prompt": "work/prompts/15-C02-v002.txt",
+          "requestedModel": "gpt-image-2.6-sunburst",
+          "requestedQuality": "max",
+          "actualModel": "not exposed",
+          "actualQuality": "not exposed",
+          "review": "agent-pass",
+          "reviewNotes": "Final current native outputs, source comparisons and both overlap pairs inspected. C01 v003 preserves black polygon openings and master-like white/lime emissive cores; earlier takes retained/rejected with reasons. C02 v002 removes the upper-central fabric-to-skin misclassification. C03 retains skirt folds/seams and small smoke forms. Back hood/collar, fingers, crossing panels, belt, sash and framing coherent. No manual color/lighting corrections; native montage and disk fidelity remain to verify.",
+          "reviewEvidence": "work/qa/15-pass002-comparison.jpg"
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "coreRect": {
+        "x": 0,
+        "y": 3100,
+        "width": 3240,
+        "height": 950
+      },
+      "sourceRect": {
+        "x": 0,
+        "y": 3004,
+        "width": 3240,
+        "height": 1046
+      },
+      "pasteRect": {
+        "x": 0,
+        "y": 3004,
+        "width": 3240,
+        "height": 1046
+      },
+      "overlapPixels": 192,
+      "sourceCrop": "work/crops/source/15-v001/C03.png",
+      "sourceSha256": "567a38c742d3599e9d0cde721c4648cf1585315b917590344d2c76969c1c8dce",
+      "mask": "work/crops/masks/15-v001/C03.png",
+      "maskSha256": "cb96f55cbd9c6398ed56c34e7f64a275511b76f9d7ff37f9849352079e9acccc",
+      "sourceMask": "inputs/composites-psd/15/Mask.psd",
+      "selectedOutput": "work/crops/colorized/15-C03-v001.png",
+      "review": "agent-pass",
+      "stage": "reviewed",
+      "candidates": [
+        {
+          "file": "work/crops/colorized/15-C03-v001.png",
+          "sha256": "f6cedd702cd3223847d4f23f2e83acdae6182d4ceb2ebed4698a3313a6f7e4cf",
+          "nativeDimensions": [
+            2231,
+            705
+          ],
+          "tool": "image_gen.imagegen",
+          "prompt": "work/prompts/15-C03-v001.txt",
+          "requestedModel": "gpt-image-2.6-sunburst",
+          "requestedQuality": "max",
+          "actualModel": "not exposed",
+          "actualQuality": "not exposed",
+          "review": "agent-pass",
+          "reviewNotes": "Final current native outputs, source comparisons and both overlap pairs inspected. C01 v003 preserves black polygon openings and master-like white/lime emissive cores; earlier takes retained/rejected with reasons. C02 v002 removes the upper-central fabric-to-skin misclassification. C03 retains skirt folds/seams and small smoke forms. Back hood/collar, fingers, crossing panels, belt, sash and framing coherent. No manual color/lighting corrections; native montage and disk fidelity remain to verify.",
+          "reviewEvidence": "work/qa/15-pass002-comparison.jpg"
+        }
+      ]
+    }
+  ],
+  "coverageReviewed": true,
+  "requiredCropIds": [
+    "C01",
+    "C02",
+    "C03"
+  ],
+  "allRequiredCropsReviewed": true,
+  "assembly": {
+    "application": "Photoshop",
+    "editableDocument": "outputs/photoshop/mother-talzin-15-colorized-v001.psd",
+    "reviewExport": "outputs/review/mother-talzin-15-colorized-v001-sRGB.png",
+    "sourceReference": "SOURCE COMPOSITE - unchanged",
+    "sourceMasks": [
+      "inputs/composites-psd/15/Mask.psd",
+      "inputs/composites-psd/15/ID.psd"
+    ],
+    "colorLightingAdjustments": false,
+    "shapeReview": "agent-pass",
+    "diskReopenReview": "pass",
+    "approvalStatus": "pending-user",
+    "sourcePassGroup": "SOURCE PASSES - original data",
+    "verification": "work/assembly/15-v001-verification.json",
+    "deliveryColorProfile": "sRGB IEC61966-2.1"
+  },
+  "backgroundHandling": "Original pure-black background preserved; omitted side margins contain no source foreground.",
+  "coverageEvidence": {
+    "overview": "work/qa/crop-plan-overview.jpg",
+    "uncoveredSourceMaskPixels": 0,
+    "checks": "Source-mask coverage and crop/mask hashes verified; seams reviewed on overview."
+  },
+  "adjacentCropReview": "Final current native outputs, source comparisons and both overlap pairs inspected. C01 v003 preserves black polygon openings and master-like white/lime emissive cores; earlier takes retained/rejected with reasons. C02 v002 removes the upper-central fabric-to-skin misclassification. C03 retains skirt folds/seams and small smoke forms. Back hood/collar, fingers, crossing panels, belt, sash and framing coherent. No manual color/lighting corrections; native montage and disk fidelity remain to verify."
+}

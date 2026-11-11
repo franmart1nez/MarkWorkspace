@@ -1,0 +1,125 @@
+{
+  "version": 3,
+  "sculptureId": "mother-talzin",
+  "compositeId": "07",
+  "sourcePsd": "inputs/composites-psd/07/Composite.psd",
+  "sourcePreview": "work/psd-previews/07-source.png",
+  "sourceSha256": "70167cc8f943934699075139d7fad37258f4c046cc703c893dbf76140c30b22d",
+  "previewSha256": "d376e4aa26dff736c7ddf00aa77dd40145c88fa03c844045f9e6a73427171ef0",
+  "coordinateSystem": "integer pixels; origin at top-left of original target canvas",
+  "canvas": {
+    "width": 3240,
+    "height": 4050,
+    "colorProfile": "untagged; no embedded ICC",
+    "bitDepth": 8,
+    "psdColorMode": 3
+  },
+  "planningBasis": "direct-target-source-size-detail-and-coverage",
+  "appearanceMaster": {
+    "compositeId": "01",
+    "role": "supplied-finished-read-only-highest-appearance-authority",
+    "file": "inputs/reference-composite-01/061126 SW3D - Mother Talzin Sculpt Image 001.jpg",
+    "sha256": "5c09e07e4adf33cf763358fb399ce2307a3ec2defc1a50d85f34e566d4dd0319",
+    "preview": "work/qa/master-preview.jpg",
+    "canvas": {
+      "width": 3240,
+      "height": 4050,
+      "bitDepth": 8,
+      "colorProfile": "sRGB IEC61966-2.1"
+    },
+    "intakeVerified": true
+  },
+  "qualityReferences": [
+    {
+      "file": "../../shared/approved-client-work/Phantom of the Opera (3).png",
+      "sha256": "301c5719022e3b513aec5b82484e2f9de4c53487920cf8f9806f7adf0b4b4ada",
+      "role": "quality-only; surface detail and material separation; never geometry or palette"
+    },
+    {
+      "file": "../../shared/approved-client-work/Exogorth Diorama (13).png",
+      "sha256": "907b86322a3e80df7bb510a6c0346710c40956e0a1d2bd6b096adbe4e16452ab",
+      "role": "quality-only; surface detail and material separation; never geometry or palette"
+    }
+  ],
+  "cropCountRationale": "Native 3240 x 4050 canvas; 1 direct production crops. One close portrait keeps the entire face and hood uninterrupted; no preliminary generation.",
+  "regions": [
+    {
+      "id": "C01",
+      "coreRect": {
+        "x": 0,
+        "y": 0,
+        "width": 3240,
+        "height": 4050
+      },
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 3240,
+        "height": 4050
+      },
+      "pasteRect": {
+        "x": 0,
+        "y": 0,
+        "width": 3240,
+        "height": 4050
+      },
+      "overlapPixels": 0,
+      "sourceCrop": "work/crops/source/07-v001/C01.png",
+      "sourceSha256": "d376e4aa26dff736c7ddf00aa77dd40145c88fa03c844045f9e6a73427171ef0",
+      "mask": "work/crops/masks/07-v001/C01.png",
+      "maskSha256": "52cd5e901ad9e645c6b2d282134776a3ebc0816127fef8e12d9ca206b06fd419",
+      "sourceMask": "inputs/composites-psd/07/Mask.psd",
+      "selectedOutput": "work/crops/colorized/07-C01-v001.png",
+      "review": "agent-pass",
+      "stage": "reviewed",
+      "candidates": [
+        {
+          "file": "work/crops/colorized/07-C01-v001.png",
+          "sha256": "602359ff0ccb1404ef3cceb2726d8e19ff1bc36966236c923a56e623c7a46744",
+          "nativeDimensions": [
+            1121,
+            1403
+          ],
+          "tool": "image_gen.imagegen",
+          "prompt": "work/prompts/07-C01-v001.txt",
+          "requestedModel": "gpt-image-2.6-sunburst",
+          "requestedQuality": "max",
+          "actualModel": "not exposed",
+          "actualQuality": "not exposed",
+          "review": "agent-pass",
+          "reviewNotes": "Native portrait and source comparison inspected: brow, eye placement, nose, lips, chin, hood opening, asymmetric long hood folds, shoulder tips and embossed costume follow source framing. Pale gray/ivory skin and dark makeup with crimson/burgundy costume match finished 01. One crop avoids facial seams. User acceptance and Photoshop verification pending.",
+          "reviewEvidence": "work/qa/07-pass002-comparison.jpg"
+        }
+      ]
+    }
+  ],
+  "coverageReviewed": true,
+  "requiredCropIds": [
+    "C01"
+  ],
+  "allRequiredCropsReviewed": true,
+  "assembly": {
+    "application": "Photoshop",
+    "editableDocument": "outputs/photoshop/mother-talzin-07-colorized-v001.psd",
+    "reviewExport": "outputs/review/mother-talzin-07-colorized-v001-sRGB.png",
+    "sourceReference": "SOURCE COMPOSITE - unchanged",
+    "sourceMasks": [
+      "inputs/composites-psd/07/Mask.psd",
+      "inputs/composites-psd/07/ID.psd"
+    ],
+    "colorLightingAdjustments": false,
+    "shapeReview": "agent-pass",
+    "diskReopenReview": "pass",
+    "approvalStatus": "pending-user",
+    "sourcePassGroup": "SOURCE PASSES - original data",
+    "verification": "work/assembly/07-v001-verification.json",
+    "deliveryColorProfile": "sRGB IEC61966-2.1"
+  },
+  "backgroundHandling": "Original pure-black background preserved; omitted side margins contain no source foreground.",
+  "coverageEvidence": {
+    "overview": "work/qa/crop-plan-overview.jpg",
+    "uncoveredSourceMaskPixels": 0,
+    "checks": "Source-mask coverage and crop/mask hashes verified; seams reviewed on overview."
+  },
+  "adjacentCropReview": "Native portrait and source comparison inspected: brow, eye placement, nose, lips, chin, hood opening, asymmetric long hood folds, shoulder tips and embossed costume follow source framing. Pale gray/ivory skin and dark makeup with crimson/burgundy costume match finished 01. One crop avoids facial seams. User acceptance and Photoshop verification pending."
+}

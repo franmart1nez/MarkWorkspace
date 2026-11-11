@@ -1,0 +1,225 @@
+{
+  "version": 3,
+  "sculptureId": "mother-talzin",
+  "compositeId": "05",
+  "sourcePsd": "inputs/composites-psd/05/Composite.psd",
+  "sourcePreview": "work/psd-previews/05-source.png",
+  "sourceSha256": "51577eb8efe0663b7cfa22a152b1a2dd78c31c0b4823882b41b18529407423af",
+  "previewSha256": "c7bacbd990564745d4c118652513969a5e8687e6867cee74a5fd7481fa28dde9",
+  "coordinateSystem": "integer pixels; origin at top-left of original target canvas",
+  "canvas": {
+    "width": 3240,
+    "height": 4050,
+    "colorProfile": "untagged; no embedded ICC",
+    "bitDepth": 8,
+    "psdColorMode": 3
+  },
+  "planningBasis": "direct-target-source-size-detail-and-coverage",
+  "appearanceMaster": {
+    "compositeId": "01",
+    "role": "supplied-finished-read-only-highest-appearance-authority",
+    "file": "inputs/reference-composite-01/061126 SW3D - Mother Talzin Sculpt Image 001.jpg",
+    "sha256": "5c09e07e4adf33cf763358fb399ce2307a3ec2defc1a50d85f34e566d4dd0319",
+    "preview": "work/qa/master-preview.jpg",
+    "canvas": {
+      "width": 3240,
+      "height": 4050,
+      "bitDepth": 8,
+      "colorProfile": "sRGB IEC61966-2.1"
+    },
+    "intakeVerified": true
+  },
+  "qualityReferences": [
+    {
+      "file": "../../shared/approved-client-work/Phantom of the Opera (3).png",
+      "sha256": "301c5719022e3b513aec5b82484e2f9de4c53487920cf8f9806f7adf0b4b4ada",
+      "role": "quality-only; surface detail and material separation; never geometry or palette"
+    },
+    {
+      "file": "../../shared/approved-client-work/Exogorth Diorama (13).png",
+      "sha256": "907b86322a3e80df7bb510a6c0346710c40956e0a1d2bd6b096adbe4e16452ab",
+      "role": "quality-only; surface detail and material separation; never geometry or palette"
+    }
+  ],
+  "cropCountRationale": "Native 3240 x 4050 canvas; 3 direct production crops. Full-width horizontal regions retain focal faces and adjacent context; 192 px overlap.",
+  "regions": [
+    {
+      "id": "C01",
+      "coreRect": {
+        "x": 0,
+        "y": 0,
+        "width": 3240,
+        "height": 1700
+      },
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 3240,
+        "height": 1796
+      },
+      "pasteRect": {
+        "x": 0,
+        "y": 0,
+        "width": 3240,
+        "height": 1796
+      },
+      "overlapPixels": 192,
+      "sourceCrop": "work/crops/source/05-v001/C01.png",
+      "sourceSha256": "f371244c785d9853118a3698f09e6a2bbae3142a811dcc44cc90949e9a4d3348",
+      "mask": "work/crops/masks/05-v001/C01.png",
+      "maskSha256": "476490316d29e812340bbe9a94458766e689df0a96e832bd520b2464144714e4",
+      "sourceMask": "inputs/composites-psd/05/Mask.psd",
+      "selectedOutput": "work/crops/colorized/05-C01-v001.png",
+      "review": "agent-pass",
+      "stage": "reviewed",
+      "candidates": [
+        {
+          "file": "work/crops/colorized/05-C01-v001.png",
+          "sha256": "04923dc181a6707260709140cd495dd39a69ee42800f05ebe5939057b99e7c7f",
+          "nativeDimensions": [
+            1685,
+            934
+          ],
+          "tool": "image_gen.imagegen",
+          "prompt": "work/prompts/05-C01-v001.txt",
+          "requestedModel": "gpt-image-2.6-sunburst",
+          "requestedQuality": "max",
+          "actualModel": "not exposed",
+          "actualQuality": "not exposed",
+          "review": "agent-pass",
+          "reviewNotes": "All source/output pairs and overlap strips inspected. Face/hood, fingers, energy branches, shoulder tips, belt, sash loops, robe folds/seams, boot and smoke volumes follow this view. Original black gaps remain. Red/burgundy, pale skin and green/cyan appearance match the master; corresponding belt and lower-robe/boot landmarks remain in overlaps. Native placement and saved-file checks remain pending.",
+          "reviewEvidence": "work/qa/05-pass002-comparison.jpg"
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "coreRect": {
+        "x": 0,
+        "y": 1700,
+        "width": 3240,
+        "height": 1400
+      },
+      "sourceRect": {
+        "x": 0,
+        "y": 1604,
+        "width": 3240,
+        "height": 1592
+      },
+      "pasteRect": {
+        "x": 0,
+        "y": 1604,
+        "width": 3240,
+        "height": 1592
+      },
+      "overlapPixels": 192,
+      "sourceCrop": "work/crops/source/05-v001/C02.png",
+      "sourceSha256": "5d144cace7ee8d8b2ccab00ebf0cc8cb19cd2165009a55dac9572d6179f4d480",
+      "mask": "work/crops/masks/05-v001/C02.png",
+      "maskSha256": "ecc421a71786bd9eed77eb552f7a6c1a1c92fff7bc088b4abbafd95c3e367108",
+      "sourceMask": "inputs/composites-psd/05/Mask.psd",
+      "selectedOutput": "work/crops/colorized/05-C02-v001.png",
+      "review": "agent-pass",
+      "stage": "reviewed",
+      "candidates": [
+        {
+          "file": "work/crops/colorized/05-C02-v001.png",
+          "sha256": "1875cbc2a4558bb91754317ee2033578d365d83db46b022768bc5d58ab41b325",
+          "nativeDimensions": [
+            1789,
+            879
+          ],
+          "tool": "image_gen.imagegen",
+          "prompt": "work/prompts/05-C02-v001.txt",
+          "requestedModel": "gpt-image-2.6-sunburst",
+          "requestedQuality": "max",
+          "actualModel": "not exposed",
+          "actualQuality": "not exposed",
+          "review": "agent-pass",
+          "reviewNotes": "All source/output pairs and overlap strips inspected. Face/hood, fingers, energy branches, shoulder tips, belt, sash loops, robe folds/seams, boot and smoke volumes follow this view. Original black gaps remain. Red/burgundy, pale skin and green/cyan appearance match the master; corresponding belt and lower-robe/boot landmarks remain in overlaps. Native placement and saved-file checks remain pending.",
+          "reviewEvidence": "work/qa/05-pass002-comparison.jpg"
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "coreRect": {
+        "x": 0,
+        "y": 3100,
+        "width": 3240,
+        "height": 950
+      },
+      "sourceRect": {
+        "x": 0,
+        "y": 3004,
+        "width": 3240,
+        "height": 1046
+      },
+      "pasteRect": {
+        "x": 0,
+        "y": 3004,
+        "width": 3240,
+        "height": 1046
+      },
+      "overlapPixels": 192,
+      "sourceCrop": "work/crops/source/05-v001/C03.png",
+      "sourceSha256": "a9751d9abb093d8762781ae90688305e9a2428e52173f73cb074caddbc138536",
+      "mask": "work/crops/masks/05-v001/C03.png",
+      "maskSha256": "19e9d2b7f6229d20b3c78cb9f2bd711d462187bbf8a11701e4d1905e8cd9886d",
+      "sourceMask": "inputs/composites-psd/05/Mask.psd",
+      "selectedOutput": "work/crops/colorized/05-C03-v001.png",
+      "review": "agent-pass",
+      "stage": "reviewed",
+      "candidates": [
+        {
+          "file": "work/crops/colorized/05-C03-v001.png",
+          "sha256": "477a1791e95aa5dffef0a765b764afc9ecc1d36b68dad58f2ff264c999e5585c",
+          "nativeDimensions": [
+            2231,
+            705
+          ],
+          "tool": "image_gen.imagegen",
+          "prompt": "work/prompts/05-C03-v001.txt",
+          "requestedModel": "gpt-image-2.6-sunburst",
+          "requestedQuality": "max",
+          "actualModel": "not exposed",
+          "actualQuality": "not exposed",
+          "review": "agent-pass",
+          "reviewNotes": "All source/output pairs and overlap strips inspected. Face/hood, fingers, energy branches, shoulder tips, belt, sash loops, robe folds/seams, boot and smoke volumes follow this view. Original black gaps remain. Red/burgundy, pale skin and green/cyan appearance match the master; corresponding belt and lower-robe/boot landmarks remain in overlaps. Native placement and saved-file checks remain pending.",
+          "reviewEvidence": "work/qa/05-pass002-comparison.jpg"
+        }
+      ]
+    }
+  ],
+  "coverageReviewed": true,
+  "requiredCropIds": [
+    "C01",
+    "C02",
+    "C03"
+  ],
+  "allRequiredCropsReviewed": true,
+  "assembly": {
+    "application": "Photoshop",
+    "editableDocument": "outputs/photoshop/mother-talzin-05-colorized-v001.psd",
+    "reviewExport": "outputs/review/mother-talzin-05-colorized-v001-sRGB.png",
+    "sourceReference": "SOURCE COMPOSITE - unchanged",
+    "sourceMasks": [
+      "inputs/composites-psd/05/Mask.psd",
+      "inputs/composites-psd/05/ID.psd"
+    ],
+    "colorLightingAdjustments": false,
+    "shapeReview": "agent-pass",
+    "diskReopenReview": "pass",
+    "approvalStatus": "pending-user",
+    "sourcePassGroup": "SOURCE PASSES - original data",
+    "verification": "work/assembly/05-v001-verification.json",
+    "deliveryColorProfile": "sRGB IEC61966-2.1"
+  },
+  "backgroundHandling": "Original pure-black background preserved; omitted side margins contain no source foreground.",
+  "coverageEvidence": {
+    "overview": "work/qa/crop-plan-overview.jpg",
+    "uncoveredSourceMaskPixels": 0,
+    "checks": "Source-mask coverage and crop/mask hashes verified; seams reviewed on overview."
+  },
+  "adjacentCropReview": "All source/output pairs and overlap strips inspected. Face/hood, fingers, energy branches, shoulder tips, belt, sash loops, robe folds/seams, boot and smoke volumes follow this view. Original black gaps remain. Red/burgundy, pale skin and green/cyan appearance match the master; corresponding belt and lower-robe/boot landmarks remain in overlaps. Native placement and saved-file checks remain pending."
+}

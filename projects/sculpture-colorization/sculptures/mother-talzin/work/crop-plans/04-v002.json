@@ -1,0 +1,226 @@
+{
+  "version": 3,
+  "sculptureId": "mother-talzin",
+  "compositeId": "04",
+  "sourcePsd": "inputs/composites-psd/04/Composite.psd",
+  "sourcePreview": "work/psd-previews/04-source.png",
+  "sourceSha256": "2e0fed62962a6f03e5757b86519ed5498823cdad7ff3eeefcb903f055419e0f5",
+  "previewSha256": "afd8d0aa2d3399cd93c51d37a74c0083904c1e2acccbda11218a6e2d7ca8052f",
+  "coordinateSystem": "integer pixels; origin at top-left of original target canvas",
+  "canvas": {
+    "width": 3240,
+    "height": 4050,
+    "colorProfile": "untagged; no embedded ICC",
+    "bitDepth": 8,
+    "psdColorMode": 3
+  },
+  "planningBasis": "direct-target-source-size-detail-and-coverage",
+  "appearanceMaster": {
+    "compositeId": "01",
+    "role": "supplied-finished-read-only-highest-appearance-authority",
+    "file": "inputs/reference-composite-01/061126 SW3D - Mother Talzin Sculpt Image 001.jpg",
+    "sha256": "5c09e07e4adf33cf763358fb399ce2307a3ec2defc1a50d85f34e566d4dd0319",
+    "preview": "work/qa/master-preview.jpg",
+    "canvas": {
+      "width": 3240,
+      "height": 4050,
+      "bitDepth": 8,
+      "colorProfile": "sRGB IEC61966-2.1"
+    },
+    "intakeVerified": true
+  },
+  "qualityReferences": [
+    {
+      "file": "../../shared/approved-client-work/Phantom of the Opera (3).png",
+      "sha256": "301c5719022e3b513aec5b82484e2f9de4c53487920cf8f9806f7adf0b4b4ada",
+      "role": "quality-only; surface detail and material separation; never geometry or palette"
+    },
+    {
+      "file": "../../shared/approved-client-work/Exogorth Diorama (13).png",
+      "sha256": "907b86322a3e80df7bb510a6c0346710c40956e0a1d2bd6b096adbe4e16452ab",
+      "role": "quality-only; surface detail and material separation; never geometry or palette"
+    }
+  ],
+  "cropCountRationale": "User requested three crops for complete sculpture views. Boundaries y1450/y2450 with 192 px overlap and per-region black-margin reduction. Lower boundary moved upward after visual review to keep both undead heads fully within C03.",
+  "regions": [
+    {
+      "id": "C01",
+      "coreRect": {
+        "x": 1082,
+        "y": 0,
+        "width": 907,
+        "height": 1450
+      },
+      "sourceRect": {
+        "x": 1082,
+        "y": 0,
+        "width": 907,
+        "height": 1546
+      },
+      "pasteRect": {
+        "x": 1082,
+        "y": 0,
+        "width": 907,
+        "height": 1546
+      },
+      "overlapPixels": 192,
+      "sourceCrop": "work/crops/source/04-v002/C01.png",
+      "sourceSha256": "5d97851877d56a51af81448917ee5fcc6f3d159e9954f9f08f252fb46270e182",
+      "mask": "work/crops/masks/04-v002/C01.png",
+      "maskSha256": "86ec7424ebc6a34b246c1f442baf6f74b1eab6f3b4b11c27ca685902e0c856ef",
+      "sourceMask": "inputs/composites-psd/04/Mask.psd",
+      "selectedOutput": "work/crops/colorized/04-C01-v002.png",
+      "review": "agent-pass",
+      "stage": "reviewed",
+      "candidates": [
+        {
+          "file": "work/crops/colorized/04-C01-v002.png",
+          "sha256": "e1ae49ed9f8a2d429268d0ab96d1d842ddbdaa1022a67c097d4e3b8c2246572c",
+          "nativeDimensions": [
+            960,
+            1637
+          ],
+          "tool": "image_gen.imagegen",
+          "prompt": "work/prompts/04-C01-v002.txt",
+          "requestedModel": "gpt-image-2.6-sunburst",
+          "requestedQuality": "max",
+          "actualModel": "not exposed",
+          "actualQuality": "not exposed",
+          "review": "agent-pass",
+          "reviewNotes": "Compared source/output and both overlap pairs. Opposite side camera, near hand/fingers, thin energy branches, shoulder fins, belt tassels, robe hem cavities, boots, both undead figures and side-base geometry remain coherent. Matching material families and corresponding overlap landmarks; no added frontal base features. Native montage and user acceptance pending.",
+          "reviewEvidence": "work/qa/04-pass002-comparison.jpg"
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "coreRect": {
+        "x": 775,
+        "y": 1450,
+        "width": 1508,
+        "height": 1000
+      },
+      "sourceRect": {
+        "x": 775,
+        "y": 1354,
+        "width": 1508,
+        "height": 1192
+      },
+      "pasteRect": {
+        "x": 775,
+        "y": 1354,
+        "width": 1508,
+        "height": 1192
+      },
+      "overlapPixels": 192,
+      "sourceCrop": "work/crops/source/04-v002/C02-seam.png",
+      "sourceSha256": "2ff5cf44d3986a149943d24f316f835d329a7f88e569710c041f6d40bc8a3059",
+      "mask": "work/crops/masks/04-v002/C02-seam.png",
+      "maskSha256": "40ca75bc4a29700111665dc28e12fea4545bc30dcd49585a3d86a5c87476db39",
+      "sourceMask": "inputs/composites-psd/04/Mask.psd",
+      "selectedOutput": "work/crops/colorized/04-C02-v002.png",
+      "review": "agent-pass",
+      "stage": "reviewed",
+      "candidates": [
+        {
+          "file": "work/crops/colorized/04-C02-v002.png",
+          "sha256": "deb3889fc8b5fcb2ff5c0c51a2f1f2ca8db0ce710e26f4389a57ee36f4f9b787",
+          "nativeDimensions": [
+            1410,
+            1115
+          ],
+          "tool": "image_gen.imagegen",
+          "prompt": "work/prompts/04-C02-v002.txt",
+          "requestedModel": "gpt-image-2.6-sunburst",
+          "requestedQuality": "max",
+          "actualModel": "not exposed",
+          "actualQuality": "not exposed",
+          "review": "agent-pass",
+          "reviewNotes": "Compared source/output and both overlap pairs. Opposite side camera, near hand/fingers, thin energy branches, shoulder fins, belt tassels, robe hem cavities, boots, both undead figures and side-base geometry remain coherent. Matching material families and corresponding overlap landmarks; no added frontal base features. Native montage and user acceptance pending.",
+          "reviewEvidence": "work/qa/04-pass002-comparison.jpg"
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "coreRect": {
+        "x": 577,
+        "y": 2450,
+        "width": 1892,
+        "height": 1600
+      },
+      "sourceRect": {
+        "x": 577,
+        "y": 2354,
+        "width": 1892,
+        "height": 1696
+      },
+      "pasteRect": {
+        "x": 577,
+        "y": 2354,
+        "width": 1892,
+        "height": 1696
+      },
+      "overlapPixels": 192,
+      "sourceCrop": "work/crops/source/04-v002/C03-seam.png",
+      "sourceSha256": "b60c2c0bc317000edc0d3ba8e5caf7e1b69203ff922a6a26d80a390e72be2878",
+      "mask": "work/crops/masks/04-v002/C03-seam.png",
+      "maskSha256": "d50486b0e3573804bfbc82703e85d93f567f26fa6f3b013cae57a817d9300aba",
+      "sourceMask": "inputs/composites-psd/04/Mask.psd",
+      "selectedOutput": "work/crops/colorized/04-C03-v002.png",
+      "review": "agent-pass",
+      "stage": "reviewed",
+      "candidates": [
+        {
+          "file": "work/crops/colorized/04-C03-v002.png",
+          "sha256": "1cb192d0ceafe94053cc465eaf7f6503f13e76444b573721dbf9aea5a03ef86b",
+          "nativeDimensions": [
+            1324,
+            1188
+          ],
+          "tool": "image_gen.imagegen",
+          "prompt": "work/prompts/04-C03-v002.txt",
+          "requestedModel": "gpt-image-2.6-sunburst",
+          "requestedQuality": "max",
+          "actualModel": "not exposed",
+          "actualQuality": "not exposed",
+          "review": "agent-pass",
+          "reviewNotes": "Compared source/output and both overlap pairs. Opposite side camera, near hand/fingers, thin energy branches, shoulder fins, belt tassels, robe hem cavities, boots, both undead figures and side-base geometry remain coherent. Matching material families and corresponding overlap landmarks; no added frontal base features. Native montage and user acceptance pending.",
+          "reviewEvidence": "work/qa/04-pass002-comparison.jpg"
+        }
+      ]
+    }
+  ],
+  "coverageReviewed": true,
+  "requiredCropIds": [
+    "C01",
+    "C02",
+    "C03"
+  ],
+  "allRequiredCropsReviewed": true,
+  "assembly": {
+    "application": "Photoshop",
+    "editableDocument": "outputs/photoshop/mother-talzin-04-colorized-v001.psd",
+    "reviewExport": "outputs/review/mother-talzin-04-colorized-v001-sRGB.png",
+    "sourceReference": "SOURCE COMPOSITE - unchanged",
+    "sourceMasks": [
+      "inputs/composites-psd/04/Mask.psd",
+      "inputs/composites-psd/04/ID.psd"
+    ],
+    "colorLightingAdjustments": false,
+    "shapeReview": "agent-pass",
+    "diskReopenReview": "pass",
+    "approvalStatus": "pending-user",
+    "sourcePassGroup": "SOURCE PASSES - original data",
+    "verification": "work/assembly/04-v001-verification.json",
+    "deliveryColorProfile": "sRGB IEC61966-2.1"
+  },
+  "backgroundHandling": "Original pure-black background preserved; omitted side margins contain no source foreground.",
+  "coverageEvidence": {
+    "uncoveredSourceMaskPixels": 0,
+    "sourcePsdRehashedUnchanged": true
+  },
+  "productionPass": "v002",
+  "supersedes": "work/crop-plans/04-v001.json",
+  "adjacentCropReview": "Compared source/output and both overlap pairs. Opposite side camera, near hand/fingers, thin energy branches, shoulder fins, belt tassels, robe hem cavities, boots, both undead figures and side-base geometry remain coherent. Matching material families and corresponding overlap landmarks; no added frontal base features. Native montage and user acceptance pending."
+}

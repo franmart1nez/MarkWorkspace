@@ -1,0 +1,167 @@
+{
+  "version": 3,
+  "sculptureId": "mother-talzin",
+  "compositeId": "02",
+  "sourcePsd": "inputs/composites-psd/02/Composite.psd",
+  "sourcePreview": "work/psd-previews/02-source.png",
+  "sourceSha256": "00efbd44b66428adb9bf8ca99afe78520939064a103b497479928f411f8aa3a2",
+  "previewSha256": "84eb7065e1bc36a95478c43beea8ed4a1d9439f73ce3ddf96cc3d7c6796947a6",
+  "coordinateSystem": "integer pixels; origin at top-left of original target canvas",
+  "canvas": {
+    "width": 3240,
+    "height": 4050,
+    "colorProfile": "untagged; no embedded ICC",
+    "bitDepth": 8,
+    "psdColorMode": 3
+  },
+  "planningBasis": "direct-target-source-size-detail-and-coverage",
+  "appearanceMaster": {
+    "compositeId": "01",
+    "role": "supplied-finished-read-only-highest-appearance-authority",
+    "file": "inputs/reference-composite-01/061126 SW3D - Mother Talzin Sculpt Image 001.jpg",
+    "sha256": "5c09e07e4adf33cf763358fb399ce2307a3ec2defc1a50d85f34e566d4dd0319",
+    "preview": "work/qa/master-preview.jpg",
+    "canvas": {
+      "width": 3240,
+      "height": 4050,
+      "bitDepth": 8,
+      "colorProfile": "sRGB IEC61966-2.1"
+    },
+    "intakeVerified": true
+  },
+  "qualityReferences": [
+    {
+      "file": "../../shared/approved-client-work/Phantom of the Opera (3).png",
+      "sha256": "301c5719022e3b513aec5b82484e2f9de4c53487920cf8f9806f7adf0b4b4ada",
+      "role": "quality-only; surface detail and material separation; never geometry or palette"
+    },
+    {
+      "file": "../../shared/approved-client-work/Exogorth Diorama (13).png",
+      "sha256": "907b86322a3e80df7bb510a6c0346710c40956e0a1d2bd6b096adbe4e16452ab",
+      "role": "quality-only; surface detail and material separation; never geometry or palette"
+    }
+  ],
+  "cropCountRationale": "Native 3240 x 4050 canvas; 2 direct production crops. Narrow full-view subject: remove only empty side margins, split below the robe with 192 px overlap.",
+  "regions": [
+    {
+      "id": "C01",
+      "coreRect": {
+        "x": 774,
+        "y": 0,
+        "width": 1844,
+        "height": 2200
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 0,
+        "width": 1844,
+        "height": 2296
+      },
+      "pasteRect": {
+        "x": 774,
+        "y": 0,
+        "width": 1844,
+        "height": 2296
+      },
+      "overlapPixels": 192,
+      "sourceCrop": "work/crops/source/02-v001/C01.png",
+      "sourceSha256": "c4edce02963814b3dffc01b8f5c42fdccd2e24880b543bf84d752fedcda2627b",
+      "mask": "work/crops/masks/02-v001/C01.png",
+      "maskSha256": "19f4d58408ef167684e0c0c656736e58fbf58c827c35c73b315294fee8110019",
+      "sourceMask": "inputs/composites-psd/02/Mask.psd",
+      "selectedOutput": null,
+      "review": "initial-visual-review; final-selection-pending",
+      "stage": "generated-candidate",
+      "candidates": [
+        {
+          "file": "work/crops/colorized/02-C01-v001.png",
+          "sha256": "26988b3e3aa200567849de2e0eddca6dbb20f9646acef7d9a1f35a1c202cdbe2",
+          "nativeDimensions": [
+            1124,
+            1399
+          ],
+          "prompt": "work/prompts/02-C01-v001.txt",
+          "requestedModel": "gpt-image-2.6-sunburst",
+          "requestedQuality": "max",
+          "actualModel": "not exposed",
+          "actualQuality": "not exposed",
+          "tool": "image_gen.imagegen",
+          "reviewEvidence": "work/qa/02-C01-comparison.jpg"
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "coreRect": {
+        "x": 774,
+        "y": 2200,
+        "width": 1844,
+        "height": 1850
+      },
+      "sourceRect": {
+        "x": 774,
+        "y": 2104,
+        "width": 1844,
+        "height": 1946
+      },
+      "pasteRect": {
+        "x": 774,
+        "y": 2104,
+        "width": 1844,
+        "height": 1946
+      },
+      "overlapPixels": 192,
+      "sourceCrop": "work/crops/source/02-v001/C02.png",
+      "sourceSha256": "ddcbbd125da049c581eff6946c36a7e5fac2ada560971f282c0e749ffdd35e77",
+      "mask": "work/crops/masks/02-v001/C02.png",
+      "maskSha256": "5aaf84345b762e1d46d4859493265c5b6353e17981cf5d35eecc790aaa5651e6",
+      "sourceMask": "inputs/composites-psd/02/Mask.psd",
+      "selectedOutput": null,
+      "review": "initial-visual-review; final-selection-pending",
+      "stage": "generated-candidate",
+      "candidates": [
+        {
+          "file": "work/crops/colorized/02-C02-v001.png",
+          "sha256": "23c19b548ba1536cab970ee2c2625e2dcebf48726158eed7bf8282e5acd779a7",
+          "nativeDimensions": [
+            1221,
+            1289
+          ],
+          "prompt": "work/prompts/02-C02-v001.txt",
+          "requestedModel": "gpt-image-2.6-sunburst",
+          "requestedQuality": "max",
+          "actualModel": "not exposed",
+          "actualQuality": "not exposed",
+          "tool": "image_gen.imagegen",
+          "reviewEvidence": "work/qa/02-C02-comparison.jpg"
+        }
+      ]
+    }
+  ],
+  "coverageReviewed": true,
+  "requiredCropIds": [
+    "C01",
+    "C02"
+  ],
+  "allRequiredCropsReviewed": false,
+  "assembly": {
+    "application": "Photoshop",
+    "editableDocument": null,
+    "reviewExport": null,
+    "sourceReference": null,
+    "sourceMasks": [
+      "inputs/composites-psd/02/Mask.psd",
+      "inputs/composites-psd/02/ID.psd"
+    ],
+    "colorLightingAdjustments": false,
+    "shapeReview": "pending",
+    "diskReopenReview": "pending",
+    "approvalStatus": "pending"
+  },
+  "backgroundHandling": "Original pure-black background preserved; omitted side margins contain no source foreground.",
+  "coverageEvidence": {
+    "overview": "work/qa/crop-plan-overview.jpg",
+    "uncoveredSourceMaskPixels": 0,
+    "checks": "Source-mask coverage and crop/mask hashes verified; seams reviewed on overview."
+  }
+}

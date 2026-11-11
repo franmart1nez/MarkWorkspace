@@ -1,0 +1,175 @@
+{
+  "version": 3,
+  "sculptureId": "mother-talzin",
+  "compositeId": "13",
+  "sourcePsd": "inputs/composites-psd/13/Composite.psd",
+  "sourcePreview": "work/psd-previews/13-source.png",
+  "sourceSha256": "551f5918bf9a6c1ca7518e3b29a2abc19c7ee7580e1968d52eb7570d01a1adcb",
+  "previewSha256": "d7d050a66d759d54cc8077465581c273efdf96f1e85c827ef34ab0b42b4fef77",
+  "coordinateSystem": "integer pixels; origin at top-left of original target canvas",
+  "canvas": {
+    "width": 3240,
+    "height": 4050,
+    "colorProfile": "untagged; no embedded ICC",
+    "bitDepth": 8,
+    "psdColorMode": 3
+  },
+  "planningBasis": "direct-target-source-size-detail-and-coverage",
+  "appearanceMaster": {
+    "compositeId": "01",
+    "role": "supplied-finished-read-only-highest-appearance-authority",
+    "file": "inputs/reference-composite-01/061126 SW3D - Mother Talzin Sculpt Image 001.jpg",
+    "sha256": "5c09e07e4adf33cf763358fb399ce2307a3ec2defc1a50d85f34e566d4dd0319",
+    "preview": "work/qa/master-preview.jpg",
+    "canvas": {
+      "width": 3240,
+      "height": 4050,
+      "bitDepth": 8,
+      "colorProfile": "sRGB IEC61966-2.1"
+    },
+    "intakeVerified": true
+  },
+  "qualityReferences": [
+    {
+      "file": "../../shared/approved-client-work/Phantom of the Opera (3).png",
+      "sha256": "301c5719022e3b513aec5b82484e2f9de4c53487920cf8f9806f7adf0b4b4ada",
+      "role": "quality-only; surface detail and material separation; never geometry or palette"
+    },
+    {
+      "file": "../../shared/approved-client-work/Exogorth Diorama (13).png",
+      "sha256": "907b86322a3e80df7bb510a6c0346710c40956e0a1d2bd6b096adbe4e16452ab",
+      "role": "quality-only; surface detail and material separation; never geometry or palette"
+    }
+  ],
+  "cropCountRationale": "Native 3240 x 4050 canvas; 2 direct production crops. Full-width horizontal regions retain focal faces and adjacent context; 192 px overlap.",
+  "regions": [
+    {
+      "id": "C01",
+      "coreRect": {
+        "x": 0,
+        "y": 0,
+        "width": 3240,
+        "height": 2850
+      },
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 3240,
+        "height": 2946
+      },
+      "pasteRect": {
+        "x": 0,
+        "y": 0,
+        "width": 3240,
+        "height": 2946
+      },
+      "overlapPixels": 192,
+      "sourceCrop": "work/crops/source/13-v001/C01.png",
+      "sourceSha256": "852e2bbe942552e7fa0f0f404a1ac5a4b44bd5da7e929f1d767e6442723b7081",
+      "mask": "work/crops/masks/13-v001/C01.png",
+      "maskSha256": "494bc12d9cbbc2e0cdbaa831dc79f2f56769b022945cc2ad219e047984ea8e9f",
+      "sourceMask": "inputs/composites-psd/13/Mask.psd",
+      "selectedOutput": "work/crops/colorized/13-C01-v001.png",
+      "review": "agent-pass",
+      "stage": "reviewed",
+      "candidates": [
+        {
+          "file": "work/crops/colorized/13-C01-v001.png",
+          "sha256": "332f4c24cf1b3fe6d9de8dd6b58d8464b4095c3601a5856e28fcefdfd320947c",
+          "nativeDimensions": [
+            1315,
+            1196
+          ],
+          "tool": "image_gen.imagegen",
+          "prompt": "work/prompts/13-C01-v001.txt",
+          "requestedModel": "gpt-image-2.6-sunburst",
+          "requestedQuality": "max",
+          "actualModel": "not exposed",
+          "actualQuality": "not exposed",
+          "review": "agent-pass",
+          "reviewNotes": "Compared both source/output pairs and shared strip. Foreground undead facial/hand landmarks, clothing straps/tears, partial right figure, smoke lobes and oblique base panel/mask geometry retained. Red channel appears only on the existing frontal mouth recess; side panels keep their own motifs. Green/cyan magic, flesh, faded red clothing and teal/bronze base follow master. Native joins and user acceptance pending.",
+          "reviewEvidence": "work/qa/13-pass002-comparison.jpg"
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "coreRect": {
+        "x": 0,
+        "y": 2850,
+        "width": 3240,
+        "height": 1200
+      },
+      "sourceRect": {
+        "x": 0,
+        "y": 2754,
+        "width": 3240,
+        "height": 1296
+      },
+      "pasteRect": {
+        "x": 0,
+        "y": 2754,
+        "width": 3240,
+        "height": 1296
+      },
+      "overlapPixels": 192,
+      "sourceCrop": "work/crops/source/13-v001/C02.png",
+      "sourceSha256": "143fe026d0d272e591cba2c0f0d00f56e2d12ede3cdfc8da26b02f0907b04ef4",
+      "mask": "work/crops/masks/13-v001/C02.png",
+      "maskSha256": "aa70b55153e4041309a8ab9fe5bb6ce3ab0c59ecff56d74f09a1b1b15f087851",
+      "sourceMask": "inputs/composites-psd/13/Mask.psd",
+      "selectedOutput": "work/crops/colorized/13-C02-v001.png",
+      "review": "agent-pass",
+      "stage": "reviewed",
+      "candidates": [
+        {
+          "file": "work/crops/colorized/13-C02-v001.png",
+          "sha256": "05f35302147928d98f38ce7203de835549441fb741a331c9932e5137d5795a7c",
+          "nativeDimensions": [
+            1983,
+            793
+          ],
+          "tool": "image_gen.imagegen",
+          "prompt": "work/prompts/13-C02-v001.txt",
+          "requestedModel": "gpt-image-2.6-sunburst",
+          "requestedQuality": "max",
+          "actualModel": "not exposed",
+          "actualQuality": "not exposed",
+          "review": "agent-pass",
+          "reviewNotes": "Compared both source/output pairs and shared strip. Foreground undead facial/hand landmarks, clothing straps/tears, partial right figure, smoke lobes and oblique base panel/mask geometry retained. Red channel appears only on the existing frontal mouth recess; side panels keep their own motifs. Green/cyan magic, flesh, faded red clothing and teal/bronze base follow master. Native joins and user acceptance pending.",
+          "reviewEvidence": "work/qa/13-pass002-comparison.jpg"
+        }
+      ]
+    }
+  ],
+  "coverageReviewed": true,
+  "requiredCropIds": [
+    "C01",
+    "C02"
+  ],
+  "allRequiredCropsReviewed": true,
+  "assembly": {
+    "application": "Photoshop",
+    "editableDocument": "outputs/photoshop/mother-talzin-13-colorized-v001.psd",
+    "reviewExport": "outputs/review/mother-talzin-13-colorized-v001-sRGB.png",
+    "sourceReference": "SOURCE COMPOSITE - unchanged",
+    "sourceMasks": [
+      "inputs/composites-psd/13/Mask.psd",
+      "inputs/composites-psd/13/ID.psd"
+    ],
+    "colorLightingAdjustments": false,
+    "shapeReview": "agent-pass",
+    "diskReopenReview": "pass",
+    "approvalStatus": "pending-user",
+    "sourcePassGroup": "SOURCE PASSES - original data",
+    "verification": "work/assembly/13-v001-verification.json",
+    "deliveryColorProfile": "sRGB IEC61966-2.1"
+  },
+  "backgroundHandling": "Original pure-black background preserved; omitted side margins contain no source foreground.",
+  "coverageEvidence": {
+    "overview": "work/qa/crop-plan-overview.jpg",
+    "uncoveredSourceMaskPixels": 0,
+    "checks": "Source-mask coverage and crop/mask hashes verified; seams reviewed on overview."
+  },
+  "adjacentCropReview": "Compared both source/output pairs and shared strip. Foreground undead facial/hand landmarks, clothing straps/tears, partial right figure, smoke lobes and oblique base panel/mask geometry retained. Red channel appears only on the existing frontal mouth recess; side panels keep their own motifs. Green/cyan magic, flesh, faded red clothing and teal/bronze base follow master. Native joins and user acceptance pending."
+}

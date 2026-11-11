@@ -1,0 +1,168 @@
+{
+  "version": 3,
+  "sculptureId": "mother-talzin",
+  "compositeId": "03",
+  "sourcePsd": "inputs/composites-psd/03/Composite.psd",
+  "sourcePreview": "work/psd-previews/03-source.png",
+  "sourceSha256": "0c7a68429a84ebff7ed18e1dd6b245d653337ae1cc153879db6d689eac4eebf5",
+  "previewSha256": "09223c82a0eed6ae5b830bfbf07fe87ff32eb066caea3e5054c67578b0d4cb90",
+  "coordinateSystem": "integer pixels; origin at top-left of original target canvas",
+  "canvas": {
+    "width": 3240,
+    "height": 4050,
+    "colorProfile": "untagged; no embedded ICC",
+    "bitDepth": 8,
+    "psdColorMode": 3
+  },
+  "planningBasis": "direct-target-source-size-detail-and-coverage",
+  "appearanceMaster": {
+    "compositeId": "01",
+    "role": "supplied-finished-read-only-highest-appearance-authority",
+    "file": "inputs/reference-composite-01/061126 SW3D - Mother Talzin Sculpt Image 001.jpg",
+    "sha256": "5c09e07e4adf33cf763358fb399ce2307a3ec2defc1a50d85f34e566d4dd0319",
+    "preview": "work/qa/master-preview.jpg",
+    "canvas": {
+      "width": 3240,
+      "height": 4050,
+      "bitDepth": 8,
+      "colorProfile": "sRGB IEC61966-2.1"
+    },
+    "intakeVerified": true
+  },
+  "qualityReferences": [
+    {
+      "file": "../../shared/approved-client-work/Phantom of the Opera (3).png",
+      "sha256": "301c5719022e3b513aec5b82484e2f9de4c53487920cf8f9806f7adf0b4b4ada",
+      "role": "quality-only; surface detail and material separation; never geometry or palette"
+    },
+    {
+      "file": "../../shared/approved-client-work/Exogorth Diorama (13).png",
+      "sha256": "907b86322a3e80df7bb510a6c0346710c40956e0a1d2bd6b096adbe4e16452ab",
+      "role": "quality-only; surface detail and material separation; never geometry or palette"
+    }
+  ],
+  "cropCountRationale": "User requested about three crops for complete sculptures to improve detail. Three source regions at y1450/y2650, 192 px overlap; per-region empty side margins excluded. Focal faces remain whole.",
+  "regions": [
+    {
+      "id": "C01",
+      "coreRect": {
+        "x": 691,
+        "y": 0,
+        "width": 1970,
+        "height": 1450
+      },
+      "sourceRect": {
+        "x": 691,
+        "y": 0,
+        "width": 1970,
+        "height": 1546
+      },
+      "pasteRect": {
+        "x": 691,
+        "y": 0,
+        "width": 1970,
+        "height": 1546
+      },
+      "overlapPixels": 192,
+      "sourceCrop": "work/crops/source/03-v002/C01.png",
+      "sourceSha256": "1d810346e027e07cb8fc87bf0eb8b86eb6a351532e2a58b8c192166c2c9bbe98",
+      "mask": "work/crops/masks/03-v002/C01.png",
+      "maskSha256": "8bd19e2141b9beb1ae2f1a6ba559f4d7d8ac235ed546cf0b519e14a40d0064bf",
+      "sourceMask": "inputs/composites-psd/03/Mask.psd",
+      "selectedOutput": null,
+      "review": "pending",
+      "stage": "source-prepared",
+      "candidates": []
+    },
+    {
+      "id": "C02",
+      "coreRect": {
+        "x": 649,
+        "y": 1450,
+        "width": 2081,
+        "height": 1200
+      },
+      "sourceRect": {
+        "x": 649,
+        "y": 1354,
+        "width": 2081,
+        "height": 1392
+      },
+      "pasteRect": {
+        "x": 649,
+        "y": 1354,
+        "width": 2081,
+        "height": 1392
+      },
+      "overlapPixels": 192,
+      "sourceCrop": "work/crops/source/03-v002/C02.png",
+      "sourceSha256": "20f08ee834b2092fe08fd73c366dd20191f75217efa5b7fcdf79fff1d59cada8",
+      "mask": "work/crops/masks/03-v002/C02.png",
+      "maskSha256": "7a4e60bb8e1e8117cb714854eda4c25ada8d7f1ab440f3bd9e40a61528df025b",
+      "sourceMask": "inputs/composites-psd/03/Mask.psd",
+      "selectedOutput": null,
+      "review": "pending",
+      "stage": "source-prepared",
+      "candidates": []
+    },
+    {
+      "id": "C03",
+      "coreRect": {
+        "x": 651,
+        "y": 2650,
+        "width": 2079,
+        "height": 1400
+      },
+      "sourceRect": {
+        "x": 651,
+        "y": 2554,
+        "width": 2079,
+        "height": 1496
+      },
+      "pasteRect": {
+        "x": 651,
+        "y": 2554,
+        "width": 2079,
+        "height": 1496
+      },
+      "overlapPixels": 192,
+      "sourceCrop": "work/crops/source/03-v002/C03.png",
+      "sourceSha256": "b94f0f4fbdf75717966e5b5e3167fcff56e85c71403638f6f5d83dfcc7198255",
+      "mask": "work/crops/masks/03-v002/C03.png",
+      "maskSha256": "71fdfd87adc250c3d016dcf046ab6590cfc396449484f903f3bf6cfd8ed52b69",
+      "sourceMask": "inputs/composites-psd/03/Mask.psd",
+      "selectedOutput": null,
+      "review": "pending",
+      "stage": "source-prepared",
+      "candidates": []
+    }
+  ],
+  "coverageReviewed": true,
+  "requiredCropIds": [
+    "C01",
+    "C02",
+    "C03"
+  ],
+  "allRequiredCropsReviewed": false,
+  "assembly": {
+    "application": "Photoshop",
+    "editableDocument": null,
+    "reviewExport": null,
+    "sourceReference": null,
+    "sourceMasks": [
+      "inputs/composites-psd/03/Mask.psd",
+      "inputs/composites-psd/03/ID.psd"
+    ],
+    "colorLightingAdjustments": false,
+    "shapeReview": "pending",
+    "diskReopenReview": "pending",
+    "approvalStatus": "pending"
+  },
+  "backgroundHandling": "Original pure-black background preserved; omitted side margins contain no source foreground.",
+  "coverageEvidence": {
+    "uncoveredSourceMaskPixels": 0,
+    "sourcePsdRehashedUnchanged": true
+  },
+  "productionPass": "v002",
+  "supersedes": "work/crop-plans/03-v001.json"
+}

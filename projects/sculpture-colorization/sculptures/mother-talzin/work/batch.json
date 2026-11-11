@@ -1,0 +1,681 @@
+{
+  "version": 1,
+  "sculptureId": "mother-talzin",
+  "appearanceMaster": {
+    "compositeId": "01",
+    "role": "supplied-finished-read-only-highest-appearance-authority",
+    "file": "inputs/reference-composite-01/061126 SW3D - Mother Talzin Sculpt Image 001.jpg",
+    "sha256": "5c09e07e4adf33cf763358fb399ce2307a3ec2defc1a50d85f34e566d4dd0319",
+    "preview": "work/qa/master-preview.jpg",
+    "canvas": {
+      "width": 3240,
+      "height": 4050,
+      "bitDepth": 8,
+      "colorProfile": "sRGB IEC61966-2.1"
+    },
+    "intakeVerified": true
+  },
+  "views": [
+    {
+      "id": "02",
+      "sourcePsd": "inputs/composites-psd/02/Composite.psd",
+      "sourceSha256": "00efbd44b66428adb9bf8ca99afe78520939064a103b497479928f411f8aa3a2",
+      "cropPlan": "work/crop-plans/02-v002.json",
+      "requiredCropIds": [
+        "C01",
+        "C02",
+        "C03"
+      ],
+      "crops": [
+        {
+          "id": "C01",
+          "selectedOutput": "work/crops/colorized/02-C01-v002.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/02-C01-v002.png"
+          ]
+        },
+        {
+          "id": "C02",
+          "selectedOutput": "work/crops/colorized/02-C02-v002.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/02-C02-v002.png"
+          ]
+        },
+        {
+          "id": "C03",
+          "selectedOutput": "work/crops/colorized/02-C03-v002.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/02-C03-v002.png"
+          ]
+        }
+      ],
+      "allRequiredCropsReviewed": true,
+      "assemblyState": "saved-reopened-agent-reviewed",
+      "editableDocument": "outputs/photoshop/mother-talzin-02-colorized-v001.psd",
+      "diskReopenReview": "pass",
+      "userAcceptance": "pending",
+      "coverageReviewed": true,
+      "previousCropPlans": [
+        "work/crop-plans/02-v001.json"
+      ],
+      "reviewPng": "outputs/review/mother-talzin-02-colorized-v001-sRGB.png",
+      "assemblyVerification": "work/assembly/02-v001-verification.json"
+    },
+    {
+      "id": "03",
+      "sourcePsd": "inputs/composites-psd/03/Composite.psd",
+      "sourceSha256": "0c7a68429a84ebff7ed18e1dd6b245d653337ae1cc153879db6d689eac4eebf5",
+      "cropPlan": "work/crop-plans/03-v002.json",
+      "requiredCropIds": [
+        "C01",
+        "C02",
+        "C03"
+      ],
+      "crops": [
+        {
+          "id": "C01",
+          "selectedOutput": "work/crops/colorized/03-C01-v002.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/03-C01-v002.png"
+          ]
+        },
+        {
+          "id": "C02",
+          "selectedOutput": "work/crops/colorized/03-C02-v002.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/03-C02-v002.png"
+          ]
+        },
+        {
+          "id": "C03",
+          "selectedOutput": "work/crops/colorized/03-C03-v002.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/03-C03-v002.png"
+          ]
+        }
+      ],
+      "allRequiredCropsReviewed": true,
+      "assemblyState": "saved-reopened-agent-reviewed",
+      "editableDocument": "outputs/photoshop/mother-talzin-03-colorized-v001.psd",
+      "diskReopenReview": "pass",
+      "userAcceptance": "pending",
+      "coverageReviewed": true,
+      "previousCropPlans": [
+        "work/crop-plans/03-v001.json"
+      ],
+      "reviewPng": "outputs/review/mother-talzin-03-colorized-v001-sRGB.png",
+      "assemblyVerification": "work/assembly/03-v001-verification.json"
+    },
+    {
+      "id": "04",
+      "sourcePsd": "inputs/composites-psd/04/Composite.psd",
+      "sourceSha256": "2e0fed62962a6f03e5757b86519ed5498823cdad7ff3eeefcb903f055419e0f5",
+      "cropPlan": "work/crop-plans/04-v002.json",
+      "requiredCropIds": [
+        "C01",
+        "C02",
+        "C03"
+      ],
+      "crops": [
+        {
+          "id": "C01",
+          "selectedOutput": "work/crops/colorized/04-C01-v002.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/04-C01-v002.png"
+          ]
+        },
+        {
+          "id": "C02",
+          "selectedOutput": "work/crops/colorized/04-C02-v002.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/04-C02-v002.png"
+          ]
+        },
+        {
+          "id": "C03",
+          "selectedOutput": "work/crops/colorized/04-C03-v002.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/04-C03-v002.png"
+          ]
+        }
+      ],
+      "allRequiredCropsReviewed": true,
+      "assemblyState": "saved-reopened-agent-reviewed",
+      "editableDocument": "outputs/photoshop/mother-talzin-04-colorized-v001.psd",
+      "diskReopenReview": "pass",
+      "userAcceptance": "pending",
+      "coverageReviewed": true,
+      "previousCropPlans": [
+        "work/crop-plans/04-v001.json"
+      ],
+      "reviewPng": "outputs/review/mother-talzin-04-colorized-v001-sRGB.png",
+      "assemblyVerification": "work/assembly/04-v001-verification.json"
+    },
+    {
+      "id": "05",
+      "sourcePsd": "inputs/composites-psd/05/Composite.psd",
+      "sourceSha256": "51577eb8efe0663b7cfa22a152b1a2dd78c31c0b4823882b41b18529407423af",
+      "cropPlan": "work/crop-plans/05-v001.json",
+      "requiredCropIds": [
+        "C01",
+        "C02",
+        "C03"
+      ],
+      "crops": [
+        {
+          "id": "C01",
+          "selectedOutput": "work/crops/colorized/05-C01-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/05-C01-v001.png"
+          ]
+        },
+        {
+          "id": "C02",
+          "selectedOutput": "work/crops/colorized/05-C02-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/05-C02-v001.png"
+          ]
+        },
+        {
+          "id": "C03",
+          "selectedOutput": "work/crops/colorized/05-C03-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/05-C03-v001.png"
+          ]
+        }
+      ],
+      "allRequiredCropsReviewed": true,
+      "assemblyState": "saved-reopened-agent-reviewed",
+      "editableDocument": "outputs/photoshop/mother-talzin-05-colorized-v001.psd",
+      "diskReopenReview": "pass",
+      "userAcceptance": "pending",
+      "coverageReviewed": true,
+      "reviewPng": "outputs/review/mother-talzin-05-colorized-v001-sRGB.png",
+      "assemblyVerification": "work/assembly/05-v001-verification.json"
+    },
+    {
+      "id": "06",
+      "sourcePsd": "inputs/composites-psd/06/Composite.psd",
+      "sourceSha256": "4ec309d544124567d0c94c769a3665dab59811d9fdc641fd389701f6139a61ad",
+      "cropPlan": "work/crop-plans/06-v001.json",
+      "requiredCropIds": [
+        "C01",
+        "C02",
+        "C03"
+      ],
+      "crops": [
+        {
+          "id": "C01",
+          "selectedOutput": "work/crops/colorized/06-C01-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/06-C01-v001.png"
+          ]
+        },
+        {
+          "id": "C02",
+          "selectedOutput": "work/crops/colorized/06-C02-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/06-C02-v001.png"
+          ]
+        },
+        {
+          "id": "C03",
+          "selectedOutput": "work/crops/colorized/06-C03-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/06-C03-v001.png"
+          ]
+        }
+      ],
+      "allRequiredCropsReviewed": true,
+      "assemblyState": "saved-reopened-agent-reviewed",
+      "editableDocument": "outputs/photoshop/mother-talzin-06-colorized-v001.psd",
+      "diskReopenReview": "pass",
+      "userAcceptance": "pending",
+      "coverageReviewed": true,
+      "reviewPng": "outputs/review/mother-talzin-06-colorized-v001-sRGB.png",
+      "assemblyVerification": "work/assembly/06-v001-verification.json"
+    },
+    {
+      "id": "07",
+      "sourcePsd": "inputs/composites-psd/07/Composite.psd",
+      "sourceSha256": "70167cc8f943934699075139d7fad37258f4c046cc703c893dbf76140c30b22d",
+      "cropPlan": "work/crop-plans/07-v001.json",
+      "requiredCropIds": [
+        "C01"
+      ],
+      "crops": [
+        {
+          "id": "C01",
+          "selectedOutput": "work/crops/colorized/07-C01-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/07-C01-v001.png"
+          ]
+        }
+      ],
+      "allRequiredCropsReviewed": true,
+      "assemblyState": "saved-reopened-agent-reviewed",
+      "editableDocument": "outputs/photoshop/mother-talzin-07-colorized-v001.psd",
+      "diskReopenReview": "pass",
+      "userAcceptance": "pending",
+      "coverageReviewed": true,
+      "reviewPng": "outputs/review/mother-talzin-07-colorized-v001-sRGB.png",
+      "assemblyVerification": "work/assembly/07-v001-verification.json"
+    },
+    {
+      "id": "08",
+      "sourcePsd": "inputs/composites-psd/08/Composite.psd",
+      "sourceSha256": "2f92d35cd039f0f2479641aa2812d3e65c12420a9871b968938725d975b37011",
+      "cropPlan": "work/crop-plans/08-v001.json",
+      "requiredCropIds": [
+        "C01"
+      ],
+      "crops": [
+        {
+          "id": "C01",
+          "selectedOutput": "work/crops/colorized/08-C01-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/08-C01-v001.png"
+          ]
+        }
+      ],
+      "allRequiredCropsReviewed": true,
+      "assemblyState": "saved-reopened-agent-reviewed",
+      "editableDocument": "outputs/photoshop/mother-talzin-08-colorized-v001.psd",
+      "diskReopenReview": "pass",
+      "userAcceptance": "pending",
+      "coverageReviewed": true,
+      "reviewPng": "outputs/review/mother-talzin-08-colorized-v001-sRGB.png",
+      "assemblyVerification": "work/assembly/08-v001-verification.json"
+    },
+    {
+      "id": "09",
+      "sourcePsd": "inputs/composites-psd/09/Composite.psd",
+      "sourceSha256": "e991f9525ac31f81906bc000d3b6e75e60abc3f4edb418f8626d74c97aabd224",
+      "cropPlan": "work/crop-plans/09-v001.json",
+      "requiredCropIds": [
+        "C01"
+      ],
+      "crops": [
+        {
+          "id": "C01",
+          "selectedOutput": "work/crops/colorized/09-C01-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/09-C01-v001.png"
+          ]
+        }
+      ],
+      "allRequiredCropsReviewed": true,
+      "assemblyState": "saved-reopened-agent-reviewed",
+      "editableDocument": "outputs/photoshop/mother-talzin-09-colorized-v001.psd",
+      "diskReopenReview": "pass",
+      "userAcceptance": "pending",
+      "coverageReviewed": true,
+      "reviewPng": "outputs/review/mother-talzin-09-colorized-v001-sRGB.png",
+      "assemblyVerification": "work/assembly/09-v001-verification.json"
+    },
+    {
+      "id": "10",
+      "sourcePsd": "inputs/composites-psd/10/Composite.psd",
+      "sourceSha256": "5e0baadaa02a3afbf99518911bdbd449545f214582b3f5f2f7df0992e4313524",
+      "cropPlan": "work/crop-plans/10-v001.json",
+      "requiredCropIds": [
+        "C01",
+        "C02",
+        "C03"
+      ],
+      "crops": [
+        {
+          "id": "C01",
+          "selectedOutput": "work/crops/colorized/10-C01-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/10-C01-v001.png"
+          ]
+        },
+        {
+          "id": "C02",
+          "selectedOutput": "work/crops/colorized/10-C02-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/10-C02-v001.png"
+          ]
+        },
+        {
+          "id": "C03",
+          "selectedOutput": "work/crops/colorized/10-C03-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/10-C03-v001.png"
+          ]
+        }
+      ],
+      "allRequiredCropsReviewed": true,
+      "assemblyState": "saved-reopened-agent-reviewed",
+      "editableDocument": "outputs/photoshop/mother-talzin-10-colorized-v001.psd",
+      "diskReopenReview": "pass",
+      "userAcceptance": "pending",
+      "coverageReviewed": true,
+      "reviewPng": "outputs/review/mother-talzin-10-colorized-v001-sRGB.png",
+      "assemblyVerification": "work/assembly/10-v001-verification.json"
+    },
+    {
+      "id": "11",
+      "sourcePsd": "inputs/composites-psd/11/Composite.psd",
+      "sourceSha256": "83af6950cfb370babbbdb361c6d911e37444ee8943a0f7e651d11721b089627c",
+      "cropPlan": "work/crop-plans/11-v001.json",
+      "requiredCropIds": [
+        "C01",
+        "C02",
+        "C03"
+      ],
+      "crops": [
+        {
+          "id": "C01",
+          "selectedOutput": "work/crops/colorized/11-C01-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/11-C01-v001.png"
+          ]
+        },
+        {
+          "id": "C02",
+          "selectedOutput": "work/crops/colorized/11-C02-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/11-C02-v001.png"
+          ]
+        },
+        {
+          "id": "C03",
+          "selectedOutput": "work/crops/colorized/11-C03-v002.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/11-C03-v002.png"
+          ]
+        }
+      ],
+      "allRequiredCropsReviewed": true,
+      "assemblyState": "saved-reopened-agent-reviewed",
+      "editableDocument": "outputs/photoshop/mother-talzin-11-colorized-v001.psd",
+      "diskReopenReview": "pass",
+      "userAcceptance": "pending",
+      "coverageReviewed": true,
+      "reviewPng": "outputs/review/mother-talzin-11-colorized-v001-sRGB.png",
+      "assemblyVerification": "work/assembly/11-v001-verification.json"
+    },
+    {
+      "id": "12",
+      "sourcePsd": "inputs/composites-psd/12/Composite.psd",
+      "sourceSha256": "9d54dc4b101b2296356d96fe83e2dc5ad108091e45cf8fbc3e1ff113d93b0aa3",
+      "cropPlan": "work/crop-plans/12-v002.json",
+      "requiredCropIds": [
+        "C01",
+        "C02",
+        "C03"
+      ],
+      "crops": [
+        {
+          "id": "C01",
+          "selectedOutput": "work/crops/colorized/12-C01-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/12-C01-v001.png"
+          ]
+        },
+        {
+          "id": "C02",
+          "selectedOutput": "work/crops/colorized/12-C02-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/12-C02-v001.png"
+          ]
+        },
+        {
+          "id": "C03",
+          "selectedOutput": "work/crops/colorized/12-C03-v002.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/12-C03-v002.png"
+          ]
+        }
+      ],
+      "allRequiredCropsReviewed": true,
+      "assemblyState": "saved-reopened-agent-reviewed",
+      "editableDocument": "outputs/photoshop/mother-talzin-12-colorized-v002.psd",
+      "diskReopenReview": "pass",
+      "userAcceptance": "pending",
+      "coverageReviewed": true,
+      "previousCropPlans": [
+        "work/crop-plans/12-v001.json"
+      ],
+      "assemblyVersion": "v002",
+      "rejectedAssemblies": [
+        "outputs/rejected/mother-talzin-12-colorized-v001.psd"
+      ],
+      "reviewPng": "outputs/review/mother-talzin-12-colorized-v002-sRGB.png",
+      "assemblyVerification": "work/assembly/12-v002-verification.json"
+    },
+    {
+      "id": "13",
+      "sourcePsd": "inputs/composites-psd/13/Composite.psd",
+      "sourceSha256": "551f5918bf9a6c1ca7518e3b29a2abc19c7ee7580e1968d52eb7570d01a1adcb",
+      "cropPlan": "work/crop-plans/13-v001.json",
+      "requiredCropIds": [
+        "C01",
+        "C02"
+      ],
+      "crops": [
+        {
+          "id": "C01",
+          "selectedOutput": "work/crops/colorized/13-C01-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/13-C01-v001.png"
+          ]
+        },
+        {
+          "id": "C02",
+          "selectedOutput": "work/crops/colorized/13-C02-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/13-C02-v001.png"
+          ]
+        }
+      ],
+      "allRequiredCropsReviewed": true,
+      "assemblyState": "saved-reopened-agent-reviewed",
+      "editableDocument": "outputs/photoshop/mother-talzin-13-colorized-v001.psd",
+      "diskReopenReview": "pass",
+      "userAcceptance": "pending",
+      "coverageReviewed": true,
+      "reviewPng": "outputs/review/mother-talzin-13-colorized-v001-sRGB.png",
+      "assemblyVerification": "work/assembly/13-v001-verification.json"
+    },
+    {
+      "id": "14",
+      "sourcePsd": "inputs/composites-psd/14/Composite.psd",
+      "sourceSha256": "2c8451900d6fa9f62c57a984b947941e9030b77e89725fd8250e1a61041cc6ec",
+      "cropPlan": "work/crop-plans/14-v001.json",
+      "requiredCropIds": [
+        "C01",
+        "C02",
+        "C03"
+      ],
+      "crops": [
+        {
+          "id": "C01",
+          "selectedOutput": "work/crops/colorized/14-C01-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/14-C01-v001.png"
+          ]
+        },
+        {
+          "id": "C02",
+          "selectedOutput": "work/crops/colorized/14-C02-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/14-C02-v001.png"
+          ]
+        },
+        {
+          "id": "C03",
+          "selectedOutput": "work/crops/colorized/14-C03-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/14-C03-v001.png"
+          ]
+        }
+      ],
+      "allRequiredCropsReviewed": true,
+      "assemblyState": "saved-reopened-agent-reviewed",
+      "editableDocument": "outputs/photoshop/mother-talzin-14-colorized-v001.psd",
+      "diskReopenReview": "pass",
+      "userAcceptance": "pending",
+      "coverageReviewed": true,
+      "reviewPng": "outputs/review/mother-talzin-14-colorized-v001-sRGB.png",
+      "assemblyVerification": "work/assembly/14-v001-verification.json"
+    },
+    {
+      "id": "15",
+      "sourcePsd": "inputs/composites-psd/15/Composite.psd",
+      "sourceSha256": "0014ebb80f00ff0d41e2606cb6ef5445ac48aac5a835eb7f2da140ea62ce4236",
+      "cropPlan": "work/crop-plans/15-v001.json",
+      "requiredCropIds": [
+        "C01",
+        "C02",
+        "C03"
+      ],
+      "crops": [
+        {
+          "id": "C01",
+          "selectedOutput": "work/crops/colorized/15-C01-v003.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/15-C01-v003.png"
+          ]
+        },
+        {
+          "id": "C02",
+          "selectedOutput": "work/crops/colorized/15-C02-v002.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/15-C02-v002.png"
+          ]
+        },
+        {
+          "id": "C03",
+          "selectedOutput": "work/crops/colorized/15-C03-v001.png",
+          "review": "agent-pass",
+          "stage": "reviewed",
+          "candidates": [
+            "work/crops/colorized/15-C03-v001.png"
+          ]
+        }
+      ],
+      "allRequiredCropsReviewed": true,
+      "assemblyState": "saved-reopened-agent-reviewed",
+      "editableDocument": "outputs/photoshop/mother-talzin-15-colorized-v001.psd",
+      "diskReopenReview": "pass",
+      "userAcceptance": "pending",
+      "coverageReviewed": true,
+      "reviewPng": "outputs/review/mother-talzin-15-colorized-v001-sRGB.png",
+      "assemblyVerification": "work/assembly/15-v001-verification.json"
+    }
+  ],
+  "allViewsGeneratedCropsReviewed": true,
+  "cropReadinessNotified": true,
+  "photoshopReadiness": "native-connected-and-verified",
+  "assemblyQueue": [
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15"
+  ],
+  "currentView": "12",
+  "instructions": "Each view records requiredCropIds, selectedOutput and review state per crop, cropPlan, editableDocument, diskReopenReview and user acceptance. Only reviewed generated crops satisfy readiness.",
+  "status": "assembled-agent-reviewed-awaiting-user-acceptance",
+  "generationAuthorization": "User requested regeneration with about three crops for full sculptures such as 02, then continuation through following views.",
+  "provider": "native-chatgpt-imagegen",
+  "requestedModel": "gpt-image-2.6-sunburst",
+  "requestedQuality": "max",
+  "actualModel": "not exposed",
+  "actualQuality": "not exposed",
+  "separatelyBilledApi": false,
+  "generatedCandidateCount": 35,
+  "selectedReviewedCropCount": 35,
+  "requiredCropCount": 35,
+  "nextAction": "Review all fourteen finished views with the user; user acceptance is pending. Preserve the editable PSDs, PNGs and source passes.",
+  "productionPass": "v002",
+  "historicalCandidates": [
+    "work/crops/colorized/02-C01-v001.png",
+    "work/crops/colorized/02-C02-v001.png"
+  ],
+  "currentPassGenerationAttempts": 40,
+  "rejectedTakesRetained": 5,
+  "assembledVerifiedViewCount": 14,
+  "nativeAssemblyReport": "work/qa/native-assembly-delivery-v001.json",
+  "allViewsNativeAssemblyVerified": true
+}

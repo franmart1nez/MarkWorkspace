@@ -1,0 +1,225 @@
+{
+  "version": 3,
+  "sculptureId": "mother-talzin",
+  "compositeId": "10",
+  "sourcePsd": "inputs/composites-psd/10/Composite.psd",
+  "sourcePreview": "work/psd-previews/10-source.png",
+  "sourceSha256": "5e0baadaa02a3afbf99518911bdbd449545f214582b3f5f2f7df0992e4313524",
+  "previewSha256": "188b41216ce35170a3e6bd36da4d19473d61f798cd5e250b173ebcbf7082d3e6",
+  "coordinateSystem": "integer pixels; origin at top-left of original target canvas",
+  "canvas": {
+    "width": 3240,
+    "height": 4050,
+    "colorProfile": "untagged; no embedded ICC",
+    "bitDepth": 8,
+    "psdColorMode": 3
+  },
+  "planningBasis": "direct-target-source-size-detail-and-coverage",
+  "appearanceMaster": {
+    "compositeId": "01",
+    "role": "supplied-finished-read-only-highest-appearance-authority",
+    "file": "inputs/reference-composite-01/061126 SW3D - Mother Talzin Sculpt Image 001.jpg",
+    "sha256": "5c09e07e4adf33cf763358fb399ce2307a3ec2defc1a50d85f34e566d4dd0319",
+    "preview": "work/qa/master-preview.jpg",
+    "canvas": {
+      "width": 3240,
+      "height": 4050,
+      "bitDepth": 8,
+      "colorProfile": "sRGB IEC61966-2.1"
+    },
+    "intakeVerified": true
+  },
+  "qualityReferences": [
+    {
+      "file": "../../shared/approved-client-work/Phantom of the Opera (3).png",
+      "sha256": "301c5719022e3b513aec5b82484e2f9de4c53487920cf8f9806f7adf0b4b4ada",
+      "role": "quality-only; surface detail and material separation; never geometry or palette"
+    },
+    {
+      "file": "../../shared/approved-client-work/Exogorth Diorama (13).png",
+      "sha256": "907b86322a3e80df7bb510a6c0346710c40956e0a1d2bd6b096adbe4e16452ab",
+      "role": "quality-only; surface detail and material separation; never geometry or palette"
+    }
+  ],
+  "cropCountRationale": "Native 3240 x 4050 canvas; 3 direct production crops. Full-width horizontal regions retain focal faces and adjacent context; 192 px overlap.",
+  "regions": [
+    {
+      "id": "C01",
+      "coreRect": {
+        "x": 0,
+        "y": 0,
+        "width": 3240,
+        "height": 1500
+      },
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 3240,
+        "height": 1596
+      },
+      "pasteRect": {
+        "x": 0,
+        "y": 0,
+        "width": 3240,
+        "height": 1596
+      },
+      "overlapPixels": 192,
+      "sourceCrop": "work/crops/source/10-v001/C01.png",
+      "sourceSha256": "8b9c9123ec851022afc111ffb0eddd5baa21ca67c521562c918ec06b56ac1257",
+      "mask": "work/crops/masks/10-v001/C01.png",
+      "maskSha256": "131e7e3be67bc6776dfc09eee5afeade01fe409d6a55c966d9ef24455f86d93b",
+      "sourceMask": "inputs/composites-psd/10/Mask.psd",
+      "selectedOutput": "work/crops/colorized/10-C01-v001.png",
+      "review": "agent-pass",
+      "stage": "reviewed",
+      "candidates": [
+        {
+          "file": "work/crops/colorized/10-C01-v001.png",
+          "sha256": "33cad03e2a862ad44980e0c8c9f5ef9561db42bfcd546af7cd905e89e29c5ac7",
+          "nativeDimensions": [
+            1786,
+            880
+          ],
+          "tool": "image_gen.imagegen",
+          "prompt": "work/prompts/10-C01-v001.txt",
+          "requestedModel": "gpt-image-2.6-sunburst",
+          "requestedQuality": "max",
+          "actualModel": "not exposed",
+          "actualQuality": "not exposed",
+          "review": "agent-pass",
+          "reviewNotes": "All source/output pairs and overlap strips inspected. Oblique face/mouth, hand and lightning branch, hood folds, shoulder points, torso seams, belt, beads and source-truncated robe framing retained. Negative spaces remain black; crimson/burgundy materials and pale skin follow master. Overlaps retain corresponding torso and skirt landmarks for native masked joining; user acceptance pending.",
+          "reviewEvidence": "work/qa/10-pass002-comparison.jpg"
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "coreRect": {
+        "x": 0,
+        "y": 1500,
+        "width": 3240,
+        "height": 1400
+      },
+      "sourceRect": {
+        "x": 0,
+        "y": 1404,
+        "width": 3240,
+        "height": 1592
+      },
+      "pasteRect": {
+        "x": 0,
+        "y": 1404,
+        "width": 3240,
+        "height": 1592
+      },
+      "overlapPixels": 192,
+      "sourceCrop": "work/crops/source/10-v001/C02.png",
+      "sourceSha256": "e8de6c39b551e5082cf7f912b730f8eb2e388d13f51dd791d1ffa00f721fd4b7",
+      "mask": "work/crops/masks/10-v001/C02.png",
+      "maskSha256": "af2a56b02177027eafff3a52a643100ab9fbd939afa2b6055589b3dcb6711632",
+      "sourceMask": "inputs/composites-psd/10/Mask.psd",
+      "selectedOutput": "work/crops/colorized/10-C02-v001.png",
+      "review": "agent-pass",
+      "stage": "reviewed",
+      "candidates": [
+        {
+          "file": "work/crops/colorized/10-C02-v001.png",
+          "sha256": "85a3a3fa5f2f2356fd7ddadf4493a75a5f1301416307a3f4934af085dc1dd8b2",
+          "nativeDimensions": [
+            1789,
+            879
+          ],
+          "tool": "image_gen.imagegen",
+          "prompt": "work/prompts/10-C02-v001.txt",
+          "requestedModel": "gpt-image-2.6-sunburst",
+          "requestedQuality": "max",
+          "actualModel": "not exposed",
+          "actualQuality": "not exposed",
+          "review": "agent-pass",
+          "reviewNotes": "All source/output pairs and overlap strips inspected. Oblique face/mouth, hand and lightning branch, hood folds, shoulder points, torso seams, belt, beads and source-truncated robe framing retained. Negative spaces remain black; crimson/burgundy materials and pale skin follow master. Overlaps retain corresponding torso and skirt landmarks for native masked joining; user acceptance pending.",
+          "reviewEvidence": "work/qa/10-pass002-comparison.jpg"
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "coreRect": {
+        "x": 0,
+        "y": 2900,
+        "width": 3240,
+        "height": 1150
+      },
+      "sourceRect": {
+        "x": 0,
+        "y": 2804,
+        "width": 3240,
+        "height": 1246
+      },
+      "pasteRect": {
+        "x": 0,
+        "y": 2804,
+        "width": 3240,
+        "height": 1246
+      },
+      "overlapPixels": 192,
+      "sourceCrop": "work/crops/source/10-v001/C03.png",
+      "sourceSha256": "c57bc96712ef4a297cd39208f5de9e8297186a7ab3c12088c302ff0f39e6660a",
+      "mask": "work/crops/masks/10-v001/C03.png",
+      "maskSha256": "04bee7d37e4add2a0fca60a3fa28440a3d4c6912bc4a33e95a83ec6ae5bef190",
+      "sourceMask": "inputs/composites-psd/10/Mask.psd",
+      "selectedOutput": "work/crops/colorized/10-C03-v001.png",
+      "review": "agent-pass",
+      "stage": "reviewed",
+      "candidates": [
+        {
+          "file": "work/crops/colorized/10-C03-v001.png",
+          "sha256": "122d6f045a2088cdf0ca00146d9c44602e528911f0e25c92630ae839fa3718c3",
+          "nativeDimensions": [
+            2022,
+            778
+          ],
+          "tool": "image_gen.imagegen",
+          "prompt": "work/prompts/10-C03-v001.txt",
+          "requestedModel": "gpt-image-2.6-sunburst",
+          "requestedQuality": "max",
+          "actualModel": "not exposed",
+          "actualQuality": "not exposed",
+          "review": "agent-pass",
+          "reviewNotes": "All source/output pairs and overlap strips inspected. Oblique face/mouth, hand and lightning branch, hood folds, shoulder points, torso seams, belt, beads and source-truncated robe framing retained. Negative spaces remain black; crimson/burgundy materials and pale skin follow master. Overlaps retain corresponding torso and skirt landmarks for native masked joining; user acceptance pending.",
+          "reviewEvidence": "work/qa/10-pass002-comparison.jpg"
+        }
+      ]
+    }
+  ],
+  "coverageReviewed": true,
+  "requiredCropIds": [
+    "C01",
+    "C02",
+    "C03"
+  ],
+  "allRequiredCropsReviewed": true,
+  "assembly": {
+    "application": "Photoshop",
+    "editableDocument": "outputs/photoshop/mother-talzin-10-colorized-v001.psd",
+    "reviewExport": "outputs/review/mother-talzin-10-colorized-v001-sRGB.png",
+    "sourceReference": "SOURCE COMPOSITE - unchanged",
+    "sourceMasks": [
+      "inputs/composites-psd/10/Mask.psd",
+      "inputs/composites-psd/10/ID.psd"
+    ],
+    "colorLightingAdjustments": false,
+    "shapeReview": "agent-pass",
+    "diskReopenReview": "pass",
+    "approvalStatus": "pending-user",
+    "sourcePassGroup": "SOURCE PASSES - original data",
+    "verification": "work/assembly/10-v001-verification.json",
+    "deliveryColorProfile": "sRGB IEC61966-2.1"
+  },
+  "backgroundHandling": "Original pure-black background preserved; omitted side margins contain no source foreground.",
+  "coverageEvidence": {
+    "overview": "work/qa/crop-plan-overview.jpg",
+    "uncoveredSourceMaskPixels": 0,
+    "checks": "Source-mask coverage and crop/mask hashes verified; seams reviewed on overview."
+  },
+  "adjacentCropReview": "All source/output pairs and overlap strips inspected. Oblique face/mouth, hand and lightning branch, hood folds, shoulder points, torso seams, belt, beads and source-truncated robe framing retained. Negative spaces remain black; crimson/burgundy materials and pale skin follow master. Overlaps retain corresponding torso and skirt landmarks for native masked joining; user acceptance pending."
+}
