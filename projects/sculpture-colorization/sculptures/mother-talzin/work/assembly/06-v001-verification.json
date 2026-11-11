@@ -1,0 +1,32 @@
+{
+  "view": "06",
+  "editableDocument": "outputs/photoshop/mother-talzin-06-colorized-v001.psd",
+  "reviewPng": "outputs/review/mother-talzin-06-colorized-v001-sRGB.png",
+  "canvas": [
+    3240,
+    4050
+  ],
+  "nativeCropLayers": 3,
+  "editableEnabledCropMasks": 3,
+  "hiddenSourcePassSmartObjects": 11,
+  "hiddenOriginalComposite": true,
+  "sourceSilhouetteChannel": true,
+  "diskReopenReview": "pass",
+  "reopenRenderDiffPixels": 0,
+  "reopenMaxChannelDifference": 0,
+  "editableBytes": 253991340,
+  "editableSha256": "8f43f66d4d2100eb1c8d420ed61f52e3d5cbb6d34eddcfef584c1e9cc90ddbba",
+  "reviewPngSha256": "da2d8b8a35ff9c43f1152c8134ac36f3b7f8beba25571f516b61f63fd1dec003",
+  "sourceSha256Rechecked": "4ec309d544124567d0c94c769a3665dab59811d9fdc641fd389701f6139a61ad",
+  "agentVisualReview": "pass",
+  "userAcceptance": "pending",
+  "reopenedDocumentId": 949,
+  "placementMethod": "Uniform cover fit, centered in original source rectangle; no warping or color/lighting adjustments.",
+  "joinMethod": "Later crop overlays opaque earlier crop using a native linear source-overlap alpha mask intersected with unchanged source silhouette.",
+  "visualReviewNotes": "Reviewed native reopened three-quarter medium view. Both hands and lightning remain intact; crimson hood and ornate sleeves align with belt and flowing robe. Both joins preserve folds, boot and green-cyan smoke continuity. Native hidden Depth Smart Object was opened separately and checked for original 3240x4050 16-bit grayscale data.",
+  "nativeReopenedRender": "work/assembly/reopen-renders/mother-talzin-06-colorized-v001.png",
+  "nativeReopenedRenderSha256": "97a4ac0345af8fc5af563972f76eea50625adeb15d0d1fae75226a87419a5c70",
+  "deliveryColorProfile": "sRGB IEC61966-2.1",
+  "deliveryProfileBytes": 3144,
+  "deliveryExport": "Native Photoshop Save for Web, PNG24, embedded sRGB ICC. Export-only profile conversion from the native working profile; no document changes or grading."
+}

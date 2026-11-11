@@ -1,0 +1,32 @@
+{
+  "view": "12",
+  "editableDocument": "outputs/photoshop/mother-talzin-12-colorized-v002.psd",
+  "reviewPng": "outputs/review/mother-talzin-12-colorized-v002-sRGB.png",
+  "canvas": [
+    3240,
+    4050
+  ],
+  "nativeCropLayers": 3,
+  "editableEnabledCropMasks": 3,
+  "hiddenSourcePassSmartObjects": 11,
+  "hiddenOriginalComposite": true,
+  "sourceSilhouetteChannel": true,
+  "diskReopenReview": "pass",
+  "reopenRenderDiffPixels": 0,
+  "reopenMaxChannelDifference": 0,
+  "editableBytes": 339545405,
+  "editableSha256": "853685ec889c8c454f843515942dfb8c1e8d00ed0d47def8bf5a92653f808279",
+  "reviewPngSha256": "7dfd0589936daff89a7cc7ee629cb93436829e8f45d847fe2284ba26febac30d",
+  "sourceSha256Rechecked": "9d54dc4b101b2296356d96fe83e2dc5ad108091e45cf8fbc3e1ff113d93b0aa3",
+  "agentVisualReview": "pass",
+  "userAcceptance": "pending",
+  "reopenedDocumentId": 2109,
+  "placementMethod": "Uniform cover fit, centered in original source rectangle; no warping or color/lighting adjustments.",
+  "joinMethod": "Later crop overlays opaque earlier crop using a native linear source-overlap alpha mask intersected with unchanged source silhouette.",
+  "visualReviewNotes": "Reviewed native reopened v002 full view and full-size hanging-hand detail against the exact source. Both spread fingers and full nail tips now remain complete through the unchanged source silhouette; prior v001 failed and is rejected. C02 center hand stays entirely flesh-colored through y3100; the final 96 px ramp joins on architecture below the fingertips. Rear base retains original ornaments without invented frontal mask or red emission. Disk-reopen render is pixel-identical.",
+  "nativeReopenedRender": "work/assembly/reopen-renders/mother-talzin-12-colorized-v002.png",
+  "nativeReopenedRenderSha256": "7e71ee628d10acff9569806e621896db81b9bc438190893d5028b66e5c1d43fa",
+  "deliveryColorProfile": "sRGB IEC61966-2.1",
+  "deliveryProfileBytes": 3144,
+  "deliveryExport": "Native Photoshop Save for Web, PNG24, embedded sRGB ICC. Export-only profile conversion from the native working profile; no document changes or grading."
+}

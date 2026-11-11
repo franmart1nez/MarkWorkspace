@@ -1,0 +1,35 @@
+{
+  "revision": "2026-11-08",
+  "scope": "Finished Composite 01 reference, direct target crops and Photoshop-only montage",
+  "activeSculpture": null,
+  "generationSubmitted": false,
+  "sharedQualitySourceCount": 41,
+  "obsoleteActiveReferences": {
+    "previousSculptureNames": 0,
+    "previousAssemblyApplication": 0,
+    "retirement": "Obsolete project/card files and private scratch were moved to an ignored local backup after recursive deletion was rejected. Shared quality originals and private job receipts were retained."
+  },
+  "checks": {
+    "workflowUnitTests": {"passed": 9, "failed": 0},
+    "cardSchema": "passed",
+    "registeredTabLocalLinks": "passed",
+    "previewWidths": [1440, 768, 390],
+    "previewTabCount": 5,
+    "narrowPreview": "Existing menu folded for document reading; no page-wide horizontal overflow",
+    "sharedQualityImage": "visually inspected; load, enlargement, download and close passed",
+    "skillDistributionSync": "378 files verified identical",
+    "mcpConfiguration": "TOML/JSON parse, matching definitions and local executable verified",
+    "mcpTransport": "initialized and three live tool schemas discovered",
+    "mcpClosedApplicationStatus": "running=false; application not launched",
+    "mcpClosedDocumentInspection": "expected failure surfaced with error status and nonzero client exit; no automatic retry"
+  },
+  "pendingNativeChecks": [
+    "User opens Photoshop after the generated crop batch passes review",
+    "Native COM/JSX access with running Photoshop 2026",
+    "Exact intended document and source match",
+    "Native layer/mask montage behavior",
+    "Saved PSD/PSB disk reopen and render comparison"
+  ],
+  "evidence": "Private screenshots and MCP receipts are under ignored .mrmak/photoshop-mcp/. Unit tests are in tests/test_workflow.py.",
+  "applicationRestarted": false
+}

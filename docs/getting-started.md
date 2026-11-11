@@ -45,7 +45,7 @@ the provider and a descriptive English title. Start with a task such as
 `Dream Game Plan`. Choose the repository as the working folder. The normal CLI
 permission flow is enabled by default; bypass is a deliberate per-chat choice.
 
-New Codex and Claude chats default to `xhigh` reasoning effort. Saved effort
+New Codex, Claude and Antigravity chats default to `medium` reasoning effort. Saved effort
 choices stay with existing chats. Web links in terminal output open in your
 default browser with a click.
 
@@ -100,7 +100,7 @@ coordinator. Its model follows your account configuration; an optional
 Voice requests can focus a chat, inspect a report, update a card or hand a larger
 task to a worker. Direct actions stay quick; a visible worker handles deliverables.
 Task-specific voice requests can use medium, high or xhigh effort. A direct
-request to open a new chat uses the same `xhigh` default as the **+** button.
+request to open a new chat uses the same `medium` default as the **+** button.
 Max requires an explicit request. The app reports tool results before calling
 an action complete.
 
@@ -173,9 +173,14 @@ Install [Node.js](https://nodejs.org/en/download), Rust's MSVC toolchain and
 Microsoft C++ Build Tools and WebView2. Node.js 22.20+ is required by this template.
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\Setup.ps1 -Mode Check
-powershell -ExecutionPolicy Bypass -File .\Setup.ps1 -Mode Desktop
+pwsh -ExecutionPolicy Bypass -File .\Setup.ps1 -Mode Check
+pwsh -ExecutionPolicy Bypass -File .\Setup.ps1 -Mode Desktop
 ```
+
+These commands use PowerShell 7 (`pwsh`). Setup reruns itself under PowerShell 7
+when it is installed, even if Windows PowerShell launched it. If PowerShell 7 is
+not installed, replace `pwsh` with `powershell`; the app then falls back to
+Windows PowerShell for its Shell tab.
 
 On macOS and Linux, `./setup.sh check` and `./setup.sh desktop` do the same
 (see [macOS](#macos)).
@@ -186,10 +191,10 @@ or restart the app for you. An agent should prepare updates, then ask before
 interrupting active chats with an install or restart.
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\Setup.ps1 -Mode Update
+pwsh -ExecutionPolicy Bypass -File .\Setup.ps1 -Mode Update
 ```
 
-Run Update in a separate Windows PowerShell window opened from Start, outside
+Run Update in a separate PowerShell 7 window opened from Start, outside
 Mr. Mak. An updater inside a managed chat would stop when you quit the app;
 Setup detects that case before building. Update waits for you to quit from the
 tray, checks that the bundled service has exited, installs the build silently
@@ -205,7 +210,7 @@ for Preview or the downloaded Windows installer.** They are needed only to
 compile the desktop app from source.
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\Setup.ps1 -Mode Preview
+pwsh -ExecutionPolicy Bypass -File .\Setup.ps1 -Mode Preview
 ```
 
 On macOS or Linux:

@@ -5,7 +5,7 @@
 - Answer CLI questions in Conversation and on the phone, including multiple selections, typed answers and long option descriptions. Keep unread indicators and compaction messages current, and ignore terminal device replies when deciding whether you are typing.
 - Read Antigravity and OpenCode conversations alongside Codex and Claude, with tool activity and media previews. Native history is read without changing the provider's database. Antigravity session discovery and context updates keep running while its transcript is attached.
 - Show each chat's latest context occupancy, with unknown states when native data is missing or stale. Claude's model-based window is labelled as an estimate; OpenCode reports tokens without inventing a limit.
-- Choose the default reasoning effort in Settings or New chat. Extra high remains the initial default, and existing chats and explicit choices keep their effort.
+- Choose the default reasoning effort in Settings or New chat. medium remains the initial default, and existing chats and explicit choices keep their effort.
 - Group tabs by project with one button. Custom names survive ungrouping, regrouping and app restart, including groups whose members are all open.
 - Remove inherited Claude parent-session identity from new terminal chats while preserving user configuration. Recognize Antigravity 1.4.7 log suffixes and its print/streaming lifecycle messages without accepting arbitrary trailing text.
 - Update the pinned setup-python action and add context/unread browser checks on Windows and macOS.

@@ -1,0 +1,137 @@
+{
+  "version": 3,
+  "id": "mother-talzin",
+  "title": "Mother Talzin",
+  "created": "2026-11-08",
+  "status": "assembled-agent-reviewed-awaiting-user-acceptance",
+  "finish": "realistic-according-to-finished-composite-01",
+  "providerPolicy": "../../project.json#/providerPolicy",
+  "workflowPolicy": "../../project.json#/workflowPolicy",
+  "workflowRevision": "2026-11-08",
+  "sharedQualityReferences": "../../shared/approved-client-work",
+  "inputs": {
+    "finishedComposite01": "inputs/reference-composite-01",
+    "compositePsds": "inputs/composites-psd"
+  },
+  "appearanceMaster": {
+    "compositeId": "01",
+    "role": "supplied-finished-read-only-highest-appearance-authority",
+    "file": "inputs/reference-composite-01/061126 SW3D - Mother Talzin Sculpt Image 001.jpg",
+    "sha256": "5c09e07e4adf33cf763358fb399ce2307a3ec2defc1a50d85f34e566d4dd0319",
+    "preview": "work/qa/master-preview.jpg",
+    "canvas": {
+      "width": 3240,
+      "height": 4050,
+      "bitDepth": 8,
+      "colorProfile": "sRGB IEC61966-2.1"
+    },
+    "intakeVerified": true
+  },
+  "work": {
+    "previews": "work/psd-previews",
+    "cropPlans": "work/crop-plans",
+    "sourceCrops": "work/crops/source",
+    "colorizedCrops": "work/crops/colorized",
+    "masks": "work/crops/masks",
+    "reviewEvidence": "work/qa",
+    "batchManifest": "work/batch.json"
+  },
+  "outputs": {
+    "editableAssembly": "outputs/photoshop",
+    "review": "outputs/review",
+    "approved": "outputs/approved",
+    "exports": "outputs/exports"
+  },
+  "composites": [
+    {
+      "id": "02",
+      "sourcePsd": "inputs/composites-psd/02/Composite.psd",
+      "cropPlan": "work/crop-plans/02-v002.json"
+    },
+    {
+      "id": "03",
+      "sourcePsd": "inputs/composites-psd/03/Composite.psd",
+      "cropPlan": "work/crop-plans/03-v002.json"
+    },
+    {
+      "id": "04",
+      "sourcePsd": "inputs/composites-psd/04/Composite.psd",
+      "cropPlan": "work/crop-plans/04-v002.json"
+    },
+    {
+      "id": "05",
+      "sourcePsd": "inputs/composites-psd/05/Composite.psd",
+      "cropPlan": "work/crop-plans/05-v001.json"
+    },
+    {
+      "id": "06",
+      "sourcePsd": "inputs/composites-psd/06/Composite.psd",
+      "cropPlan": "work/crop-plans/06-v001.json"
+    },
+    {
+      "id": "07",
+      "sourcePsd": "inputs/composites-psd/07/Composite.psd",
+      "cropPlan": "work/crop-plans/07-v001.json"
+    },
+    {
+      "id": "08",
+      "sourcePsd": "inputs/composites-psd/08/Composite.psd",
+      "cropPlan": "work/crop-plans/08-v001.json"
+    },
+    {
+      "id": "09",
+      "sourcePsd": "inputs/composites-psd/09/Composite.psd",
+      "cropPlan": "work/crop-plans/09-v001.json"
+    },
+    {
+      "id": "10",
+      "sourcePsd": "inputs/composites-psd/10/Composite.psd",
+      "cropPlan": "work/crop-plans/10-v001.json"
+    },
+    {
+      "id": "11",
+      "sourcePsd": "inputs/composites-psd/11/Composite.psd",
+      "cropPlan": "work/crop-plans/11-v001.json"
+    },
+    {
+      "id": "12",
+      "sourcePsd": "inputs/composites-psd/12/Composite.psd",
+      "cropPlan": "work/crop-plans/12-v002.json"
+    },
+    {
+      "id": "13",
+      "sourcePsd": "inputs/composites-psd/13/Composite.psd",
+      "cropPlan": "work/crop-plans/13-v001.json"
+    },
+    {
+      "id": "14",
+      "sourcePsd": "inputs/composites-psd/14/Composite.psd",
+      "cropPlan": "work/crop-plans/14-v001.json"
+    },
+    {
+      "id": "15",
+      "sourcePsd": "inputs/composites-psd/15/Composite.psd",
+      "cropPlan": "work/crop-plans/15-v001.json"
+    }
+  ],
+  "model": null,
+  "creditLimit": null,
+  "handoff": "START_HERE.md",
+  "updated": "2026-11-08",
+  "qualityReferences": [
+    {
+      "file": "../../shared/approved-client-work/Phantom of the Opera (3).png",
+      "sha256": "301c5719022e3b513aec5b82484e2f9de4c53487920cf8f9806f7adf0b4b4ada",
+      "role": "quality-only; surface detail and material separation; never geometry or palette"
+    },
+    {
+      "file": "../../shared/approved-client-work/Exogorth Diorama (13).png",
+      "sha256": "907b86322a3e80df7bb510a6c0346710c40956e0a1d2bd6b096adbe4e16452ab",
+      "role": "quality-only; surface detail and material separation; never geometry or palette"
+    }
+  ],
+  "generationAuthorization": "User requested regeneration with about three crops for full sculptures such as 02, then continuation through following views.",
+  "nextAction": "Review all fourteen finished views with the user; user acceptance is pending. Preserve the editable PSDs, PNGs and source passes.",
+  "productionPass": "v002",
+  "cropCountPreference": "about 3 crops for complete sculpture views; source-size/detail dependent elsewhere"
+}

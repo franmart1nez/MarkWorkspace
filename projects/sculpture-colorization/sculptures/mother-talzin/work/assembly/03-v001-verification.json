@@ -1,0 +1,32 @@
+{
+  "view": "03",
+  "editableDocument": "outputs/photoshop/mother-talzin-03-colorized-v001.psd",
+  "reviewPng": "outputs/review/mother-talzin-03-colorized-v001-sRGB.png",
+  "canvas": [
+    3240,
+    4050
+  ],
+  "nativeCropLayers": 3,
+  "editableEnabledCropMasks": 3,
+  "hiddenSourcePassSmartObjects": 11,
+  "hiddenOriginalComposite": true,
+  "sourceSilhouetteChannel": true,
+  "diskReopenReview": "pass",
+  "reopenRenderDiffPixels": 0,
+  "reopenMaxChannelDifference": 0,
+  "editableBytes": 190342005,
+  "editableSha256": "840a40bfeb857b5f5358738490beb8129c6a3eaff3bea3ae82858d83f9b5d891",
+  "reviewPngSha256": "13918d2361d51e1fc8a9fa33e16420b8206202d9546be48306732aaaefcd63e1",
+  "sourceSha256Rechecked": "0c7a68429a84ebff7ed18e1dd6b245d653337ae1cc153879db6d689eac4eebf5",
+  "agentVisualReview": "pass",
+  "userAcceptance": "pending",
+  "reopenedDocumentId": 412,
+  "placementMethod": "Uniform cover fit, centered in original source rectangle; no warping or color/lighting adjustments.",
+  "joinMethod": "Later crop overlays opaque earlier crop using a native linear source-overlap alpha mask intersected with unchanged source silhouette.",
+  "visualReviewNotes": "Native reopened render reviewed: rear hood remains fully crimson, both hands and lightning, sleeves, crossed back plates, flying robe, magic and rear-base ornament stay continuous. No visible blend line at review scale. Source shape and black holes retained.",
+  "nativeReopenedRender": "work/assembly/reopen-renders/mother-talzin-03-colorized-v001.png",
+  "nativeReopenedRenderSha256": "f53631f309eff06c13a109cf8f88daca11e0baee716c8a2596776548d5cae6d6",
+  "deliveryColorProfile": "sRGB IEC61966-2.1",
+  "deliveryProfileBytes": 3144,
+  "deliveryExport": "Native Photoshop Save for Web, PNG24, embedded sRGB ICC. Export-only profile conversion from the native working profile; no document changes or grading."
+}

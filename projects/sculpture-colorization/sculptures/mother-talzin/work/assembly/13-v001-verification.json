@@ -1,0 +1,32 @@
+{
+  "view": "13",
+  "editableDocument": "outputs/photoshop/mother-talzin-13-colorized-v001.psd",
+  "reviewPng": "outputs/review/mother-talzin-13-colorized-v001-sRGB.png",
+  "canvas": [
+    3240,
+    4050
+  ],
+  "nativeCropLayers": 2,
+  "editableEnabledCropMasks": 2,
+  "hiddenSourcePassSmartObjects": 11,
+  "hiddenOriginalComposite": true,
+  "sourceSilhouetteChannel": true,
+  "diskReopenReview": "pass",
+  "reopenRenderDiffPixels": 0,
+  "reopenMaxChannelDifference": 0,
+  "editableBytes": 488531336,
+  "editableSha256": "bd8aa5e05b3a831a1277f327e558a55118b50a03e724b3d2de57ce0620d03824",
+  "reviewPngSha256": "15d4b6eedf5cc136b8fc4ac64976a159a7bc7b5f9e4147b829a7a963aa840cfb",
+  "sourceSha256Rechecked": "551f5918bf9a6c1ca7518e3b29a2abc19c7ee7580e1968d52eb7570d01a1adcb",
+  "agentVisualReview": "pass",
+  "userAcceptance": "pending",
+  "reopenedDocumentId": 2272,
+  "placementMethod": "Uniform cover fit, centered in original source rectangle; no warping or color/lighting adjustments.",
+  "joinMethod": "Later crop overlays opaque earlier crop using a native linear source-overlap alpha mask intersected with unchanged source silhouette.",
+  "visualReviewNotes": "Reviewed native reopened base detail framing: reaching hand and full nails, undead face/torso, shoulder/arm at right, green-cyan smoke and architectural relief remain continuous through the two-crop join. Front mask red mouth/channel emission and local base bounce are present without altering side ornament.",
+  "nativeReopenedRender": "work/assembly/reopen-renders/mother-talzin-13-colorized-v001.png",
+  "nativeReopenedRenderSha256": "3280251b4c4d2728c28bf6a4175c2a6df6e8773c77a9eec1ecb5a4e2bcaa66c2",
+  "deliveryColorProfile": "sRGB IEC61966-2.1",
+  "deliveryProfileBytes": 3144,
+  "deliveryExport": "Native Photoshop Save for Web, PNG24, embedded sRGB ICC. Export-only profile conversion from the native working profile; no document changes or grading."
+}

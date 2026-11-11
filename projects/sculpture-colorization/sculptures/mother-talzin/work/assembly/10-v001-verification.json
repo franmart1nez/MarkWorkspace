@@ -1,0 +1,32 @@
+{
+  "view": "10",
+  "editableDocument": "outputs/photoshop/mother-talzin-10-colorized-v001.psd",
+  "reviewPng": "outputs/review/mother-talzin-10-colorized-v001-sRGB.png",
+  "canvas": [
+    3240,
+    4050
+  ],
+  "nativeCropLayers": 3,
+  "editableEnabledCropMasks": 3,
+  "hiddenSourcePassSmartObjects": 11,
+  "hiddenOriginalComposite": true,
+  "sourceSilhouetteChannel": true,
+  "diskReopenReview": "pass",
+  "reopenRenderDiffPixels": 0,
+  "reopenMaxChannelDifference": 0,
+  "editableBytes": 319045200,
+  "editableSha256": "fe23885055ba7f678c017d0c24792e012907a9889dcb19e8c131591bac7bd8a5",
+  "reviewPngSha256": "b813703f3620944e53f7ec36b7a3390ac706492051e5c02503a1b302b1235c0f",
+  "sourceSha256Rechecked": "5e0baadaa02a3afbf99518911bdbd449545f214582b3f5f2f7df0992e4313524",
+  "agentVisualReview": "pass",
+  "userAcceptance": "pending",
+  "reopenedDocumentId": 1572,
+  "placementMethod": "Uniform cover fit, centered in original source rectangle; no warping or color/lighting adjustments.",
+  "joinMethod": "Later crop overlays opaque earlier crop using a native linear source-overlap alpha mask intersected with unchanged source silhouette.",
+  "visualReviewNotes": "Reviewed native reopened close upper-body three-quarter framing: face, hood, horns, raised hand and lightning match selected crops. Chest ornament, belt and skirt remain continuous across native overlap masks, with no visible hard seam at review scale.",
+  "nativeReopenedRender": "work/assembly/reopen-renders/mother-talzin-10-colorized-v001.png",
+  "nativeReopenedRenderSha256": "dd2a80662171753895f06f7f56bf4608038ea7069d72c12c77080893d4a2d602",
+  "deliveryColorProfile": "sRGB IEC61966-2.1",
+  "deliveryProfileBytes": 3144,
+  "deliveryExport": "Native Photoshop Save for Web, PNG24, embedded sRGB ICC. Export-only profile conversion from the native working profile; no document changes or grading."
+}

@@ -6,6 +6,7 @@ import { mkdtemp, mkdir, readFile, readdir, rm, rmdir, stat, utimes, writeFile }
 import os from 'node:os';
 import path from 'node:path';
 import { saveJson, sleep } from '../util.mjs';
+import { shellCommand } from '../platform.mjs';
 import { Sessions } from '../sessions.mjs';
 
 const write = (terminal, data) => new Promise(resolve => terminal.write(data, resolve));
@@ -31,7 +32,7 @@ async function lockFile(file) {
       [Console]::ReadLine() | Out-Null
     } finally { $stream.Dispose() }
   `;
-  const child = spawn('powershell.exe', ['-NoProfile', '-NonInteractive', '-EncodedCommand', Buffer.from(script, 'utf16le').toString('base64')], {
+  const child = spawn(shellCommand().file, ['-NoProfile', '-NonInteractive', '-EncodedCommand', Buffer.from(script, 'utf16le').toString('base64')], {
     windowsHide: true, env: { ...process.env, MRMAK_TEST_LOCK_FILE: file }, stdio: ['pipe', 'pipe', 'pipe'],
   });
   const exited = once(child, 'exit');

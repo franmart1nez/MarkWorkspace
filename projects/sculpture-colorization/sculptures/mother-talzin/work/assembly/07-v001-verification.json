@@ -1,0 +1,32 @@
+{
+  "view": "07",
+  "editableDocument": "outputs/photoshop/mother-talzin-07-colorized-v001.psd",
+  "reviewPng": "outputs/review/mother-talzin-07-colorized-v001-sRGB.png",
+  "canvas": [
+    3240,
+    4050
+  ],
+  "nativeCropLayers": 1,
+  "editableEnabledCropMasks": 1,
+  "hiddenSourcePassSmartObjects": 11,
+  "hiddenOriginalComposite": true,
+  "sourceSilhouetteChannel": true,
+  "diskReopenReview": "pass",
+  "reopenRenderDiffPixels": 0,
+  "reopenMaxChannelDifference": 0,
+  "editableBytes": 298867001,
+  "editableSha256": "1ca7501ae057eb73cab10741f9aa4a1da279db7ba8e2b827bfe51066e821c12a",
+  "reviewPngSha256": "a409a17709b3e03b3ab5a74b616bdc0076d4965fe309f92e4e594c4f4afbd37f",
+  "sourceSha256Rechecked": "70167cc8f943934699075139d7fad37258f4c046cc703c893dbf76140c30b22d",
+  "agentVisualReview": "pass",
+  "userAcceptance": "pending",
+  "reopenedDocumentId": 1099,
+  "placementMethod": "Uniform cover fit, centered in original source rectangle; no warping or color/lighting adjustments.",
+  "joinMethod": "Later crop overlays opaque earlier crop using a native linear source-overlap alpha mask intersected with unchanged source silhouette.",
+  "visualReviewNotes": "Reviewed native reopened frontal portrait: face, eye makeup, lips, hood pleats, horns and shoulder ornament match selected source-aligned crop. Single uninterrupted crop and source silhouette preserve the close framing; no join crosses the face.",
+  "nativeReopenedRender": "work/assembly/reopen-renders/mother-talzin-07-colorized-v001.png",
+  "nativeReopenedRenderSha256": "8ed423600813c2a5bd1c51ca82a9dbe304f5559e31aacba395991aa59d35212c",
+  "deliveryColorProfile": "sRGB IEC61966-2.1",
+  "deliveryProfileBytes": 3144,
+  "deliveryExport": "Native Photoshop Save for Web, PNG24, embedded sRGB ICC. Export-only profile conversion from the native working profile; no document changes or grading."
+}

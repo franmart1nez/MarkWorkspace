@@ -1,0 +1,140 @@
+{
+  "version": 5,
+  "id": "sculpture-colorization",
+  "title": "Sculpture Colorization",
+  "created": "2026-11-05",
+  "provider": "chatgpt",
+  "mcpServer": null,
+  "assemblyIntegration": {
+    "application": "Photoshop",
+    "mcpServer": "photoshop",
+    "instructions": "PHOTOSHOP_INTEGRATION.md",
+    "status": "installed-transport-verified-native-app-closed"
+  },
+  "operation": "finished-01-reference-direct-crops-batch-review-sequential-photoshop",
+  "finish": "realistic-according-to-references",
+  "model": null,
+  "defaults": {
+    "aspectRatio": "match-source-crop",
+    "resolution": "retain-original-canvas-and-crop-coordinates",
+    "upscale": false,
+    "creditLimit": null,
+    "preserve": [
+      "identity",
+      "anatomy",
+      "geometry",
+      "silhouette",
+      "pose",
+      "sculpted-details",
+      "camera",
+      "framing",
+      "background",
+      "part-placement"
+    ],
+    "change": [
+      "master-defined-color",
+      "master-defined-material-appearance"
+    ],
+    "appearanceAuthority": "same-sculpture-supplied-finished-composite-01",
+    "secondaryQualityAuthority": "shared-client-approved-work",
+    "editableAssemblyApplication": "Photoshop",
+    "assemblyColorLightingAdjustments": false,
+    "typicalRemainingViewCount": [
+      10,
+      15
+    ]
+  },
+  "paths": {
+    "productionRoot": ".",
+    "localIndexSnapshot": "../../.mrmak/sculpture-colorization/settings.json",
+    "sharedQualityRelativeToProductionRoot": "shared/approved-client-work",
+    "sculpturesRelativeToProductionRoot": "sculptures",
+    "guidelinesRelativeToProductionRoot": "guidelines",
+    "sculptureManifestTemplate": "templates/sculpture-project.json",
+    "localJobReceipts": "../../.mrmak/sculpture-colorization/jobs",
+    "workspaceCard": "../../workspace/2026-11-05_sculpture-colorization",
+    "photoshopIntegration": "PHOTOSHOP_INTEGRATION.md"
+  },
+  "sculptureRegistry": "one project.json per sculpture under this project's sculptures directory",
+  "activeSculpture": "mother-talzin",
+  "providerPolicy": {
+    "appliesTo": "all-current-and-future-sculptures-for-new-production",
+    "primary": "chatgpt",
+    "capability": "native-image-generation-and-editing",
+    "magnific": {
+      "mode": "explicit-user-request-only",
+      "automaticFallback": false,
+      "integration": "INTEGRATION.md"
+    },
+    "separatelyBilledApiFallbackAutomatic": false,
+    "resolveExistingJobBeforeReplacement": true,
+    "instructions": "GENERATION_POLICY.md",
+    "revision": "2026-11-07-highest-quality-chatgpt",
+    "modelPreferenceOrder": [
+      {
+        "model": "gpt-image-2.6-sunburst",
+        "quality": "max"
+      },
+      {
+        "model": "gpt-image-2.5-sunburst",
+        "quality": "max"
+      }
+    ],
+    "modelFallbackTrigger": "confirmed-account-or-tool-unavailability",
+    "modelFallbackPreauthorized": true,
+    "whenSelectorsAbsent": "use-available-native-chatgpt-generator; actual-model-and-quality-not-exposed"
+  },
+  "updated": "2026-11-08",
+  "nextAction": "Review all fourteen finished views with the user; user acceptance is pending. Preserve the editable PSDs, PNGs and source passes.",
+  "workflowPolicy": {
+    "revision": "2026-11-08",
+    "sequence": [
+      "inspect-supplied-finished-01-shared-quality-and-target-sources",
+      "plan-low-count-size-dependent-crops-directly-from-all-target-sources",
+      "generate-and-review-all-target-crops",
+      "announce-batch-crops-ready-and-request-photoshop-if-closed",
+      "verify-native-connection-and-target",
+      "assemble-save-reopen-verify-each-view-sequentially"
+    ],
+    "generateComposite01": false,
+    "preliminaryFullViewGeneration": false,
+    "appearanceReferences": [
+      "supplied-finished-composite-01",
+      "shared-client-approved-work"
+    ],
+    "cropPlanningBasis": "target-source-dimensions-detail-coverage-low-count",
+    "cropCountGuidance": {
+      "small": [
+        1,
+        2
+      ],
+      "medium": [
+        2,
+        4
+      ],
+      "large": [
+        4,
+        6
+      ],
+      "fixedQuota": false
+    },
+    "allViewsGeneratedCropsReviewedBeforeAssembly": true,
+    "assemblyApplications": [
+      "Photoshop"
+    ],
+    "assemblyInputs": [
+      "reviewed-generated-crops",
+      "target-original-composite-and-source-masks"
+    ],
+    "assemblyAllowed": [
+      "placement",
+      "proportion-preserving-size-reconciliation",
+      "source-derived-masks",
+      "edge-joins",
+      "shape-verification"
+    ],
+    "assemblyColorLightingAdjustments": false,
+    "assemblyOrder": "one-view-at-a-time-save-and-reopen-before-next"
+  },
+  "status": "assembled-agent-reviewed-awaiting-user-acceptance"
+}

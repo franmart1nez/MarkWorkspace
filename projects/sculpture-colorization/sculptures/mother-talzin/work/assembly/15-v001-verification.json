@@ -1,0 +1,32 @@
+{
+  "view": "15",
+  "editableDocument": "outputs/photoshop/mother-talzin-15-colorized-v001.psd",
+  "reviewPng": "outputs/review/mother-talzin-15-colorized-v001-sRGB.png",
+  "canvas": [
+    3240,
+    4050
+  ],
+  "nativeCropLayers": 3,
+  "editableEnabledCropMasks": 3,
+  "hiddenSourcePassSmartObjects": 11,
+  "hiddenOriginalComposite": true,
+  "sourceSilhouetteChannel": true,
+  "diskReopenReview": "pass",
+  "reopenRenderDiffPixels": 0,
+  "reopenMaxChannelDifference": 0,
+  "editableBytes": 284907953,
+  "editableSha256": "6e694b08e19ca57d451f0176ea0c0c5798f69b141bb8e7520a90ee6d88431485",
+  "reviewPngSha256": "5702221ad080afbb1defa19aab99b6502bac299fae88b72024eb9d453d424ba1",
+  "sourceSha256Rechecked": "0014ebb80f00ff0d41e2606cb6ef5445ac48aac5a835eb7f2da140ea62ce4236",
+  "agentVisualReview": "pass",
+  "userAcceptance": "pending",
+  "reopenedDocumentId": 2631,
+  "placementMethod": "Uniform cover fit, centered in original source rectangle; no warping or color/lighting adjustments.",
+  "joinMethod": "Later crop overlays opaque earlier crop using a native linear source-overlap alpha mask intersected with unchanged source silhouette.",
+  "visualReviewNotes": "Reviewed native reopened rear upper-body view: both full hands and white-lime emissive rods, original black lightning holes, fully crimson back hood, crossed rear plates, belt and robe align continuously. Selected C01 v003 and C02 v002 repair the earlier wisps, dim emission and pale back-hood patch. No visible hard join at review scale; no frontal face invented.",
+  "nativeReopenedRender": "work/assembly/reopen-renders/mother-talzin-15-colorized-v001.png",
+  "nativeReopenedRenderSha256": "35fbcff27090c8c93326a957361b39dd2fcf0b72e02f459de4cece9c182f1a5d",
+  "deliveryColorProfile": "sRGB IEC61966-2.1",
+  "deliveryProfileBytes": 3144,
+  "deliveryExport": "Native Photoshop Save for Web, PNG24, embedded sRGB ICC. Export-only profile conversion from the native working profile; no document changes or grading."
+}

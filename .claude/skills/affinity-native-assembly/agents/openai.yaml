@@ -1,0 +1,4 @@
+interface:
+  display_name: "Affinity Native Assembly"
+  short_description: "Assemble editable collages through Affinity native MCP"
+  default_prompt: "Use $affinity-native-assembly to check Affinity readiness and assemble the reviewed images with editable masks."

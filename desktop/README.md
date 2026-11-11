@@ -34,7 +34,7 @@ delayed first prompts, and reads bounded metadata records larger than one small
 buffer. Closing or resuming a tab can recover a missing ID from its exact Mr. Mak
 origin marker. Shared working directories alone are not proof of ownership.
 
-New Codex, Claude and Antigravity chats default to `xhigh`; explicit saved effort
+New Codex, Claude and Antigravity chats default to `medium`; explicit saved effort
 choices are preserved. Settings and New chat offer a default reasoning-effort
 picker for subsequent chats. Terminal URLs and OSC 8 links use xterm link handlers. New-window
 requests from both app windows open HTTP(S) links in the system default browser

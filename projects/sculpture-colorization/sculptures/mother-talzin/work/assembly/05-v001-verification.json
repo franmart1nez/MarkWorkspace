@@ -1,0 +1,32 @@
+{
+  "view": "05",
+  "editableDocument": "outputs/photoshop/mother-talzin-05-colorized-v001.psd",
+  "reviewPng": "outputs/review/mother-talzin-05-colorized-v001-sRGB.png",
+  "canvas": [
+    3240,
+    4050
+  ],
+  "nativeCropLayers": 3,
+  "editableEnabledCropMasks": 3,
+  "hiddenSourcePassSmartObjects": 11,
+  "hiddenOriginalComposite": true,
+  "sourceSilhouetteChannel": true,
+  "diskReopenReview": "pass",
+  "reopenRenderDiffPixels": 0,
+  "reopenMaxChannelDifference": 0,
+  "editableBytes": 243068845,
+  "editableSha256": "178bb0b952bf34effc2a3f7cd8047a9cfdf51ac1ae59905ef535c3277ace8851",
+  "reviewPngSha256": "2749250710557d287c48e0466c7db2823c30c8f651a0fe7fb36f26121ba5c8e0",
+  "sourceSha256Rechecked": "51577eb8efe0663b7cfa22a152b1a2dd78c31c0b4823882b41b18529407423af",
+  "agentVisualReview": "pass",
+  "userAcceptance": "pending",
+  "reopenedDocumentId": 770,
+  "placementMethod": "Uniform cover fit, centered in original source rectangle; no warping or color/lighting adjustments.",
+  "joinMethod": "Later crop overlays opaque earlier crop using a native linear source-overlap alpha mask intersected with unchanged source silhouette.",
+  "visualReviewNotes": "Reviewed native reopened front medium framing against original crop plan. Face and hands remain pale with dark makeup, crimson hood/armor/robe continuous across both overlaps, white-lime lightning cores and green-cyan smoke retained. Framing intentionally crops the base as in the original view.",
+  "nativeReopenedRender": "work/assembly/reopen-renders/mother-talzin-05-colorized-v001.png",
+  "nativeReopenedRenderSha256": "18e5962bc772b49f21f519d4630792d157fb8678722ca6b941dc5cae3b061988",
+  "deliveryColorProfile": "sRGB IEC61966-2.1",
+  "deliveryProfileBytes": 3144,
+  "deliveryExport": "Native Photoshop Save for Web, PNG24, embedded sRGB ICC. Export-only profile conversion from the native working profile; no document changes or grading."
+}

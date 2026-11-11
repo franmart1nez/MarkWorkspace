@@ -10,6 +10,9 @@ working. Ask for missing personal preferences; do not invent a biography.
   requested for that output. A conversation in another language does not change
   the default language of stored work.
 - Check `processes/` for an existing workflow and `knowledge/` for prior decisions.
+- For native Affinity montage, use `.agents/skills/affinity-native-assembly/SKILL.md`
+  and `processes/affinity-native-assembly.md`. After crop review, ask the user to
+  open Affinity only if needed; verify native connection and target before editing.
 - Use the project skills in `.agents/skills/`. Claude entries in
   `.claude/skills/` are complete distribution copies. After editing a shared skill,
   run `npm run skills:sync`; template checks detect differences between copies.

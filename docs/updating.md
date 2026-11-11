@@ -51,7 +51,7 @@ because the ad-hoc signature changes. See [macOS notes](macos.md).
 Version 0.6.3 extends **Conversation** to Antigravity and OpenCode and adds CLI
 question controls on desktop and phone. Each desktop chat shows its latest
 context usage; inferred Claude limits are labelled as estimates. **Settings →
-Chats → Default reasoning effort** controls new chats, with Extra high retained
+Chats → Default reasoning effort** controls new chats, with medium retained
 as the initial default. Existing chat settings and saved histories are preserved.
 The project grouping button retains custom group names across toggles and restart.
 

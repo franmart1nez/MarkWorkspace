@@ -14,8 +14,22 @@ export function shellLabel() {
   return isWindows ? 'PowerShell' : 'Shell';
 }
 
-export function shellCommand(env = process.env) {
-  if (isWindows) return { file: path.join(env.SystemRoot || env.WINDIR || 'C:/Windows', 'System32', 'WindowsPowerShell', 'v1.0', 'powershell.exe'), args: ['-NoLogo', '-NoProfile'] };
+// PowerShell 7 ships as pwsh.exe. Prefer it over Windows PowerShell so the
+// Shell tab and command shims use the installed PowerShell 7.
+function powerShell7(env, home) {
+  const candidates = [];
+  for (const root of [env.ProgramFiles || env.PROGRAMFILES, env['ProgramFiles(x86)'] || env['PROGRAMFILES(X86)']]) {
+    if (root) candidates.push(path.join(root, 'PowerShell', '7', 'pwsh.exe'));
+  }
+  if (env.LOCALAPPDATA) candidates.push(path.join(env.LOCALAPPDATA, 'Microsoft', 'PowerShell', '7', 'pwsh.exe'));
+  return candidates.find(existsSync) || resolveCommand('pwsh', env, home);
+}
+
+export function shellCommand(env = process.env, home = os.homedir()) {
+  if (isWindows) {
+    const builtIn = path.join(env.SystemRoot || env.WINDIR || 'C:/Windows', 'System32', 'WindowsPowerShell', 'v1.0', 'powershell.exe');
+    return { file: powerShell7(env, home) || builtIn, args: ['-NoLogo', '-NoProfile'] };
+  }
   const shell = env.SHELL || (isMacOS ? '/bin/zsh' : '/bin/sh');
   // Terminal.app and iTerm start login shells, so ~/.zprofile and ~/.bash_profile apply.
   return { file: shell, args: isMacOS ? ['-l'] : [] };

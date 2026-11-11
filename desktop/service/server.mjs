@@ -318,6 +318,7 @@ export async function createService({ repo, uiDir, stateDir, token = secret(), n
           if (typeof data.defaultBypass === 'boolean') settings.defaultBypass = data.defaultBypass;
           if (workerEfforts.includes(data.defaultEffort)) settings.defaultEffort = data.defaultEffort;
           if (Number.isInteger(data.terminalFontSize) && data.terminalFontSize >= 10 && data.terminalFontSize <= 24) settings.terminalFontSize = data.terminalFontSize;
+          if ([100, 110, 120, 125, 130, 140, 150].includes(data.interfaceZoom)) settings.interfaceZoom = data.interfaceZoom;
           if (['focus', 'original'].includes(data.terminalAppearance)) settings.terminalAppearance = data.terminalAppearance;
           if (typeof data.terminalOptionMeta === 'boolean') settings.terminalOptionMeta = data.terminalOptionMeta;
           if (Number.isInteger(data.handoffAfter) && (data.handoffAfter === 0 || (data.handoffAfter >= 10 && data.handoffAfter <= 500))) settings.handoffAfter = data.handoffAfter;

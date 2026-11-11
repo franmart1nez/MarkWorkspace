@@ -1,6 +1,6 @@
 # Project skills
 
-Twenty skills live in this project. `.agents/skills` is the maintained source
+Twenty-one skills live in this project. `.agents/skills` is the maintained source
 for Codex; `.claude/skills` contains complete, identical copies for Claude Code,
 including scripts and references. Both Skills sections open the full instructions.
 These are local project files, not global installations.
@@ -17,6 +17,7 @@ maintained source. `npm run test:template` checks that the two copies agree.
 | Skill | Use it for |
 | --- | --- |
 | [3d-production-routing](../.agents/skills/3d-production-routing/SKILL.md) | Choose a practical workflow for 3D concepts, generated meshes, material maps, procedural Three.js reconstruction and game animation. |
+| [affinity-native-assembly](../.agents/skills/affinity-native-assembly/SKILL.md) | Assemble reviewed images/crops inside Affinity with readiness checks, native MCP, Desktop staging, editable masks and verified save/reopen delivery. |
 | [blender-game-animation](../.agents/skills/blender-game-animation/SKILL.md) | Rig and animate supplied characters in Blender, revise motion from references, and deliver editable sources plus a verified game export. |
 | [character-sheet-pipeline](../.agents/skills/character-sheet-pipeline/SKILL.md) | Prepare strict-front character sheets, isolated parts and optional multiview references for 3D modeling from an approved image. |
 | [fal-ai-generation](../.agents/skills/fal-ai-generation/SKILL.md) | Generate and edit images, create video, audio, 3D assets or material maps through fal.ai MCP or the Python queue client. Use for fal model discovery, reference uploads, generation, recovery and local delivery. |
@@ -74,6 +75,13 @@ extracting a module; the ZIP includes these support files and shared report
 assets. Merge them with an existing project instead of replacing its instructions,
 reports or shared styles. Planning and handoff skills use the receiving project's
 conventions. The standalone pack contains no Workspace cards or application.
+
+Affinity assembly includes its standard-library MCP client inside the skill.
+Also copy `processes/affinity-native-assembly.md`. Bring an installed Affinity
+version with a reachable native AI server; the skill does not install/enable it.
+After the required crops pass review, ask the user to open Affinity if needed,
+then verify the native connection and target document before montage. Reuse the
+procedure, not another project's assets, runtime IDs or acceptance state.
 
 A skill does not authenticate a provider or install a tool. Follow its setup
 references and bring your own account. Credentials and raw paid-job receipts

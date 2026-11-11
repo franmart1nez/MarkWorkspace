@@ -25,3 +25,8 @@ gameplay event markers into the implementation. Keep proposals, implemented
 behavior, agent verification and user acceptance distinct. Use
 `gameplay-visual-review` for evidence from the actual engine; a browser study or
 generated clip cannot establish that an effect works in the game.
+
+For an editable Affinity montage after image/crop review, use
+`affinity-native-assembly` and the [native assembly procedure](affinity-native-assembly.md).
+If the application is closed, request that the user open it when preparation
+is complete; verify native connection and the intended document before editing.

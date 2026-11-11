@@ -1,0 +1,32 @@
+{
+  "view": "02",
+  "editableDocument": "outputs/photoshop/mother-talzin-02-colorized-v001.psd",
+  "reviewPng": "outputs/review/mother-talzin-02-colorized-v001-sRGB.png",
+  "canvas": [
+    3240,
+    4050
+  ],
+  "nativeCropLayers": 3,
+  "editableEnabledCropMasks": 3,
+  "hiddenSourcePassSmartObjects": 11,
+  "hiddenOriginalComposite": true,
+  "sourceSilhouetteChannel": true,
+  "diskReopenReview": "pass",
+  "reopenRenderDiffPixels": 0,
+  "reopenMaxChannelDifference": 0,
+  "editableBytes": 141500164,
+  "editableSha256": "c0c47d6bdfde832154780cd7c184fbc4c23e94d1986e33a7f8cdd45ec72e8fe2",
+  "reviewPngSha256": "9cdb447e587354b560747ced1674124378f1451e6e1bb78d402c3bf979660caf",
+  "sourceSha256Rechecked": "00efbd44b66428adb9bf8ca99afe78520939064a103b497479928f411f8aa3a2",
+  "agentVisualReview": "pass",
+  "userAcceptance": "pending",
+  "reopenedDocumentId": 233,
+  "placementMethod": "Uniform cover fit, centered in original source rectangle; no warping or color/lighting adjustments.",
+  "joinMethod": "Later crop overlays opaque earlier crop using a native linear source-overlap alpha mask intersected with unchanged source silhouette.",
+  "visualReviewNotes": "Reviewed native full-canvas render and both robe/magic joins against source and selected crops. Continuous silhouette, hand/lightning, robe folds, both undead heads and base; no visible join line at review scale. Disk-reopen render is pixel-identical. Agent review only.",
+  "nativeReopenedRender": "work/assembly/reopen-renders/mother-talzin-02-colorized-v001.png",
+  "nativeReopenedRenderSha256": "eee9acb29bc5d25f8953f0c2d2a1e16223160084d3b4a6b192c588a8fd53456e",
+  "deliveryColorProfile": "sRGB IEC61966-2.1",
+  "deliveryProfileBytes": 3144,
+  "deliveryExport": "Native Photoshop Save for Web, PNG24, embedded sRGB ICC. Export-only profile conversion from the native working profile; no document changes or grading."
+}

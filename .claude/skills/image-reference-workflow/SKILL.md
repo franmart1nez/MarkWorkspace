@@ -30,6 +30,15 @@ requested change. Compare at full size. Keep rejected takes with a short reason,
 and preserve the chosen take while making revisions. Present images with direct
 file access and a useful preview, using the recipient's existing report style.
 
+For a subsequent masked montage, follow the selected project's native assembly
+application and readiness procedure after the required images/crops pass review.
+For Sculpture Colorization, use Photoshop only and read the project's
+`PHOTOSHOP_INTEGRATION.md`: complete all views' generated crop sets first, then
+ask the user to open Photoshop if closed, verify the connection and exact target,
+and assemble/save/reopen-check one view at a time. Its supplied finished
+Composite 01 is the highest appearance reference; crop planning begins directly
+from the remaining source views.
+
 Example: "Make two observatory robot concepts with different silhouettes."
 After a selection: "Keep B exactly; change only its blue paint to green."
 Expected review: the edit retains B's shape, camera, materials and small details.

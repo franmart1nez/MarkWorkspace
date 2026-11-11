@@ -7,14 +7,23 @@ import path from 'node:path';
 import { commandSearchRoots, invalidFilename, macLocale, ptyOptions, resolveCommand, shellCommand, shellLabel, terminateProcessTree } from '../platform.mjs';
 import { expandHome } from '../util.mjs';
 
-test('platform policy preserves POSIX names while retaining Windows-safe validation', () => {
+test('platform policy preserves POSIX names while retaining Windows-safe validation', async () => {
   assert.equal(invalidFilename('notes:linux.md'), process.platform === 'win32');
   assert.equal(invalidFilename('notes.md'), false);
   assert.equal(invalidFilename('../escape.md'), true);
   assert.equal(shellLabel(), process.platform === 'win32' ? 'PowerShell' : 'Shell');
   assert.ok(shellCommand().file);
-  // Agent chats start through PowerShell even when its folder is missing from PATH.
-  if (process.platform === 'win32') assert.equal(shellCommand({ SystemRoot: 'D:\\Windows' }).file, 'D:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe');
+  // Agent chats use installed PowerShell 7 and still fall back to Windows PowerShell.
+  if (process.platform === 'win32') {
+    const root = await mkdtemp(path.join(os.tmpdir(), 'mrmak-powershell-'));
+    const pwsh = path.join(root, 'PowerShell', '7', 'pwsh.exe');
+    await mkdir(path.dirname(pwsh), { recursive: true });
+    await writeFile(pwsh, '');
+    assert.deepEqual(shellCommand({ ProgramFiles: root, PATH: '' }), { file: pwsh, args: ['-NoLogo', '-NoProfile'] });
+    const home = path.join(root, 'home');
+    await mkdir(home);
+    assert.equal(shellCommand({ SystemRoot: 'D:\\Windows', ProgramFiles: path.join(root, 'missing'), PATH: '' }, home).file, 'D:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe');
+  }
   assert.equal('useConpty' in ptyOptions({ cwd: process.cwd(), env: process.env, cols: 80, rows: 24 }), process.platform === 'win32');
   // The macOS Shell tab is a login shell, like Terminal.app.
   if (process.platform !== 'win32') assert.deepEqual(shellCommand({ SHELL: '/bin/zsh' }), { file: '/bin/zsh', args: process.platform === 'darwin' ? ['-l'] : [] });

@@ -1,0 +1,3 @@
+# Upstream source reviewed and pinned on 2026-11-08; Windows only.
+photoshop-mcp-server @ git+https://github.com/loonghao/photoshop-python-api-mcp-server.git@058c11ee6954c2049609d0a820fa728567b42308
+Pillow==13.0.0

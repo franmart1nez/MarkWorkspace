@@ -1,6 +1,6 @@
 # Mr. Mak agent skills
 
-This pack contains 20 project-local workflows for Codex CLI and Claude Code.
+This pack contains 21 project-local workflows for Codex CLI and Claude Code.
 You can use them in a game or creative project without installing Mr. Mak's
 desktop app. Sign in to at least one of those CLIs first.
 
@@ -32,6 +32,7 @@ Example request:
 
 | Skill | Additional files or tools |
 | --- | --- |
+| affinity-native-assembly | Keep the whole skill, including its Python standard-library MCP client, plus `processes/affinity-native-assembly.md`. Bring Affinity with its native AI server reachable; no app installation or permission change is bundled. |
 | Six game workflows, Blender animation, motion references | Keep the skill's own references. Bring the project's source assets and an available engine/editor connection for implementation. |
 | Image and generation workflows | Keep any referenced sibling provider skill. Configure your own optional provider and read its current capabilities. |
 | img2threejs | Copy its entire folder, including code, resources and Apache-2.0 licence. Optional upstream integrations remain separate. |

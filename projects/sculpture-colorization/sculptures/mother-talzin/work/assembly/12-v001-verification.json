@@ -1,0 +1,27 @@
+{
+  "view": "12",
+  "editableDocument": "outputs/rejected/mother-talzin-12-colorized-v001.psd",
+  "reviewPng": "outputs/rejected/mother-talzin-12-colorized-v001.png",
+  "canvas": [
+    3240,
+    4050
+  ],
+  "nativeCropLayers": 3,
+  "editableEnabledCropMasks": 3,
+  "hiddenSourcePassSmartObjects": 11,
+  "hiddenOriginalComposite": true,
+  "sourceSilhouetteChannel": true,
+  "diskReopenReview": "pass",
+  "reopenRenderDiffPixels": 0,
+  "reopenMaxChannelDifference": 0,
+  "editableBytes": 339755276,
+  "editableSha256": "1582b089d3dbdd82cf2bfd9465e1f21c167e14982f9cda75a87d3491ec442f6f",
+  "reviewPngSha256": "e77ca18ae910d412a761916044764b6f56b0e940392b1848298d68959de69842",
+  "sourceSha256Rechecked": "9d54dc4b101b2296356d96fe83e2dc5ad108091e45cf8fbc3e1ff113d93b0aa3",
+  "agentVisualReview": "rejected",
+  "userAcceptance": "pending",
+  "reopenedDocumentId": 1930,
+  "placementMethod": "Uniform cover fit, centered in original source rectangle; no warping or color/lighting adjustments.",
+  "joinMethod": "Later crop overlays opaque earlier crop using a native linear source-overlap alpha mask intersected with unchanged source silhouette.",
+  "rejectionReason": "Lateral hand fingertips displaced in the generated crop and clipped by the unchanged source mask; replaced by source-replanned crop C03 v002 and native assembly v002."
+}

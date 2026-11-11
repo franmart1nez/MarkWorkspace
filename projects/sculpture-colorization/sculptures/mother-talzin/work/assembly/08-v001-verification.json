@@ -1,0 +1,32 @@
+{
+  "view": "08",
+  "editableDocument": "outputs/photoshop/mother-talzin-08-colorized-v001.psd",
+  "reviewPng": "outputs/review/mother-talzin-08-colorized-v001-sRGB.png",
+  "canvas": [
+    3240,
+    4050
+  ],
+  "nativeCropLayers": 1,
+  "editableEnabledCropMasks": 1,
+  "hiddenSourcePassSmartObjects": 11,
+  "hiddenOriginalComposite": true,
+  "sourceSilhouetteChannel": true,
+  "diskReopenReview": "pass",
+  "reopenRenderDiffPixels": 0,
+  "reopenMaxChannelDifference": 0,
+  "editableBytes": 427181916,
+  "editableSha256": "58f593820775b348f623eacf69f7ccf137881cd6203e32f10eab41f0f4bf1c3d",
+  "reviewPngSha256": "a4d652140ff30894137264562da142c14938291a825d9ce3ac931dcd02fd2f17",
+  "sourceSha256Rechecked": "2f92d35cd039f0f2479641aa2812d3e65c12420a9871b968938725d975b37011",
+  "agentVisualReview": "pass",
+  "userAcceptance": "pending",
+  "reopenedDocumentId": 1246,
+  "placementMethod": "Uniform cover fit, centered in original source rectangle; no warping or color/lighting adjustments.",
+  "joinMethod": "Later crop overlays opaque earlier crop using a native linear source-overlap alpha mask intersected with unchanged source silhouette.",
+  "visualReviewNotes": "Reviewed native reopened close face portrait. Eye color/makeup, pale skin, lips, red hood ridges and ornament are coherent with the master and selected source crop; single-crop assembly preserves the exact source framing and silhouette.",
+  "nativeReopenedRender": "work/assembly/reopen-renders/mother-talzin-08-colorized-v001.png",
+  "nativeReopenedRenderSha256": "f7a396e29be66937b8f78bb98c4f9aaba06c42a2af75bb1d11bc5aee79d2c111",
+  "deliveryColorProfile": "sRGB IEC61966-2.1",
+  "deliveryProfileBytes": 3144,
+  "deliveryExport": "Native Photoshop Save for Web, PNG24, embedded sRGB ICC. Export-only profile conversion from the native working profile; no document changes or grading."
+}

@@ -1,0 +1,32 @@
+{
+  "view": "09",
+  "editableDocument": "outputs/photoshop/mother-talzin-09-colorized-v001.psd",
+  "reviewPng": "outputs/review/mother-talzin-09-colorized-v001-sRGB.png",
+  "canvas": [
+    3240,
+    4050
+  ],
+  "nativeCropLayers": 1,
+  "editableEnabledCropMasks": 1,
+  "hiddenSourcePassSmartObjects": 11,
+  "hiddenOriginalComposite": true,
+  "sourceSilhouetteChannel": true,
+  "diskReopenReview": "pass",
+  "reopenRenderDiffPixels": 0,
+  "reopenMaxChannelDifference": 0,
+  "editableBytes": 434331934,
+  "editableSha256": "627794e6aae7ba43aa56b50504a0d71ddfa07090305f58135b0036308ed84584",
+  "reviewPngSha256": "fafe1309e80d2f1833424e494e49c6c86fe3da51313c956dc2d5c52d2e918c5a",
+  "sourceSha256Rechecked": "e991f9525ac31f81906bc000d3b6e75e60abc3f4edb418f8626d74c97aabd224",
+  "agentVisualReview": "pass",
+  "userAcceptance": "pending",
+  "reopenedDocumentId": 1393,
+  "placementMethod": "Uniform cover fit, centered in original source rectangle; no warping or color/lighting adjustments.",
+  "joinMethod": "Later crop overlays opaque earlier crop using a native linear source-overlap alpha mask intersected with unchanged source silhouette.",
+  "visualReviewNotes": "Reviewed native reopened extreme portrait: original cut through the lower face is preserved, with continuous forehead/eyes, dark makeup, crimson hood texture and horn detail. No joins cross the face; the source silhouette controls black negative spaces.",
+  "nativeReopenedRender": "work/assembly/reopen-renders/mother-talzin-09-colorized-v001.png",
+  "nativeReopenedRenderSha256": "b5483e6ada131306af1ccf0404d0d70221a5815fe5276805f658093c090f7aa5",
+  "deliveryColorProfile": "sRGB IEC61966-2.1",
+  "deliveryProfileBytes": 3144,
+  "deliveryExport": "Native Photoshop Save for Web, PNG24, embedded sRGB ICC. Export-only profile conversion from the native working profile; no document changes or grading."
+}

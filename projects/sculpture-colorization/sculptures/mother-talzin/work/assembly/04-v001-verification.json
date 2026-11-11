@@ -1,0 +1,32 @@
+{
+  "view": "04",
+  "editableDocument": "outputs/photoshop/mother-talzin-04-colorized-v001.psd",
+  "reviewPng": "outputs/review/mother-talzin-04-colorized-v001-sRGB.png",
+  "canvas": [
+    3240,
+    4050
+  ],
+  "nativeCropLayers": 3,
+  "editableEnabledCropMasks": 3,
+  "hiddenSourcePassSmartObjects": 11,
+  "hiddenOriginalComposite": true,
+  "sourceSilhouetteChannel": true,
+  "diskReopenReview": "pass",
+  "reopenRenderDiffPixels": 0,
+  "reopenMaxChannelDifference": 0,
+  "editableBytes": 144201519,
+  "editableSha256": "9ddeedc8a15327e3a979de679cf524c549c8ed14c063ef13c5b81246219d8690",
+  "reviewPngSha256": "20270244e6b481865b1f787fc43f190c3a446cff301c00d05a94888c7f52c849",
+  "sourceSha256Rechecked": "2e0fed62962a6f03e5757b86519ed5498823cdad7ff3eeefcb903f055419e0f5",
+  "agentVisualReview": "pass",
+  "userAcceptance": "pending",
+  "reopenedDocumentId": 591,
+  "placementMethod": "Uniform cover fit, centered in original source rectangle; no warping or color/lighting adjustments.",
+  "joinMethod": "Later crop overlays opaque earlier crop using a native linear source-overlap alpha mask intersected with unchanged source silhouette.",
+  "visualReviewNotes": "Reviewed native reopened profile render: raised fingers/lightning, rear head armor, belt, flowing robe, boots, both undead figures and base align continuously. Hood stays red with no invented side face. Both overlap regions have no visible hard join at review scale.",
+  "nativeReopenedRender": "work/assembly/reopen-renders/mother-talzin-04-colorized-v001.png",
+  "nativeReopenedRenderSha256": "3fdc1cff010f36609926e8f0c88bd33d555aa1bd1ae1edb5d670f68e38443322",
+  "deliveryColorProfile": "sRGB IEC61966-2.1",
+  "deliveryProfileBytes": 3144,
+  "deliveryExport": "Native Photoshop Save for Web, PNG24, embedded sRGB ICC. Export-only profile conversion from the native working profile; no document changes or grading."
+}

@@ -1,0 +1,32 @@
+{
+  "view": "14",
+  "editableDocument": "outputs/photoshop/mother-talzin-14-colorized-v001.psd",
+  "reviewPng": "outputs/review/mother-talzin-14-colorized-v001-sRGB.png",
+  "canvas": [
+    3240,
+    4050
+  ],
+  "nativeCropLayers": 3,
+  "editableEnabledCropMasks": 3,
+  "hiddenSourcePassSmartObjects": 11,
+  "hiddenOriginalComposite": true,
+  "sourceSilhouetteChannel": true,
+  "diskReopenReview": "pass",
+  "reopenRenderDiffPixels": 0,
+  "reopenMaxChannelDifference": 0,
+  "editableBytes": 276295763,
+  "editableSha256": "7c4cbe11c12f3490df91fa02075fb5125a2d32bef8b04c287cb7c98bcabd67d0",
+  "reviewPngSha256": "10b421ad4cf0ee2835001a2fab640bc80b3a7a8b82a882e1f77612f854a6fb32",
+  "sourceSha256Rechecked": "2c8451900d6fa9f62c57a984b947941e9030b77e89725fd8250e1a61041cc6ec",
+  "agentVisualReview": "pass",
+  "userAcceptance": "pending",
+  "reopenedDocumentId": 2452,
+  "placementMethod": "Uniform cover fit, centered in original source rectangle; no warping or color/lighting adjustments.",
+  "joinMethod": "Later crop overlays opaque earlier crop using a native linear source-overlap alpha mask intersected with unchanged source silhouette.",
+  "visualReviewNotes": "Reviewed native reopened front medium view: pale face, complete fingers and lime-white lightning match source; horns, shoulders, sleeves, belt and flowing robe remain continuous across two joins. Original crop framing is preserved. No visible hard join at review scale.",
+  "nativeReopenedRender": "work/assembly/reopen-renders/mother-talzin-14-colorized-v001.png",
+  "nativeReopenedRenderSha256": "d264bc549ae36eb7f7e6abc0140af0e77d6c4357c58994b0d6981ff1cc8f584b",
+  "deliveryColorProfile": "sRGB IEC61966-2.1",
+  "deliveryProfileBytes": 3144,
+  "deliveryExport": "Native Photoshop Save for Web, PNG24, embedded sRGB ICC. Export-only profile conversion from the native working profile; no document changes or grading."
+}

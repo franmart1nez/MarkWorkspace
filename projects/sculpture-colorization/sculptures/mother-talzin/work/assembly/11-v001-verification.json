@@ -1,0 +1,32 @@
+{
+  "view": "11",
+  "editableDocument": "outputs/photoshop/mother-talzin-11-colorized-v001.psd",
+  "reviewPng": "outputs/review/mother-talzin-11-colorized-v001-sRGB.png",
+  "canvas": [
+    3240,
+    4050
+  ],
+  "nativeCropLayers": 3,
+  "editableEnabledCropMasks": 3,
+  "hiddenSourcePassSmartObjects": 11,
+  "hiddenOriginalComposite": true,
+  "sourceSilhouetteChannel": true,
+  "diskReopenReview": "pass",
+  "reopenRenderDiffPixels": 0,
+  "reopenMaxChannelDifference": 0,
+  "editableBytes": 315960449,
+  "editableSha256": "15f0dc36cfce3a9945e5fa5f8d3fb946bb4ceb988df347e5f1f7038334df3cef",
+  "reviewPngSha256": "513e592e896a9e1b5d4b3e7a5bcbb41f126ce18b80c1f0226d2c16fc93516de5",
+  "sourceSha256Rechecked": "83af6950cfb370babbbdb361c6d911e37444ee8943a0f7e651d11721b089627c",
+  "agentVisualReview": "pass",
+  "userAcceptance": "pending",
+  "reopenedDocumentId": 1751,
+  "placementMethod": "Uniform cover fit, centered in original source rectangle; no warping or color/lighting adjustments.",
+  "joinMethod": "Later crop overlays opaque earlier crop using a native linear source-overlap alpha mask intersected with unchanged source silhouette.",
+  "visualReviewNotes": "Reviewed native reopened front lower-body/base framing. Boot and robe, both undead heads and reaching hands, smoke columns and teal/bronze facade remain continuous. Selected C03 v002 preserves the bright red front-mask mouth/channel and local bounce. No visible hard join at review scale.",
+  "nativeReopenedRender": "work/assembly/reopen-renders/mother-talzin-11-colorized-v001.png",
+  "nativeReopenedRenderSha256": "fcf8aa4588e7f3c657f6c5fb5d67cf2a65dfa5352f798e8f7bb4f42a5d0d0091",
+  "deliveryColorProfile": "sRGB IEC61966-2.1",
+  "deliveryProfileBytes": 3144,
+  "deliveryExport": "Native Photoshop Save for Web, PNG24, embedded sRGB ICC. Export-only profile conversion from the native working profile; no document changes or grading."
+}

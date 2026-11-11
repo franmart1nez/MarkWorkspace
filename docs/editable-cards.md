@@ -66,6 +66,18 @@ An editable step is registered explicitly:
 { "name": "References", "path": "content.card.json", "viewer": "card" }
 ```
 
+For a subsection under an existing project tab, keep a flat step entry and add
+`parent` pointing to that root tab's `path`. For example:
+
+```json
+{ "name": "References", "path": "art-references.card.json", "viewer": "card", "parent": "art-bible.card.json" }
+```
+
+The project bar shows the parent, with **Overview** and **References** below it.
+Step indices and deep links stay unchanged. One nesting level is supported;
+orphaned or deeper entries remain visible as regular tabs. Older app windows
+show all steps in their original flat order until they load the updated UI.
+
 Keep the data inside the entity folder:
 
 ```json
