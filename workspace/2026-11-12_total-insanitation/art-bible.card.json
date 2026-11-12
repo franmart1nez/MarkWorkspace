@@ -1,0 +1,59 @@
+{
+  "format": "mrmak-card",
+  "version": 1,
+  "template": "research",
+  "title": "Art bible / v0.1",
+  "summary": "A living record of the owner\u2019s direction and the existing assets. \u201cConfirmed\u201d comes from the owner; \u201cObserved\u201d comes from local evidence; \u201cProposed\u201d awaits review. A completed note does not imply the whole environment is finished.",
+  "items": [
+    {
+      "id": "identity",
+      "title": "The company and the janitor",
+      "status": "done",
+      "body": "**Confirmed by the owner.** A janitor works inside a pharmaceutical company, cleaning damage caused by clandestine experiments and fighting employees transformed into demonic or malicious creatures. The entire game takes place in the company building. Doom and Viscera Cleanup Detail are gameplay reference points. Our scope is the art."
+    },
+    {
+      "id": "style",
+      "title": "1970s corporate interiors + medieval fantasy",
+      "status": "done",
+      "body": "**Confirmed.** A blend of semi-realism and stylization. The 1970s are the dominant visual language; medieval fantasy is an accent inside the company, not a separate world. No numeric style ratio, exact decade substyle or final palette has been chosen.\n\n**Proposed test:** assess the same module under neutral lighting and the actual Basement lighting to distinguish shape/material decisions from grading."
+    },
+    {
+      "id": "public-private",
+      "title": "Public polish / neglected back-of-house",
+      "status": "done",
+      "body": "**Confirmed.** Public-facing company spaces look clean, polished and professional. The company treats hidden employees poorly. The janitor's basement should feel neglected, partly abandoned and in places dungeon-like. This contrast is environmental storytelling.\n\nDo not interpret the brief as a mandate to turn every wall or prop into medieval architecture."
+    },
+    {
+      "id": "basement-role",
+      "title": "Basement: preparation and equipment",
+      "image": "media/basement-baseline.png",
+      "alt": "Existing concrete Basement corridor in Unreal Engine",
+      "status": "in-progress",
+      "body": "**Confirmed.** The player collects equipment here before a cleaning assignment. A shop/supplier waits at the end of the corridor. Finishing this environment is the first large art milestone.\n\n**Observed.** The existing native view establishes a long concrete corridor and repeating lights. Final composition, integrated lighting and prop density remain to be reviewed."
+    },
+    {
+      "id": "modularity",
+      "title": "Structures become modular; special pieces stay specific",
+      "status": "done",
+      "body": "**Confirmed.** General structure is moving from monolithic Blender scenes to a modular kit. The shop can remain floor-specific geometry under `Floors`. The older lobby is a placeholder for a later modular conversion.\n\nWindows currently live in `Enviroment_Assets.blend`; moving them into the structure file is an owner-raised possibility, not an approved migration."
+    },
+    {
+      "id": "surfaces",
+      "title": "Tileables, trims and a few unique atlases",
+      "status": "done",
+      "body": "**Confirmed.** Most structure pieces and props use tileable materials. Some details use `Trimsheet_Structure_01`; the janitor elevator uses an atlas. Reuse this structure when adding assets.\n\n**Observed.** Designer source files and existing base color/normal/ORM exports are available. The Materials subtab is an albedo library preview, not a newly approved palette or full PBR evaluation."
+    },
+    {
+      "id": "technical-target",
+      "title": "PC / 1080p / approximately 60 FPS",
+      "status": "done",
+      "body": "**Confirmed by the owner, 12 November 2026.** Target PC: RTX 2060 + Ryzen 5 5600, 1920 \u00d7 1080, medium-high quality, approximately 60 FPS. Texel density values are **pixels per meter**: 256 px/m for some modular structure pieces and 512 px/m for simple objects, with existing exceptions.\n\n**Validation pending.** 60 FPS corresponds to approximately 16.7 ms/frame. Native screenshots and file audits do not establish performance. Profile CPU/GPU frame times, texture memory and representative gameplay before fixing triangle, draw-call, lighting or texture budgets. No renderer feature has been disabled or prescribed."
+    },
+    {
+      "id": "review-contract",
+      "title": "How this bible grows",
+      "status": "done",
+      "body": "Add dated native views and accepted examples as work is reviewed. Keep proposed, implemented, agent-verified and owner-accepted states distinct. Preserve stable entry IDs and source files. Revise this card rather than creating a new project card for every pass.\n\nThe older PureRef file is optional historical context and does not override accepted examples or the owner's direction. Characters, weapons and UI remain deferred."
+    }
+  ]
+}

@@ -1,6 +1,56 @@
 {
   "entities": [
     {
+      "id": "total-insanitation",
+      "title": "Total (in)Sanitation",
+      "description": "Environment art desk: finish the modular Basement, grow the art bible, review the existing asset/material library and use verified Unreal + Blender MCP connections. PC target: RTX 2060 / Ryzen 5 5600, 1080p medium-high, approximately 60 FPS.",
+      "type": "group",
+      "category": "game",
+      "created": "2026-11-12",
+      "updated": "2026-11-12",
+      "folder": "2026-11-12_total-insanitation",
+      "status": "active",
+      "pinned": true,
+      "defaultStep": 0,
+      "steps": [
+        {
+          "name": "Overview",
+          "path": "index.html"
+        },
+        {
+          "name": "Basement",
+          "path": "basement.card.json",
+          "viewer": "card"
+        },
+        {
+          "name": "Assets",
+          "path": "ASSETS.md",
+          "parent": "basement.card.json"
+        },
+        {
+          "name": "Art bible",
+          "path": "art-bible.card.json",
+          "viewer": "card"
+        },
+        {
+          "name": "Materials",
+          "path": "materials.card.json",
+          "viewer": "card",
+          "parent": "art-bible.card.json"
+        },
+        {
+          "name": "Decisions",
+          "path": "decisions.card.json",
+          "viewer": "card",
+          "parent": "art-bible.card.json"
+        },
+        {
+          "name": "Tools",
+          "path": "TOOLS.md"
+        }
+      ]
+    },
+    {
       "id": "world-in-dreams",
       "title": "World in Dreams",
       "description": "Close-up living simulation of one walled city and five villages: every inhabitant has a home, trade and daily routine, and a place inside buildings with interiors; everyone keeps the hours of their trade and season; money circulates in a closed economy with rents, taxes and prices; trades follow demand; people fall ill, have accidents and die; some steal, fight and kill, and those in power abuse it; fields follow the seasons and the weather of the year; wildlife roams. No tile grid; painted after the art bible. Protagonist, RPG and AI agents much later.",

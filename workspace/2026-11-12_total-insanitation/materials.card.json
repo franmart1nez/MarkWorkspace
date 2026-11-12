@@ -1,0 +1,101 @@
+{
+  "format": "mrmak-card",
+  "version": 1,
+  "template": "gallery",
+  "title": "Existing materials / review library",
+  "summary": "Twelve selected base color previews from the existing local material library, plus one native export check. These are source samples, not proposed new textures or an approved palette. Click any image for the full review copy and download.",
+  "items": [
+    {
+      "id": "concrete-01",
+      "title": "Concrete 01",
+      "image": "media/material-concrete-01.jpg",
+      "alt": "Concrete 01 existing base color texture preview",
+      "body": "**Existing library / not palette approval.** Existing general concrete; compare its scale on the current wall kit.\n\nSource under `Utility_Materials`: `Concrete/Concrete_01/Concrete_01_basecolor.png`. Source image 512 \u00d7 512; this local review copy is bounded to 800 px. Albedo only: assess normal, roughness, material response and tiling in the engine before acceptance."
+    },
+    {
+      "id": "concrete-02",
+      "title": "Concrete 02",
+      "image": "media/material-concrete-02.jpg",
+      "alt": "Concrete 02 existing base color texture preview",
+      "body": "**Existing library / not palette approval.** Existing concrete variant; check seams and repetition before expanding the library.\n\nSource under `Utility_Materials`: `Concrete/Concrete_02/Concrete_02_basecolor.png`. Source image 512 \u00d7 512; this local review copy is bounded to 800 px. Albedo only: assess normal, roughness, material response and tiling in the engine before acceptance."
+    },
+    {
+      "id": "dirty-bricks-01",
+      "title": "Dirty bricks 01",
+      "image": "media/material-dirty-bricks-01.jpg",
+      "alt": "Dirty bricks 01 existing base color texture preview",
+      "body": "**Existing library / not palette approval.** Existing masonry. Its medieval association must still fit a corporate service space.\n\nSource under `Utility_Materials`: `Concrete/Dirty_Bricks_01/Dirty_Bricks_01_01_basecolor.png`. Source image 512 \u00d7 512; this local review copy is bounded to 800 px. Albedo only: assess normal, roughness, material response and tiling in the engine before acceptance."
+    },
+    {
+      "id": "brutalist-concrete",
+      "title": "Brutalist concrete 01",
+      "image": "media/material-brutalist-concrete.jpg",
+      "alt": "Brutalist concrete 01 existing base color texture preview",
+      "body": "**Existing library / not palette approval.** Existing procedural concrete; this source also passed the Designer batch-export check.\n\nSource under `Utility_Materials`: `Concrete/Brutalist_Concrete_01/Brutalist_Concrete_01_basecolor.png`. Source image 512 \u00d7 512; this local review copy is bounded to 800 px. Albedo only: assess normal, roughness, material response and tiling in the engine before acceptance."
+    },
+    {
+      "id": "rusty-metal",
+      "title": "Rusty metal 01",
+      "image": "media/material-rusty-metal.jpg",
+      "alt": "Rusty metal 01 existing base color texture preview",
+      "body": "**Existing library / not palette approval.** Existing worn metal. Rust placement should reflect water and use rather than cover every surface uniformly.\n\nSource under `Utility_Materials`: `Metallic/Metal_Rusty_01/Metal_Rusty_01_basecolor.png`. Source image 512 \u00d7 512; this local review copy is bounded to 800 px. Albedo only: assess normal, roughness, material response and tiling in the engine before acceptance."
+    },
+    {
+      "id": "metal-blinds",
+      "title": "Metal blinds 01",
+      "image": "media/material-metal-blinds.jpg",
+      "alt": "Metal blinds 01 existing base color texture preview",
+      "body": "**Existing library / not palette approval.** Existing office/utility surface; review proportions against the architectural kit.\n\nSource under `Utility_Materials`: `Metallic/Metal_Blinds_01/Metal_Blinds_01_01_basecolor.png`. Source image 512 \u00d7 512; this local review copy is bounded to 800 px. Albedo only: assess normal, roughness, material response and tiling in the engine before acceptance."
+    },
+    {
+      "id": "wood-wall",
+      "title": "Wood wall 01",
+      "image": "media/material-wood-wall.jpg",
+      "alt": "Wood wall 01 existing base color texture preview",
+      "body": "**Existing library / not palette approval.** Existing wood wall material; a candidate for the institutional 1970s language, not a new direction decision.\n\nSource under `Utility_Materials`: `Wood/Wood_Wall_01/Wood_Wall_01_basecolor.png`. Source image 512 \u00d7 512; this local review copy is bounded to 800 px. Albedo only: assess normal, roughness, material response and tiling in the engine before acceptance."
+    },
+    {
+      "id": "wallpaper",
+      "title": "Wallpaper 01",
+      "image": "media/material-wallpaper.jpg",
+      "alt": "Wallpaper 01 existing base color texture preview",
+      "body": "**Existing library / not palette approval.** Existing wallpaper. Placement and coverage remain to be decided in context.\n\nSource under `Utility_Materials`: `WallPaper/WallPaper_01/WallPaper_01_basecolor.png`. Source image 512 \u00d7 512; this local review copy is bounded to 800 px. Albedo only: assess normal, roughness, material response and tiling in the engine before acceptance."
+    },
+    {
+      "id": "ceiling",
+      "title": "Tiled ceiling 01",
+      "image": "media/material-ceiling.jpg",
+      "alt": "Tiled ceiling 01 existing base color texture preview",
+      "body": "**Existing library / not palette approval.** Existing suspended ceiling material. Test grid alignment and UV scale.\n\nSource under `Utility_Materials`: `Durlock/Tiled_Ceiling_01/Tiled_Ceiling_01_basecolor.png`. Source image 512 \u00d7 512; this local review copy is bounded to 800 px. Albedo only: assess normal, roughness, material response and tiling in the engine before acceptance."
+    },
+    {
+      "id": "trim",
+      "title": "Structural trim sheet",
+      "image": "media/material-trim.jpg",
+      "alt": "Structural trim sheet existing base color texture preview",
+      "body": "**Existing library / not palette approval.** Existing structural trim source. Confirm trim lanes and UV usage on a real asset before changing it.\n\nSource under `Utility_Materials`: `TrimSheet/Trimsheet_Structure_01/Trimsheet_Wall_01_basecolor.png`. Source image 1024 \u00d7 1024; this local review copy is bounded to 800 px. Albedo only: assess normal, roughness, material response and tiling in the engine before acceptance."
+    },
+    {
+      "id": "rug",
+      "title": "Simple rug 01",
+      "image": "media/material-rug.jpg",
+      "alt": "Simple rug 01 existing base color texture preview",
+      "body": "**Existing library / not palette approval.** Existing floor covering; material preview only, with no approved Basement placement.\n\nSource under `Utility_Materials`: `Rug/Simple_Rug_01/Simple_Rug_01_basecolor.png`. Source image 1024 \u00d7 1024; this local review copy is bounded to 800 px. Albedo only: assess normal, roughness, material response and tiling in the engine before acceptance."
+    },
+    {
+      "id": "mosaic",
+      "title": "Mosaic granite 01",
+      "image": "media/material-mosaic.jpg",
+      "alt": "Mosaic granite 01 existing base color texture preview",
+      "body": "**Existing library / not palette approval.** Existing granite mosaic; review scale in the public/private spatial contrast.\n\nSource under `Utility_Materials`: `Mosaics/Mosaic_Granite_01/Mosaic_Granite_01_basecolor.png`. Source image 512 \u00d7 512; this local review copy is bounded to 800 px. Albedo only: assess normal, roughness, material response and tiling in the engine before acceptance."
+    },
+    {
+      "id": "designer-proof",
+      "title": "Designer / verified export sample",
+      "image": "media/designer-concrete-check.png",
+      "alt": "256 by 256 base color output produced by the installed Adobe cooker and renderer",
+      "status": "done",
+      "body": "**Tool verification, not a new material.** `Brutalist_Concrete_01.sbs` was cooked and rendered at 256 \u00d7 256 into a scratch folder using Designer 15.0.1. Base color, normal and ORM outputs were produced. Original source and game texture exports were not overwritten. Interactive graph edits remain unverified."
+    }
+  ]
+}

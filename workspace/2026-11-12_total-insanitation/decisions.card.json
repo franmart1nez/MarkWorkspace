@@ -1,0 +1,51 @@
+{
+  "format": "mrmak-card",
+  "version": 1,
+  "template": "research",
+  "title": "Decisions and next review",
+  "summary": "Use Edit to record a choice, date and acceptance note. Confirmed technical targets are recorded below; open proposals remain review items.",
+  "items": [
+    {
+      "id": "scope",
+      "title": "Confirmed / environment first",
+      "status": "done",
+      "body": "12 November 2026 \u2014 Owner: focus on the Basement and environment art. Work only in the four named maps. Defer characters, weapons, UI and unrelated levels."
+    },
+    {
+      "id": "hardware",
+      "title": "Confirmed / density and target PC",
+      "status": "done",
+      "body": "12 November 2026 \u2014 Owner: densities are pixels per meter. Target RTX 2060 + Ryzen 5 5600, 1080p, medium-high, approximately 60 FPS. Starting density references: 256 px/m on some modular structures; 512 px/m on simple props. Actual performance has not been measured."
+    },
+    {
+      "id": "first-pass",
+      "title": "Review / the first Basement pass",
+      "status": "review",
+      "body": "**Proposal:** first inspect the assembled corridor/shop lighting and module fit, then strengthen the 1970s service-area identity with a small, coherent art pass. Preserve the neglected dungeon-like atmosphere.\n\nOwner choice / date: pending.\n\nAccepted visual examples: pending. The current corridor is a baseline, not automatic approval of every current surface or light."
+    },
+    {
+      "id": "modular-standard",
+      "title": "Pending / modular kit contract",
+      "status": "review",
+      "body": "Measure the existing module sizes, snap grid, pivot convention and export/import scale. Test one copied wall/floor/corner assembly before standardizing. Do not infer a one-meter or four-meter grid from scene units alone.\n\nGrid and dimensions: pending evidence.\nExport/import settings: pending round-trip trial."
+    },
+    {
+      "id": "missing-images",
+      "title": "Inspect / three missing source images",
+      "status": "review",
+      "body": "`Bars_basecolor.png`, `Chains_basecolor.png` and `Old_Elevator_Door_basecolor.png` are missing from their Blender paths. Matching `.sbs` sources and the elevator atlas exist. Check active usage before regenerating or relinking. No fix has been applied."
+    },
+    {
+      "id": "windows",
+      "title": "Later / window ownership",
+      "status": "idea",
+      "body": "Owner raised moving windows from the prop file into the modular structure file. Keep as a future library decision; no asset migration has been performed."
+    },
+    {
+      "id": "designer-live",
+      "title": "Optional / Designer graph connection",
+      "status": "idea",
+      "body": "The existing Adobe batch tools work. An in-app read-only Python audit is prepared. Run it when interactive graph inspection or editing is the next concrete task. No additional Designer MCP or runtime Unreal Substance plugin was installed."
+    }
+  ]
+}

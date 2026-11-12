@@ -2,7 +2,26 @@
   "mcpServers": {
     "photoshop": {
       "command": "D:/AI/MarkWorkspace/.mrmak/photoshop-mcp/venv/Scripts/python.exe",
-      "args": ["D:/AI/MarkWorkspace/projects/sculpture-colorization/scripts/photoshop_server.py"]
+      "args": [
+        "D:/AI/MarkWorkspace/projects/sculpture-colorization/scripts/photoshop_server.py"
+      ]
+    },
+    "blender": {
+      "command": "D:/AI/MarkWorkspace/.mrmak/total-insanitation/venv/Scripts/python.exe",
+      "args": [
+        "-m",
+        "blmcp"
+      ],
+      "cwd": "D:/AI/MarkWorkspace",
+      "env": {
+        "BLENDER_PATH": "C:/Program Files (x86)/Steam/steamapps/common/Blender/blender.exe",
+        "BLENDER_MCP_HOST": "127.0.0.1",
+        "BLENDER_MCP_PORT": "9876"
+      }
+    },
+    "unreal": {
+      "type": "http",
+      "url": "http://127.0.0.1:8000/mcp"
     }
   }
 }

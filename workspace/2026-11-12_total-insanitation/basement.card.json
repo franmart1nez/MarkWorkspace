@@ -1,0 +1,37 @@
+{
+  "format": "mrmak-card",
+  "version": 1,
+  "template": "gallery",
+  "title": "Basement \u2014 baseline and first pass",
+  "summary": "Current production focus. The images are native editor evidence, not generated concepts. Existing art is documented separately from proposals; use Edit to record review decisions.",
+  "items": [
+    {
+      "id": "corridor-baseline",
+      "title": "01 / Existing corridor",
+      "image": "media/basement-baseline.png",
+      "alt": "Standalone Basement corridor captured in Unreal Engine 5.8.4 on 12 November 2026",
+      "status": "review",
+      "body": "**Observed, 12 November 2026.** Repeating structural walls, a cracked concrete floor and a line of ceiling lights establish the corridor. This is the existing art.\n\nCaptured from `/Game/Levels/Streaming_Levels/Basement`, at approximately `(5005, 3371, -957)` cm; FOV 90\u00b0. No level, material or lighting edits were saved. This is an editor viewport, not a gameplay performance capture.\n\nThe Basement was opened standalone. The global `Main_Lights`/assembly context still needs a matched capture before judging final exposure, color or visibility."
+    },
+    {
+      "id": "shop-focus",
+      "title": "02 / The equipment shop is the destination",
+      "status": "idea",
+      "body": "**Owner-defined role:** a character at the end of the hallway supplies and/or sells the janitor's equipment. The character and shop gameplay are outside this environment pass.\n\n**Verified:** the engine contains `Basement_Shop_C_1`; the Blender `Shop` collection has 16 direct objects.\n\n**Proposed review:** establish the player approach, the counter silhouette and a clear focal point using the existing scene. A second close camera probe was too dark to judge, so it is not presented as an appearance reference. Inspect it with the complete lighting context first."
+    },
+    {
+      "id": "modular-source",
+      "title": "03 / Build from the current kit",
+      "image": "media/blender-source.png",
+      "alt": "Native Blender window showing an existing modular wall, UV editor and source collection hierarchy",
+      "status": "in-progress",
+      "body": "**Source evidence:** `Interior_Building.blend` opens correctly in Blender 5.2.4 LTS. The screenshot shows the existing source workspace, not a new wall design.\n\n`Modular_Walls` has seven direct objects. Floor, roof, stair and decoration collections already exist. Audit grid lengths, corners, pivots and UV scale before inventing new parts. Use a copy for the first export/reimport trial.\n\nThe Assets subtab records three missing external images and their associated `.sbs` sources."
+    },
+    {
+      "id": "pass-one",
+      "title": "04 / Proposed first environment pass",
+      "status": "review",
+      "body": "1. Capture the corridor approach, shop front and one junction in the assembled lighting context.\n2. Verify one wall/floor/corner set on the grid and through one copied Blender \u2192 Unreal round trip.\n3. Mark visible module gaps, repeated surfaces and prop opportunities directly against those views.\n4. Propose a small 1970s service-area treatment: institutional signage, utility fixtures and controlled wear, while keeping the dungeon-like neglect. These details are proposals, not established references.\n5. Implement the chosen pass, capture the same views and profile in gameplay against the RTX 2060 / Ryzen 5 5600 target.\n\n**Done means:** source preserved, joints and scale checked, route/shop readable, matching before/after evidence and a recorded owner decision. No environment redesign has been implemented yet."
+    }
+  ]
+}

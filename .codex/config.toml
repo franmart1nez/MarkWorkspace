@@ -8,3 +8,24 @@ cwd = "D:/AI/MarkWorkspace"
 enabled = true
 startup_timeout_sec = 30
 tool_timeout_sec = 180
+
+# Blender Lab client; existing 1.0.3 addon, local install pinned in the project receipt.
+[mcp_servers.blender]
+command = "D:/AI/MarkWorkspace/.mrmak/total-insanitation/venv/Scripts/python.exe"
+args = ["-m", "blmcp"]
+cwd = "D:/AI/MarkWorkspace"
+enabled = true
+startup_timeout_sec = 30
+tool_timeout_sec = 180
+
+[mcp_servers.blender.env]
+BLENDER_PATH = "C:/Program Files (x86)/Steam/steamapps/common/Blender/blender.exe"
+BLENDER_MCP_HOST = "127.0.0.1"
+BLENDER_MCP_PORT = "9876"
+
+# Epic's bundled Unreal MCP (UE 5.8.4); editor must be open.
+[mcp_servers.unreal]
+url = "http://127.0.0.1:8000/mcp"
+enabled = true
+startup_timeout_sec = 30
+tool_timeout_sec = 180

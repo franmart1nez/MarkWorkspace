@@ -2,6 +2,30 @@
 
 ## Current project
 
+## Total (in)Sanitation
+
+Art-only production hub created 2026-11-12. Current focus: finish the modular
+Basement environment in the owner's pharmaceutical-company game. Direction:
+predominantly 1970s interiors with medieval fantasy accents, blending
+semi-realism and stylization. Public-facing polish contrasts with neglected,
+dungeon-like back-of-house spaces. Characters, weapons and UI are deferred.
+
+- Read `projects/total-insanitation/README.md` and its `AGENTS.md`.
+- Pinned card: `workspace/2026-11-12_total-insanitation/`, registry ID
+  `total-insanitation`; overview, Basement/assets, art bible/materials/decisions,
+  and tools.
+- Unreal: `D:/GItHub/BoomeRacist/BoomeRacist.uproject`, UE 5.8.4. Only
+  `Inteior_Lobby`, `LaCarlota`, `Streaming_Levels/Main_Lights` and
+  `Streaming_Levels/Basement` are in scope.
+- Sources: `D:/GameJam/Total (in)Sanitation/`. Preserve editable originals.
+- Owner confirmed 256/512 px/m and target PC: RTX 2060 + Ryzen 5 5600,
+  1080p, medium-high settings, approximately 60 FPS. Performance is unmeasured.
+- Epic Unreal MCP and the existing Blender Lab MCP were verified with real
+  native calls; Designer's cooker/renderer passed a material export check.
+  Interactive Designer graph control is not yet verified.
+- Setup did not save level or asset changes. Begin the art pass with assembled
+  lighting context, module fit/export verification and the decisions card.
+
 ## Sculpture Colorization
 
 Reusable workflow for independent sculpture colorization projects.
