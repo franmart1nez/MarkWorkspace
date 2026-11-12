@@ -40,7 +40,6 @@ function NewChat({ close }: { close: () => void }) {
   const [name, setName] = useState('')
   const [cwd, setCwd] = useState(state.repo)
   const [bypass, setBypass] = useState(state.settings.defaultBypass)
-  const [orchestrator, setOrchestrator] = useState(false)
   const [effort, setEffort] = useState<Effort>(state.settings.defaultEffort || defaultEffort)
   const [resumeId, setResumeId] = useState('')
   const [group, setGroup] = useState<string | null>(() => state.sessions.find(item => item.id === state.selectedId)?.group || null)
@@ -49,7 +48,7 @@ function NewChat({ close }: { close: () => void }) {
   async function launch(event: React.FormEvent) {
     event.preventDefault(); setBusy(true); setError('')
     try {
-      const session = await api<ChatSession>('/sessions', { agent, name: name.trim() || undefined, cwd, bypass, orchestrator, effort: effortAgents.includes(agent) ? effort : undefined, resumeId: resumeId.trim() || undefined, group: group || undefined })
+      const session = await api<ChatSession>('/sessions', { agent, name: name.trim() || undefined, cwd, bypass, effort: effortAgents.includes(agent) ? effort : undefined, resumeId: resumeId.trim() || undefined, group: group || undefined })
       await api('/settings', { defaultAgent: agent, defaultBypass: bypass, defaultEffort: effort })
       selectChat(session.id); close()
     } catch (err) { setError(err instanceof Error ? err.message : String(err)); setBusy(false) }
@@ -57,14 +56,17 @@ function NewChat({ close }: { close: () => void }) {
   return <div className="desk-scrim" onClick={close}><form className="desk-dialog" onClick={event => event.stopPropagation()} onSubmit={launch}>
     <div className="desk-dialog-heading"><div><span className="desk-eyebrow">A PLACE FOR THE NEXT THING</span><h2>New chat</h2></div><button type="button" className="desk-icon" onClick={close} aria-label="Close"><Icon name="close" /></button></div>
     <div className="agent-picker">{state.agents.map(item => <button type="button" key={item.id} className={`agent-choice ${agent === item.id ? 'selected' : ''}`} onClick={() => setAgent(item.id)} disabled={!item.available} style={{ '--agent-color': item.color } as React.CSSProperties}><span className="agent-mark"><AgentLogo agent={item.id} size={23} /></span><span>{item.label}<small>{item.available ? item.id === 'shell' ? 'Local terminal' : item.id === 'opencode' ? 'Your providers' : 'Your CLI account' : 'Not installed'}</small></span>{agent === item.id && <span className="choice-check">✓</span>}</button>)}</div>
-    {agent === 'antigravity' && <p className="desk-muted">Sign in to Google in the terminal, then use /model to choose an available model. Access and usage limits come from your Google account or API billing.</p>}
     <label className="desk-field">Chat name <small>English only</small><input autoFocus placeholder="e.g. Dream Game · animations" value={name} onChange={event => setName(event.target.value)} maxLength={100} /></label>
-    <ProjectPicker cwd={cwd} choose={setCwd} />
-    <label className="desk-field">Working folder<input value={cwd} onChange={event => setCwd(event.target.value)} required spellCheck={false} /></label>
-    <div className="desk-field group-field"><span>Group <small>Tabs of a group sit together</small></span><GroupPicker value={group} groups={groupNames(state.sessions)} onChange={setGroup} /></div>
-    {effortAgents.includes(agent) && <label className="desk-field">Reasoning effort <small>Default for new chats</small><select value={effort} onChange={event => setEffort(event.target.value as Effort)}>{efforts.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>}
-    {agent !== 'shell' && <label className="desk-check"><input type="checkbox" checked={orchestrator} onChange={event => setOrchestrator(event.target.checked)} /><span>Allow this chat to coordinate workers<small>Can open, read and follow up its own OpenCode workers in this project.</small></span></label>}
-    {agent !== 'shell' && <><label className="desk-check"><input type="checkbox" checked={bypass} onChange={event => setBypass(event.target.checked)} /><span>{agent === 'opencode' ? 'Auto-approve permission prompts' : 'Bypass agent permission prompts'}<small>{agent === 'opencode' ? 'Explicit deny rules in OpenCode still apply.' : `Same ${isMac ? 'macOS' : isWindows ? 'Windows' : 'user'} account and file access as your usual terminal.`}</small></span></label><details className="desk-details"><summary>Resume an existing CLI conversation</summary><p>For a conversation started outside Mr. Mak, copy its ID from your CLI's session details or resume picker. Chats created here return automatically.</p><label className="desk-field">Native session ID<input value={resumeId} onChange={event => setResumeId(event.target.value)} placeholder="Optional session ID" /></label></details></>}
+    {agent !== 'shell' && <label className="desk-check"><input type="checkbox" checked={bypass} onChange={event => setBypass(event.target.checked)} /><span>{agent === 'opencode' ? 'Auto-approve permission prompts' : 'Bypass agent permission prompts'}<small>{agent === 'opencode' ? 'Explicit deny rules in OpenCode still apply.' : `Same ${isMac ? 'macOS' : isWindows ? 'Windows' : 'user'} account and file access as your usual terminal.`}</small></span></label>}
+    <details className="desk-details new-chat-advanced">
+      <summary>Advanced</summary>
+      <ProjectPicker cwd={cwd} choose={setCwd} />
+      <label className="desk-field">Working folder<input value={cwd} onChange={event => setCwd(event.target.value)} onInvalid={event => { const advanced = event.currentTarget.closest('details'); if (advanced) advanced.open = true }} required spellCheck={false} /></label>
+      <div className="desk-field group-field"><span>Group <small>Tabs of a group sit together</small></span><GroupPicker value={group} groups={groupNames(state.sessions)} onChange={setGroup} /></div>
+      {effortAgents.includes(agent) && <label className="desk-field">Reasoning effort <small>Default for new chats</small><select value={effort} onChange={event => setEffort(event.target.value as Effort)}>{efforts.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>}
+      {agent === 'antigravity' && <p className="desk-muted">Sign in to Google in the terminal, then use /model to choose an available model. Access and usage limits come from your Google account or API billing.</p>}
+      {agent !== 'shell' && <details className="desk-details"><summary>Resume an existing CLI conversation</summary><p>For a conversation started outside Mr. Mak, copy its ID from your CLI's session details or resume picker. Chats created here return automatically.</p><label className="desk-field">Native session ID<input value={resumeId} onChange={event => setResumeId(event.target.value)} placeholder="Optional session ID" /></label></details>}
+    </details>
     {error && <p className="desk-error-inline" role="alert">{error}</p>}
     <button className="desk-primary" disabled={busy || !state.connected}>{busy ? 'Opening…' : 'Open chat'}<Icon name="arrow" size={16} /></button>
   </form></div>
