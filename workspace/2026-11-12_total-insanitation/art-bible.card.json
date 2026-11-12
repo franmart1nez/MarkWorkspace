@@ -2,8 +2,8 @@
   "format": "mrmak-card",
   "version": 1,
   "template": "research",
-  "title": "Art bible / v0.1",
-  "summary": "A living record of the owner\u2019s direction and the existing assets. \u201cConfirmed\u201d comes from the owner; \u201cObserved\u201d comes from local evidence; \u201cProposed\u201d awaits review. A completed note does not imply the whole environment is finished.",
+  "title": "Art bible / v0.2",
+  "summary": "A living record of the owner’s direction and the existing assets. “Confirmed” comes from the owner; “Observed” comes from local evidence; “Proposed” awaits review. A completed note does not imply the whole environment is finished.",
   "items": [
     {
       "id": "identity",
@@ -15,7 +15,7 @@
       "id": "style",
       "title": "1970s corporate interiors + medieval fantasy",
       "status": "done",
-      "body": "**Confirmed.** A blend of semi-realism and stylization. The 1970s are the dominant visual language; medieval fantasy is an accent inside the company, not a separate world. No numeric style ratio, exact decade substyle or final palette has been chosen.\n\n**Proposed test:** assess the same module under neutral lighting and the actual Basement lighting to distinguish shape/material decisions from grading."
+      "body": "**Confirmed by the owner.** Semi-realism and stylization, with 1970s corporate interiors as the dominant language and medieval fantasy as an accent.\n\n**New owner evidence:** the References subtab now contains the supplied office/lab shells, modular kits and assembled Basement. Wood paneling, wallpaper, carpet, regular luminous ceiling grids and a light concrete lab band give concrete project examples. No numeric style ratio has been chosen.\n\n**Pass 01 application:** a simple olive/cream service sign and warm fluorescent task area; the existing spikes/bars carry the fantasy accent."
     },
     {
       "id": "public-private",
@@ -26,34 +26,42 @@
     {
       "id": "basement-role",
       "title": "Basement: preparation and equipment",
-      "image": "media/basement-baseline.png",
-      "alt": "Existing concrete Basement corridor in Unreal Engine",
-      "status": "in-progress",
-      "body": "**Confirmed.** The player collects equipment here before a cleaning assignment. A shop/supplier waits at the end of the corridor. Finishing this environment is the first large art milestone.\n\n**Observed.** The existing native view establishes a long concrete corridor and repeating lights. Final composition, integrated lighting and prop density remain to be reviewed."
+      "image": "media/pass-01/basement-shop-after-gameplay.png",
+      "alt": "Verified gameplay view of the equipment service counter after pass 01",
+      "status": "review",
+      "body": "**Confirmed.** The player prepares for a cleaning assignment here. The NPC serves through the open counter; the separate spikes/bars opening releases equipment. NPC identity and gameplay are still undecided.\n\n**Implemented, 12 November 2026.** Pass 01 makes the counter a visible destination using a sign and one warm local light. Existing geometry and the rest of the corridor layout were retained. The owner has not yet reviewed this new treatment."
     },
     {
       "id": "modularity",
       "title": "Structures become modular; special pieces stay specific",
       "status": "done",
-      "body": "**Confirmed.** General structure is moving from monolithic Blender scenes to a modular kit. The shop can remain floor-specific geometry under `Floors`. The older lobby is a placeholder for a later modular conversion.\n\nWindows currently live in `Enviroment_Assets.blend`; moving them into the structure file is an owner-raised possibility, not an approved migration."
+      "body": "**Confirmed in Temp and measured natively.** Walls, floor and roof modules use a 4 m grid. Regular walls are 4 m high, 4 m long and 15 cm thick; corners shorten to 3.85 m. Decorations follow the module length, with corresponding corner trims. Materials are assigned in modular Blueprints after Blender import.\n\nThe shop remains floor-specific. Existing building sources were preserved. The copied trial is in LaCarlota; see Basement → Pass 01. Doorway meshes need a reusable Blueprint. Window migration remains a future library decision.\n\n**Authoring rule, 12 November 2026.** Create new structures and shop assets inside `Assets/Building/Interior_Building.blend`; create individual environment assets and props inside `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Paths are relative to `D:/GameJam/Total (in)Sanitation/`. Use these existing files and their collections. Create a new `.blend` only when the task explicitly requires one. Historical Pass 01 sources are retained as editable evidence."
     },
     {
       "id": "surfaces",
       "title": "Tileables, trims and a few unique atlases",
       "status": "done",
-      "body": "**Confirmed.** Most structure pieces and props use tileable materials. Some details use `Trimsheet_Structure_01`; the janitor elevator uses an atlas. Reuse this structure when adding assets.\n\n**Observed.** Designer source files and existing base color/normal/ORM exports are available. The Materials subtab is an albedo library preview, not a newly approved palette or full PBR evaluation."
+      "body": "**Confirmed.** Reuse tileables, the structural trim sheet and the elevator atlas. The Materials tab now also shows the owner’s LaCarlota variant board and the actual Basement material families.\n\n**Technical correction in pass 01:** CobbleStone_02’s ORM texture was changed from sRGB/default compression to linear/masks after tracing its references to Basement and LaCarlota. RGB channels remain AO / roughness / metallic. No Designer graph or original texture pixels were changed.\n\nMeasured wall UV scale supports about 256 px/m with 512 px textures. The sampled floor has about 128 px/m with its current 512 px concrete; this intentional exception aligns the specific tileable texture. Preserve the floor and ceiling exceptions instead of normalizing their UVs."
     },
     {
       "id": "technical-target",
-      "title": "PC / 1080p / approximately 60 FPS",
+      "title": "Texel density / preserve intentional tileable exceptions",
       "status": "done",
-      "body": "**Confirmed by the owner, 12 November 2026.** Target PC: RTX 2060 + Ryzen 5 5600, 1920 \u00d7 1080, medium-high quality, approximately 60 FPS. Texel density values are **pixels per meter**: 256 px/m for some modular structure pieces and 512 px/m for simple objects, with existing exceptions.\n\n**Validation pending.** 60 FPS corresponds to approximately 16.7 ms/frame. Native screenshots and file audits do not establish performance. Profile CPU/GPU frame times, texture memory and representative gameplay before fixing triangle, draw-call, lighting or texture budgets. No renderer feature has been disabled or prescribed."
+      "body": "**Confirmed by the owner, 12 November 2026.** use 256 px/m for some modular structures and 512 px/m for simple props. Some floors and ceilings intentionally use another density to match their specific tileable texture. Preserve those UV scales and material tiling; do not normalize them to the nominal values. The sampled concrete floor at about 128 px/m is an intentional exception, not an outstanding fix."
     },
     {
       "id": "review-contract",
       "title": "How this bible grows",
       "status": "done",
       "body": "Add dated native views and accepted examples as work is reviewed. Keep proposed, implemented, agent-verified and owner-accepted states distinct. Preserve stable entry IDs and source files. Revise this card rather than creating a new project card for every pass.\n\nThe older PureRef file is optional historical context and does not override accepted examples or the owner's direction. Characters, weapons and UI remain deferred."
+    },
+    {
+      "id": "owner-office-context",
+      "title": "Office and laboratory context from Temp",
+      "image": "media/owner-references/office_lab_01.png",
+      "alt": "Owner-supplied office gameplay with wood walls and a luminous ceiling grid",
+      "status": "done",
+      "body": "**Owner-supplied current work.** These are early shells, mostly walls, floor, ceiling and lights. Most office floors are intended to include a laboratory, particularly the first level. Furnishing and layouts are still developing.\n\nKeep the public/private contrast: warmer, orderly offices above; worn concrete, masonry and utility lights below. All twelve images are in References."
     }
   ]
 }

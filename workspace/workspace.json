@@ -3,11 +3,11 @@
     {
       "id": "total-insanitation",
       "title": "Total (in)Sanitation",
-      "description": "Environment art desk: finish the modular Basement, grow the art bible, review the existing asset/material library and use verified Unreal + Blender MCP connections. PC target: RTX 2060 / Ryzen 5 5600, 1080p medium-high, approximately 60 FPS.",
+      "description": "Corridor N01–N07 delivered: 25 meshes, 25 FBXs, 1024px atlas, existing Blender sources retained and independent native Unreal checks passed. Models ready for owner review. Automatic OpenCode worker control is prepared/tested; installed app unchanged.",
       "type": "group",
       "category": "game",
       "created": "2026-11-12",
-      "updated": "2026-11-12",
+      "updated": "2026-11-12T20:28:59.753027+00:00",
       "folder": "2026-11-12_total-insanitation",
       "status": "active",
       "pinned": true,
@@ -47,6 +47,48 @@
         {
           "name": "Tools",
           "path": "TOOLS.md"
+        },
+        {
+          "name": "Pass 01",
+          "path": "BASEMENT_PASS_01.md",
+          "parent": "basement.card.json"
+        },
+        {
+          "name": "References",
+          "path": "references.card.json",
+          "viewer": "card",
+          "parent": "art-bible.card.json"
+        },
+        {
+          "name": "Corridor concepts",
+          "path": "corridor-concepts.card.json",
+          "viewer": "card",
+          "parent": "basement.card.json"
+        },
+        {
+          "name": "Asset proposal",
+          "path": "CORRIDOR_ASSET_PROPOSAL.md",
+          "parent": "basement.card.json"
+        },
+        {
+          "name": "Agent production",
+          "path": "AGENT_PRODUCTION.md",
+          "parent": "basement.card.json"
+        },
+        {
+          "name": "Level builder",
+          "path": "OFFICE_LEVEL_BUILDER.md"
+        },
+        {
+          "name": "Models",
+          "path": "corridor-models.card.json",
+          "viewer": "card",
+          "parent": "basement.card.json"
+        },
+        {
+          "name": "Model review",
+          "path": "CORRIDOR_MODEL_REVIEW.md",
+          "parent": "basement.card.json"
         }
       ]
     },

@@ -29,6 +29,15 @@ The optional voice frontend uses OpenAI Live. Routine actions call local tools;
 the Codex app-server coordinator handles broader orchestration with the user's
 configured model. Larger execution tasks go to visible worker terminals. The
 provider's native conversation ID is recorded when available for later resume.
+
+Explicitly enabled orchestrator chats receive a memory-only scoped capability
+for `/agent-control`, separate from the desktop bearer token. The client is
+`scripts/agent-control.mjs`; the capability permits only the controller's own
+OpenCode workers in the same launch folder. Workers run with an explicit native
+provider/model/variant and a handoff attachment in visible terminal tabs, keeping
+the same native ID for follow-up runs. Creation is idempotent and does not raise
+the selected CLI permission level. The New chat control is default-off; ordinary
+workers do not inherit it. See `docs/agent-orchestration.md`.
 Codex discovery checks both local and UTC date folders, keeps waiting through
 delayed first prompts, and reads bounded metadata records larger than one small
 buffer. Closing or resuming a tab can recover a missing ID from its exact Mr. Mak

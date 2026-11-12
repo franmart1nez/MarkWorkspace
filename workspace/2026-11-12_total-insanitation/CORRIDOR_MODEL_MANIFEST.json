@@ -1,0 +1,2220 @@
+{
+  "pass": "basement-corridor-2026-11-12",
+  "model_set": "N01-N07",
+  "units": "metres in Blender (Metric, scale 1); dimensions reported in cm",
+  "texel_density": {
+    "structures": "0.5 UV units/m (256 px/m at 512 px textures)",
+    "props": "1.0 UV units/m (512 px/m at 512 px textures)",
+    "atlas_faces": "T01 cells authored at ~1000 px/m for legible lettering (graphics atlas exception)"
+  },
+  "assets": [
+    {
+      "id": "N01",
+      "name": "SM_Corridor_Pipe_Pair_400",
+      "mesh": "SM_Corridor_Pipe_Pair_400.002",
+      "source": "Assets/Building/Interior_Building.blend",
+      "collection": "N01_Pipe_Kit / N02_Conduit_Kit / N04_Sign_Variants",
+      "description": "Straight pipe pair assembly, 400 cm endpoints",
+      "dimensions_cm": [
+        400.0,
+        28.8,
+        74.0
+      ],
+      "bounds_cm": [
+        [
+          0.0,
+          -20000.9,
+          250.0
+        ],
+        [
+          400.0,
+          -19972.1,
+          324.0
+        ]
+      ],
+      "pivot": [
+        0.0,
+        -200.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 1792,
+      "material_slots": [
+        "Corridor_Enamel_Cream",
+        "Corridor_Iron_Dark"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 5e-07,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N01",
+      "name": "SM_Corridor_Pipe_Pair_Corner_385",
+      "mesh": "SM_Corridor_Pipe_Pair_Corner_385.002",
+      "source": "Assets/Building/Interior_Building.blend",
+      "collection": "N01_Pipe_Kit / N02_Conduit_Kit / N04_Sign_Variants",
+      "description": "Corner pipe pair assembly on the 385 cm shortened wall",
+      "dimensions_cm": [
+        382.5,
+        60.4,
+        74.0
+      ],
+      "bounds_cm": [
+        [
+          500.0,
+          -20000.9,
+          250.0
+        ],
+        [
+          882.5,
+          -19940.5,
+          324.0
+        ]
+      ],
+      "pivot": [
+        5.0,
+        -200.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 1612,
+      "material_slots": [
+        "Corridor_Enamel_Cream",
+        "Corridor_Iron_Dark"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 5e-07,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N01",
+      "name": "SM_Corridor_Pipe_Pair_Infill_100",
+      "mesh": "SM_Corridor_Pipe_Pair_Infill_100.002",
+      "source": "Assets/Building/Interior_Building.blend",
+      "collection": "N01_Pipe_Kit / N02_Conduit_Kit / N04_Sign_Variants",
+      "description": "100 cm pipe pair infill",
+      "dimensions_cm": [
+        100.0,
+        26.1,
+        74.0
+      ],
+      "bounds_cm": [
+        [
+          1000.0,
+          -20000.0,
+          250.0
+        ],
+        [
+          1100.0,
+          -19973.9,
+          324.0
+        ]
+      ],
+      "pivot": [
+        10.0,
+        -200.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 336,
+      "material_slots": [
+        "Corridor_Enamel_Cream",
+        "Corridor_Iron_Dark"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 1.125e-06,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N01",
+      "name": "SM_Corridor_Pipe_Elbow_90",
+      "mesh": "SM_Corridor_Pipe_Elbow_90.002",
+      "source": "Assets/Building/Interior_Building.blend",
+      "collection": "N01_Pipe_Kit / N02_Conduit_Kit / N04_Sign_Variants",
+      "description": "90 degree elbow, large pipe",
+      "dimensions_cm": [
+        58.5,
+        60.5,
+        26.0
+      ],
+      "bounds_cm": [
+        [
+          1199.8,
+          -19999.5,
+          259.0
+        ],
+        [
+          1258.3,
+          -19939.0,
+          285.0
+        ]
+      ],
+      "pivot": [
+        12.0,
+        -200.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 456,
+      "material_slots": [
+        "Corridor_Enamel_Cream",
+        "Corridor_Iron_Dark"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 3.95187e-05,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N01",
+      "name": "SM_Corridor_Pipe_Coupler_Big",
+      "mesh": "SM_Corridor_Pipe_Coupler_Big.002",
+      "source": "Assets/Building/Interior_Building.blend",
+      "collection": "N01_Pipe_Kit / N02_Conduit_Kit / N04_Sign_Variants",
+      "description": "Coupler/flange, large diameter",
+      "dimensions_cm": [
+        16.2,
+        28.8,
+        28.8
+      ],
+      "bounds_cm": [
+        [
+          1391.9,
+          -20000.9,
+          257.6
+        ],
+        [
+          1408.1,
+          -19972.1,
+          286.4
+        ]
+      ],
+      "pivot": [
+        14.0,
+        -200.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 180,
+      "material_slots": [
+        "Corridor_Iron_Dark"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 0.0001230743,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N01",
+      "name": "SM_Corridor_Pipe_Coupler_Small",
+      "mesh": "SM_Corridor_Pipe_Coupler_Small.002",
+      "source": "Assets/Building/Interior_Building.blend",
+      "collection": "N01_Pipe_Kit / N02_Conduit_Kit / N04_Sign_Variants",
+      "description": "Coupler/flange, small diameter",
+      "dimensions_cm": [
+        16.2,
+        20.8,
+        20.8
+      ],
+      "bounds_cm": [
+        [
+          1471.9,
+          -19999.9,
+          289.6
+        ],
+        [
+          1488.1,
+          -19979.1,
+          310.4
+        ]
+      ],
+      "pivot": [
+        14.8,
+        -200.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 180,
+      "material_slots": [
+        "Corridor_Iron_Dark"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 5.89882e-05,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N01",
+      "name": "SM_Corridor_Pipe_Bracket_Triangular",
+      "mesh": "SM_Corridor_Pipe_Bracket_Triangular.002",
+      "source": "Assets/Building/Interior_Building.blend",
+      "collection": "N01_Pipe_Kit / N02_Conduit_Kit / N04_Sign_Variants",
+      "description": "Triangular support bracket",
+      "dimensions_cm": [
+        15.0,
+        26.1,
+        74.0
+      ],
+      "bounds_cm": [
+        [
+          1592.5,
+          -20000.0,
+          250.0
+        ],
+        [
+          1607.5,
+          -19973.9,
+          324.0
+        ]
+      ],
+      "pivot": [
+        16.0,
+        -200.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 288,
+      "material_slots": [
+        "Corridor_Iron_Dark"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 5e-07,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N01",
+      "name": "SM_Corridor_Pipe_ValveBranch",
+      "mesh": "SM_Corridor_Pipe_ValveBranch.002",
+      "source": "Assets/Building/Interior_Building.blend",
+      "collection": "N01_Pipe_Kit / N02_Conduit_Kit / N04_Sign_Variants",
+      "description": "Short valve branch with red handwheel",
+      "dimensions_cm": [
+        18.4,
+        22.3,
+        47.7
+      ],
+      "bounds_cm": [
+        [
+          1710.8,
+          -19998.3,
+          261.1
+        ],
+        [
+          1729.2,
+          -19976.0,
+          308.8
+        ]
+      ],
+      "pivot": [
+        17.2,
+        -200.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 664,
+      "material_slots": [
+        "Corridor_Iron_Dark",
+        "Corridor_Enamel_Cream",
+        "Corridor_Valve_Red",
+        "Corridor_Brass"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 1.25e-07,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N02",
+      "name": "SM_Corridor_Conduit_Straight_400",
+      "mesh": "SM_Corridor_Conduit_Straight_400.002",
+      "source": "Assets/Building/Interior_Building.blend",
+      "collection": "N01_Pipe_Kit / N02_Conduit_Kit / N04_Sign_Variants",
+      "description": "Straight conduit with saddle clamps, 400 cm",
+      "dimensions_cm": [
+        400.0,
+        5.5,
+        9.0
+      ],
+      "bounds_cm": [
+        [
+          2100.0,
+          -20000.0,
+          330.5
+        ],
+        [
+          2500.0,
+          -19994.5,
+          339.5
+        ]
+      ],
+      "pivot": [
+        21.0,
+        -200.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 364,
+      "material_slots": [
+        "Corridor_Steel_Galvanized",
+        "Metal_01"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 1.125e-06,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N02",
+      "name": "SM_Corridor_Conduit_Corner_385",
+      "mesh": "SM_Corridor_Conduit_Corner_385.002",
+      "source": "Assets/Building/Interior_Building.blend",
+      "collection": "N01_Pipe_Kit / N02_Conduit_Kit / N04_Sign_Variants",
+      "description": "Corner conduit on the 385 cm wall",
+      "dimensions_cm": [
+        382.8,
+        23.5,
+        9.0
+      ],
+      "bounds_cm": [
+        [
+          2600.0,
+          -20000.0,
+          330.5
+        ],
+        [
+          2982.8,
+          -19976.5,
+          339.5
+        ]
+      ],
+      "pivot": [
+        26.0,
+        -200.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 500,
+      "material_slots": [
+        "Corridor_Steel_Galvanized",
+        "Metal_01"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 1.125e-06,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N02",
+      "name": "SM_Corridor_Conduit_Infill_100",
+      "mesh": "SM_Corridor_Conduit_Infill_100.002",
+      "source": "Assets/Building/Interior_Building.blend",
+      "collection": "N01_Pipe_Kit / N02_Conduit_Kit / N04_Sign_Variants",
+      "description": "100 cm conduit infill",
+      "dimensions_cm": [
+        100.0,
+        5.5,
+        9.0
+      ],
+      "bounds_cm": [
+        [
+          3100.0,
+          -20000.0,
+          330.5
+        ],
+        [
+          3200.0,
+          -19994.5,
+          339.5
+        ]
+      ],
+      "pivot": [
+        31.0,
+        -200.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 124,
+      "material_slots": [
+        "Corridor_Steel_Galvanized",
+        "Metal_01"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 1.125e-06,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N02",
+      "name": "SM_Corridor_Conduit_Elbow_90",
+      "mesh": "SM_Corridor_Conduit_Elbow_90.002",
+      "source": "Assets/Building/Interior_Building.blend",
+      "collection": "N01_Pipe_Kit / N02_Conduit_Kit / N04_Sign_Variants",
+      "description": "90 degree conduit elbow",
+      "dimensions_cm": [
+        21.1,
+        22.2,
+        2.6
+      ],
+      "bounds_cm": [
+        [
+          3280.0,
+          -19997.8,
+          333.7
+        ],
+        [
+          3301.1,
+          -19975.6,
+          336.3
+        ]
+      ],
+      "pivot": [
+        32.8,
+        -200.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 236,
+      "material_slots": [
+        "Corridor_Steel_Galvanized"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 2.0013e-06,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N02",
+      "name": "SM_Corridor_Conduit_Clamp",
+      "mesh": "SM_Corridor_Conduit_Clamp.002",
+      "source": "Assets/Building/Interior_Building.blend",
+      "collection": "N01_Pipe_Kit / N02_Conduit_Kit / N04_Sign_Variants",
+      "description": "Saddle clamp",
+      "dimensions_cm": [
+        5.5,
+        5.5,
+        9.0
+      ],
+      "bounds_cm": [
+        [
+          3397.2,
+          -20000.0,
+          330.5
+        ],
+        [
+          3402.8,
+          -19994.5,
+          339.5
+        ]
+      ],
+      "pivot": [
+        34.0,
+        -200.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 80,
+      "material_slots": [
+        "Metal_01"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 1.125e-06,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N02",
+      "name": "SM_Corridor_Conduit_JunctionBox",
+      "mesh": "SM_Corridor_Conduit_JunctionBox.002",
+      "source": "Assets/Building/Interior_Building.blend",
+      "collection": "N01_Pipe_Kit / N02_Conduit_Kit / N04_Sign_Variants",
+      "description": "Shallow junction box with lid screws",
+      "dimensions_cm": [
+        15.0,
+        8.6,
+        21.5
+      ],
+      "bounds_cm": [
+        [
+          3512.5,
+          -20000.0,
+          324.5
+        ],
+        [
+          3527.5,
+          -19991.4,
+          346.0
+        ]
+      ],
+      "pivot": [
+        35.2,
+        -200.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 256,
+      "material_slots": [
+        "Corridor_Steel_Galvanized",
+        "Corridor_Iron_Dark"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 1.125e-06,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N04",
+      "name": "SM_Corridor_Sign_Equipment",
+      "mesh": "SM_Corridor_Sign_Equipment.002",
+      "source": "Assets/Building/Interior_Building.blend",
+      "collection": "N01_Pipe_Kit / N02_Conduit_Kit / N04_Sign_Variants",
+      "description": "EQUIPMENT route plaque with arrow",
+      "dimensions_cm": [
+        50.0,
+        1.8,
+        25.0
+      ],
+      "bounds_cm": [
+        [
+          3675.0,
+          -20000.0,
+          155.0
+        ],
+        [
+          3725.0,
+          -19998.2,
+          180.0
+        ]
+      ],
+      "pivot": [
+        37.0,
+        -200.0,
+        1.55
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 158,
+      "material_slots": [
+        "Corridor_Enamel_Cream",
+        "Corridor_Atlas_T01",
+        "Corridor_Iron_Dark"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 2e-06,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N04",
+      "name": "SM_Corridor_Sign_Service",
+      "mesh": "SM_Corridor_Sign_Service.002",
+      "source": "Assets/Building/Interior_Building.blend",
+      "collection": "N01_Pipe_Kit / N02_Conduit_Kit / N04_Sign_Variants",
+      "description": "SERVICE plaque",
+      "dimensions_cm": [
+        44.0,
+        1.8,
+        22.0
+      ],
+      "bounds_cm": [
+        [
+          3798.0,
+          -20000.0,
+          165.0
+        ],
+        [
+          3842.0,
+          -19998.2,
+          187.0
+        ]
+      ],
+      "pivot": [
+        38.2,
+        -200.0,
+        1.65
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 158,
+      "material_slots": [
+        "Corridor_Enamel_Cream",
+        "Corridor_Atlas_T01",
+        "Corridor_Iron_Dark"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 2e-06,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N04",
+      "name": "SM_Corridor_Sign_Collection",
+      "mesh": "SM_Corridor_Sign_Collection.002",
+      "source": "Assets/Building/Interior_Building.blend",
+      "collection": "N01_Pipe_Kit / N02_Conduit_Kit / N04_Sign_Variants",
+      "description": "COLLECTION plaque",
+      "dimensions_cm": [
+        46.0,
+        1.8,
+        23.0
+      ],
+      "bounds_cm": [
+        [
+          3917.0,
+          -20000.0,
+          155.0
+        ],
+        [
+          3963.0,
+          -19998.2,
+          178.0
+        ]
+      ],
+      "pivot": [
+        39.4,
+        -200.0,
+        1.55
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 158,
+      "material_slots": [
+        "Corridor_Enamel_Cream",
+        "Corridor_Atlas_T01",
+        "Corridor_Iron_Dark"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 2e-06,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N04",
+      "name": "SM_Corridor_Sign_Caution",
+      "mesh": "SM_Corridor_Sign_Caution.002",
+      "source": "Assets/Building/Interior_Building.blend",
+      "collection": "N01_Pipe_Kit / N02_Conduit_Kit / N04_Sign_Variants",
+      "description": "DANGER HIGH VOLTAGE caution plate",
+      "dimensions_cm": [
+        28.0,
+        1.8,
+        14.0
+      ],
+      "bounds_cm": [
+        [
+          4026.0,
+          -20000.0,
+          162.0
+        ],
+        [
+          4054.0,
+          -19998.2,
+          176.0
+        ]
+      ],
+      "pivot": [
+        40.4,
+        -200.0,
+        1.62
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 158,
+      "material_slots": [
+        "Corridor_Enamel_Cream",
+        "Corridor_Atlas_T01",
+        "Corridor_Iron_Dark"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 2e-06,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N03",
+      "name": "SM_Corridor_ElectricalCabinet",
+      "mesh": "SM_Corridor_ElectricalCabinet",
+      "source": "Assets/Enviroment_Assets/Enviroment_Assets.blend",
+      "collection": "N03_Electrical_Cabinet / N05_WorkOrder_Panel / N06_Hose_Reel / N07_Supply_Containers",
+      "description": "Two-door analog electrical cabinet with meter",
+      "dimensions_cm": [
+        82.0,
+        17.6,
+        101.0
+      ],
+      "bounds_cm": [
+        [
+          -41.0,
+          -2000.0,
+          0.0
+        ],
+        [
+          41.0,
+          -1982.4,
+          101.0
+        ]
+      ],
+      "pivot": [
+        0.0,
+        -20.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 1602,
+      "material_slots": [
+        "Corridor_Enamel_Olive",
+        "Corridor_Iron_Dark",
+        "Corridor_Steel_Galvanized",
+        "Corridor_Atlas_T01"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 5e-07,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N05",
+      "name": "SM_Corridor_WorkOrder_Panel",
+      "mesh": "SM_Corridor_WorkOrder_Panel",
+      "source": "Assets/Enviroment_Assets/Enviroment_Assets.blend",
+      "collection": "N03_Electrical_Cabinet / N05_WorkOrder_Panel / N06_Hose_Reel / N07_Supply_Containers",
+      "description": "Steel work-order panel with clips and two papers",
+      "dimensions_cm": [
+        62.0,
+        2.9,
+        45.6
+      ],
+      "bounds_cm": [
+        [
+          119.0,
+          -2000.0,
+          -0.8
+        ],
+        [
+          181.0,
+          -1997.1,
+          44.8
+        ]
+      ],
+      "pivot": [
+        1.5,
+        -20.0,
+        0.22
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 868,
+      "material_slots": [
+        "Corridor_Iron_Dark",
+        "Corridor_Steel_Galvanized",
+        "Corridor_Atlas_T01"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 5e-07,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N05",
+      "name": "SM_Corridor_Paper_Sheet_C",
+      "mesh": "SM_Corridor_Paper_Sheet_C",
+      "source": "Assets/Enviroment_Assets/Enviroment_Assets.blend",
+      "collection": "N03_Electrical_Cabinet / N05_WorkOrder_Panel / N06_Hose_Reel / N07_Supply_Containers",
+      "description": "Standalone service-log sheet variant",
+      "dimensions_cm": [
+        21.0,
+        0.6,
+        29.7
+      ],
+      "bounds_cm": [
+        [
+          289.5,
+          -2000.2,
+          0.0
+        ],
+        [
+          310.5,
+          -1999.6,
+          29.7
+        ]
+      ],
+      "pivot": [
+        3.0,
+        -20.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 188,
+      "material_slots": [
+        "Corridor_Atlas_T01"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 6.3e-05,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N06",
+      "name": "SM_Corridor_HoseReel",
+      "mesh": "SM_Corridor_HoseReel",
+      "source": "Assets/Enviroment_Assets/Enviroment_Assets.blend",
+      "collection": "N03_Electrical_Cabinet / N05_WorkOrder_Panel / N06_Hose_Reel / N07_Supply_Containers",
+      "description": "Manual hose reel with coiled hose and clipped nozzle",
+      "dimensions_cm": [
+        54.8,
+        24.5,
+        63.8
+      ],
+      "bounds_cm": [
+        [
+          422.6,
+          -2000.0,
+          -0.4
+        ],
+        [
+          477.4,
+          -1975.5,
+          63.4
+        ]
+      ],
+      "pivot": [
+        4.5,
+        -20.0,
+        0.36
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 2404,
+      "material_slots": [
+        "Corridor_Iron_Dark",
+        "Corridor_Enamel_Olive",
+        "Corridor_Rubber_Charcoal",
+        "Corridor_Brass"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 2e-06,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N07",
+      "name": "SM_Corridor_Supply_Container",
+      "mesh": "SM_Corridor_Supply_Container",
+      "source": "Assets/Enviroment_Assets/Enviroment_Assets.blend",
+      "collection": "N03_Electrical_Cabinet / N05_WorkOrder_Panel / N06_Hose_Reel / N07_Supply_Containers",
+      "description": "Cream handled supply container",
+      "dimensions_cm": [
+        33.0,
+        22.4,
+        20.7
+      ],
+      "bounds_cm": [
+        [
+          583.5,
+          -2011.2,
+          0.0
+        ],
+        [
+          616.5,
+          -1988.8,
+          20.7
+        ]
+      ],
+      "pivot": [
+        6.0,
+        -20.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 290,
+      "material_slots": [
+        "Corridor_Enamel_Cream",
+        "Corridor_Iron_Dark",
+        "Corridor_Atlas_T01"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 5e-07,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N07",
+      "name": "SM_Corridor_Lidded_Case",
+      "mesh": "SM_Corridor_Lidded_Case",
+      "source": "Assets/Enviroment_Assets/Enviroment_Assets.blend",
+      "collection": "N03_Electrical_Cabinet / N05_WorkOrder_Panel / N06_Hose_Reel / N07_Supply_Containers",
+      "description": "Olive lidded case",
+      "dimensions_cm": [
+        34.5,
+        22.0,
+        14.6
+      ],
+      "bounds_cm": [
+        [
+          732.7,
+          -2010.3,
+          0.0
+        ],
+        [
+          767.2,
+          -1988.3,
+          14.6
+        ]
+      ],
+      "pivot": [
+        7.5,
+        -20.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 406,
+      "material_slots": [
+        "Corridor_Enamel_Olive",
+        "Corridor_Iron_Dark",
+        "Corridor_Brass",
+        "Corridor_Atlas_T01"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 5e-07,
+        "zero_uv_area_fraction": 0.0
+      }
+    },
+    {
+      "id": "N07",
+      "name": "SM_Corridor_Open_Bin",
+      "mesh": "SM_Corridor_Open_Bin",
+      "source": "Assets/Enviroment_Assets/Enviroment_Assets.blend",
+      "collection": "N03_Electrical_Cabinet / N05_WorkOrder_Panel / N06_Hose_Reel / N07_Supply_Containers",
+      "description": "Low gray open bin",
+      "dimensions_cm": [
+        34.8,
+        29.0,
+        29.3
+      ],
+      "bounds_cm": [
+        [
+          882.6,
+          -2014.5,
+          0.0
+        ],
+        [
+          917.4,
+          -1985.5,
+          29.3
+        ]
+      ],
+      "pivot": [
+        9.0,
+        -20.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 236,
+      "material_slots": [
+        "Corridor_Plastic_Gray",
+        "Corridor_Rubber_Charcoal",
+        "Corridor_Iron_Dark",
+        "Corridor_Atlas_T01"
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "uv_checks": {
+        "collapsed_uv_faces": 0,
+        "min_uv_area": 5e-07,
+        "zero_uv_area_fraction": 0.0
+      }
+    }
+  ],
+  "family_rollup": {
+    "N01": {
+      "assets": 8,
+      "triangles": 5508,
+      "source": "Interior_Building.blend",
+      "status": "modeled, UV-checked, exported"
+    },
+    "N02": {
+      "assets": 6,
+      "triangles": 1560,
+      "source": "Interior_Building.blend",
+      "status": "modeled, UV-checked, exported"
+    },
+    "N03": {
+      "assets": 1,
+      "triangles": 1602,
+      "source": "Enviroment_Assets.blend",
+      "status": "modeled, UV-checked, exported"
+    },
+    "N04": {
+      "assets": 4,
+      "triangles": 632,
+      "source": "Interior_Building.blend",
+      "status": "modeled, UV-checked, exported"
+    },
+    "N05": {
+      "assets": 2,
+      "triangles": 1056,
+      "source": "Enviroment_Assets.blend",
+      "status": "modeled, UV-checked, exported"
+    },
+    "N06": {
+      "assets": 1,
+      "triangles": 2404,
+      "source": "Enviroment_Assets.blend",
+      "status": "modeled, UV-checked, exported"
+    },
+    "N07": {
+      "assets": 3,
+      "triangles": 932,
+      "source": "Enviroment_Assets.blend",
+      "status": "modeled, UV-checked, exported"
+    }
+  },
+  "status": "orchestrator_verified_owner_review_pending",
+  "date": "2026-11-12",
+  "unreal_meshes": [
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Building\\SM_Corridor_Pipe_Pair_400.fbx",
+      "source_sha256": "5c3d8d769bf616b8eadf24415f0010d4377e12848ec7ed2678dd2c5d94a384f4",
+      "path": "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Pair_400",
+      "bounds_min_cm": [
+        0.0,
+        -27.90004,
+        250.0
+      ],
+      "bounds_max_cm": [
+        400.0,
+        0.89995,
+        324.00003
+      ],
+      "dimensions_cm": [
+        400.0,
+        28.8,
+        74.00003
+      ],
+      "triangles": 1792,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Enamel_Cream",
+        "Corridor_Iron_Dark"
+      ],
+      "import_data_class": "InterchangeAssetImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Pair_400.SM_Corridor_Pipe_Pair_400"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Props\\SM_Corridor_ElectricalCabinet.fbx",
+      "source_sha256": "8e11ab68f9becaa09671d18442d16732d82a9c59dc58487f813126b7be813b4e",
+      "path": "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_ElectricalCabinet",
+      "bounds_min_cm": [
+        -41.0,
+        -17.60002,
+        -0.0
+      ],
+      "bounds_max_cm": [
+        41.0,
+        -0.0,
+        101.0
+      ],
+      "dimensions_cm": [
+        82.0,
+        17.60002,
+        101.0
+      ],
+      "triangles": 1602,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Enamel_Olive",
+        "Corridor_Iron_Dark",
+        "Corridor_Steel_Galvanized",
+        "Corridor_Atlas_T01"
+      ],
+      "import_data_class": "InterchangeAssetImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_ElectricalCabinet.SM_Corridor_ElectricalCabinet"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Building\\SM_Corridor_Conduit_Clamp.fbx",
+      "source_sha256": "83384e225d068089c368d565c34ef8bbcfa6160435ec7b482f9f1759f9764fc0",
+      "path": "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Conduit_Clamp",
+      "bounds_min_cm": [
+        -2.75,
+        -5.50005,
+        330.49997
+      ],
+      "bounds_max_cm": [
+        2.75,
+        -5e-05,
+        339.5
+      ],
+      "dimensions_cm": [
+        5.5,
+        5.5,
+        9.00003
+      ],
+      "triangles": 80,
+      "uv_channels": 1,
+      "slots": [
+        "Metal_01"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Conduit_Clamp.SM_Corridor_Conduit_Clamp"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Building\\SM_Corridor_Conduit_Corner_385.fbx",
+      "source_sha256": "11f2037d5f56a6b213c69cd418da5e94d835de16e61821ee4c2126e6a96e728e",
+      "path": "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Conduit_Corner_385",
+      "bounds_min_cm": [
+        0.0,
+        -23.50006,
+        330.49997
+      ],
+      "bounds_max_cm": [
+        382.80002,
+        -5e-05,
+        339.5
+      ],
+      "dimensions_cm": [
+        382.80002,
+        23.5,
+        9.00003
+      ],
+      "triangles": 500,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Steel_Galvanized",
+        "Metal_01"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Conduit_Corner_385.SM_Corridor_Conduit_Corner_385"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Building\\SM_Corridor_Conduit_Elbow_90.fbx",
+      "source_sha256": "161130ae878491d0133cbb74da10a18375112c1892007a3f34131f958b37efd0",
+      "path": "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Conduit_Elbow_90",
+      "bounds_min_cm": [
+        -0.0209,
+        -24.41929,
+        333.69998
+      ],
+      "bounds_max_cm": [
+        21.08287,
+        -2.20022,
+        336.29999
+      ],
+      "dimensions_cm": [
+        21.10377,
+        22.21907,
+        2.60001
+      ],
+      "triangles": 236,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Steel_Galvanized"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Conduit_Elbow_90.SM_Corridor_Conduit_Elbow_90"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Building\\SM_Corridor_Conduit_Infill_100.fbx",
+      "source_sha256": "dc81264c682e7ac61405dcfb564e6dc89fb778b627021aa95f148addf2ac4f15",
+      "path": "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Conduit_Infill_100",
+      "bounds_min_cm": [
+        0.0,
+        -5.50005,
+        330.49997
+      ],
+      "bounds_max_cm": [
+        100.0,
+        -5e-05,
+        339.5
+      ],
+      "dimensions_cm": [
+        100.0,
+        5.5,
+        9.00003
+      ],
+      "triangles": 124,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Steel_Galvanized",
+        "Metal_01"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Conduit_Infill_100.SM_Corridor_Conduit_Infill_100"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Building\\SM_Corridor_Conduit_JunctionBox.fbx",
+      "source_sha256": "1eb5d54d821ba34bae313328993847256b46bce5901d946646714d988a723099",
+      "path": "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Conduit_JunctionBox",
+      "bounds_min_cm": [
+        -7.5,
+        -8.60005,
+        324.5
+      ],
+      "bounds_max_cm": [
+        7.5,
+        -5e-05,
+        346.0
+      ],
+      "dimensions_cm": [
+        15.0,
+        8.6,
+        21.5
+      ],
+      "triangles": 256,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Steel_Galvanized",
+        "Corridor_Iron_Dark"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Conduit_JunctionBox.SM_Corridor_Conduit_JunctionBox"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Building\\SM_Corridor_Conduit_Straight_400.fbx",
+      "source_sha256": "c9d705eeae1924a3022ec6adc2199f5263930bea4370d0d7e919b321b3d7b983",
+      "path": "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Conduit_Straight_400",
+      "bounds_min_cm": [
+        0.0,
+        -5.50005,
+        330.49997
+      ],
+      "bounds_max_cm": [
+        400.0,
+        -5e-05,
+        339.5
+      ],
+      "dimensions_cm": [
+        400.0,
+        5.5,
+        9.00003
+      ],
+      "triangles": 364,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Steel_Galvanized",
+        "Metal_01"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Conduit_Straight_400.SM_Corridor_Conduit_Straight_400"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Building\\SM_Corridor_Pipe_Bracket_Triangular.fbx",
+      "source_sha256": "748df814924a56efda807d74109f031e77ee6a81223e33d8eb36009418a5964f",
+      "path": "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Bracket_Triangular",
+      "bounds_min_cm": [
+        -7.5,
+        -26.09139,
+        250.0
+      ],
+      "bounds_max_cm": [
+        7.5,
+        -4e-05,
+        324.00003
+      ],
+      "dimensions_cm": [
+        15.0,
+        26.09135,
+        74.00003
+      ],
+      "triangles": 288,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Iron_Dark"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Bracket_Triangular.SM_Corridor_Pipe_Bracket_Triangular"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Building\\SM_Corridor_Pipe_Coupler_Big.fbx",
+      "source_sha256": "14be892bf789cbcabcbd33ae733a5bcaca667877dc071480b0c408a8c7e84041",
+      "path": "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Coupler_Big",
+      "bounds_min_cm": [
+        -8.1,
+        -27.90004,
+        257.60001
+      ],
+      "bounds_max_cm": [
+        8.1,
+        0.89995,
+        286.39999
+      ],
+      "dimensions_cm": [
+        16.2,
+        28.8,
+        28.79999
+      ],
+      "triangles": 180,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Iron_Dark"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Coupler_Big.SM_Corridor_Pipe_Coupler_Big"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Building\\SM_Corridor_Pipe_Coupler_Small.fbx",
+      "source_sha256": "9ff3a91b4d9bde8788be11e18536fcb6d2a610ff1a7585157d5dde43838f1bcf",
+      "path": "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Coupler_Small",
+      "bounds_min_cm": [
+        -8.1,
+        -20.90005,
+        289.59998
+      ],
+      "bounds_max_cm": [
+        8.1,
+        -0.10005,
+        310.39999
+      ],
+      "dimensions_cm": [
+        16.2,
+        20.8,
+        20.80002
+      ],
+      "triangles": 180,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Iron_Dark"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Coupler_Small.SM_Corridor_Pipe_Coupler_Small"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Building\\SM_Corridor_Pipe_Elbow_90.fbx",
+      "source_sha256": "9bc159351c66caaca7001f84cf4a454b74278c63ef14ae02f317635d708b9e7c",
+      "path": "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Elbow_90",
+      "bounds_min_cm": [
+        -0.17684,
+        -61.00161,
+        259.0
+      ],
+      "bounds_max_cm": [
+        58.32748,
+        -0.50005,
+        285.0
+      ],
+      "dimensions_cm": [
+        58.50432,
+        60.50157,
+        26.0
+      ],
+      "triangles": 456,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Enamel_Cream",
+        "Corridor_Iron_Dark"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Elbow_90.SM_Corridor_Pipe_Elbow_90"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Building\\SM_Corridor_Pipe_Pair_Corner_385.fbx",
+      "source_sha256": "f4d92ffcd627b959e7b92edecdfb62cad7f9e1b296c5e7695490344f2cddb699",
+      "path": "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Pair_Corner_385",
+      "bounds_min_cm": [
+        0.0,
+        -59.50005,
+        250.0
+      ],
+      "bounds_max_cm": [
+        382.49997,
+        0.89995,
+        324.00003
+      ],
+      "dimensions_cm": [
+        382.49997,
+        60.4,
+        74.00003
+      ],
+      "triangles": 1612,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Enamel_Cream",
+        "Corridor_Iron_Dark"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Pair_Corner_385.SM_Corridor_Pipe_Pair_Corner_385"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Building\\SM_Corridor_Pipe_Pair_Infill_100.fbx",
+      "source_sha256": "3d37e56a47e8758438eb4d7b7828160ce74a839971ac631ff193ac9db471fbc7",
+      "path": "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Pair_Infill_100",
+      "bounds_min_cm": [
+        0.0,
+        -26.09139,
+        250.0
+      ],
+      "bounds_max_cm": [
+        100.0,
+        -4e-05,
+        324.00003
+      ],
+      "dimensions_cm": [
+        100.0,
+        26.09135,
+        74.00003
+      ],
+      "triangles": 336,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Enamel_Cream",
+        "Corridor_Iron_Dark"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Pair_Infill_100.SM_Corridor_Pipe_Pair_Infill_100"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Building\\SM_Corridor_Pipe_ValveBranch.fbx",
+      "source_sha256": "9878b4fcffae66cba9d792cc425614b970883cba69f69617f028854f64e46ef1",
+      "path": "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_ValveBranch",
+      "bounds_min_cm": [
+        -9.2,
+        -24.00004,
+        261.07629
+      ],
+      "bounds_max_cm": [
+        9.2,
+        -1.70005,
+        308.80002
+      ],
+      "dimensions_cm": [
+        18.4,
+        22.3,
+        47.72372
+      ],
+      "triangles": 664,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Iron_Dark",
+        "Corridor_Enamel_Cream",
+        "Corridor_Valve_Red",
+        "Corridor_Brass"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_ValveBranch.SM_Corridor_Pipe_ValveBranch"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Building\\SM_Corridor_Sign_Caution.fbx",
+      "source_sha256": "31ba5de819c02177b00a986518c2faba4375947bb446b49fab5b098741ac557a",
+      "path": "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Sign_Caution",
+      "bounds_min_cm": [
+        -14.0,
+        -1.75,
+        -0.0
+      ],
+      "bounds_max_cm": [
+        14.0,
+        -0.0,
+        14.0
+      ],
+      "dimensions_cm": [
+        28.0,
+        1.75,
+        14.0
+      ],
+      "triangles": 158,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Enamel_Cream",
+        "Corridor_Atlas_T01",
+        "Corridor_Iron_Dark"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Sign_Caution.SM_Corridor_Sign_Caution"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Building\\SM_Corridor_Sign_Collection.fbx",
+      "source_sha256": "e8e37732b02bbc9960d15fb28f285ec200cd65d537c3b3bc5f5ca8dd3fd72965",
+      "path": "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Sign_Collection",
+      "bounds_min_cm": [
+        -23.0,
+        -1.75,
+        -0.0
+      ],
+      "bounds_max_cm": [
+        23.0,
+        -0.0,
+        23.0
+      ],
+      "dimensions_cm": [
+        46.0,
+        1.75,
+        23.0
+      ],
+      "triangles": 158,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Enamel_Cream",
+        "Corridor_Atlas_T01",
+        "Corridor_Iron_Dark"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Sign_Collection.SM_Corridor_Sign_Collection"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Building\\SM_Corridor_Sign_Equipment.fbx",
+      "source_sha256": "1988d8a702eb9c6ee8fc426cdea66e6dbc1c8cdb9c6932cf4393c89f49166584",
+      "path": "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Sign_Equipment",
+      "bounds_min_cm": [
+        -25.0,
+        -1.75,
+        -0.0
+      ],
+      "bounds_max_cm": [
+        25.0,
+        -0.0,
+        25.0
+      ],
+      "dimensions_cm": [
+        50.0,
+        1.75,
+        25.0
+      ],
+      "triangles": 158,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Enamel_Cream",
+        "Corridor_Atlas_T01",
+        "Corridor_Iron_Dark"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Sign_Equipment.SM_Corridor_Sign_Equipment"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Building\\SM_Corridor_Sign_Service.fbx",
+      "source_sha256": "aed369970ee247ae83dddd3177abc72d6658ea37f8d95fb362be7b2269682f16",
+      "path": "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Sign_Service",
+      "bounds_min_cm": [
+        -22.0,
+        -1.75,
+        -0.0
+      ],
+      "bounds_max_cm": [
+        22.0,
+        -0.0,
+        22.0
+      ],
+      "dimensions_cm": [
+        44.0,
+        1.75,
+        22.0
+      ],
+      "triangles": 158,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Enamel_Cream",
+        "Corridor_Atlas_T01",
+        "Corridor_Iron_Dark"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Sign_Service.SM_Corridor_Sign_Service"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Props\\SM_Corridor_HoseReel.fbx",
+      "source_sha256": "d492bb2b964576a19807756dadddc4d2d3b1ab1eb21b78afc1e5a7fd79dd3120",
+      "path": "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_HoseReel",
+      "bounds_min_cm": [
+        -27.4,
+        -24.5,
+        -36.4
+      ],
+      "bounds_max_cm": [
+        27.4,
+        0.0,
+        27.4
+      ],
+      "dimensions_cm": [
+        54.8,
+        24.5,
+        63.8
+      ],
+      "triangles": 2404,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Iron_Dark",
+        "Corridor_Enamel_Olive",
+        "Corridor_Rubber_Charcoal",
+        "Corridor_Brass"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_HoseReel.SM_Corridor_HoseReel"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Props\\SM_Corridor_Lidded_Case.fbx",
+      "source_sha256": "cd9807fc042f175edab95b194af0608bfff976b7083484c2ca85510e9552965b",
+      "path": "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_Lidded_Case",
+      "bounds_min_cm": [
+        -17.2946,
+        -11.7,
+        -0.0
+      ],
+      "bounds_max_cm": [
+        17.20928,
+        10.3,
+        14.6
+      ],
+      "dimensions_cm": [
+        34.50388,
+        22.0,
+        14.6
+      ],
+      "triangles": 406,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Enamel_Olive",
+        "Corridor_Iron_Dark",
+        "Corridor_Brass",
+        "Corridor_Atlas_T01"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_Lidded_Case.SM_Corridor_Lidded_Case"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Props\\SM_Corridor_Open_Bin.fbx",
+      "source_sha256": "7b97cfcc8a975b4a0f30a33c466af635839134d4cf2c143a8ea2baa57086e38b",
+      "path": "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_Open_Bin",
+      "bounds_min_cm": [
+        -17.4,
+        -14.5,
+        -0.0
+      ],
+      "bounds_max_cm": [
+        17.4,
+        14.5,
+        29.3
+      ],
+      "dimensions_cm": [
+        34.8,
+        29.0,
+        29.3
+      ],
+      "triangles": 236,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Plastic_Gray",
+        "Corridor_Rubber_Charcoal",
+        "Corridor_Iron_Dark",
+        "Corridor_Atlas_T01"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_Open_Bin.SM_Corridor_Open_Bin"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Props\\SM_Corridor_Paper_Sheet_C.fbx",
+      "source_sha256": "9ab2e26145827b72f00b56da30901c579693cbfeb419b6b4cdc51b7928612e71",
+      "path": "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_Paper_Sheet_C",
+      "bounds_min_cm": [
+        -10.5,
+        -0.4,
+        -0.0
+      ],
+      "bounds_max_cm": [
+        10.5,
+        0.15,
+        29.7
+      ],
+      "dimensions_cm": [
+        21.0,
+        0.55,
+        29.7
+      ],
+      "triangles": 188,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Atlas_T01"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_Paper_Sheet_C.SM_Corridor_Paper_Sheet_C"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Props\\SM_Corridor_Supply_Container.fbx",
+      "source_sha256": "954eeb86295736115d354342117e0a1f0b7753ff8d3b5b4ae63bd2a02d03f811",
+      "path": "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_Supply_Container",
+      "bounds_min_cm": [
+        -16.5,
+        -11.2,
+        -0.0
+      ],
+      "bounds_max_cm": [
+        16.5,
+        11.2,
+        20.7
+      ],
+      "dimensions_cm": [
+        33.0,
+        22.4,
+        20.7
+      ],
+      "triangles": 290,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Enamel_Cream",
+        "Corridor_Iron_Dark",
+        "Corridor_Atlas_T01"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_Supply_Container.SM_Corridor_Supply_Container"
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Delivery\\Basement\\Corridor\\Props\\SM_Corridor_WorkOrder_Panel.fbx",
+      "source_sha256": "7b7b3451c194dd287f5b60bddd06933b4cea866aee309790422f393b331b0983",
+      "path": "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_WorkOrder_Panel",
+      "bounds_min_cm": [
+        -31.0,
+        -2.95,
+        -22.8
+      ],
+      "bounds_max_cm": [
+        31.0,
+        0.0,
+        22.8
+      ],
+      "dimensions_cm": [
+        62.0,
+        2.95001,
+        45.6
+      ],
+      "triangles": 868,
+      "uv_channels": 1,
+      "slots": [
+        "Corridor_Iron_Dark",
+        "Corridor_Steel_Galvanized",
+        "Corridor_Atlas_T01"
+      ],
+      "import_data_class": "FbxStaticMeshImportData",
+      "imported_paths": [
+        "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_WorkOrder_Panel.SM_Corridor_WorkOrder_Panel"
+      ]
+    }
+  ],
+  "unreal_new_packages": [
+    "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Pair_400",
+    "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_ElectricalCabinet",
+    "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Conduit_Clamp",
+    "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Conduit_Corner_385",
+    "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Conduit_Elbow_90",
+    "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Conduit_Infill_100",
+    "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Conduit_JunctionBox",
+    "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Conduit_Straight_400",
+    "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Bracket_Triangular",
+    "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Coupler_Big",
+    "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Coupler_Small",
+    "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Elbow_90",
+    "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Pair_Corner_385",
+    "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_Pair_Infill_100",
+    "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Pipe_ValveBranch",
+    "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Sign_Caution",
+    "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Sign_Collection",
+    "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Sign_Equipment",
+    "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/SM_Corridor_Sign_Service",
+    "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_HoseReel",
+    "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_Lidded_Case",
+    "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_Open_Bin",
+    "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_Paper_Sheet_C",
+    "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_Supply_Container",
+    "/Game/Art/Assets/Enviroment_Assets/Corridor_Props/SM_Corridor_WorkOrder_Panel",
+    "/Game/Art/MI/Corridor_20261112/Textures/T01_Corridor_Graphics",
+    "/Game/Art/MI/Corridor_20261112/MI_Corridor_Enamel_Cream",
+    "/Game/Art/MI/Corridor_20261112/MI_Corridor_Enamel_Olive",
+    "/Game/Art/MI/Corridor_20261112/MI_Corridor_Valve_Red",
+    "/Game/Art/MI/Corridor_20261112/MI_Corridor_Rubber_Charcoal",
+    "/Game/Art/MI/Corridor_20261112/MI_Corridor_Plastic_Gray",
+    "/Game/Art/MI/Corridor_20261112/MI_Corridor_Brass",
+    "/Game/Art/MI/Corridor_20261112/MI_Corridor_Iron_Dark",
+    "/Game/Art/MI/Corridor_20261112/MI_Corridor_Steel_Galvanized",
+    "/Game/Art/MI/Corridor_20261112/MI_Corridor_Atlas_T01",
+    "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/Review/BP_Corridor_Review"
+  ],
+  "finish_instances": {
+    "Corridor_Enamel_Cream": "/Game/Art/MI/Corridor_20261112/MI_Corridor_Enamel_Cream.MI_Corridor_Enamel_Cream",
+    "Corridor_Enamel_Olive": "/Game/Art/MI/Corridor_20261112/MI_Corridor_Enamel_Olive.MI_Corridor_Enamel_Olive",
+    "Corridor_Valve_Red": "/Game/Art/MI/Corridor_20261112/MI_Corridor_Valve_Red.MI_Corridor_Valve_Red",
+    "Corridor_Rubber_Charcoal": "/Game/Art/MI/Corridor_20261112/MI_Corridor_Rubber_Charcoal.MI_Corridor_Rubber_Charcoal",
+    "Corridor_Plastic_Gray": "/Game/Art/MI/Corridor_20261112/MI_Corridor_Plastic_Gray.MI_Corridor_Plastic_Gray",
+    "Corridor_Brass": "/Game/Art/MI/Corridor_20261112/MI_Corridor_Brass.MI_Corridor_Brass",
+    "Corridor_Iron_Dark": "/Game/Art/MI/Corridor_20261112/MI_Corridor_Iron_Dark.MI_Corridor_Iron_Dark",
+    "Corridor_Steel_Galvanized": "/Game/Art/MI/Corridor_20261112/MI_Corridor_Steel_Galvanized.MI_Corridor_Steel_Galvanized",
+    "Corridor_Atlas_T01": "/Game/Art/MI/Corridor_20261112/MI_Corridor_Atlas_T01.MI_Corridor_Atlas_T01",
+    "Metal_01": "/Game/Art/MI/Corridor_20261112/MI_Corridor_Steel_Galvanized.MI_Corridor_Steel_Galvanized",
+    "Plastic_01": "/Game/Art/MI/Corridor_20261112/MI_Corridor_Plastic_Gray.MI_Corridor_Plastic_Gray",
+    "Rubber_01": "/Game/Art/MI/Corridor_20261112/MI_Corridor_Rubber_Charcoal.MI_Corridor_Rubber_Charcoal"
+  },
+  "unreal_review_blueprint": "/Game/Art/Assets/Building/Modular_Blocks/Corridor_Kit/Review/BP_Corridor_Review",
+  "checks": {
+    "meshes": 25,
+    "triangles": 13694,
+    "original_objects_preserved": 473,
+    "collapsed_uv_triangles": 0,
+    "missing_unpacked_images": 0,
+    "all_fbx_origins_normalized": true,
+    "native_unreal_import": true,
+    "main_camera_moved": false,
+    "map_saved_by_orchestrator": false,
+    "temporary_actors_removed": 4
+  }
+}

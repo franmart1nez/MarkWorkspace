@@ -1,10 +1,12 @@
 # Source inventory
 
+**Latest delivery:** N01–N07 now adds 18 building meshes and seven prop meshes, with one T01 graphics atlas and editable authoring sources. See **Models / Model review** for the verified set, 25 FBXs and exact paths. The historical inventory below remains the pre-pass baseline. The final model/export set totals 13,694 triangles; independent checks preserved all 473 baseline objects. Final scene placement is separate.
+
 **Read-only baseline, 12 November 2026.** Object totals include references, backups, cutters and source variants. They are not counts of finished game assets.
 
 | Source | Observed | Purpose |
 | --- | --- | --- |
-| `Assets/Building/Interior_Building.blend` | 282 object datablocks; 26 materials; Metric, scale 1 | Modular structures, floor-specific geometry and shop |
+| `Assets/Building/Interior_Building.blend` | 282 object datablocks; 25 materials (latest cleanup check); Metric, scale 1 | Modular structures, floor-specific geometry and shop |
 | `Assets/Enviroment_Assets/Enviroment_Assets.blend` | 191 object datablocks; 18 materials; Metric, scale 1 | Props; 139 objects belong directly to `Importer assets (ignore)` |
 | `Utility_Materials/` | 38 `.sbs` source files; 14 top-level categories | Existing material library; not all categories are materials |
 
@@ -19,19 +21,11 @@ The building source already has `Modular_Blocks`, `Modular_Walls`, `Floor`, `Roo
 
 `Shop` contains 16 direct objects. `Basement` contains 11 direct objects. These counts describe collection membership, not export readiness or complete level coverage. The lobby has several older/backed-up source collections. Preserve those placeholders until their modular conversion is specifically scheduled.
 
-## Missing image references
+## Texture reference cleanup / resolved
 
-Three unpacked file references in `Interior_Building.blend` do not exist at their stored paths:
+The owner confirmed that old texture references in `Enviroment_Assets` were removed after an atlas replaced them. A fresh read-only check of both saved blends found **zero missing unpacked file images** in either source. The old Bars, Chains and Old_Elevator_Door warning is closed. Do not regenerate or relink those retired textures.
 
-```text
-Assets/Building/Delivery/Janitor/Textures/Bars_basecolor.png
-Assets/Building/Delivery/Janitor/Textures/Chains_basecolor.png
-Assets/Building/Delivery/Janitor/Textures/Old_Elevator_Door_basecolor.png
-```
-
-The `.sbs` sources with matching names exist in the same directory. The `Elevator_Atlas` base color, normal and packed ORM files also exist. Check which material slots are still used by exported assets before deciding whether to regenerate these maps, relink them or leave archival nodes alone. Do not infer that the in-game elevator is broken from this source-file warning.
-
-No missing unpacked image references were found in `Enviroment_Assets.blend` by this audit.
+The current building source has 282 objects / 25 materials; the prop source has 191 objects / 18 materials. These are inventory counts, not a recount of finished assets. Neither source was saved by this check.
 
 ## Ownership and current focus
 
@@ -59,6 +53,41 @@ Project root: `D:/GItHub/BoomeRacist/`.
 
 `Test` and `MainMenu` also exist on disk and are outside this task's scope. The native baseline opened `Inteior_Lobby` and `Basement` for inspection without saving either. The assembly map's read-only audit reported 159 actors in its persistent level; this does not establish streaming coverage. A native search confirmed `Basement_Shop_C_1` in the Basement.
 
-## Before the first asset pass
+## Authoring and delivery rules
 
-Confirm grid dimensions, pivots, mesh names, FBX import/reimport settings, collision and lightmap/UV usage on one representative copy. The Blender scene's Metric/1 setting does not by itself prove the export scale. The owner confirmed **256/512 px/m** and a **PC target of RTX 2060 + Ryzen 5 5600, 1080p, medium-high, approximately 60 FPS**. Profile actual gameplay on comparable hardware before assigning budgets; the 60 FPS target allows approximately 16.7 ms per frame. Capture the assembled lighting context in addition to the standalone Basement before judging final color or exposure.
+Create new structures and shop assets inside `Assets/Building/Interior_Building.blend`; create individual environment assets and props inside `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Paths are relative to `D:/GameJam/Total (in)Sanitation/`. Use these existing files and their collections. Create a new `.blend` only when the task explicitly requires one. Historical Pass 01 sources are retained as editable evidence.
+
+Use **Super Duper Batch Exporter** with the owner’s `Unreal_Only_FBX` preset and destination-specific Directory. Exact settings are in Tools and `projects/total-insanitation/BLENDER_WORKFLOW.md`. Check size, orientation, pivots, UVs, colors and collision on the first delivery. Preserve the intentional floor/ceiling tileable exceptions to 256/512 px/m. Capture the assembled lighting context before judging final color or exposure.
+
+## Pass 01 / measured additions
+
+The owner supplied Temp and confirmed the **4 m** modular standard, shortened corners and Blueprint material assignment. The representative copied group passed import/reimport and native collision checks; full evidence is in **Basement → Pass 01**.
+
+- Regular wall: 400 × 15 × 400 cm; corner: 385 × 15 × 400 cm; floor: 400 × 400 × 15 cm.
+- Copy test: `/Game/Art/Assets/Building/Modular_Blocks/Validation/Basement_20261112`.
+- Historical Pass 01 sign source (predates the existing-source rule): `projects/total-insanitation/sources/shop-service-pass/Shop_Equipment_Sign.blend`.
+- Doorway meshes still need a modular Blueprint. No doorway or window asset migration was made.
+- Basement retained its 186 original actors; LaCarlota gained one isolated review actor (442 → 443), plus the existing five Main_Lights actors in each map.
+
+### Existing material-instance families
+
+Distinct registry assets under `/Game/Art/MI/Utility_Materials`, excluding redirectors. These are library entries, not runtime counts or budgets.
+
+| Family | Material instances |
+| --- | --- |
+| Concrete | 15 |
+| Durlock | 2 |
+| Glass | 3 |
+| LOD | 2 |
+| Leather | 3 |
+| Magic | 2 |
+| Metallic | 14 |
+| Mosaics | 1 |
+| Plastic | 17 |
+| Rug | 4 |
+| Simple | 13 |
+| TrimSheet | 2 |
+| WallPaper | 1 |
+| Wood | 9 |
+
+The supplied native variant board is in Art bible → Materials; all twelve supplied images are in References. The corrected CobbleStone_02 ORM and the 128 px/m sampled floor exception are documented there.

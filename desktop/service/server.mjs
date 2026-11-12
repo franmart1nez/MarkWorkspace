@@ -34,6 +34,7 @@ import { LocalReadAloud } from './local-read-aloud.mjs';
 import { Handoffs } from './handoff.mjs';
 import { chatCommands } from './chat-commands.mjs';
 import { isThemePreference } from './appearance.mjs';
+import { AgentControl } from './agent-control.mjs';
 
 const listen = server => new Promise((resolve, reject) => { server.once('error', reject); server.listen(0, '127.0.0.1', () => resolve(`http://127.0.0.1:${server.address().port}`)); });
 
@@ -93,6 +94,8 @@ export async function createService({ repo, uiDir, stateDir, token = secret(), n
   const nativeSettings = new NativeSettings(native, value => broadcast('native-settings', value));
   const show = (window, extra = {}) => { native({ type: 'window', action: 'show', window }); broadcast('navigate', { window, ...extra }); };
   const focus = id => { sessions.get(id); selectedId = id; settings.selectedId = id; scheduleSettings(); show('chats', { sessionId: id }); return { selectedId: id }; };
+  const agentControl = new AgentControl({ sessions, origin: () => origin, focus, transcripts });
+  sessions.controlEnvironment = session => agentControl.environment(session);
   const registry = async () => readJson(path.join(repo, 'workspace', 'workspace.json'), { entities: [] });
   const workspace = new Workspace(repo, () => broadcast('workspace-changed', {}));
   const cards = new CardDocuments(workspace);
@@ -205,6 +208,11 @@ export async function createService({ repo, uiDir, stateDir, token = secret(), n
       const url = new URL(request.url, origin);
       if (request.headers.host !== new URL(origin).host) throw Object.assign(new Error('Unexpected host'), { status: 403 });
       if (url.pathname === '/health') return json(response, 200, { service: 'mrmak', version: '0.6.0' });
+      if (url.pathname === '/agent-control') {
+        if (request.method !== 'POST') throw Object.assign(new Error('Use POST for agent control.'), { status: 405 });
+        const parent = agentControl.authorize(request);
+        return json(response, 200, await agentControl.execute(parent, await body(request, 256 * 1024)));
+      }
       // An <img> cannot send the bearer token. Its unguessable, short-lived grant
       // is issued only through an authorized messages request for this chat.
       const media = /^\/media\/([a-f0-9-]{36})\/([a-zA-Z0-9_-]{43})$/.exec(url.pathname);

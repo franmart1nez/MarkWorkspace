@@ -1,0 +1,2 @@
+Ya deje el nivel de las luces "Main_Lights" incorporado en el nivel "Basement", estas son las capturas.
+Lo que se ve aqui es un recorrido por el basement hasta llegar al "Shop" en la ultima imagen, aqui el NPC que atiende la tienda (que falta decidir cual ira) te atiende por el espacio que esta abierto y te larga las cosa que necesitas al abrirse esa especie de "barrotes" o "pinchos"

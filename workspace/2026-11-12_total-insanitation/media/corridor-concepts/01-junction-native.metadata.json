@@ -1,0 +1,27 @@
+{
+  "type": "native PIE gameplay",
+  "project": "D:/GItHub/BoomeRacist/BoomeRacist.uproject",
+  "world": "/Game/Levels/Streaming_Levels/UEDPIE_0_Basement.Basement",
+  "pawn": "/Game/Levels/Streaming_Levels/UEDPIE_0_Basement.Basement:PersistentLevel.BP_FirstPersonCharacter_C_0",
+  "pawn_location_cm": [
+    5000.0,
+    2982.586,
+    -1102.85
+  ],
+  "camera_location_cm": [
+    4995.774,
+    2973.523,
+    -1022.85
+  ],
+  "rotation_degrees": {
+    "pitch": -2.999999999999999,
+    "yaw": 64.99999999999999,
+    "roll": -0.0
+  },
+  "fov_degrees": 95.0,
+  "main_lights_loaded": true,
+  "movement_mode": "<MovementMode.MOVE_WALKING: 1>",
+  "performance_benchmark": false,
+  "output": "01-junction-native.png",
+  "note": "Walked from the north corridor to the junction; oblique view chosen during exploration."
+}

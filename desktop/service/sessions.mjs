@@ -1,6 +1,6 @@
 import { EventEmitter } from 'node:events';
 import { randomUUID } from 'node:crypto';
-import { mkdir, realpath, stat } from 'node:fs/promises';
+import { mkdir, realpath, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import pty from 'node-pty';
 import headless from '@xterm/headless';
@@ -27,8 +27,8 @@ async function workingFolder(value) {
   return process.platform === 'win32' ? folder : realpath(folder).catch(() => folder);
 }
 const publicSession = session => {
-  const { id, name, agent, cwd, bypass, effort, status, createdAt, lastOutputAt, lastInputAt, exitCode, nativeId, attention, activity, unread, completionVersion, lastCompletedId, cols, rows, open, pinned, tabOrder, tabColor, group, updatedAt, preview, hasConversation, restoreError } = session;
-  return { id, name, agent, cwd, bypass, effort, status, createdAt, lastOutputAt, lastInputAt, exitCode, nativeId, attention, activity, unread, completionVersion, lastCompletedId, cols, rows, open, pinned, tabOrder, tabColor, group, updatedAt, preview, hasConversation, restoreError, contextUsage: session.contextUsage };
+  const { id, name, agent, cwd, bypass, effort, status, createdAt, lastOutputAt, lastInputAt, exitCode, nativeId, attention, activity, unread, completionVersion, lastCompletedId, cols, rows, open, pinned, tabOrder, tabColor, group, updatedAt, preview, hasConversation, restoreError, orchestrator, controllerId, workerModel, controlRequestId } = session;
+  return { id, name, agent, cwd, bypass, effort, status, createdAt, lastOutputAt, lastInputAt, exitCode, nativeId, attention, activity, unread, completionVersion, lastCompletedId, cols, rows, open, pinned, tabOrder, tabColor, group, updatedAt, preview, hasConversation, restoreError, orchestrator, controllerId, workerModel, controlRequestId, contextUsage: session.contextUsage };
 };
 
 // Grouped tabs sit together at the position of their earliest open member; a tab
@@ -132,6 +132,8 @@ export class Sessions extends EventEmitter {
       tabOrder: Math.max(-1, ...this.list().map(item => item.tabOrder)) + 1,
       cwd, bypass: options.bypass === true, createdAt: now, lastInputAt: null, lastOutputAt: null,
       effort: options.effort, group: groupLabel(options.group),
+      orchestrator: options.orchestrator === true && agent !== 'shell', controllerId: options.controllerId, workerModel: options.workerModel,
+      controlRequestId: options.controlRequestId, controlSignature: options.controlSignature,
       status: 'starting', nativeId: options.resumeId || (agent === 'claude' ? randomUUID() : null),
       open: true, pinned: false, updatedAt: now, preview: '', hasConversation: !!options.resumeId || !!options.initialPrompt, restoreError: null,
       attention: false, cols: Math.min(500, Math.max(20, options.cols || 90)), rows: Math.min(200, Math.max(5, options.rows || 32)),
@@ -139,7 +141,7 @@ export class Sessions extends EventEmitter {
     this.items.set(session.id, session);
     await this.hydrate(session);
     // A first message and its readable folder apply to this launch only, never to a resume.
-    const first = { initialPrompt: options.initialPrompt, readDir: options.readDir };
+    const first = { initialPrompt: options.initialPrompt, readDir: options.readDir, workerModel: options.workerModel, workerFile: options.workerFile };
     try { await this.launch(session, options.resumeId, await this.nativeBoundary(session, options.resumeId), first); }
     catch (error) { this.items.delete(session.id); session.terminal.dispose(); throw error; }
     await this.persist();
@@ -190,6 +192,7 @@ export class Sessions extends EventEmitter {
     const antigravityLog = session.agent === 'antigravity' ? await prepareAntigravityLog(this.stateDir, session.id) : undefined;
     const noDaemon = session.agent === 'codex' && await codexSupportsNoDaemon(env);
     if (this.closed || !session.open) throw new Error('The chat was closed before its terminal started.');
+    env = { ...env, ...this.controlEnvironment?.(session) };
     const command = terminalCommand(session.agent, { bypass: session.bypass, resumeId, nativeId: session.nativeId, effort: session.effort, opencodeMajor, antigravityLog, noDaemon, ...first });
     if (session.agent === 'codex') env.CODEX_INTERNAL_ORIGINATOR_OVERRIDE = `mrmak_chat_${session.id}`;
     if (session.terminal) this.resetTerminal(session);
@@ -348,6 +351,22 @@ export class Sessions extends EventEmitter {
       // A first prompt, login or CLI update can take longer than thirty seconds.
       await new Promise(resolve => { const timer = setTimeout(resolve, attempt < 60 ? 500 : 3000); timer.unref(); });
     }
+  }
+
+  async followupWorker(id, text) {
+    const session = this.get(id);
+    if (!session.workerModel || session.agent !== 'opencode' || !session.nativeId) throw new Error('This is not an automatic OpenCode worker.');
+    if (session.process) throw Object.assign(new Error('The worker is still running. Read its status and wait before sending corrections.'), { status: 409 });
+    const folder = path.join(this.stateDir, 'agent-control', id);
+    await mkdir(folder, { recursive: true });
+    const file = path.join(folder, `${randomUUID()}.txt`);
+    await writeFile(file, text, { encoding: 'utf8', mode: 0o600 });
+    await this.launch(session, session.nativeId, await this.nativeBoundary(session, session.nativeId), {
+      workerModel: session.workerModel, workerFile: file, initialPrompt: 'Read the attached follow-up and continue this same task. Preserve the original handoff constraints.',
+    });
+    session.lastInputAt = new Date().toISOString(); session.updatedAt = session.lastInputAt;
+    this.changed(session); await this.persist();
+    return { delivered: true, session: publicSession(session) };
   }
 
   bindNative(session, match) {
@@ -734,7 +753,7 @@ export class Sessions extends EventEmitter {
   async persist() {
     this.saveChain = this.saveChain.catch(() => {}).then(async () => {
       this.dirty = false;
-      await saveJson(path.join(this.stateDir, 'sessions.json'), this.list().map(item => ({ ...item, projectGroup: this.items.get(item.id).projectGroup || undefined })));
+      await saveJson(path.join(this.stateDir, 'sessions.json'), this.list().map(item => ({ ...item, projectGroup: this.items.get(item.id).projectGroup || undefined, controlSignature: this.items.get(item.id).controlSignature })));
       let screenError;
       for (const session of this.items.values()) {
         if (!session.terminal) continue;

@@ -1,0 +1,5 @@
+Aca se muestran los blueprints de los bloques modulares, cosa a tener en cuenta.
+Las paredes, los pisos y los techos son de 4x4 metros.
+Todas las decoraciones que se colocan encima de las paredes tambien miden 4 metros de largo.
+las paredes que estan a los costados, llamadas "corner" son ligeramente mas cortas que las comunes para que se coloquen en las esquinas y no choquen con las otras paredes, evitando asi el "Z fighting"
+Todas las piezas modulares se encuentras en "/Game/Art/Assets/Building/Modular_Blocks" dentro de Unreal, las carpetas que comienzan con "BP" son los blueprints, me estoy manejando de la siguiente manera, los static meshes entran desde blender, creo el Blueprint modular de lo que sea, y recien ali, agrego los materiales.

@@ -88,11 +88,13 @@ export function codexSupportsNoDaemon(env = process.env) {
   return codexHelp.get(key);
 }
 
-export function terminalCommand(agent, { bypass = false, resumeId, nativeId, effort, opencodeMajor = 1, antigravityLog, initialPrompt, readDir, noDaemon = false } = {}) {
+export function terminalCommand(agent, { bypass = false, resumeId, nativeId, effort, opencodeMajor = 1, antigravityLog, initialPrompt, readDir, noDaemon = false, workerModel, workerFile } = {}) {
   if (!AGENTS.some(item => item.id === agent)) throw new Error('Unknown agent');
   resumeId = nativeConversationId(resumeId); nativeId = nativeConversationId(nativeId);
   initialPrompt = initialPromptArgument(initialPrompt);
-  if (initialPrompt && (resumeId || !['codex', 'claude'].includes(agent))) throw new Error('Only a new Codex or Claude chat can start with a message.');
+  if (workerModel && (agent !== 'opencode' || !/^[\w.-]+\/[\w.:-]+(?:#[\w.-]+)?$/.test(workerModel))) throw new Error('Choose an exact OpenCode worker model.');
+  if (workerModel && (typeof workerFile !== 'string' || !path.isAbsolute(workerFile) || /[\x00-\x1f\x7f]/.test(workerFile))) throw new Error('Choose an absolute worker handoff file.');
+  if (initialPrompt && !workerModel && (resumeId || !['codex', 'claude'].includes(agent))) throw new Error('Only a new Codex or Claude chat can start with a message.');
   if (readDir != null && (typeof readDir !== 'string' || !path.isAbsolute(readDir) || /[\x00-\x1f]/.test(readDir))) throw new Error('Choose an absolute folder.');
   const command = agent === 'shell' ? shellCommand() : { file: commandPath(AGENTS.find(item => item.id === agent).command), args: [] };
   if (!command || !command.file) throw new Error(`${agent} is not installed on this computer`);
@@ -127,10 +129,12 @@ export function terminalCommand(agent, { bypass = false, resumeId, nativeId, eff
     if (resumeId) args.push('--session', resumeId);
     if (bypass) args.push('--yolo');
   } else if (agent === 'opencode') {
+    if (workerModel) args.push('run', '--model', workerModel, '--file', workerFile);
     // A private v2 server keeps each tab's observer and native session separate.
     if (opencodeMajor >= 2) args.push('--standalone');
     if (resumeId) args.push('--session', resumeId);
     if (bypass) args.push('--auto');
+    if (workerModel && initialPrompt) args.push(initialPrompt);
   }
   if (!isWindows || agent === 'shell') return { file: command.file || command, args: [...(command.args || []), ...args] };
   // No -NoExit: stale coordinator input cannot become shell commands after the agent exits.
@@ -148,7 +152,7 @@ export function childEnvironment(repo) {
   // Drop host-agent identity from the parent so every terminal is an independent CLI.
   for (const key of Object.keys(env)) {
     // A Claude Code parent marks children as child sessions, and they then stop writing transcripts.
-    if (/^(CLAUDECODE|CLAUDE_CODE_(ENTRYPOINT|CHILD_SESSION|SESSION_ID|SESSION_ATTENDED|MESSAGING_SOCKET|MESSAGING_TOKEN|EXECPATH)|CLAUDE_(PID|EFFORT|PLUGIN_DATA|PLUGIN_ROOT)|CODEX_THREAD_ID|CODEX_TURN_ID|CODEX_SHELL|ANTIGRAVITY_AGENT|MRMAK_TOKEN|MRMAK_PARENT_PID)$/.test(key) || /^(MRMAK_OPENCODE|CODEX_COMPANION)_/.test(key)) delete env[key];
+    if (/^(CLAUDECODE|CLAUDE_CODE_(ENTRYPOINT|CHILD_SESSION|SESSION_ID|SESSION_ATTENDED|MESSAGING_SOCKET|MESSAGING_TOKEN|EXECPATH)|CLAUDE_(PID|EFFORT|PLUGIN_DATA|PLUGIN_ROOT)|CODEX_THREAD_ID|CODEX_TURN_ID|CODEX_SHELL|ANTIGRAVITY_AGENT|MRMAK_TOKEN|MRMAK_PARENT_PID)$/.test(key) || /^(MRMAK_OPENCODE|MRMAK_AGENT_CONTROL|CODEX_COMPANION)_/.test(key)) delete env[key];
   }
   return env;
 }

@@ -18,13 +18,38 @@ dungeon-like back-of-house spaces. Characters, weapons and UI are deferred.
   `Inteior_Lobby`, `LaCarlota`, `Streaming_Levels/Main_Lights` and
   `Streaming_Levels/Basement` are in scope.
 - Sources: `D:/GameJam/Total (in)Sanitation/`. Preserve editable originals.
-- Owner confirmed 256/512 px/m and target PC: RTX 2060 + Ryzen 5 5600,
-  1080p, medium-high settings, approximately 60 FPS. Performance is unmeasured.
+- Owner confirmed 256/512 px/m references. Floors and ceilings may deliberately
+  use other densities to match their tileables; preserve these UV exceptions.
+- New structures/shop assets belong inside the existing `Interior_Building.blend`;
+  individual props belong inside `Enviroment_Assets.blend`. Create a new blend
+  only when explicitly needed. FBX delivery uses Super Duper Batch Exporter and
+  `Unreal_Only_FBX`; read the project’s `BLENDER_WORKFLOW.md`.
+- Obsolete texture references were removed after atlas replacement. A fresh
+  read-only check found no missing unpacked file images in either saved blend.
 - Epic Unreal MCP and the existing Blender Lab MCP were verified with real
   native calls; Designer's cooker/renderer passed a material export check.
   Interactive Designer graph control is not yet verified.
-- Setup did not save level or asset changes. Begin the art pass with assembled
-  lighting context, module fit/export verification and the decisions card.
+- Basement pass 01 is implemented and agent-verified: a service sign and warm
+  task light, one corrected ORM texture, three matched PIE pairs and a verified
+  copied 4 m module group. The owner permitted overwriting art assets if changes
+  are marked; Pass 01 lists four changed packages and nine additions. Original
+  building source retained. Owner visual acceptance remains pending.
+- Temp's 12 supplied references and notes are incorporated into the same card.
+  Main_Lights is saved in Basement and LaCarlota. Continue from the project's
+  `NEXT_SESSION.md` and `MODULE_CONTRACT.md`.
+- Latest: four new native PIE captures after walking the corridor/stair route,
+  three generated dressing concepts and a seven-family asset/material proposal
+  are in Basement → Corridor concepts / Asset proposal. The owner accepted the
+  concept direction for modeling and requested a visible OpenCode worker with
+  DeepSeek V4.1 Flash 1017 (Max), supervised and reviewed by the current agent.
+  Read `CORRIDOR_ASSET_HANDOFF.md` and `processes/visible-agent-orchestration.md`.
+  The owner manually started **sub-agente 1**, OpenCode Go / deepseek-v4.1-flash /
+  max. The 25-mesh N01–N07 set, 25 FBXs and T01 are delivered and orchestrator-
+  verified in saved Blender sources and native Unreal (13,694 triangles, 473 old
+  objects preserved). See Basement → Models / Model review. Owner aesthetics
+  and final Basement placement remain pending.
+  A scoped automatic worker bridge is prepared/tested in app source/build;
+  `docs/agent-orchestration.md` explains it. Not activated in the running service.
 
 ## Sculpture Colorization
 

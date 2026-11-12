@@ -1,0 +1,105 @@
+{
+  "format": "mrmak-card",
+  "version": 1,
+  "template": "gallery",
+  "title": "Models / N01–N07 delivery",
+  "summary": "The OpenCode worker delivered 25 meshes, 25 FBX files and T01. The orchestrator independently verified saved sources, UVs, preservation, exports, native Unreal imports and material/atlas appearance. Original 473 objects preserved; no final Basement placement. Open Model review for the downloadable bundle and exact paths. Owner aesthetic acceptance remains pending.",
+  "items": [
+    {
+      "id": "assembly-blender",
+      "title": "Delivered / native Blender model assembly",
+      "image": "media/corridor-models/blender-assembly_bay_eye.png",
+      "alt": "EEVEE assembly preview of the completed corridor pipes, hose reel, work orders, signs and cabinet",
+      "body": "25 meshes across N01–N07; 13,694 triangles. This is a native Blender EEVEE review, not generated concept art or final Basement placement. Source models and exports passed the orchestrator checks. Owner aesthetic review remains pending.",
+      "status": "review"
+    },
+    {
+      "id": "assembly-unreal",
+      "title": "Verified / native Unreal model and material review",
+      "image": "media/corridor-models/unreal-corridor-bay.png",
+      "alt": "Isolated Unreal review of the new pipe and conduit kit, cabinet, notices, reel and containers on existing wall modules",
+      "body": "Native Unreal 5.8.4 SceneCapture2D with dedicated review lighting/exposure, referencing the existing wall/floor meshes. All 25 meshes were imported; this assembly shows the main families and material instances. The capture did not move the main editor camera or save LaCarlota. Temporary capture actors were removed. This is an isolated technical preview, not gameplay or final dressing.",
+      "status": "review"
+    },
+    {
+      "id": "cabinet-unreal",
+      "title": "Verified / atlas and cabinet in Unreal",
+      "image": "media/corridor-models/unreal-corridor-cabinet.png",
+      "alt": "Native Unreal close view of the olive cabinet with meter, danger label, latches and utility plate",
+      "body": "The native cabinet import measures 82 × 17.6 × 101 cm. The T01 meter and caution/utility faces are readable and correctly oriented. Materials are new finish instances using existing library parents. The review exposure is local to the capture.",
+      "status": "review"
+    },
+    {
+      "id": "n01-assemblies",
+      "title": "N01 / 400, shortened-corner and 100 cm pipes",
+      "image": "media/corridor-models/blender-n01_pipes_threequarter.png",
+      "alt": "Native Blender view of straight, corner and infill utility pipe assemblies",
+      "body": "NEW / N01. Eight pipe/fitting meshes in the existing building blend. Straight assembly spans 400 cm; the corner fits a 385 cm wall footprint and has a documented return stub. Main body tileable UV scale is 0.5 units/m. Use the return convention when positioning the next run.",
+      "status": "review"
+    },
+    {
+      "id": "n01-fittings",
+      "title": "N01 / elbows, couplers, bracket and valve",
+      "image": "media/corridor-models/blender-n01_fittings_threequarter.png",
+      "alt": "Native Blender view of the utility pipe fittings and red handwheel branch",
+      "body": "NEW / N01 fittings. Separate geometry supports reuse and restrained iron accents. All actual FBX files reimport at zero layout translation, with unit scale. The source library arrangement is preserved in Blender.",
+      "status": "review"
+    },
+    {
+      "id": "n02-conduit",
+      "title": "N02 / conduit assemblies and hardware",
+      "image": "media/corridor-models/blender-n02_conduit_threequarter.png",
+      "alt": "Native Blender view of conduit straight, corner, infill, clamp, elbow and junction box",
+      "body": "NEW / N02. Six meshes; 1,560 triangles total. Straight span 400 cm, plus shortened-corner and 100 cm variants. Final new mesh UVs have no collapsed triangles. Galvanized finishes reuse the existing metal material family in Unreal.",
+      "status": "review"
+    },
+    {
+      "id": "n03-cabinet",
+      "title": "N03 / analog electrical cabinet",
+      "image": "media/corridor-models/blender-n03_cabinet_threequarter.png",
+      "alt": "Native Blender EEVEE view of the new olive two-door electrical cabinet",
+      "body": "NEW / N03. 1,602 triangles. Two doors, hinges, latches, circular analog meter and plates. Wall projection was corrected from 20.1 to 17.6 cm. Geometry, atlas mapping and native Unreal dimensions passed review.",
+      "status": "review"
+    },
+    {
+      "id": "n04-signs",
+      "title": "N04 / service plaque variants",
+      "image": "media/corridor-models/blender-n04_signs_front.png",
+      "alt": "Native Blender front view of EQUIPMENT, SERVICE, COLLECTION and caution plaques",
+      "body": "NEW / N04. Four sign meshes share the 1024 × 1024 T01 atlas. The existing Pass 01 EQUIPMENT sign was preserved. Text source is retained as Blender font objects and authoring code; the delivered in-game faces use the raster atlas.",
+      "status": "review"
+    },
+    {
+      "id": "n05-papers",
+      "title": "N05 / work-order panel and papers",
+      "image": "media/corridor-models/blender-n05_panel_threequarter.png",
+      "alt": "Native Blender EEVEE view of a steel work-order panel with clips and paper forms",
+      "body": "NEW / N05. Framed steel panel plus one separate paper sheet mesh. Both geometry and actual atlas UVs were checked. No new cork/wood material or floor clutter was introduced.",
+      "status": "review"
+    },
+    {
+      "id": "n06-reel",
+      "title": "N06 / hose reel, free end and clipped nozzle",
+      "image": "media/corridor-models/blender-n06_reel_threequarter.png",
+      "alt": "Native Blender EEVEE view of the manual hose reel with coiled hose, crank and clipped nozzle",
+      "body": "NEW / N06. Diameter 54.8 cm; total wall projection 24.5 cm; 2,404 triangles. The free hose end was connected to the stored nozzle during review. Rough rubber, olive coating and brass/iron finishes have consistent slots.",
+      "status": "review"
+    },
+    {
+      "id": "n07-containers",
+      "title": "N07 / supply container, case and bin",
+      "image": "media/corridor-models/blender-n07_containers_threequarter.png",
+      "alt": "Native Blender EEVEE view of three new utility containers",
+      "body": "NEW / N07. Three static set-dressing meshes, 932 triangles total. Existing wooden/blue bucket designs were preserved. The shelf shown in the Unreal review is a neutral display support; the existing SM_LabShelf remains the intended reusable scene asset.",
+      "status": "review"
+    },
+    {
+      "id": "parts-overview",
+      "title": "Delivered / isolated prop overview",
+      "image": "media/corridor-models/blender-props_row_overview.png",
+      "alt": "Native Blender overview containing only this pass’s new props",
+      "body": "The corrected overview contains this pass only. Earlier mixed-scene diagnostics were rejected; final individual and assembly renders were inspected. Read Model review for exact source locations, scope and remaining runtime decisions.",
+      "status": "review"
+    }
+  ]
+}

@@ -3,37 +3,37 @@
   "version": 1,
   "template": "research",
   "title": "Decisions and next review",
-  "summary": "Use Edit to record a choice, date and acceptance note. Confirmed technical targets are recorded below; open proposals remain review items.",
+  "summary": "Owner decisions, current production rules and review items. The latest Blender source policy, FBX configuration, intentional UV exceptions and resolved texture cleanup are recorded below.",
   "items": [
     {
       "id": "scope",
       "title": "Confirmed / environment first",
       "status": "done",
-      "body": "12 November 2026 \u2014 Owner: focus on the Basement and environment art. Work only in the four named maps. Defer characters, weapons, UI and unrelated levels."
+      "body": "12 November 2026 — Owner: environment first, currently Basement. Work in the four allowed maps. New and modified art assets stay under `/Game/Art`. The owner explicitly permits overwriting existing art assets when the completed change list identifies them. Characters, weapons and UI stay deferred."
     },
     {
       "id": "hardware",
-      "title": "Confirmed / density and target PC",
+      "title": "Confirmed / density and intentional tileable exceptions",
       "status": "done",
-      "body": "12 November 2026 \u2014 Owner: densities are pixels per meter. Target RTX 2060 + Ryzen 5 5600, 1080p, medium-high, approximately 60 FPS. Starting density references: 256 px/m on some modular structures; 512 px/m on simple props. Actual performance has not been measured."
+      "body": "12 November 2026 — Owner: use 256 px/m for some modular structures and 512 px/m for simple props. Some floors and ceilings intentionally use another density to match their specific tileable texture. Preserve those UV scales and material tiling; do not normalize them to the nominal values. The sampled concrete floor at about 128 px/m is an intentional exception, not an outstanding fix."
     },
     {
       "id": "first-pass",
-      "title": "Review / the first Basement pass",
+      "title": "Implemented / first Basement service-area pass",
       "status": "review",
-      "body": "**Proposal:** first inspect the assembled corridor/shop lighting and module fit, then strengthen the 1970s service-area identity with a small, coherent art pass. Preserve the neglected dungeon-like atmosphere.\n\nOwner choice / date: pending.\n\nAccepted visual examples: pending. The current corridor is a baseline, not automatic approval of every current surface or light."
+      "body": "**Owner authorization, 12 November 2026:** execute the Overview sequence; existing assets may be overwritten if marked afterward.\n\n**Agent-selected implementation:** an olive/cream equipment sign, reused fluorescent fixture and one 3900 K rectangular task light at the counter. Preserve the original barred delivery mechanism and neglected corridor.\n\n**Verified:** three matched actual gameplay pairs; saved/reloaded materials; original geometry and source blend retained.\n\n**Owner aesthetic acceptance:** pending review of Pass 01. Sign wording and exact light balance remain editable."
     },
     {
       "id": "modular-standard",
-      "title": "Pending / modular kit contract",
-      "status": "review",
-      "body": "Measure the existing module sizes, snap grid, pivot convention and export/import scale. Test one copied wall/floor/corner assembly before standardizing. Do not infer a one-meter or four-meter grid from scene units alone.\n\nGrid and dimensions: pending evidence.\nExport/import settings: pending round-trip trial."
+      "title": "Verified / representative modular contract",
+      "status": "done",
+      "body": "Wall 400 × 400 × 15 cm; corner 385 × 400 × 15 cm; floor 400 × 400 × 15 cm. Unit scales and common edge pivots verified. A corner’s 385 cm length plus the adjoining wall’s 15 cm thickness completes the 400 cm grid.\n\nCopied Blender → FBX → Unreal import/reimport passed for four types. Corrected the trial export from a 100× unit mismatch and verified UVs and vertex-paint alpha by exporting the native copy back to Blender. Initial imports need explicit vertex-color Replace; reimport may preserve existing paint.\n\nSource contract and exact test paths are in Pass 01 and the project MODULE_CONTRACT.md."
     },
     {
       "id": "missing-images",
-      "title": "Inspect / three missing source images",
-      "status": "review",
-      "body": "`Bars_basecolor.png`, `Chains_basecolor.png` and `Old_Elevator_Door_basecolor.png` are missing from their Blender paths. Matching `.sbs` sources and the elevator atlas exist. Check active usage before regenerating or relinking. No fix has been applied."
+      "title": "Resolved / obsolete texture references removed",
+      "status": "done",
+      "body": "12 November 2026 — Owner confirmed that obsolete texture references in `Enviroment_Assets` were removed after replacement by an atlas. A fresh read-only check of both saved sources found **zero missing unpacked file images**. The old Bars, Chains and Old_Elevator_Door warning is closed; do not regenerate or relink those retired textures. Neither source was saved by the audit."
     },
     {
       "id": "windows",
@@ -46,6 +46,27 @@
       "title": "Optional / Designer graph connection",
       "status": "idea",
       "body": "The existing Adobe batch tools work. An in-app read-only Python audit is prepared. Run it when interactive graph inspection or editing is the next concrete task. No additional Designer MCP or runtime Unreal Substance plugin was installed."
+    },
+    {
+      "id": "main-lights-assembly",
+      "title": "Verified / lighting is assembled in both review maps",
+      "status": "done",
+      "body": "Main_Lights is Always Loaded and visible in saved Basement and LaCarlota. It was already present in the live LaCarlota session when work began; the level was saved without adding a duplicate. A real LaCarlota PIE audit confirmed the streamed directional light and the player pawn. Global Main_Lights content was not changed."
+    },
+    {
+      "id": "blender-source-policy",
+      "title": "Confirmed / author in the existing Blender files",
+      "status": "done",
+      "body": "12 November 2026 — Owner: Create new structures and shop assets inside `Assets/Building/Interior_Building.blend`; create individual environment assets and props inside `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Paths are relative to `D:/GameJam/Total (in)Sanitation/`. Use these existing files and their collections. Create a new `.blend` only when the task explicitly requires one. Historical Pass 01 sources are retained as editable evidence."
+    },
+    {
+      "id": "fbx-export-policy",
+      "title": "Confirmed / Super Duper Batch Exporter settings",
+      "image": "media/export-settings.png",
+      "alt": "Owner-supplied Super Duper Batch Exporter settings for Blender to Unreal FBX delivery",
+      "url": "https://extensions.blender.org/add-ons/superduperbatchexporter/",
+      "status": "done",
+      "body": "**Owner configuration, 12 November 2026.** Use Super Duper Batch Exporter: FBX, **Parent Objects**, **Visible**, filename **`$OBJ`**, preset **`Unreal_Only_FBX`**, Apply Modifiers enabled, **Mesh only**, Transform on Export disabled, Create LOD disabled. Set Directory for the asset destination; the pictured `//Delivery\\Basement\\Shop\\` is an example.\n\nThe installed preset was read locally: scale 1, apply units, `FBX_SCALE_NONE`, forward **`-Z`**, up **`Y`**, no animation. The earlier direct-export trial used different axes and remains historical evidence. The exact addon/preset round trip is still to be checked on the next asset delivery. Full contract: `projects/total-insanitation/BLENDER_WORKFLOW.md` and Tools."
     }
   ]
 }

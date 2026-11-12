@@ -1,0 +1,105 @@
+{
+  "format": "mrmak-card",
+  "version": 1,
+  "template": "gallery",
+  "title": "Owner references / November 2026",
+  "summary": "Twelve supplied native views and translated production notes from Temp. These establish current project context; pass 01 verification is recorded separately in Basement → Pass 01.",
+  "items": [
+    {
+      "id": "owner-basement-01",
+      "title": "Basement / approach",
+      "image": "media/owner-references/basement_01.png",
+      "alt": "Basement / approach supplied by the owner",
+      "status": "done",
+      "body": "Owner-supplied gameplay view with Main_Lights included. Repeated fluorescent pools and exposed masonry establish the neglected service route.\n\nReceived in `projects/total-insanitation/Temp` on 12 November 2026. Original image retained without visual edits; original notes remain in Temp."
+    },
+    {
+      "id": "owner-basement-02",
+      "title": "Basement / stairs",
+      "image": "media/owner-references/basement_02.png",
+      "alt": "Basement / stairs supplied by the owner",
+      "status": "done",
+      "body": "Owner-supplied descent. The low ceiling and dark stair transition frame the view toward the final hall.\n\nReceived in `projects/total-insanitation/Temp` on 12 November 2026. Original image retained without visual edits; original notes remain in Temp."
+    },
+    {
+      "id": "owner-basement-03",
+      "title": "Basement / junction",
+      "image": "media/owner-references/basement_03.png",
+      "alt": "Basement / junction supplied by the owner",
+      "status": "done",
+      "body": "Owner-supplied junction. The central route reads through the light rhythm; side bays remain dark.\n\nReceived in `projects/total-insanitation/Temp` on 12 November 2026. Original image retained without visual edits; original notes remain in Temp."
+    },
+    {
+      "id": "owner-basement-04",
+      "title": "Basement / shop before pass 01",
+      "image": "media/owner-references/basement_04.png",
+      "alt": "Basement / shop before pass 01 supplied by the owner",
+      "status": "done",
+      "body": "Owner-supplied endpoint. Service is through the open counter; equipment is delivered through the separate spikes/bars opening. The future NPC remains undecided.\n\nReceived in `projects/total-insanitation/Temp` on 12 November 2026. Original image retained without visual edits; original notes remain in Temp."
+    },
+    {
+      "id": "owner-materials",
+      "title": "LaCarlota / material variants",
+      "image": "media/owner-references/materials.png",
+      "alt": "LaCarlota / material variants supplied by the owner",
+      "status": "done",
+      "body": "Owner-supplied native material board. Metallic, concrete, glass, plastic, wood, leather, magic, trim sheet, rugs, ceiling and wallpaper families are already available.\n\nReceived in `projects/total-insanitation/Temp` on 12 November 2026. Original image retained without visual edits; original notes remain in Temp."
+    },
+    {
+      "id": "owner-basement-blocks",
+      "title": "Basement / existing kit",
+      "image": "media/owner-references/basement_blocks.png",
+      "alt": "Basement / existing kit supplied by the owner",
+      "status": "done",
+      "body": "Owner-supplied modular Blueprint lineup. Regular modules are 4 m; shortened corners prevent intersecting surfaces. Materials are applied in Blueprints.\n\nReceived in `projects/total-insanitation/Temp` on 12 November 2026. Original image retained without visual edits; original notes remain in Temp."
+    },
+    {
+      "id": "owner-office-lab-blocks",
+      "title": "Office and lab / existing kit",
+      "image": "media/owner-references/office_lab-blocks.png",
+      "alt": "Office and lab / existing kit supplied by the owner",
+      "status": "done",
+      "body": "Owner-supplied public-area kit: wood, wallpaper, light concrete and warm trim; floor-covering variants and suspended ceilings.\n\nReceived in `projects/total-insanitation/Temp` on 12 November 2026. Original image retained without visual edits; original notes remain in Temp."
+    },
+    {
+      "id": "owner-office-lab-01",
+      "title": "Office / wood and ceiling grid",
+      "image": "media/owner-references/office_lab_01.png",
+      "alt": "Office / wood and ceiling grid supplied by the owner",
+      "status": "done",
+      "body": "Owner-supplied gameplay work. Wood paneling and the regular luminous ceiling grid are concrete 1970s references for this project.\n\nReceived in `projects/total-insanitation/Temp` on 12 November 2026. Original image retained without visual edits; original notes remain in Temp."
+    },
+    {
+      "id": "owner-office-lab-02",
+      "title": "Office / doorway proportion",
+      "image": "media/owner-references/office_lab_02.png",
+      "alt": "Office / doorway proportion supplied by the owner",
+      "status": "done",
+      "body": "Owner-supplied gameplay work. A wood-lined doorway frames a wallpaper room. A modular doorway mesh exists; its reusable Blueprint still needs a production pass.\n\nReceived in `projects/total-insanitation/Temp` on 12 November 2026. Original image retained without visual edits; original notes remain in Temp."
+    },
+    {
+      "id": "owner-office-lab-03",
+      "title": "Office / wallpaper and carpet",
+      "image": "media/owner-references/office_lab_03.png",
+      "alt": "Office / wallpaper and carpet supplied by the owner",
+      "status": "done",
+      "body": "Owner-supplied gameplay work. Pattern scale, carpet and ceiling repetition show the existing institutional vocabulary.\n\nReceived in `projects/total-insanitation/Temp` on 12 November 2026. Original image retained without visual edits; original notes remain in Temp."
+    },
+    {
+      "id": "owner-office-lab-04",
+      "title": "Office / material variant",
+      "image": "media/owner-references/office_lab_04.png",
+      "alt": "Office / material variant supplied by the owner",
+      "status": "done",
+      "body": "Owner-supplied gameplay work. Red carpet contrasts with wood walls; it is an office reference, not a Basement floor prescription.\n\nReceived in `projects/total-insanitation/Temp` on 12 November 2026. Original image retained without visual edits; original notes remain in Temp."
+    },
+    {
+      "id": "owner-office-lab-05",
+      "title": "Lab / light concrete and band",
+      "image": "media/owner-references/office_lab_05.png",
+      "alt": "Lab / light concrete and band supplied by the owner",
+      "status": "done",
+      "body": "Owner-supplied early lab shell. The owner intends a lab on most office floors, especially the first level; layout and furnishing are still developing.\n\nReceived in `projects/total-insanitation/Temp` on 12 November 2026. Original image retained without visual edits; original notes remain in Temp."
+    }
+  ]
+}

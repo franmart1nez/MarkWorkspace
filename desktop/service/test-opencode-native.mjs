@@ -1,6 +1,7 @@
 // Opt-in integration test: real OpenCode, isolated home, loopback model fixture.
 // No provider credentials, paid model calls, user chats or global config changes.
 import assert from 'node:assert/strict';
+import { randomUUID } from 'node:crypto';
 import http from 'node:http';
 import { spawn, execFileSync } from 'node:child_process';
 import { mkdtemp, mkdir, writeFile, readFile } from 'node:fs/promises';
@@ -54,8 +55,9 @@ env.OPENCODE_CONFIG_CONTENT = JSON.stringify(major === 1 ? {
 });
 
 async function run(chatId, nativeId, prompt) {
-  const childEnv = opencodeEnvironment(env, { stateDir: repo, session: { id: chatId, nativeId }, major });
-  const args = ['run', ...(major === 2 ? ['--standalone'] : []), '--format', 'json', '--model', 'fixture/local', '--title', 'Isolated fixture', ...(nativeId ? ['--session', nativeId] : []), prompt];
+  const launchNativeId = nativeId || (major === 2 ? `ses_${randomUUID().replaceAll('-', '')}` : null);
+  const childEnv = opencodeEnvironment(env, { stateDir: repo, session: { id: chatId, nativeId: launchNativeId }, major });
+  const args = ['run', ...(major === 2 ? ['--standalone'] : []), '--format', 'json', '--model', 'fixture/local', '--title', 'Isolated fixture', ...(launchNativeId ? ['--session', launchNativeId] : []), prompt];
   const proc = spawn(binary, args, { cwd: path.join(repo, 'project'), env: childEnv, windowsHide: true });
   proc.stdin.end();
   let output = '';
@@ -86,6 +88,33 @@ try {
   assert.ok(requests.every(r => !JSON.stringify(r).includes('OTHER_CONTEXT_SENTINEL')), 'Other chat context must remain separate');
   const record = await readFile(path.join(repo, 'opencode-chat-a.json'), 'utf8');
   assert.ok(!record.includes('CONTEXT_SENTINEL') && !record.includes('fixture-only'));
+  if (process.argv.includes('--worker')) {
+    const previousEnv = process.env;
+    process.env = { ...env, PATH: path.dirname(binary) + path.delimiter + env.PATH };
+    const sessions = await new Sessions(path.join(repo, 'project'), path.join(repo, 'worker-state')).init();
+    const handoff = path.join(repo, 'project', 'task with spaces.md');
+    await writeFile(handoff, '# Worker fixture\nWORKER_FILE_SENTINEL\nReply briefly.');
+    try {
+      const worker = await sessions.create({ agent: 'opencode', name: 'Automatic Worker Check', workerModel: 'fixture/local', workerFile: handoff, initialPrompt: 'Follow the attached handoff.' });
+      const deadline = Date.now() + 60000;
+      while (sessions.get(worker.id).process && Date.now() < deadline) await new Promise(resolve => setTimeout(resolve, 150));
+      assert.equal(sessions.get(worker.id).process, null, 'Worker must finish naturally');
+      const nativeId = sessions.get(worker.id).nativeId;
+      assert.ok(nativeId);
+      const screen = (await sessions.read(worker.id, 150)).screen;
+      await writeFile(path.join(repo, 'worker-screen.log'), screen);
+      assert.equal(sessions.get(worker.id).exitCode, 0, `Worker launch failed. Logs: ${repo}`);
+      assert.ok(screen.includes('MRMAK_LOOPBACK_ANSWER'));
+      assert.ok(requests.some(r => JSON.stringify(r).includes('WORKER_FILE_SENTINEL')));
+      await sessions.followupWorker(worker.id, 'WORKER_CORRECTION_SENTINEL');
+      const secondDeadline = Date.now() + 60000;
+      while (sessions.get(worker.id).process && Date.now() < secondDeadline) await new Promise(resolve => setTimeout(resolve, 150));
+      assert.equal(sessions.get(worker.id).process, null);
+      assert.equal(sessions.get(worker.id).nativeId, nativeId);
+      assert.equal(sessions.get(worker.id).exitCode, 0);
+      assert.ok(requests.some(r => { const text = JSON.stringify(r); return text.includes('WORKER_FILE_SENTINEL') && text.includes('WORKER_CORRECTION_SENTINEL'); }));
+    } finally { await sessions.close(); process.env = previousEnv; }
+  }
   if (process.argv.includes('--tui')) {
     const previousEnv = process.env;
     process.env = { ...env, PATH: path.dirname(binary) + path.delimiter + env.PATH };
@@ -119,5 +148,5 @@ try {
       await sessions.remove(chat.id);
     } finally { await sessions.close(); process.env = previousEnv; }
   }
-  console.log(JSON.stringify({ version, nativeSession: true, completion: true, resumedSameContext: true, otherChatIsolated: true, tui: process.argv.includes('--tui'), paidCalls: 0, logs: repo }));
+  console.log(JSON.stringify({ version, nativeSession: true, completion: true, resumedSameContext: true, otherChatIsolated: true, tui: process.argv.includes('--tui'), automaticWorker: process.argv.includes('--worker'), paidCalls: 0, logs: repo }));
 } finally { server.closeAllConnections(); await new Promise(resolve => server.close(resolve)); }

@@ -1,0 +1,27 @@
+{
+  "type": "native PIE gameplay",
+  "project": "D:/GItHub/BoomeRacist/BoomeRacist.uproject",
+  "world": "/Game/Levels/Streaming_Levels/UEDPIE_0_Basement.Basement",
+  "pawn": "/Game/Levels/Streaming_Levels/UEDPIE_0_Basement.Basement:PersistentLevel.BP_FirstPersonCharacter_C_0",
+  "pawn_location_cm": [
+    5000.0,
+    7162.655,
+    -1502.85
+  ],
+  "camera_location_cm": [
+    5002.079,
+    7152.873,
+    -1422.85
+  ],
+  "rotation_degrees": {
+    "pitch": -2.000000000000001,
+    "yaw": 102.00000000000007,
+    "roll": -0.0
+  },
+  "fov_degrees": 95.0,
+  "main_lights_loaded": true,
+  "movement_mode": "<MovementMode.MOVE_WALKING: 1>",
+  "performance_benchmark": false,
+  "output": "04-shop-approach-native.png",
+  "note": "Walked down the existing stair to the shop landing, then turned slightly toward the service counter."
+}

@@ -1,0 +1,5 @@
+-Dentro de Unreal Engine solo tocaremos la siguiente carpeta "/Game/Art" alli se encuentran todos los assets y materiales que vengo trabajando, asi que si llegas a agregar algo sera alli, obviamente en alguna de sus sub-carpetas. Esta todo bastante ordenado, pero si tienes alguna duda hazmela saber.
+-En el nivel "LaCarlota" tambien añade el nivel "Main_Lights" para que al darle play este iluminado.
+-Una de las cosas que todavia no hice el Blueprint, pero ya esta el mesh modular, son las paredes que tienen la forma para colocar una puerta.  
+-En "/Game/Art/Assets/Building/Floors/Shop" esta el Blueprint del shop junto con todos sus staticmeshes.
+-explora libremente la carpeta "Art" dentro de Unreal y hazme las preguntas que quieras para obtener toda la informacion que necesites y asi tener un mejor criterio para avanzar.

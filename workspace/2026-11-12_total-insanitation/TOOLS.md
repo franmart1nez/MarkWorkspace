@@ -5,7 +5,7 @@
 | Application | Installed version | Current capability | Remaining verification |
 | --- | --- | --- | --- |
 | Unreal Engine | 5.8.4, build 58902052 | Epic MCP connected; read current map, found the shop actor, captured the Basement viewport | Validate each future import/material/level edit in the engine |
-| Blender | 5.2.4 LTS | Blender Lab MCP connected to `Interior_Building.blend`; path and clean state verified; native window capture | Verify export settings and one round trip using a copy |
+| Blender | 5.2.4 LTS | Blender Lab MCP connected to `Interior_Building.blend`; path and clean state verified; native window capture | Owner’s addon/preset inspected; verify its first asset delivery in Unreal |
 | Substance 3D Designer | 15.0.1, build 9305 | `sbscooker` + `sbsrender` cooked and rendered `Brutalist_Concrete_01.sbs` into a local scratch folder | Interactive Python API audit is prepared, not yet run inside Designer |
 
 ## Unreal: installed and configured
@@ -77,6 +77,29 @@ Add `--tool TOOL_NAME --arguments path/to/arguments.json --output .mrmak/total-i
 
 [Official OpenAI documentation: project-scoped MCP configuration](https://developers.openai.com/codex/mcp/)
 
+## Blender production sources and FBX export
+
+**Owner configuration, 12 November 2026.** Create structures and shop assets in the existing `Interior_Building.blend`, and individual environment assets/props in the existing `Enviroment_Assets.blend`. Create a new `.blend` only when the task explicitly requires one.
+
+Use the installed [Super Duper Batch Exporter](https://extensions.blender.org/add-ons/superduperbatchexporter/) (local manifest: **2.9.3**) with the supplied configuration:
+
+| Setting | Value |
+| --- | --- |
+| Directory | Set for the current destination; the pictured `//Delivery\Basement\Shop\` is an example |
+| Filename | `$OBJ` |
+| Format / Mode / Limit to | FBX / Parent Objects / Visible |
+| Preset | `Unreal_Only_FBX` |
+| Apply Modifiers / Object Types | Enabled / Mesh only |
+| Transform on Export / Create LOD | Disabled / Disabled |
+
+![Owner-supplied Blender batch export settings](media/export-settings.png)
+
+The installed `Unreal_Only_FBX.py` was inspected locally: scale 1, apply unit scale, `FBX_SCALE_NONE`, forward **`-Z`**, up **`Y`**, face smoothing, tangent space enabled, SRGB vertex colors, no animation and no embedded textures. The addon overrides the stale filepath stored in the preset with the panel Directory and generated filename.
+
+The earlier copied module test used direct export with different axes (`-Y / Z`). Keep that as historical test evidence; use the owner’s preset for future delivery and verify size, orientation, pivots, UVs and vertex colors on the next asset import. This documentation update did not perform a round trip through the exact addon/preset.
+
+Full source/export contract: `projects/total-insanitation/BLENDER_WORKFLOW.md`. Preserve deliberate floor and ceiling tileable-alignment exceptions to 256/512 px/m. A fresh read-only check found no missing unpacked file images in either saved blend; the old texture warning is closed.
+
 ## Files and recovery
 
 - `projects/total-insanitation/scripts/blender_audit.py`: read-only source inventory.
@@ -84,3 +107,19 @@ Add `--tool TOOL_NAME --arguments path/to/arguments.json --output .mrmak/total-i
 - `projects/total-insanitation/scripts/designer_audit.py`: read-only in-app package inventory.
 - `.mrmak/total-insanitation/`: tool source, venv, logs, pre-change settings copies, JSON receipts and scratch renders. Do not commit.
 - To remove this setup later, compare the saved descriptor with the current one and remove only the five added plugin entries and MCP settings. Do not restore the full backup over later user edits.
+
+## Production check / Basement pass 01
+
+Native Unreal and Blender tools completed the first art pass on 12 November 2026. The original graphical source session was preserved. The generic Blender CLI timed out with normal user addons; direct factory-startup Blender completed historical test exports and independent UV/color checks. Future production export uses the installed batch addon and owner preset above.
+
+The project `MODULE_CONTRACT.md` records verified dimensions, pivots, export settings, density exceptions and collision checks. A default trial import ignored vertex paint; a fresh copy with explicit Replace retained alpha. The isolated legacy FBX check restores the session's Interchange FBX flag immediately afterward. No global configuration or renderer change is required.
+
+Adding native Blueprint components compiles/reinstances the class. Reacquire final templates before saving material arrays, refresh only the new components on existing instances, then save and reload affected maps. Pass 01 checked actual materials afterward. Save newly imported meshes explicitly; saving a referencing Blueprint alone is insufficient.
+
+`CaptureViewport` returned the editor view while PIE was active. The matched gameplay evidence therefore uses native `HighResShot` in the game world, with camera/FOV provenance. These are real first-person views with Main_Lights; editor-only captures are labeled separately.
+
+Full native receipts, recovery copies and failed probes stay in `.mrmak/total-insanitation/basement-review/`, outside Git. The Pass 01 report lists four changed existing packages and nine new art/test packages. The original building blend hash is unchanged.
+
+## Unreal: Office Level Builder execution script
+
+Installed on 12 November 2026 at the owner's request: `BoomeRacist/Content/Art/Tools/OfficeLevelBuilder/Python/olb_build.py`. It is triggered by the **Build/Clear** buttons on `BP_OLB_Builder`, `BP_OLB_Room` and `BP_OLB_Stair` in `/Game/Art/Tools/OfficeLevelBuilder/`. Those `Call In Editor` events run the file through the editor `py` console command. No project setting, startup script or plugin was added. In this session, Python was run inside the live editor by typing `py "<file>"` into the Output Log `Cmd` box through the Slate inspector, because Python remote execution is disabled in the project. Usage, rules, verification and limits are in the **Level builder** tab.

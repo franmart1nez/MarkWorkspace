@@ -78,6 +78,13 @@ small session observer at launch, without writing global configuration. OpenCode
 The MCP inspector currently lists Claude, Codex, Kimi and Cursor configurations;
 use OpenCode's native MCP controls to inspect its own connections.
 
+To let a new agent chat coordinate workers automatically, select **Allow this
+chat to coordinate workers** in New chat. This is a separate, default-off choice
+from CLI permission bypass. The orchestrator can use the scoped local client to
+open visible OpenCode tasks with an explicit model and handoff, inspect progress
+and send corrections to the same conversation. See
+[Automatic worker chats](agent-orchestration.md) for commands and limits.
+
 ## Explore the examples
 
 The pinned game card is a project hub. Research is a readable report with source

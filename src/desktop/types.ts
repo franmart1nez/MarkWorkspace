@@ -6,6 +6,7 @@ export interface AgentInfo { id: AgentId; label: string; color: string; availabl
 export interface ChatSession {
   id: string; name: string; agent: AgentId; cwd: string; bypass: boolean
   effort?: Effort
+  orchestrator?: boolean; controllerId?: string; workerModel?: string
   status: 'starting' | 'running' | 'stopped' | 'exited'; createdAt: string
   lastOutputAt: string | null; lastInputAt: string | null; nativeId: string | null
   attention: boolean; cols: number; rows: number; exitCode?: number | null
