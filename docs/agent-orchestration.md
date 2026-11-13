@@ -9,8 +9,9 @@ interactive OpenCode tabs retain their normal behavior.
 
 ## Enable for one new orchestrator
 
-In **Chats → New chat**, choose the orchestrator CLI and project folder, then
-select **Allow this chat to coordinate workers**. This option is off by default
+In **Chats → New chat**, choose the orchestrator CLI, set the project folder
+under **Advanced** if it differs from the default, then select **Allow this chat
+to coordinate workers**. This option is off by default
 and is separate from the CLI permission/bypass selection. Keep the permissions
 you intend the worker to inherit.
 
