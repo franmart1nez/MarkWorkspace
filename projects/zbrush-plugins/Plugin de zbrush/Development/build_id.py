@@ -43,7 +43,10 @@ def compose(root=ROOT, camera_root=None):
         if word.startswith('cb'):
             return 'idCam' + word[2:]
         if word in locals_:
-            return 'idCam_' + word
+            # Native 2023 rejects underscores in variable identifiers, even
+            # though routine names accept them. Keep legacy locals distinct
+            # from the cb -> idCam namespace without punctuation.
+            return 'idReader' + word[0].upper() + word[1:]
         if word == 'CB32ReadView':
             return 'ID32ReadView'
         return word

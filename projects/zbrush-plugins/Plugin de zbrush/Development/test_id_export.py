@@ -73,6 +73,17 @@ class IDHost(Host):
     def cmd(self, n):
         c, *a = n
         E = lambda i: self.e(a[i])
+        variable_names = []
+        if c in ['VarDef', 'VarSet', 'VarInc', 'VarDec']:
+            variable_names.append(a[0].split('(', 1)[0])
+        if c == 'RoutineDef':
+            variable_names += a[2:]  # Routine name itself may contain underscores.
+        if c == 'Loop' and len(a) > 2:
+            variable_names.append(a[2])
+        for name in variable_names:
+            assert '_' not in name, ('Native variable identifier', name)
+        if c == 'StrFind':
+            assert all('[IGetTitle' not in value for value in a), 'Pre-evaluate native material title lookup'
         if c == 'StrMerge':
             assert len(a) <= 12, ('Native StrMerge input limit', len(a))
             result = ''.join(str(self.e(value)) for value in a)
@@ -945,6 +956,55 @@ class IDExport(unittest.TestCase):
                 word = 'Missing' if case == 'missing' else 'Unavailable'
                 self.assertTrue(any(word+' control: Transform:Draw Polyframe' in message
                                     for message in h.messages))
+
+    def test_native_material_probe_uses_scalar_path_and_dynamic_id(self):
+        for path, title, accepted in [('Material:Flat Color', 'Flat Color', True),
+                                      ('Texture:Flat Color', 'Flat Color', False),
+                                      ('Material:Flat Color altered', 'Flat Color altered', False)]:
+            with self.subTest(path=path):
+                h = IDHost()
+                h.load(OUTPUT)
+                original = h.cmd
+                native_id = 10243  # Read-only controller probe; no fixed ID in the plugin.
+                def cmd(n):
+                    c, *args = n
+                    if c == 'IExists' and h.e(args[0]) == native_id:
+                        return 1
+                    if c == 'IGetID' and h.e(args[0]) == 'Material:Flat Color':
+                        return native_id
+                    if c == 'IGetTitle' and h.e(args[0]) == native_id:
+                        return path if len(args) > 1 and h.e(args[1]) else title
+                    return original(n)
+                h.cmd = cmd
+                starting_material = h.ui['Material:ItemInfo']
+                h.call('ID_MaterialCandidate', native_id)
+                self.assertEqual(h.v['idFlat'], native_id if accepted else -1)
+                if accepted:
+                    h.call('ID_FindFlat')
+                    self.assertEqual(h.v['idFlat'], native_id)
+                self.assertEqual(h.ui['Material:ItemInfo'], starting_material)
+                self.assertFalse(any(c == 'IPress' for c, _ in h.calls))
+                self.assertEqual(h.events, [])
+
+    def test_generated_native_variables_are_alphanumeric_and_reader_executes(self):
+        variables = set()
+        for item in commands(OUTPUT.read_text('ascii')):
+            c, *args = item
+            if c in ['VarDef', 'VarSet', 'VarInc', 'VarDec']:
+                variables.add(args[0].split('(', 1)[0])
+            if c == 'RoutineDef':
+                variables.update(args[2:])
+            if c == 'Loop' and len(args) > 2:
+                variables.add(args[2])
+        self.assertTrue({'idReaderBase', 'idReaderSlot', 'idReaderVisBase',
+                         'idCamBase', 'idCamSlot'}.issubset(variables))
+        for name in variables:
+            self.assertRegex(name, r'^[A-Za-z][A-Za-z0-9]*$')
+        h = self.host()
+        self.assertIn('ID_CB29_LoadSlot', h.routines)
+        h.call('ID_CB29_LoadSlot', 0)
+        self.assertEqual([status & 1 for status in h.status], [1, 1, 0, 0, 0])
+        self.assertEqual(h.dims, [1920, 1080])
 
 
 if __name__ == '__main__':

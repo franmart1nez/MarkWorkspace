@@ -167,6 +167,38 @@ Maxon's [Projection Master documentation](https://help.maxon.net/zbr/en-us/Conte
 also discusses the Draw Polyframe setting; the native probe is the authority
 for this machine's exact path.
 
+## Native material and variable identifier correction
+
+The next controller candidate exposed two more runtime differences before any
+backup or mesh processing. Read-only `id-material-probe.bin` contains full path
+`Material:Flat Color`, title `Flat Color` and observed ID `10243`. The nested
+IGetTitle call inside the material-prefix StrFind condition did not identify it.
+The candidate advanced when the full path was precomputed into a string first.
+`ID_MaterialCandidate` now does that, retaining the Material parent and exact
+Flat Color title checks. The observed numeric ID is a regression fixture only;
+the plugin still resolves it dynamically. Lookup does not select materials.
+
+The subsequent native error was an ambiguous `idCam` token at local variable
+`idCam_base`. The generator now maps legacy reader locals to alphanumeric names
+such as `idReaderBase`, `idReaderSlot` and `idReaderVisBase`. These stay distinct
+from the existing cb-to-idCam names such as `idCamBase`/`idCamSlot`. Routine
+identifiers retain their supported underscores, and shared reader source,
+camera data and recovery memory block names remain unchanged. No controller
+candidate logging or probe-writing code was copied into this delivery.
+
+The mock now rejects the known nested-title expression and underscore variable
+targets/parameters. Regressions use the actual candidate lookup with the native
+ID/path/title, reject a wrong parent and near-match title, validate every
+generated variable identifier, and execute the renamed reader on a stored view.
+
+Controller continuation: the live Tool still has a phase-1 `ID32Recovery` marker
+from the earlier exception, with no backup, ID image or mesh processing. On the
+same Tool and bank, the first public click after loading this corrected source
+should restore that snapshot and exit. A second click starts a fresh ID action.
+Do not delete recovery blocks or bypass identity checks to force a run. This
+worker has not performed that native continuation; the controller retains the
+exclusive UI lease.
+
 ## SubTool Master decision and API evidence
 
 Read-only installed inspection found `SubToolMaster_2023.zsc`, its DLL and the
@@ -237,7 +269,7 @@ The generated source matches `compose(camera_root=selected_inputs)` exactly and
 embeds the shared reader's SHA256 for traceability. The suite executes delivered
 routines with modeled
 material/RGB/group mutations and actual temporary file IO; it does not merely
-assert source strings. It covers 30 tests with additional subcases:
+assert source strings. It covers 32 tests with additional subcases:
 
 - the sole button's complete successful sequence, union preparation exactly
   once, same IDs between views, M-only preserving RGB before conversion and
@@ -267,9 +299,13 @@ assert source strings. It covers 30 tests with additional subcases:
   failure and interruption, and preservation of existing numbered recovery paths;
 - the native Draw Polyframe path with original states 0/1, all aliases, canonical
   preference, overlay-off exports and original-state restoration, plus missing/
-  disabled-control failures before any backup or mesh mutation.
+  disabled-control failures before any backup or mesh mutation;
+- scalar material-path lookup with the native probe's dynamic ID, parent/title
+  rejection and no material selection; alphanumeric generated variable names
+  in declarations, assignments, loop counters and routine parameters, plus
+  execution of the renamed camera reader with unchanged routine API names.
 
-Final results: 30 tests passed against the pinned final controller camera inputs;
+Final results: 32 tests passed against the pinned final controller camera inputs;
 Python compilation passed. The mock records a
 fake ZTL and signature-bearing fake image payload, explicitly labeled as mocks.
 These results **do not** establish native ZScript compilation, valid native ZTL
@@ -292,8 +328,8 @@ that is not a native execution/visual verification of this ID action.
 - The generated source now uses the controller's final native-compatible reader.
   Regenerate again if the controller changes it; no unowned camera source change
   is included in this patch. The controller must retest the public ID action
-  after this path correction; its earlier successful compilation reached only
-  the missing-control preflight guard, with no backup/mutation.
+  after these native compatibility corrections. Its earlier exceptions still
+  preceded backup/mutation; recover the pending phase-1 snapshot first.
 - The controller reports that its build_all now invokes build_id with
   `run_name='__main__'`; the guarded main remains compatible. Stage the source
   under folder `Generate and Export ID`, basename `GenerateExportID`; compiled

@@ -245,7 +245,9 @@
 ]
 [RoutineDef,ID_MaterialCandidate,
     [If,[IExists,[Var,idCandidate]],
-        [If,[StrFind,"Material:",[IGetTitle,[Var,idCandidate],1]]==0,
+        // Native 2023 does not reliably evaluate IGetTitle nested in StrFind.
+        [VarSet,idMaterialPath,[IGetTitle,[Var,idCandidate],1]]
+        [If,[StrFind,"Material:",idMaterialPath]==0,
             [VarSet,idMatName,[IGetTitle,[Var,idCandidate]]]
             [If,([StrLength,idMatName]==10)&&([StrFind,"Flat Color",idMatName]==0),[VarSet,idFlat,idCandidate]]
         ]
