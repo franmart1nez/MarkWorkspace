@@ -1,0 +1,141 @@
+{
+  "zbrush_version": "2023.2.1",
+  "platform": "Windows",
+  "camera_labels": [
+    "01",
+    "02"
+  ],
+  "disabled_occupied_camera": "03",
+  "render_files": 48,
+  "final_id_files": 2,
+  "depth_bits": 16,
+  "native_reorder": true,
+  "native_compatible_merge": true,
+  "id_backup_reopened": true,
+  "owner_document_restored": true,
+  "screen_saver_restored_seconds": 60,
+  "id_images": [
+    {
+      "camera": "01",
+      "width": 640,
+      "height": 480,
+      "colors": [
+        [
+          [
+            48,
+            48,
+            48
+          ],
+          218511
+        ],
+        [
+          [
+            18,
+            236,
+            236
+          ],
+          87885
+        ],
+        [
+          [
+            48,
+            146,
+            206
+          ],
+          337
+        ],
+        [
+          [
+            50,
+            204,
+            204
+          ],
+          335
+        ],
+        [
+          [
+            44,
+            86,
+            210
+          ],
+          132
+        ]
+      ],
+      "sha256": "f7df13520e737fe7828e0b9b708101b7efbbab52098681e1c59a4d406d669c91"
+    },
+    {
+      "camera": "02",
+      "width": 480,
+      "height": 640,
+      "colors": [
+        [
+          [
+            48,
+            48,
+            48
+          ],
+          217299
+        ],
+        [
+          [
+            18,
+            236,
+            236
+          ],
+          89901
+        ]
+      ],
+      "sha256": "cf2a20d3579631ab828338cc130216843ab0ff0dace1d670d9be5f6f440afe03"
+    }
+  ],
+  "render_hashes": {
+    "nonbpr-first/01/Double.png": "b1a6a81f229c61f9bdd4b645d08c4947e840b4ca2949605aff7c671cb3427104",
+    "nonbpr-first/01/Metal.png": "75009e1968e91a3d0a9420979b546ba377f2b0d9c21d374c2b175e5f7ae06761",
+    "nonbpr-first/01/Normal.png": "2d5b35b0cc8039e02515db407c122c4c972a75cb6f481a45508a161781fa1208",
+    "nonbpr-first/01/Z document.png": "b0f442eddd6ec5fc0849e50ea770abffb61a4b57e16e4a9a616977e55c9cd73f",
+    "nonbpr-first/01/_AO.psd": "2e965b46b79e857028e7e181c2751c511ae47fc172fd307849602d8e1c650375",
+    "nonbpr-first/01/_Composite.psd": "a63cae5556d3d9438d0017be17dae7afcd7f51377c0a9648a62795dddf54e6a3",
+    "nonbpr-first/01/_Depth.psd": "376d8e35037e3eb8f8ee39a9a84a413cb45b81d32a8998d4d8d061cb75bf5507",
+    "nonbpr-first/01/_Mask.psd": "fab4d069473f6bad4271bff2ee4400592038f099c902789cae0a005bda355ca4",
+    "nonbpr-first/01/_Render.psd": "46b61de2732ab80238e58b8c14c8b6c477fa93bd14bf2b6e2a127b2e3dd03603",
+    "nonbpr-first/01/_Shadow.psd": "d72f3cd53cab7194a14dc8503910125213359467bee13f9f73d178a8503455a3",
+    "nonbpr-first/01/_SSS.psd": "27dad1f8656b2e0510f752cd23d5c8ac0317b2a231d61c7b256410a5d0d63574",
+    "nonbpr-first/02/Double.png": "ee576ff8d73bc6a399e18b68bd2c43ad97779642013b25d1c2737f4cac5bb46b",
+    "nonbpr-first/02/Metal.png": "5df4909c449242e6912915c0d320ccc24f7c191b0cad19425ff85806736ee392",
+    "nonbpr-first/02/Normal.png": "949932768d7a7b2f0c94b5f1fdbb24468503f47537015dff98a6f02dea4e9c44",
+    "nonbpr-first/02/Z document.png": "0c93478f82b680caeb18ff8e6ab479ad2407eaa000e8ea05289d76be10d9658a",
+    "nonbpr-first/02/_AO.psd": "ff2774502af1f9d1e58e8c09fe4260ad72d3d6f85fd063afc81b1d9f29334767",
+    "nonbpr-first/02/_Composite.psd": "e9fb371815a9589b07b5a1977c702f8b70613ee47042cc13e3a55e7483a08a99",
+    "nonbpr-first/02/_Depth.psd": "8fa255147244702d26d7825c00a54a054d7c8059afda11e548956eccb42dc2ad",
+    "nonbpr-first/02/_Mask.psd": "86611408f625f56c98d0065a602458dfd53e050b7bd1f98f1f9cf530145d0e7c",
+    "nonbpr-first/02/_Render.psd": "86a5c6e1030a5142ac72025ee0e189d2667a969da9715f80fbc10c1434b94880",
+    "nonbpr-first/02/_Shadow.psd": "e189a355c40a6c1b1df04047e0093aed5600fb821db60af4a677acb1cb29719f",
+    "nonbpr-first/02/_SSS.psd": "909a6b9c709e52576c93184f53b51877beb2e16156798afc500d17415ed15453",
+    "nonbpr-first/Screenshots/01.png": "b0f442eddd6ec5fc0849e50ea770abffb61a4b57e16e4a9a616977e55c9cd73f",
+    "nonbpr-first/Screenshots/02.png": "0c93478f82b680caeb18ff8e6ab479ad2407eaa000e8ea05289d76be10d9658a",
+    "bpr-first/01/Double.png": "b1a6a81f229c61f9bdd4b645d08c4947e840b4ca2949605aff7c671cb3427104",
+    "bpr-first/01/Metal.png": "75009e1968e91a3d0a9420979b546ba377f2b0d9c21d374c2b175e5f7ae06761",
+    "bpr-first/01/Normal.png": "2d5b35b0cc8039e02515db407c122c4c972a75cb6f481a45508a161781fa1208",
+    "bpr-first/01/Z document.png": "b0f442eddd6ec5fc0849e50ea770abffb61a4b57e16e4a9a616977e55c9cd73f",
+    "bpr-first/01/_AO.psd": "2e965b46b79e857028e7e181c2751c511ae47fc172fd307849602d8e1c650375",
+    "bpr-first/01/_Composite.psd": "a63cae5556d3d9438d0017be17dae7afcd7f51377c0a9648a62795dddf54e6a3",
+    "bpr-first/01/_Depth.psd": "376d8e35037e3eb8f8ee39a9a84a413cb45b81d32a8998d4d8d061cb75bf5507",
+    "bpr-first/01/_Mask.psd": "fab4d069473f6bad4271bff2ee4400592038f099c902789cae0a005bda355ca4",
+    "bpr-first/01/_Render.psd": "46b61de2732ab80238e58b8c14c8b6c477fa93bd14bf2b6e2a127b2e3dd03603",
+    "bpr-first/01/_Shadow.psd": "d72f3cd53cab7194a14dc8503910125213359467bee13f9f73d178a8503455a3",
+    "bpr-first/01/_SSS.psd": "27dad1f8656b2e0510f752cd23d5c8ac0317b2a231d61c7b256410a5d0d63574",
+    "bpr-first/02/Double.png": "ee576ff8d73bc6a399e18b68bd2c43ad97779642013b25d1c2737f4cac5bb46b",
+    "bpr-first/02/Metal.png": "5df4909c449242e6912915c0d320ccc24f7c191b0cad19425ff85806736ee392",
+    "bpr-first/02/Normal.png": "949932768d7a7b2f0c94b5f1fdbb24468503f47537015dff98a6f02dea4e9c44",
+    "bpr-first/02/Z document.png": "0c93478f82b680caeb18ff8e6ab479ad2407eaa000e8ea05289d76be10d9658a",
+    "bpr-first/02/_AO.psd": "ff2774502af1f9d1e58e8c09fe4260ad72d3d6f85fd063afc81b1d9f29334767",
+    "bpr-first/02/_Composite.psd": "e9fb371815a9589b07b5a1977c702f8b70613ee47042cc13e3a55e7483a08a99",
+    "bpr-first/02/_Depth.psd": "8fa255147244702d26d7825c00a54a054d7c8059afda11e548956eccb42dc2ad",
+    "bpr-first/02/_Mask.psd": "86611408f625f56c98d0065a602458dfd53e050b7bd1f98f1f9cf530145d0e7c",
+    "bpr-first/02/_Render.psd": "86a5c6e1030a5142ac72025ee0e189d2667a969da9715f80fbc10c1434b94880",
+    "bpr-first/02/_Shadow.psd": "e189a355c40a6c1b1df04047e0093aed5600fb821db60af4a677acb1cb29719f",
+    "bpr-first/02/_SSS.psd": "909a6b9c709e52576c93184f53b51877beb2e16156798afc500d17415ed15453",
+    "bpr-first/Screenshots/01.png": "b0f442eddd6ec5fc0849e50ea770abffb61a4b57e16e4a9a616977e55c9cd73f",
+    "bpr-first/Screenshots/02.png": "0c93478f82b680caeb18ff8e6ab479ad2407eaa000e8ea05289d76be10d9658a"
+  }
+}

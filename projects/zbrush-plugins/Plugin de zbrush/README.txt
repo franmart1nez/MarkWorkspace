@@ -1,116 +1,123 @@
-ZBRUSH PLUGINS - CAMERA BANK 25 + RENDER CAPTURE
-Version 3.1.0 SOURCE UPDATE | 2026-11-14 | Windows / ZBrush 2023.2.1 target
+ZBRUSH PLUGINS 3.2.0
+Camera Bank 25 + Render Capture + Generar y exportar ID
+Windows / native compilation and selected validation: ZBrush 2023.2.1
 
-STATUS
-Camera Bank can prepare effective-visibility groups for ZTL/ZPR transfer and
-compatible native merges. Both plugins now use data v8. Render Capture retains
-numbered Screenshots copies and the requested pre-BPR quality values.
-32 offline logic scenarios, installer/uninstaller fixtures and a 1000-SubTool
-mock smoke test pass. No native app launch, control, compilation or render was
-performed for this revision. Actual native behavior/visual acceptance is pending.
-No current CameraBank25.zsc or RenderCapture.zsc is included.
+STATUS AND SOURCE
+All three components are integrated, compiled and installed on the target
+machine. Editable TXT sources, generators, tests and genuine native ZSC files
+are included. Development/VERIFICATION_3.2.0.md records the actual checks and
+limits. Sources are maintained in projects/zbrush-plugins/Plugin de zbrush.
 
 INSTALL / LOAD
-Run INSTALAR.cmd when ready to install the sources, loader macros and Maxon's
-existing ZFileUtils64.dll dependency for both components. Previous files are
-backed up. An older compiled plugin is backed up/retired when no fresh compiled
-replacement exists, so old-format callbacks are not silently auto-loaded later.
-No application is closed or restarted.
-In ZBrush: Macro > Reload All Macros > Mak Plugins > Load Camera Bank, then
-Load Render Capture. The loaders replace only their own previous controls.
-Alternatively, load BOTH updated package TXT sources via ZScript > Load.
-Keep the complete source package together for Camera Bank's preparation DLL.
-ZBrush generates genuine ZSCs when loading the TXT files. Run the installer again
-after compilation to promote those new files for normal automatic startup.
-If Windows denies Program Files access, run the installer as administrator.
-The installer targets Windows ZBrush 2023-2026.0; newer user-content layouts
-require manual placement in their configured plugin directory.
+Run INSTALAR.cmd for all three components. Individual component folders contain
+launchers for Camera, Render and ID. -Component Both retains the former two-plugin
+selection; All is the new default. Sources, loaders and ZFileUtils64.dll are
+installed with backups of replaced files. Identical files are not rewritten,
+so an already loaded identical DLL does not require an application restart.
+An incompatible old compiled plugin/loader is backed up and retired.
+
+In an already open ZBrush, use Macro > Reload All Macros > Mak Plugins, then
+Load Camera Bank, Load Render Capture and Load Generate and Export ID.
+No application is closed or restarted by the installer. The three ZSC files are
+also placed in ZStartup/ZPlugs64 for the next normal startup. Automatic startup
+was not tested by restarting the owner's running session.
+
+The included ZSC files were compiled in 2023.2.1. If rebuilding/editing TXT,
+load the updated source through ZScript > Load and reinstall its new native
+ZSC. Renaming a TXT extension to ZSC is not compilation. The installer uses
+Windows 2023-2026.0 installation layout; other versions are not validated.
 
 CAMERA BANK
-25 slots; STORE NEW then an empty slot stores the current view. Orange means
-stored and selected for rendering; gray means stored but not rendered. First
-click recalls a stored view; later clicks on the active view toggle rendering.
-UPDATE ACTIVE replaces the view/lens/size/visibility while preserving its Render
-flag, including gray cameras. CLEAR and CLEAR ALL retain their original purpose.
-Canvas dimensions, transform, zoom/pan, perspective and supported lens controls
-are saved. Recall resizes/redraws before restoring lens and transform. It requires
-a live 3D Tool in Edit mode and supports up to 1000 SubTools. No auto conversion.
+STORE NEW, then an empty 01-25 slot, stores the current view. Orange cameras
+render; gray occupied cameras do not. A first click recalls a stored view;
+clicking the active view again toggles its render flag. UPDATE ACTIVE captures
+the current view while retaining the render flag, including gray cameras.
 
-MERGE-COMPATIBLE HANDOFF
-1. On the ORIGINAL unmerged Tool, store and inspect every intended camera.
-2. PREPARE TRANSFER adds a 20-character CB...G..._ name marker. Parts with the
-   same marker share visibility in ALL occupied cameras, including gray cameras.
-3. Save the prepared ZTL/ZPR, EXPORT BANK, and send BOTH matching files.
-   Export also prepares an unprepared bank automatically after choosing a file.
-4. The recipient opens the model, imports the bank, and can reorder/merge
-   compatible parts with native commands while preserving a source marker.
-   Native Merged_ prefixes are accepted. If an operation replaces the entire
-   name, retain a compatible source marker in the result before recalling.
-Effective capture accounts for folder eyes, Solo and the active SubTool. Recall
-opens folder eyes and applies per-part visibility; the visible geometry is the
-contract. It may select a visible SubTool to avoid a hidden active part showing.
-After storing/updating a prepared bank, save a NEW matching model + bank pair:
-the plugin rebases the views and refreshes the identifiers.
-Only merge parts whose visibility matches in every stored camera. Name markers
-do not encode geometric ancestry or detect every violation of that rule after
-native merges discard other source names. Missing/foreign/ambiguous markers and
-missing visible groups stop recall/render instead of using positional guesses.
-See Development/MERGE_HANDOFF.md for the complete workflow and limits.
+Store/update automatically captures effective visibility (eyes, folders, Solo
+and active SubTool), dimensions, lens and transform. PREPARE TRANSFER is gone.
+Name markers are maintained automatically. Recall resolves those names after
+reordering and compatible native merges, without a positional guess. All
+occupied cameras participate in compatibility, including gray ones.
 
-OLD BANKS / INTERRUPTIONS
-Versions 1-7 import into v8 without invented identifiers. On the ORIGINAL Tool,
-recall and visually inspect EACH occupied camera, then UPDATE ACTIVE before
-preparing transfer. Older banks may also need correct canvas/lens settings.
-Already merged unmarked models cannot recover that missing correspondence.
-During a name update, handled failures restore previous names/bank/view. After
-Escape, use a Camera Bank button on the same unchanged Tool to recover. Pending
-name recovery blocks rendering. Recovery is session-memory only, not crash-proof.
+Save the matching model after the latest store/update, then EXPORT BANK.
+Export works independently of Edit mode and read-back verifies all bank cells.
+Data remains v8: 111,084 bytes. Cancellation preserves the in-memory cameras.
+
+IMPORTANT ZTL NAME RULE
+ZBrush Save As can rename the first SubTool to the ZTL basename. Keep its marked
+default filename (the CB...G..._ prefix) and choose any folder. An arbitrary
+project filename is supported with ZPR. Merge only parts whose visibility is
+identical across every occupied camera and preserve one compatible marker.
+Unknown, missing or ambiguous names stop recall rather than guessing ancestry.
+Untracked old banks need reviewed UPDATE ACTIVE operations on their original
+unmerged Tool. See Development/DATA_FORMAT.md and MERGE_HANDOFF.md.
 
 RENDER CAPTURE
 1 - CREATE FOLDERS chooses a parent and creates a new ZPass_1, ZPass_2, ...
-session, numbered camera folders with NonBPR/BPR, and shared Screenshots.
-2 - RENDER NON BPR runs all orange cameras with Shadows OFF, white active RGB,
-and Preview rendering. Four lossless PNG passes per view:
-  Z document.png : loaded Basic Thor material, Polypaint ON
-  Normal.png     : NormalRGBMat
-  Double.png     : loaded DoubleShade material
-  Metal.png      : exactly Metal 11 (Metal 111 is not accepted)
-Exact Basic Thor / DoubleShade are preferred, then loaded matching variants.
-Missing materials stop before rendering. The original .zmt files are not bundled.
-Normal/Double/Metal use Polypaint and texture display OFF. Existing paint is not
-erased. Each Z document is copied byte-for-byte to Screenshots/01.png, 02.png,
-etc., retaining the original. Disabled cameras produce no files.
-3 - RENDER BPR enables Shadows/AOcclusion/Sss, disables Reuse Existing Maps,
-then immediately before EACH BPR sets Shadow Rays=30, Shadow Angle=15,
-AO Rays=30 and SPix=2 (SubPixel Anti-aliasing Render Quality).
-It saves seven native PSD maps: _AO, _Composite, _Depth, _Mask, _Render (Shaded),
-_Shadow and _SSS. All seven must exist before exporting a view. Light 2's SSS
-flag is enabled from a session snapshot; no Light:Save/Load is used.
-The current material/lighting and Polypaint are used. No Photoshop is opened.
+2 - RENDER NON BPR exports four PNGs for each enabled camera.
+3 - RENDER BPR exports seven native PSD maps for each enabled camera.
+Both phases share the SAME camera folder, and either phase can run first.
+
+NON BPR: Z document.png uses Basic Thor with Polypaint ON; Normal.png,
+Double.png and Metal.png use NormalRGBMat, DoubleShade and exactly Metal 11
+with Polypaint/texture display off. Required custom materials are not bundled.
+Each Z document is copied byte-for-byte to Screenshots/01.png, 02.png, etc.
+
+BPR: Shadow Rays 30, Shadow Angle 15, AO Rays 30, SPix 2. Shadows, AO and SSS
+are enabled for capture; all seven maps are checked. Native Depth stays 16-bit.
+There is no Light:Save/Load. The existing display/light recovery is retained.
+Existing pass files are never overwritten; create a new session to repeat.
+
+GENERAR Y EXPORTAR ID
+One public action exports ID.png for EVERY enabled Camera Bank camera. It reuses
+the active output session or chooses/creates a new ZPass_N itself. No separate
+prepare/export buttons or Render Capture folder-preparation step are required.
+
+The action prepares the union of required visible meshes once, preserving ID
+colors across cameras: Flat Color material-only fill, Auto Groups, Polypaint
+From Polygroups, Colorize ON, texture/PolyFrame/floor display off for capture.
+The material-only fill is the native equivalent of SubTool Master's Fill >
+Material option, avoiding its manual options dialog. Gray cameras are omitted.
+
+Before mesh edits it saves:
+  Recovery/Before_ID_N/<exact-first-SubTool-name>.ztl
+with a Recovery.txt record. The unique folder avoids overwrites and the exact
+filename preserves the camera marker. Invalid filenames and backup paths over
+240 characters are rejected before saving. Choose a shorter output path if needed.
+
+ID intentionally changes PolyGroups, RGB, assigned materials and masks of the
+required meshes. Masks are cleared so old masking cannot suppress ID painting.
+The backup recovers original mesh data; display recovery is not a mesh undo.
+Run ID after beauty/material passes, or load the backup before returning to the
+original surface treatment. Colorize remains ON after successful ID generation.
 
 OUTPUT EXAMPLE
 ZPass_1/
   Screenshots/01.png, 02.png, ...
-  01/NonBPR/Z document.png, Normal.png, Double.png, Metal.png
-  01/BPR/_AO.psd, _Composite.psd, _Depth.psd, _Mask.psd,
-         _Render.psd, _Shadow.psd, _SSS.psd
-  02/NonBPR/...
-  02/BPR/...
-Existing outputs are preserved; start a new session to repeat a phase. The root
-lasts for the current session. RGB, material, render flags/mode, map reuse, Solo
-and per-SubTool paint/texture display recover after a batch/handled interruption.
-The four BPR quality values remain set. The last camera transform stays active.
+  01/Z document.png, Normal.png, Double.png, Metal.png
+  01/_AO.psd, _Composite.psd, _Depth.psd, _Mask.psd,
+     _Render.psd, _Shadow.psd, _SSS.psd, ID.png
+  02/...
+  Recovery/Before_ID_1/<marked-first-SubTool-name>.ztl, Recovery.txt
+No BPR or NonBPR child folders are created. Existing folders are not migrated.
+The shown camera names are the bank's displayed labels 01 through 25.
 
-UNINSTALL / SOURCES
-DESINSTALAR.cmd removes only this package's explicit plugin/source/dependency
-files and loaders, backing up each first. It preserves unrelated plugins and
-saved banks, and does not close/restart the app. Loaded controls may remain until
-the next normal launch. No installation/uninstallation was run on the real app
-for 3.1.0; only isolated fixtures were used.
-Editable sources are Camera Bank/CameraBank25.txt and Render Capture/RenderCapture.txt.
-Development contains build inputs, regression checks, data format and native
-acceptance checklist. Run build_all.py, verify.py, verify_merge.py and the two
-installer tests there. Compile/verify in ZBrush before claiming native release QA.
-Previous sources/binary/ZIP are backed up in workspace .cache/zbrush-306, outside
-Git and this package. Historical native 3.0.3 results are in VERIFICATION.md and
-the Workspace card; native exports/Recovery folders are not bundled here.
+VERIFICATION / DEVELOPMENT
+100 integrated automated tests passed. The installer/uninstaller then passed
+six checks, including two added locked-file/rollback regressions (102 distinct
+scenarios in total). Native public export/import, actual reorder and compatible
+MergeDown, both render phase orders, flat ID color consistency, Colorize,
+collision protection, exact-name backup reopening and installed loaders passed.
+The owner's original document and settings were restored; no push/restart/close.
+See Development/VERIFICATION_3.2.0.md and Verification/v3.2.0/.
+
+From Development, use:
+  python build_all.py
+  python -m unittest -v verify verify_merge verify_camera_320 test_render_layout test_id_export test_installer test_uninstaller
+Regenerate before native compilation. Camera and ID logic live in their build
+inputs/includes; the generated reader is shared by the two capture plugins.
+
+UNINSTALL
+DESINSTALAR.cmd backs up and removes only this package's explicit files. It
+preserves unrelated plugins, saved banks and other user files. Loaded controls
+can remain until a later normal launch. Recovery folders are not part of the ZIP.

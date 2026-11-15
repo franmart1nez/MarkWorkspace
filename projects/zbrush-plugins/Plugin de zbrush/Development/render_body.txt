@@ -1,6 +1,6 @@
 // Render Capture 3.2.0 - Windows / ZBrush 2023.2.1 target.
 // Exactly three public buttons. Reads Camera Bank v8 via CB25Data.
-// 3.2.0: both phases share each camera folder. Native baseline: 3.0.3.
+// 3.2.0: both phases share each camera folder. See Development/VERIFICATION_3.2.0.md.
 // Source verification and native limits: Development/RENDER_3.2.0_RESULT.md.
 [ISubPalette,"ZPlugin:Render Capture"]
 [VarDef,rcRoot,""]
@@ -128,10 +128,10 @@
 ]
 [RoutineDef,RC_CheckBank,
     [If,[MemGetSize,CB25Data]!=111084,
-        [RoutineCall,RC_Fail,"Load CameraBank25.txt v3.1 first, then import or store your cameras."]
+        [RoutineCall,RC_Fail,"Load CameraBank25.txt v3.2 first, then import or store your cameras."]
     ]
     [If,([MVarGet,CB25Data,0]!=252523)||([MVarGet,CB25Data,1]!=8)||([MVarGet,CB25Data,2]!=25),
-        [RoutineCall,RC_Fail,"Unsupported Camera Bank. Use v3.1 (data v8)."]
+        [RoutineCall,RC_Fail,"Unsupported Camera Bank. Use v3.2 (data v8)."]
     ]
     [If,[SubToolGetCount]>1000,[RoutineCall,RC_Fail,"Maximum supported SubTools: 1000."]]
     [VarSet,rcCameraCount,0]

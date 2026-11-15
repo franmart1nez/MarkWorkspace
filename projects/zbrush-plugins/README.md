@@ -1,55 +1,29 @@
-# ZBrush plugins
+# ZBrush plugins — 3.2.0
 
-Current source revision: **3.1.0 / bank data v8**, 2026-11-14. No new native
-compilation, renderer execution or desktop control was performed.
+Authoritative source: [Plugin de zbrush](Plugin%20de%20zbrush/). The source is committed in this repository; D:/Descargas is no longer the source location.
 
-- Camera Bank prepares ZTL/ZPR name markers for effective-visibility groups.
-  Compatible merges and reordering use those markers, not the original list count.
-- User selected native merges with short SubTool-name identifiers. The native
-  result must preserve a compatible marker. The same-visibility rule applies to
-  all occupied cameras, including gray ones. Arbitrary native ancestry is not inferred.
-- PREPARE TRANSFER, save the ZTL/ZPR, EXPORT BANK, send both. Export auto-prepares
-  when needed. Edits after preparation regenerate matching markers; save both again.
-- Legacy v1-7 imports require a reviewed UPDATE ACTIVE for every occupied view on
-  the original unmerged Tool before preparing. Unmarked merged history is unknown.
-- Both plugins require the updated sources/schema. No current ZSC is included.
-  The installer supplies ZFileUtils for both and backs up/retires stale binaries.
-- 32 logic scenarios, two installer fixtures and a 1,000-SubTool mock smoke pass.
-  Actual native name behavior, geometry/framing and visual output remain pending.
-- Previous BPR settings and numbered Screenshots copies are retained.
-- Deliverable: `D:/Descargas/Plugin de zbrush/`. Workflow/limits:
-  `Development/MERGE_HANDOFF.md`; format: `Development/DATA_FORMAT.md`.
-- Existing card: `workspace/2026-11-13_zbrush-plugins/PROJECT.md`.
-- Backups: workspace `.cache/zbrush-306/` (outside Git and download).
+The three components are integrated:
 
-## Historical native baseline
+- **Camera Bank 25:** store/update automatically captures effective visibility and maintains SubTool-name markers. There is no PREPARE TRANSFER button. Reordering and compatible merges resolve those names. EXPORT BANK writes independently of Edit mode and verifies the saved bytes.
+- **Render Capture:** non-BPR PNGs and all seven BPR PSD maps share each camera folder. Screenshots copies and collision protection remain.
+- **Generar y exportar ID:** one action for every enabled Camera Bank view, preparing Flat Color, Auto Groups and Polypaint From Polygroups once per required mesh, then exporting ID.png. A uniquely named recovery folder preserves the first SubTool's exact marked ZTL filename. Colorize remains enabled on processed meshes.
 
-Baseline **3.0.3** was natively verified on 2026-11-13. The installed pair
-was subsequently removed at the owner's request; it is ready to reinstall.
+All three final sources compiled and are installed in ZBrush 2023.2.1. Camera store/name tracking, actual reorder and compatible MergeDown, public bank export/import, both render phase orders, ID color/Colorize behavior, collision protection, exact-name backup reopening and standalone ID folder creation passed native checks. The 100-test integrated suite passed; six installer/uninstaller checks passed after the loaded-DLL fix, covering 102 distinct scenarios in total. [Verification and limits](Plugin%20de%20zbrush/Development/VERIFICATION_3.2.0.md) distinguish mock checks, native execution and owner acceptance. No restart was used to test automatic startup.
 
-- Deliverable: `D:/Descargas/Plugin de zbrush/` (editable sources, unchanged Camera Bank ZSC,
-  installer/uninstaller, Verification and local Recovery backups).
-- Card: `workspace/2026-11-13_zbrush-plugins/PROJECT.md`.
-- Evidence: package `Development/VERIFICATION.md`; historical native outputs in `Verification/v3.0.3`.
-- The owner's two crash logs ended at Light:Save. Removed Light:Save/Load;
-  light-2 on/SSS settings now recover from session memory. Light 2 stays selected.
-- Camera redraw was intercepted by Thumbnail. It is now hidden temporarily;
-  LightBox closes and Edit is validated before restoring the transform.
-- Final buttons tested: STORE NEW -> 03; warning and no save for 04 outside Edit;
-  public BPR callback. Across QA: 42 PSDs, 8 PNGs, four sizes up to 2604 x 3818,
-  DemoHead with two SubTools and a copy of the recovered one-SubTool project.
-- Thirteen logic scenarios and installer/uninstaller fixtures pass. PSD payloads,
-  dimensions, native 16-bit Depth, decoded PNGs and visual previews verified.
-- Removed 11 package files and current-session controls/loaders/test bank.
-  Stock Maxon plugin hashes unchanged. Backups:
-  `Recovery/Uninstalled-20261113-190822-295` and `Recovery/before-3.0.3`.
-- Source package retained. Run INSTALAR.cmd for the fresh install. No app restart
-  occurred. ZBrush was closed at task start and launched once for verification.
-- Prior personal project/bank backups remain in Recovery. Do not delete those
-  or treat the QA bank as the owner's production camera set.
-- Runtime scripts/logs: `.cache/zbrush-fix-303/`; previous QA in
-  `.cache/zbrush-native/`. See CONTROL.md for the local Windows-MCP connection.
+## Use and data contract
 
-Other versions, large production scenes and every interruption point were not
-stress tested. Data v7 is unchanged; older records with missing dimensions need
-UPDATE ACTIVE. Do not restart active applications without permission.
+Run `Plugin de zbrush/INSTALAR.cmd` for all three components, or use an individual component launcher. Installation backs up replaced files and retires incompatible plugin and loader binaries. It does not close or restart ZBrush. Load Camera Bank before the other components; the package README describes source loaders and compilation.
+
+Data remains **v8, 111,084 bytes**. Save the matching model after the latest store/update and export its bank. When saving a ZTL, retain the first SubTool's complete marker in the filename stem; ZBrush Save As can rename that SubTool. A ZPR project can use an arbitrary filename. Merge only parts with identical visibility in every occupied camera, including gray ones, and preserve a compatible marker. Unknown or ambiguous names are rejected without a position-based guess.
+
+Legacy untracked banks need reviewed UPDATE ACTIVE operations on the original unmerged Tool. Their missing history cannot be reconstructed after arbitrary merges. ID changes actual PolyGroups, RGB, assigned materials and masks; its recovery ZTL restores the original mesh data. Run it after the other surface passes or reopen that backup before returning to the original materials.
+
+- [Data format](Plugin%20de%20zbrush/Development/DATA_FORMAT.md)
+- [Model/bank handoff contract](Plugin%20de%20zbrush/Development/MERGE_HANDOFF.md)
+- [Native acceptance checklist](Plugin%20de%20zbrush/Development/NATIVE_TEST.md)
+- [Native control route](CONTROL.md)
+- [3.2.0 coordination](ORCHESTRATION_3.2.0.md)
+- [Video analysis before the ID handoff](VIDEO_ANALYSIS_3.2.0.md)
+- [Camera worker handoff](HANDOFF_CAMERA_3.2.0.md), [Render worker handoff](HANDOFF_RENDER_3.2.0.md), [ID worker handoff](HANDOFF_ID_3.2.0.md)
+
+The existing Workspace card is `workspace/2026-11-13_zbrush-plugins/`. Native session backups and transient test scripts are under ignored `.cache/zbrush-320/`; worker receipts/transcripts remain under ignored `.mrmak/`. They are not distributable source. Historical 3.0.3 native results remain in Development/VERIFICATION.md and the card's earlier reports. No push is authorized, and applications/worker tabs stay open unless the owner permits otherwise.

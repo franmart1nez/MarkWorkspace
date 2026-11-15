@@ -48,6 +48,10 @@ class InstallerTests(unittest.TestCase):
                 self.assertEqual(retired[0].read_bytes(),b'stale older-format plugin')
             if has_compiled:
                 self.assertEqual((plugs/'CameraBank25.zsc').read_bytes(),(ROOT/'Camera Bank/CameraBank25.zsc').read_bytes())
+            original_time=(plugs/'MakCameraBankData/CameraBank25.txt').stat().st_mtime_ns
+            run()
+            self.assertEqual((plugs/'MakCameraBankData/CameraBank25.txt').stat().st_mtime_ns,original_time)
+            (plugs/'MakCameraBankData/CameraBank25.txt').write_bytes(b'older source to back up')
             run()
             self.assertTrue(list((fixture/'LocalAppData/MakZBrushPlugins/InstallBackups').glob('*/ZStartup/ZPlugs64/MakCameraBankData/CameraBank25.txt')))
             self.assertEqual((plugs/'unrelated.txt').read_text(),'keep')
@@ -102,5 +106,52 @@ class InstallerTests(unittest.TestCase):
             self.assertIn('ZScript:Load',(macros/'Load Camera Bank.txt').read_text())
             self.assertEqual((data/'CameraBank25.txt').read_bytes(),src.read_bytes())
             self.assertTrue(list((fixture/'LocalAppData').rglob('CameraBank25.zsc')))
+
+    def locked_fixture(self, fixture):
+        self.assertTrue(fixture.is_relative_to((ROOT/'Development').resolve()))
+        package=fixture/'Package';package.mkdir()
+        (package/'Install.ps1').write_bytes((ROOT/'Install.ps1').read_bytes())
+        for folder,name in [('Camera Bank','CameraBank25'),('Render Capture','RenderCapture'),('Generate and Export ID','GenerateExportID')]:
+            p=package/folder/(name+'.txt');p.parent.mkdir();p.write_text('// fixture source v1')
+        dll=package/'Render Capture/RenderCaptureData/ZFileUtils64.dll';dll.parent.mkdir();dll.write_bytes(b'dll fixture v1')
+        zb=fixture/'ZBrush';zb.mkdir();(zb/'ZBrush.exe').write_bytes(b'fixture only - never execute')
+        plugs=zb/'ZStartup/ZPlugs64';plugs.mkdir(parents=True)
+        env=os.environ.copy();env['LOCALAPPDATA']=str(fixture/'LocalAppData')
+        def run(component,locked=None):
+            args=['powershell.exe','-NoProfile','-File',str(package/'Install.ps1'),'-ZBrushPath',str(zb),'-Component',component]
+            if locked:
+                quote=lambda p:"'"+str(p).replace("'","''")+"'"
+                script=fixture/'with-lock.ps1'
+                script.write_text("$ErrorActionPreference='Stop'\n"+
+                    '$held=[IO.File]::Open('+quote(locked)+',[IO.FileMode]::Open,[IO.FileAccess]::Read,[IO.FileShare]::Read)\n'+
+                    '$fixtureExit=0\ntry { & '+quote(package/'Install.ps1')+' -ZBrushPath '+quote(zb)+' -Component '+quote(component)+
+                    '\n if($LASTEXITCODE){$fixtureExit=$LASTEXITCODE}\n} finally {$held.Dispose()}\nexit $fixtureExit\n',encoding='utf-8')
+                args=['powershell.exe','-NoProfile','-File',str(script)]
+            return subprocess.run(args,env=env,capture_output=True,text=True)
+        return package,plugs,run
+
+    def test_identical_loaded_dll_is_not_rewritten(self):
+        with tempfile.TemporaryDirectory(prefix='installer-test-',dir=ROOT/'Development') as tmp:
+            package,plugs,run=self.locked_fixture(Path(tmp).resolve())
+            first=run('ID');self.assertEqual(first.returncode,0,first.stdout+first.stderr)
+            dll=plugs/'GenerateExportIDData/ZFileUtils64.dll';before=dll.stat().st_mtime_ns
+            repeated=run('ID',dll)
+            self.assertEqual(repeated.returncode,0,repeated.stdout+repeated.stderr)
+            self.assertEqual(dll.read_bytes(),b'dll fixture v1')
+            self.assertEqual(dll.stat().st_mtime_ns,before)
+
+    def test_changed_locked_dll_rolls_back_other_component_changes(self):
+        with tempfile.TemporaryDirectory(prefix='installer-test-',dir=ROOT/'Development') as tmp:
+            package,plugs,run=self.locked_fixture(Path(tmp).resolve())
+            first=run('Both');self.assertEqual(first.returncode,0,first.stdout+first.stderr)
+            before={p.relative_to(plugs).as_posix():p.read_bytes() for p in plugs.rglob('*') if p.is_file()}
+            (package/'Camera Bank/CameraBank25.txt').write_text('// fixture source v2')
+            (package/'Render Capture/RenderCapture.txt').write_text('// fixture source v2')
+            (package/'Render Capture/RenderCaptureData/ZFileUtils64.dll').write_bytes(b'dll fixture v2')
+            failed=run('Both',plugs/'RenderCaptureData/ZFileUtils64.dll')
+            self.assertNotEqual(failed.returncode,0)
+            after={p.relative_to(plugs).as_posix():p.read_bytes() for p in plugs.rglob('*') if p.is_file()}
+            self.assertEqual(after,before)
+            self.assertNotIn('Some files need recovery',failed.stdout)
 
 if __name__=='__main__':unittest.main(verbosity=2)

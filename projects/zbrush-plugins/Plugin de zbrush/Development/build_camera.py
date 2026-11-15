@@ -336,7 +336,7 @@ header='''// Camera Bank 25 v3.2.0 - Windows / ZBrush 2023.2.1 target.
 // Derived from the supplied CameraBank25_v2_9, retaining its slot UI.
 // Data v8: 27771 floats / 111084 bytes. See Development/DATA_FORMAT.md.
 // Automatic identifier updates use the bundled ZFileUtils library.
-// Source-verified only; native baseline 3.0.3. See Development/VERIFICATION.md.
+// Native acceptance and limitations: Development/VERIFICATION_3.2.0.md.
 [VarDef,cbFovPath,""]
 [VarDef,cbUniversalPath,""]
 [VarDef,cbImportValid,0]
