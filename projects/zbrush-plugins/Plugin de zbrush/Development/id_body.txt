@@ -213,8 +213,15 @@
     [If,[IExists,idControls(5)]==0,[VarSet,idControls(5),"Draw:MRGB"]]
     [If,[IExists,idControls(6)]==0,[VarSet,idControls(6),"Tool:Polygroups:AutoGroups"]]
     [If,[IExists,idControls(19)]==0,[VarSet,idControls(19),"Draw:RGBIntensity"]]
-    [VarSet,idPolyPath,"Transform:Polyframe"]
+    // ZBrush 2023 exposes the full Draw Polyframe title, not the PolyF label.
+    [VarSet,idPolyPath,"Transform:Draw Polyframe"]
+    [If,[IExists,idPolyPath]==0,[VarSet,idPolyPath,"Transform:Draw PolyFrame"]]
+    [If,[IExists,idPolyPath]==0,[VarSet,idPolyPath,"Transform:pf"]]
+    [If,[IExists,idPolyPath]==0,[VarSet,idPolyPath,"Transform:Polyframe"]]
     [If,[IExists,idPolyPath]==0,[VarSet,idPolyPath,"Transform:PolyF"]]
+    // Report the canonical path if no alias exists. Presence-based resolution
+    // keeps a disabled canonical control from being bypassed through aliases.
+    [If,[IExists,idPolyPath]==0,[VarSet,idPolyPath,"Transform:Draw Polyframe"]]
 ]
 [RoutineDef,ID_ResolveControls,
     [RoutineCall,ID_ResolvePaths]
@@ -238,7 +245,9 @@
 ]
 [RoutineDef,ID_MaterialCandidate,
     [If,[IExists,[Var,idCandidate]],
-        [If,[StrFind,"Material:",[IGetTitle,[Var,idCandidate],1]]==0,
+        // Native 2023 does not reliably evaluate IGetTitle nested in StrFind.
+        [VarSet,idMaterialPath,[IGetTitle,[Var,idCandidate],1]]
+        [If,[StrFind,"Material:",idMaterialPath]==0,
             [VarSet,idMatName,[IGetTitle,[Var,idCandidate]]]
             [If,([StrLength,idMatName]==10)&&([StrFind,"Flat Color",idMatName]==0),[VarSet,idFlat,idCandidate]]
         ]

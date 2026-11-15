@@ -333,101 +333,101 @@
 ,idCamSlot]
 
 [RoutineDef,ID_CB32_RestoreLegacyVisualState,
-    [VarSet,idCam_visBase,
-        520 + (idCam_slot * 1001)
+    [VarSet,idReaderVisBase,
+        520 + (idReaderSlot * 1001)
     ]
-    [VarSet,idCam_savedCount,
-        [MVarGet,CB25Data,idCam_visBase]
+    [VarSet,idReaderSavedCount,
+        [MVarGet,CB25Data,idReaderVisBase]
     ]
-    [VarSet,idCam_currentCount,
+    [VarSet,idReaderCurrentCount,
         [SubToolGetCount]
     ]
     [If,
-        (idCam_savedCount > 0)
+        (idReaderSavedCount > 0)
         &&
-        (idCam_savedCount == idCam_currentCount),
-        [VarSet,idCam_st,0]
-        [Loop,idCam_savedCount,
-            [VarSet,idCam_savedState,
+        (idReaderSavedCount == idReaderCurrentCount),
+        [VarSet,idReaderSt,0]
+        [Loop,idReaderSavedCount,
+            [VarSet,idReaderSavedState,
                 [MVarGet,
                     CB25Data,
-                    idCam_visBase + 1 + idCam_st
+                    idReaderVisBase + 1 + idReaderSt
                 ]
             ]
-            [VarSet,idCam_savedEye,
-                (idCam_savedState & 0x01)
+            [VarSet,idReaderSavedEye,
+                (idReaderSavedState & 0x01)
             ]
-            [VarSet,idCam_currentStatus,
-                [SubToolGetStatus,idCam_st]
+            [VarSet,idReaderCurrentStatus,
+                [SubToolGetStatus,idReaderSt]
             ]
-            [VarSet,idCam_currentEye,
-                (idCam_currentStatus & 0x01)
+            [VarSet,idReaderCurrentEye,
+                (idReaderCurrentStatus & 0x01)
             ]
             [SubToolSetStatus,
-                idCam_st,
-                (idCam_currentStatus - idCam_currentEye) + idCam_savedEye
+                idReaderSt,
+                (idReaderCurrentStatus - idReaderCurrentEye) + idReaderSavedEye
             ]
-            [VarInc,idCam_st]
+            [VarInc,idReaderSt]
         ]
-        [VarSet,idCam_st,0]
-        [Loop,idCam_savedCount,
-            [VarSet,idCam_savedState,
+        [VarSet,idReaderSt,0]
+        [Loop,idReaderSavedCount,
+            [VarSet,idReaderSavedState,
                 [MVarGet,
                     CB25Data,
-                    idCam_visBase + 1 + idCam_st
+                    idReaderVisBase + 1 + idReaderSt
                 ]
             ]
-            [VarSet,idCam_savedFolderEye,
-                (idCam_savedState & 0x02)
+            [VarSet,idReaderSavedFolderEye,
+                (idReaderSavedState & 0x02)
             ]
-            [VarSet,idCam_currentStatus,
-                [SubToolGetStatus,idCam_st]
+            [VarSet,idReaderCurrentStatus,
+                [SubToolGetStatus,idReaderSt]
             ]
-            [VarSet,idCam_currentFolderEye,
-                (idCam_currentStatus & 0x02)
+            [VarSet,idReaderCurrentFolderEye,
+                (idReaderCurrentStatus & 0x02)
             ]
             [SubToolSetStatus,
-                idCam_st,
-                (idCam_currentStatus - idCam_currentFolderEye) + idCam_savedFolderEye
+                idReaderSt,
+                (idReaderCurrentStatus - idReaderCurrentFolderEye) + idReaderSavedFolderEye
             ]
-            [VarInc,idCam_st]
+            [VarInc,idReaderSt]
         ]
         [IUpdate,1,1]
     ]
-,idCam_slot]
+,idReaderSlot]
 
 [RoutineDef,ID_CB29_RestoreVisualState,
-    [If,([MVarGet,CB25Data,7]==1)||([MVarGet,CB25Data,27746+idCam_slot]>0),
-        [RoutineCall,ID_CB32_RestoreEffective,idCam_slot]
+    [If,([MVarGet,CB25Data,7]==1)||([MVarGet,CB25Data,27746+idReaderSlot]>0),
+        [RoutineCall,ID_CB32_RestoreEffective,idReaderSlot]
     ,
-        [RoutineCall,ID_CB32_RestoreLegacyVisualState,idCam_slot]
+        [RoutineCall,ID_CB32_RestoreLegacyVisualState,idReaderSlot]
     ]
-,idCam_slot]
+,idReaderSlot]
 
 [RoutineDef,ID_CB29_LoadSlot,
 
-    [VarSet,idCam_base,20+(idCam_slot*20)]
-    [If,[MVarGet,CB25Data,idCam_base]!=1,[Exit]]
+    [VarSet,idReaderBase,20+(idReaderSlot*20)]
+    [If,[MVarGet,CB25Data,idReaderBase]!=1,[Exit]]
     [RoutineCall,ID_CB31_Require3D]
-    [RoutineCall,ID_CB32_RequireVisibility,idCam_slot]
-    [If,([MVarGet,CB25Data,idCam_base+18]==0)&&([MVarGet,CB25Data,25546+(idCam_slot*8)]==0),
-        [Loop,6,[MVarSet,CB25Data,25547+(idCam_slot*8)+idCamUnknown,-1],idCamUnknown]
+    [RoutineCall,ID_CB32_RequireVisibility,idReaderSlot]
+    [If,([MVarGet,CB25Data,idReaderBase+18]==0)&&([MVarGet,CB25Data,25546+(idReaderSlot*8)]==0),
+        [Loop,6,[MVarSet,CB25Data,25547+(idReaderSlot*8)+idCamUnknown,-1],idCamUnknown]
     ]
     [VarSet,idCamLock,0]
     [If,[IExists,"Draw:Lock Camera"],
         [VarSet,idCamLock,[IGet,"Draw:Lock Camera"]]
         [IUnPress,"Draw:Lock Camera"]
     ]
-    [RoutineCall,ID_CB30_Resize,[MVarGet,CB25Data,idCam_base+18],[MVarGet,CB25Data,idCam_base+19]]
-    [RoutineCall,ID_CB30_RestoreLens,idCam_slot]
-    [RoutineCall,ID_CB29_RestoreVisualState,idCam_slot]
-    [MTransformSet,CB25Data,idCam_base+1]
-    [CanvasZoomSet,[MVarGet,CB25Data,idCam_base+12]]
-    [CanvasPanSet,[MVarGet,CB25Data,idCam_base+13],[MVarGet,CB25Data,idCam_base+14]]
+    [RoutineCall,ID_CB30_Resize,[MVarGet,CB25Data,idReaderBase+18],[MVarGet,CB25Data,idReaderBase+19]]
+    [RoutineCall,ID_CB30_RestoreLens,idReaderSlot]
+    [RoutineCall,ID_CB29_RestoreVisualState,idReaderSlot]
+    [MTransformSet,CB25Data,idReaderBase+1]
+    [CanvasZoomSet,[MVarGet,CB25Data,idReaderBase+12]]
+    [CanvasPanSet,[MVarGet,CB25Data,idReaderBase+13],[MVarGet,CB25Data,idReaderBase+14]]
     [If,[IExists,"Draw:Lock Camera"],[ISet,"Draw:Lock Camera",idCamLock]]
-    [MVarSet,CB25Data,5,idCam_slot+1]
+    [MVarSet,CB25Data,5,idReaderSlot+1]
     [IUpdate,2,1]
-,idCam_slot]
+,idReaderSlot]
 // One action; destructive mesh edits are guarded by a fresh Tool backup.
 // Session memory restores display/view ONLY. Original mesh data lives in ZTL.
 [ISubPalette,"ZPlugin:Generar y exportar ID"]
@@ -643,8 +643,15 @@
     [If,[IExists,idControls(5)]==0,[VarSet,idControls(5),"Draw:MRGB"]]
     [If,[IExists,idControls(6)]==0,[VarSet,idControls(6),"Tool:Polygroups:AutoGroups"]]
     [If,[IExists,idControls(19)]==0,[VarSet,idControls(19),"Draw:RGBIntensity"]]
-    [VarSet,idPolyPath,"Transform:Polyframe"]
+    // ZBrush 2023 exposes the full Draw Polyframe title, not the PolyF label.
+    [VarSet,idPolyPath,"Transform:Draw Polyframe"]
+    [If,[IExists,idPolyPath]==0,[VarSet,idPolyPath,"Transform:Draw PolyFrame"]]
+    [If,[IExists,idPolyPath]==0,[VarSet,idPolyPath,"Transform:pf"]]
+    [If,[IExists,idPolyPath]==0,[VarSet,idPolyPath,"Transform:Polyframe"]]
     [If,[IExists,idPolyPath]==0,[VarSet,idPolyPath,"Transform:PolyF"]]
+    // Report the canonical path if no alias exists. Presence-based resolution
+    // keeps a disabled canonical control from being bypassed through aliases.
+    [If,[IExists,idPolyPath]==0,[VarSet,idPolyPath,"Transform:Draw Polyframe"]]
 ]
 [RoutineDef,ID_ResolveControls,
     [RoutineCall,ID_ResolvePaths]
@@ -668,7 +675,9 @@
 ]
 [RoutineDef,ID_MaterialCandidate,
     [If,[IExists,[Var,idCandidate]],
-        [If,[StrFind,"Material:",[IGetTitle,[Var,idCandidate],1]]==0,
+        // Native 2023 does not reliably evaluate IGetTitle nested in StrFind.
+        [VarSet,idMaterialPath,[IGetTitle,[Var,idCandidate],1]]
+        [If,[StrFind,"Material:",idMaterialPath]==0,
             [VarSet,idMatName,[IGetTitle,[Var,idCandidate]]]
             [If,([StrLength,idMatName]==10)&&([StrFind,"Flat Color",idMatName]==0),[VarSet,idFlat,idCandidate]]
         ]

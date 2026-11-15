@@ -12,16 +12,16 @@ controller's handoff and video analysis. Assigned branch:
 [VIDEO_ANALYSIS_3.2.0.md](../../VIDEO_ANALYSIS_3.2.0.md). The follow-up confirms
 the owner's policy: **export every enabled Camera Bank view**.
 
-Follow-up integration inputs were copied from controller commit
-`2f7d6f19771e980156ea26cf6e3f2fd32eb0ca88`, incorporating camera work through
-`51bf15a`. Schema remains v8; store/update tracks automatically and there is no
-`CB32_PrepareTransfer` routine. The generated ID source now includes this updated
-reader. Both unowned camera files were restored to this worktree's original
-versions after pinning the inputs in ignored local cache. They are not committed.
+Current integration inputs were copied read-only from controller commit
+`0fb29356730755725a66132ba1e9ea6303e46da3`, incorporating the native camera
+compatibility fixes from `afeb8a1`. Schema remains v8; store/update tracks
+automatically and there is no `CB32_PrepareTransfer` routine. The generated ID
+source includes this final reader. The worker's unowned camera files remain
+unchanged; the selected inputs are pinned only in ignored local cache.
 Normalized ASCII/LF input hashes:
 
-- Camera source: `77630e1acec3bf2ce6d922955261048087f04621ec977e9f7600ba34363a36f4`.
-- Shared reader: `11dec7ceab97d061ecd7f0e9764f96cade0e8f0dd013eee01b9638b487c841c4`.
+- Camera source: `9beaf99488728a5c887cbefe569302c9a90b85d8cd3bf7c97826607a03e4e5c5`.
+- Shared reader: `405f7b0af830fd0f100b027a70789dab3ee22004dbce3d77b0b54f79307dc877`.
 
 ## Delivered files and ownership
 
@@ -145,6 +145,60 @@ As and after ToolSetPath; its original path already had the same marked stem.
 That probe is **not** evidence that ToolSetPath can restore a title after saving
 under a different basename. This implementation does not depend on it doing so.
 
+## Native PolyFrame control correction
+
+The controller compiled the exact integrated source, then its public action
+stopped safely before backup/mutation because both old PolyFrame paths were
+absent. Its read-only `id-control-probe.txt` now confirms
+`Transform:Draw Polyframe` and the capitalization variant both exist in
+2023.2.1; `Transform:PolyFrame` and `Transform:PolyF` do not. The worker read that
+probe without controlling ZBrush. The installed English AutoNotes also labels
+the control Draw Polyframe under its older `Transform:pf` key.
+
+Resolution now prefers `Transform:Draw Polyframe`, then tries the capitalization
+variant, `Transform:pf` and the two former aliases. No alias is used to bypass
+a present but disabled canonical control. The existing required/enabled
+preflight remains in place, as do snapshot, overlay disabling before every PNG,
+and restoration afterward. Tests run with the actual canonical path as the
+default UI; they verify initially on/off states, each fallback and failure
+before backup when all aliases are missing or the canonical item is disabled.
+Export records prove the resolved overlay is off during both camera captures.
+Maxon's [Projection Master documentation](https://help.maxon.net/zbr/en-us/Content/html/user-guide/3d-modeling/sculpting/projection-master/projection-master.html)
+also discusses the Draw Polyframe setting; the native probe is the authority
+for this machine's exact path.
+
+## Native material and variable identifier correction
+
+The next controller candidate exposed two more runtime differences before any
+backup or mesh processing. Read-only `id-material-probe.bin` contains full path
+`Material:Flat Color`, title `Flat Color` and observed ID `10243`. The nested
+IGetTitle call inside the material-prefix StrFind condition did not identify it.
+The candidate advanced when the full path was precomputed into a string first.
+`ID_MaterialCandidate` now does that, retaining the Material parent and exact
+Flat Color title checks. The observed numeric ID is a regression fixture only;
+the plugin still resolves it dynamically. Lookup does not select materials.
+
+The subsequent native error was an ambiguous `idCam` token at local variable
+`idCam_base`. The generator now maps legacy reader locals to alphanumeric names
+such as `idReaderBase`, `idReaderSlot` and `idReaderVisBase`. These stay distinct
+from the existing cb-to-idCam names such as `idCamBase`/`idCamSlot`. Routine
+identifiers retain their supported underscores, and shared reader source,
+camera data and recovery memory block names remain unchanged. No controller
+candidate logging or probe-writing code was copied into this delivery.
+
+The mock now rejects the known nested-title expression and underscore variable
+targets/parameters. Regressions use the actual candidate lookup with the native
+ID/path/title, reject a wrong parent and near-match title, validate every
+generated variable identifier, and execute the renamed reader on a stored view.
+
+Controller continuation: the live Tool still has a phase-1 `ID32Recovery` marker
+from the earlier exception, with no backup, ID image or mesh processing. On the
+same Tool and bank, the first public click after loading this corrected source
+should restore that snapshot and exit. A second click starts a fresh ID action.
+Do not delete recovery blocks or bypass identity checks to force a run. This
+worker has not performed that native continuation; the controller retains the
+exclusive UI lease.
+
 ## SubTool Master decision and API evidence
 
 Read-only installed inspection found `SubToolMaster_2023.zsc`, its DLL and the
@@ -195,7 +249,7 @@ ran the final checks using the pinned controller inputs and the explicit
 alternate-source test route (from this repository root):
 
 ```powershell
-$env:ZBRUSH_ID_CAMERA_ROOT = Join-Path (Get-Location) '.cache/zbrush-id-followup/integrated-package'
+$env:ZBRUSH_ID_CAMERA_ROOT = Join-Path (Get-Location) '.cache/zbrush-id-polyframe/integrated-package'
 Push-Location 'projects/zbrush-plugins/Plugin de zbrush/Development'
 python -c "import os, build_id; build_id.main(camera_root=os.environ['ZBRUSH_ID_CAMERA_ROOT'])"
 python test_id_export.py
@@ -215,7 +269,7 @@ The generated source matches `compose(camera_root=selected_inputs)` exactly and
 embeds the shared reader's SHA256 for traceability. The suite executes delivered
 routines with modeled
 material/RGB/group mutations and actual temporary file IO; it does not merely
-assert source strings. It covers 27 tests with additional subcases:
+assert source strings. It covers 32 tests with additional subcases:
 
 - the sole button's complete successful sequence, union preparation exactly
   once, same IDs between views, M-only preserving RGB before conversion and
@@ -242,9 +296,16 @@ assert source strings. It covers 27 tests with additional subcases:
   the modeled backup against the matching bank's strict reader;
 - unsafe filename rejection, a 241-character path rejected before saving,
   original names unchanged on cancellation/empty/unreadable backups/path-restore
-  failure and interruption, and preservation of existing numbered recovery paths.
+  failure and interruption, and preservation of existing numbered recovery paths;
+- the native Draw Polyframe path with original states 0/1, all aliases, canonical
+  preference, overlay-off exports and original-state restoration, plus missing/
+  disabled-control failures before any backup or mesh mutation;
+- scalar material-path lookup with the native probe's dynamic ID, parent/title
+  rejection and no material selection; alphanumeric generated variable names
+  in declarations, assignments, loop counters and routine parameters, plus
+  execution of the renamed camera reader with unchanged routine API names.
 
-Final results: 27 tests passed against the pinned integrated controller camera inputs;
+Final results: 32 tests passed against the pinned final controller camera inputs;
 Python compilation passed. The mock records a
 fake ZTL and signature-bearing fake image payload, explicitly labeled as mocks.
 These results **do not** establish native ZScript compilation, valid native ZTL
@@ -264,10 +325,11 @@ that is not a native execution/visual verification of this ID action.
   dimensions and active-slot header are the existing stable layout; review them
   if the new camera schema changes those fields. Re-run the tests if the reader
   changes after these pinned inputs.
-- The controller is fixing native parser/runtime compatibility in its shared
-  camera source. This correction retains the prior pinned reader; rebuild ID
-  with the final shared reader before native ID testing. No unowned camera
-  source change is included in this patch.
+- The generated source now uses the controller's final native-compatible reader.
+  Regenerate again if the controller changes it; no unowned camera source change
+  is included in this patch. The controller must retest the public ID action
+  after these native compatibility corrections. Its earlier exceptions still
+  preceded backup/mutation; recover the pending phase-1 snapshot first.
 - The controller reports that its build_all now invokes build_id with
   `run_name='__main__'`; the guarded main remains compatible. Stage the source
   under folder `Generate and Export ID`, basename `GenerateExportID`; compiled
@@ -292,6 +354,8 @@ that is not a native execution/visual verification of this ID action.
    duplicate IDs, reordered names, a hidden folder and Solo. Enable cameras 01
    and 10 with different sizes; keep 25 gray. Verify required control paths and
    actual M-only FillObject/Auto Groups/Polypaint behavior on this ZBrush version.
+   Specifically verify Draw Polyframe resolves, starts in each 0/1 state, stays
+   off during all ID captures and returns to its starting state afterward.
 2. Run the single button into a session containing another pass and an older
    recovery file. Check that both survive, only 01/10 get `ID.png`, decoded sizes
    match the stored cameras, all required parts show flat colored regions,
