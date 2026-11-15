@@ -607,7 +607,9 @@
             [MVarSet,CB25Data,5,[MVarGet,ID32Recovery,18]]
             [VarSet,idOldToolPath,""]
             [MemReadString,ID32ToolPath,idOldToolPath,0]
-            [If,[ToolSetPath,[ToolGetActiveIndex],idOldToolPath]!=0,
+            [VarSet,idPathToolIndex,[ToolGetActiveIndex]]
+            [VarSet,idPathResult,[ToolSetPath,idPathToolIndex,idOldToolPath]]
+            [If,idPathResult!=0,
                 [MessageOK,"ID display recovery could not restore the original Tool save path. The session marker was kept; check the Tool path before saving.","Generar y exportar ID"]
                 [Exit]
             ]
@@ -1000,7 +1002,9 @@
     [RoutineCall,ID_CheckIdentity]
     [If,idSameTool==0,[RoutineCall,ID_Fail,"Tool names changed during backup. No ID processing started."]]
     [VarSet,idOldToolPath,""][MemReadString,ID32ToolPath,idOldToolPath,0]
-    [If,[ToolSetPath,[ToolGetActiveIndex],idOldToolPath]!=0,[RoutineCall,ID_Fail,"Cannot restore the original Tool save path after backup."]]
+    [VarSet,idPathToolIndex,[ToolGetActiveIndex]]
+    [VarSet,idPathResult,[ToolSetPath,idPathToolIndex,idOldToolPath]]
+    [If,idPathResult!=0,[RoutineCall,ID_Fail,"Cannot restore the original Tool save path after backup."]]
     [SubToolSelect,[MVarGet,ID32Recovery,1]]
     [RoutineCall,ID_CheckIdentity]
     [If,idSameTool==0,[RoutineCall,ID_Fail,"Tool identity changed after restoring its path. No ID processing started."]]
