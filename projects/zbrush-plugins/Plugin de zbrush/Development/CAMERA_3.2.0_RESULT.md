@@ -168,12 +168,32 @@ This correction changes these owned paths only:
 
 Controller evidence confirms its equivalent scratch candidate completed three
 stores and two pre-reorder PNG captures at 640x480 and 480x640. That is controller
-probe evidence, not native acceptance of this committed worker source. A separate
-native handoff blocker remains: Save As under another ZTL basename changed the
-first name returned by Tool:ItemInfo to the filename stem, losing its visible
-marker, and subsequent recall rejected it. The controller is investigating Tool
-name alias versus actual SubTool name/save behavior. Do not claim save/reopen
-handoff acceptance until that is resolved; no title-path change is guessed here.
+probe evidence, not full native acceptance of this worker source. The controller
+reviewed and merged `afeb8a1` and rebuilt all three sources. Its subsequent
+safe-name native Save As probe resolved the name-preservation route described
+below; actual reorder, merge and render testing remains under the controller's
+exclusive lease.
+
+## Native ZTL save-name clarification
+
+In ZBrush 2023.2.1, ZTL Save As uses the filename stem as the first SubTool's
+name. Saving to an unrelated basename removes that SubTool's marker and recall
+correctly refuses the unknown identity. Keep the default marked ZTL basename and
+choose any folder. A changed ZTL basename counts as renaming the first SubTool
+and must retain its complete current `CB...G..._` marker. Use ZPR for an arbitrary
+project filename.
+
+The controller's safe-name native probe confirmed the marker was retained before
+and after saving with the marked ZTL stem, and after ToolSetPath restoration.
+This establishes the supported save-name route; it does not establish completion
+of all save/reopen, reorder, compatible merge or rendering acceptance checks.
+This worker only read the controller's probe evidence and did not control UI.
+
+The clarification changes only `Development/DATA_FORMAT.md`,
+`Development/MERGE_HANDOFF.md` and this report. No runtime code, data schema,
+identity matching or positional fallback was changed. Documentation diff and
+scope checks were performed; the prior 51-test source result remains the latest
+worker test run, without a redundant rerun for this documentation-only edit.
 
 ## Limits and integration requirements
 
@@ -189,8 +209,9 @@ handoff acceptance until that is resolved; no title-path change is guessed here.
   bound; importing it resets reviewed counts. Indistinguishable old names/IDs
   cannot prove a historic order.
 - The 20-character markers rename in-memory SubTools. Save a new matching
-  ZTL/ZPR after the latest store/update and export its bank. The plugin never
-  saves or overwrites original model files. Long/truncated names fail with
+  ZTL/ZPR after the latest store/update and export its bank. Keep the marked ZTL
+  basename (any folder), preserve its marker if renaming, or use an arbitrary ZPR
+  project filename. The plugin never saves or overwrites original model files. Long/truncated names fail with
   rollback; real 2023.2.1 name limits, encoding and large-scene latency need probes.
 - Export cancellation and declined replacement preserve memory and names.
   Confirmed replacement is a direct native file write. If writing/verification
