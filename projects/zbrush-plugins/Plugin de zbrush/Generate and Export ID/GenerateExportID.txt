@@ -510,6 +510,7 @@
         [VarSet,idIdentityCount,[SubToolGetCount]]
         [If,[MVarGet,ID32Recovery,0]<1,[VarSet,idIdentityCount,[MVarGet,ID32Recovery,25]]]
         [Loop,idIdentityCount,
+            [VarSet,idSavedID,0]
             [MemRead,ID32Recovery,idSavedID,6,(64+(idIdentityIndex*6))*4]
             [If,[SubToolGetID,idIdentityIndex]!=idSavedID,[VarSet,idSameTool,0][LoopExit]]
             [SubToolSelect,idIdentityIndex]
@@ -1062,6 +1063,7 @@
             [VarSet,idPNGRead,[MemCreateFromFile,ID32Verify,idOutput,0,8]]
             [If,idPNGRead==8,
                 [Loop,8,
+                    [VarSet,idPNGByte,0]
                     [MemRead,ID32Verify,idPNGByte,2,idByteIndex]
                     [If,idPNGByte!=idPNG(idByteIndex),[VarSet,idPNGRead,0]]
                 ,idByteIndex]

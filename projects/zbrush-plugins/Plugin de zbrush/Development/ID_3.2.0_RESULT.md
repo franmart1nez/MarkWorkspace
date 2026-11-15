@@ -191,13 +191,32 @@ targets/parameters. Regressions use the actual candidate lookup with the native
 ID/path/title, reject a wrong parent and near-match title, validate every
 generated variable identifier, and execute the renamed reader on a stored view.
 
-Controller continuation: the live Tool still has a phase-1 `ID32Recovery` marker
-from the earlier exception, with no backup, ID image or mesh processing. On the
-same Tool and bank, the first public click after loading this corrected source
-should restore that snapshot and exit. A second click starts a fresh ID action.
+Controller continuation: the last confirmed native state has a phase-1
+`ID32Recovery` marker from the earlier exception, with no backup, ID image or
+mesh processing. If it is still pending on the same Tool and bank, the first
+public click after loading corrected source should restore that snapshot and
+exit. A second click starts a fresh ID action.
 Do not delete recovery blocks or bypass identity checks to force a run. This
 worker has not performed that native continuation; the controller retains the
 exclusive UI lease.
+
+## Native MemRead output initialization correction
+
+The controller's next phase-1 recovery candidate reached an unassigned-variable
+exception at the numeric `MemRead` output `idSavedID`. Its full
+`.cache/zbrush-320/native/ID_DIAGNOSIS.md` was read for confirmed feedback.
+The two numeric output locals, `idSavedID` and `idPNGByte`, now receive an
+explicit `VarSet ...,0` immediately before each read. The identity and PNG
+signature checks are otherwise unchanged; the recovery marker is not cleared
+or bypassed to avoid the failing read.
+
+The mock now rejects absent, unassigned or nonnumeric output targets. Regression
+tests demonstrate that unsigned IDs above float precision and PNG bytes read
+correctly after initialization. They execute recovery from a fresh phase-1
+snapshot after source reload, then run a complete two-view export. Every output
+local starts at numeric zero, all sixteen PNG signature bytes are checked, and
+the locals do not leak between routine calls. Native continuation remains the
+controller's responsibility; these are source/mock checks.
 
 ## SubTool Master decision and API evidence
 
@@ -269,7 +288,7 @@ The generated source matches `compose(camera_root=selected_inputs)` exactly and
 embeds the shared reader's SHA256 for traceability. The suite executes delivered
 routines with modeled
 material/RGB/group mutations and actual temporary file IO; it does not merely
-assert source strings. It covers 32 tests with additional subcases:
+assert source strings. It covers 34 tests with additional subcases:
 
 - the sole button's complete successful sequence, union preparation exactly
   once, same IDs between views, M-only preserving RGB before conversion and
@@ -303,9 +322,11 @@ assert source strings. It covers 32 tests with additional subcases:
 - scalar material-path lookup with the native probe's dynamic ID, parent/title
   rejection and no material selection; alphanumeric generated variable names
   in declarations, assignments, loop counters and routine parameters, plus
-  execution of the renamed camera reader with unchanged routine API names.
+  execution of the renamed camera reader with unchanged routine API names;
+- numeric MemRead output initialization, rejection of missing/nonnumeric output
+  locals, fresh-context phase-1 recovery and the complete PNG signature reads.
 
-Final results: 32 tests passed against the pinned final controller camera inputs;
+Final results: 34 tests passed against the pinned final controller camera inputs;
 Python compilation passed. The mock records a
 fake ZTL and signature-bearing fake image payload, explicitly labeled as mocks.
 These results **do not** establish native ZScript compilation, valid native ZTL

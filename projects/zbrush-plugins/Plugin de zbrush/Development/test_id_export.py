@@ -69,6 +69,7 @@ class IDHost(Host):
         self.backup_states = {}
         self.save_rename_target = 'first'
         self.path_failure_once = False
+        self.memory_reads = []
 
     def cmd(self, n):
         c, *a = n
@@ -122,8 +123,13 @@ class IDHost(Host):
             struct.pack_into('<'+fmt, self.mem[a[0]], int(E(3)), int(E(1)))
             return struct.calcsize(fmt)
         if c == 'MemRead':
+            assert a[1] in self.v and isinstance(self.v[a[1]], (int, float)), (
+                'Native MemRead output must be initialized numerically', a[1])
             fmt = {2: 'B', 6: 'I'}[int(E(2))]
-            self.set(a[1], struct.unpack_from('<'+fmt, self.mem[a[0]], int(E(3)))[0])
+            before = self.v[a[1]]
+            value = struct.unpack_from('<'+fmt, self.mem[a[0]], int(E(3)))[0]
+            self.set(a[1], value)
+            self.memory_reads.append((a[1], before, value))
             return struct.calcsize(fmt)
         if c == 'FileNameSetNext' and not a:
             self.nextfile = ''
@@ -1005,6 +1011,49 @@ class IDExport(unittest.TestCase):
         h.call('ID_CB29_LoadSlot', 0)
         self.assertEqual([status & 1 for status in h.status], [1, 1, 0, 0, 0])
         self.assertEqual(h.dims, [1920, 1080])
+
+    def test_memread_mock_rejects_uninitialized_outputs_then_reads_uint_and_byte(self):
+        h = IDHost()
+        h.mem['NumericProbe'] = bytearray(struct.pack('<I', 16777219))
+        for value in ['absent', None, '']:
+            with self.subTest(initial=value):
+                h.v.pop('nativeReadOutput', None)
+                if value != 'absent':
+                    h.v['nativeReadOutput'] = value
+                with self.assertRaisesRegex(AssertionError, 'initialized numerically'):
+                    h.cmd(['MemRead', 'NumericProbe', 'nativeReadOutput', '6', '0'])
+        h.cmd(['VarSet', 'nativeReadOutput', '0'])
+        self.assertEqual(h.cmd(['MemRead', 'NumericProbe', 'nativeReadOutput', '6', '0']), 4)
+        self.assertEqual(h.v['nativeReadOutput'], 16777219)
+        h.mem['ByteProbe'] = bytearray(b'\x89PNG\r\n\x1a\n')
+        h.cmd(['VarSet', 'nativeByteOutput', '0'])
+        self.assertEqual(h.cmd(['MemRead', 'ByteProbe', 'nativeByteOutput', '2', '0']), 1)
+        self.assertEqual(h.v['nativeByteOutput'], 137)
+
+    def test_fresh_recovery_and_png_output_locals_are_initialized_before_read(self):
+        h = self.host()
+        h.call('ID_ResolveControls')
+        h.call('ID_Snapshot')
+        self.assertNotIn('idSavedID', h.v)
+        h.load(OUTPUT)  # Model switching to corrected source with phase 1 pending.
+        with self.assertRaises(Exit):
+            self.click(h)
+        self.assertEqual(struct.unpack_from('<f', h.mem['ID32Recovery'])[0], 0)
+        self.assertEqual(h.events, [])
+        self.assertTrue(any(value == 16777219 for name, _, value in h.memory_reads
+                            if name == 'idSavedID'))
+        self.assertTrue(all(before == 0 for name, before, _ in h.memory_reads
+                            if name == 'idSavedID'))
+        self.assertNotIn('idSavedID', h.v)
+        with tempfile.TemporaryDirectory() as d:
+            h = self.host()
+            h.chosen = d
+            self.click(h)
+            png_reads = [read for read in h.memory_reads if read[0] == 'idPNGByte']
+            self.assertEqual(len(png_reads), 16)
+            self.assertTrue(all(before == 0 for _, before, _ in png_reads))
+            self.assertEqual([value for _, _, value in png_reads], list(b'\x89PNG\r\n\x1a\n')*2)
+            self.assertNotIn('idPNGByte', h.v)
 
 
 if __name__ == '__main__':
