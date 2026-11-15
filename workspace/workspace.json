@@ -194,11 +194,11 @@
     {
       "id": "zbrush-plugins",
       "title": "ZBrush plugins",
-      "description": "Version 3.1.0 source / data v8: prepared ZTL/ZPR visibility groups survive compatible merges via SubTool-name markers. Both render phases supported; 32 logic checks pass. Native compilation/visual verification pending.",
+      "description": "Version 3.2.0 integration in progress: three visible Codex workers; Render Capture reviewed and merged. Camera Bank and ID source validation in progress; native verification follows integration.",
       "type": "group",
       "category": "dev",
       "created": "2026-11-13",
-      "updated": "2026-11-14T22:03:45.570149+00:00",
+      "updated": "2026-11-15T19:12:19.747003+00:00",
       "folder": "2026-11-13_zbrush-plugins",
       "status": "active",
       "defaultStep": 0,
@@ -206,6 +206,10 @@
         {
           "name": "Delivery",
           "path": "PROJECT.md"
+        },
+        {
+          "name": "ID references",
+          "path": "video-analysis-3.2.0.md"
         }
       ]
     }

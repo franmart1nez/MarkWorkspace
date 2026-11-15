@@ -89,12 +89,17 @@ class InstallerTests(unittest.TestCase):
             old=data/'CameraBank25.zsc';old.write_bytes(b'old compiled source')
             os.utime(old,(src.stat().st_mtime+60,src.stat().st_mtime+60))
             (plugs/'CameraBank25.zsc').write_bytes(b'old startup')
+            macros=zb/'ZStartup/Macros/Mak Plugins';macros.mkdir(parents=True)
+            (macros/'Load Camera Bank.txt').write_text('// old loader')
+            (macros/'Load Camera Bank.zsc').write_bytes(b'old loader binary')
             env=os.environ.copy();env['LOCALAPPDATA']=str(fixture/'LocalAppData')
             r=subprocess.run(['powershell.exe','-NoProfile','-File',str(package/'Install.ps1'),
                               '-ZBrushPath',str(zb),'-Component','Camera'],env=env,capture_output=True,text=True)
             self.assertEqual(r.returncode,0,r.stdout+r.stderr)
             self.assertFalse(old.exists())
             self.assertFalse((plugs/'CameraBank25.zsc').exists())
+            self.assertFalse((macros/'Load Camera Bank.zsc').exists())
+            self.assertIn('ZScript:Load',(macros/'Load Camera Bank.txt').read_text())
             self.assertEqual((data/'CameraBank25.txt').read_bytes(),src.read_bytes())
             self.assertTrue(list((fixture/'LocalAppData').rglob('CameraBank25.zsc')))
 

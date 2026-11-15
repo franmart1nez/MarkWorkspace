@@ -1,4 +1,40 @@
-# Native acceptance checklist - 3.1.0 additions (pending)
+# Native acceptance checklist — 3.2.0
+
+The orchestrator owns the sole ZBrush lease. Workers must not control ZBrush,
+install or load scripts until explicitly handed that lease. Preserve the owner's
+project/document/bank before loading a disposable fixture. No restart is needed.
+
+1. Compile/load all three integrated TXT sources in ZBrush 2023.2.1. A generated
+   ZSC alone does not establish successful runtime behavior. Check the panels and
+   absence of PREPARE TRANSFER; ID has one public action.
+2. Store two enabled views with different canvas sizes and SubTool visibility,
+   plus one gray occupied view. Check automatic name identifiers after first
+   store and each update. Reorder the actual native SubTools and compare recalled
+   geometry, visibility and framing against exports taken before the reorder.
+3. EXPORT BANK through its public control, verify the file bytes and import it
+   with the matching saved ZTL. Test cancellation and export outside Edit mode.
+   Test a compatible native merge retaining a marker and failure for missing or
+   ambiguous markers. Legacy review remains explicit; never infer old ancestry.
+4. Run NON BPR then BPR, and the reverse order in a new session. Both sets must
+   sit directly in each camera folder, with no BPR/NonBPR subdirectories. Decode
+   PNG/PSD exports; check dimensions, all seven BPR maps, Depth bit depth, and
+   byte-identical Screenshots copies. Gray/empty cameras produce no images.
+5. Run the one-button ID action for the enabled cameras. Inspect Flat Color,
+   generated PolyGroup colors, enabled Colorize, absence of texture/shading
+   interference, per-camera visibility and stable colors across views. Verify
+   the pre-mutation ZTL by reopening a copy, then restore the test Tool.
+6. Re-run each export to confirm collision refusal and unchanged file hashes.
+   Exercise missing-bank and cancellation paths before mutation. An interrupted
+   ID action restores display only; original mesh data belongs to its backup.
+7. Restore the owner's saved project/document/bank. Keep test files isolated,
+   leave applications and worker tabs open, and release desktop control.
+
+Actual completed checks and limitations belong in VERIFICATION_3.2.0.md.
+The following 3.1.0 checklist is historical and does not define the new UI.
+
+---
+
+# Historical native acceptance checklist - 3.1.0 additions (pending)
 
 Do not treat offline source checks as completed native acceptance.
 

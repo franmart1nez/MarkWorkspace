@@ -115,7 +115,13 @@ foreach ($spec in $specs) {
         $loaderReset +
         ' [FileNameSetNext,[FileNameResolvePath,"' + $pluginSource + '"]]' + "`r`n" +
         ' [IPress,"ZScript:Load"]' + "`r`n]`r`n"
-    $actions += [pscustomobject]@{ Kind='Text'; Source=$macroText; Target=(Join-Path $macroRoot ($spec.Macro+'.txt')) }
+    $macroTarget = Join-Path $macroRoot ($spec.Macro+'.txt')
+    $macroCompiled = [IO.Path]::ChangeExtension($macroTarget,'.zsc')
+    if ((Test-Path -LiteralPath $macroCompiled) -and
+        ((-not (Test-Path -LiteralPath $macroTarget)) -or ([IO.File]::ReadAllText($macroTarget) -ne $macroText))) {
+        $actions += [pscustomobject]@{ Kind='Retire'; Source=$null; Target=$macroCompiled }
+    }
+    $actions += [pscustomobject]@{ Kind='Text'; Source=$macroText; Target=$macroTarget }
     # All three components use the same reviewed Maxon utility.
     if ($spec.Name -in @('CameraBank25','RenderCapture','GenerateExportID')) {
         $dll = Join-Path $packageRoot 'Render Capture\RenderCaptureData\ZFileUtils64.dll'
