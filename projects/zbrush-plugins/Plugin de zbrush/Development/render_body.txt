@@ -1,6 +1,7 @@
-// Render Capture 3.1.0 - Windows / ZBrush 2023.2.1 target.
+// Render Capture 3.2.0 - Windows / ZBrush 2023.2.1 target.
 // Exactly three public buttons. Reads Camera Bank v8 via CB25Data.
-// 3.1.0 is source-verified only; native baseline: 3.0.3. See Development/VERIFICATION.md.
+// 3.2.0: both phases share each camera folder. Native baseline: 3.0.3.
+// Source verification and native limits: Development/RENDER_3.2.0_RESULT.md.
 [ISubPalette,"ZPlugin:Render Capture"]
 [VarDef,rcRoot,""]
 [VarDef,rcDll,""]
@@ -11,7 +12,6 @@
 [VarDef,rcMetal,-1]
 [VarDef,rcCameraCount,0]
 [VarDef,rcLabel,""]
-[VarDef,rcPhase,""]
 [VarDef,rcPassCount,0]
 [VarDef,rcSlot,0]
 [VarDef,rcOutput,""]
@@ -217,8 +217,6 @@
         [If,([MVarGet,CB25Data,rcBase]==1)&&([MVarGet,CB25Data,rcBase+16]==1),
             [RoutineCall,RC_Label,rcSlot+1]
             [RoutineCall,RC_Folder,[StrMerge,rcRoot,"/",rcLabel]]
-            [RoutineCall,RC_Folder,[StrMerge,rcRoot,"/",rcLabel,"/NonBPR"]]
-            [RoutineCall,RC_Folder,[StrMerge,rcRoot,"/",rcLabel,"/BPR"]]
         ]
     ,rcSlot]
     [If,[MemGetSize,RC30Root]>0,[MemDelete,RC30Root]]
@@ -284,11 +282,11 @@
 ,rcPP]
 [RoutineDef,RC_OutputFolder,
     [RoutineCall,RC_Label,rcSlot+1]
-    [RoutineCall,RC_Folder,[StrMerge,rcRoot,"/",rcLabel]]
-    [VarSet,rcOutput,[StrMerge,rcRoot,"/",rcLabel,"/",rcPhase]]
+    [VarSet,rcOutput,[StrMerge,rcRoot,"/",rcLabel]]
     [RoutineCall,RC_Folder,rcOutput]
 ]
 // Reject collisions BEFORE changing display state. Create a new session to rerun.
+// Check only this phase's filenames so the other phase can share the folder.
 [RoutineDef,RC_CheckOutput,
     [Loop,25,
         [VarSet,rcBase,20+(rcSlot*20)]
@@ -332,7 +330,7 @@
     [RoutineCall,RC_GetRoot]
     [RoutineCall,RC_Materials]
     [RoutineCall,RC_Folder,[StrMerge,rcRoot,"/Screenshots"]]
-    [VarSet,rcPhase,"NonBPR"][VarSet,rcPassCount,4]
+    [VarSet,rcPassCount,4]
     [VarSet,rcPassNames(0),"Z document.png"]
     [VarSet,rcPassNames(1),"Normal.png"]
     [VarSet,rcPassNames(2),"Double.png"]
@@ -388,7 +386,7 @@
     [RoutineCall,RC_Restore]
     [RoutineCall,RC_Preflight]
     [RoutineCall,RC_GetRoot]
-    [VarSet,rcPhase,"BPR"][VarSet,rcPassCount,7]
+    [VarSet,rcPassCount,7]
     [VarSet,rcPassNames(0),"_AO.psd"]
     [VarSet,rcPassNames(1),"_Composite.psd"]
     [VarSet,rcPassNames(2),"_Depth.psd"]
