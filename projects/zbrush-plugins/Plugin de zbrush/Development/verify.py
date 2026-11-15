@@ -255,7 +255,9 @@ class Host:
         if c=='StrLower':return E(0).lower()
         if c=='StrToAsc':return ord(E(0)[int(E(1)) if len(a)>1 else 0])
         if c=='StrExtract':return E(0)[int(E(1)):int(E(2))+1]
-        if c=='StrMerge':return ''.join(str(self.e(x)) for x in a)
+        if c=='StrMerge':
+            if not 2<=len(a)<=12:raise ValueError(f'StrMerge requires 2..12 inputs; got {len(a)}')
+            return ''.join(str(self.e(x)) for x in a)
         if c in ['MessageOK','Note']:self.messages.append(E(0));return 1
         if c=='MessageYesNo':return self.answer
         if c=='FileNameAsk':return self.ask
