@@ -13,8 +13,11 @@ Edit mode, a selected matching Tool, or the renaming library. Data remains v8
    on the first store, and refresh on each store/update. Gray occupied cameras
    participate equally; UPDATE ACTIVE keeps their render flags.
 2. Inspect framing, canvas/lens and visible geometry. Save the **ZTL/ZPR after
-   the latest store/update**, then EXPORT BANK. Send both matching files. The
-   plugin does not save or overwrite the model file for you.
+   the latest store/update**, then EXPORT BANK. For ZTL, keep the marked default
+   basename and choose any folder; a changed basename must retain the first
+   SubTool's complete current marker. ZPR allows an arbitrary project filename.
+   Send both matching files. The plugin does not save or overwrite the model
+   file for you.
 3. Open that pair, import the bank, then reorder or perform supported native
    merges. Merge only parts with identical visibility in every occupied camera,
    including gray ones. Preserve one complete compatible `CB...G..._` source
@@ -30,6 +33,14 @@ Equal-visibility duplicates share a group; unequal-visibility duplicates receive
 separate groups. Unknown/added/unmarked parts, missing identifiers, foreign or
 stale identifiers, malformed identifiers and multiple markers are rejected.
 There is no positional guess or automatic adoption of unknown geometry.
+
+Native ZBrush 2023.2.1 ZTL Save As makes the filename stem the first SubTool's
+name. A plain new basename can erase its marker, so it counts as renaming that
+SubTool and must preserve the marker. The controller's safe-name probe confirmed
+the marker survived saving with the marked ZTL stem and ToolSetPath restoration.
+Keep that marked default stem for ordinary ZTL transfer, changing only the
+folder, or use ZPR when the project needs an arbitrary filename. This preserves
+the existing strict name-identity contract without adding a fallback.
 
 A missing group needed by any occupied view is rejected unless a surviving
 group has the same visibility across the remaining occupied cameras. Entirely
@@ -103,7 +114,8 @@ Tool under its exclusive ZBrush lease:
 2. Store three views with different dimensions/lenses; make one gray. Include
    duplicate human names, hidden folders, Solo and a hidden active part. Recall,
    UPDATE ACTIVE on the gray camera, and compare framing and effective geometry.
-3. Save a new ZTL/ZPR and bank; reopen/import and compare all occupied cameras.
+3. Save a new ZTL with its marked basename (or ZPR with any project filename)
+   and bank; reopen/import and compare all occupied cameras.
    Test export cancellation, a new writable path, confirmed overwrite and a
    failing path. Export with Edit off must still produce a usable 111,084-byte bank.
 4. Reorder, MergeDown compatible parts, and probe actual MergeVisible/folder name

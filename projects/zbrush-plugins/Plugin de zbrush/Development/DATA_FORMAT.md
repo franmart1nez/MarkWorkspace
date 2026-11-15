@@ -74,6 +74,16 @@ is then captured and all occupied views regrouped. A new nonce pair is generated
 on every successful store/update. Save the matching **ZTL/ZPR after the latest
 edit**, then export its bank; older saved model/bank pairs remain separate.
 
+Native ZBrush 2023.2.1 ZTL **Save As** uses the filename stem as the first
+SubTool's name. Saving to an unrelated basename can therefore remove that
+SubTool's marker. Keep the marked default ZTL basename and choose any destination
+folder. If changing the basename, preserve that first SubTool's complete current
+`CB...G..._` marker; changing it is a SubTool rename under the identity rules
+above. A ZPR project may use an arbitrary project filename. The controller's
+safe-name native probe confirmed that saving with the marked ZTL stem and
+restoring the Tool path with ToolSetPath retained the marker. This does not add
+an automatic save/rename action or a positional fallback to Camera Bank.
+
 Names are verified after each rename before committing the staged bank. The
 20-character marker plus human name is limited to 255 characters (235 for the
 human name); native truncation is treated as failure with rollback. Native name
