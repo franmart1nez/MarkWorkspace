@@ -11,9 +11,12 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / 'Generate and Export ID/GenerateExportID.txt'
 
 
-def compose(root=ROOT):
-    camera = (root / 'Camera Bank/CameraBank25.txt').read_text(encoding='ascii')
-    reader = (root / 'Development/camera_reader.inc').read_text(encoding='ascii')
+def compose(root=ROOT, camera_root=None):
+    # An explicit alternate root lets integration tests use pinned camera inputs
+    # while keeping all editable ID sources and output in the owned package.
+    camera_root = Path(camera_root) if camera_root is not None else root
+    camera = (camera_root / 'Camera Bank/CameraBank25.txt').read_text(encoding='ascii')
+    reader = (camera_root / 'Development/camera_reader.inc').read_text(encoding='ascii')
     body = (root / 'Development/id_body.txt').read_text(encoding='ascii')
     cells = set(re.findall(r'\[MVarDef,\s*CB25Data,\s*(\d+)', camera))
     versions = set(re.findall(r'\[MVarSet,\s*CB25Data,\s*1,\s*(\d+)\s*\]', camera))
@@ -55,8 +58,8 @@ def compose(root=ROOT):
     return '\n'.join(line.rstrip() for line in assembled.splitlines()) + '\n'
 
 
-def main():
-    output = compose()
+def main(camera_root=None):
+    output = compose(camera_root=camera_root)
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(output, encoding='ascii', newline='\n')
     print(f'Built {OUTPUT.relative_to(ROOT)} ({len(output)} bytes).')

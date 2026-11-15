@@ -2,15 +2,37 @@
 
 The interpreter is shared with the reviewed Camera Bank tests. These tests do
 not compile ZScript, load ZBrush, or prove actual ZTL/PNG visual correctness.
+Requires Camera Bank 3.2 automatic tracking. ZBRUSH_ID_CAMERA_ROOT can select
+pinned integration inputs without replacing the worktree's camera files.
 """
 from pathlib import Path
 import copy
+import os
 import struct
 import tempfile
 import unittest
 
 from build_id import compose, OUTPUT
-from verify import Host, Exit, parse, ROOT
+from verify import Host, Exit, parse, node, clean, ROOT
+
+CAMERA_ROOT = Path(os.environ.get('ZBRUSH_ID_CAMERA_ROOT', ROOT))
+
+
+def commands(source):
+    """Walk commands inside bodies and expression arguments, skipping strings."""
+    source = clean(source)
+    i = 0
+    quoted = False
+    while i < len(source):
+        if source[i] == '"':
+            quoted = not quoted
+        if source[i] == '[' and not quoted:
+            item, i = node(source, i)
+            yield item
+            for argument in item[1:]:
+                yield from commands(argument)
+        else:
+            i += 1
 
 
 class IDHost(Host):
@@ -41,10 +63,34 @@ class IDHost(Host):
         self.interrupt_on = None
         self.selection_moves_camera = False
         self.corrupt_png = False
+        self.string_merges = []
+        self.notices = []
+        self.backup_number = None
 
     def cmd(self, n):
         c, *a = n
         E = lambda i: self.e(a[i])
+        if c == 'StrMerge':
+            assert len(a) <= 12, ('Native StrMerge input limit', len(a))
+            result = ''.join(str(self.e(value)) for value in a)
+            assert len(result) <= 255, ('Native string limit', len(result), a)
+            self.string_merges.append((tuple(a), result))
+            return result
+        if c in ['MessageOK', 'NoteBar', 'Note', 'MemWriteString']:
+            value = E(1) if c == 'MemWriteString' else E(0)
+            assert len(str(value)) <= 255, ('Native string limit', c, len(str(value)))
+            if c != 'MemWriteString':
+                self.notices.append((c, str(value), len(self.events)))
+                if c == 'NoteBar' and str(value).startswith('Backup saved:') and self.interrupt_on == 'backup_notice':
+                    raise Exit()
+        if c == 'VarSet' and a[0] == 'idBackupNumber' and self.backup_number is not None:
+            # Exercise the maximum allowed suffix without creating 9998 files.
+            self.set(a[0], self.backup_number)
+            return
+        if c == 'MemResize':
+            size = int(E(1))
+            self.mem[a[0]] = self.mem[a[0]][:size]
+            return size
         if c == 'FileGetInfo':
             p = Path(E(0))
             return p.stat().st_size / (1024 * 1024) if p.is_file() else 0
@@ -167,7 +213,7 @@ def cell(h, index, value=None):
 class IDExport(unittest.TestCase):
     def host(self, reorder=False):
         h = IDHost()
-        h.load(ROOT / 'Camera Bank/CameraBank25.txt')
+        h.load(CAMERA_ROOT / 'Camera Bank/CameraBank25.txt')
         h.names = ['A', 'B', 'C', 'Never', 'GrayOnly']
         h.ids = [123, 123, 16777219, 10004, 10005]  # Duplicates and IDs > float precision.
         h.status = [1, 1, 0, 0, 0]
@@ -185,7 +231,7 @@ class IDExport(unittest.TestCase):
         h.st = 4
         h.call('CB29_SaveSlot', 24)
         cell(h, 20+24*20+16, 0)
-        h.call('CB32_PrepareTransfer')
+        self.assertEqual(cell(h, 7), 1)  # Store/update tracks automatically.
         if reorder:
             order = [4, 2, 0, 3, 1]
             for attr in ['names', 'ids', 'status', 'pp', 'tx', 'folders']:
@@ -204,6 +250,9 @@ class IDExport(unittest.TestCase):
         h.pan = [-12, 38]
         h.load(OUTPUT)
         h.events.clear()
+        h.notices.clear()
+        h.string_merges.clear()
+        h.messages.clear()
         return h
 
     def click(self, h):
@@ -218,7 +267,7 @@ class IDExport(unittest.TestCase):
         self.assertEqual(h.exports, [])
 
     def test_generated_source_matches_current_inputs(self):
-        self.assertEqual(OUTPUT.read_text('ascii'), compose())
+        self.assertEqual(OUTPUT.read_text('ascii'), compose(camera_root=CAMERA_ROOT))
         h = IDHost()
         h.load(OUTPUT)
         self.assertFalse(any(k.startswith(('cb', 'rc')) for k in h.globals))
@@ -357,7 +406,7 @@ class IDExport(unittest.TestCase):
         with self.assertRaises(Exit):
             self.click(h)
         self.unchanged_meshes(h, before)
-        self.assertIn('cancelled', h.messages[-1])
+        self.assertTrue(any('cancelled' in message for message in h.messages))
 
     def test_missing_controls_material_dll_edit_or_bank_abort_before_mutation(self):
         cases = ['control', 'material', 'dll', 'dll_version', 'edit', 'no_bank',
@@ -441,7 +490,7 @@ class IDExport(unittest.TestCase):
             h.tool_index += 1
             with self.assertRaises(Exit):
                 self.click(h)
-            self.assertIn('same Tool', h.messages[-1])
+            self.assertTrue(any('same Tool' in message for message in h.messages))
             h.tool_index -= 1
             # Source reloading preserves the session recovery blocks.
             h.load(OUTPUT)
@@ -449,7 +498,7 @@ class IDExport(unittest.TestCase):
                 self.click(h)
             self.assertEqual(h.events, events)
             self.assertEqual((h.status, h.st, h.pp, h.tx, h.transform), state)
-            self.assertIn('Nothing was rerun', h.messages[-1])
+            self.assertTrue(any('Nothing was rerun' in message for message in h.messages))
             self.assertTrue(Path(h.v['idBackup']).is_file())
 
     def test_corrupt_png_is_reported_after_mutation_without_overwriting(self):
@@ -465,7 +514,7 @@ class IDExport(unittest.TestCase):
 
     def test_folder_and_solo_effective_visibility_define_the_union(self):
         h = IDHost()
-        h.load(ROOT / 'Camera Bank/CameraBank25.txt')
+        h.load(CAMERA_ROOT / 'Camera Bank/CameraBank25.txt')
         h.names = ['Outside', 'FolderHead', 'Child', 'Active']
         h.status = [1, 0x401, 1, 0]
         h.ids = [501, 502, 503, 504]
@@ -477,7 +526,7 @@ class IDExport(unittest.TestCase):
         h.ui['Transform:Solo'] = 1
         h.st = 2
         h.call('CB29_SaveSlot', 9)
-        h.call('CB32_PrepareTransfer')
+        self.assertEqual(cell(h, 7), 1)  # No public prepare step.
         h.meshes = [dict(rgb=[(20, 40, 60)] * 2, material='Original',
                          groups=(88, 99), generation=0, masked=False) for _ in range(4)]
         original_status = h.status[:]
@@ -577,6 +626,100 @@ class IDExport(unittest.TestCase):
                 self.click(h)
             self.assertEqual((h.status, h.st, h.pp, h.tx, h.transform, h.zoom, h.pan), state)
             self.assertFalse(h.events)
+
+    def test_all_constructed_messages_at_maximum_supported_paths_and_counts(self):
+        h = IDHost()
+        h.load(OUTPUT)
+        root = 'R' * 180
+        backup = root + '/Recovery/Before_ID_9999.ztl'
+        output = root + '/25/ID.png'
+        h.v.update(idRoot=root, idParent='P'*160, idBackup=backup,
+                   idRecord=root+'/Recovery/Before_ID_9999.txt',
+                   idFolderPath=root+'/Recovery', idProbeFolder=root+'/Recovery',
+                   idCameraFolder=root+'/25', idOutput=output,
+                   idRequiredPath='Tool:Polypaint:Polypaint From Polygroups',
+                   idControlIndex=7,
+                   idSession=9999, idProbeNumber=9999, idBackupNumber=9999,
+                   idNumber=25, idLabel='25', idExportedCount=25,
+                   idProcessedCount=1000,
+                   idFailureMessage='ID export failed or was cancelled: '+output)
+        # Check every merge in the generated plugin, including the new reader.
+        for item in commands(OUTPUT.read_text('ascii')):
+            if item[0] == 'StrMerge':
+                self.assertLessEqual(len(item)-1, 12)
+        # Evaluate actual ID expressions with their maximum supported inputs.
+        # The mock rejects overflow before returning a string, as native does.
+        for item in commands((ROOT/'Development/id_body.txt').read_text('ascii')):
+            if item[0] in ['StrMerge', 'MessageOK', 'NoteBar']:
+                h.cmd(item)
+        self.assertGreater(len(h.string_merges), 20)
+        self.assertTrue(any(backup in value for _, value in h.string_merges))
+        self.assertTrue(any('25 cameras, 1000 meshes.' in value for _, value in h.string_merges))
+        self.assertLessEqual(max(len(value) for _, value in h.string_merges), 255)
+        self.assertEqual(max(len(value) for _, value in h.string_merges), 239)
+
+    def max_session(self, directory):
+        base = str(Path(directory).resolve())
+        session = Path(base) / ('s' * (180-len(base)-1))
+        session.mkdir()
+        self.assertEqual(len(str(session)), 180)
+        return session
+
+    def test_max_path_action_is_unblocked_and_record_contains_complete_backup_path(self):
+        with tempfile.TemporaryDirectory() as d:
+            h = self.host()
+            session = self.max_session(d)
+            h.mem['RC30Root'] = bytearray(str(session).encode()+b'\0')
+            h.backup_number = 9999
+            self.click(h)
+            self.assertTrue(h.v['idBackup'].endswith('Before_ID_9999.ztl'))
+            self.assertEqual(len(h.v['idBackup']), 208)
+            first_export = next(i for i, event in enumerate(h.events) if event[0] == 'export')
+            self.assertFalse([notice for notice in h.notices
+                              if notice[0] == 'MessageOK' and notice[2] <= first_export])
+            self.assertTrue(any(kind == 'NoteBar' and 'Backup saved:' in value
+                                for kind, value, _ in h.notices))
+            record = Path(h.v['idRecord']).read_text('ascii')
+            self.assertIn(h.v['idBackup'], record)
+            self.assertNotIn('\0', record)
+            self.assertEqual(record.count('\n'), 2)
+            self.assertTrue(any(h.v['idBackup'] in message for message in h.messages))
+            h.v['idExportedCount'] = 25
+            h.v['idProcessedCount'] = 1000
+            h.call('ID_ShowResult')
+            self.assertEqual(max(len(value) for _, value in h.string_merges), 239)
+
+    def test_max_path_failure_and_interrupted_recovery_messages(self):
+        for case in ['export', 'backup_cancel', 'write', 'groups', 'backup_notice']:
+            with self.subTest(case=case), tempfile.TemporaryDirectory() as d:
+                h = self.host()
+                session = self.max_session(d)
+                h.mem['RC30Root'] = bytearray(str(session).encode()+b'\0')
+                h.backup_number = 9999
+                if case == 'export':
+                    h.export_failure = True
+                if case == 'backup_cancel':
+                    h.save_failure = 'cancel'
+                if case == 'write':
+                    h.write_failure = 'ID_write_test_'
+                if case in ['groups', 'backup_notice']:
+                    h.interrupt_on = case
+                with self.assertRaises(Exit):
+                    self.click(h)
+                if case in ['groups', 'backup_notice']:
+                    h.interrupt_on = None
+                    h.tool_index += 1
+                    with self.assertRaises(Exit):
+                        self.click(h)
+                    self.assertTrue(any('same Tool' in message for message in h.messages))
+                    h.tool_index -= 1
+                    h.load(OUTPUT)
+                    with self.assertRaises(Exit):
+                        self.click(h)
+                    expected = 'Nothing was rerun' if case == 'groups' else 'No ID mesh processing started'
+                    self.assertTrue(any(expected in message for message in h.messages))
+                self.assertLessEqual(max(len(value) for _, value in h.string_merges), 255)
+                self.assertLessEqual(max(len(value) for value in h.messages), 255)
 
 
 if __name__ == '__main__':

@@ -63,6 +63,12 @@
     [If,[MemGetSize,ID32BackupPath]>0,[MemReadString,ID32BackupPath,idBackup,0,1]]
     [If,[MemGetSize,ID32RecordPath]>0,[MemReadString,ID32RecordPath,idRecord,0,1]]
 ]
+[RoutineDef,ID_ShowBackup,
+    // At the supported maximum: 11 + 180 + 28 = 219 characters.
+    [If,[StrLength,idBackup]>0,
+        [MessageOK,[StrMerge,"Pre-ID ZTL: ",idBackup],"Generar y exportar ID"]
+    ]
+]
 [RoutineDef,ID_CheckIdentity,
     [VarSet,idSameTool,1]
     [If,([SubToolGetCount]!=[MVarGet,ID32Recovery,2])||([ToolGetActiveIndex]!=[MVarGet,ID32Recovery,3]),[VarSet,idSameTool,0]]
@@ -88,7 +94,8 @@
             [RoutineCall,ID_CheckIdentity]
             [If,idSameTool==0,
                 [RoutineCall,ID_ReadPaths]
-                [MessageOK,[StrMerge,"ID display recovery requires the same Tool and unchanged SubTool names/order. Restore that Tool before pressing this button again. Mesh backup: ",idBackup],"Generar y exportar ID"]
+                [MessageOK,"ID recovery requires the same Tool and unchanged SubTool names/order. Restore that Tool and press ID again. The backup is in the session Recovery folder.","Generar y exportar ID"]
+                [RoutineCall,ID_ShowBackup]
                 [Exit]
             ]
             [If,([IsEnabled,"Transform:Edit"]==0)||([IGet,"Transform:Edit"]!=1),
@@ -182,13 +189,15 @@
     [If,[MemGetSize,ID32Recovery]>0,[VarSet,idFailurePhase,[MVarGet,ID32Recovery,0]]]
     [RoutineCall,ID_ReadPaths]
     [RoutineCall,ID_Restore,0]
-    [If,idFailurePhase>=3,
-        [VarSet,idFailureMessage,[StrMerge,idFailureMessage," Mesh data may have changed; display recovery does not undo it. Load the pre-ID ZTL to recover original PolyGroups, RGB, masks and materials."]]
-    ,
-        [VarSet,idFailureMessage,[StrMerge,idFailureMessage," No ID mesh processing started."]]
-    ]
+    // Keep the error/path separate from mutation status: appending status to a
+    // path-bearing error can exceed native ZScript's 255-character strings.
     [MessageOK,idFailureMessage,"Generar y exportar ID"]
-    [If,[StrLength,idBackup]>0,[MessageOK,[StrMerge,"Pre-ID ZTL (check saved file): ",idBackup],"Generar y exportar ID"]]
+    [If,idFailurePhase>=3,
+        [MessageOK,"Mesh data may have changed. Load the pre-ID ZTL in Recovery to undo mesh edits. Display recovery only restores flags/view.","Generar y exportar ID"]
+    ,
+        [MessageOK,"No ID mesh processing started.","Generar y exportar ID"]
+    ]
+    [RoutineCall,ID_ShowBackup]
     [Exit]
 ,idFailureMessage]
 [RoutineDef,ID_Require,
@@ -443,10 +452,17 @@
 [RoutineDef,ID_SaveRecord,
     [If,[MemGetSize,ID32Record]>0,[MemDelete,ID32Record]]
     [MemCreate,ID32Record,1024,0]
-    [MemWriteString,ID32Record,[StrMerge,idRecordMessage," | Pre-ID ZTL: ",idBackup," | Display recovery never undoes mesh data."],0]
+    // Write separate bounded lines; never construct the whole record as one
+    // native string. MemWriteString includes its terminating null byte.
+    [VarSet,idRecordSize,[MemWriteString,ID32Record,idRecordMessage,0]]
+    [MemWrite,ID32Record,10,2,idRecordSize-1]
+    [VarSet,idRecordSize,idRecordSize+[MemWriteString,ID32Record,[StrMerge,"Pre-ID ZTL: ",idBackup],idRecordSize]]
+    [MemWrite,ID32Record,10,2,idRecordSize-1]
+    [VarSet,idRecordSize,idRecordSize+[MemWriteString,ID32Record,"Display recovery never undoes mesh data.",idRecordSize]]
+    [MemResize,ID32Record,idRecordSize-1]
     [VarSet,idRecordResult,[MemSaveToFile,ID32Record,idRecord,1]]
     [MemDelete,ID32Record]
-    [If,idRecordResult!=1024,[RoutineCall,ID_Fail,"Cannot write ID recovery record."]]
+    [If,idRecordResult!=(idRecordSize-1),[RoutineCall,ID_Fail,"Cannot write ID recovery record."]]
 ,idRecordMessage]
 [RoutineDef,ID_BackupTool,
     // Camera preflight is reversible. Save the original eyes/view/selection in
@@ -485,7 +501,7 @@
     [If,idSameTool==0,[RoutineCall,ID_Fail,"Tool identity changed during backup. ID processing stopped."]]
     [MVarSet,ID32Recovery,0,2]
     [RoutineCall,ID_SaveRecord,"Backup saved/read-checked; ID processing has not started"]
-    [MessageOK,[StrMerge,"Pre-ID ZTL saved and read-checked: ",idBackup],"Generar y exportar ID"]
+    [NoteBar,[StrMerge,"Backup saved: ",idBackup],0]
 ]
 [RoutineDef,ID_FillMaterialOnly,
     [IPress,[Var,idFlat]]
@@ -545,6 +561,11 @@
         ]
     ,idExportSlot]
 ]
+[RoutineDef,ID_ShowResult,
+    // Max counters (25 / 1000) and root length 180 produce 239 characters.
+    [MessageOK,[StrMerge,"ID complete: ",idExportedCount," cameras, ",idProcessedCount," meshes. Colorize ON. Output: ",idRoot],"Generar y exportar ID"]
+    [RoutineCall,ID_ShowBackup]
+]
 [RoutineDef,ID_Run,
     [If,[MemGetSize,ID32Recovery]>0,
         [If,[MVarGet,ID32Recovery,0]>0,
@@ -552,10 +573,11 @@
             [RoutineCall,ID_ReadPaths]
             [RoutineCall,ID_Restore,0]
             [If,idInterruptedPhase>=3,
-                [MessageOK,[StrMerge,"Interrupted ID action: display/view restored. Mesh edits and any exported files remain. Load the pre-ID ZTL to recover original mesh data: ",idBackup,". Nothing was rerun."],"Generar y exportar ID"]
+                [MessageOK,"Interrupted ID: display/view restored. Mesh edits and exported files remain. Load the pre-ID ZTL in Recovery to recover original mesh data. Nothing was rerun.","Generar y exportar ID"]
             ,
-                [MessageOK,[StrMerge,"Interrupted ID preparation: display/view restored. No ID mesh processing started. Backup (if saved): ",idBackup,". Press the action again to start."],"Generar y exportar ID"]
+                [MessageOK,"Interrupted preparation: display/view restored. No ID mesh processing started. Press ID again to start. Any backup is in the session Recovery folder.","Generar y exportar ID"]
             ]
+            [RoutineCall,ID_ShowBackup]
             [Exit]
         ]
     ]
@@ -578,8 +600,7 @@
     // Publish a new session for the other passes only after success.
     [If,[MemGetSize,RC30Root]>0,[MemDelete,RC30Root]]
     [MemCreate,RC30Root,1024,0][MemWriteString,RC30Root,idRoot,0]
-    [MessageOK,[StrMerge,"ID complete: ",idExportedCount," cameras, ",idProcessedCount," meshes prepared once. Colorize remains enabled. Output: ",idRoot,"/<camera>/ID.png"],"Generar y exportar ID"]
-    [MessageOK,[StrMerge,"Original mesh data backup: ",idBackup],"Generar y exportar ID"]
+    [RoutineCall,ID_ShowResult]
 ]
 [IButton,"ZPlugin:Generar y exportar ID:Generar y exportar ID","Back up this Tool, create flat polypainted IDs once per required mesh and export enabled Camera Bank views.",
     [RoutineCall,ID_Run]
