@@ -60,10 +60,14 @@ this delivery.
    name-aware reader; it does not click camera buttons or use live mesh list
    positions as stored visibility identity.
 4. Restore the original view/eyes/selection before saving a new
-   `Recovery/Before_ID_N.ztl`. Never save over the current project or another
-   Tool file. Verify existence, nonzero size and a readable 64-byte prefix;
-   restore the Tool's original save path with `ToolSetPath`. Reserve a uniquely
-   named sibling `.txt` recovery record. Backup confirmation uses non-blocking
+   `Recovery/Before_ID_N/<exact-first-SubTool-name>.ztl`. Save from SubTool 0,
+   retaining its full original marked name as the filename stem. The unique
+   recovery directory supplies the backup's identity; the filename does not
+   replace mesh identity. Never save over the current project or another
+   Tool file. Check all names before and after Save As, then restore the Tool's
+   original save path and active selection and check identity again. Verify
+   existence, nonzero size and a readable 64-byte prefix. A sibling
+   `Recovery.txt` records the stage and complete ZTL path. Backup confirmation uses non-blocking
    NoteBar progress; no acknowledgement interrupts the action before exports.
    The final result and backup path are separate, bounded messages.
 5. Set the mutation marker before the first destructive operation. On each union
@@ -95,15 +99,51 @@ returned to Edit mode. A disk record survives an application exit; automatic
 display recovery itself is session-only.
 
 Constructed messages stay within native ZScript's 255-character limit at the
-supported maximum session path (180 characters), backup suffix (`9999`) and
-counts (25 cameras / 1000 meshes). The longest evaluated message is 239
-characters; a full backup path is 208 and its final message is 219. Errors keep
+supported maximum session path (180 characters), backup folder suffix (`9999`)
+and counts (25 cameras / 1000 meshes). The full backup path must be at most 240
+characters, checked before it is constructed. Long first names require a shorter
+session path; names are never truncated or sanitized. The longest evaluated
+progress message is 254 characters; the backup result message is at most 251
+and the output summary at most 239. Errors keep
 their path separate from mutation/recovery status. Interrupted recovery uses
 concise fixed text plus a separate backup path. The recovery record is written
 as separate bounded lines, with newline bytes between them, rather than merging
 the status, path and explanation into one overflowing string. Final records are
-plain text without null padding. All 26 generated StrMerge commands have at
-most six inputs, below the supported twelve-input limit.
+plain text without null padding. All 29 generated StrMerge commands have two
+to six inputs, within the supported two-to-twelve-input range.
+
+## Backup name preservation correction
+
+The controller's native integration found that `Tool:Save As` to a different
+basename changed the first SubTool title and erased its camera marker. The old
+`Before_ID_N.ztl` basename was therefore unsafe even though the identity guard
+correctly rejected the renamed Tool. Read-only evidence was inspected in
+`.cache/zbrush-320/native/camera-result.txt`, `probe-save-name.txt` and the four
+slots of `save-name-probe.bin`; runtime evidence was not copied into Git.
+
+The correction saves from the top SubTool using its **exact existing name**
+inside a fresh numbered directory. Only the single trailing `IGetTitle` UI
+period is removed. Existing numbered directories, files occupying those paths
+and the former flat `Before_ID_N.ztl`/`.txt` names are skipped. The new directory
+is created and write-checked before saving. Unsafe Windows characters, control
+characters, reserved device names and trailing spaces/periods are rejected
+before Save As. A backup path over 240 characters is rejected before StrMerge
+or file saving; the user can choose a shorter session path. No fallback name,
+truncation, camera-identity guessing or weakening of the snapshot/reader checks
+was introduced.
+
+The mock now reproduces Save As renaming the first/selected mesh even on a
+cancelled or failed attempt, and ToolSetPath deliberately does not repair that
+name. It reproduces the old marker-loss failure and proves that the exact-name
+contract avoids it. Names and live selection are checked after successful and
+failed backup attempts and after interruption. A separately reopened mock
+backup passes the actual strict camera reader with its matching bank; it
+contains pre-ID mesh data. This is still not a native ZTL reopen verification.
+
+The controller's narrow exact-name probe preserved the title before/after Save
+As and after ToolSetPath; its original path already had the same marked stem.
+That probe is **not** evidence that ToolSetPath can restore a title after saving
+under a different basename. This implementation does not depend on it doing so.
 
 ## SubTool Master decision and API evidence
 
@@ -123,6 +163,11 @@ then converts group colors into mesh paint, and Colorize enables its display.
 There is no SubTool Master panel/dialog coordinate automation. The generated
 reader retains its previously reviewed canvas redraw stroke when resizing a
 document; that existing reader code is not owned by this worker.
+The same [SubTool Master documentation](https://help.maxon.net/zbr/en-us/Content/html/user-guide/zbrush-plugins/subtool-master/subtool-master.html)
+describes its Save ZTool convention: save from the top SubTool, then return to
+the previous selection. The backup follows that convention. Its filename checks
+use Microsoft's [Windows naming rules](https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file),
+including reserved device names even before extensions.
 
 The [ZScript command reference](https://help.maxon.net/zbr/en-us/Content/html/user-guide/customizing-zbrush/zscripting/command-reference/command-reference.html)
 was checked for `ToolGetPath`/`ToolSetPath`, `SubToolGetID`, status bits,
@@ -170,7 +215,7 @@ The generated source matches `compose(camera_root=selected_inputs)` exactly and
 embeds the shared reader's SHA256 for traceability. The suite executes delivered
 routines with modeled
 material/RGB/group mutations and actual temporary file IO; it does not merely
-assert source strings. It covers 21 tests with additional subcases:
+assert source strings. It covers 27 tests with additional subcases:
 
 - the sole button's complete successful sequence, union preparation exactly
   once, same IDs between views, M-only preserving RGB before conversion and
@@ -189,10 +234,17 @@ assert source strings. It covers 21 tests with additional subcases:
   count values; all generated StrMerge arities; runtime overflow guards for
   merges, notices and memory strings throughout the suite;
 - a complete real-temporary-file run at a 180-character session path and the
-  longest backup suffix, full backup path in the readable disk record, no
-  blocking MessageOK before exports, and maximum-path failure/recovery cases.
+  longest backup folder suffix and admitted filename (240-character ZTL path),
+  full backup path in the readable disk record, no blocking MessageOK before
+  exports, and maximum-path failure/recovery cases;
+- modeled Save As marker loss without ToolSetPath repairing it; exact-name
+  backups from the top mesh with original live selection restored; reopening
+  the modeled backup against the matching bank's strict reader;
+- unsafe filename rejection, a 241-character path rejected before saving,
+  original names unchanged on cancellation/empty/unreadable backups/path-restore
+  failure and interruption, and preservation of existing numbered recovery paths.
 
-Final results: 21 tests passed against the integrated controller camera inputs;
+Final results: 27 tests passed against the pinned integrated controller camera inputs;
 Python compilation passed. The mock records a
 fake ZTL and signature-bearing fake image payload, explicitly labeled as mocks.
 These results **do not** establish native ZScript compilation, valid native ZTL
@@ -212,6 +264,10 @@ that is not a native execution/visual verification of this ID action.
   dimensions and active-slot header are the existing stable layout; review them
   if the new camera schema changes those fields. Re-run the tests if the reader
   changes after these pinned inputs.
+- The controller is fixing native parser/runtime compatibility in its shared
+  camera source. This correction retains the prior pinned reader; rebuild ID
+  with the final shared reader before native ID testing. No unowned camera
+  source change is included in this patch.
 - The controller reports that its build_all now invokes build_id with
   `run_name='__main__'`; the guarded main remains compatible. Stage the source
   under folder `Generate and Export ID`, basename `GenerateExportID`; compiled
@@ -242,9 +298,14 @@ that is not a native execution/visual verification of this ID action.
    textures/wire/floor do not obscure the pass and colors match across views.
    Check successful Colorize, original eyes/folder/Solo/view/lens/selection,
    global channel settings and Tool save path.
-3. Open the pre-ID ZTL as separate recoverable test data, without replacing an
-   unsaved owner Tool. Verify original groups, RGB, materials, masks, names,
-   visibility and selection. **This native reopen check is required:** the
+3. Save from a nonzero starting selection and verify the backup is under its
+   fresh numbered directory with the exact marked top-SubTool filename. Check
+   every live name before/after both Save As and ToolSetPath, on success and
+   cancelled/failed backup. Open the pre-ID ZTL as separate recoverable test
+   data, without replacing an unsaved owner Tool. Verify original groups, RGB,
+   materials, masks, all names and visibility, then recall enabled views with
+   the matching bank. Backup selection is the top mesh; the live starting
+   selection must be restored. **This native reopen check is required:** the
    implemented existence/size/64-byte read gate proves a saved readable file,
    not structural ZTL validity or full recoverability by itself.
 4. Verify missing/empty bank, unavailable materials/controls, cancelled folder
@@ -258,8 +319,10 @@ that is not a native execution/visual verification of this ID action.
 
 Current limits: native compiler and application behavior are unverified; name
 lengths and non-ASCII Tool names need native coverage. Session output paths are
-limited to 180 characters (chosen parent 160) for safe string/suffix storage;
-there are at most 1000 SubTools and 9999 session/recovery candidates. The Tool
+limited to 180 characters (chosen parent 160) for safe string/suffix storage.
+The exact-name recovery ZTL path is limited to 240, so long first SubTool names
+require a shorter session path. Invalid filenames are rejected without renaming.
+There are at most 1000 SubTools and 9999 session/recovery candidates. The Tool
 identity guard deliberately rejects changed names/order during an interrupted
 action rather than writing old settings into a changed list. Per-polygon hiding,
 layers, dynamic subdivision and unusual mesh types follow native operation

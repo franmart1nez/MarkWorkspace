@@ -66,6 +66,9 @@ class IDHost(Host):
         self.string_merges = []
         self.notices = []
         self.backup_number = None
+        self.backup_states = {}
+        self.save_rename_target = 'first'
+        self.path_failure_once = False
 
     def cmd(self, n):
         c, *a = n
@@ -97,6 +100,10 @@ class IDHost(Host):
         if c == 'ToolGetPath':
             return self.tool_path
         if c == 'ToolSetPath':
+            if self.path_failure_once:
+                self.path_failure_once = False
+                return -1
+            # Deliberately does NOT repair SubTool names changed by Save As.
             self.tool_path = E(1)
             return 0
         if c == 'MemWrite':
@@ -153,10 +160,19 @@ class IDHost(Host):
             if k == 'Tool:Save As':
                 self.events.append(('backup', self.nextfile, copy.deepcopy(self.meshes), self.status[:], self.st))
                 self.tool_path = str(Path(self.nextfile).with_suffix(''))
+                rename_index = 0 if self.save_rename_target == 'first' else self.st
+                # Native finding: Save As replaces a SubTool title with the
+                # filename stem. Model even a cancelled/failed attempt this way.
+                self.names[rename_index] = Path(self.nextfile).stem
                 if self.save_failure == 'cancel':
                     return
                 Path(self.nextfile).write_bytes(b'' if self.save_failure == 'empty' else
                                                b'NOT A NATIVE ZTL - MOCK ONLY' + bytes(100))
+                self.backup_states[self.nextfile] = {
+                    key: copy.deepcopy(getattr(self, key))
+                    for key in ['names', 'ids', 'status', 'pp', 'tx', 'folders', 'meshes', 'st']}
+                if self.interrupt_on == 'save':
+                    raise Exit()
                 return
             actions = {'Color:FillObject': 'fill',
                        'Tool:Polygroups:Auto Groups': 'groups',
@@ -278,6 +294,7 @@ class IDExport(unittest.TestCase):
             with self.subTest(reorder=reorder), tempfile.TemporaryDirectory() as d:
                 h = self.host(reorder)
                 before = copy.deepcopy(h.meshes)
+                before_names = h.names[:]
                 before_pp = h.pp[:]
                 state = (h.status[:], h.st, h.tx[:], h.transform[:], h.zoom, h.pan[:],
                          copy.deepcopy(h.ui), h.tool_path, cell(h, 5))
@@ -303,7 +320,9 @@ class IDExport(unittest.TestCase):
                     self.assertEqual(e[3]['material'], 'Flat Color')
                 self.assertEqual(h.events[0][0], 'backup')
                 self.assertEqual(h.events[0][2], before)
-                self.assertEqual(h.events[0][3:], state[:2])
+                self.assertEqual(h.events[0][3:], (state[0], 0))  # Save from the top mesh.
+                self.assertEqual(Path(h.events[0][1]).stem, before_names[0])
+                self.assertEqual(h.names, before_names)
                 self.assertEqual(h.exports[0]['mesh_rgb'], h.exports[1]['mesh_rgb'])
                 for export in h.exports:
                     self.assertEqual(export['solo'], 0)
@@ -342,7 +361,8 @@ class IDExport(unittest.TestCase):
             self.assertEqual(Path(h.v['idRoot']), session)
             self.assertEqual(other.read_bytes(), b'keep')
             self.assertEqual(old.read_bytes(), b'old backup')
-            self.assertEqual(Path(h.v['idBackup']).name, 'Before_ID_2.ztl')
+            self.assertEqual(Path(h.v['idBackup']).parent.name, 'Before_ID_2')
+            self.assertEqual(Path(h.v['idBackup']).stem, h.names[0])
 
     def test_resize_items_can_be_disabled_until_shared_reader_leaves_edit(self):
         h = self.host()
@@ -442,7 +462,7 @@ class IDExport(unittest.TestCase):
                 self.unchanged_meshes(h, before)
 
     def test_output_write_and_backup_failures_precede_mutation(self):
-        for case in ['write', 'record', 'backup_cancel', 'backup_empty', 'backup_short']:
+        for case in ['write', 'record', 'backup_cancel', 'backup_empty', 'backup_short', 'path_restore']:
             with self.subTest(case=case), tempfile.TemporaryDirectory() as d:
                 h = self.host()
                 h.chosen = d
@@ -458,11 +478,24 @@ class IDExport(unittest.TestCase):
                             return 12
                         return original(n)
                     h.cmd = short
+                if case == 'path_restore':
+                    original = h.cmd
+                    def path_failure(n):
+                        if n[0] == 'IPress' and h.e(n[1]) == 'Tool:Save As':
+                            result = original(n)
+                            h.path_failure_once = True
+                            return result
+                        return original(n)
+                    h.cmd = path_failure
                 before = copy.deepcopy(h.meshes)
+                before_names = h.names[:]
+                before_selected = h.st
                 with self.assertRaises(Exit):
                     self.click(h)
                 self.unchanged_meshes(h, before)
                 self.assertEqual(h.tool_path, 'owner/Original')
+                self.assertEqual(h.names, before_names)
+                self.assertEqual(h.st, before_selected)
 
     def test_export_failure_reports_mesh_changes_and_restores_display(self):
         h = self.host()
@@ -631,11 +664,14 @@ class IDExport(unittest.TestCase):
         h = IDHost()
         h.load(OUTPUT)
         root = 'R' * 180
-        backup = root + '/Recovery/Before_ID_9999.ztl'
+        backup_dir = root + '/Recovery/Before_ID_9999'
+        backup_stem = 'B'*31
+        backup = backup_dir + '/' + backup_stem + '.ztl'
         output = root + '/25/ID.png'
         h.v.update(idRoot=root, idParent='P'*160, idBackup=backup,
-                   idRecord=root+'/Recovery/Before_ID_9999.txt',
-                   idFolderPath=root+'/Recovery', idProbeFolder=root+'/Recovery',
+                   idBackupDir=backup_dir, idBackupStem=backup_stem,
+                   idRecord=backup_dir+'/Recovery.txt',
+                   idFolderPath=backup_dir, idProbeFolder=backup_dir,
                    idCameraFolder=root+'/25', idOutput=output,
                    idRequiredPath='Tool:Polypaint:Polypaint From Polygroups',
                    idControlIndex=7,
@@ -656,7 +692,7 @@ class IDExport(unittest.TestCase):
         self.assertTrue(any(backup in value for _, value in h.string_merges))
         self.assertTrue(any('25 cameras, 1000 meshes.' in value for _, value in h.string_merges))
         self.assertLessEqual(max(len(value) for _, value in h.string_merges), 255)
-        self.assertEqual(max(len(value) for _, value in h.string_merges), 239)
+        self.assertEqual(max(len(value) for _, value in h.string_merges), 254)
 
     def max_session(self, directory):
         base = str(Path(directory).resolve())
@@ -671,9 +707,13 @@ class IDExport(unittest.TestCase):
             session = self.max_session(d)
             h.mem['RC30Root'] = bytearray(str(session).encode()+b'\0')
             h.backup_number = 9999
+            h.names[0] = h.names[0][:20] + 'A'*11  # 31 chars: path reaches 240.
+            before_names = h.names[:]
             self.click(h)
-            self.assertTrue(h.v['idBackup'].endswith('Before_ID_9999.ztl'))
-            self.assertEqual(len(h.v['idBackup']), 208)
+            self.assertEqual(Path(h.v['idBackup']).parent.name, 'Before_ID_9999')
+            self.assertEqual(Path(h.v['idBackup']).stem, before_names[0])
+            self.assertEqual(h.names, before_names)
+            self.assertEqual(len(h.v['idBackup']), 240)
             first_export = next(i for i, event in enumerate(h.events) if event[0] == 'export')
             self.assertFalse([notice for notice in h.notices
                               if notice[0] == 'MessageOK' and notice[2] <= first_export])
@@ -687,7 +727,7 @@ class IDExport(unittest.TestCase):
             h.v['idExportedCount'] = 25
             h.v['idProcessedCount'] = 1000
             h.call('ID_ShowResult')
-            self.assertEqual(max(len(value) for _, value in h.string_merges), 239)
+            self.assertEqual(max(len(value) for _, value in h.string_merges), 254)
 
     def test_max_path_failure_and_interrupted_recovery_messages(self):
         for case in ['export', 'backup_cancel', 'write', 'groups', 'backup_notice']:
@@ -720,6 +760,141 @@ class IDExport(unittest.TestCase):
                     self.assertTrue(any(expected in message for message in h.messages))
                 self.assertLessEqual(max(len(value) for _, value in h.string_merges), 255)
                 self.assertLessEqual(max(len(value) for value in h.messages), 255)
+
+    def test_mock_reproduces_save_as_marker_loss_without_toolsetpath_repair(self):
+        h = self.host()
+        first_name = h.names[0]
+        with tempfile.TemporaryDirectory() as d:
+            h.st = 0
+            h.nextfile = str(Path(d)/'Before_ID_1.ztl')
+            h.cmd(['IPress', '"Tool:Save As"'])
+            self.assertEqual(h.names[0], 'Before_ID_1')
+            self.assertNotEqual(h.names[0], first_name)
+            h.cmd(['ToolSetPath', '1', '"owner/Original"'])
+            self.assertEqual(h.names[0], 'Before_ID_1')
+            h.call('ID_CB32_CheckTracked')
+            self.assertEqual(h.v['idCamTrackValid'], 0)
+
+    def test_exact_name_backup_model_reopens_with_matching_bank(self):
+        for target in ['first', 'selected']:
+            with self.subTest(rename_target=target), tempfile.TemporaryDirectory() as d:
+                h = self.host(reorder=True)
+                h.save_rename_target = target
+                h.chosen = d
+                names = h.names[:]
+                selected = h.st
+                self.click(h)
+                self.assertEqual(h.names, names)
+                self.assertEqual(h.st, selected)
+                saved = h.backup_states[h.v['idBackup']]
+                self.assertEqual(saved['names'], names)
+                self.assertEqual(saved['st'], 0)
+                self.assertTrue(all(mesh['generation'] == 0 for mesh in saved['meshes']))
+                # Reopen the modeled pre-ID mesh data into a new mock host and
+                # execute the actual strict reader against the matching bank.
+                receiver = IDHost()
+                receiver.load(OUTPUT)
+                receiver.mem['CB25Data'] = bytearray(h.mem['CB25Data'])
+                for key, value in saved.items():
+                    setattr(receiver, key, copy.deepcopy(value))
+                receiver.call('ID_CB32_CheckTracked')
+                self.assertEqual(receiver.v['idCamTrackValid'], 1)
+                for index, slot in enumerate([0, 9]):
+                    receiver.call('ID_CB29_LoadSlot', slot)
+                    self.assertEqual([status & 1 for status in receiver.status], h.exports[index]['visibility'])
+
+    def test_filename_validator_uses_actual_routine_for_windows_rules(self):
+        h = IDHost()
+        h.load(OUTPUT)
+        rejected = ['', '.', '..', 'end.', 'end ', 'CON', 'prn.dat', 'aux.a',
+                    'NUL.tar.gz', 'COM1', 'lpt9.abc', 'com'+chr(185), 'lpt'+chr(178)]
+        rejected += ['a'+character+'b' for character in '<>:"/\\|?*'+chr(0)+chr(1)+chr(31)+chr(127)]
+        for stem in rejected:
+            with self.subTest(stem=repr(stem)):
+                h.v['idBackupStem'] = stem
+                h.call('ID_ValidateBackupStem')
+                self.assertTrue(h.v['idFilenameError'])
+                self.assertEqual(h.v['idBackupStem'], stem)
+        for stem in ['CB123456654321G0001_mesh', '.CB123456654321G0001_mesh',
+                     'Merged_CB123456654321G0001_Part 1 (A).rev2', 'COM0', 'console']:
+            with self.subTest(stem=stem):
+                h.v['idBackupStem'] = stem
+                h.call('ID_ValidateBackupStem')
+                self.assertEqual(h.v['idFilenameError'], '')
+                self.assertEqual(h.v['idBackupStem'], stem)
+        for item in commands((ROOT/'Development/id_body.txt').read_text('ascii')):
+            if item[0] == 'If':
+                self.assertNotIn('[StrToAsc', item[1])
+
+    def test_unsafe_first_names_abort_before_save_without_changing_names(self):
+        names = ['tail'+character+'name' for character in '<>:"/\\|?*'+chr(1)+chr(127)]
+        names += ['trailing.', 'trailing ', 'CON.prefix', 'LPT1.prefix']
+        with tempfile.TemporaryDirectory() as d:
+            for unsafe in names:
+                with self.subTest(name=repr(unsafe)):
+                    h = self.host()
+                    if unsafe in ['CON.prefix', 'LPT1.prefix']:
+                        h.names[0] = unsafe.split('.')[0]+'.'+h.names[0]
+                    else:
+                        h.names[0] += unsafe
+                    original_names = h.names[:]
+                    selected = h.st
+                    before = copy.deepcopy(h.meshes)
+                    h.chosen = d
+                    with self.assertRaises(Exit):
+                        self.click(h)
+                    self.assertTrue(h.v['idFilenameError'])
+                    self.assertEqual(h.names, original_names)
+                    self.assertEqual(h.st, selected)
+                    self.unchanged_meshes(h, before)
+                    self.assertFalse(h.events)
+
+    def test_backup_path_over_limit_aborts_without_truncation_or_save(self):
+        h = self.host()
+        with tempfile.TemporaryDirectory() as d:
+            session = self.max_session(d)
+            h.mem['RC30Root'] = bytearray(str(session).encode()+b'\0')
+            h.backup_number = 9999
+            h.names[0] = h.names[0][:20]+'A'*12  # Would create a 241-character path.
+            names = h.names[:]
+            before = copy.deepcopy(h.meshes)
+            with self.assertRaises(Exit):
+                self.click(h)
+            self.assertEqual(h.names, names)
+            self.unchanged_meshes(h, before)
+            self.assertFalse(h.events)
+            self.assertTrue(any('backup path too long' in message for message in h.messages))
+            self.assertFalse(list((session/'Recovery').iterdir()))
+
+    def test_fresh_backup_folder_and_save_interruption_preserve_names(self):
+        h = self.host()
+        with tempfile.TemporaryDirectory() as d:
+            session = Path(d)
+            recovery = session/'Recovery'
+            recovery.mkdir()
+            (recovery/'Before_ID_1').mkdir()  # Empty folders are still occupied.
+            old = recovery/'Before_ID_2.ztl'
+            old.write_bytes(b'legacy recovery')
+            occupied = recovery/'Before_ID_3'
+            occupied.write_bytes(b'occupied path')
+            h.mem['RC30Root'] = bytearray(str(session).encode()+b'\0')
+            h.interrupt_on = 'save'
+            names, selected = h.names[:], h.st
+            with self.assertRaises(Exit):
+                self.click(h)
+            self.assertEqual(Path(h.v['idBackup']).parent.name, 'Before_ID_4')
+            self.assertEqual(Path(h.v['idBackup']).stem, names[0])
+            self.assertEqual(h.names, names)
+            h.interrupt_on = None
+            h.load(OUTPUT)
+            with self.assertRaises(Exit):
+                self.click(h)
+            self.assertEqual(h.names, names)
+            self.assertEqual(h.st, selected)
+            self.assertEqual(h.tool_path, 'owner/Original')
+            self.assertEqual(old.read_bytes(), b'legacy recovery')
+            self.assertEqual(occupied.read_bytes(), b'occupied path')
+            self.assertFalse(any(event[0] == 'groups' for event in h.events))
 
 
 if __name__ == '__main__':

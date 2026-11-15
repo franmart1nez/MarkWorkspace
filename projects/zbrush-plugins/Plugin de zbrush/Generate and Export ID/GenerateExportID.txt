@@ -434,6 +434,9 @@
 [VarDef,idRoot,""]
 [VarDef,idDll,""]
 [VarDef,idBackup,""]
+[VarDef,idBackupDir,""]
+[VarDef,idBackupStem,""]
+[VarDef,idFilenameError,""]
 [VarDef,idRecord,""]
 [VarDef,idFlat,-1]
 [VarDef,idCameraCount,0]
@@ -494,7 +497,7 @@
     [If,[MemGetSize,ID32RecordPath]>0,[MemReadString,ID32RecordPath,idRecord,0,1]]
 ]
 [RoutineDef,ID_ShowBackup,
-    // At the supported maximum: 11 + 180 + 28 = 219 characters.
+    // The admitted backup path is <=240: this message is <=251 characters.
     [If,[StrLength,idBackup]>0,
         [MessageOK,[StrMerge,"Pre-ID ZTL: ",idBackup],"Generar y exportar ID"]
     ]
@@ -894,18 +897,77 @@
     [MemDelete,ID32Record]
     [If,idRecordResult!=(idRecordSize-1),[RoutineCall,ID_Fail,"Cannot write ID recovery record."]]
 ,idRecordMessage]
+[RoutineDef,ID_ValidateBackupStem,
+    [VarSet,idFilenameError,""]
+    [If,[StrLength,idBackupStem]==0,
+        [VarSet,idFilenameError,"The first SubTool has an empty filename. No backup was saved."]
+    ,
+        [Loop,[StrLength,idBackupStem],
+            // Pre-evaluate ASCII values; direct StrToAsc conditions have failed
+            // in the controller's native ZBrush 2023 parser probes.
+            [VarSet,idFilenameCode,[StrToAsc,idBackupStem,idFilenameIndex]]
+            [If,(idFilenameCode<32)||(idFilenameCode==127),[VarSet,idFilenameError,"The first SubTool name contains a control character."]]
+            [If,((idFilenameCode==34)||(idFilenameCode==42))||((idFilenameCode==47)||(idFilenameCode==58)),[VarSet,idFilenameError,"The first SubTool name contains an unsafe filename character."]]
+            [If,((idFilenameCode==60)||(idFilenameCode==62))||((idFilenameCode==63)||(idFilenameCode==92)),[VarSet,idFilenameError,"The first SubTool name contains an unsafe filename character."]]
+            [If,idFilenameCode==124,[VarSet,idFilenameError,"The first SubTool name contains an unsafe filename character."]]
+            [If,[StrLength,idFilenameError]>0,[LoopExit]]
+        ,idFilenameIndex]
+        [VarSet,idFilenameCode,[StrToAsc,idBackupStem,[StrLength,idBackupStem]-1]]
+        [If,(idFilenameCode==32)||(idFilenameCode==46),[VarSet,idFilenameError,"The first SubTool name ends in a space or period. An exact-name backup is unsafe."]]
+        // Windows device names remain reserved even before a file extension.
+        [VarSet,idDeviceName,[StrLower,idBackupStem]]
+        [VarSet,idFilenameDot,[StrFind,".",idDeviceName]]
+        [If,idFilenameDot>0,[VarSet,idDeviceName,[StrExtract,idDeviceName,0,idFilenameDot-1]]]
+        [If,[StrLength,idDeviceName]==3,
+            [If,([StrFind,"con",idDeviceName]==0)||([StrFind,"prn",idDeviceName]==0),[VarSet,idFilenameError,"The first SubTool name is a reserved Windows filename."]]
+            [If,([StrFind,"aux",idDeviceName]==0)||([StrFind,"nul",idDeviceName]==0),[VarSet,idFilenameError,"The first SubTool name is a reserved Windows filename."]]
+        ]
+        [If,[StrLength,idDeviceName]==4,
+            [VarSet,idDevicePrefix,[StrExtract,idDeviceName,0,2]]
+            [If,([StrFind,"com",idDevicePrefix]==0)||([StrFind,"lpt",idDevicePrefix]==0),
+                [VarSet,idDeviceDigit,[StrToAsc,idDeviceName,3]]
+                [If,((idDeviceDigit>=49)&&(idDeviceDigit<=57))||((idDeviceDigit==185)||(idDeviceDigit==178))||((idDeviceDigit==179)),[VarSet,idFilenameError,"The first SubTool name is a reserved Windows filename."]]
+            ]
+        ]
+    ]
+]
 [RoutineDef,ID_BackupTool,
-    // Camera preflight is reversible. Save the original eyes/view/selection in
-    // the recovery Tool, not the final preflight camera's temporary display.
+    // Revert camera-preflight display before the temporary top-SubTool save
+    // selection. The backup filename must retain that mesh's original name.
     [RoutineCall,ID_Restore,2]
+    [VarSet,idBackupStem,""][MemReadString,ID32Names,idBackupStem,0]
+    // IGetTitle adds one UI period. Remove only that final decoration; retain
+    // the complete original mesh name, including its camera marker and dots.
+    [If,[StrLength,idBackupStem]>0,
+        [VarSet,idFilenameLast,[StrToAsc,idBackupStem,[StrLength,idBackupStem]-1]]
+        [If,idFilenameLast==46,
+            [If,[StrLength,idBackupStem]>1,
+                [VarSet,idBackupStem,[StrExtract,idBackupStem,0,[StrLength,idBackupStem]-2]]
+            ,
+                [VarSet,idBackupStem,""]
+            ]
+        ]
+    ]
+    [RoutineCall,ID_ValidateBackupStem]
+    [If,[StrLength,idFilenameError]>0,[RoutineCall,ID_Fail,idFilenameError]]
     [VarSet,idBackupNumber,1]
     [Loop,9999,
-        [VarSet,idBackup,[StrMerge,idRoot,"/Recovery/Before_ID_",idBackupNumber,".ztl"]]
-        [VarSet,idRecord,[StrMerge,idRoot,"/Recovery/Before_ID_",idBackupNumber,".txt"]]
-        [If,([FileExists,idBackup]==0)&&([FileExists,idRecord]==0),[LoopExit]]
+        [VarSet,idBackupDir,[StrMerge,idRoot,"/Recovery/Before_ID_",idBackupNumber]]
+        [If,([FileExists,idBackupDir]==0)&&([FileExecute,idDll,"FolderExists",idBackupDir]==0),
+            // Do not reuse names occupied by the former flat-file contract.
+            [If,([FileExists,[StrMerge,idBackupDir,".ztl"]]==0)&&([FileExists,[StrMerge,idBackupDir,".txt"]]==0),[LoopExit]]
+        ]
         [VarInc,idBackupNumber]
     ]
-    [If,idBackupNumber>9999,[RoutineCall,ID_Fail,"No free ID recovery filename."]]
+    [If,idBackupNumber>9999,[RoutineCall,ID_Fail,"No free ID recovery folder."]]
+    // Check lengths BEFORE StrMerge. Long names must never be truncated or
+    // substituted: that would rename the first SubTool when Save As runs.
+    [If,([StrLength,idBackupDir]+[StrLength,idBackupStem]+5)>240,[RoutineCall,ID_Fail,"The exact SubTool name makes the backup path too long (maximum 240). Use a shorter session path. No names were changed."]]
+    [VarSet,idBackup,[StrMerge,idBackupDir,"/",idBackupStem,".ztl"]]
+    [VarSet,idRecord,[StrMerge,idBackupDir,"/Recovery.txt"]]
+    [If,[FileExecute,idDll,"MakeFolder",idBackupDir]!=0,[RoutineCall,ID_Fail,"Cannot reserve a fresh ID recovery folder."]]
+    [If,[FileExecute,idDll,"FolderExists",idBackupDir]==0,[RoutineCall,ID_Fail,"Cannot verify the fresh ID recovery folder."]]
+    [RoutineCall,ID_WriteProbe,idBackupDir]
     [MemWriteString,ID32BackupPath,idBackup,0][MemWriteString,ID32RecordPath,idRecord,0]
     // Reserve the record without overwrite, then use only this owned record.
     [If,[MemGetSize,ID32Record]>0,[MemDelete,ID32Record]]
@@ -914,13 +976,24 @@
     [VarSet,idReserve,[MemSaveToFile,ID32Record,idRecord]]
     [MemDelete,ID32Record]
     [If,idReserve!=1024,[RoutineCall,ID_Fail,"Cannot reserve ID recovery record."]]
-    [SubToolSelect,[MVarGet,ID32Recovery,1]]
+    // Saving from the top SubTool is the documented SubTool Master convention.
+    // Native Save As renames that mesh to the basename. The basename must be
+    // its EXACT original name, not the unique recovery folder's label.
+    [SubToolSelect,0]
+    [RoutineCall,ID_CheckIdentity]
+    [If,idSameTool==0,[RoutineCall,ID_Fail,"Tool identity changed before backup. ID processing stopped."]]
     [If,[FileExists,idBackup]>0,[RoutineCall,ID_Fail,"Backup target appeared before save. Existing files were preserved."]]
     [FileNameSetNext,idBackup]
     [IPress,"Tool:Save As"]
     [FileNameSetNext]
+    // Check names BEFORE ToolSetPath: it is not a name-repair mechanism.
+    [RoutineCall,ID_CheckIdentity]
+    [If,idSameTool==0,[RoutineCall,ID_Fail,"Tool names changed during backup. No ID processing started."]]
     [VarSet,idOldToolPath,""][MemReadString,ID32ToolPath,idOldToolPath,0]
     [If,[ToolSetPath,[ToolGetActiveIndex],idOldToolPath]!=0,[RoutineCall,ID_Fail,"Cannot restore the original Tool save path after backup."]]
+    [SubToolSelect,[MVarGet,ID32Recovery,1]]
+    [RoutineCall,ID_CheckIdentity]
+    [If,idSameTool==0,[RoutineCall,ID_Fail,"Tool identity changed after restoring its path. No ID processing started."]]
     [If,([FileExists,idBackup]==0)||([FileGetInfo,idBackup,1]<=0),[RoutineCall,ID_Fail,"ZTL backup failed or was cancelled."]]
     // Verify the file is readable, without loading/replacing the live Tool.
     [If,[MemGetSize,ID32Verify]>0,[MemDelete,ID32Verify]]
