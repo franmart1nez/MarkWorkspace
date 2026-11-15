@@ -13,16 +13,22 @@ if (-not (Test-Path -LiteralPath (Join-Path $zbRoot 'ZBrush.exe'))) { throw 'ZBr
 $relativePaths=@(
     'ZStartup\ZPlugs64\CameraBank25.zsc',
     'ZStartup\ZPlugs64\RenderCapture.zsc',
+    'ZStartup\ZPlugs64\GenerateExportID.zsc',
     'ZStartup\ZPlugs64\MakCameraBankData\CameraBank25.txt',
     'ZStartup\ZPlugs64\MakCameraBankData\CameraBank25.zsc',
     'ZStartup\ZPlugs64\MakCameraBankData\ZFileUtils64.dll',
     'ZStartup\ZPlugs64\RenderCaptureData\RenderCapture.txt',
     'ZStartup\ZPlugs64\RenderCaptureData\RenderCapture.zsc',
     'ZStartup\ZPlugs64\RenderCaptureData\ZFileUtils64.dll',
+    'ZStartup\ZPlugs64\GenerateExportIDData\GenerateExportID.txt',
+    'ZStartup\ZPlugs64\GenerateExportIDData\GenerateExportID.zsc',
+    'ZStartup\ZPlugs64\GenerateExportIDData\ZFileUtils64.dll',
     'ZStartup\Macros\Mak Plugins\Load Camera Bank.txt',
     'ZStartup\Macros\Mak Plugins\Load Camera Bank.zsc',
     'ZStartup\Macros\Mak Plugins\Load Render Capture.txt',
-    'ZStartup\Macros\Mak Plugins\Load Render Capture.zsc'
+    'ZStartup\Macros\Mak Plugins\Load Render Capture.zsc',
+    'ZStartup\Macros\Mak Plugins\Load Generate and Export ID.txt',
+    'ZStartup\Macros\Mak Plugins\Load Generate and Export ID.zsc'
 )
 $targets=@(foreach($relative in $relativePaths) {
     $full=[IO.Path]::GetFullPath((Join-Path $zbRoot $relative))
@@ -46,7 +52,7 @@ foreach($target in $targets) {
     Remove-Item -LiteralPath $target.Path
     if(Test-Path -LiteralPath $target.Path) { throw "Removal failed: $($target.Path)" }
 }
-foreach($relative in @('ZStartup\ZPlugs64\MakCameraBankData','ZStartup\ZPlugs64\RenderCaptureData','ZStartup\Macros\Mak Plugins')) {
+foreach($relative in @('ZStartup\ZPlugs64\MakCameraBankData','ZStartup\ZPlugs64\RenderCaptureData','ZStartup\ZPlugs64\GenerateExportIDData','ZStartup\Macros\Mak Plugins')) {
     $folder=[IO.Path]::GetFullPath((Join-Path $zbRoot $relative))
     if(-not $folder.StartsWith($zbRoot+'\',[StringComparison]::OrdinalIgnoreCase)) { throw 'Unsafe directory.' }
     if((Test-Path -LiteralPath $folder) -and @(Get-ChildItem -LiteralPath $folder -Force).Count -eq 0) { Remove-Item -LiteralPath $folder }

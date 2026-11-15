@@ -18,9 +18,9 @@ Reviewed on 2026-11-15 before writing the ID worker handoff. Sources are the own
 
 Neither clip shows an export dialog or proves a filename, file format, camera-bank batch policy, hidden-part processing policy, or restoration of old polypaint. Those must be explicit implementation decisions. The owner explicitly requests a third plugin named **Generar y exportar ID**, one action button, Auto Groups, Polypaint From PolyGroups, Flat Color, export, and active SubTool polypaint.
 
-## Provisional export contract
+## Owner-confirmed export contract
 
-The orchestrator asked whether to export every enabled Camera Bank view or the current view. Until answered, use the existing batch workflow: one lossless `ID.png` in each enabled camera's existing `ZPass_N/01`-style folder, respecting that camera's visibility. If no Render Capture session exists, the single button can choose a parent directory and create a fresh numbered session itself. A missing/empty bank must fail clearly before editing geometry; no extra public preparation button is needed. This is a stated integration assumption, not a video observation.
+The owner confirmed **every enabled Camera Bank view**. Use one lossless `ID.png` in each enabled camera's existing `ZPass_N/01`-style folder, respecting that camera's visibility. If no Render Capture session exists, the single button can choose a parent directory and create a fresh numbered session itself. A missing/empty bank must fail clearly before editing geometry; no extra public preparation button is needed. Filenames and session reuse are integration decisions, not video observations.
 
 Prepare each required mesh once, across the union of visible meshes needed by the enabled views, before exporting any camera. Generating random PolyGroup colors separately per camera would make the IDs inconsistent between views. Do not alter meshes that no enabled camera needs. Back up the current Tool before modifying its PolyGroups, polypaint or material assignments; never overwrite an owner file or claim an automatic undo that was not verified.
 

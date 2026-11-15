@@ -16,10 +16,15 @@ class UninstallerTests(unittest.TestCase):
             (data/'CameraBank25.txt').write_bytes(b'source fixture')
             (data/'ZFileUtils64.dll').write_bytes(b'camera dependency fixture')
             (data/'owner-bank.zcv').write_bytes(b'user bank')
+            iddata=plugs/'GenerateExportIDData';iddata.mkdir()
+            (iddata/'GenerateExportID.txt').write_bytes(b'ID source fixture')
+            (iddata/'ZFileUtils64.dll').write_bytes(b'ID dependency fixture')
+            (iddata/'owner-backup.ztl').write_bytes(b'user recovery')
+            (plugs/'GenerateExportID.zsc').write_bytes(b'ID binary fixture')
             def run(*args):
                 r=subprocess.run(['powershell.exe','-NoProfile','-File',str(script),'-ZBrushPath',str(zb),*args],capture_output=True,text=True)
                 self.assertEqual(r.returncode,0,r.stdout+r.stderr);return r.stdout
-            plan=json.loads(run('-PlanOnly'));self.assertEqual(len(plan),3)
+            plan=json.loads(run('-PlanOnly'));self.assertEqual(len(plan),6)
             self.assertTrue((plugs/'CameraBank25.zsc').exists())
             run()
             self.assertFalse((plugs/'CameraBank25.zsc').exists())
@@ -27,6 +32,10 @@ class UninstallerTests(unittest.TestCase):
             self.assertFalse((data/'ZFileUtils64.dll').exists())
             self.assertEqual((data/'owner-bank.zcv').read_bytes(),b'user bank')
             self.assertEqual((plugs/'MaxonPlugin.zsc').read_bytes(),b'untouched')
+            self.assertFalse((plugs/'GenerateExportID.zsc').exists())
+            self.assertFalse((iddata/'GenerateExportID.txt').exists())
+            self.assertFalse((iddata/'ZFileUtils64.dll').exists())
+            self.assertEqual((iddata/'owner-backup.ztl').read_bytes(),b'user recovery')
             backup=list((fixture/'Recovery').glob('*/ZStartup/ZPlugs64/CameraBank25.zsc'))
             self.assertEqual(len(backup),1);self.assertEqual(backup[0].read_bytes(),b'compiled fixture')
             run() # repeated uninstall is harmless
