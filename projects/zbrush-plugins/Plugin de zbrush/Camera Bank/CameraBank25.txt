@@ -1,8 +1,8 @@
-// Camera Bank 25 v3.1.0 - Windows / ZBrush 2023.2.1 target.
-// v3.1.0: effective visibility groups and ZTL/ZPR name identifiers for compatible merges.
+// Camera Bank 25 v3.2.0 - Windows / ZBrush 2023.2.1 target.
+// v3.2.0: automatic name identifiers on store/update; independent verified bank export.
 // Derived from the supplied CameraBank25_v2_9, retaining its slot UI.
 // Data v8: 27771 floats / 111084 bytes. See Development/DATA_FORMAT.md.
-// Preparation uses the bundled ZFileUtils library. No external application required.
+// Automatic identifier updates use the bundled ZFileUtils library.
 // Source-verified only; native baseline 3.0.3. See Development/VERIFICATION.md.
 [VarDef,cbFovPath,""]
 [VarDef,cbUniversalPath,""]
@@ -20,6 +20,8 @@
 [VarDef,cbTrackGroups(1000),0]
 [VarDef,cbTrackSeen(1000),0]
 [VarDef,cbTrackEye(1000),0]
+[VarDef,cbTagCount,0]
+[VarDef,cbLegacyName,""]
 [RoutineDef,CB32_Bit,
     [VarSet,cbTrackHalf,0][VarSet,cbBitSlot,cbSlot]
     [If,cbSlot>=13,[VarSet,cbTrackHalf,1][VarSet,cbBitSlot,cbSlot-13]]
@@ -42,26 +44,64 @@
     ]
 ]
 [RoutineDef,CB32_ParseTag,
-    [VarSet,cbParsedGroup,0]
-    [VarSet,cbTagStart,[StrFind,cbTrackPrefix,cbTagName]]
-    [If,cbTagStart>=0,
-        [If,[StrLength,cbTagName]>=(cbTagStart+20),
-            [If,[StrToAsc,cbTagName,cbTagStart+19]==95,
-                [VarSet,cbDigitsOK,1][VarSet,cbParsedGroup,0]
-                [Loop,4,
-                    [VarSet,cbDigit,[StrToAsc,cbTagName,cbTagStart+15+cbDigitIndex]-48]
-                    [If,(cbDigit<0)||(cbDigit>9),[VarSet,cbDigitsOK,0]]
-                    [VarSet,cbParsedGroup,(cbParsedGroup*10)+cbDigit]
+    [VarSet,cbParsedGroup,0][VarSet,cbTagStart,-1][VarSet,cbTagCount,0]
+    [Loop,[StrLength,cbTagName],
+        [If,[StrLength,cbTagName]>=(cbPos+15),
+            [If,([StrToAsc,cbTagName,cbPos]==67)&&([StrToAsc,cbTagName,cbPos+1]==66)&&([StrToAsc,cbTagName,cbPos+14]==71),
+                [VarSet,cbDigitsOK,1]
+                [Loop,12,
+                    [VarSet,cbDigit,[StrToAsc,cbTagName,cbPos+2+cbDigitIndex]]
+                    [If,(cbDigit<48)||(cbDigit>57),[VarSet,cbDigitsOK,0]]
                 ,cbDigitIndex]
-                [If,cbDigitsOK==0,[VarSet,cbParsedGroup,0]]
-                [If,[StrLength,cbTagName]>(cbTagStart+20),
-                    [VarSet,cbTail,[StrExtract,cbTagName,cbTagStart+20,[StrLength,cbTagName]-1]]
-                    [If,[StrFind,cbTrackPrefix,cbTail]>=0,[VarSet,cbParsedGroup,0]]
+                [If,cbDigitsOK==1,
+                    [VarInc,cbTagCount][VarSet,cbTagStart,cbPos]
+                    [If,[StrLength,cbTagName]>=(cbPos+20),
+                        [VarSet,cbGroupDigits,0]
+                        [Loop,4,
+                            [VarSet,cbDigit,[StrToAsc,cbTagName,cbPos+15+cbDigitIndex]-48]
+                            [If,(cbDigit<0)||(cbDigit>9),[VarSet,cbDigitsOK,0]]
+                            [VarSet,cbGroupDigits,(cbGroupDigits*10)+cbDigit]
+                        ,cbDigitIndex]
+                        [If,([StrToAsc,cbTagName,cbPos+19]==95)&&(cbDigitsOK==1),
+                            [If,[StrLength,cbTrackPrefix]==15,
+                                [If,[StrFind,cbTrackPrefix,[StrExtract,cbTagName,cbPos,cbPos+14]]==0,[VarSet,cbParsedGroup,cbGroupDigits]]
+                            ]
+                        ]
+                    ]
                 ]
             ]
         ]
-    ]
+    ,cbPos]
+    [If,cbTagCount!=1,[VarSet,cbParsedGroup,0]]
 ,cbTagName]
+[RoutineDef,CB32_CheckLegacyOrder,
+    [VarSet,cbTrackValid,1]
+    [If,[MemGetSize,CB32LegacyState]>0,
+        [If,([SubToolGetCount]!=[MVarGet,CB32LegacyState,0])||([ToolGetActiveIndex]!=[MVarGet,CB32LegacyState,1]),
+            [VarSet,cbTrackValid,0]
+        ,
+            [VarSet,cbLegacySelected,[SubToolGetActiveIndex]]
+            [If,[MemGetSize,CB32ReadView]>0,[MemDelete,CB32ReadView]]
+            [MVarDef,CB32ReadView,12,0][MTransformGet,CB32ReadView,0]
+            [MVarSet,CB32ReadView,9,[CanvasZoomGet]]
+            [MVarSet,CB32ReadView,10,[CanvasPanGetH]][MVarSet,CB32ReadView,11,[CanvasPanGetV]]
+            [Loop,[SubToolGetCount],
+                [SubToolSelect,cbIndex][RoutineCall,CB32_ReadName]
+                [MemReadString,CB32LegacyNames,cbLegacyName,cbIndex*1024,0]
+                [If,([StrLength,cbLegacyName]!=[StrLength,cbTrackName])||([StrFind,cbLegacyName,cbTrackName]!=0)||([SubToolGetID,cbIndex]!=[MVarGet,CB32LegacyState,2+cbIndex]),
+                    [VarSet,cbTrackValid,0][LoopExit]
+                ]
+            ,cbIndex]
+            [SubToolSelect,cbLegacySelected]
+            [MTransformSet,CB32ReadView,0][CanvasZoomSet,[MVarGet,CB32ReadView,9]]
+            [CanvasPanSet,[MVarGet,CB32ReadView,10],[MVarGet,CB32ReadView,11]]
+            [MemDelete,CB32ReadView]
+        ]
+        [If,cbTrackValid==0,
+            [MessageOK,"The untracked legacy Tool/order/names changed during review. Restore the original unchanged Tool, or re-import the bank and restart review. No positional remapping was attempted.","Camera Bank 25"][Exit]
+        ]
+    ]
+]
 [RoutineDef,CB32_CheckTracked,
     [VarSet,cbTrackValid,1][VarSet,cbTrackError,""]
     [VarSet,cbTrackPrefix,[StrMerge,"CB",[MVarGet,CB25Data,8],[MVarGet,CB25Data,9],"G"]]
@@ -131,7 +171,11 @@
     ,
         [VarSet,cbSavedCount,[MVarGet,CB25Data,520+(cbSlot*1001)]]
         [If,(cbSavedCount>0)&&(cbSavedCount!=[SubToolGetCount]),
-            [MessageOK,"This camera has positional visibility only. Use its original unmerged Tool, update the cameras, then PREPARE TRANSFER before merging.","Camera Bank 25"][Exit]
+            [MessageOK,"This camera has positional visibility only. Use its original unmerged Tool and review/UPDATE ACTIVE for every camera before reordering or merging. Tracking will complete automatically.","Camera Bank 25"][Exit]
+        ]
+        [RoutineCall,CB32_CheckLegacyOrder]
+        [If,[MemGetSize,CB32LegacyState]==0,
+            [If,[MessageYesNo,"This bank has no name ancestry. Continue ONLY on its ORIGINAL unmerged Tool with the original SubTool order. Equal counts cannot prove identity. Review this view, then UPDATE ACTIVE. Continue?","Camera Bank 25"]!=1,[Exit]]
         ]
     ]
 ,cbSlot]
@@ -174,12 +218,61 @@
 [VarDef,cbBaseName,""]
 [VarDef,cbRenameOK,0]
 [VarDef,cbRecoveryOK,1]
+[RoutineDef,CB32_ClearLegacyBinding,
+    [If,[MemGetSize,CB32LegacyNames]>0,[MemDelete,CB32LegacyNames]]
+    [If,[MemGetSize,CB32LegacyState]>0,[MemDelete,CB32LegacyState]]
+]
+[RoutineDef,CB32_ResetUnboundLegacy,
+    [If,([MVarGet,CB25Data,7]==0)&&([MemGetSize,CB32LegacyState]==0),
+        [Loop,25,[MVarSet,CB25Data,27746+cbS,0],cbS]
+    ]
+]
+[RoutineDef,CB32_CheckLegacyEdit,
+    [RoutineCall,CB32_CheckLegacyOrder]
+    [VarSet,cbHasLegacy,0]
+    [Loop,25,
+        [If,[MVarGet,CB25Data,20+(cbS*20)]==1,
+            [VarSet,cbHasLegacy,1]
+            [VarSet,cbLegacyCount,[MVarGet,CB25Data,520+(cbS*1001)]]
+            [If,(cbLegacyCount>0)&&(cbLegacyCount!=[SubToolGetCount]),
+                [MessageOK,"Legacy visibility has no names and the SubTool count differs. Restore the original unmerged Tool before reviewing/updating cameras.","Camera Bank 25"][Exit]
+            ]
+        ]
+    ,cbS]
+    [If,(cbHasLegacy==1)&&([MemGetSize,CB32LegacyState]==0),
+        [If,[MessageYesNo,"Update only after reviewing this view on the ORIGINAL unmerged Tool in its original order. Names/ancestry of untracked cameras are unknown. Continue?","Camera Bank 25"]!=1,[Exit]]
+    ]
+]
+[RoutineDef,CB32_FinishStore,
+    [VarSet,cbAllReviewed,1]
+    [Loop,25,
+        [If,[MVarGet,CB25Data,20+(cbS*20)]==1,
+            [If,[MVarGet,CB25Data,27746+cbS]!=[SubToolGetCount],[VarSet,cbAllReviewed,0]]
+        ]
+    ,cbS]
+    [If,cbAllReviewed==1,
+        [RoutineCall,CB32_RefreshIdentifiers]
+    ,
+        [If,[MemGetSize,CB32LegacyState]==0,
+            [MemCreate,CB32LegacyNames,[SubToolGetCount]*1024,0]
+            [MemCopy,CB32OldNames,0,CB32LegacyNames,0,[SubToolGetCount]*1024]
+            [MVarDef,CB32LegacyState,2+[SubToolGetCount],0]
+            [MVarSet,CB32LegacyState,0,[SubToolGetCount]]
+            [MVarSet,CB32LegacyState,1,[ToolGetActiveIndex]]
+            [Loop,[SubToolGetCount],
+                [MVarSet,CB32LegacyState,2+cbIndex,[SubToolGetID,cbIndex]]
+            ,cbIndex]
+        ]
+        [MVarSet,CB32RenameState,3,2]
+        [RoutineCall,CB32_Cleanup]
+    ]
+]
 [RoutineDef,CB32_CheckRenameDLL,
     [VarSet,cbRenameDLL,[FileNameResolvePath,"MakCameraBankData/ZFileUtils64.dll"]]
     [If,[FileExists,cbRenameDLL]==0,[VarSet,cbRenameDLL,[FileNameResolvePath,"ZFileUtils64.dll"]]]
     [If,[FileExists,cbRenameDLL]==0,[VarSet,cbRenameDLL,[FileNameResolvePath,"../Render Capture/RenderCaptureData/ZFileUtils64.dll"]]]
     [If,[FileExists,cbRenameDLL]==0,[VarSet,cbRenameDLL,[FileNameResolvePath,"ZBRUSH_ZSTARTUP/ZPlugs64/MacroData/ZFileUtils64.dll"]]]
-    [If,[FileExists,cbRenameDLL]==0,[MessageOK,"ZFileUtils64.dll is required to prepare SubTool identifiers. Run INSTALAR.cmd or keep the complete source package together.","Camera Bank 25"][Exit]]
+    [If,[FileExists,cbRenameDLL]==0,[MessageOK,"ZFileUtils64.dll is required to track SubTool identifiers automatically. Run INSTALAR.cmd or keep the complete source package together.","Camera Bank 25"][Exit]]
     [If,[FileExecute,cbRenameDLL,"Version"]<8,[MessageOK,"ZFileUtils v8 or newer is required.","Camera Bank 25"][Exit]]
     [If,([IExists,"Tool:SubTool:Rename"]==0)||([IsEnabled,"Tool:SubTool:Rename"]==0),
         [MessageOK,"SubTool Rename is unavailable. Select a live editable Tool first.","Camera Bank 25"][Exit]
@@ -213,6 +306,7 @@
     [VarSet,cbRecoveryOK,1]
     [If,[MemGetSize,CB32RenameState]>0,
         [If,[MVarGet,CB32RenameState,3]==2,
+            [If,[MVarGet,CB25Data,7]==1,[RoutineCall,CB32_ClearLegacyBinding]]
             [RoutineCall,CB32_Cleanup]
         ,
         [If,[MVarGet,CB32RenameState,3]==0,
@@ -234,7 +328,7 @@
         [Loop,[SubToolGetCount],
             [SubToolSelect,cbIndex]
             [VarSet,cbWriteName,""]
-            [MemReadString,CB32OldNames,cbWriteName,cbIndex*1024,1]
+            [MemReadString,CB32OldNames,cbWriteName,cbIndex*1024,0]
             [RoutineCall,CB32_ReadName]
             [If,([StrLength,cbTrackName]!=[StrLength,cbWriteName])||([StrFind,cbWriteName,cbTrackName]!=0),
                 [RoutineCall,CB32_Rename]
@@ -250,6 +344,12 @@
             [MessageOK,"Could not restore every SubTool name. The previous bank and names remain in memory; retry on the same Tool before continuing.","Camera Bank 25"][Exit]
         ]
         [MemCopy,CB32OriginalBank,0,CB25Data,0,111084]
+        [VarSet,cbViewBase,4+([SubToolGetCount]*2)]
+        [If,[MemGetSize,CB32RenameState]<((cbViewBase+14)*4),
+            [RoutineCall,CB32_ClearLegacyBinding]
+        ,
+            [If,[MVarGet,CB32RenameState,cbViewBase+13]==0,[RoutineCall,CB32_ClearLegacyBinding]]
+        ]
         [RoutineCall,CB32_Cleanup]
         ]
         ]
@@ -267,11 +367,12 @@
     [MemCreate,CB32OriginalBank,111084,0]
     [MemCopy,CB25Data,0,CB32OriginalBank,0,111084]
     [MemCreate,CB32OldNames,[SubToolGetCount]*1024,0]
-    [MVarDef,CB32RenameState,17+([SubToolGetCount]*2),0]
+    [MVarDef,CB32RenameState,18+([SubToolGetCount]*2),0]
     [MVarSet,CB32RenameState,0,[SubToolGetCount]]
     [MVarSet,CB32RenameState,1,cbBeforeSelected]
     [MVarSet,CB32RenameState,2,[ToolGetActiveIndex]]
     [VarSet,cbViewBase,4+([SubToolGetCount]*2)]
+    [If,[MemGetSize,CB32LegacyState]>0,[MVarSet,CB32RenameState,cbViewBase+13,1]]
     [MTransformGet,CB32RenameState,cbViewBase]
     [MVarSet,CB32RenameState,cbViewBase+9,[CanvasZoomGet]]
     [MVarSet,CB32RenameState,cbViewBase+10,[CanvasPanGetH]][MVarSet,CB32RenameState,cbViewBase+11,[CanvasPanGetV]]
@@ -314,6 +415,9 @@
 ]
 [RoutineDef,CB32_StripTag,
     [VarSet,cbBaseName,cbTrackName]
+    [VarSet,cbStripped,0]
+    [RoutineCall,CB32_ParseTag,cbTrackName]
+    [If,cbTagCount>1,[RoutineCall,CB32_Fail,"A SubTool name contains ambiguous camera identifiers. Names and cameras were kept; restore a single valid source marker before updating."]]
     [Loop,[StrLength,cbTrackName],
         [If,[StrLength,cbTrackName]>=(cbPos+20),
             [If,([StrToAsc,cbTrackName,cbPos]==67)&&([StrToAsc,cbTrackName,cbPos+1]==66),
@@ -331,24 +435,25 @@
                         [VarSet,cbLeft,""][VarSet,cbRight,""]
                         [If,cbPos>0,[VarSet,cbLeft,[StrExtract,cbTrackName,0,cbPos-1]]]
                         [If,[StrLength,cbTrackName]>(cbPos+20),[VarSet,cbRight,[StrExtract,cbTrackName,cbPos+20,[StrLength,cbTrackName]-1]]]
-                        [VarSet,cbBaseName,[StrMerge,cbLeft,cbRight]][LoopExit]
+                        [VarSet,cbBaseName,[StrMerge,cbLeft,cbRight]][VarSet,cbStripped,1][LoopExit]
                     ]
                 ]
             ]
         ]
     ,cbPos]
+    [If,(cbTagCount==1)&&(cbStripped==0),[RoutineCall,CB32_Fail,"A SubTool has a malformed camera identifier. Restore its original name before storing/updating; previous cameras and names were kept."]]
 ]
-[RoutineDef,CB32_PrepareTransfer,
+[RoutineDef,CB32_RefreshIdentifiers,
     [VarSet,cbCameraCount,0]
     [Loop,25,
         [If,[MVarGet,CB25Data,20+(cbSlot*20)]==1,
             [VarInc,cbCameraCount]
             [If,[MVarGet,CB25Data,27746+cbSlot]!=[SubToolGetCount],
-                [RoutineCall,CB32_Fail,"A camera has no current effective-visibility snapshot. Recall and UPDATE ACTIVE on the ORIGINAL unmerged Tool before preparing this bank."]
+                [RoutineCall,CB32_Fail,"A camera has no current effective-visibility snapshot. Recall, review and UPDATE ACTIVE on the ORIGINAL unmerged Tool."]
             ]
         ]
     ,cbSlot]
-    [If,cbCameraCount==0,[RoutineCall,CB32_Fail,"Store at least one camera before preparing a transfer."]]
+    [If,cbCameraCount==0,[RoutineCall,CB32_Fail,"Store at least one camera before tracking visibility."]]
     [If,[MemGetSize,CB32RenameState]==0,[RoutineCall,CB32_BeginTransaction]]
     [MemCreate,CB32Stage,111084,0][MemCopy,CB25Data,0,CB32Stage,0,111084]
     [MVarDef,CB32NewGroups,[SubToolGetCount],0]
@@ -383,7 +488,7 @@
     [MVarSet,CB32Stage,7,1][MVarSet,CB32Stage,8,cbBankA][MVarSet,CB32Stage,9,cbBankB]
     [MVarSet,CB32Stage,25745,cbGroups]
     [Loop,[SubToolGetCount],
-        [NoteBar,"Preparing camera visibility identifiers",cbIndex/[SubToolGetCount]]
+        [NoteBar,"Tracking camera visibility identifiers",cbIndex/[SubToolGetCount]]
         [SubToolSelect,cbIndex][RoutineCall,CB32_ReadName][RoutineCall,CB32_StripTag]
         [If,([StrLength,cbBaseName]<1)||([StrLength,cbBaseName]>235),
             [RoutineCall,CB32_Fail,"A SubTool name cannot accommodate its 20-character identifier without truncation. Shorten its human-readable name and retry."]
@@ -399,12 +504,14 @@
     [RoutineCall,CB32_RestoreEditingView]
     [MemCopy,CB32Stage,0,CB25Data,0,111084]
     [MVarSet,CB32RenameState,3,2]
+    [RoutineCall,CB32_ClearLegacyBinding]
     [RoutineCall,CB32_Cleanup]
 ]
 [ISubPalette,
     "ZPlugin:Camera Bank 25"
 ]
 [RoutineDef,CB29_CreateEmptyBank,
+    [RoutineCall,CB32_ClearLegacyBinding]
     [If,[MemGetSize,CB25Data] > 0,
         [MemDelete,
             CB25Data
@@ -512,6 +619,9 @@
         [If,cbImportVersion<8,
             [MVarSet,CB25Data,7,0][MVarSet,CB25Data,8,0][MVarSet,CB25Data,9,0]
         ]
+        [If,[MVarGet,CB25Data,7]==0,
+            [Loop,25,[MVarSet,CB25Data,27746+cbS,0],cbS]
+        ]
         [If,cbImportVersion<7,
             [Loop,25,
                 [MVarSet,CB25Data,20+(cbS*20)+18,0][MVarSet,CB25Data,20+(cbS*20)+19,0]
@@ -549,6 +659,7 @@
 ,
     [RoutineCall,CB29_CreateEmptyBank]
 ]
+[RoutineCall,CB32_ResetUnboundLegacy]
 [RoutineDef,CB29_SaveVisualState,
     [VarSet,visBase,
         520 + (slot * 1001)
@@ -783,7 +894,14 @@
         ]
         [Exit]
     ]
-    [If,[MVarGet,CB25Data,7]==1,[RoutineCall,CB32_RebaseForEdit]]
+    [VarSet,cbKeepRender,1]
+    [If,[MVarGet,CB25Data,base]==1,[VarSet,cbKeepRender,[MVarGet,CB25Data,base+16]]]
+    [If,[MVarGet,CB25Data,7]==1,
+        [RoutineCall,CB32_RebaseForEdit]
+    ,
+        [RoutineCall,CB32_CheckLegacyEdit]
+        [RoutineCall,CB32_BeginTransaction]
+    ]
     [MTransformGet,
         CB25Data,
         base + 1
@@ -872,11 +990,7 @@
     ]
     [RoutineCall,CB32_RecordEffective,slot]
     [MVarSet,CB25Data,base,1]
-    [MVarSet,
-        CB25Data,
-        base + 16,
-        1
-    ]
+    [MVarSet,CB25Data,base+16,cbKeepRender]
     [MVarSet,
         CB25Data,
         base + 17,
@@ -887,16 +1001,12 @@
         5,
         displaySlot
     ]
-    [Note,
-        [StrMerge,
-            "Camera ",
-            displaySlot,
-            " STORED | RENDER ON"
-        ],
-        ,
-        2
+    [RoutineCall,CB32_FinishStore]
+    [If,[MVarGet,CB25Data,7]==1,
+        [Note,[StrMerge,"Camera ",displaySlot," stored | Render ",cbKeepRender,". Save the matching ZTL/ZPR and bank."],,2]
+    ,
+        [Note,"View stored. Review/UPDATE ACTIVE for the remaining legacy cameras; tracking completes automatically.",,2]
     ]
-    [If,[MemGetSize,CB32RenameState]>0,[RoutineCall,CB32_PrepareTransfer]]
 ,slot]
 [RoutineDef,CB29_LoadSlot,
     [RoutineCall,CB32_Recover]
@@ -1269,70 +1379,55 @@
     ]
 ]
 [RoutineDef,CB29_ExportBank,
+    [VarSet,saveFile,[FileNameAsk,"Camera Bank (*.zcv)|*.zcv||","CameraBank25_v3_2.zcv","Export Camera Bank 25 v3.2.0"]]
+    [If,[StrLength,saveFile]==0,[Exit]]
+    [If,[FileExists,saveFile]==1,
+        [If,[MessageYesNo,"Replace the selected bank file? Keep a separate copy if this is an original bank.","Camera Bank 25"]!=1,[Exit]]
+    ]
     [RoutineCall,CB32_Recover]
-    [MVarSet,CB25Data,1,8]
-    [MVarSet,CB25Data,3,0]
-    [MVarSet,CB25Data,4,0]
-    [MVarSet,CB25Data,6,0]
-    [VarSet,exSlot,0]
-    [Loop,25,
-        [VarSet,exBase,
-            20 + (exSlot * 20)
-        ]
-        [MVarSet,
-            CB25Data,
-            exBase + 17,
-            0
-        ]
-        [VarInc,exSlot]
-    ]
-    [VarSet,saveFile,
-        [FileNameAsk,
-            "Camera Bank (*.zcv)|*.zcv||",
-            "CameraBank25_v3_1.zcv",
-            "Export Camera Bank 25 v3.1"
+    [If,[MemGetSize,CB32Export]>0,[MemDelete,CB32Export]]
+    [If,[MemGetSize,CB32ExportCheck]>0,[MemDelete,CB32ExportCheck]]
+    [MemCreate,CB32Export,111084,0]
+    [MemCopy,CB25Data,0,CB32Export,0,111084]
+    [MVarSet,CB32Export,1,8]
+    [MVarSet,CB32Export,3,0][MVarSet,CB32Export,4,0][MVarSet,CB32Export,6,0]
+    [Loop,25,[MVarSet,CB32Export,20+(cbS*20)+17,0],cbS]
+    [VarSet,saveResult,[MemSaveToFile,CB32Export,saveFile,1]]
+    [VarSet,cbExportOK,0]
+    [If,saveResult==111084,
+        [If,[MemCreateFromFile,CB32ExportCheck,saveFile]==111084,
+            [VarSet,cbExportOK,1]
+            [Loop,27771,
+                [If,[MVarGet,CB32Export,cbCell]!=[MVarGet,CB32ExportCheck,cbCell],
+                    [VarSet,cbExportOK,0][LoopExit]
+                ]
+            ,cbCell]
         ]
     ]
-    [If,[StrLength,saveFile] > 0,
-        [RoutineCall,CB31_Require3D]
-        [If,[MVarGet,CB25Data,7]==0,
-            [RoutineCall,CB32_PrepareTransfer]
+    [MemDelete,CB32Export]
+    [If,[MemGetSize,CB32ExportCheck]>0,[MemDelete,CB32ExportCheck]]
+    [If,cbExportOK==1,
+        [If,[MVarGet,CB25Data,7]==1,
+            [MessageOK,"Camera bank exported and read-back verified. Send it with the matching ZTL/ZPR saved AFTER the latest store/update. Keep CB name markers and merge only equal-visibility parts across ALL occupied cameras.","Camera Bank 25"]
         ,
-            [RoutineCall,CB32_CheckTracked]
-            [If,cbTrackValid==0,[MessageOK,cbTrackError,"Camera Bank 25"][Exit]]
+            [MessageOK,"Camera bank exported and read-back verified. This bank is still UNTRACKED: it contains no reliable name ancestry. Review and UPDATE ACTIVE for every camera on the ORIGINAL unmerged Tool; tracking completes automatically after the last update.","Camera Bank 25"]
         ]
-        [VarSet,saveResult,
-            [MemSaveToFile,
-                CB25Data,
-                saveFile,
-                1
-            ]
-        ]
-        [If,saveResult > 0,
-            [MessageOK,
-                "Camera bank exported. Save the prepared ZTL/ZPR and send BOTH files together. Keep name identifiers and merge only equal-visibility parts across ALL cameras.",
-                "Camera Bank 25"
-            ]
-        ,
-            [MessageOK,
-                "Could not export Camera Bank.",
-                "Camera Bank 25"
-            ]
-        ]
+    ,
+        [MessageOK,[StrMerge,"Export could not be verified (write result ",saveResult,"). Cameras were kept in memory. The selected destination may be incomplete; retry to a writable path."],"Camera Bank 25"]
     ]
 ]
 [RoutineDef,CB29_ImportBank,
-    [RoutineCall,CB32_Recover]
     [VarSet,cbFile,[FileNameAsk,"Camera Bank (*.zcv)|*.zcv||",,"Import Camera Bank"]]
     [If,[StrLength,cbFile]>0,
+        [RoutineCall,CB32_Recover]
         [If,[MemGetSize,CB29ImportTemp]>0,[MemDelete,CB29ImportTemp]]
         [VarSet,cbSize,[MemCreateFromFile,CB29ImportTemp,cbFile]]
         [RoutineCall,CB30_AcceptImport,cbSize]
         [If,[MemGetSize,CB29ImportTemp]>0,[MemDelete,CB29ImportTemp]]
         [If,cbImportValid==1,
             [RoutineCall,CB29_SyncVisuals]
-            [If,cbImportVersion<8,
-                [MessageOK,"Legacy bank imported without merge identifiers. Use the ORIGINAL unmerged Tool, recall and UPDATE ACTIVE for every occupied camera, then PREPARE TRANSFER and save matching ZTL/ZPR + bank. Older banks may also need canvas/lens corrections.","Camera Bank 25"]
+            [If,[MVarGet,CB25Data,7]==0,
+                [MessageOK,"Untracked bank: ancestry is unknown. On the ORIGINAL unmerged Tool, review and UPDATE ACTIVE for every camera. Tracking then completes automatically. Save the matching ZTL/ZPR and bank. Older banks may need canvas/lens corrections.","Camera Bank 25"]
             ,
                 [MessageOK,"Camera Bank imported.","Camera Bank 25"]
             ]
@@ -1482,11 +1577,10 @@
     CB29_SyncVisuals
 ]
 [IButton,"ZPlugin:Camera Bank 25:UPDATE ACTIVE","Replace the active camera with the current view, canvas size, lens and visibility. Keeps its Render flag.",
+    [RoutineCall,CB32_Recover]
     [VarSet,cbActive,[MVarGet,CB25Data,5]-1]
     [If,cbActive<0,[MessageOK,"Recall a stored camera first.","Camera Bank 25"][Exit]]
-    [VarSet,cbRenderFlag,[MVarGet,CB25Data,20+(cbActive*20)+16]]
     [RoutineCall,CB29_SaveSlot,cbActive]
-    [MVarSet,CB25Data,20+(cbActive*20)+16,cbRenderFlag]
     [RoutineCall,CB29_SyncVisuals]
 ,,1]
 [IEnable,"ZPlugin:Camera Bank 25:STORE NEW"]
@@ -1498,13 +1592,3 @@
         [RoutineCall,CB32_RestoreLegacyVisualState,slot]
     ]
 ,slot]
-[IButton,"ZPlugin:Camera Bank 25:PREPARE TRANSFER","Add visibility identifiers for ZTL/ZPR transfer and compatible native merges. Save the ZTL/ZPR AFTER preparation and send it with the exported bank.",
-    [RoutineCall,CB32_Recover][RoutineCall,CB31_Require3D]
-    [If,[MVarGet,CB25Data,7]==1,
-        [RoutineCall,CB32_CheckTracked]
-        [If,cbTrackValid==0,[MessageOK,cbTrackError,"Camera Bank 25"][Exit]]
-    ,
-        [RoutineCall,CB32_PrepareTransfer]
-    ]
-    [MessageOK,"Transfer prepared. Save this ZTL/ZPR NOW and export the matching camera bank. Preserve CB...G..._ markers. Merge only parts with identical visibility in ALL stored cameras.","Camera Bank 25"]
-,,1]

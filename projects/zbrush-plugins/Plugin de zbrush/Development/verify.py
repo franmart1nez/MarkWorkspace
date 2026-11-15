@@ -5,6 +5,7 @@ compiler, native renderer, or visual verification. No running app is touched.
 """
 from pathlib import Path
 import re, struct, tempfile, unittest, json, ast, io, tokenize, operator, random
+from functools import lru_cache
 
 _rng=random.Random(310)
 
@@ -57,6 +58,7 @@ def node(s, start):
             args.append(s[begin:i].strip()); begin=i+1
     raise AssertionError('Unbalanced bracket/string at '+str(start))
 
+@lru_cache(maxsize=4096)
 def parse(s):
     s=clean(s); out=[]; i=0
     while i<len(s):
@@ -85,6 +87,7 @@ class Host:
         self.st=0; self.status=[1,3]; self.pp=[0,1]; self.tx=[1,0]
         self.names=['Part A','Part B'];self.folders=[-1,-1];self.ids=[100,101];self.tool_index=1
         self.pending_name='';self.ask=''
+        self.answer=1;self.record_calls=True
         self.mats=['Start','Basic Thor (1)','NormalRGBMat','DoubleShade1','Metal 111','Metal 11']
         self.transform=list(range(9)); self.zoom=1; self.pan=[0,0]; self.nextfile=''
         self.chosen=''; self.dims=[1920,1080]; self.mapready=False
@@ -134,7 +137,8 @@ class Host:
         elif k=='Tool:Texture Map:Texture On':self.tx[self.st]=v
         else:self.ui[k]=v
     def cmd(self,n):
-        c,*a=n; E=lambda i:self.e(a[i]); self.calls.append((c,list(a)))
+        c,*a=n; E=lambda i:self.e(a[i])
+        if self.record_calls:self.calls.append((c,list(a)))
         if c=='RoutineDef':self.routines[a[0]]=(a[1],a[2:]);return
         if c=='RoutineCall':return self.call(a[0],*[self.e(x) for x in a[1:]])
         if c=='IFreeze':return self.run(a[0])
@@ -161,12 +165,15 @@ class Host:
         if c=='MVarDef':self.mem[a[0]]=bytearray(int(E(1))*4);return E(1)
         if c=='MemCreate':self.mem[a[0]]=bytearray(int(E(1)));return E(1)
         if c=='MemCreateFromFile':
-            if not Path(E(1)).exists():return -3
-            self.mem[a[0]]=bytearray(Path(E(1)).read_bytes());return len(self.mem[a[0]])
+            try:self.mem[a[0]]=bytearray(Path(E(1)).read_bytes())
+            except OSError:return -3
+            return len(self.mem[a[0]])
         if c=='MemSaveToFile':
             destination=Path(E(1))
             if destination.exists() and len(a)<3:return -2
-            destination.write_bytes(self.mem[a[0]]);return len(self.mem[a[0]])
+            try:destination.write_bytes(self.mem[a[0]])
+            except OSError:return -3
+            return len(self.mem[a[0]])
         if c=='MemGetSize':return len(self.mem.get(a[0],b''))
         if c=='MemDelete':self.mem.pop(a[0],None);return
         if c=='MVarSet':struct.pack_into('<f',self.mem[a[0]],int(E(1))*4,E(2));return
@@ -179,7 +186,9 @@ class Host:
             b=E(1).encode()+b'\0';self.mem[a[0]][int(E(2)):int(E(2))+len(b)]=b;return len(b)
         if c=='MemReadString':
             assert isinstance(self.v.get(a[1]),str),'MemReadString output must be initialized as a string: '+a[1]
-            self.set(a[1],bytes(self.mem[a[0]][int(E(2)):]).split(b'\0')[0].decode());return
+            data=bytes(self.mem[a[0]][int(E(2)):]).split(b'\0')[0]
+            if len(a)>3 and E(3):data=data.split(b'\n')[0].split(b'\r')[0]
+            self.set(a[1],data[:255].decode());return
         if c=='IExists':
             k=E(0)
             if isinstance(k,int):return int(k in self.light_on or 10000<=k<10000+len(self.mats))
@@ -248,7 +257,7 @@ class Host:
         if c=='StrExtract':return E(0)[int(E(1)):int(E(2))+1]
         if c=='StrMerge':return ''.join(str(self.e(x)) for x in a)
         if c in ['MessageOK','Note']:self.messages.append(E(0));return 1
-        if c=='MessageYesNo':return 1
+        if c=='MessageYesNo':return self.answer
         if c=='FileNameAsk':return self.ask
         if c=='FileNameSetNext':self.nextfile=E(0);return
         if c=='IClick':self.light_selected=E(0);return
@@ -306,7 +315,8 @@ class Regression(unittest.TestCase):
         h.calls=[];h.call('CB29_LoadSlot',0)
         self.assertEqual(h.dims,[1920,1080]);self.assertEqual(h.ui['Draw:Field Of View(deg)'],45)
         self.assertEqual(h.ui['Draw:Perspective'],1)
-        names=[x[0] for x in h.calls];self.assertLess(names.index('CanvasClick'),names.index('MTransformSet'))
+        names=[c for c,a in h.calls if c!='MTransformSet' or a[0]=='CB25Data']
+        self.assertLess(names.index('CanvasClick'),names.index('MTransformSet'))
         h.call('CB29_LoadSlot',1)
         self.assertEqual(h.dims,[800,600]);self.assertEqual(h.ui['Draw:Perspective'],0)
         self.assertEqual(h.ui['Draw:Field Of View(deg)'],70)
@@ -362,7 +372,7 @@ class Regression(unittest.TestCase):
             self.assertEqual(sorted(p.name for p in shots.iterdir()),['01.png','10.png','25.png'])
             for label in ['01','10','25']:
                 self.assertEqual((shots/(label+'.png')).read_bytes(),
-                                 (session/label/'NonBPR/Z document.png').read_bytes())
+                                 (session/label/'Z document.png').read_bytes())
             self.assertEqual(len(h.exports),12) # Copies must not cause extra renders/exports.
             self.assertFalse((session/'03').exists());self.assertNotIn('RC31CopyPath',h.mem)
             h.call('RC_BPR');self.assertEqual(len(h.exports),33)
@@ -471,7 +481,7 @@ class Regression(unittest.TestCase):
             return original(n)
         h.cmd=cmd;h.calls=[]
         with self.assertRaises(Exit):h.call('CB29_LoadSlot',0)
-        self.assertFalse(any(c=='MTransformSet' for c,a in h.calls))
+        self.assertFalse(any(c=='MTransformSet' and a[0]=='CB25Data' for c,a in h.calls))
 
     def test_12_bpr_never_serializes_lights_and_restores_modified_flag(self):
         for enabled,sss in [(0,0),(1,0),(1,1),(0,1)]:

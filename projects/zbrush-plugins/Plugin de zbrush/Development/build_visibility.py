@@ -1,4 +1,4 @@
-"""Upgrade the existing camera UI/generator with merge-aware v8 visibility."""
+"""Camera Bank 3.2: automatic name tracking; retain the v8 binary schema."""
 from pathlib import Path
 import re
 
@@ -10,7 +10,8 @@ def upgrade(camera, routine):
         camera=camera.replace(routine(camera,name),body)
 
     old=routine(camera,'CB29_CreateEmptyBank')
-    put('CB29_CreateEmptyBank',old.replace('25745','27771').replace('[MVarSet,CB25Data,1,7]','[MVarSet,CB25Data,1,8]'))
+    put('CB29_CreateEmptyBank',old.replace('25745','27771').replace('[MVarSet,CB25Data,1,7]','[MVarSet,CB25Data,1,8]').replace(
+        '[RoutineDef,CB29_CreateEmptyBank,', '[RoutineDef,CB29_CreateEmptyBank,\n    [RoutineCall,CB32_ClearLegacyBinding]'))
 
     put('CB30_AcceptImport',r'''[RoutineDef,CB30_AcceptImport,
     [VarSet,cbImportValid,0]
@@ -53,6 +54,11 @@ def upgrade(camera, routine):
         [If,cbImportVersion<8,
             [MVarSet,CB25Data,7,0][MVarSet,CB25Data,8,0][MVarSet,CB25Data,9,0]
         ]
+        // Untracked data has no persistent name/order evidence. Reviewed bits
+        // cannot be trusted after a file transfer, even in old unprepared v8.
+        [If,[MVarGet,CB25Data,7]==0,
+            [Loop,25,[MVarSet,CB25Data,27746+cbS,0],cbS]
+        ]
         [If,cbImportVersion<7,
             [Loop,25,
                 [MVarSet,CB25Data,20+(cbS*20)+18,0][MVarSet,CB25Data,20+(cbS*20)+19,0]
@@ -69,7 +75,7 @@ def upgrade(camera, routine):
     a=camera.index('[If,[MemGetSize,CB25Data]>0,')
     b=camera.index('[RoutineDef,CB29_SaveVisualState,',a)
     startup=camera[a:b].replace('102980','111084').replace('cbAlreadyV7','cbAlreadyV8').replace('CB25Data,1]==7','CB25Data,1]==8')
-    camera=camera[:a]+'[RoutineCall,CB32_Recover]\n'+startup+camera[b:]
+    camera=camera[:a]+'[RoutineCall,CB32_Recover]\n'+startup+'\n[RoutineCall,CB32_ResetUnboundLegacy]\n'+camera[b:]
 
     old=routine(camera,'CB29_RestoreVisualState')
     put('CB29_RestoreVisualState',old.replace('CB29_RestoreVisualState','CB32_RestoreLegacyVisualState',1))
@@ -81,49 +87,88 @@ def upgrade(camera, routine):
         [RoutineCall,CB32_RestoreLegacyVisualState,slot]
     ]
 ,slot]
-[IButton,"ZPlugin:Camera Bank 25:PREPARE TRANSFER","Add visibility identifiers for ZTL/ZPR transfer and compatible native merges. Save the ZTL/ZPR AFTER preparation and send it with the exported bank.",
-    [RoutineCall,CB32_Recover][RoutineCall,CB31_Require3D]
-    [If,[MVarGet,CB25Data,7]==1,
-        [RoutineCall,CB32_CheckTracked]
-        [If,cbTrackValid==0,[MessageOK,cbTrackError,"Camera Bank 25"][Exit]]
-    ,
-        [RoutineCall,CB32_PrepareTransfer]
-    ]
-    [MessageOK,"Transfer prepared. Save this ZTL/ZPR NOW and export the matching camera bank. Preserve CB...G..._ markers. Merge only parts with identical visibility in ALL stored cameras.","Camera Bank 25"]
-,,1]
 '''
     old=routine(camera,'CB29_LoadSlot')
     put('CB29_LoadSlot',old.replace('[RoutineCall,CB31_Require3D]','[RoutineCall,CB31_Require3D]\n    [RoutineCall,CB32_RequireVisibility,slot]',1))
 
     old=routine(camera,'CB29_SaveSlot')
-    new=old.replace('    [MTransformGet,','    [If,[MVarGet,CB25Data,7]==1,[RoutineCall,CB32_RebaseForEdit]]\n    [MTransformGet,',1)
+    new=old.replace('    [MTransformGet,',r'''    [VarSet,cbKeepRender,1]
+    [If,[MVarGet,CB25Data,base]==1,[VarSet,cbKeepRender,[MVarGet,CB25Data,base+16]]]
+    [If,[MVarGet,CB25Data,7]==1,
+        [RoutineCall,CB32_RebaseForEdit]
+    ,
+        [RoutineCall,CB32_CheckLegacyEdit]
+        [RoutineCall,CB32_BeginTransaction]
+    ]
+    [MTransformGet,''',1)
     pattern=r'\[RoutineCall,\s*CB29_SaveVisualState,\s*slot\s*\]'
     new,n=re.subn(pattern,lambda m:m[0]+'\n    [RoutineCall,CB32_RecordEffective,slot]',new,count=1)
     assert n==1
-    new=new.rsplit(',slot]',1)[0]+'    [If,[MemGetSize,CB32RenameState]>0,[RoutineCall,CB32_PrepareTransfer]]\n,slot]'
+    # Render OFF is part of the same transaction, including interruption recovery.
+    new=re.sub(r'\[MVarSet,\s*CB25Data,\s*base\s*\+\s*16,\s*1\s*\]',
+               '[MVarSet,CB25Data,base+16,cbKeepRender]',new)
+    note=new.index('    [Note,')
+    new=new[:note]+r'''    [RoutineCall,CB32_FinishStore]
+    [If,[MVarGet,CB25Data,7]==1,
+        [Note,[StrMerge,"Camera ",displaySlot," stored | Render ",cbKeepRender,". Save the matching ZTL/ZPR and bank."],,2]
+    ,
+        [Note,"View stored. Review/UPDATE ACTIVE for the remaining legacy cameras; tracking completes automatically.",,2]
+    ]
+,slot]'''
     put('CB29_SaveSlot',new)
+    camera=camera.replace('    [VarSet,cbActive,[MVarGet,CB25Data,5]-1]',
+                          '    [RoutineCall,CB32_Recover]\n    [VarSet,cbActive,[MVarGet,CB25Data,5]-1]')
+    camera=camera.replace('    [VarSet,cbRenderFlag,[MVarGet,CB25Data,20+(cbActive*20)+16]]\n','')
+    camera=camera.replace('    [MVarSet,CB25Data,20+(cbActive*20)+16,cbRenderFlag]\n','')
     old=routine(camera,'CB29_ClearSlot')
     put('CB29_ClearSlot',old.replace('[Loop,8,','[MVarSet,CB25Data,27746+slot,0]\n    [Loop,8,',1))
 
-    old=routine(camera,'CB29_ExportBank')
-    new=old.replace('[MVarSet,CB25Data,1,7]','[MVarSet,CB25Data,1,8]')
-    new=new.replace('    [If,[StrLength,saveFile] > 0,','''    [If,[StrLength,saveFile] > 0,
-        [RoutineCall,CB31_Require3D]
-        [If,[MVarGet,CB25Data,7]==0,
-            [RoutineCall,CB32_PrepareTransfer]
+    put('CB29_ExportBank',r'''[RoutineDef,CB29_ExportBank,
+    [VarSet,saveFile,[FileNameAsk,"Camera Bank (*.zcv)|*.zcv||","CameraBank25_v3_2.zcv","Export Camera Bank 25 v3.2.0"]]
+    // Cancel is strictly read-only, including pending recovery and UI modes.
+    [If,[StrLength,saveFile]==0,[Exit]]
+    [If,[FileExists,saveFile]==1,
+        [If,[MessageYesNo,"Replace the selected bank file? Keep a separate copy if this is an original bank.","Camera Bank 25"]!=1,[Exit]]
+    ]
+    [RoutineCall,CB32_Recover]
+    [If,[MemGetSize,CB32Export]>0,[MemDelete,CB32Export]]
+    [If,[MemGetSize,CB32ExportCheck]>0,[MemDelete,CB32ExportCheck]]
+    [MemCreate,CB32Export,111084,0]
+    [MemCopy,CB25Data,0,CB32Export,0,111084]
+    [MVarSet,CB32Export,1,8]
+    [MVarSet,CB32Export,3,0][MVarSet,CB32Export,4,0][MVarSet,CB32Export,6,0]
+    [Loop,25,[MVarSet,CB32Export,20+(cbS*20)+17,0],cbS]
+    [VarSet,saveResult,[MemSaveToFile,CB32Export,saveFile,1]]
+    [VarSet,cbExportOK,0]
+    [If,saveResult==111084,
+        [If,[MemCreateFromFile,CB32ExportCheck,saveFile]==111084,
+            [VarSet,cbExportOK,1]
+            [Loop,27771,
+                [If,[MVarGet,CB32Export,cbCell]!=[MVarGet,CB32ExportCheck,cbCell],
+                    [VarSet,cbExportOK,0][LoopExit]
+                ]
+            ,cbCell]
+        ]
+    ]
+    [MemDelete,CB32Export]
+    [If,[MemGetSize,CB32ExportCheck]>0,[MemDelete,CB32ExportCheck]]
+    [If,cbExportOK==1,
+        [If,[MVarGet,CB25Data,7]==1,
+            [MessageOK,"Camera bank exported and read-back verified. Send it with the matching ZTL/ZPR saved AFTER the latest store/update. Keep CB name markers and merge only equal-visibility parts across ALL occupied cameras.","Camera Bank 25"]
         ,
-            [RoutineCall,CB32_CheckTracked]
-            [If,cbTrackValid==0,[MessageOK,cbTrackError,"Camera Bank 25"][Exit]]
-        ]''',1)
-    new=new.replace('CameraBank25_v3_0.zcv','CameraBank25_v3_1.zcv').replace('Export Camera Bank 25 v3.0','Export Camera Bank 25 v3.1')
-    new=new.replace('Camera Bank v3.0 exported successfully.','Camera bank exported. Save the prepared ZTL/ZPR and send BOTH files together. Keep name identifiers and merge only equal-visibility parts across ALL cameras.')
-    put('CB29_ExportBank',new)
+            [MessageOK,"Camera bank exported and read-back verified. This bank is still UNTRACKED: it contains no reliable name ancestry. Review and UPDATE ACTIVE for every camera on the ORIGINAL unmerged Tool; tracking completes automatically after the last update.","Camera Bank 25"]
+        ]
+    ,
+        [MessageOK,[StrMerge,"Export could not be verified (write result ",saveResult,"). Cameras were kept in memory. The selected destination may be incomplete; retry to a writable path."],"Camera Bank 25"]
+    ]
+]''')
     old=routine(camera,'CB29_ImportBank')
-    put('CB29_ImportBank',old.replace('cbImportVersion<7','cbImportVersion<8').replace('Legacy bank imported. Old files contain no canvas size or explicit FOV. Recall each camera, set its canvas/lens, then UPDATE ACTIVE and export a new bank.',
-        'Legacy bank imported without merge identifiers. Use the ORIGINAL unmerged Tool, recall and UPDATE ACTIVE for every occupied camera, then PREPARE TRANSFER and save matching ZTL/ZPR + bank. Older banks may also need canvas/lens corrections.'))
+    put('CB29_ImportBank',old.replace('[If,[StrLength,cbFile]>0,','[If,[StrLength,cbFile]>0,\n        [RoutineCall,CB32_Recover]',1).replace('cbImportVersion<7','[MVarGet,CB25Data,7]==0').replace('Legacy bank imported. Old files contain no canvas size or explicit FOV. Recall each camera, set its canvas/lens, then UPDATE ACTIVE and export a new bank.',
+        'Untracked bank: ancestry is unknown. On the ORIGINAL unmerged Tool, review and UPDATE ACTIVE for every camera. Tracking then completes automatically. Save the matching ZTL/ZPR and bank. Older banks may need canvas/lens corrections.'))
 
-    # Every operation that edits/recalls bank state first recovers interrupted name edits.
-    for name in ['CB29_SaveSlot','CB29_LoadSlot','CB29_ClearSlot','CB29_ClearAll','CB29_ExportBank','CB29_ImportBank','CB29_SlotClick','CB29_EnterStoreMode','CB29_EnterClearMode']:
+    # Editing/recall operations recover first. Import/export place recovery AFTER
+    # file selection (and export overwrite approval), so cancel remains read-only.
+    for name in ['CB29_SaveSlot','CB29_LoadSlot','CB29_ClearSlot','CB29_ClearAll','CB29_SlotClick','CB29_EnterStoreMode','CB29_EnterClearMode']:
         if '[RoutineDef,'+name+',' in camera:
             old=routine(camera,name)
             put(name,old.replace('[RoutineDef,'+name+',','[RoutineDef,'+name+',\n    [RoutineCall,CB32_Recover]',1))

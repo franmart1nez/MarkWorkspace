@@ -1,4 +1,4 @@
-"""Exercise delivered v8 ZScript through the mock host; never controls ZBrush."""
+"""Exercise automatic v8 identity/merge behavior; never controls ZBrush."""
 from pathlib import Path
 import re, struct, tempfile, unittest
 from verify import Host, Exit, ROOT
@@ -18,7 +18,7 @@ class MergeVisibility(unittest.TestCase):
         h.call('CB29_SaveSlot',0)
         h.status=[0,0,1,1];h.st=2
         h.ui.update({'Document:Width':800,'Document:Height':600})
-        h.call('CB29_SaveSlot',1);h.call('CB32_PrepareTransfer')
+        h.call('CB29_SaveSlot',1)
         return h
     def merged_recipient(self,h):
         receiver=self.host()
@@ -52,7 +52,6 @@ class MergeVisibility(unittest.TestCase):
         on={0,12,13,24}
         for slot in range(25):
             h.status=[1,int(slot in on),0];h.call('CB29_SaveSlot',slot)
-        h.call('CB32_PrepareTransfer')
         self.assertEqual(get(h,25745),3)
         self.assertEqual((get(h,25746),get(h,25747)),(8191,4095))
         self.assertEqual((get(h,25748),get(h,25749)),(4097,2049))
@@ -76,10 +75,10 @@ class MergeVisibility(unittest.TestCase):
             if n[0]=='SubToolSelect':
                 h.transform[0]+=5;h.zoom+=0.5;h.pan[0]+=7
             return result
-        h.cmd=cmd;h.call('CB32_PrepareTransfer')
+        h.cmd=cmd;h.call('CB29_SaveSlot',1)
         self.assertEqual(h.transform,transform);self.assertEqual(h.zoom,zoom);self.assertEqual(h.pan,pan)
         h.call('CB32_CheckTracked');self.assertEqual(h.transform,transform);self.assertEqual(h.zoom,zoom);self.assertEqual(h.pan,pan)
-        h.call('CB29_SaveSlot',1)
+        h.call('CB29_SaveSlot',2)
         self.assertEqual(h.transform,transform);self.assertEqual(h.zoom,zoom);self.assertEqual(h.pan,pan)
 
     def test_foreign_removed_and_malformed_identifiers_do_not_fall_back_to_positions(self):
@@ -124,7 +123,6 @@ class MergeVisibility(unittest.TestCase):
         h=self.host();parts(h,['Outside','Head','Child','Active'],[1,0x401,1,0],3)
         h.folders=[-1,1,1,-1];h.call('CB29_SaveSlot',0)
         h.ui['Transform:Solo']=1;h.st=2;h.call('CB29_SaveSlot',1)
-        h.call('CB32_PrepareTransfer')
         h.call('CB29_LoadSlot',0)
         self.assertEqual([s&1 for s in h.status],[1,0,0,1]);self.assertEqual(h.ui['Transform:Solo'],0)
         self.assertEqual(h.status[1]&0x400,0x400)
@@ -135,15 +133,17 @@ class MergeVisibility(unittest.TestCase):
         h.call('CB29_LoadSlot',0);self.assertEqual([s&1 for s in h.status],[1,1,0,0])
         h.call('CB29_LoadSlot',1);self.assertEqual([s&1 for s in h.status],[0,0,1,1])
 
-    def test_legacy_v7_needs_effective_updates_before_preparing(self):
-        h=self.host();h.call('CB29_SaveSlot',0)
+    def test_legacy_v7_needs_reviewed_updates_then_tracks_automatically(self):
+        h=self.prepared()
         legacy=bytearray(h.mem['CB25Data'][:102980]);struct.pack_into('<f',legacy,4,7)
         h.mem['CB29ImportTemp']=legacy;h.call('CB30_AcceptImport',len(legacy))
-        before=bytes(h.mem['CB25Data']);names=h.names[:]
-        with self.assertRaises(Exit):h.call('CB32_PrepareTransfer')
-        self.assertEqual(bytes(h.mem['CB25Data']),before);self.assertEqual(h.names,names)
-        h.call('CB29_LoadSlot',0);h.call('CB29_SaveSlot',0);h.call('CB32_PrepareTransfer')
+        self.assertEqual(get(h,7),0);self.assertEqual(get(h,27746),0)
+        h.call('CB29_LoadSlot',0);h.call('CB29_SaveSlot',0)
+        self.assertEqual(get(h,7),0)
+        self.assertIn('CB32LegacyState',h.mem)
+        h.call('CB29_LoadSlot',1);h.call('CB29_SaveSlot',1)
         self.assertEqual(get(h,7),1)
+        self.assertNotIn('CB32LegacyState',h.mem)
 
     def test_corrupt_v8_metadata_is_rejected_before_replacing_live_bank(self):
         h=self.prepared();before=bytes(h.mem['CB25Data'])
@@ -164,7 +164,7 @@ class MergeVisibility(unittest.TestCase):
                 failed=True;h.names[h.st]='truncated'
             return result
         h.cmd=cmd
-        with self.assertRaises(Exit):h.call('CB32_PrepareTransfer')
+        with self.assertRaises(Exit):h.call('CB29_SaveSlot',1)
         self.assertTrue(failed);self.assertEqual(h.names,names);self.assertEqual(h.status,status)
         self.assertEqual(bytes(h.mem['CB25Data']),before)
         self.assertFalse(any(k.startswith('CB32') for k in h.mem))
@@ -179,7 +179,7 @@ class MergeVisibility(unittest.TestCase):
                 interrupted=True;raise Exit()
             return result
         h.cmd=cmd
-        with self.assertRaises(Exit):h.call('CB32_PrepareTransfer')
+        with self.assertRaises(Exit):h.call('CB29_SaveSlot',1)
         h.cmd=original;self.assertIn('CB32RenameState',h.mem)
         h.load(ROOT/'Render Capture/RenderCapture.txt')
         with self.assertRaises(Exit):h.call('RC_Preflight')
@@ -203,7 +203,7 @@ class MergeVisibility(unittest.TestCase):
                         stopped=True;raise Exit()
                     return result
                 h.cmd=cmd
-                with self.assertRaises(Exit):h.call('CB32_PrepareTransfer')
+                with self.assertRaises(Exit):h.call('CB29_SaveSlot',1)
                 h.cmd=original;h.call('CB32_Recover')
                 self.assertEqual(h.names,names);self.assertEqual(bytes(h.mem['CB25Data']),bank)
                 self.assertFalse(any(k.startswith('CB32') for k in h.mem))
@@ -217,7 +217,7 @@ class MergeVisibility(unittest.TestCase):
                 stopped=True;raise Exit()
             return result
         h.cmd=cmd
-        with self.assertRaises(Exit):h.call('CB32_PrepareTransfer')
+        with self.assertRaises(Exit):h.call('CB29_SaveSlot',1)
         h.cmd=original;names=h.names[:];bank=bytes(h.mem['CB25Data'])
         h.call('CB32_Recover')
         self.assertEqual(get(h,7),1);self.assertEqual(h.names,names);self.assertEqual(bytes(h.mem['CB25Data']),bank)

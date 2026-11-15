@@ -15,6 +15,8 @@
 [VarDef,cbTrackGroups(1000),0]
 [VarDef,cbTrackSeen(1000),0]
 [VarDef,cbTrackEye(1000),0]
+[VarDef,cbTagCount,0]
+[VarDef,cbLegacyName,""]
 [RoutineDef,RC_CB31_Require3D,
     [If,([IsEnabled,"Transform:Edit"]==0)||([IGet,"Transform:Edit"]==0),
         [MessageOK,"No live 3D model is in Edit mode. Select your Tool, draw it on the canvas and press T (Edit), then try again. The camera has not been changed.","Camera Bank 25"]
@@ -144,26 +146,65 @@
 ]
 
 [RoutineDef,RC_CB32_ParseTag,
-    [VarSet,cbParsedGroup,0]
-    [VarSet,cbTagStart,[StrFind,cbTrackPrefix,cbTagName]]
-    [If,cbTagStart>=0,
-        [If,[StrLength,cbTagName]>=(cbTagStart+20),
-            [If,[StrToAsc,cbTagName,cbTagStart+19]==95,
-                [VarSet,cbDigitsOK,1][VarSet,cbParsedGroup,0]
-                [Loop,4,
-                    [VarSet,cbDigit,[StrToAsc,cbTagName,cbTagStart+15+cbDigitIndex]-48]
-                    [If,(cbDigit<0)||(cbDigit>9),[VarSet,cbDigitsOK,0]]
-                    [VarSet,cbParsedGroup,(cbParsedGroup*10)+cbDigit]
+    [VarSet,cbParsedGroup,0][VarSet,cbTagStart,-1][VarSet,cbTagCount,0]
+    [Loop,[StrLength,cbTagName],
+        [If,[StrLength,cbTagName]>=(cbPos+15),
+            [If,([StrToAsc,cbTagName,cbPos]==67)&&([StrToAsc,cbTagName,cbPos+1]==66)&&([StrToAsc,cbTagName,cbPos+14]==71),
+                [VarSet,cbDigitsOK,1]
+                [Loop,12,
+                    [VarSet,cbDigit,[StrToAsc,cbTagName,cbPos+2+cbDigitIndex]]
+                    [If,(cbDigit<48)||(cbDigit>57),[VarSet,cbDigitsOK,0]]
                 ,cbDigitIndex]
-                [If,cbDigitsOK==0,[VarSet,cbParsedGroup,0]]
-                [If,[StrLength,cbTagName]>(cbTagStart+20),
-                    [VarSet,cbTail,[StrExtract,cbTagName,cbTagStart+20,[StrLength,cbTagName]-1]]
-                    [If,[StrFind,cbTrackPrefix,cbTail]>=0,[VarSet,cbParsedGroup,0]]
+                [If,cbDigitsOK==1,
+                    [VarInc,cbTagCount][VarSet,cbTagStart,cbPos]
+                    [If,[StrLength,cbTagName]>=(cbPos+20),
+                        [VarSet,cbGroupDigits,0]
+                        [Loop,4,
+                            [VarSet,cbDigit,[StrToAsc,cbTagName,cbPos+15+cbDigitIndex]-48]
+                            [If,(cbDigit<0)||(cbDigit>9),[VarSet,cbDigitsOK,0]]
+                            [VarSet,cbGroupDigits,(cbGroupDigits*10)+cbDigit]
+                        ,cbDigitIndex]
+                        [If,([StrToAsc,cbTagName,cbPos+19]==95)&&(cbDigitsOK==1),
+                            [If,[StrLength,cbTrackPrefix]==15,
+                                [If,[StrFind,cbTrackPrefix,[StrExtract,cbTagName,cbPos,cbPos+14]]==0,[VarSet,cbParsedGroup,cbGroupDigits]]
+                            ]
+                        ]
+                    ]
                 ]
             ]
         ]
-    ]
+    ,cbPos]
+    [If,cbTagCount!=1,[VarSet,cbParsedGroup,0]]
 ,cbTagName]
+
+[RoutineDef,RC_CB32_CheckLegacyOrder,
+    [VarSet,cbTrackValid,1]
+    [If,[MemGetSize,CB32LegacyState]>0,
+        [If,([SubToolGetCount]!=[MVarGet,CB32LegacyState,0])||([ToolGetActiveIndex]!=[MVarGet,CB32LegacyState,1]),
+            [VarSet,cbTrackValid,0]
+        ,
+            [VarSet,cbLegacySelected,[SubToolGetActiveIndex]]
+            [If,[MemGetSize,CB32ReadView]>0,[MemDelete,CB32ReadView]]
+            [MVarDef,CB32ReadView,12,0][MTransformGet,CB32ReadView,0]
+            [MVarSet,CB32ReadView,9,[CanvasZoomGet]]
+            [MVarSet,CB32ReadView,10,[CanvasPanGetH]][MVarSet,CB32ReadView,11,[CanvasPanGetV]]
+            [Loop,[SubToolGetCount],
+                [SubToolSelect,cbIndex][RoutineCall,RC_CB32_ReadName]
+                [MemReadString,CB32LegacyNames,cbLegacyName,cbIndex*1024,0]
+                [If,([StrLength,cbLegacyName]!=[StrLength,cbTrackName])||([StrFind,cbLegacyName,cbTrackName]!=0)||([SubToolGetID,cbIndex]!=[MVarGet,CB32LegacyState,2+cbIndex]),
+                    [VarSet,cbTrackValid,0][LoopExit]
+                ]
+            ,cbIndex]
+            [SubToolSelect,cbLegacySelected]
+            [MTransformSet,CB32ReadView,0][CanvasZoomSet,[MVarGet,CB32ReadView,9]]
+            [CanvasPanSet,[MVarGet,CB32ReadView,10],[MVarGet,CB32ReadView,11]]
+            [MemDelete,CB32ReadView]
+        ]
+        [If,cbTrackValid==0,
+            [MessageOK,"The untracked legacy Tool/order/names changed during review. Restore the original unchanged Tool, or re-import the bank and restart review. No positional remapping was attempted.","Camera Bank 25"][Exit]
+        ]
+    ]
+]
 
 [RoutineDef,RC_CB32_CheckTracked,
     [VarSet,cbTrackValid,1][VarSet,cbTrackError,""]
@@ -235,7 +276,11 @@
     ,
         [VarSet,cbSavedCount,[MVarGet,CB25Data,520+(cbSlot*1001)]]
         [If,(cbSavedCount>0)&&(cbSavedCount!=[SubToolGetCount]),
-            [MessageOK,"This camera has positional visibility only. Use its original unmerged Tool, update the cameras, then PREPARE TRANSFER before merging.","Camera Bank 25"][Exit]
+            [MessageOK,"This camera has positional visibility only. Use its original unmerged Tool and review/UPDATE ACTIVE for every camera before reordering or merging. Tracking will complete automatically.","Camera Bank 25"][Exit]
+        ]
+        [RoutineCall,RC_CB32_CheckLegacyOrder]
+        [If,[MemGetSize,CB32LegacyState]==0,
+            [If,[MessageYesNo,"This bank has no name ancestry. Continue ONLY on its ORIGINAL unmerged Tool with the original SubTool order. Equal counts cannot prove identity. Review this view, then UPDATE ACTIVE. Continue?","Camera Bank 25"]!=1,[Exit]]
         ]
     ]
 ,cbSlot]

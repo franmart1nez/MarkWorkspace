@@ -1,87 +1,122 @@
-# Camera Bank 3.1.0 - merge-compatible ZTL/ZPR handoff
+# Camera Bank 3.2.0 - automatic name visibility
 
-Camera recall and both Render Capture phases now use effective visibility groups
-after transfer preparation. Reordering or reducing the SubTool list by compatible
-merges no longer invalidates camera visibility solely because the count changed.
+Store/update now records effective visibility and updates SubTool name identifiers
+without a PREPARE TRANSFER button. Export writes the stored bank without requiring
+Edit mode, a selected matching Tool, or the renaming library. Data remains v8
+(**111,084 bytes**); see [DATA_FORMAT.md](DATA_FORMAT.md) for the complete schema.
 
-## Preparing the model and bank
+## Normal workflow
 
-1. Load both updated plugin sources. Keep the complete package together, or run
-   INSTALAR.cmd and use Macro > Reload All Macros > Mak Plugins > Load Camera Bank,
-   then Load Render Capture. Both plugins now require data v8. The installer
-   provides the existing Maxon ZFileUtils dependency for Camera Bank as well.
-2. On the original unmerged Tool, store the cameras and inspect their framing and
-   visible parts. Complete capture before reordering or merging unprepared parts.
-3. Press **PREPARE TRANSFER**. The plugin adds a 20-character marker such as
-   `CB123456654321G0001_` before each human-readable SubTool name. Parts with the
-   same marker have identical effective visibility in every occupied camera.
-4. Save the prepared **ZTL or ZPR**, then **EXPORT BANK** to a .zcv file. Export
-   also performs preparation automatically if it has not been done yet. Send
-   both matching files. Do not send a ZTL/ZPR saved before preparation.
-5. The recipient opens that ZTL/ZPR, imports the bank, and can reorder parts or
-   merge compatible parts using native ZBrush commands. Preserve a complete
-   marker from a source part in the resulting SubTool name.
+1. Load the reviewed 3.2.0 Camera Bank source and the regenerated Render Capture
+   source together. The orchestrator owns regeneration/integration of the latter.
+   Store cameras on the original editable Tool. Identifiers appear automatically
+   on the first store, and refresh on each store/update. Gray occupied cameras
+   participate equally; UPDATE ACTIVE keeps their render flags.
+2. Inspect framing, canvas/lens and visible geometry. Save the **ZTL/ZPR after
+   the latest store/update**, then EXPORT BANK. Send both matching files. The
+   plugin does not save or overwrite the model file for you.
+3. Open that pair, import the bank, then reorder or perform supported native
+   merges. Merge only parts with identical visibility in every occupied camera,
+   including gray ones. Preserve one complete compatible `CB...G..._` source
+   marker in each result; `Merged_` prefixes are supported.
+4. Editing a bank after reordering/compatible merging remaps every occupied
+   view before recording the edit and refreshing the names. Save/export a new
+   matching pair. An older saved model must use its older matching bank.
 
-Merge only parts sharing visibility in **all occupied cameras**, including gray
-cameras not currently selected for rendering. A change to the human-readable name
-is fine while retaining the marker. MergeVisible's documented `Merged_` prefix
-is accepted because markers are recognized inside a name, not only at its start.
-If a native command replaces the entire name (for example with a folder name),
-retain a compatible source marker in the result before recalling/rendering.
+## Identity and visibility contract
 
-When storing/updating cameras on a prepared Tool, the plugin first remaps every
-existing view to the current SubTools, then regroups the edited visibility and
-refreshes the markers. Save and send a new matching ZTL/ZPR + bank pair afterward.
-Previously exported pairs remain separate; a foreign/stale marker is rejected.
+Human names may be duplicated or renamed while the marker remains intact.
+Equal-visibility duplicates share a group; unequal-visibility duplicates receive
+separate groups. Unknown/added/unmarked parts, missing identifiers, foreign or
+stale identifiers, malformed identifiers and multiple markers are rejected.
+There is no positional guess or automatic adoption of unknown geometry.
 
-## What visibility means
+A missing group needed by any occupied view is rejected unless a surviving
+group has the same visibility across the remaining occupied cameras. Entirely
+hidden classes may be deleted. Missing members within a surviving class cannot
+be detected. A native result named only after a folder loses its identity: keep
+or restore the compatible source marker before recall/update/render. The method
+tracks visibility classes, not arbitrary geometric ancestry; incompatible merges
+that discard source names are outside the contract.
 
-Capture accounts for individual eyes, the parent folder eye, Solo, and ZBrush's
-always-visible active SubTool. Recall selects a visible part and opens folder
-eyes while applying the recorded per-part eyes. This preserves the effective
-visible geometry; the folder eye UI need not match the original arrangement.
-Solo is disabled for camera recall; Render Capture restores the user's starting
-Solo state after the batch. Framing data, sizes, lens settings, the prior BPR
-quality values and numbered Screenshots copies remain in the workflow.
+Effective visibility includes individual eyes, parent folder eyes, Solo and the
+active part. Recall disables Solo, selects a visible part, opens folder eyes and
+sets effective per-part eyes. Folder-eye UI need not reproduce the original
+arrangement. Render Capture restores starting Solo after its batch. Existing
+transforms, sizes, lens settings and render selection remain independent.
 
-## Existing banks and scope
+## Older banks and recovery
 
-Data versions 1-7 can still be imported. They contain positional visibility,
-not the new effective snapshots or identifiers. On the original unmerged Tool,
-recall and visually inspect **every occupied camera**, then UPDATE ACTIVE for
-each before preparing a new transfer. Older banks can also lack canvas/lens data.
-An already merged, unmarked model cannot reliably reconstruct that missing history.
+V1-7 and untracked v8 have no persistent name/order evidence. On the original
+unmerged Tool/order, recall and review each occupied camera, then UPDATE ACTIVE.
+The last update completes tracking automatically. No extra preparation action is
+required. Partial reviews are bound to the unchanged Tool/list in session memory;
+a changed list blocks continuation. Import/export of an incomplete review starts
+review again, rather than treating count equality as ancestry. An already merged
+unmarked model cannot supply the missing old history. Older files may also need
+canvas/lens corrections. Tracked v8 pairs import directly without re-review.
 
-The method uses a surviving **visibility-group marker**, not geometric ancestry.
-It rejects missing, malformed, ambiguous or foreign markers and missing visible
-groups. It cannot detect every incompatible native merge after the operation has
-discarded the other source names. The agreed same-visibility merge rule remains
-a precondition; there is no claim of reconstructing arbitrary merged geometry.
+Store/update snapshots the bank, names, status, selection and view before editing.
+Rename/truncation failures roll back; after Escape use a Camera Bank action on
+the same unchanged Tool to recover. Rendering blocks while recovery is pending.
+This is session recovery, not protection against application termination. Keep
+original saved files. Never restart an active app just to apply this revision.
 
-Names and the bank are updated with a session-memory recovery snapshot. A handled
-rename failure restores previous names, flags, selection and view. After Escape,
-use a Camera Bank action on the same unchanged Tool to recover. Render Capture
-blocks while recovery is pending. Session recovery does not survive app termination;
-save original files before editing, as for any native model work.
+## Export diagnosis and limits
 
-## Verification status
+Frozen routines from baseline `1d3ebe2` reproduce export aborts in the mock host
+for an unreviewed legacy bank and for Edit mode off. 3.1.0 made file writing depend
+on live-Tool/preparation checks. These concrete source blockers are removed;
+the owner's exact native failure is not yet observed or proven to have one of
+these causes. The revised exporter writes all stored cameras through a normalized
+copy and verifies exact length plus all float cells after reopening the file.
 
-**Source-only revision. ZBrush was not launched, controlled, restarted, compiled
-or rendered by the agent. Native acceptance remains pending.** Native command
-behavior, actual name retention/truncation, framing after real merges and the
-resulting images require an application check when the owner chooses to run it.
+Cancellation and declined overwrite preserve data, names and pending recovery.
+File errors or mismatched read-back do not claim success. Explicitly confirmed
+replacements use a direct native write; on error that destination may be partial.
+The in-memory bank remains available for retry to a new path. An untracked bank
+can always be exported as a backup, but the success message states its ancestry
+limit. Export never renames parts or silently saves the ZTL/ZPR.
 
-Offline results: 32 logic scenarios (16 existing + 16 merge-visibility cases),
-installer/uninstaller fixtures, and a 1,000-SubTool duplicate-name smoke check.
-Cases include a bank-file round trip into a fresh mock host, compatible merges
-and reordering, all 25 mask bits, hidden folders, Solo, active-hidden parts,
-duplicate native mesh IDs, legacy migration, invalid metadata, stale markers,
-edits after merging, rename failures and Escape during snapshot/edit/cleanup.
-The simulated merged model also completes both renderer phases and Screenshots
-copies. Neither simulation nor source parsing is native compilation/visual QA.
+## Source validation and native acceptance
 
-Reviewed references:
-- [Maxon SubTools / MergeVisible naming](https://help.maxon.net/zbr/en-us/Content/html/reference-guide/tool/polymesh/subtool/subtool.html)
-- [Maxon ZFileUtils / RenameSetNext](https://help.maxon.net/zbr/en-us/Content/html/user-guide/customizing-zbrush/zscripting/zfileutils/zfileutils.html)
-- [Maxon command reference](https://help.maxon.net/zbr/en-us/Content/html/user-guide/customizing-zbrush/zscripting/command-reference/command-reference.html)
-- [SubTool folder-status example by Marcus Civis](https://www.zbrushcentral.com/t/open-subtool-folder-before-deleting-the-subtool/421807)
+Run from the repository root:
+
+```powershell
+python 'projects/zbrush-plugins/Plugin de zbrush/Development/build_all.py'
+python 'projects/zbrush-plugins/Plugin de zbrush/Development/verify.py'
+python 'projects/zbrush-plugins/Plugin de zbrush/Development/verify_merge.py'
+python 'projects/zbrush-plugins/Plugin de zbrush/Development/verify_camera_320.py'
+```
+
+The first command regenerates Camera Bank, its shared reader, and a **local**
+RenderCapture.txt for regression testing. This worker does not commit that render
+file; the orchestrator regenerates it after source integration. See
+[CAMERA_3.2.0_RESULT.md](CAMERA_3.2.0_RESULT.md) for actual results and delivery.
+These are mock/source tests, not native compilation or rendered-image review.
+
+After independent source review, the orchestrator should use a disposable saved
+Tool under its exclusive ZBrush lease:
+
+1. Load both integrated TXT sources in ZBrush 2023.2.1. Verify native compilation,
+   DLL resolution, no preparation button and automatic verified name changes.
+2. Store three views with different dimensions/lenses; make one gray. Include
+   duplicate human names, hidden folders, Solo and a hidden active part. Recall,
+   UPDATE ACTIVE on the gray camera, and compare framing and effective geometry.
+3. Save a new ZTL/ZPR and bank; reopen/import and compare all occupied cameras.
+   Test export cancellation, a new writable path, confirmed overwrite and a
+   failing path. Export with Edit off must still produce a usable 111,084-byte bank.
+4. Reorder, MergeDown compatible parts, and probe actual MergeVisible/folder name
+   retention/truncation. Compare all views, then update and save/reopen a fresh
+   pair. Reject missing/mixed/foreign markers before canvas changes.
+5. Run integrated NON BPR and BPR and compare visibility/framing and final Solo
+   recovery. Probe Escape during first store, gray update and legacy partial
+   review on a disposable Tool; verify same-Tool recovery and other-Tool rejection.
+6. Import a copy of a real legacy bank on its original unmerged Tool. Complete
+   all reviewed updates; verify tracking finishes automatically and export works
+   before and after completion. Probe large real lists/name encodings separately.
+
+Official references checked for source design: [Maxon command reference](https://help.maxon.net/zbr/en-us/Content/html/user-guide/customizing-zbrush/zscripting/command-reference/command-reference.html)
+(`FileNameAsk`, `MemSaveToFile`, `MemReadString`) and
+[ZFileUtils RenameSetNext](https://help.maxon.net/zbr/en-us/Content/html/user-guide/customizing-zbrush/zscripting/zfileutils/zfileutils.html).
+Documentation and the mock host do not replace native acceptance.
