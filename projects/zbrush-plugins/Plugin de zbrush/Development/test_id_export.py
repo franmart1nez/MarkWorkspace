@@ -1,0 +1,583 @@
+"""Execute actual delivered ID ZScript routines in a mock host.
+
+The interpreter is shared with the reviewed Camera Bank tests. These tests do
+not compile ZScript, load ZBrush, or prove actual ZTL/PNG visual correctness.
+"""
+from pathlib import Path
+import copy
+import struct
+import tempfile
+import unittest
+
+from build_id import compose, OUTPUT
+from verify import Host, Exit, parse, ROOT
+
+
+class IDHost(Host):
+    def __init__(self):
+        super().__init__()
+        self.ui.update({
+            'Tool:Save As': 0, 'Color:FillObject': 0, 'Draw:M': 0,
+            'Draw:Rgb': 1, 'Draw:Mrgb': 0, 'Draw:RGB Intensity': 42,
+            'Tool:Polygroups:Auto Groups': 0,
+            'Tool:Polypaint:Polypaint From Polygroups': 0,
+            'Tool:Masking:Clear': 0, 'Transform:Polyframe': 1,
+            'Document:Resize': 0, 'Transform:Draw Pointer': 0,
+            'Layer:Clear': 0, 'Draw:Floor': 1,
+            'Preferences:LightBox:LightBox': 0,
+            'Preferences:Thumbnail:T.Thumbnail': 1,
+        })
+        self.mats += ['Flat Color', 'Flat Color altered']
+        self.events = []
+        self.meshes = []
+        self.tool_path = 'owner/Original'
+        self.choose_calls = 0
+        self.save_failure = None
+        self.write_failure = None
+        self.export_failure = False
+        self.dll_available = True
+        self.dll_version = 8
+        self.mesh_disabled = {}
+        self.interrupt_on = None
+        self.selection_moves_camera = False
+        self.corrupt_png = False
+
+    def cmd(self, n):
+        c, *a = n
+        E = lambda i: self.e(a[i])
+        if c == 'FileGetInfo':
+            p = Path(E(0))
+            return p.stat().st_size / (1024 * 1024) if p.is_file() else 0
+        if c == 'ToolGetPath':
+            return self.tool_path
+        if c == 'ToolSetPath':
+            self.tool_path = E(1)
+            return 0
+        if c == 'MemWrite':
+            fmt = {2: 'B', 6: 'I'}[int(E(2))]
+            struct.pack_into('<'+fmt, self.mem[a[0]], int(E(3)), int(E(1)))
+            return struct.calcsize(fmt)
+        if c == 'MemRead':
+            fmt = {2: 'B', 6: 'I'}[int(E(2))]
+            self.set(a[1], struct.unpack_from('<'+fmt, self.mem[a[0]], int(E(3)))[0])
+            return struct.calcsize(fmt)
+        if c == 'FileNameSetNext' and not a:
+            self.nextfile = ''
+            return
+        if c == 'MemCreateFromFile':
+            p = Path(E(1))
+            if not p.is_file():
+                return -3
+            data = p.read_bytes()
+            if len(a) > 2:
+                start = int(E(2))
+                data = data[start:start+int(E(3))] if len(a) > 3 else data[start:]
+            self.mem[a[0]] = bytearray(data)
+            return len(data)
+        if c == 'MemSaveToFile' and self.write_failure and self.write_failure in E(1):
+            return -3
+        if c == 'FileExists' and E(0).endswith('.dll'):
+            return int(self.dll_available)
+        if c == 'FileExecute':
+            if E(1) == 'Version':
+                return self.dll_version
+            if E(1) == 'ChooseFolder':
+                self.choose_calls += 1
+        if c == 'IsEnabled':
+            k = E(0)
+            if k in self.mesh_disabled.get(self.st, set()):
+                return 0
+        if c == 'SubToolSelect':
+            r = super().cmd(n)
+            if self.selection_moves_camera:
+                self.transform[0] += 17
+                self.zoom += .5
+                self.pan[0] += 11
+            return r
+        if c == 'IPress':
+            k = E(0)
+            if k in ['Draw:M', 'Draw:Rgb', 'Draw:Mrgb']:
+                for mode in ['Draw:M', 'Draw:Rgb', 'Draw:Mrgb']:
+                    self.ui[mode] = int(mode == k)
+                return
+            if k in ['Render:Preview', 'Render:Best', 'Render:Fast', 'Render:Flat']:
+                for mode in ['Render:Preview', 'Render:Best', 'Render:Fast', 'Render:Flat']:
+                    self.ui[mode] = int(mode == k)
+                return
+            if k == 'Tool:Save As':
+                self.events.append(('backup', self.nextfile, copy.deepcopy(self.meshes), self.status[:], self.st))
+                self.tool_path = str(Path(self.nextfile).with_suffix(''))
+                if self.save_failure == 'cancel':
+                    return
+                Path(self.nextfile).write_bytes(b'' if self.save_failure == 'empty' else
+                                               b'NOT A NATIVE ZTL - MOCK ONLY' + bytes(100))
+                return
+            actions = {'Color:FillObject': 'fill',
+                       'Tool:Polygroups:Auto Groups': 'groups',
+                       'Tool:Polypaint:Polypaint From Polygroups': 'polypaint',
+                       'Tool:Masking:Clear': 'unmask'}
+            if k in actions:
+                event = actions[k]
+                mesh = self.meshes[self.st]
+                if event == 'fill':
+                    before = copy.deepcopy(mesh['rgb'])
+                    if self.ui['Draw:Mrgb'] or self.ui['Draw:Rgb']:
+                        mesh['rgb'] = [(self.ui['Color:R'], self.ui['Color:G'], self.ui['Color:B'])] * 2
+                    if self.ui['Draw:Mrgb'] or self.ui['Draw:M']:
+                        mesh['material'] = self.mats[int(self.ui['Material:ItemInfo'])]
+                    self.events.append((event, self.names[self.st], before, copy.deepcopy(mesh)))
+                elif event == 'groups':
+                    mesh['generation'] += 1
+                    mesh['groups'] = (self.st * 2 + 1, self.st * 2 + 2)
+                    self.events.append((event, self.names[self.st]))
+                elif event == 'polypaint':
+                    mesh['rgb'] = [(g * 29, g * 17, g * 7) for g in mesh['groups']]
+                    self.events.append((event, self.names[self.st]))
+                else:
+                    mesh['masked'] = False
+                    self.events.append((event, self.names[self.st]))
+                if self.interrupt_on == event:
+                    raise Exit()
+                return
+            if k == 'Document:Export':
+                self.events.append(('export', self.nextfile, copy.deepcopy(self.meshes)))
+                if self.export_failure:
+                    return
+                old_button = self.ui[k]
+                super().cmd(n)
+                self.ui[k] = old_button
+                Path(self.nextfile).write_bytes(b'corrupt!' if self.corrupt_png else b'\x89PNG\r\n\x1a\nMOCK IMAGE ONLY')
+                self.exports[-1]['mesh_rgb'] = [copy.deepcopy(m['rgb']) for m in self.meshes]
+                self.exports[-1]['mesh_materials'] = [m['material'] for m in self.meshes]
+                return
+            if k in ['Document:Resize', 'Layer:Clear', 'Transform:Draw Pointer']:
+                old_button = self.ui[k]
+                result = super().cmd(n)
+                self.ui[k] = old_button
+                return result
+        return super().cmd(n)
+
+
+def cell(h, index, value=None):
+    if value is None:
+        return struct.unpack_from('<f', h.mem['CB25Data'], index * 4)[0]
+    struct.pack_into('<f', h.mem['CB25Data'], index * 4, value)
+
+
+class IDExport(unittest.TestCase):
+    def host(self, reorder=False):
+        h = IDHost()
+        h.load(ROOT / 'Camera Bank/CameraBank25.txt')
+        h.names = ['A', 'B', 'C', 'Never', 'GrayOnly']
+        h.ids = [123, 123, 16777219, 10004, 10005]  # Duplicates and IDs > float precision.
+        h.status = [1, 1, 0, 0, 0]
+        h.pp = [0, 1, 0, 0, 1]
+        h.tx = [1, 1, 1, 1, 0]
+        h.folders = [-1] * 5
+        h.st = 0
+        h.call('CB29_SaveSlot', 0)
+        h.status = [0, 1, 1, 0, 0]
+        h.st = 1
+        h.ui.update({'Document:Width': 800, 'Document:Height': 600})
+        h.dims = [800, 600]
+        h.call('CB29_SaveSlot', 9)
+        h.status = [0, 0, 0, 0, 1]
+        h.st = 4
+        h.call('CB29_SaveSlot', 24)
+        cell(h, 20+24*20+16, 0)
+        h.call('CB32_PrepareTransfer')
+        if reorder:
+            order = [4, 2, 0, 3, 1]
+            for attr in ['names', 'ids', 'status', 'pp', 'tx', 'folders']:
+                setattr(h, attr, [getattr(h, attr)[i] for i in order])
+        h.meshes = [dict(rgb=[(20+i, 40+i, 60+i), (80+i, 90+i, 100+i)],
+                         material='Original', groups=(88, 99), generation=0, masked=True)
+                    for i in range(5)]
+        h.status = [0x401, 0, 1, 0x21, 0]
+        h.st = 3
+        h.ui['Transform:Solo'] = 1
+        h.ui['Draw:Perspective'] = 0
+        h.ui['Render:Preview'] = 0
+        h.ui['Render:Fast'] = 1
+        h.transform = [7.0] * 9
+        h.zoom = 1.75
+        h.pan = [-12, 38]
+        h.load(OUTPUT)
+        h.events.clear()
+        return h
+
+    def click(self, h):
+        buttons = [n for n in parse(OUTPUT.read_text('ascii')) if n[0] == 'IButton']
+        self.assertEqual(len(buttons), 1)
+        self.assertEqual(buttons[0][1], '"ZPlugin:Generar y exportar ID:Generar y exportar ID"')
+        h.run(buttons[0][3])
+
+    def unchanged_meshes(self, h, before):
+        self.assertEqual(h.meshes, before)
+        self.assertFalse(any(e[0] in {'fill', 'groups', 'polypaint', 'unmask'} for e in h.events))
+        self.assertEqual(h.exports, [])
+
+    def test_generated_source_matches_current_inputs(self):
+        self.assertEqual(OUTPUT.read_text('ascii'), compose())
+        h = IDHost()
+        h.load(OUTPUT)
+        self.assertFalse(any(k.startswith(('cb', 'rc')) for k in h.globals))
+        self.assertFalse(any(k.startswith('RC_') for k in h.routines))
+
+    def test_one_button_new_session_material_only_union_consistent_views_and_restore(self):
+        for reorder in [False, True]:
+            with self.subTest(reorder=reorder), tempfile.TemporaryDirectory() as d:
+                h = self.host(reorder)
+                before = copy.deepcopy(h.meshes)
+                before_pp = h.pp[:]
+                state = (h.status[:], h.st, h.tx[:], h.transform[:], h.zoom, h.pan[:],
+                         copy.deepcopy(h.ui), h.tool_path, cell(h, 5))
+                h.selection_moves_camera = True
+                h.chosen = d
+                self.click(h)
+                self.assertEqual(h.choose_calls, 1)
+                self.assertEqual([Path(e['path']).parts[-2:] for e in h.exports],
+                                 [('01', 'ID.png'), ('10', 'ID.png')])
+                self.assertEqual([e['dims'] for e in h.exports], [[1920, 1080], [800, 600]])
+                self.assertEqual([m['generation'] for m in h.meshes],
+                                 [0, 1, 1, 0, 1] if reorder else [1, 1, 1, 0, 0])
+                needed = [i for i, n in enumerate(h.names) if n.endswith(('_A', '_B', '_C'))]
+                hidden = set(range(5)) - set(needed)
+                self.assertEqual(len(needed), 3)
+                for i in hidden:
+                    self.assertEqual(h.meshes[i], before[i])
+                    self.assertEqual(h.pp[i], before_pp[i])
+                fills = [e for e in h.events if e[0] == 'fill']
+                self.assertEqual(len(fills), 3)
+                for e in fills:
+                    self.assertEqual(e[2], e[3]['rgb'])
+                    self.assertEqual(e[3]['material'], 'Flat Color')
+                self.assertEqual(h.events[0][0], 'backup')
+                self.assertEqual(h.events[0][2], before)
+                self.assertEqual(h.events[0][3:], state[:2])
+                self.assertEqual(h.exports[0]['mesh_rgb'], h.exports[1]['mesh_rgb'])
+                for export in h.exports:
+                    self.assertEqual(export['solo'], 0)
+                    for i in needed:
+                        self.assertEqual(export['pp'][i], 1)
+                        self.assertEqual(export['tx'][i], 0)
+                        self.assertEqual(export['mesh_materials'][i], 'Flat Color')
+                self.assertEqual(h.status, state[0])
+                self.assertEqual(h.st, state[1])
+                self.assertEqual(h.tx, state[2])
+                self.assertEqual((h.transform, h.zoom, h.pan), state[3:6])
+                self.assertEqual(h.ui, state[6])
+                self.assertEqual(h.tool_path, state[7])
+                self.assertEqual(cell(h, 5), state[8])
+                self.assertTrue(all(h.pp[i] == 1 for i in needed))
+                self.assertEqual(struct.unpack_from('<f', h.mem['ID32Recovery'])[0], 0)
+                self.assertTrue(Path(h.v['idBackup']).is_file())
+                self.assertIn('complete', Path(h.v['idRecord']).read_text().lower())
+                self.assertFalse((Path(h.v['idRoot']) / '25').exists())
+                self.assertFalse(list(Path(d).rglob('*.tmp')))
+                self.assertFalse(any('BPR' in str(e) for e in h.events))
+
+    def test_existing_root_other_passes_and_unique_recovery(self):
+        h = self.host()
+        with tempfile.TemporaryDirectory() as d:
+            session = Path(d) / 'ZPass_3'
+            (session / '01').mkdir(parents=True)
+            other = session / '01/_Depth.psd'
+            other.write_bytes(b'keep')
+            (session / 'Recovery').mkdir()
+            old = session / 'Recovery/Before_ID_1.ztl'
+            old.write_bytes(b'old backup')
+            h.mem['RC30Root'] = bytearray(str(session).encode()+b'\0')
+            self.click(h)
+            self.assertEqual(h.choose_calls, 0)
+            self.assertEqual(Path(h.v['idRoot']), session)
+            self.assertEqual(other.read_bytes(), b'keep')
+            self.assertEqual(old.read_bytes(), b'old backup')
+            self.assertEqual(Path(h.v['idBackup']).name, 'Before_ID_2.ztl')
+
+    def test_resize_items_can_be_disabled_until_shared_reader_leaves_edit(self):
+        h = self.host()
+        for item in ['Document:Width', 'Document:Height', 'Document:Pro',
+                     'Document:Resize', 'Transform:Draw Pointer', 'Layer:Clear']:
+            h.enabled[item] = False
+        with tempfile.TemporaryDirectory() as d:
+            h.chosen = d
+            self.click(h)
+            self.assertEqual(len(h.exports), 2)
+
+    def test_fov_restores_before_perspective_off_and_camera_lock(self):
+        h = self.host()
+        h.ui['Draw:Lock Camera'] = 1
+        h.ui['Draw:Field Of View(deg)'] = 72
+        original = h.cmd
+        def cmd(n):
+            if n[0] == 'IsEnabled' and h.e(n[1]) in ['Draw:Focal Length(mm)', 'Draw:Field Of View(deg)']:
+                return int(h.ui['Draw:Perspective'] == 1)
+            if n[0] in ['MTransformSet', 'CanvasZoomSet', 'CanvasPanSet']:
+                # Direct view restoration must happen while the camera is free.
+                if h.ui['Draw:Lock Camera']:
+                    return
+            return original(n)
+        h.cmd = cmd
+        state = h.transform[:], h.zoom, h.pan[:]
+        with tempfile.TemporaryDirectory() as d:
+            h.chosen = d
+            self.click(h)
+            self.assertEqual(h.ui['Draw:Field Of View(deg)'], 72)
+            self.assertEqual(h.ui['Draw:Perspective'], 0)
+            self.assertEqual(h.ui['Draw:Lock Camera'], 1)
+            self.assertEqual((h.transform, h.zoom, h.pan), state)
+
+    def test_new_root_skips_existing_session_and_invalid_cached_root(self):
+        h = self.host()
+        with tempfile.TemporaryDirectory() as d:
+            (Path(d) / 'ZPass_1').mkdir()
+            h.mem['RC30Root'] = bytearray(str(Path(d)/'missing').encode()+b'\0')
+            h.chosen = d
+            self.click(h)
+            self.assertEqual(Path(h.v['idRoot']).name, 'ZPass_2')
+
+    def test_collision_in_later_camera_is_before_backup_and_mutation(self):
+        h = self.host()
+        with tempfile.TemporaryDirectory() as d:
+            (Path(d)/'10').mkdir()
+            target = Path(d)/'10/ID.png'
+            target.write_bytes(b'keep')
+            h.mem['RC30Root'] = bytearray(d.encode()+b'\0')
+            before = copy.deepcopy(h.meshes)
+            with self.assertRaises(Exit):
+                self.click(h)
+            self.unchanged_meshes(h, before)
+            self.assertFalse(h.events)
+            self.assertEqual(target.read_bytes(), b'keep')
+
+    def test_cancel_choose_has_no_mesh_changes(self):
+        h = self.host()
+        before = copy.deepcopy(h.meshes)
+        with self.assertRaises(Exit):
+            self.click(h)
+        self.unchanged_meshes(h, before)
+        self.assertIn('cancelled', h.messages[-1])
+
+    def test_missing_controls_material_dll_edit_or_bank_abort_before_mutation(self):
+        cases = ['control', 'material', 'dll', 'dll_version', 'edit', 'no_bank',
+                 'empty_bank', 'positional', 'dimensions', 'mesh_control']
+        for case in cases:
+            with self.subTest(case=case), tempfile.TemporaryDirectory() as d:
+                h = self.host()
+                h.chosen = d
+                if case == 'control':
+                    del h.ui['Color:FillObject']
+                if case == 'material':
+                    h.mats.remove('Flat Color')
+                if case == 'dll':
+                    h.dll_available = False
+                if case == 'dll_version':
+                    h.dll_version = 7
+                if case == 'edit':
+                    h.ui['Transform:Edit'] = 0
+                if case == 'no_bank':
+                    del h.mem['CB25Data']
+                if case == 'empty_bank':
+                    for s in range(25):
+                        cell(h, 20+s*20+16, 0)
+                if case == 'positional':
+                    cell(h, 7, 0)
+                if case == 'dimensions':
+                    cell(h, 20+18, 0)
+                if case == 'mesh_control':
+                    h.mesh_disabled[2] = {'Tool:Polypaint:Polypaint From Polygroups'}
+                before = copy.deepcopy(h.meshes)
+                with self.assertRaises(Exit):
+                    self.click(h)
+                self.unchanged_meshes(h, before)
+
+    def test_output_write_and_backup_failures_precede_mutation(self):
+        for case in ['write', 'record', 'backup_cancel', 'backup_empty', 'backup_short']:
+            with self.subTest(case=case), tempfile.TemporaryDirectory() as d:
+                h = self.host()
+                h.chosen = d
+                h.write_failure = 'ID_write_test_' if case == 'write' else None
+                if case == 'record':
+                    h.write_failure = 'Before_ID_'
+                if case.startswith('backup_'):
+                    h.save_failure = case[7:]
+                if case == 'backup_short':
+                    original = h.cmd
+                    def short(n):
+                        if n[0] == 'MemCreateFromFile' and 'idBackup' == n[2]:
+                            return 12
+                        return original(n)
+                    h.cmd = short
+                before = copy.deepcopy(h.meshes)
+                with self.assertRaises(Exit):
+                    self.click(h)
+                self.unchanged_meshes(h, before)
+                self.assertEqual(h.tool_path, 'owner/Original')
+
+    def test_export_failure_reports_mesh_changes_and_restores_display(self):
+        h = self.host()
+        h.export_failure = True
+        with tempfile.TemporaryDirectory() as d:
+            h.chosen = d
+            state = h.status[:], h.st, h.pp[:], h.tx[:], h.transform[:]
+            with self.assertRaises(Exit):
+                self.click(h)
+            self.assertEqual((h.status, h.st, h.pp, h.tx, h.transform), state)
+            self.assertEqual([m['generation'] for m in h.meshes], [1, 1, 1, 0, 0])
+            self.assertTrue(Path(h.v['idBackup']).is_file())
+            self.assertTrue(any('Mesh data may have changed' in m for m in h.messages))
+
+    def test_escape_then_same_button_recovers_without_rerunning_and_guards_other_tool(self):
+        h = self.host()
+        h.interrupt_on = 'groups'
+        with tempfile.TemporaryDirectory() as d:
+            h.chosen = d
+            state = h.status[:], h.st, h.pp[:], h.tx[:], h.transform[:]
+            with self.assertRaises(Exit):
+                self.click(h)
+            events = copy.deepcopy(h.events)
+            h.interrupt_on = None
+            h.tool_index += 1
+            with self.assertRaises(Exit):
+                self.click(h)
+            self.assertIn('same Tool', h.messages[-1])
+            h.tool_index -= 1
+            # Source reloading preserves the session recovery blocks.
+            h.load(OUTPUT)
+            with self.assertRaises(Exit):
+                self.click(h)
+            self.assertEqual(h.events, events)
+            self.assertEqual((h.status, h.st, h.pp, h.tx, h.transform), state)
+            self.assertIn('Nothing was rerun', h.messages[-1])
+            self.assertTrue(Path(h.v['idBackup']).is_file())
+
+    def test_corrupt_png_is_reported_after_mutation_without_overwriting(self):
+        h = self.host()
+        h.corrupt_png = True
+        with tempfile.TemporaryDirectory() as d:
+            h.chosen = d
+            with self.assertRaises(Exit):
+                self.click(h)
+            self.assertEqual(len(h.exports), 1)
+            self.assertTrue(any('not a readable PNG' in m for m in h.messages))
+            self.assertEqual(Path(h.exports[0]['path']).read_bytes(), b'corrupt!')
+
+    def test_folder_and_solo_effective_visibility_define_the_union(self):
+        h = IDHost()
+        h.load(ROOT / 'Camera Bank/CameraBank25.txt')
+        h.names = ['Outside', 'FolderHead', 'Child', 'Active']
+        h.status = [1, 0x401, 1, 0]
+        h.ids = [501, 502, 503, 504]
+        h.pp = [0] * 4
+        h.tx = [1] * 4
+        h.folders = [-1, 1, 1, -1]
+        h.st = 3
+        h.call('CB29_SaveSlot', 0)
+        h.ui['Transform:Solo'] = 1
+        h.st = 2
+        h.call('CB29_SaveSlot', 9)
+        h.call('CB32_PrepareTransfer')
+        h.meshes = [dict(rgb=[(20, 40, 60)] * 2, material='Original',
+                         groups=(88, 99), generation=0, masked=False) for _ in range(4)]
+        original_status = h.status[:]
+        h.load(OUTPUT)
+        with tempfile.TemporaryDirectory() as d:
+            h.chosen = d
+            self.click(h)
+            self.assertEqual([m['generation'] for m in h.meshes], [1, 0, 1, 1])
+            self.assertEqual([e['visibility'] for e in h.exports], [[1, 0, 0, 1], [0, 0, 1, 0]])
+            self.assertEqual(h.status, original_status)
+            self.assertEqual(h.ui['Transform:Solo'], 1)
+
+    def test_preflight_escape_restores_without_mesh_processing(self):
+        h = self.host()
+        original = h.cmd
+        interrupted = False
+        def cmd(n):
+            nonlocal interrupted
+            result = original(n)
+            if n[0] == 'RoutineCall' and n[1] == 'ID_CB29_LoadSlot' and not interrupted:
+                interrupted = True
+                raise Exit()
+            return result
+        h.cmd = cmd
+        state = h.status[:], h.st, h.pp[:], h.tx[:], h.transform[:], copy.deepcopy(h.ui)
+        with tempfile.TemporaryDirectory() as d:
+            h.chosen = d
+            with self.assertRaises(Exit):
+                self.click(h)
+            h.cmd = original
+            h.load(OUTPUT)
+            with self.assertRaises(Exit):
+                self.click(h)
+            self.assertEqual((h.status, h.st, h.pp, h.tx, h.transform, h.ui), state)
+            self.assertFalse(h.events)
+            self.assertIn('No ID mesh processing started', h.messages[-1])
+
+    def test_foreign_name_is_rejected_before_backup_then_pending_view_can_recover(self):
+        h = self.host()
+        h.names[0] = 'Unmatched name'
+        before = copy.deepcopy(h.meshes)
+        state = h.status[:], h.st, h.transform[:]
+        with tempfile.TemporaryDirectory() as d:
+            h.chosen = d
+            with self.assertRaises(Exit):
+                self.click(h)
+            self.unchanged_meshes(h, before)
+            self.assertFalse(h.events)
+            self.assertTrue(any('identifier' in m for m in h.messages))
+            with self.assertRaises(Exit):
+                self.click(h)
+            self.assertEqual((h.status, h.st, h.transform), state)
+
+    def test_recovery_waits_for_edit_and_preserves_marker(self):
+        h = self.host()
+        h.interrupt_on = 'groups'
+        with tempfile.TemporaryDirectory() as d:
+            h.chosen = d
+            with self.assertRaises(Exit):
+                self.click(h)
+            h.interrupt_on = None
+            h.ui['Transform:Edit'] = 0
+            events = copy.deepcopy(h.events)
+            with self.assertRaises(Exit):
+                self.click(h)
+            self.assertGreater(struct.unpack_from('<f', h.mem['ID32Recovery'])[0], 0)
+            self.assertIn('3D Edit', h.messages[-1])
+            self.assertEqual(h.events, events)
+            h.ui['Transform:Edit'] = 1
+            with self.assertRaises(Exit):
+                self.click(h)
+            self.assertEqual(h.events, events)
+            self.assertEqual(struct.unpack_from('<f', h.mem['ID32Recovery'])[0], 0)
+
+    def test_escape_mid_snapshot_restores_only_captured_selection_and_view(self):
+        h = self.host()
+        state = h.status[:], h.st, h.pp[:], h.tx[:], h.transform[:], h.zoom, h.pan[:]
+        h.selection_moves_camera = True
+        original = h.cmd
+        interrupted = False
+        def cmd(n):
+            nonlocal interrupted
+            result = original(n)
+            if n[0] == 'SubToolSelect' and n[1] == 'idSnapshotIndex' and h.st == 2 and not interrupted:
+                interrupted = True
+                raise Exit()
+            return result
+        h.cmd = cmd
+        with tempfile.TemporaryDirectory() as d:
+            h.chosen = d
+            with self.assertRaises(Exit):
+                self.click(h)
+            self.assertEqual(struct.unpack_from('<f', h.mem['ID32Recovery'])[0], .5)
+            h.cmd = original
+            h.load(OUTPUT)
+            with self.assertRaises(Exit):
+                self.click(h)
+            self.assertEqual((h.status, h.st, h.pp, h.tx, h.transform, h.zoom, h.pan), state)
+            self.assertFalse(h.events)
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)
