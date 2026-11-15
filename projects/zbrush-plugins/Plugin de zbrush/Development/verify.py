@@ -372,7 +372,7 @@ class Regression(unittest.TestCase):
             self.assertEqual(sorted(p.name for p in shots.iterdir()),['01.png','10.png','25.png'])
             for label in ['01','10','25']:
                 self.assertEqual((shots/(label+'.png')).read_bytes(),
-                                 (session/label/'NonBPR/Z document.png').read_bytes())
+                                 (session/label/'Z document.png').read_bytes())
             self.assertEqual(len(h.exports),12) # Copies must not cause extra renders/exports.
             self.assertFalse((session/'03').exists());self.assertNotIn('RC31CopyPath',h.mem)
             h.call('RC_BPR');self.assertEqual(len(h.exports),33)

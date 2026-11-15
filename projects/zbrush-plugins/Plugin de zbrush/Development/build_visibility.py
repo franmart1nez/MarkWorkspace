@@ -164,9 +164,10 @@ def upgrade(camera, routine):
 ]''')
     old=routine(camera,'CB29_ImportBank')
     put('CB29_ImportBank',old.replace('[If,[StrLength,cbFile]>0,','[If,[StrLength,cbFile]>0,\n        [RoutineCall,CB32_Recover]',1).replace('cbImportVersion<7','[MVarGet,CB25Data,7]==0').replace('Legacy bank imported. Old files contain no canvas size or explicit FOV. Recall each camera, set its canvas/lens, then UPDATE ACTIVE and export a new bank.',
-        'Untracked bank imported. Names and merge ancestry are unknown. On the ORIGINAL unmerged Tool, recall, review and UPDATE ACTIVE for every occupied camera. Tracking completes automatically; then save the matching ZTL/ZPR and bank. Older banks may also need canvas/lens corrections.'))
+        'Untracked bank: ancestry is unknown. On the ORIGINAL unmerged Tool, review and UPDATE ACTIVE for every camera. Tracking then completes automatically. Save the matching ZTL/ZPR and bank. Older banks may need canvas/lens corrections.'))
 
-    # Every operation that edits/recalls bank state first recovers interrupted name edits.
+    # Editing/recall operations recover first. Import/export place recovery AFTER
+    # file selection (and export overwrite approval), so cancel remains read-only.
     for name in ['CB29_SaveSlot','CB29_LoadSlot','CB29_ClearSlot','CB29_ClearAll','CB29_SlotClick','CB29_EnterStoreMode','CB29_EnterClearMode']:
         if '[RoutineDef,'+name+',' in camera:
             old=routine(camera,name)

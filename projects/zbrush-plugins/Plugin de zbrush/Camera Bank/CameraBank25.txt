@@ -1427,7 +1427,7 @@
         [If,cbImportValid==1,
             [RoutineCall,CB29_SyncVisuals]
             [If,[MVarGet,CB25Data,7]==0,
-                [MessageOK,"Untracked bank imported. Names and merge ancestry are unknown. On the ORIGINAL unmerged Tool, recall, review and UPDATE ACTIVE for every occupied camera. Tracking completes automatically; then save the matching ZTL/ZPR and bank. Older banks may also need canvas/lens corrections.","Camera Bank 25"]
+                [MessageOK,"Untracked bank: ancestry is unknown. On the ORIGINAL unmerged Tool, review and UPDATE ACTIVE for every camera. Tracking then completes automatically. Save the matching ZTL/ZPR and bank. Older banks may need canvas/lens corrections.","Camera Bank 25"]
             ,
                 [MessageOK,"Camera Bank imported.","Camera Bank 25"]
             ]

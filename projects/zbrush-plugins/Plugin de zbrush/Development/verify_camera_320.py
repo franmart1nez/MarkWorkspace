@@ -5,7 +5,7 @@ import struct
 import tempfile
 import unittest
 
-from verify import Host, Exit, ROOT, parse
+from verify import Host, Exit, ROOT, parse, clean
 from verify_merge import parts, get
 
 
@@ -193,7 +193,35 @@ class Camera320(unittest.TestCase):
         self.button(h,'IMPORT BANK')
         self.assertEqual({k:bytes(v) for k,v in h.mem.items()},before)
         self.assertEqual(h.names,names)
+        with tempfile.TemporaryDirectory() as d:
+            path=Path(d)/'original.zcv';path.write_bytes(b'original user bank')
+            h.ask=str(path);h.answer=0
+            with self.assertRaises(Exit):self.button(h,'EXPORT BANK')
+            self.assertEqual(path.read_bytes(),b'original user bank')
+            self.assertEqual({k:bytes(v) for k,v in h.mem.items()},before)
+            self.assertEqual(h.names,names)
         h.call('CB32_Recover')
+
+    def test_file_dialogs_precede_recovery_in_final_generated_routines(self):
+        h=self.host()
+        for name in ['CB29_ExportBank','CB29_ImportBank']:
+            body=h.routines[name][0]
+            self.assertLess(body.index('[FileNameAsk,'),body.index('[RoutineCall,CB32_Recover]'),name)
+        body=h.routines['CB29_ExportBank'][0]
+        self.assertLess(body.index('[MessageYesNo,'),body.index('[RoutineCall,CB32_Recover]'))
+
+    def test_all_zscript_source_literals_fit_native_string_limit(self):
+        # Include generated sources, generator inputs, the shared includes and
+        # regression fixtures. Archived installed Recovery copies are excluded.
+        checked=[]
+        for path in sorted(ROOT.rglob('*')):
+            if path.suffix not in {'.txt','.inc'} or 'Recovery' in path.relative_to(ROOT).parts:continue
+            source=clean(path.read_text(encoding='utf-8-sig'))
+            for literal in re.findall(r'"([^"\n]*)"',source):
+                self.assertLessEqual(len(literal),255,f'{path.relative_to(ROOT)}: {len(literal)} characters')
+            checked.append(path)
+        self.assertIn(ROOT/'Camera Bank/CameraBank25.txt',checked)
+        self.assertIn(ROOT/'Development/camera_reader.inc',checked)
 
     def test_legacy_versions_and_sizes_keep_known_fields_without_inventing_names(self):
         for version,size in [(v,2080) for v in range(1,7)]+[(v,102180) for v in range(3,7)]+[(7,102980)]:

@@ -38,17 +38,49 @@ and Workspace files remain outside this worker's changes.
 
 ## Actual verification
 
-From the package's `Development` directory:
+After integrating the reviewed Render Capture 3.2.0 body, run from the package's
+`Development` directory:
 
 ```powershell
 python build_all.py
 python -m unittest -v verify verify_merge verify_camera_320
 ```
 
-Final result: **47 tests passed in 53.288 seconds** (Python 3.14, Windows):
+Follow-up result: **49 tests passed in 55.003 seconds** (Python 3.14, Windows):
 16 existing camera/renderer regressions, 16 adapted merge/recovery regressions,
-and 15 new camera 3.2 regressions. Temporary bank files are actual binary files
-written/read by the mock host; image exports and native operations are mocked.
+and 17 camera 3.2 regressions. The original delivery passed 47 tests before the
+additional literal-limit and final generated-routine ordering checks. Temporary
+bank files are actual binary files written/read by the mock host; image exports
+and native operations are mocked.
+
+This isolated worktree does not merge/rebase the render branch. For the actual
+follow-up run, only the locally generated RenderCapture.txt combined this
+worktree's shared reader with `Development/render_body.txt` from reviewed render
+commit `f7c0702`. The render body SHA256 was
+`4389542f17abd8a4a91d0f6a305cc1633251c20b68e590b8173d4e528408e08e`.
+To reproduce that source-only integration without changing render_body.txt, use
+these commands from `Development` instead of `build_all.py`, then run the same
+unittest command above:
+
+```powershell
+python build_camera.py
+@'
+from pathlib import Path
+import subprocess
+body = subprocess.check_output([
+    'git', 'show',
+    'f7c0702:projects/zbrush-plugins/Plugin de zbrush/Development/render_body.txt'
+])
+root = Path('..')
+reader = Path('camera_reader.inc').read_bytes()
+(root/'Render Capture/RenderCapture.txt').write_bytes(reader + b'\n\n' + body)
+'@ | python -
+```
+
+The legacy render body still on this isolated branch uses the former NonBPR
+subfolder. The updated screenshot regression intentionally requires the unified
+3.2.0 location `<camera>/Z document.png`, so use the integrated render body for
+the full suite. RenderCapture.txt remains excluded from this worker's commit.
 
 Coverage includes first-store automatic identifiers, same/different-visibility
 duplicate names, reorder, native duplicate IDs, human rename versus missing or
@@ -67,6 +99,26 @@ legacy snapshots, Edit mode off, and a missing rename DLL on an unprepared bank.
 The 3.2 exporter writes those same stored banks without those dependencies.
 The exact failure in the owner's native session remains unobserved; these source
 reproductions do not establish its sole cause.
+
+## Follow-up source review corrections
+
+The untracked-import message was shortened from 279 to **231 characters**.
+A complete scan of 1,400 quoted literals across 10 current text/include inputs,
+generated sources and test-fixture files found a maximum of **242 characters**.
+Archived installed Recovery copies are excluded. The new regression enforces
+[Maxon's documented 255-character string limit](https://help.maxon.net/zbr/en-us/Content/html/user-guide/customizing-zbrush/zscripting/technical/technical.html).
+No other oversized literal was found.
+
+The recovery-injection loop already excluded import/export in delivered commit
+`531b5fe`. The follow-up documents that exception and adds a final generated-source
+ordering assertion: FileNameAsk, cancellation and overwrite approval precede
+CB32_Recover. The interrupted-rename test now checks declined replacement as well
+as cancelled export/import, preserving every session-memory block, names and the
+existing bank file. All checks pass against the regenerated final source.
+
+This correction changes only CameraBank25.txt, build_visibility.py, verify.py,
+verify_camera_320.py and this result document. No native lease was granted or
+used; native acceptance constraints and schema remain unchanged.
 
 ## Limits and integration requirements
 
