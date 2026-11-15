@@ -70,6 +70,7 @@ class IDHost(Host):
         self.save_rename_target = 'first'
         self.path_failure_once = False
         self.memory_reads = []
+        self.path_updates = []
 
     def cmd(self, n):
         c, *a = n
@@ -83,6 +84,8 @@ class IDHost(Host):
             variable_names.append(a[2])
         for name in variable_names:
             assert '_' not in name, ('Native variable identifier', name)
+        if c == 'If':
+            assert '[ToolSetPath' not in a[0], 'Pre-evaluate native ToolSetPath result'
         if c == 'StrFind':
             assert all('[IGetTitle' not in value for value in a), 'Pre-evaluate native material title lookup'
         if c == 'StrMerge':
@@ -112,11 +115,15 @@ class IDHost(Host):
         if c == 'ToolGetPath':
             return self.tool_path
         if c == 'ToolSetPath':
+            assert '[ToolGetActiveIndex' not in a[0], 'Pre-evaluate native ToolGetActiveIndex'
+            index, path = E(0), E(1)
             if self.path_failure_once:
                 self.path_failure_once = False
+                self.path_updates.append((index, path, -1))
                 return -1
             # Deliberately does NOT repair SubTool names changed by Save As.
-            self.tool_path = E(1)
+            self.tool_path = path
+            self.path_updates.append((index, path, 0))
             return 0
         if c == 'MemWrite':
             fmt = {2: 'B', 6: 'I'}[int(E(2))]
@@ -1054,6 +1061,54 @@ class IDExport(unittest.TestCase):
             self.assertTrue(all(before == 0 for _, before, _ in png_reads))
             self.assertEqual([value for _, _, value in png_reads], list(b'\x89PNG\r\n\x1a\n')*2)
             self.assertNotIn('idPNGByte', h.v)
+
+    def test_native_toolsetpath_uses_scalar_index_and_result_at_both_sites(self):
+        h = self.host()
+        for routine in ['ID_Restore', 'ID_BackupTool']:
+            nodes = list(commands(h.routines[routine][0]))
+            setters = [item for item in nodes if item[0] == 'ToolSetPath']
+            self.assertEqual(len(setters), 1)
+            self.assertNotIn('[', setters[0][1])
+            self.assertFalse(any('[ToolSetPath' in item[1] for item in nodes if item[0] == 'If'))
+        h.tool_index = 7
+        h.call('ID_ResolveControls')
+        h.call('ID_Snapshot')
+        h.load(OUTPUT)
+        with self.assertRaises(Exit):
+            self.click(h)
+        self.assertEqual(h.path_updates, [(7, 'owner/Original', 0)])
+        self.assertEqual(h.events, [])
+        with tempfile.TemporaryDirectory() as d:
+            h = self.host()
+            h.tool_index = 9
+            h.chosen = d
+            self.click(h)
+            # Display recovery before backup, backup path restoration, final
+            # display recovery: both actual sites execute with the dynamic ID.
+            self.assertEqual(h.path_updates, [(9, 'owner/Original', 0)]*3)
+            self.assertEqual(h.tool_path, 'owner/Original')
+            self.assertEqual(len(h.exports), 2)
+
+    def test_toolsetpath_failure_keeps_recovery_until_numeric_result_succeeds(self):
+        h = self.host()
+        h.tool_index = 7
+        h.call('ID_ResolveControls')
+        h.call('ID_Snapshot')
+        names = h.names[:]
+        h.path_failure_once = True
+        with self.assertRaises(Exit):
+            self.click(h)
+        self.assertEqual(h.path_updates, [(7, 'owner/Original', -1)])
+        self.assertGreater(struct.unpack_from('<f', h.mem['ID32Recovery'])[0], 0)
+        self.assertTrue(any('session marker was kept' in message for message in h.messages))
+        self.assertEqual(h.names, names)
+        self.assertEqual(h.events, [])
+        with self.assertRaises(Exit):
+            self.click(h)
+        self.assertEqual(h.path_updates[-1], (7, 'owner/Original', 0))
+        self.assertEqual(struct.unpack_from('<f', h.mem['ID32Recovery'])[0], 0)
+        self.assertEqual(h.names, names)
+        self.assertEqual(h.events, [])
 
 
 if __name__ == '__main__':

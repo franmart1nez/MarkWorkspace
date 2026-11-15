@@ -3,8 +3,11 @@
 The third plugin is implemented as editable generated ZScript with one public
 action, plus an executable mock-host test suite. It prepares each mesh needed
 by enabled cameras once, then exports `<session>/<camera>/ID.png`. This is a
-source delivery; native compilation, backup reopening and visual acceptance
-remain pending. Nothing was installed, compiled or run in the live ZBrush.
+source delivery. The controller has now confirmed a native candidate completed
+two ID PNG exports and an exact-name ZTL backup with these compatibility fixes.
+Final diagnostic-free integration, backup reopening and visual acceptance
+remain controller checks. This worker has not installed, compiled or run
+anything in the live ZBrush.
 
 Source baseline: `4694ac3b7ac199e18177dad7a877ccd7b0d2e942`, containing the
 controller's handoff and video analysis. Assigned branch:
@@ -191,11 +194,10 @@ targets/parameters. Regressions use the actual candidate lookup with the native
 ID/path/title, reject a wrong parent and near-match title, validate every
 generated variable identifier, and execute the renamed reader on a stored view.
 
-Controller continuation: the last confirmed native state has a phase-1
-`ID32Recovery` marker from the earlier exception, with no backup, ID image or
-mesh processing. If it is still pending on the same Tool and bank, the first
-public click after loading corrected source should restore that snapshot and
-exit. A second click starts a fresh ID action.
+Controller continuation: the earlier phase-1 `ID32Recovery` marker was cleared
+by the controller's scalar ToolSetPath candidate. If a future interruption
+leaves a marker on the same Tool and bank, the first public click restores the
+snapshot and exits; a second click starts a fresh ID action.
 Do not delete recovery blocks or bypass identity checks to force a run. This
 worker has not performed that native continuation; the controller retains the
 exclusive UI lease.
@@ -217,6 +219,28 @@ snapshot after source reload, then run a complete two-view export. Every output
 local starts at numeric zero, all sixteen PNG signature bytes are checked, and
 the locals do not leak between routine calls. Native continuation remains the
 controller's responsibility; these are source/mock checks.
+
+## Native ToolSetPath scalar correction
+
+The durable native trace stopped before the nested ToolSetPath condition, while
+the standalone API probe had succeeded. Both owned sites (`ID_Restore` and
+`ID_BackupTool`) now precompute the active Tool index, assign the ToolSetPath
+result to a numeric local, then compare that scalar. Original error handling
+is retained: failed display recovery keeps the session marker, and failed
+backup path restoration aborts ID processing through the existing recovery path.
+
+The mock rejects ToolSetPath inside an If condition and a nested
+ToolGetActiveIndex input. Tests execute both actual sites using dynamic Tool
+indices 7/9 and verify the original path returns. A failure/retry case proves
+that a nonzero result preserves recovery until the later successful result,
+without generating mesh edits or images.
+
+The controller's updated `ID_DIAGNOSIS.md` confirms that this scalar form
+advanced past ToolSetPath, cleared phase-1 recovery, then completed the next
+public click: two camera ID PNGs, a marked-name ZTL under a numbered Recovery
+directory and a Colorize ON completion message. Color/hash review and native
+backup reopening were still in progress at that report. Trace/probe writes
+remain only in the controller scratch candidate and are not included here.
 
 ## SubTool Master decision and API evidence
 
@@ -288,7 +312,7 @@ The generated source matches `compose(camera_root=selected_inputs)` exactly and
 embeds the shared reader's SHA256 for traceability. The suite executes delivered
 routines with modeled
 material/RGB/group mutations and actual temporary file IO; it does not merely
-assert source strings. It covers 34 tests with additional subcases:
+assert source strings. It covers 36 tests with additional subcases:
 
 - the sole button's complete successful sequence, union preparation exactly
   once, same IDs between views, M-only preserving RGB before conversion and
@@ -324,9 +348,11 @@ assert source strings. It covers 34 tests with additional subcases:
   in declarations, assignments, loop counters and routine parameters, plus
   execution of the renamed camera reader with unchanged routine API names;
 - numeric MemRead output initialization, rejection of missing/nonnumeric output
-  locals, fresh-context phase-1 recovery and the complete PNG signature reads.
+  locals, fresh-context phase-1 recovery and the complete PNG signature reads;
+- scalar ToolSetPath patterns at both sites with dynamic Tool indices, plus
+  failed-path recovery retaining its marker until successful retry.
 
-Final results: 34 tests passed against the pinned final controller camera inputs;
+Final results: 36 tests passed against the pinned final controller camera inputs;
 Python compilation passed. The mock records a
 fake ZTL and signature-bearing fake image payload, explicitly labeled as mocks.
 These results **do not** establish native ZScript compilation, valid native ZTL
@@ -349,8 +375,9 @@ that is not a native execution/visual verification of this ID action.
 - The generated source now uses the controller's final native-compatible reader.
   Regenerate again if the controller changes it; no unowned camera source change
   is included in this patch. The controller must retest the public ID action
-  after these native compatibility corrections. Its earlier exceptions still
-  preceded backup/mutation; recover the pending phase-1 snapshot first.
+  after these native compatibility corrections, without candidate instrumentation.
+  Its scalar ToolSetPath candidate has completed recovery and two ID exports;
+  final color/hash review and native backup reopening remain controller checks.
 - The controller reports that its build_all now invokes build_id with
   `run_name='__main__'`; the guarded main remains compatible. Stage the source
   under folder `Generate and Export ID`, basename `GenerateExportID`; compiled
@@ -402,8 +429,9 @@ that is not a native execution/visual verification of this ID action.
    or falsely claim RGB/PolyGroups/masks were undone. Load the backup separately
    for original mesh data.
 
-Current limits: native compiler and application behavior are unverified; name
-lengths and non-ASCII Tool names need native coverage. Session output paths are
+Current limits: the final diagnostic-free build still needs controller native
+confirmation beyond the successful instrumented candidate; name lengths and
+non-ASCII Tool names need native coverage. Session output paths are
 limited to 180 characters (chosen parent 160) for safe string/suffix storage.
 The exact-name recovery ZTL path is limited to 240, so long first SubTool names
 require a shorter session path. Invalid filenames are rejected without renaming.
