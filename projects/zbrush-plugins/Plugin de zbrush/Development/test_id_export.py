@@ -43,7 +43,7 @@ class IDHost(Host):
             'Draw:Rgb': 1, 'Draw:Mrgb': 0, 'Draw:RGB Intensity': 42,
             'Tool:Polygroups:Auto Groups': 0,
             'Tool:Polypaint:Polypaint From Polygroups': 0,
-            'Tool:Masking:Clear': 0, 'Transform:Polyframe': 1,
+            'Tool:Masking:Clear': 0, 'Transform:Draw Polyframe': 1,
             'Document:Resize': 0, 'Transform:Draw Pointer': 0,
             'Layer:Clear': 0, 'Draw:Floor': 1,
             'Preferences:LightBox:LightBox': 0,
@@ -211,6 +211,7 @@ class IDHost(Host):
                 Path(self.nextfile).write_bytes(b'corrupt!' if self.corrupt_png else b'\x89PNG\r\n\x1a\nMOCK IMAGE ONLY')
                 self.exports[-1]['mesh_rgb'] = [copy.deepcopy(m['rgb']) for m in self.meshes]
                 self.exports[-1]['mesh_materials'] = [m['material'] for m in self.meshes]
+                self.exports[-1]['polyframe'] = self.ui_get(self.v['idPolyPath'])
                 return
             if k in ['Document:Resize', 'Layer:Clear', 'Transform:Draw Pointer']:
                 old_button = self.ui[k]
@@ -326,6 +327,7 @@ class IDExport(unittest.TestCase):
                 self.assertEqual(h.exports[0]['mesh_rgb'], h.exports[1]['mesh_rgb'])
                 for export in h.exports:
                     self.assertEqual(export['solo'], 0)
+                    self.assertEqual(export['polyframe'], 0)
                     for i in needed:
                         self.assertEqual(export['pp'][i], 1)
                         self.assertEqual(export['tx'][i], 0)
@@ -895,6 +897,54 @@ class IDExport(unittest.TestCase):
             self.assertEqual(old.read_bytes(), b'legacy recovery')
             self.assertEqual(occupied.read_bytes(), b'occupied path')
             self.assertFalse(any(event[0] == 'groups' for event in h.events))
+
+    def test_native_draw_polyframe_path_is_disabled_for_export_then_restored(self):
+        for original in [0, 1]:
+            with self.subTest(original=original), tempfile.TemporaryDirectory() as d:
+                h = self.host()
+                h.ui['Transform:Draw Polyframe'] = original
+                self.assertNotIn('Transform:Polyframe', h.ui)
+                self.assertNotIn('Transform:PolyF', h.ui)
+                h.chosen = d
+                self.click(h)
+                self.assertEqual(h.v['idPolyPath'], 'Transform:Draw Polyframe')
+                self.assertEqual([export['polyframe'] for export in h.exports], [0, 0])
+                self.assertEqual(h.ui['Transform:Draw Polyframe'], original)
+
+    def test_polyframe_aliases_resolve_and_preserve_overlay_behavior(self):
+        for alias in ['Transform:Draw PolyFrame', 'Transform:pf',
+                      'Transform:Polyframe', 'Transform:PolyF']:
+            with self.subTest(alias=alias), tempfile.TemporaryDirectory() as d:
+                h = self.host()
+                del h.ui['Transform:Draw Polyframe']
+                h.ui[alias] = 1
+                h.chosen = d
+                self.click(h)
+                self.assertEqual(h.v['idPolyPath'], alias)
+                self.assertEqual([export['polyframe'] for export in h.exports], [0, 0])
+                self.assertEqual(h.ui[alias], 1)
+        h = self.host()
+        h.ui['Transform:PolyF'] = 1
+        h.call('ID_ResolveControls')
+        self.assertEqual(h.v['idPolyPath'], 'Transform:Draw Polyframe')
+
+    def test_missing_or_disabled_polyframe_still_aborts_before_backup(self):
+        for case in ['missing', 'disabled']:
+            with self.subTest(case=case):
+                h = self.host()
+                if case == 'missing':
+                    del h.ui['Transform:Draw Polyframe']
+                else:
+                    h.enabled['Transform:Draw Polyframe'] = False
+                    h.ui['Transform:PolyF'] = 1  # Must not bypass a disabled canonical item.
+                before = copy.deepcopy(h.meshes)
+                with self.assertRaises(Exit):
+                    self.click(h)
+                self.unchanged_meshes(h, before)
+                self.assertFalse(h.events)
+                word = 'Missing' if case == 'missing' else 'Unavailable'
+                self.assertTrue(any(word+' control: Transform:Draw Polyframe' in message
+                                    for message in h.messages))
 
 
 if __name__ == '__main__':
