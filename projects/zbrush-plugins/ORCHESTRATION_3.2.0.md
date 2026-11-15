@@ -8,9 +8,9 @@ Three visible worktree workers use `codex` / `gpt-6.1-sol` / `xhigh` (owner-corr
 | --- | --- | --- |
 | Camera tracking, automatic capture, EXPORT BANK and shared camera reader | Camera worker | HANDOFF_CAMERA_3.2.0.md |
 | Unified camera output folders | Render worker | HANDOFF_RENDER_3.2.0.md |
-| New one-button Generate and Export ID plugin | ID worker, after video analysis | Pending |
+| New one-button Generate and Export ID plugin | ID worker, video analysis completed | HANDOFF_ID_3.2.0.md |
 | Install/uninstall, launchers, build integration, manifest, README, Workspace, review/merges | Orchestrator | This file |
 
 **ZBrush lease: orchestrator only.** Workers may inspect source and installed-file metadata but must not load scripts, change native UI, install into the live app, or automate it until the orchestrator explicitly grants and records exclusive access. Native review will follow independent branch review and integration. Never overwrite an unsaved owner project to run QA; stage recoverable test data.
 
-Initial state: handoffs prepared for Camera and Render; the ID video references are being analyzed. Source tests, worker delivery, orchestrator review and owner acceptance are separate milestones.
+Camera worker startup/model and handoff delivery are verified; Render worktree creation is in progress. ID reference analysis is recorded in VIDEO_ANALYSIS_3.2.0.md and its handoff is ready. Source tests, worker delivery, orchestrator review and owner acceptance are separate milestones. Slow worktree creation can outlive the CLI request timeout; inspect the original request/session and never duplicate it.
