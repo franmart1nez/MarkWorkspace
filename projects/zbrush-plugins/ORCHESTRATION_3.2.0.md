@@ -2,7 +2,7 @@
 
 Source baseline: `1d3ebe2` on the owner's existing branch. Authoritative package: `projects/zbrush-plugins/Plugin de zbrush`. No push is authorized. Applications and worker tabs must remain open; closing or restarting requires the owner's permission.
 
-Three visible worktree workers use `codex` / `gpt-6.1sol` / `xhigh`, opened only with `scripts/agent-control.mjs` under the existing scoped grant. Session IDs and transcripts belong under ignored `.mrmak/`, never this record.
+Three visible worktree workers use `codex` / `gpt-6.1-sol` / `xhigh` (owner-corrected model ID), opened only with `scripts/agent-control.mjs` under the existing scoped grant. Session IDs and transcripts belong under ignored `.mrmak/`, never this record.
 
 | Scope | Owner | Handoff |
 | --- | --- | --- |

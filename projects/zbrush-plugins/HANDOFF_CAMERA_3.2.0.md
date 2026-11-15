@@ -4,7 +4,7 @@ Implement the Camera Bank changes in `Version 3.2.0.txt` together, on your assig
 
 ## Execution and ownership
 
-This is a visible Codex worker: agent `codex`, exact model `gpt-6.1sol`, effort `xhigh`, worktree enabled. Do not substitute settings, launch workers, push, merge, rebase, close/restart applications, or control ZBrush. The orchestrator holds ZBrush exclusively until an explicit handover. Native testing comes after source review; report required probes and blockers without claiming native validation.
+This is a visible Codex worker: agent `codex`, exact model `gpt-6.1-sol` (owner correction), effort `xhigh`, worktree enabled. Do not substitute settings, launch workers, push, merge, rebase, close/restart applications, or control ZBrush. The orchestrator holds ZBrush exclusively until an explicit handover. Native testing comes after source review; report required probes and blockers without claiming native validation.
 
 Own Camera Bank/CameraBank25.txt and Development/build_camera.py, build_visibility.py, camera_reader.inc, merge_visibility.inc, merge_visibility_writer.inc, verify.py, verify_merge.py, DATA_FORMAT.md and MERGE_HANDOFF.md. You may add camera-specific tests and a CAMERA_3.2.0_RESULT.md. Do not change render_body.txt, RenderCapture.txt, build_all.py, installer/uninstaller/launchers, manifest.json, README files, workspace registry/card, or another worker's files. Generated RenderCapture.txt may change locally when building; do not commit it. The orchestrator regenerates it after merging the shared camera reader.
 

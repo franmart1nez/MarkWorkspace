@@ -4,7 +4,7 @@ Implement the output-layout change in `Version 3.2.0.txt` on your assigned workt
 
 ## Execution and ownership
 
-Visible Codex worker: agent `codex`, exact model `gpt-6.1sol`, effort `xhigh`, worktree enabled. Do not substitute settings, launch workers, push, merge/rebase, close/restart applications, or control ZBrush. The orchestrator holds ZBrush exclusively until explicit handover.
+Visible Codex worker: agent `codex`, exact model `gpt-6.1-sol` (owner correction), effort `xhigh`, worktree enabled. Do not substitute settings, launch workers, push, merge/rebase, close/restart applications, or control ZBrush. The orchestrator holds ZBrush exclusively until explicit handover.
 
 Own Development/render_body.txt, Render Capture/RenderCapture.txt, new Development/test_render_layout.py and Development/RENDER_3.2.0_RESULT.md. The camera worker owns camera_reader.inc and verify.py; do not commit edits to those. Do not edit build_all.py, installer/uninstaller/launchers, manifest.json, README files or Workspace. After merging, the orchestrator regenerates RenderCapture.txt with the new camera reader. Add focused tests without changing another worker's test infrastructure; flag any old tests needing adjustment.
 
