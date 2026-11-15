@@ -88,12 +88,25 @@ export function codexSupportsNoDaemon(env = process.env) {
   return codexHelp.get(key);
 }
 
+// Agents a controller chat can open as automatic workers. OpenCode runs each
+// task in native run mode; Claude and Codex stay interactive in their tab.
+export const WORKER_AGENTS = ['opencode', 'claude', 'codex'];
+
+// A worker model becomes a CLI argument. OpenCode needs its exact
+// provider/model#variant; Claude and Codex take a plain model ID (reasoning is
+// the separate effort setting) that is never shaped like an option.
+export function validWorkerModel(agent, value) {
+  if (typeof value !== 'string') return false;
+  if (agent === 'opencode') return /^[\w.-]+\/[\w.:-]+(?:#[\w.-]+)?$/.test(value);
+  return ['claude', 'codex'].includes(agent) && /^[A-Za-z0-9][\w.:[\]-]{0,99}$/.test(value);
+}
+
 export function terminalCommand(agent, { bypass = false, resumeId, nativeId, effort, opencodeMajor = 1, antigravityLog, initialPrompt, readDir, noDaemon = false, workerModel, workerFile } = {}) {
   if (!AGENTS.some(item => item.id === agent)) throw new Error('Unknown agent');
   resumeId = nativeConversationId(resumeId); nativeId = nativeConversationId(nativeId);
   initialPrompt = initialPromptArgument(initialPrompt);
-  if (workerModel && (agent !== 'opencode' || !/^[\w.-]+\/[\w.:-]+(?:#[\w.-]+)?$/.test(workerModel))) throw new Error('Choose an exact OpenCode worker model.');
-  if (workerModel && (typeof workerFile !== 'string' || !path.isAbsolute(workerFile) || /[\x00-\x1f\x7f]/.test(workerFile))) throw new Error('Choose an absolute worker handoff file.');
+  if (workerModel && !validWorkerModel(agent, workerModel)) throw new Error(agent === 'opencode' ? 'Choose an exact OpenCode worker model.' : 'Choose an exact worker model ID.');
+  if (workerModel && agent === 'opencode' && (typeof workerFile !== 'string' || !path.isAbsolute(workerFile) || /[\x00-\x1f\x7f]/.test(workerFile))) throw new Error('Choose an absolute worker handoff file.');
   if (initialPrompt && !workerModel && (resumeId || !['codex', 'claude'].includes(agent))) throw new Error('Only a new Codex or Claude chat can start with a message.');
   if (readDir != null && (typeof readDir !== 'string' || !path.isAbsolute(readDir) || /[\x00-\x1f]/.test(readDir))) throw new Error('Choose an absolute folder.');
   const command = agent === 'shell' ? shellCommand() : { file: commandPath(AGENTS.find(item => item.id === agent).command), args: [] };
@@ -109,6 +122,7 @@ export function terminalCommand(agent, { bypass = false, resumeId, nativeId, eff
     if (noDaemon) args.push('--no-daemon');
     if (bypass) args.push('--dangerously-bypass-approvals-and-sandbox');
     if (effort) args.push('-c', `model_reasoning_effort="${effort}"`);
+    if (workerModel) args.push('--model', workerModel);
     // Codex reads outside its working folder by default.
     if (initialPrompt) args.push(initialPrompt);
   } else if (agent === 'claude') {
@@ -118,6 +132,7 @@ export function terminalCommand(agent, { bypass = false, resumeId, nativeId, eff
     else if (nativeId) args.push('--session-id', nativeId);
     if (bypass) args.push('--dangerously-skip-permissions');
     if (effort) args.push('--effort', effort);
+    if (workerModel) args.push('--model', workerModel);
     if (readDir) args.push('--add-dir', readDir);
   } else if (agent === 'antigravity') {
     if (resumeId && !validAntigravityId(resumeId)) throw new Error('Use the Antigravity conversation UUID from its /resume picker.');

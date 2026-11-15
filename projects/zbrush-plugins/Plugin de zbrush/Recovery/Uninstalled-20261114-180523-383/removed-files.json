@@ -1,0 +1,52 @@
+﻿[
+    {
+        "Relative":  "ZStartup\\ZPlugs64\\CameraBank25.zsc",
+        "Path":  "C:\\Program Files\\Maxon ZBrush 2023\\ZStartup\\ZPlugs64\\CameraBank25.zsc",
+        "Hash":  "44-1D-ED-31-51-00-73-D5-8A-3C-57-DC-BA-5C-3F-FD-FA-67-17-D9-17-80-C1-25-23-6D-75-E1-EC-C0-83-61"
+    },
+    {
+        "Relative":  "ZStartup\\ZPlugs64\\MakCameraBankData\\CameraBank25.txt",
+        "Path":  "C:\\Program Files\\Maxon ZBrush 2023\\ZStartup\\ZPlugs64\\MakCameraBankData\\CameraBank25.txt",
+        "Hash":  "B3-F7-45-65-DC-80-20-BC-F1-FD-12-11-FB-74-8E-CD-4C-F6-91-5D-2C-7B-E9-58-11-87-B9-E3-9B-D0-6B-AA"
+    },
+    {
+        "Relative":  "ZStartup\\ZPlugs64\\MakCameraBankData\\CameraBank25.zsc",
+        "Path":  "C:\\Program Files\\Maxon ZBrush 2023\\ZStartup\\ZPlugs64\\MakCameraBankData\\CameraBank25.zsc",
+        "Hash":  "18-CA-91-05-D7-24-2D-11-9D-91-24-DF-F1-A1-D8-03-B3-B6-AB-D1-0D-C0-92-24-67-04-E6-D5-1D-9A-28-4F"
+    },
+    {
+        "Relative":  "ZStartup\\ZPlugs64\\RenderCaptureData\\RenderCapture.txt",
+        "Path":  "C:\\Program Files\\Maxon ZBrush 2023\\ZStartup\\ZPlugs64\\RenderCaptureData\\RenderCapture.txt",
+        "Hash":  "CA-7F-EB-58-84-7F-63-31-51-06-70-89-A6-AA-CE-CB-39-AA-5C-EA-13-33-69-8D-8B-AC-82-ED-77-10-90-E0"
+    },
+    {
+        "Relative":  "ZStartup\\ZPlugs64\\RenderCaptureData\\RenderCapture.zsc",
+        "Path":  "C:\\Program Files\\Maxon ZBrush 2023\\ZStartup\\ZPlugs64\\RenderCaptureData\\RenderCapture.zsc",
+        "Hash":  "D4-71-99-A6-37-FB-03-FF-9E-F2-B2-3E-18-EB-D3-BE-54-B7-44-69-5E-0A-05-D5-73-42-ED-FB-1D-F2-5F-EA"
+    },
+    {
+        "Relative":  "ZStartup\\ZPlugs64\\RenderCaptureData\\ZFileUtils64.dll",
+        "Path":  "C:\\Program Files\\Maxon ZBrush 2023\\ZStartup\\ZPlugs64\\RenderCaptureData\\ZFileUtils64.dll",
+        "Hash":  "0E-11-3F-F2-C8-59-ED-80-B7-5A-9B-61-39-BE-59-B4-B3-FE-83-26-05-76-5E-C2-EB-AB-5B-95-E6-12-40-EF"
+    },
+    {
+        "Relative":  "ZStartup\\Macros\\Mak Plugins\\Load Camera Bank.txt",
+        "Path":  "C:\\Program Files\\Maxon ZBrush 2023\\ZStartup\\Macros\\Mak Plugins\\Load Camera Bank.txt",
+        "Hash":  "45-02-57-0E-D1-1C-72-68-EF-0F-DB-FA-5E-E0-9F-11-FE-78-0F-E2-63-F3-81-53-FA-60-C5-76-3B-C8-00-7A"
+    },
+    {
+        "Relative":  "ZStartup\\Macros\\Mak Plugins\\Load Camera Bank.zsc",
+        "Path":  "C:\\Program Files\\Maxon ZBrush 2023\\ZStartup\\Macros\\Mak Plugins\\Load Camera Bank.zsc",
+        "Hash":  "E2-14-7F-0D-F4-A4-37-72-65-81-AD-91-A4-A8-C2-D2-96-8D-CC-27-8D-29-FA-E1-C9-46-66-89-E3-51-20-EF"
+    },
+    {
+        "Relative":  "ZStartup\\Macros\\Mak Plugins\\Load Render Capture.txt",
+        "Path":  "C:\\Program Files\\Maxon ZBrush 2023\\ZStartup\\Macros\\Mak Plugins\\Load Render Capture.txt",
+        "Hash":  "4B-7A-17-E9-58-C4-6B-9B-15-FA-4A-2B-D9-7C-A6-78-18-22-02-B8-9F-39-A1-22-93-35-7B-31-74-12-B4-4F"
+    },
+    {
+        "Relative":  "ZStartup\\Macros\\Mak Plugins\\Load Render Capture.zsc",
+        "Path":  "C:\\Program Files\\Maxon ZBrush 2023\\ZStartup\\Macros\\Mak Plugins\\Load Render Capture.zsc",
+        "Hash":  "74-37-6E-0B-A1-81-41-60-81-91-FC-F7-FC-53-76-C0-BB-D7-10-F9-B5-6B-1E-16-D8-94-70-8A-C8-95-29-1D"
+    }
+]

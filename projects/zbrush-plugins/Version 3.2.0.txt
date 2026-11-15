@@ -1,0 +1,11 @@
+Cambios para esta nueva versión.
+	-Ya no separaremos los renders BPR y los no BPR, ahora todos tienen que estar en la misma subcarpeta que tiene el nombre de la cámara.
+	-Elimina lo de “PREPARE TRANSFER.” No quiero que haya botones extra; el plugin debería detectar por sí solo los sub-tools que estaban activados o no en cada cámara.
+	-Ahora mismo el plugin detecta por posición en la jerarquía las sub-tools que estaban activas o desactivadas. Necesito que se detecten mejor por nombre las sub-tools. Porque si se llegan a mover las sub-tools a la hora de mergear, afectaría a lo que originalmente se veía en las cámaras.
+	-El botón de export bank ya no está funcionando, no sé qué pasó, pero no se están exportando las cámaras.
+	-Crea otro plugin, un tercer plugin llamado “Generar y exportar ID”. Necesito que con un solo boton haga todo lo que se hace en estos videos. "D:\AI\MarkWorkspace\projects\zbrush-plugins\A Materails All Tools.mp4" y "D:\AI\MarkWorkspace\projects\zbrush-plugins\A ID Zbrush.mp4"
+Básicamente sería algo como: el plugin tiene que agarrar el plugin "Subtool Master" y apretar en "Subtool Master" y darle en Material y que el Material sea "Flat Color”
+"Autogroups"
+"Polypaint From PolyGroups "
+Ponerle el flat color y exportarlo
+Algo muy importante es que el polypoint en Subtool tiene que estar activo.

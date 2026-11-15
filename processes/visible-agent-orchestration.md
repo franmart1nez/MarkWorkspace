@@ -6,14 +6,14 @@ Use when the owner asks one agent to coordinate another native CLI worker in **M
 
 1. Read root/project instructions, current source state, accepted references and applicable skills. Record which visual direction the owner accepted and which implementation is still unseen.
 2. Write a project handoff containing stable asset/task IDs, source paths, editable deliverables, allowed modifications, shared-file ownership, recovery requirements, exact requested CLI/model/variant, available tool routes and completion checks. Link references directly. Never send credentials, global config dumps or private transcripts to the worker.
-3. Give the worker exclusive write ownership over its source scope. The orchestrator owns the registry, coordination notes and independent review. Native editors are shared resources; do not have two agents edit them concurrently.
+3. Give the worker exclusive write ownership over its source scope. The orchestrator owns the registry, coordination notes and independent review. Native editors are shared resources; do not have two agents edit them concurrently. For parallel code workers, request `"worktree": true` so each works on its own branch, and commit the sources they need before opening them.
 
 ## Open and verify the visible worker
 
 The implementation and reusable commands for enabled orchestrator chats are in
 **`docs/agent-orchestration.md`**. Use `scripts/agent-control.mjs` when its scoped
-environment grant is available. It creates native OpenCode run-mode workers in
-visible Mr. Mak tabs with an explicit provider/model/variant and supports
+environment grant is available. It creates OpenCode (native run mode), Claude
+Code or Codex workers in visible Mr. Mak tabs with an exact model and supports
 follow-ups to the same conversation. Existing interactive tabs are preserved.
 The checkbox is available only after the updated app/service is activated;
 preparing a build is not activation.

@@ -1,0 +1,450 @@
+// Render Capture 3.1.0 - Windows / ZBrush 2023.2.1 target.
+// Exactly three public buttons. Reads Camera Bank v8 via CB25Data.
+// 3.1.0 is source-verified only; native baseline: 3.0.3. See Development/VERIFICATION.md.
+[ISubPalette,"ZPlugin:Render Capture"]
+[VarDef,rcRoot,""]
+[VarDef,rcDll,""]
+[VarDef,rcError,""]
+[VarDef,rcThor,-1]
+[VarDef,rcNormal,-1]
+[VarDef,rcDouble,-1]
+[VarDef,rcMetal,-1]
+[VarDef,rcCameraCount,0]
+[VarDef,rcLabel,""]
+[VarDef,rcPhase,""]
+[VarDef,rcPassCount,0]
+[VarDef,rcSlot,0]
+[VarDef,rcOutput,""]
+[VarDef,rcPassIDs(7),0]
+[VarDef,rcPassNames(7),""]
+[VarDef,rcRenderModePaths(4),""]
+[VarSet,rcRenderModePaths(0),"Render:Preview"]
+[VarSet,rcRenderModePaths(1),"Render:Best"]
+[VarSet,rcRenderModePaths(2),"Render:Fast"]
+[VarSet,rcRenderModePaths(3),"Render:Flat"]
+
+// A recovery snapshot survives Escape and ZScript switching in this session.
+// Do not restore flags into a different Tool / changed subtool list.
+[RoutineDef,RC_Restore,
+    [If,[MemGetSize,RC30Recovery]>0,
+        [If,[MVarGet,RC30Recovery,0]==1,
+            [VarSet,rcCanRestore,1]
+            [If,[SubToolGetCount]!=[MVarGet,RC30Recovery,2],[VarSet,rcCanRestore,0]]
+            [If,rcCanRestore==1,
+                [Loop,[SubToolGetCount],
+                    [If,[SubToolGetID,rcRestoreIndex]!=[MVarGet,RC30Recovery,32+(rcRestoreIndex*3)],
+                        [VarSet,rcCanRestore,0]
+                    ]
+                ,rcRestoreIndex]
+            ]
+            [If,rcCanRestore==0,
+                [MessageOK,"An interrupted render has saved display settings. Select the same Tool with the same SubTools, then press a Render Capture button to restore them.","Render Capture"]
+                [Exit]
+            ]
+            [Loop,[SubToolGetCount],
+                [SubToolSelect,rcRestoreIndex]
+                [If,[IsEnabled,"Tool:Polypaint:Colorize"],
+                    [ISet,"Tool:Polypaint:Colorize",[MVarGet,RC30Recovery,33+(rcRestoreIndex*3)]]
+                ]
+                [If,[IsEnabled,"Tool:Texture Map:Texture On"],
+                    [ISet,"Tool:Texture Map:Texture On",[MVarGet,RC30Recovery,34+(rcRestoreIndex*3)]]
+                ]
+            ,rcRestoreIndex]
+            [SubToolSelect,[MVarGet,RC30Recovery,1]]
+            [ISet,"Material:ItemInfo",[MVarGet,RC30Recovery,3]]
+            [IColorSet,[MVarGet,RC30Recovery,4],[MVarGet,RC30Recovery,5],[MVarGet,RC30Recovery,6]]
+            [ISet,"Render:Render Properties:Shadows",[MVarGet,RC30Recovery,7]]
+            [ISet,"Render:Render Properties:AOcclusion",[MVarGet,RC30Recovery,8]]
+            [ISet,"Render:Render Properties:Sss",[MVarGet,RC30Recovery,9]]
+            [ISet,"Render:BPR RenderPass:Reuse Existing Maps",[MVarGet,RC30Recovery,10]]
+            [If,[IExists,"Transform:Solo"],
+                [If,[MVarGet,RC30Recovery,16]>=0,[ISet,"Transform:Solo",[MVarGet,RC30Recovery,16]]]
+            ]
+            [RoutineCall,RC_RestoreSSSLight]
+            [IPress,rcRenderModePaths([MVarGet,RC30Recovery,11])]
+            [MVarSet,RC30Recovery,0,0]
+            [IUpdate,1,1]
+        ]
+    ]
+]
+[RoutineDef,RC_Fail,
+    [RoutineCall,RC_Restore]
+    [MessageOK,rcMessage,"Render Capture"]
+    [Exit]
+,rcMessage]
+[RoutineDef,RC_Snapshot,
+    [If,[MemGetSize,RC30Recovery]>0,[MemDelete,RC30Recovery]]
+    [MVarDef,RC30Recovery,3032,0]
+    [MVarSet,RC30Recovery,1,[SubToolGetActiveIndex]]
+    [MVarSet,RC30Recovery,2,[SubToolGetCount]]
+    [MVarSet,RC30Recovery,3,[IGet,"Material:ItemInfo"]]
+    [MVarSet,RC30Recovery,4,[IGet,"Color:R"]]
+    [MVarSet,RC30Recovery,5,[IGet,"Color:G"]]
+    [MVarSet,RC30Recovery,6,[IGet,"Color:B"]]
+    [MVarSet,RC30Recovery,7,[IGet,"Render:Render Properties:Shadows"]]
+    [MVarSet,RC30Recovery,8,[IGet,"Render:Render Properties:AOcclusion"]]
+    [MVarSet,RC30Recovery,9,[IGet,"Render:Render Properties:Sss"]]
+    [MVarSet,RC30Recovery,10,[IGet,"Render:BPR RenderPass:Reuse Existing Maps"]]
+    [MVarSet,RC30Recovery,16,-1]
+    [If,[IExists,"Transform:Solo"],[MVarSet,RC30Recovery,16,[IGet,"Transform:Solo"]]]
+    [Loop,4,
+        [If,[IGet,rcRenderModePaths(rcMode)]==1,[MVarSet,RC30Recovery,11,rcMode]]
+    ,rcMode]
+    [Loop,[SubToolGetCount],
+        [SubToolSelect,rcSaveIndex]
+        [MVarSet,RC30Recovery,32+(rcSaveIndex*3),[SubToolGetID,rcSaveIndex]]
+        [MVarSet,RC30Recovery,33+(rcSaveIndex*3),[IGet,"Tool:Polypaint:Colorize"]]
+        [MVarSet,RC30Recovery,34+(rcSaveIndex*3),[IGet,"Tool:Texture Map:Texture On"]]
+    ,rcSaveIndex]
+    [SubToolSelect,[MVarGet,RC30Recovery,1]]
+    [MVarSet,RC30Recovery,0,1]
+]
+[RoutineDef,RC_PrepareSSSLight,
+    // BPR needs SSS on one of lights 2-8, even when that light is OFF.
+    // Light:Save crashed in both owner activity logs. Snapshot only the fields
+    // we change in persistent session memory; never serialize/load the rig.
+    [VarSet,rcFirstLight,[IGetID,"Light:Light Switch"]]
+    [VarSet,rcSecondLight,rcFirstLight+1]
+    [If,[IExists,[Var,rcSecondLight]]==0,[RoutineCall,RC_Fail,"Second light selector is unavailable."]]
+    [VarSet,rcLightTitle,[IGetTitle,[Var,rcSecondLight],1]]
+    [If,[StrFind,"Light:Light Switch",rcLightTitle]!=0,[RoutineCall,RC_Fail,"Unexpected second light selector."]]
+    [VarSet,rcLightOn,[IGet,[Var,rcSecondLight]]]
+    [IClick,[Var,rcSecondLight]]
+    [ISet,[Var,rcSecondLight],rcLightOn]
+    [MVarSet,RC30Recovery,13,rcSecondLight]
+    [MVarSet,RC30Recovery,14,rcLightOn]
+    [MVarSet,RC30Recovery,15,[IGet,"Light:Lights Properties:Sss"]]
+    [MVarSet,RC30Recovery,12,1]
+    [ISet,"Light:Lights Properties:Sss",1]
+]
+[RoutineDef,RC_RestoreSSSLight,
+    [If,[MVarGet,RC30Recovery,12]==1,
+        [VarSet,rcRestoreLight,[MVarGet,RC30Recovery,13]]
+        [IClick,[Var,rcRestoreLight]]
+        [ISet,[Var,rcRestoreLight],[MVarGet,RC30Recovery,14]]
+        [ISet,"Light:Lights Properties:Sss",[MVarGet,RC30Recovery,15]]
+        [MVarSet,RC30Recovery,12,0]
+    ]
+]
+[RoutineDef,RC_CheckBank,
+    [If,[MemGetSize,CB25Data]!=111084,
+        [RoutineCall,RC_Fail,"Load CameraBank25.txt v3.1 first, then import or store your cameras."]
+    ]
+    [If,([MVarGet,CB25Data,0]!=252523)||([MVarGet,CB25Data,1]!=8)||([MVarGet,CB25Data,2]!=25),
+        [RoutineCall,RC_Fail,"Unsupported Camera Bank. Use v3.1 (data v8)."]
+    ]
+    [If,[SubToolGetCount]>1000,[RoutineCall,RC_Fail,"Maximum supported SubTools: 1000."]]
+    [VarSet,rcCameraCount,0]
+    [Loop,25,
+        [VarSet,rcCheckBase,20+(rcCheckSlot*20)]
+        [If,([MVarGet,CB25Data,rcCheckBase]==1)&&([MVarGet,CB25Data,rcCheckBase+16]==1),
+            [VarInc,rcCameraCount]
+        ]
+    ,rcCheckSlot]
+    [If,rcCameraCount==0,[RoutineCall,RC_Fail,"Enable at least one stored camera (orange) in Camera Bank 25."]]
+]
+[RoutineDef,RC_Preflight,
+    [RoutineCall,RC_CheckBank]
+    [If,([IsEnabled,"Transform:Edit"]==0)||([IGet,"Transform:Edit"]==0),[RoutineCall,RC_Fail,"No live 3D model is in Edit mode. Select and draw the Tool, press T, then try again."]]
+    [If,[SubToolGetCount]<1,[RoutineCall,RC_Fail,"No editable mesh was found. Convert a primitive/ZSphere to PolyMesh3D or adaptive skin before rendering."]]
+    [Loop,25,
+        [VarSet,rcCheckBase,20+(rcCheckSlot*20)]
+        [If,([MVarGet,CB25Data,rcCheckBase]==1)&&([MVarGet,CB25Data,rcCheckBase+16]==1),
+            [RoutineCall,RC_CB32_RequireVisibility,rcCheckSlot]
+            [If,([MVarGet,CB25Data,rcCheckBase+18]<=0)||([MVarGet,CB25Data,rcCheckBase+19]<=0),
+                [RoutineCall,RC_Fail,[StrMerge,"Camera ",rcCheckSlot+1," has no saved canvas size. Recall it, set the correct document size and lens, then press UPDATE ACTIVE."]]
+            ]
+            [If,([MVarGet,CB25Data,rcCheckBase+18]>[IGetMax,"Document:Width"])||([MVarGet,CB25Data,rcCheckBase+19]>[IGetMax,"Document:Height"]),
+                [RoutineCall,RC_Fail,"A camera's resolution exceeds the current document size limits."]
+            ]
+        ]
+    ,rcCheckSlot]
+]
+[RoutineDef,RC_CheckDLL,
+    [VarSet,rcDll,[FileNameResolvePath,"RenderCaptureData/ZFileUtils64.dll"]]
+    [If,[FileExists,[Var,rcDll]]==0,
+        [VarSet,rcDll,[FileNameResolvePath,"ZFileUtils64.dll"]]
+    ]
+    [If,[FileExists,[Var,rcDll]]==0,
+        [VarSet,rcDll,[FileNameResolvePath,"ZBRUSH_ZSTARTUP/ZPlugs64/MacroData/ZFileUtils64.dll"]]
+    ]
+    [If,[FileExists,[Var,rcDll]]==0,
+        [RoutineCall,RC_Fail,"ZFileUtils64.dll is missing. Run INSTALAR.cmd to copy it from your ZBrush installation."]
+    ]
+    [If,[FileExecute,[Var,rcDll],"Version"]<8,
+        [RoutineCall,RC_Fail,"ZFileUtils v8 or newer is required."]
+    ]
+]
+[RoutineDef,RC_Folder,
+    [If,[FileExecute,[Var,rcDll],"FolderExists",rcFolderPath]==0,
+        [VarSet,rcFolderResult,[FileExecute,[Var,rcDll],"MakeFolder",rcFolderPath]]
+        [If,rcFolderResult!=0,[RoutineCall,RC_Fail,[StrMerge,"Cannot create folder: ",rcFolderPath]]]
+    ]
+,rcFolderPath]
+[RoutineDef,RC_Label,
+    [If,rcCamera<10,[VarSet,rcLabel,[StrMerge,"0",rcCamera]],[VarSet,rcLabel,[StrMerge,"",rcCamera]]]
+,rcCamera]
+[RoutineDef,RC_GetRoot,
+    [VarSet,rcRoot,""]
+    [If,[MemGetSize,RC30Root]>0,[MemReadString,RC30Root,rcRoot,0,1]]
+    [If,[StrLength,rcRoot]==0,[RoutineCall,RC_Fail,"Press 1 - CREATE FOLDERS first."]]
+    [RoutineCall,RC_CheckDLL]
+    [If,[FileExecute,[Var,rcDll],"FolderExists",rcRoot]==0,[RoutineCall,RC_Fail,"Output folder no longer exists. Press 1 - CREATE FOLDERS."]]
+]
+[RoutineDef,RC_CreateFolders,
+    [RoutineCall,RC_Restore]
+    [RoutineCall,RC_CheckBank]
+    [RoutineCall,RC_CheckDLL]
+    [If,[MemGetSize,RC30Choose]>0,[MemDelete,RC30Choose]]
+    [MemCreate,RC30Choose,1024,0]
+    [VarSet,rcChoice,[FileExecute,[Var,rcDll],"ChooseFolder",,,RC30Choose]]
+    [If,rcChoice!=0,[MemDelete,RC30Choose][Exit]]
+    [VarSet,rcChosenRoot,""]
+    [MemReadString,RC30Choose,rcChosenRoot,0,1]
+    [MemDelete,RC30Choose]
+    [If,[StrLength,rcChosenRoot]==0,[Exit]]
+    [VarSet,rcSession,1]
+    [Loop,9999,
+        [VarSet,rcRoot,[StrMerge,rcChosenRoot,"/ZPass_",rcSession]]
+        [If,[FileExecute,[Var,rcDll],"FolderExists",rcRoot]==0,[LoopExit]]
+        [VarInc,rcSession]
+    ]
+    [If,rcSession>9999,[RoutineCall,RC_Fail,"Choose a different output folder."]]
+    [RoutineCall,RC_Folder,rcRoot]
+    [RoutineCall,RC_Folder,[StrMerge,rcRoot,"/Screenshots"]]
+    [Loop,25,
+        [VarSet,rcBase,20+(rcSlot*20)]
+        [If,([MVarGet,CB25Data,rcBase]==1)&&([MVarGet,CB25Data,rcBase+16]==1),
+            [RoutineCall,RC_Label,rcSlot+1]
+            [RoutineCall,RC_Folder,[StrMerge,rcRoot,"/",rcLabel]]
+            [RoutineCall,RC_Folder,[StrMerge,rcRoot,"/",rcLabel,"/NonBPR"]]
+            [RoutineCall,RC_Folder,[StrMerge,rcRoot,"/",rcLabel,"/BPR"]]
+        ]
+    ,rcSlot]
+    [If,[MemGetSize,RC30Root]>0,[MemDelete,RC30Root]]
+    [MemCreate,RC30Root,1024,0]
+    [MemWriteString,RC30Root,rcRoot,0]
+    [MessageOK,[StrMerge,"Folders ready: ",rcRoot,". Use buttons 2 and 3 for this session."],"Render Capture"]
+]
+// Name matching uses the complete material name, not fixed material slot IDs.
+// Prefer exact Basic Thor / DoubleShade, then the first substring match.
+[RoutineDef,RC_MaterialCandidate,
+    [If,[IExists,[Var,rcCandidateID]],
+        [VarSet,rcCandidatePath,[IGetTitle,[Var,rcCandidateID],1]]
+        [If,[StrFind,"Material:",[Var,rcCandidatePath]]==0,
+            [VarSet,rcCandidateName,[IGetTitle,[Var,rcCandidateID]]]
+            [If,([StrFind,"Basic Thor",[Var,rcCandidateName]]>=0)&&(rcThor<0),[VarSet,rcThor,rcCandidateID]]
+            [If,([StrFind,"DoubleShade",[Var,rcCandidateName]]>=0)&&(rcDouble<0),[VarSet,rcDouble,rcCandidateID]]
+            [If,([StrLength,[Var,rcCandidateName]]==10)&&([StrFind,"Basic Thor",[Var,rcCandidateName]]==0),[VarSet,rcThor,rcCandidateID]]
+            [If,([StrLength,[Var,rcCandidateName]]==11)&&([StrFind,"DoubleShade",[Var,rcCandidateName]]==0),[VarSet,rcDouble,rcCandidateID]]
+            [If,([StrLength,[Var,rcCandidateName]]==12)&&([StrFind,"NormalRGBMat",[Var,rcCandidateName]]==0),[VarSet,rcNormal,rcCandidateID]]
+            [If,([StrLength,[Var,rcCandidateName]]==8)&&([StrFind,"Metal 11",[Var,rcCandidateName]]==0),[VarSet,rcMetal,rcCandidateID]]
+        ]
+    ]
+,rcCandidateID]
+[RoutineDef,RC_Materials,
+    [VarSet,rcThor,-1][VarSet,rcNormal,-1][VarSet,rcDouble,-1][VarSet,rcMetal,-1]
+    // Read material button titles without selecting unrelated materials.
+    // This avoids Redshift's selection dialog and preview-render side effects.
+    [If,[IExists,"Material:Basic Thor"],[RoutineCall,RC_MaterialCandidate,[IGetID,"Material:Basic Thor"]]]
+    [If,[IExists,"Material:Basic Thor (1)"],[RoutineCall,RC_MaterialCandidate,[IGetID,"Material:Basic Thor (1)"]]]
+    [If,[IExists,"Material:NormalRGBMat"],[RoutineCall,RC_MaterialCandidate,[IGetID,"Material:NormalRGBMat"]]]
+    [If,[IExists,"Material:DoubleShade"],[RoutineCall,RC_MaterialCandidate,[IGetID,"Material:DoubleShade"]]]
+    [If,[IExists,"Material:DoubleShade1"],[RoutineCall,RC_MaterialCandidate,[IGetID,"Material:DoubleShade1"]]]
+    [If,[IExists,"Material:Metal 11"],[RoutineCall,RC_MaterialCandidate,[IGetID,"Material:Metal 11"]]]
+    [If,((rcThor<0)||(rcNormal<0))||((rcDouble<0)||(rcMetal<0)),
+        [IFreeze,
+            [Loop,65536,
+                [RoutineCall,RC_MaterialCandidate,rcScanID]
+                [If,((rcThor>=0)&&(rcNormal>=0))&&((rcDouble>=0)&&(rcMetal>=0)),[LoopExit]]
+            ,rcScanID]
+        ]
+    ]
+    [VarSet,rcMissing,""]
+    [If,rcThor<0,[VarSet,rcMissing,[StrMerge,rcMissing," Basic Thor;"]]]
+    [If,rcNormal<0,[VarSet,rcMissing,[StrMerge,rcMissing," NormalRGBMat;"]]]
+    [If,rcDouble<0,[VarSet,rcMissing,[StrMerge,rcMissing," DoubleShade;"]]]
+    [If,rcMetal<0,[VarSet,rcMissing,[StrMerge,rcMissing," Metal 11;"]]]
+    [If,[StrLength,rcMissing]>0,[RoutineCall,RC_Fail,[StrMerge,"Load the missing materials into ZBrush first:",rcMissing]]]
+]
+[RoutineDef,RC_Polypaint,
+    [VarSet,rcSelected,[SubToolGetActiveIndex]]
+    [Loop,[SubToolGetCount],
+        [SubToolSelect,rcPPIndex]
+        [If,[IsEnabled,"Tool:Polypaint:Colorize"],[ISet,"Tool:Polypaint:Colorize",rcPP]]
+        [If,rcPP==0,
+            [If,[IsEnabled,"Tool:Texture Map:Texture On"],[IUnPress,"Tool:Texture Map:Texture On"]]
+        ,
+            [If,[IsEnabled,"Tool:Texture Map:Texture On"],
+                [ISet,"Tool:Texture Map:Texture On",[MVarGet,RC30Recovery,34+(rcPPIndex*3)]]
+            ]
+        ]
+    ,rcPPIndex]
+    [SubToolSelect,rcSelected]
+,rcPP]
+[RoutineDef,RC_OutputFolder,
+    [RoutineCall,RC_Label,rcSlot+1]
+    [RoutineCall,RC_Folder,[StrMerge,rcRoot,"/",rcLabel]]
+    [VarSet,rcOutput,[StrMerge,rcRoot,"/",rcLabel,"/",rcPhase]]
+    [RoutineCall,RC_Folder,rcOutput]
+]
+// Reject collisions BEFORE changing display state. Create a new session to rerun.
+[RoutineDef,RC_CheckOutput,
+    [Loop,25,
+        [VarSet,rcBase,20+(rcSlot*20)]
+        [If,([MVarGet,CB25Data,rcBase]==1)&&([MVarGet,CB25Data,rcBase+16]==1),
+            [RoutineCall,RC_OutputFolder]
+            [If,rcCheckScreenshots==1,
+                [If,[FileExists,[StrMerge,rcRoot,"/Screenshots/",rcLabel,".png"]]>0,
+                    [RoutineCall,RC_Fail,"A screenshot already exists for a selected camera. Press CREATE FOLDERS to start a new session; existing images are preserved."]
+                ]
+            ]
+            [Loop,rcPassCount,
+                [If,[FileExists,[StrMerge,rcOutput,"/",rcPassNames(rcFileIndex)]]>0,
+                    [RoutineCall,RC_Fail,"This phase already has output files. Press CREATE FOLDERS to start a new session; existing renders are preserved."]
+                ]
+            ,rcFileIndex]
+        ]
+    ,rcSlot]
+,rcCheckScreenshots]
+[RoutineDef,RC_Export,
+    [FileNameSetNext,[Var,rcOutputFile]]
+    [IPress,[Var,rcExportID]]
+    [IUpdate,1,1]
+    [If,[FileExists,[Var,rcOutputFile]]==0,[RoutineCall,RC_Fail,[StrMerge,"Export failed: ",rcOutputFile]]]
+,rcExportID,rcOutputFile]
+[RoutineDef,RC_CopyScreenshot,
+    [VarSet,rcShotFile,[StrMerge,rcRoot,"/Screenshots/",rcLabel,".png"]]
+    // FileCopyTo copies the exported PNG bytes; do not render or export again.
+    [If,[FileExists,rcShotFile]>0,[RoutineCall,RC_Fail,"Screenshot already exists. Create a new session; existing images are preserved."]]
+    [If,[MemGetSize,RC31CopyPath]>0,[MemDelete,RC31CopyPath]]
+    [MemCreate,RC31CopyPath,1024,0]
+    [MemWriteString,RC31CopyPath,rcShotFile,0]
+    [VarSet,rcCopyResult,[FileExecute,[Var,rcDll],"FileCopyTo",[StrMerge,rcOutput,"/Z document.png"],,RC31CopyPath]]
+    [MemDelete,RC31CopyPath]
+    [If,(rcCopyResult!=0)||([FileExists,rcShotFile]==0),
+        [RoutineCall,RC_Fail,[StrMerge,"Screenshot copy failed: ",rcShotFile]]
+    ]
+]
+[RoutineDef,RC_NonBPR,
+    [RoutineCall,RC_Restore]
+    [RoutineCall,RC_Preflight]
+    [RoutineCall,RC_GetRoot]
+    [RoutineCall,RC_Materials]
+    [RoutineCall,RC_Folder,[StrMerge,rcRoot,"/Screenshots"]]
+    [VarSet,rcPhase,"NonBPR"][VarSet,rcPassCount,4]
+    [VarSet,rcPassNames(0),"Z document.png"]
+    [VarSet,rcPassNames(1),"Normal.png"]
+    [VarSet,rcPassNames(2),"Double.png"]
+    [VarSet,rcPassNames(3),"Metal.png"]
+    [RoutineCall,RC_CheckOutput,1]
+    [RoutineCall,RC_Snapshot]
+    [Loop,25,
+        [VarSet,rcBase,20+(rcSlot*20)]
+        [If,([MVarGet,CB25Data,rcBase]==1)&&([MVarGet,CB25Data,rcBase+16]==1),
+            [RoutineCall,RC_CB29_LoadSlot,rcSlot]
+            [RoutineCall,RC_OutputFolder]
+            [ISet,"Render:Render Properties:Shadows",0]
+            [IColorSet,255,255,255]
+            // Preserve the original workflow: document uses Polypaint ON;
+            // Normal / Double / Metal use Polypaint and texture display OFF.
+            [RoutineCall,RC_Polypaint,1]
+            [IPress,[Var,rcThor]]
+            [IPress,"Render:Preview"][IUpdate,2,1]
+            [NoteBar,[StrMerge,"Non BPR | Camera ",rcLabel],rcSlot/25]
+            [RoutineCall,RC_Export,"Document:Export",[StrMerge,rcOutput,"/",rcPassNames(0)]]
+            [RoutineCall,RC_CopyScreenshot]
+            [RoutineCall,RC_Polypaint,0]
+            [IPress,[Var,rcNormal]]
+            [IPress,"Render:Preview"][IUpdate,2,1]
+            [RoutineCall,RC_Export,"Document:Export",[StrMerge,rcOutput,"/",rcPassNames(1)]]
+            [IPress,[Var,rcDouble]]
+            [IPress,"Render:Preview"][IUpdate,2,1]
+            [RoutineCall,RC_Export,"Document:Export",[StrMerge,rcOutput,"/",rcPassNames(2)]]
+            [IPress,[Var,rcMetal]]
+            [IPress,"Render:Preview"][IUpdate,2,1]
+            [RoutineCall,RC_Export,"Document:Export",[StrMerge,rcOutput,"/",rcPassNames(3)]]
+        ]
+    ,rcSlot]
+    [RoutineCall,RC_Restore]
+    [NoteBar,"Non BPR complete",1]
+    [MessageOK,[StrMerge,rcCameraCount," cameras: 4 PNG files + 1 Screenshots copy each. Output: ",rcRoot],"Render Capture"]
+]
+// Some ZBrush versions cannot address pass thumbnails by their recorded names.
+// Numeric IDs are the documented ZBrushCentral fallback; validate their parent.
+[RoutineDef,RC_ResolvePass,
+    [VarSet,rcPassID,0]
+    [If,[IExists,[Var,rcPassPath]],[VarSet,rcPassID,[IGetID,[Var,rcPassPath]]]]
+    [If,rcPassID==0,
+        [If,[IExists,[Var,rcFallback]],
+            [VarSet,rcTitle,[StrLower,[IGetTitle,[Var,rcFallback],1]]]
+            [If,([StrFind,"render",rcTitle]>=0)&&([StrFind,"bpr",rcTitle]>=0),[VarSet,rcPassID,rcFallback]]
+        ]
+    ]
+    [If,rcPassID==0,[RoutineCall,RC_Fail,[StrMerge,"Cannot locate BPR pass: ",rcPassPath]]]
+    [VarSet,rcPassIDs(rcPassIndex),rcPassID]
+,rcPassIndex,rcPassPath,rcFallback]
+[RoutineDef,RC_BPR,
+    [RoutineCall,RC_Restore]
+    [RoutineCall,RC_Preflight]
+    [RoutineCall,RC_GetRoot]
+    [VarSet,rcPhase,"BPR"][VarSet,rcPassCount,7]
+    [VarSet,rcPassNames(0),"_AO.psd"]
+    [VarSet,rcPassNames(1),"_Composite.psd"]
+    [VarSet,rcPassNames(2),"_Depth.psd"]
+    [VarSet,rcPassNames(3),"_Mask.psd"]
+    [VarSet,rcPassNames(4),"_Render.psd"]
+    [VarSet,rcPassNames(5),"_Shadow.psd"]
+    [VarSet,rcPassNames(6),"_SSS.psd"]
+    [RoutineCall,RC_ResolvePass,0,"Render:BPR RenderPass:AmOc",2210]
+    [RoutineCall,RC_ResolvePass,1,"Render:BPR RenderPass:Com",2206]
+    [RoutineCall,RC_ResolvePass,2,"Render:BPR RenderPass:Dep",2208]
+    [RoutineCall,RC_ResolvePass,3,"Render:BPR RenderPass:Mask",2211]
+    [RoutineCall,RC_ResolvePass,4,"Render:BPR RenderPass:Img",2207]
+    [RoutineCall,RC_ResolvePass,5,"Render:BPR RenderPass:Shdw",2209]
+    [RoutineCall,RC_ResolvePass,6,"Render:BPR RenderPass:Sss",2315]
+    [RoutineCall,RC_CheckOutput,0]
+    [RoutineCall,RC_Snapshot]
+    [IPress,"Render:Preview"]
+    [RoutineCall,RC_Polypaint,1]
+    [RoutineCall,RC_PrepareSSSLight]
+    [Loop,25,
+        [VarSet,rcBase,20+(rcSlot*20)]
+        [If,([MVarGet,CB25Data,rcBase]==1)&&([MVarGet,CB25Data,rcBase+16]==1),
+            [RoutineCall,RC_CB29_LoadSlot,rcSlot]
+            [RoutineCall,RC_OutputFolder]
+            [ISet,"Render:Render Properties:Shadows",1]
+            [ISet,"Render:Render Properties:AOcclusion",1]
+            [ISet,"Render:Render Properties:Sss",1]
+            [ISet,"Render:BPR RenderPass:Reuse Existing Maps",0]
+            [NoteBar,[StrMerge,"BPR | Camera ",rcLabel],rcSlot/25]
+            [ISet,"Render:BPR Shadow:Rays",30]
+            [ISet,"Render:BPR Shadow:Angle",15]
+            [ISet,"Render:BPR AO:Rays",30]
+            [ISet,"Render:BPR RenderPass:SPix",2]
+            [IPress,"Render:BPR RenderPass:Render Best Preview"]
+            [IUpdate,2,1]
+            // Check ALL seven generated maps before exporting any for this view.
+            [Loop,7,
+                [If,[StrFind,"width=",[StrLower,[IGetInfo,rcPassIDs(rcPass)]]]<0,
+                    [RoutineCall,RC_Fail,[StrMerge,"BPR map unavailable: ",rcPassNames(rcPass),". Render may have been cancelled."]]
+                ]
+            ,rcPass]
+            [Loop,7,
+                [RoutineCall,RC_Export,rcPassIDs(rcPass),[StrMerge,rcOutput,"/",rcPassNames(rcPass)]]
+            ,rcPass]
+        ]
+    ,rcSlot]
+    [RoutineCall,RC_Restore]
+    [NoteBar,"BPR complete",1]
+    [MessageOK,[StrMerge,rcCameraCount," cameras: 7 PSD files each. Output: ",rcRoot],"Render Capture"]
+]
+[IButton,"ZPlugin:Render Capture:1 - CREATE FOLDERS","Choose an output parent folder. Creates a new session with folders for each enabled camera.",
+    [RoutineCall,RC_CreateFolders]
+,,1]
+[IButton,"ZPlugin:Render Capture:2 - RENDER NON BPR","Export four PNG passes for all orange cameras and copy Z document to Screenshots with its camera number. Shadows OFF and active color white.",
+    [RoutineCall,RC_NonBPR]
+,,1]
+[IButton,"ZPlugin:Render Capture:3 - RENDER BPR","Render all orange cameras and save AO, Composite, Depth, Mask, Shaded, Shadow and SSS as PSD.",
+    [RoutineCall,RC_BPR]
+,,1]

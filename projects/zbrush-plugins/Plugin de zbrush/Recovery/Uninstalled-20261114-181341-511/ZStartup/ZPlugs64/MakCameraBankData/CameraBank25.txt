@@ -1,0 +1,1069 @@
+// Camera Bank 25 v3.0.3 - Windows / ZBrush 2023.2.1 target.
+// v3.0.3: validate live Edit mode; prevent thumbnail interception during redraw.
+// Derived from the supplied CameraBank25_v2_9, retaining its slot UI.
+// Data v7: 25745 floats / 102980 bytes. See Development/DATA_FORMAT.md.
+// Standalone: no render plugin, helpers or external applications required.
+// Native validation: ZBrush 2023.2.1; see Development/VERIFICATION.md.
+[VarDef,cbFovPath,""]
+[VarDef,cbUniversalPath,""]
+[VarDef,cbImportValid,0]
+[VarDef,cbImportVersion,0]
+
+[ISubPalette,
+    "ZPlugin:Camera Bank 25"
+]
+[RoutineDef,CB29_CreateEmptyBank,
+    [If,[MemGetSize,CB25Data] > 0,
+        [MemDelete,
+            CB25Data
+        ]
+    ]
+    [MVarDef,
+        CB25Data,
+        25745,
+        0
+    ]
+    [MVarSet,CB25Data,0,252523]
+    [MVarSet,CB25Data,1,7]
+    [MVarSet,CB25Data,2,25]
+    [MVarSet,CB25Data,3,0]
+    [MVarSet,CB25Data,4,0]
+    [MVarSet,CB25Data,5,0]
+    [MVarSet,CB25Data,6,0]
+]
+[RoutineDef,CB29_NormalizeRenderFlags,
+    [VarSet,nrSlot,0]
+    [Loop,25,
+        [VarSet,nrBase,
+            20 + (nrSlot * 20)
+        ]
+        [If,[MVarGet,CB25Data,nrBase] == 1,
+            [If,forceOn == 1,
+                [MVarSet,
+                    CB25Data,
+                    nrBase + 16,
+                    1
+                ]
+            ,
+                [VarSet,nrEnabled,
+                    [MVarGet,CB25Data,nrBase + 16]
+                ]
+                [If,
+                    (nrEnabled != 0)
+                    &&
+                    (nrEnabled != 1),
+                    [MVarSet,
+                        CB25Data,
+                        nrBase + 16,
+                        1
+                    ]
+                ]
+            ]
+            [MVarSet,
+                CB25Data,
+                nrBase + 17,
+                0
+            ]
+        ,
+            [MVarSet,
+                CB25Data,
+                nrBase + 16,
+                0
+            ]
+            [MVarSet,
+                CB25Data,
+                nrBase + 17,
+                0
+            ]
+        ]
+        [VarInc,nrSlot]
+    ]
+,forceOn]
+[RoutineDef,CB30_AcceptImport,
+    [VarSet,cbImportValid,0]
+    [If,(cbImportSize==2080)||(cbImportSize==102180)||(cbImportSize==102980),
+        [If,([MVarGet,CB29ImportTemp,0]==252523)&&([MVarGet,CB29ImportTemp,2]==25),
+            [VarSet,cbImportVersion,[MVarGet,CB29ImportTemp,1]]
+            [If,cbImportSize==102980,
+                [If,cbImportVersion==7,[VarSet,cbImportValid,1]]
+            ,
+                [If,cbImportSize==2080,
+                    [If,(cbImportVersion>=1)&&(cbImportVersion<=6),[VarSet,cbImportValid,1]]
+                ,
+                    [If,(cbImportVersion>=3)&&(cbImportVersion<=6),[VarSet,cbImportValid,1]]
+                ]
+            ]
+        ]
+    ]
+    [If,cbImportValid==1,
+        [RoutineCall,CB29_CreateEmptyBank]
+        [MemCopy,CB29ImportTemp,0,CB25Data,0,cbImportSize]
+        [If,cbImportVersion<7,
+            [Loop,25,
+                [MVarSet,CB25Data,20+(cbMigrationSlot*20)+18,0]
+                [MVarSet,CB25Data,20+(cbMigrationSlot*20)+19,0]
+                [MVarSet,CB25Data,25545+(cbMigrationSlot*8)+2,-1]
+                [MVarSet,CB25Data,25545+(cbMigrationSlot*8)+3,-1]
+                [MVarSet,CB25Data,25545+(cbMigrationSlot*8)+4,-1]
+                [MVarSet,CB25Data,25545+(cbMigrationSlot*8)+5,-1]
+                [MVarSet,CB25Data,25545+(cbMigrationSlot*8)+6,-1]
+                [MVarSet,CB25Data,25545+(cbMigrationSlot*8)+7,-1]
+            ,cbMigrationSlot]
+        ]
+        [MVarSet,CB25Data,1,7]
+        [MVarSet,CB25Data,3,0][MVarSet,CB25Data,4,0]
+        [MVarSet,CB25Data,5,0][MVarSet,CB25Data,6,0]
+        [If,cbImportVersion>=6,
+            [RoutineCall,CB29_NormalizeRenderFlags,0]
+        ,
+            [RoutineCall,CB29_NormalizeRenderFlags,1]
+        ]
+    ]
+,cbImportSize]
+[If,[MemGetSize,CB25Data]>0,
+    [VarSet,cbStartupSize,[MemGetSize,CB25Data]]
+    [VarSet,cbAlreadyV7,0]
+    [If,cbStartupSize==102980,
+        [If,([MVarGet,CB25Data,0]==252523)&&([MVarGet,CB25Data,1]==7)&&([MVarGet,CB25Data,2]==25),
+            [VarSet,cbAlreadyV7,1]
+        ]
+    ]
+    [If,cbAlreadyV7==1,
+        [MVarSet,CB25Data,3,0][MVarSet,CB25Data,4,0][MVarSet,CB25Data,6,0]
+        [RoutineCall,CB29_NormalizeRenderFlags,0]
+    ,
+        [If,[MemGetSize,CB29ImportTemp]>0,[MemDelete,CB29ImportTemp]]
+        [MemCreate,CB29ImportTemp,cbStartupSize,0]
+        [MemCopy,CB25Data,0,CB29ImportTemp,0,cbStartupSize]
+        [RoutineCall,CB30_AcceptImport,cbStartupSize]
+        [MemDelete,CB29ImportTemp]
+        [If,cbImportValid==0,
+            [MessageOK,"Unsupported in-memory bank. Export it with its original plugin before loading this version.","Camera Bank 25"]
+            [Exit]
+        ]
+    ]
+,
+    [RoutineCall,CB29_CreateEmptyBank]
+]
+[RoutineDef,CB29_SaveVisualState,
+    [VarSet,visBase,
+        520 + (slot * 1001)
+    ]
+    [VarSet,subCount,
+        [SubToolGetCount]
+    ]
+    [MVarSet,
+        CB25Data,
+        visBase,
+        subCount
+    ]
+    [VarSet,st,0]
+    [Loop,subCount,
+        [VarSet,status,
+            [SubToolGetStatus,st]
+        ]
+        [VarSet,stateBits,
+            (status & 0x03)
+        ]
+        [MVarSet,
+            CB25Data,
+            visBase + 1 + st,
+            stateBits
+        ]
+        [VarInc,st]
+    ]
+,slot]
+[RoutineDef,CB29_RestoreVisualState,
+    [VarSet,visBase,
+        520 + (slot * 1001)
+    ]
+    [VarSet,savedCount,
+        [MVarGet,CB25Data,visBase]
+    ]
+    [VarSet,currentCount,
+        [SubToolGetCount]
+    ]
+    [If,
+        (savedCount > 0)
+        &&
+        (savedCount == currentCount),
+        [VarSet,st,0]
+        [Loop,savedCount,
+            [VarSet,savedState,
+                [MVarGet,
+                    CB25Data,
+                    visBase + 1 + st
+                ]
+            ]
+            [VarSet,savedEye,
+                (savedState & 0x01)
+            ]
+            [VarSet,currentStatus,
+                [SubToolGetStatus,st]
+            ]
+            [VarSet,currentEye,
+                (currentStatus & 0x01)
+            ]
+            [SubToolSetStatus,
+                st,
+                (currentStatus - currentEye) + savedEye
+            ]
+            [VarInc,st]
+        ]
+        [VarSet,st,0]
+        [Loop,savedCount,
+            [VarSet,savedState,
+                [MVarGet,
+                    CB25Data,
+                    visBase + 1 + st
+                ]
+            ]
+            [VarSet,savedFolderEye,
+                (savedState & 0x02)
+            ]
+            [VarSet,currentStatus,
+                [SubToolGetStatus,st]
+            ]
+            [VarSet,currentFolderEye,
+                (currentStatus & 0x02)
+            ]
+            [SubToolSetStatus,
+                st,
+                (currentStatus - currentFolderEye) + savedFolderEye
+            ]
+            [VarInc,st]
+        ]
+        [IUpdate,1,1]
+    ]
+,slot]
+[RoutineDef,CB31_Require3D,
+    [If,([IsEnabled,"Transform:Edit"]==0)||([IGet,"Transform:Edit"]==0),
+        [MessageOK,"No live 3D model is in Edit mode. Select your Tool, draw it on the canvas and press T (Edit), then try again. The camera has not been changed.","Camera Bank 25"]
+        [Exit]
+    ]
+    [If,[SubToolGetCount]<1,
+        [MessageOK,"No editable mesh was found. If this is a primitive or ZSphere, make a PolyMesh3D/adaptive skin first, then store the camera. Automatic conversion is avoided to preserve your Tool.","Camera Bank 25"]
+        [Exit]
+    ]
+]
+[RoutineDef,CB30_LensPaths,
+    [VarSet,cbFovPath,""]
+    [VarSet,cbUniversalPath,""]
+    [If,[IExists,"Draw:Angle Of View"],[VarSet,cbFovPath,"Draw:Angle Of View"]]
+    [If,[IExists,"Draw:Field of View"],[VarSet,cbFovPath,"Draw:Field of View"]]
+    [If,[IExists,"Draw:Field Of View(deg)"],[VarSet,cbFovPath,"Draw:Field Of View(deg)"]]
+    [If,[IExists,"Draw:Universal Camera"],[VarSet,cbUniversalPath,"Draw:Universal Camera"]]
+    [If,[IExists,"Draw:UniversalCamera"],[VarSet,cbUniversalPath,"Draw:UniversalCamera"]]
+    [If,[IExists,"Draw:Camera Mode"],[VarSet,cbUniversalPath,"Draw:Camera Mode"]]
+    [If,[IExists,"Draw:Camera"],[VarSet,cbUniversalPath,"Draw:Camera"]]
+    [If,[StrLength,cbUniversalPath]>0,
+        [If,[IGet,[Var,cbUniversalPath]]==0,
+            [If,[IExists,"Draw:Angle Of View"],[VarSet,cbFovPath,"Draw:Angle Of View"]]
+        ]
+    ]
+]
+[RoutineDef,CB30_SaveExtra,
+    [VarSet,cbBase,20 + (cbSlot*20)]
+    [VarSet,cbExtra,25545 + (cbSlot*8)]
+    [MVarSet,CB25Data,cbBase+18,[IGet,"Document:Width"]]
+    [MVarSet,CB25Data,cbBase+19,[IGet,"Document:Height"]]
+    [Loop,8,[MVarSet,CB25Data,cbExtra+cbIndex,0],cbIndex]
+    [RoutineCall,CB30_LensPaths]
+    [If,[StrLength,cbFovPath]>0,
+        [MVarSet,CB25Data,cbExtra,[IGet,[Var,cbFovPath]]]
+        [MVarSet,CB25Data,cbExtra+1,1]
+    ]
+    [MVarSet,CB25Data,cbExtra+2,-1]
+    [If,[StrLength,cbUniversalPath]>0,[MVarSet,CB25Data,cbExtra+2,[IGet,[Var,cbUniversalPath]]]]
+    [MVarSet,CB25Data,cbExtra+3,-1]
+    [If,[IExists,"Draw:Align To Object"],[MVarSet,CB25Data,cbExtra+3,[IGet,"Draw:Align To Object"]]]
+    [MVarSet,CB25Data,cbExtra+4,-1]
+    [If,[IExists,"Draw:Auto Adjust Distance"],[MVarSet,CB25Data,cbExtra+4,[IGet,"Draw:Auto Adjust Distance"]]]
+    [MVarSet,CB25Data,cbExtra+5,-1]
+    [If,[IExists,"Draw:Crop Factor"],[MVarSet,CB25Data,cbExtra+5,[IGet,"Draw:Crop Factor"]]]
+    [MVarSet,CB25Data,cbExtra+6,-1]
+    [If,[IExists,"Draw:Horizontal"],[MVarSet,CB25Data,cbExtra+6,[IGet,"Draw:Horizontal"]]]
+    [MVarSet,CB25Data,cbExtra+7,-1]
+    [If,[IExists,"Draw:Vertical"],[MVarSet,CB25Data,cbExtra+7,[IGet,"Draw:Vertical"]]]
+,cbSlot]
+[RoutineDef,CB30_Resize,
+    [If,(cbW>0)&&(cbH>0),
+        [If,(cbW>[IGetMax,"Document:Width"])||(cbH>[IGetMax,"Document:Height"]),
+            [MessageOK,"Saved canvas size exceeds this ZBrush version's limits.","Camera Bank 25"]
+            [Exit]
+        ]
+        [If,(cbW!=[IGet,"Document:Width"])||(cbH!=[IGet,"Document:Height"]),
+            [RoutineCall,CB31_Require3D]
+            [VarSet,cbPro,[IGet,"Document:Pro"]]
+            [If,[IExists,"Preferences:LightBox:LightBox"],
+                [ISet,"Preferences:LightBox:LightBox",0]
+            ]
+            [VarSet,cbThumbnail,0]
+            [If,[IExists,"Preferences:Thumbnail:T.Thumbnail"],
+                [VarSet,cbThumbnail,[IGet,"Preferences:Thumbnail:T.Thumbnail"]]
+                [IUnPress,"Preferences:Thumbnail:T.Thumbnail"]
+            ]
+            [IUnPress,"Transform:Edit"]
+            [IPress,"Layer:Clear"]
+            [IUnPress,"Document:Pro"]
+            [ISet,"Document:Width",cbW]
+            [ISet,"Document:Height",cbH]
+            [IKeyPress,13,[IPress,"Document:Resize"]]
+            [ISet,"Document:Pro",cbPro]
+            [IPress,"Transform:Draw Pointer"]
+            [CanvasClick,10,10,20,20]
+            [IPress,"Transform:Edit"]
+            [IUpdate,1,1]
+            [If,[IExists,"Preferences:Thumbnail:T.Thumbnail"],
+                [ISet,"Preferences:Thumbnail:T.Thumbnail",cbThumbnail]
+            ]
+            [RoutineCall,CB31_Require3D]
+        ]
+    ]
+,cbW,cbH]
+[RoutineDef,CB30_RestoreLens,
+    [VarSet,cbBase,20 + (cbSlot*20)]
+    [VarSet,cbExtra,25545 + (cbSlot*8)]
+    [RoutineCall,CB30_LensPaths]
+    [If,[StrLength,cbUniversalPath]>0,
+        [If,[MVarGet,CB25Data,cbExtra+2]>=0,[ISet,[Var,cbUniversalPath],[MVarGet,CB25Data,cbExtra+2]]]
+    ]
+    [RoutineCall,CB30_LensPaths]
+    [If,[IExists,"Draw:Perspective"],[IPress,"Draw:Perspective"]]
+    [If,[IsEnabled,"Draw:Crop Factor"],
+        [If,[MVarGet,CB25Data,cbExtra+5]>0,[ISet,"Draw:Crop Factor",[MVarGet,CB25Data,cbExtra+5]]]
+    ]
+    [If,[IsEnabled,"Draw:Horizontal"],
+        [If,[MVarGet,CB25Data,cbExtra+6]==1,[IPress,"Draw:Horizontal"]]
+    ]
+    [If,[IsEnabled,"Draw:Vertical"],
+        [If,[MVarGet,CB25Data,cbExtra+7]==1,[IPress,"Draw:Vertical"]]
+    ]
+    [If,[MVarGet,CB25Data,cbBase+15]==1,
+        [If,[IsEnabled,"Draw:Focal Length(mm)"],[ISet,"Draw:Focal Length(mm)",[MVarGet,CB25Data,cbBase+11]]]
+    ]
+    [If,[MVarGet,CB25Data,cbBase+15]==2,
+        [If,[IExists,"Draw:Focal Length"],
+            [If,[IsEnabled,"Draw:Focal Length"],[ISet,"Draw:Focal Length",[MVarGet,CB25Data,cbBase+11]]]
+        ]
+    ]
+    [If,([MVarGet,CB25Data,cbExtra+1]==1)&&([StrLength,cbFovPath]>0),
+        [ISet,[Var,cbFovPath],[MVarGet,CB25Data,cbExtra]]
+    ]
+    [If,[IExists,"Draw:Align To Object"],
+        [If,[MVarGet,CB25Data,cbExtra+3]>=0,[ISet,"Draw:Align To Object",[MVarGet,CB25Data,cbExtra+3]]]
+    ]
+    [If,[IExists,"Draw:Auto Adjust Distance"],
+        [If,[MVarGet,CB25Data,cbExtra+4]>=0,[ISet,"Draw:Auto Adjust Distance",[MVarGet,CB25Data,cbExtra+4]]]
+    ]
+    [If,[IExists,"Draw:Perspective"],
+        [If,[MVarGet,CB25Data,cbBase+10]>=0,[ISet,"Draw:Perspective",[MVarGet,CB25Data,cbBase+10]]]
+    ]
+,cbSlot]
+[RoutineDef,CB29_SaveSlot,
+    [VarSet,displaySlot,
+        slot + 1
+    ]
+    [VarSet,base,
+        20 + (slot * 20)
+    ]
+    [RoutineCall,CB31_Require3D]
+    [VarSet,currentSubCount,
+        [SubToolGetCount]
+    ]
+    [If,currentSubCount > 1000,
+        [MessageOK,
+            "Camera Bank 25 supports up to 1000 SubTools.",
+            "Camera Bank 25"
+        ]
+        [Exit]
+    ]
+    [MTransformGet,
+        CB25Data,
+        base + 1
+    ]
+    [If,[IExists,"Draw:Perspective"],
+        [If,[IGet,"Draw:Perspective"] != 0,
+            [MVarSet,
+                CB25Data,
+                base + 10,
+                1
+            ]
+        ,
+            [MVarSet,
+                CB25Data,
+                base + 10,
+                0
+            ]
+        ]
+    ,
+        [MVarSet,
+            CB25Data,
+            base + 10,
+            -1
+        ]
+    ]
+    [MVarSet,
+        CB25Data,
+        base + 15,
+        0
+    ]
+    [If,[IExists,"Draw:Focal Length(mm)"],
+        [MVarSet,
+            CB25Data,
+            base + 11,
+            [IGet,"Draw:Focal Length(mm)"]
+        ]
+        [MVarSet,
+            CB25Data,
+            base + 15,
+            1
+        ]
+    ,
+        [If,[IExists,"Draw:Focal Length"],
+            [MVarSet,
+                CB25Data,
+                base + 11,
+                [IGet,"Draw:Focal Length"]
+            ]
+            [MVarSet,
+                CB25Data,
+                base + 15,
+                2
+            ]
+        ,
+            [MVarSet,
+                CB25Data,
+                base + 11,
+                -9999
+            ]
+            [MVarSet,
+                CB25Data,
+                base + 15,
+                0
+            ]
+        ]
+    ]
+    [MVarSet,
+        CB25Data,
+        base + 12,
+        [CanvasZoomGet]
+    ]
+    [MVarSet,
+        CB25Data,
+        base + 13,
+        [CanvasPanGetH]
+    ]
+    [MVarSet,
+        CB25Data,
+        base + 14,
+        [CanvasPanGetV]
+    ]
+    [RoutineCall,CB30_SaveExtra,slot]
+    [RoutineCall,
+        CB29_SaveVisualState,
+        slot
+    ]
+    [MVarSet,CB25Data,base,1]
+    [MVarSet,
+        CB25Data,
+        base + 16,
+        1
+    ]
+    [MVarSet,
+        CB25Data,
+        base + 17,
+        0
+    ]
+    [MVarSet,
+        CB25Data,
+        5,
+        displaySlot
+    ]
+    [Note,
+        [StrMerge,
+            "Camera ",
+            displaySlot,
+            " STORED | RENDER ON"
+        ],
+        ,
+        2
+    ]
+,slot]
+[RoutineDef,CB29_LoadSlot,
+    [VarSet,base,20+(slot*20)]
+    [If,[MVarGet,CB25Data,base]!=1,[Exit]]
+    [RoutineCall,CB31_Require3D]
+    [If,([MVarGet,CB25Data,base+18]==0)&&([MVarGet,CB25Data,25546+(slot*8)]==0),
+        [Loop,6,[MVarSet,CB25Data,25547+(slot*8)+cbUnknown,-1],cbUnknown]
+    ]
+    [VarSet,cbLock,0]
+    [If,[IExists,"Draw:Lock Camera"],
+        [VarSet,cbLock,[IGet,"Draw:Lock Camera"]]
+        [IUnPress,"Draw:Lock Camera"]
+    ]
+    [RoutineCall,CB30_Resize,[MVarGet,CB25Data,base+18],[MVarGet,CB25Data,base+19]]
+    [RoutineCall,CB30_RestoreLens,slot]
+    [RoutineCall,CB29_RestoreVisualState,slot]
+    [MTransformSet,CB25Data,base+1]
+    [CanvasZoomSet,[MVarGet,CB25Data,base+12]]
+    [CanvasPanSet,[MVarGet,CB25Data,base+13],[MVarGet,CB25Data,base+14]]
+    [If,[IExists,"Draw:Lock Camera"],[ISet,"Draw:Lock Camera",cbLock]]
+    [MVarSet,CB25Data,5,slot+1]
+    [IUpdate,2,1]
+,slot]
+[RoutineDef,CB29_ClearSlot,
+    [VarSet,displaySlot,
+        slot + 1
+    ]
+    [VarSet,base,
+        20 + (slot * 20)
+    ]
+    [VarSet,visBase,
+        520 + (slot * 1001)
+    ]
+    [If,[MVarGet,CB25Data,5] == displaySlot,
+        [MVarSet,
+            CB25Data,
+            5,
+            0
+        ]
+    ]
+    [VarSet,n,0]
+    [Loop,20,
+        [MVarSet,
+            CB25Data,
+            base + n,
+            0
+        ]
+        [VarInc,n]
+    ]
+    [VarSet,n,0]
+    [Loop,1001,
+        [MVarSet,
+            CB25Data,
+            visBase + n,
+            0
+        ]
+        [VarInc,n]
+    ]
+    [Loop,8,[MVarSet,CB25Data,25545+(slot*8)+cbClearIndex,0],cbClearIndex]
+    [Note,
+        [StrMerge,
+            "Camera ",
+            displaySlot,
+            " CLEARED"
+        ],
+        ,
+        2
+    ]
+,slot]
+[RoutineDef,CB29_ApplyVisual,
+    [VarSet,base,
+        20 + (slot * 20)
+    ]
+    [VarSet,displaySlot,
+        slot + 1
+    ]
+    [If,displaySlot < 10,
+        [VarSet,buttonPath,
+            [StrMerge,
+                "ZPlugin:Camera Bank 25:0",
+                displaySlot
+            ]
+        ]
+    ,
+        [VarSet,buttonPath,
+            [StrMerge,
+                "ZPlugin:Camera Bank 25:",
+                displaySlot
+            ]
+        ]
+    ]
+    [VarSet,isStored,
+        [MVarGet,CB25Data,base]
+    ]
+    [VarSet,renderEnabled,
+        [MVarGet,CB25Data,base + 16]
+    ]
+    [IEnable,
+        [Var,buttonPath]
+    ]
+    [If,isStored == 1,
+        [ISet,
+            [Var,buttonPath],
+            renderEnabled
+        ]
+    ,
+        [ISet,
+            [Var,buttonPath],
+            0
+        ]
+    ]
+    [If,[MVarGet,CB25Data,6] == 1,
+        [If,isStored == 1,
+            [IDisable,
+                [Var,buttonPath]
+            ]
+        ,
+            [IEnable,
+                [Var,buttonPath]
+            ]
+        ]
+    ,
+        [If,isStored == 1,
+            [IEnable,
+                [Var,buttonPath]
+            ]
+        ,
+            [IDisable,
+                [Var,buttonPath]
+            ]
+        ]
+    ]
+,slot]
+[RoutineDef,CB29_SyncVisuals,
+    [IEnable,"ZPlugin:Camera Bank 25:STORE NEW"]
+    [IEnable,"ZPlugin:Camera Bank 25:CLEAR"]
+    [MVarSet,
+        CB25Data,
+        4,
+        1
+    ]
+    [VarSet,syncSlot,0]
+    [Loop,25,
+        [RoutineCall,
+            CB29_ApplyVisual,
+            syncSlot
+        ]
+        [VarInc,syncSlot]
+    ]
+    [ISet,
+        "ZPlugin:Camera Bank 25:STORE NEW",
+        [MVarGet,CB25Data,6]
+    ]
+    [ISet,
+        "ZPlugin:Camera Bank 25:CLEAR",
+        [MVarGet,CB25Data,3]
+    ]
+    [IUpdate,1,1]
+    [MVarSet,
+        CB25Data,
+        4,
+        0
+    ]
+]
+[RoutineDef,CB29_EnterStoreMode,
+    [VarSet,emptyCount,0]
+    [VarSet,testSlot,0]
+    [Loop,25,
+        [VarSet,testBase,
+            20 + (testSlot * 20)
+        ]
+        [If,[MVarGet,CB25Data,testBase] != 1,
+            [VarInc,emptyCount]
+        ]
+        [VarInc,testSlot]
+    ]
+    [If,emptyCount == 0,
+        [MVarSet,CB25Data,6,0]
+        [MessageOK,
+            "All 25 camera slots are already occupied.",
+            "Camera Bank 25"
+        ]
+        [RoutineCall,
+            CB29_SyncVisuals
+        ]
+    ,
+        [MVarSet,CB25Data,3,0]
+        [MVarSet,CB25Data,6,1]
+        [RoutineCall,
+            CB29_SyncVisuals
+        ]
+        [Note,
+            "STORE NEW - Click an EMPTY camera slot",
+            ,
+            2
+        ]
+    ]
+]
+[RoutineDef,CB29_ExitStoreMode,
+    [MVarSet,CB25Data,6,0]
+    [RoutineCall,
+        CB29_SyncVisuals
+    ]
+]
+[RoutineDef,CB29_SlotClick,
+    [If,[MVarGet,CB25Data,4] == 0,
+        [VarSet,base,
+            20 + (slot * 20)
+        ]
+        [VarSet,displaySlot,
+            slot + 1
+        ]
+        [If,[MVarGet,CB25Data,6] == 1,
+            [If,[MVarGet,CB25Data,base] != 1,
+                [RoutineCall,
+                    CB29_SaveSlot,
+                    slot
+                ]
+            ]
+            [MVarSet,CB25Data,6,0]
+            [MVarSet,CB25Data,3,0]
+            [RoutineCall,
+                CB29_SyncVisuals
+            ]
+        ,
+            [If,[MVarGet,CB25Data,3] == 1,
+                [If,[MVarGet,CB25Data,base] == 1,
+                    [RoutineCall,
+                        CB29_ClearSlot,
+                        slot
+                    ]
+                ]
+                [MVarSet,CB25Data,3,0]
+                [MVarSet,CB25Data,6,0]
+                [RoutineCall,
+                    CB29_SyncVisuals
+                ]
+            ,
+                [If,[MVarGet,CB25Data,base] == 1,
+                    [RoutineCall,
+                        CB29_LoadSlot,
+                        slot
+                    ]
+                    [If,[MVarGet,CB25Data,base + 17] == 0,
+                        [MVarSet,
+                            CB25Data,
+                            base + 17,
+                            1
+                        ]
+                        [If,[MVarGet,CB25Data,base + 16] == 1,
+                            [MVarSet,
+                                CB25Data,
+                                5,
+                                displaySlot
+                            ]
+                            [Note,
+                                [StrMerge,
+                                    "Camera ",
+                                    displaySlot,
+                                    " RECALLED | RENDER ON"
+                                ],
+                                ,
+                                2
+                            ]
+                        ,
+                            [MVarSet,CB25Data,5,displaySlot]
+                            [Note,
+                                [StrMerge,
+                                    "Camera ",
+                                    displaySlot,
+                                    " RECALLED | RENDER OFF"
+                                ],
+                                ,
+                                2
+                            ]
+                        ]
+                    ,
+                        [If,[MVarGet,CB25Data,base + 16] == 1,
+                            [MVarSet,
+                                CB25Data,
+                                base + 16,
+                                0
+                            ]
+                            [MVarSet,CB25Data,5,displaySlot]
+                            [Note,
+                                [StrMerge,
+                                    "Camera ",
+                                    displaySlot,
+                                    " | RENDER OFF"
+                                ],
+                                ,
+                                2
+                            ]
+                        ,
+                            [MVarSet,
+                                CB25Data,
+                                base + 16,
+                                1
+                            ]
+                            [MVarSet,
+                                CB25Data,
+                                5,
+                                displaySlot
+                            ]
+                            [Note,
+                                [StrMerge,
+                                    "Camera ",
+                                    displaySlot,
+                                    " | RENDER ON"
+                                ],
+                                ,
+                                2
+                            ]
+                        ]
+                    ]
+                    [RoutineCall,
+                        CB29_SyncVisuals
+                    ]
+                ]
+            ]
+        ]
+    ]
+,slot]
+[RoutineDef,CB29_CheckActive,
+    [VarSet,activeCamera,
+        [MVarGet,CB25Data,5]
+    ]
+    [If,activeCamera > 0,
+        [Note,
+            [StrMerge,
+                "ACTIVE CAMERA = ",
+                activeCamera
+            ],
+            ,
+            4
+        ]
+    ,
+        [Note,
+            "ACTIVE CAMERA = NONE",
+            ,
+            4
+        ]
+    ]
+]
+[RoutineDef,CB29_ClearAll,
+    [VarSet,answer,
+        [MessageYesNo,
+            "Clear all 25 stored cameras and visibility snapshots?",
+            "Camera Bank 25"
+        ]
+    ]
+    [If,answer == 1,
+        [RoutineCall,
+            CB29_CreateEmptyBank
+        ]
+        [RoutineCall,
+            CB29_SyncVisuals
+        ]
+        [MessageOK,
+            "All 25 camera slots have been cleared.",
+            "Camera Bank 25"
+        ]
+    ]
+]
+[RoutineDef,CB29_ExportBank,
+    [MVarSet,CB25Data,1,7]
+    [MVarSet,CB25Data,3,0]
+    [MVarSet,CB25Data,4,0]
+    [MVarSet,CB25Data,6,0]
+    [VarSet,exSlot,0]
+    [Loop,25,
+        [VarSet,exBase,
+            20 + (exSlot * 20)
+        ]
+        [MVarSet,
+            CB25Data,
+            exBase + 17,
+            0
+        ]
+        [VarInc,exSlot]
+    ]
+    [VarSet,saveFile,
+        [FileNameAsk,
+            "Camera Bank (*.zcv)|*.zcv||",
+            "CameraBank25_v3_0.zcv",
+            "Export Camera Bank 25 v3.0"
+        ]
+    ]
+    [If,[StrLength,saveFile] > 0,
+        [VarSet,saveResult,
+            [MemSaveToFile,
+                CB25Data,
+                saveFile,
+                1
+            ]
+        ]
+        [If,saveResult > 0,
+            [MessageOK,
+                "Camera Bank v3.0 exported successfully.",
+                "Camera Bank 25"
+            ]
+        ,
+            [MessageOK,
+                "Could not export Camera Bank.",
+                "Camera Bank 25"
+            ]
+        ]
+    ]
+]
+[RoutineDef,CB29_ImportBank,
+    [VarSet,cbFile,[FileNameAsk,"Camera Bank (*.zcv)|*.zcv||",,"Import Camera Bank"]]
+    [If,[StrLength,cbFile]>0,
+        [If,[MemGetSize,CB29ImportTemp]>0,[MemDelete,CB29ImportTemp]]
+        [VarSet,cbSize,[MemCreateFromFile,CB29ImportTemp,cbFile]]
+        [RoutineCall,CB30_AcceptImport,cbSize]
+        [If,[MemGetSize,CB29ImportTemp]>0,[MemDelete,CB29ImportTemp]]
+        [If,cbImportValid==1,
+            [RoutineCall,CB29_SyncVisuals]
+            [If,cbImportVersion<7,
+                [MessageOK,"Legacy bank imported. Old files contain no canvas size or explicit FOV. Recall each camera, set its canvas/lens, then UPDATE ACTIVE and export a new bank.","Camera Bank 25"]
+            ,
+                [MessageOK,"Camera Bank imported.","Camera Bank 25"]
+            ]
+        ,
+            [MessageOK,"Invalid or unsupported bank. Current cameras were kept.","Camera Bank 25"]
+        ]
+    ]
+]
+[ISwitch,"ZPlugin:Camera Bank 25:01",[MVarGet,CB25Data,36],"Camera 01",
+[RoutineCall,CB29_SlotClick,0],[RoutineCall,CB29_SlotClick,0],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:02",[MVarGet,CB25Data,56],"Camera 02",
+[RoutineCall,CB29_SlotClick,1],[RoutineCall,CB29_SlotClick,1],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:03",[MVarGet,CB25Data,76],"Camera 03",
+[RoutineCall,CB29_SlotClick,2],[RoutineCall,CB29_SlotClick,2],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:04",[MVarGet,CB25Data,96],"Camera 04",
+[RoutineCall,CB29_SlotClick,3],[RoutineCall,CB29_SlotClick,3],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:05",[MVarGet,CB25Data,116],"Camera 05",
+[RoutineCall,CB29_SlotClick,4],[RoutineCall,CB29_SlotClick,4],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:06",[MVarGet,CB25Data,136],"Camera 06",
+[RoutineCall,CB29_SlotClick,5],[RoutineCall,CB29_SlotClick,5],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:07",[MVarGet,CB25Data,156],"Camera 07",
+[RoutineCall,CB29_SlotClick,6],[RoutineCall,CB29_SlotClick,6],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:08",[MVarGet,CB25Data,176],"Camera 08",
+[RoutineCall,CB29_SlotClick,7],[RoutineCall,CB29_SlotClick,7],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:09",[MVarGet,CB25Data,196],"Camera 09",
+[RoutineCall,CB29_SlotClick,8],[RoutineCall,CB29_SlotClick,8],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:10",[MVarGet,CB25Data,216],"Camera 10",
+[RoutineCall,CB29_SlotClick,9],[RoutineCall,CB29_SlotClick,9],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:11",[MVarGet,CB25Data,236],"Camera 11",
+[RoutineCall,CB29_SlotClick,10],[RoutineCall,CB29_SlotClick,10],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:12",[MVarGet,CB25Data,256],"Camera 12",
+[RoutineCall,CB29_SlotClick,11],[RoutineCall,CB29_SlotClick,11],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:13",[MVarGet,CB25Data,276],"Camera 13",
+[RoutineCall,CB29_SlotClick,12],[RoutineCall,CB29_SlotClick,12],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:14",[MVarGet,CB25Data,296],"Camera 14",
+[RoutineCall,CB29_SlotClick,13],[RoutineCall,CB29_SlotClick,13],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:15",[MVarGet,CB25Data,316],"Camera 15",
+[RoutineCall,CB29_SlotClick,14],[RoutineCall,CB29_SlotClick,14],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:16",[MVarGet,CB25Data,336],"Camera 16",
+[RoutineCall,CB29_SlotClick,15],[RoutineCall,CB29_SlotClick,15],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:17",[MVarGet,CB25Data,356],"Camera 17",
+[RoutineCall,CB29_SlotClick,16],[RoutineCall,CB29_SlotClick,16],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:18",[MVarGet,CB25Data,376],"Camera 18",
+[RoutineCall,CB29_SlotClick,17],[RoutineCall,CB29_SlotClick,17],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:19",[MVarGet,CB25Data,396],"Camera 19",
+[RoutineCall,CB29_SlotClick,18],[RoutineCall,CB29_SlotClick,18],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:20",[MVarGet,CB25Data,416],"Camera 20",
+[RoutineCall,CB29_SlotClick,19],[RoutineCall,CB29_SlotClick,19],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:21",[MVarGet,CB25Data,436],"Camera 21",
+[RoutineCall,CB29_SlotClick,20],[RoutineCall,CB29_SlotClick,20],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:22",[MVarGet,CB25Data,456],"Camera 22",
+[RoutineCall,CB29_SlotClick,21],[RoutineCall,CB29_SlotClick,21],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:23",[MVarGet,CB25Data,476],"Camera 23",
+[RoutineCall,CB29_SlotClick,22],[RoutineCall,CB29_SlotClick,22],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:24",[MVarGet,CB25Data,496],"Camera 24",
+[RoutineCall,CB29_SlotClick,23],[RoutineCall,CB29_SlotClick,23],0,.2]
+[ISwitch,"ZPlugin:Camera Bank 25:25",[MVarGet,CB25Data,516],"Camera 25",
+[RoutineCall,CB29_SlotClick,24],[RoutineCall,CB29_SlotClick,24],0,.2]
+[ISwitch,
+    "ZPlugin:Camera Bank 25:STORE NEW",
+    0,
+    "Enable empty camera slots so one new camera can be stored.",
+    [If,[MVarGet,CB25Data,4] == 0,
+        [RoutineCall,
+            CB29_EnterStoreMode
+        ]
+    ],
+    [If,[MVarGet,CB25Data,4] == 0,
+        [RoutineCall,
+            CB29_ExitStoreMode
+        ]
+    ],
+    0,
+    1
+]
+[ISwitch,
+    "ZPlugin:Camera Bank 25:CLEAR",
+    0,
+    "Activate Clear Mode. Then click one stored camera.",
+    [If,[MVarGet,CB25Data,4] == 0,
+        [MVarSet,CB25Data,6,0]
+        [MVarSet,CB25Data,3,1]
+        [RoutineCall,
+            CB29_SyncVisuals
+        ]
+        [Note,
+            "CLEAR MODE - Click a stored camera",
+            ,
+            2
+        ]
+    ],
+    [If,[MVarGet,CB25Data,4] == 0,
+        [MVarSet,CB25Data,3,0]
+        [RoutineCall,
+            CB29_SyncVisuals
+        ]
+        [Note,
+            "CLEAR MODE cancelled",
+            ,
+            1
+        ]
+    ],
+    0,
+    .5
+]
+[IButton,
+    "ZPlugin:Camera Bank 25:CLEAR ALL",
+    "Delete all stored cameras.",
+    [RoutineCall,
+        CB29_ClearAll
+    ]
+    ,
+    ,
+    .5
+]
+[IButton,
+    "ZPlugin:Camera Bank 25:CHECK ACTIVE",
+    "Display active camera.",
+    [RoutineCall,
+        CB29_CheckActive
+    ]
+    ,
+    ,
+    1
+]
+[IButton,
+    "ZPlugin:Camera Bank 25:EXPORT BANK",
+    "Export Camera Bank.",
+    [RoutineCall,
+        CB29_ExportBank
+    ]
+    ,
+    ,
+    .5
+]
+[IButton,
+    "ZPlugin:Camera Bank 25:IMPORT BANK",
+    "Import Camera Bank.",
+    [RoutineCall,
+        CB29_ImportBank
+    ]
+    ,
+    ,
+    .5
+]
+[RoutineCall,
+    CB29_SyncVisuals
+]
+[IButton,"ZPlugin:Camera Bank 25:UPDATE ACTIVE","Replace the active camera with the current view, canvas size, lens and visibility. Keeps its Render flag.",
+    [VarSet,cbActive,[MVarGet,CB25Data,5]-1]
+    [If,cbActive<0,[MessageOK,"Recall a stored camera first.","Camera Bank 25"][Exit]]
+    [VarSet,cbRenderFlag,[MVarGet,CB25Data,20+(cbActive*20)+16]]
+    [RoutineCall,CB29_SaveSlot,cbActive]
+    [MVarSet,CB25Data,20+(cbActive*20)+16,cbRenderFlag]
+    [RoutineCall,CB29_SyncVisuals]
+,,1]
+[IEnable,"ZPlugin:Camera Bank 25:STORE NEW"]
+[IEnable,"ZPlugin:Camera Bank 25:CLEAR"]

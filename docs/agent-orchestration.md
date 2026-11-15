@@ -1,11 +1,18 @@
 # Automatic worker chats
 
-An explicitly enabled orchestrator chat can open a visible **OpenCode** worker,
-select its exact native `provider/model#variant`, send a project handoff, read
-progress and send corrections to the same native conversation after it finishes.
-The orchestrator can be any supported agent CLI. Automatic workers currently
-use OpenCode's native **run** mode inside a normal Mr. Mak chat tab; existing
-interactive OpenCode tabs retain their normal behavior.
+An explicitly enabled orchestrator chat can open visible **OpenCode**, **Claude
+Code** or **Codex** workers with an exact model, send a project handoff, read
+progress and send corrections to the same native conversation. The orchestrator
+can be any supported agent CLI. Workers open in the orchestrator's tab group.
+
+| Worker `agent` | `model` | Reasoning | How it runs |
+| --- | --- | --- | --- |
+| `opencode` | exact `provider/model#variant` | the `#variant` | OpenCode's native **run** mode: one process per task or follow-up |
+| `claude` | exact Claude model ID, such as `claude-opus-5-5` | optional `effort` | interactive Claude Code tab that stays open |
+| `codex` | exact Codex model ID, such as `gpt-6.1sol` | optional `effort` | interactive Codex tab that stays open |
+
+`effort` is `medium`, `high`, `xhigh` or `max`; without it a Claude or Codex
+worker uses `medium`. Existing interactive tabs retain their normal behavior.
 
 ## Enable for one new orchestrator
 
@@ -31,9 +38,10 @@ permission.
 Provide the project handoff plus these instructions:
 
 > Follow `processes/visible-agent-orchestration.md`. Use
-> `scripts/agent-control.mjs` to create a visible OpenCode worker with the exact
-> requested model, monitor it, independently inspect the delivered artifacts and
-> send any corrections back to that same worker. Preserve sources and permissions.
+> `scripts/agent-control.mjs` to create a visible worker with the exact
+> requested CLI and model, monitor it, independently inspect the delivered
+> artifacts and send any corrections back to that same worker. Preserve sources
+> and permissions.
 
 Write a request JSON file containing:
 
@@ -46,6 +54,43 @@ Write a request JSON file containing:
   "handoff": "projects/total-insanitation/CORRIDOR_ASSET_HANDOFF.md"
 }
 ```
+
+A Codex or Claude worker names its model and reasoning separately:
+
+```json
+{
+  "requestId": "plugin-ui-20261115",
+  "agent": "codex",
+  "name": "Plugin UI Pass",
+  "model": "gpt-6.1sol",
+  "effort": "xhigh",
+  "handoff": "projects/example/HANDOFF.md"
+}
+```
+
+### Separate branches (worktrees)
+
+Parallel workers in one folder can overwrite each other's files. Add
+`"worktree": true` to a request to give that worker its own Git branch and
+checkout:
+
+- Mr. Mak creates the branch `mrmak/<name>-<random>` from the controller's current
+  commit and checks it out in `<repository>.worktrees/` beside the repository. The
+  worker opens in the same subfolder the controller uses.
+- The result contains `worktree.path`, `worktree.branch` and `worktree.base`.
+  A `note` reports uncommitted or untracked files: they are **not** in the
+  worktree, so commit what the worker needs first. Ignored files such as
+  `node_modules` or `.env` are not copied either.
+- The worker is told to commit on its branch and not to merge, rebase or push.
+  Review from the controller with `git diff <base>...<branch>`, then merge.
+- After merging, close the worker's tab, then run `git worktree remove <path>` and
+  `git branch -d <branch>`. Mr. Mak removes a worktree itself only when its worker
+  never started.
+- Mr. Mak creates worktrees itself rather than passing `claude -w` or
+  `codex --worktree`: the branch starts at the local commit (Claude's own default
+  is the remote default branch), all three CLIs behave the same, and the worker's
+  conversation stays in a folder Mr. Mak knows. A new folder may make a CLI ask
+  for folder trust once; answer it in the worker's tab.
 
 The model ID above was verified against the owner's installed OpenCode 2.2.6
 catalog: **DeepSeek V4.1 Flash 1017 / OpenCode Go / max**. It is not an alias for
@@ -64,9 +109,17 @@ node scripts/agent-control.mjs send WORKER_CHAT_ID path/to/corrections.txt
 Use the returned real chat ID. `open` focuses its visible tab and returns delivery
 state. `read` includes the native screen, transcript/model and observed process
 state. Delivery is not completion. Independently verify outputs before acceptance.
-`send` resumes the **same native conversation** in another run after the prior
-process exits naturally; it refuses to inject corrections into an active run.
-It never terminates a running worker.
+`send` continues the **same native conversation** and never terminates a running
+worker:
+
+- OpenCode: a new run starts after the prior process exits naturally; corrections
+  are refused while a run is active.
+- Claude and Codex: the correction is sent into the open tab once the worker's
+  turn has finished. It is refused while the worker is working or waiting for
+  input. If the worker's CLI has exited, it resumes with the same model.
+
+A Claude or Codex worker CLI may show its own first-run screens, such as folder
+trust or sign-in. Read the screen after `open`; the bridge does not answer them.
 
 The handoff must be a Markdown file inside the controller's exact project folder,
 outside hidden/private runtime directories. Workers keep that folder and inherit
@@ -76,6 +129,9 @@ account/provider setup.
 
 The validated handoff text is frozen in a private runtime attachment before
 launch. Later source edits or symlink changes cannot alter that request's input.
+Each worker has its own runtime folder for that attachment and its follow-ups. A
+Claude worker is given read access to that folder only; OpenCode and Codex
+receive the file directly or read it by path.
 
 ## Repetition and interruption
 

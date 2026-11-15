@@ -1,0 +1,145 @@
+{
+  "version": "3.1.0",
+  "bank_data_version": 8,
+  "delivery": "Both plugins are updated TXT source only. Native compilation/visual verification pending. No current ZSC included.",
+  "source_validation": "32 logic scenarios, installer/uninstaller fixtures, reproducible generated sources, and 1000-SubTool duplicate-name mock smoke pass. Native merges are simulated, not executed.",
+  "native_validation": "Historical baseline 3.0.3 only, documented in Development/VERIFICATION.md and Workspace card. No app launch/control/compilation/rendering for 3.1.0.",
+  "updated": "2026-11-14T22:03:45.570149+00:00",
+  "files": [
+    {
+      "path": "Camera Bank/CameraBank25.txt",
+      "bytes": 55611,
+      "sha256": "1b0b5f33e32c74ea9fa36b84d97b4cada28b7d94292c5e5f4a7c4ff9eeb8de35"
+    },
+    {
+      "path": "Camera Bank/INSTALAR CAMERA BANK.cmd",
+      "bytes": 56,
+      "sha256": "1fb5016d32a1b5e25510ed0ca7dc680e152e2a5758f9454ba459ffbd5f48cae5"
+    },
+    {
+      "path": "DESINSTALAR.cmd",
+      "bytes": 96,
+      "sha256": "e274b61c6647995cd06b691f7e478ae0a755a7b17de14643cd313059fb0f7538"
+    },
+    {
+      "path": "Development/DATA_FORMAT.md",
+      "bytes": 4225,
+      "sha256": "170f63172cf459d3a77780147bced360f2c704cd8e37e13177daa158214230e3"
+    },
+    {
+      "path": "Development/MERGE_HANDOFF.md",
+      "bytes": 5760,
+      "sha256": "61e8866a396a6780077e3ad4e91822e0358dae05fecfa5939f2d54ea18a27cf1"
+    },
+    {
+      "path": "Development/NATIVE_TEST.md",
+      "bytes": 4795,
+      "sha256": "6822d95c4172f3bc44b8c02a5de26065deb366d9ba6247a4422386e3553a43a3"
+    },
+    {
+      "path": "Development/VERIFICATION.md",
+      "bytes": 8689,
+      "sha256": "01f44203316e71a6ef1c30a4dcbcf70b70fbac469db941b197c59bc560e79d20"
+    },
+    {
+      "path": "Development/build_all.py",
+      "bytes": 407,
+      "sha256": "55fe7c67a9352aa66ecdfaaffc31deba5deb0ba7b74b15c70f624f30d8308905"
+    },
+    {
+      "path": "Development/build_camera.py",
+      "bytes": 17097,
+      "sha256": "31052d8d125605e158a48d2dec12c90a28a09d042ea3ce289e33bd0b8b0b55f9"
+    },
+    {
+      "path": "Development/build_visibility.py",
+      "bytes": 7992,
+      "sha256": "2abcb183545d1ac14148fe4c9b12895c9267a9c97de36995a1fd3eda18ef00c7"
+    },
+    {
+      "path": "Development/camera_reader.inc",
+      "bytes": 15526,
+      "sha256": "6645d94f579886baca621c9bf5d435b0b564c2100fbe3af71206e2e14e0d9ebf"
+    },
+    {
+      "path": "Development/merge_visibility.inc",
+      "bytes": 7834,
+      "sha256": "b2a4f2366308697a36ee8257e2b79120c37e00fe8b297f33211ec9fb5bbea337"
+    },
+    {
+      "path": "Development/merge_visibility_writer.inc",
+      "bytes": 11877,
+      "sha256": "7cb1f65b6bb95530f50ed56ee7f53bdb592b16a124ab40c5f055c8a4767a43f9"
+    },
+    {
+      "path": "Development/original_integrated.txt",
+      "bytes": 119171,
+      "sha256": "af2021fc0aad19bdec83e718af3d513146ecde55afa2875702354b29b0d566c7"
+    },
+    {
+      "path": "Development/render_body.txt",
+      "bytes": 22965,
+      "sha256": "0bf926a8f1cc28eeec57a02cdee86d14df73f73508a2200e8b04aa55b1753352"
+    },
+    {
+      "path": "Development/test_installer.py",
+      "bytes": 3270,
+      "sha256": "a6f94218363da0aa46e942bf27f8750fa257d95e86742160ac46af7c4dfa2dff"
+    },
+    {
+      "path": "Development/test_uninstaller.py",
+      "bytes": 2177,
+      "sha256": "1965679a313ea8fbc2400af98c0f8d2f4801195887d618a876c595efcc2b7912"
+    },
+    {
+      "path": "Development/verify.py",
+      "bytes": 27094,
+      "sha256": "96d534eaf38fe6e472456907c740d8314b8e73d61510d40ec421041eefa7ab6a"
+    },
+    {
+      "path": "Development/verify_merge.py",
+      "bytes": 12529,
+      "sha256": "10ea9a3edf5a003874a20704740a4c741e27e0b44c6dcddb717e6ff1bb6a385b"
+    },
+    {
+      "path": "INSTALAR.cmd",
+      "bytes": 100,
+      "sha256": "ea76142e324a4364ee78ab788f8aa3d806adf1b9caa675d639b57f638af55047"
+    },
+    {
+      "path": "Install.ps1",
+      "bytes": 9289,
+      "sha256": "0568eb35217ed016144afe9cdd107f4b89801af0de744265e4c77968f21a2f17"
+    },
+    {
+      "path": "README.txt",
+      "bytes": 7457,
+      "sha256": "fe24402ca9ffebed7e036006f78b2c1d4f59cbf1a67f60c7b5cfa1c679b96359"
+    },
+    {
+      "path": "Render Capture/INSTALAR RENDER CAPTURE.cmd",
+      "bytes": 56,
+      "sha256": "c7fbc9e0902b1e6ab57c3f25fc4df2bb887bca39364363d297222fe1153a5941"
+    },
+    {
+      "path": "Render Capture/RenderCapture.txt",
+      "bytes": 38495,
+      "sha256": "8d91e6ace5c26f7ca1a9b2bde8c453b14d50219727bdae8875a6f6623119b987"
+    },
+    {
+      "path": "Render Capture/RenderCaptureData/PROVENANCE.txt",
+      "bytes": 580,
+      "sha256": "a886c2fb05622088927819988af8794f9615a94ff4bb25e81e164dbfd2eaccd4"
+    },
+    {
+      "path": "Render Capture/RenderCaptureData/ZFileUtils64.dll",
+      "bytes": 521728,
+      "sha256": "0e113ff2c859ed80b75a9b6139be59b4b3fe832605765ec2ebab5b95e61240ef"
+    },
+    {
+      "path": "Uninstall.ps1",
+      "bytes": 3435,
+      "sha256": "301e9e4015b807490a852133fbb8bda0623859c21e5940e3362166e9e6546ec7"
+    }
+  ]
+}

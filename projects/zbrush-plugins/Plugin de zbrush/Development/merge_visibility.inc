@@ -1,0 +1,167 @@
+// Data v8: groups describe identical effective visibility across all 25 views.
+// Names carry CB<6-digit bank A><6-digit bank B>G<4-digit group>_.
+// Each mask half is <=13 bits, so single-precision cells stay exact.
+[VarDef,cbTrackValid,0]
+[VarDef,cbTrackError,""]
+[VarDef,cbTrackPrefix,""]
+[VarDef,cbTrackName,""]
+[VarDef,cbParsedGroup,0]
+[VarDef,cbTagStart,-1]
+[VarDef,cbTrackVisible,0]
+[VarDef,cbTrackBit,1]
+[VarDef,cbTrackHalf,0]
+[VarDef,cbTrackGroups(1000),0]
+[VarDef,cbTrackSeen(1000),0]
+[VarDef,cbTrackEye(1000),0]
+[RoutineDef,CB32_Bit,
+    [VarSet,cbTrackHalf,0][VarSet,cbBitSlot,cbSlot]
+    [If,cbSlot>=13,[VarSet,cbTrackHalf,1][VarSet,cbBitSlot,cbSlot-13]]
+    [VarSet,cbTrackBit,1]
+    [Loop,cbBitSlot,[VarSet,cbTrackBit,cbTrackBit*2]]
+,cbSlot]
+[RoutineDef,CB32_GroupVisible,
+    [RoutineCall,CB32_Bit,cbSlot]
+    [VarSet,cbTrackVisible,0]
+    [If,([MVarGet,CB25Data,25746+((cbGroup-1)*2)+cbTrackHalf]&cbTrackBit)!=0,
+        [VarSet,cbTrackVisible,1]
+    ]
+,cbGroup,cbSlot]
+[RoutineDef,CB32_ReadName,
+    [VarSet,cbTrackName,[IGetTitle,"Tool:ItemInfo"]]
+    [If,[StrLength,cbTrackName]>0,
+        [If,[StrToAsc,cbTrackName,[StrLength,cbTrackName]-1]==46,
+            [VarSet,cbTrackName,[StrExtract,cbTrackName,0,[StrLength,cbTrackName]-2]]
+        ]
+    ]
+]
+[RoutineDef,CB32_ParseTag,
+    [VarSet,cbParsedGroup,0]
+    [VarSet,cbTagStart,[StrFind,cbTrackPrefix,cbTagName]]
+    [If,cbTagStart>=0,
+        [If,[StrLength,cbTagName]>=(cbTagStart+20),
+            [If,[StrToAsc,cbTagName,cbTagStart+19]==95,
+                [VarSet,cbDigitsOK,1][VarSet,cbParsedGroup,0]
+                [Loop,4,
+                    [VarSet,cbDigit,[StrToAsc,cbTagName,cbTagStart+15+cbDigitIndex]-48]
+                    [If,(cbDigit<0)||(cbDigit>9),[VarSet,cbDigitsOK,0]]
+                    [VarSet,cbParsedGroup,(cbParsedGroup*10)+cbDigit]
+                ,cbDigitIndex]
+                [If,cbDigitsOK==0,[VarSet,cbParsedGroup,0]]
+                [If,[StrLength,cbTagName]>(cbTagStart+20),
+                    [VarSet,cbTail,[StrExtract,cbTagName,cbTagStart+20,[StrLength,cbTagName]-1]]
+                    [If,[StrFind,cbTrackPrefix,cbTail]>=0,[VarSet,cbParsedGroup,0]]
+                ]
+            ]
+        ]
+    ]
+,cbTagName]
+[RoutineDef,CB32_CheckTracked,
+    [VarSet,cbTrackValid,1][VarSet,cbTrackError,""]
+    [VarSet,cbTrackPrefix,[StrMerge,"CB",[MVarGet,CB25Data,8],[MVarGet,CB25Data,9],"G"]]
+    [VarSet,cbOldSelected,[SubToolGetActiveIndex]]
+    [If,([SubToolGetCount]<1)||([SubToolGetCount]>1000),
+        [VarSet,cbTrackValid,0][VarSet,cbTrackError,"A tracked model must have 1 to 1000 SubTools."]
+    ]
+    [Loop,1000,[VarSet,cbTrackSeen(cbIndex),0],cbIndex]
+    [If,cbTrackValid==1,
+        [If,[MemGetSize,CB32ReadView]>0,[MemDelete,CB32ReadView]]
+        [MVarDef,CB32ReadView,12,0][MTransformGet,CB32ReadView,0]
+        [MVarSet,CB32ReadView,9,[CanvasZoomGet]]
+        [MVarSet,CB32ReadView,10,[CanvasPanGetH]][MVarSet,CB32ReadView,11,[CanvasPanGetV]]
+        [Loop,[SubToolGetCount],
+            [SubToolSelect,cbIndex][RoutineCall,CB32_ReadName]
+            [RoutineCall,CB32_ParseTag,cbTrackName]
+            [If,(cbParsedGroup<1)||(cbParsedGroup>[MVarGet,CB25Data,25745]),
+                [VarSet,cbTrackValid,0]
+                [VarSet,cbTrackError,"A SubTool has no valid identifier for this bank. Open the matching prepared ZTL/ZPR and preserve the CB...G..._ name markers."]
+                [LoopExit]
+            ]
+            [VarSet,cbTrackGroups(cbIndex),cbParsedGroup]
+            [VarSet,cbTrackSeen(cbParsedGroup-1),1]
+        ,cbIndex]
+        [SubToolSelect,cbOldSelected]
+        [MTransformSet,CB32ReadView,0][CanvasZoomSet,[MVarGet,CB32ReadView,9]]
+        [CanvasPanSet,[MVarGet,CB32ReadView,10],[MVarGet,CB32ReadView,11]]
+        [MemDelete,CB32ReadView]
+    ]
+    // Ignore cleared-camera bits when checking remaining equivalent groups.
+    [VarSet,cbUsedLow,0][VarSet,cbUsedHigh,0]
+    [Loop,25,
+        [If,[MVarGet,CB25Data,20+(cbSlot*20)]==1,
+            [RoutineCall,CB32_Bit,cbSlot]
+            [If,cbTrackHalf==0,[VarSet,cbUsedLow,cbUsedLow+cbTrackBit],[VarSet,cbUsedHigh,cbUsedHigh+cbTrackBit]]
+        ]
+    ,cbSlot]
+    [If,cbTrackValid==1,
+        [Loop,[MVarGet,CB25Data,25745],
+            [If,cbTrackSeen(cbGroupIndex)==0,
+                [VarSet,cbMissingLow,([MVarGet,CB25Data,25746+(cbGroupIndex*2)]&cbUsedLow)]
+                [VarSet,cbMissingHigh,([MVarGet,CB25Data,25747+(cbGroupIndex*2)]&cbUsedHigh)]
+                [If,(cbMissingLow!=0)||(cbMissingHigh!=0),
+                    [VarSet,cbEquivalent,0]
+                    [Loop,[MVarGet,CB25Data,25745],
+                        [If,cbTrackSeen(cbOtherGroup)==1,
+                            [If,(([MVarGet,CB25Data,25746+(cbOtherGroup*2)]&cbUsedLow)==cbMissingLow)&&(([MVarGet,CB25Data,25747+(cbOtherGroup*2)]&cbUsedHigh)==cbMissingHigh),
+                                [VarSet,cbEquivalent,1][LoopExit]
+                            ]
+                        ]
+                    ,cbOtherGroup]
+                    [If,cbEquivalent==0,
+                        [VarSet,cbTrackValid,0]
+                        [VarSet,cbTrackError,"A visibility group used by a stored camera is missing. Restore the complete model and merge only parts with identical visibility in ALL stored cameras."]
+                    ]
+                ]
+            ]
+        ,cbGroupIndex]
+    ]
+]
+[RoutineDef,CB32_RequireVisibility,
+    [If,([MemGetSize,CB32RenameState]>0)||([MemGetSize,CB32OriginalBank]>0),
+        [MessageOK,"An identifier update was interrupted. Use a Camera Bank button on the same Tool to recover it before recalling or rendering.","Camera Bank 25"][Exit]
+    ]
+    [If,[MVarGet,CB25Data,7]==1,
+        [RoutineCall,CB32_CheckTracked]
+        [If,cbTrackValid==0,[MessageOK,cbTrackError,"Camera Bank 25"][Exit]]
+    ,
+        [VarSet,cbSavedCount,[MVarGet,CB25Data,520+(cbSlot*1001)]]
+        [If,(cbSavedCount>0)&&(cbSavedCount!=[SubToolGetCount]),
+            [MessageOK,"This camera has positional visibility only. Use its original unmerged Tool, update the cameras, then PREPARE TRANSFER before merging.","Camera Bank 25"][Exit]
+        ]
+    ]
+,cbSlot]
+[RoutineDef,CB32_VisibleNow,
+    [VarSet,cbTrackVisible,0]
+    [If,([SubToolGetStatus,cbIndex]&1)!=0,[VarSet,cbTrackVisible,1]]
+    [VarSet,cbFolder,[SubToolGetFolderIndex,cbIndex]]
+    [If,cbFolder>=0,
+        [If,([SubToolGetStatus,cbFolder]&2)==0,[VarSet,cbTrackVisible,0]]
+    ]
+    [If,[IExists,"Transform:Solo"],
+        [If,[IGet,"Transform:Solo"]==1,[VarSet,cbTrackVisible,0]]
+    ]
+    // ZBrush keeps the active SubTool visible, even with its eye switched off.
+    [If,cbIndex==[SubToolGetActiveIndex],[VarSet,cbTrackVisible,1]]
+,cbIndex]
+[RoutineDef,CB32_RestoreEffective,
+    [VarSet,cbOldSelected,[SubToolGetActiveIndex]][VarSet,cbFirstVisible,-1]
+    [Loop,[SubToolGetCount],
+        [If,[MVarGet,CB25Data,7]==1,
+            [RoutineCall,CB32_GroupVisible,cbTrackGroups(cbIndex),cbSlot]
+        ,
+            [VarSet,cbTrackVisible,0]
+            [If,([MVarGet,CB25Data,521+(cbSlot*1001)+cbIndex]&4)!=0,[VarSet,cbTrackVisible,1]]
+        ]
+        [VarSet,cbTrackEye(cbIndex),cbTrackVisible]
+        [If,(cbTrackVisible==1)&&(cbFirstVisible<0),[VarSet,cbFirstVisible,cbIndex]]
+    ,cbIndex]
+    [If,cbFirstVisible<0,[MessageOK,"No visible part remains for this camera.","Camera Bank 25"][Exit]]
+    [If,cbTrackEye(cbOldSelected)==1,[VarSet,cbFirstVisible,cbOldSelected]]
+    [If,[IExists,"Transform:Solo"],[IUnPress,"Transform:Solo"]]
+    [SubToolSelect,cbFirstVisible]
+    // Open folder eyes; effective per-part eyes reproduce the saved appearance.
+    [Loop,[SubToolGetCount],
+        [VarSet,cbStatus,[SubToolGetStatus,cbIndex]]
+        [SubToolSetStatus,cbIndex,(cbStatus-(cbStatus&3))+cbTrackEye(cbIndex)+2]
+    ,cbIndex]
+    [IUpdate,1,1]
+,cbSlot]

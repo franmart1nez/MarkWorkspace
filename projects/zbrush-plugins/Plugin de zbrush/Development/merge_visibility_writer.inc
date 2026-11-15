@@ -1,0 +1,239 @@
+// Writer-only preparation and recoverable name edits. Never merges geometry.
+[VarDef,cbRenameDLL,""]
+[VarDef,cbWriteName,""]
+[VarDef,cbBaseName,""]
+[VarDef,cbRenameOK,0]
+[VarDef,cbRecoveryOK,1]
+[RoutineDef,CB32_CheckRenameDLL,
+    [VarSet,cbRenameDLL,[FileNameResolvePath,"MakCameraBankData/ZFileUtils64.dll"]]
+    [If,[FileExists,cbRenameDLL]==0,[VarSet,cbRenameDLL,[FileNameResolvePath,"ZFileUtils64.dll"]]]
+    [If,[FileExists,cbRenameDLL]==0,[VarSet,cbRenameDLL,[FileNameResolvePath,"../Render Capture/RenderCaptureData/ZFileUtils64.dll"]]]
+    [If,[FileExists,cbRenameDLL]==0,[VarSet,cbRenameDLL,[FileNameResolvePath,"ZBRUSH_ZSTARTUP/ZPlugs64/MacroData/ZFileUtils64.dll"]]]
+    [If,[FileExists,cbRenameDLL]==0,[MessageOK,"ZFileUtils64.dll is required to prepare SubTool identifiers. Run INSTALAR.cmd or keep the complete source package together.","Camera Bank 25"][Exit]]
+    [If,[FileExecute,cbRenameDLL,"Version"]<8,[MessageOK,"ZFileUtils v8 or newer is required.","Camera Bank 25"][Exit]]
+    [If,([IExists,"Tool:SubTool:Rename"]==0)||([IsEnabled,"Tool:SubTool:Rename"]==0),
+        [MessageOK,"SubTool Rename is unavailable. Select a live editable Tool first.","Camera Bank 25"][Exit]
+    ]
+]
+[RoutineDef,CB32_Rename,
+    [VarSet,cbRenameOK,0]
+    [FileExecute,cbRenameDLL,"RenameSetNext",cbWriteName]
+    [IPress,"Tool:SubTool:Rename"]
+    [RoutineCall,CB32_ReadName]
+    [If,([StrLength,cbTrackName]==[StrLength,cbWriteName])&&([StrFind,cbWriteName,cbTrackName]==0),
+        [VarSet,cbRenameOK,1]
+    ]
+]
+[RoutineDef,CB32_Cleanup,
+    [If,[MemGetSize,CB32OriginalBank]>0,[MemDelete,CB32OriginalBank]]
+    [If,[MemGetSize,CB32OldNames]>0,[MemDelete,CB32OldNames]]
+    [If,[MemGetSize,CB32Stage]>0,[MemDelete,CB32Stage]]
+    [If,[MemGetSize,CB32NewGroups]>0,[MemDelete,CB32NewGroups]]
+    [If,[MemGetSize,CB32RenameState]>0,[MemDelete,CB32RenameState]]
+]
+[RoutineDef,CB32_RestoreEditingView,
+    [VarSet,cbViewBase,4+([SubToolGetCount]*2)]
+    [If,[MVarGet,CB32RenameState,cbViewBase+12]==1,
+        [MTransformSet,CB32RenameState,cbViewBase]
+        [CanvasZoomSet,[MVarGet,CB32RenameState,cbViewBase+9]]
+        [CanvasPanSet,[MVarGet,CB32RenameState,cbViewBase+10],[MVarGet,CB32RenameState,cbViewBase+11]]
+    ]
+]
+[RoutineDef,CB32_Recover,
+    [VarSet,cbRecoveryOK,1]
+    [If,[MemGetSize,CB32RenameState]>0,
+        [If,[MVarGet,CB32RenameState,3]==2,
+            // Committed: interrupted cleanup must retain the new bank/names.
+            [RoutineCall,CB32_Cleanup]
+        ,
+        [If,[MVarGet,CB32RenameState,3]==0,
+            // Snapshot incomplete: no names or bank data have been changed yet.
+            [If,([SubToolGetCount]==[MVarGet,CB32RenameState,0])&&([ToolGetActiveIndex]==[MVarGet,CB32RenameState,2]),
+                [SubToolSelect,[MVarGet,CB32RenameState,1]]
+                [RoutineCall,CB32_RestoreEditingView]
+            ]
+            [RoutineCall,CB32_Cleanup]
+        ,
+        [If,([SubToolGetCount]!=[MVarGet,CB32RenameState,0])||([ToolGetActiveIndex]!=[MVarGet,CB32RenameState,2]),
+            [MessageOK,"An identifier update was interrupted. Select the same Tool with its unchanged SubTool list to recover the previous names and bank.","Camera Bank 25"][Exit]
+        ]
+        [Loop,[SubToolGetCount],
+            [If,[SubToolGetID,cbIndex]!=[MVarGet,CB32RenameState,4+(cbIndex*2)],
+                [MessageOK,"The SubTool list changed during an identifier update. Restore that Tool before recovering; the prior bank and names remain in session memory.","Camera Bank 25"][Exit]
+            ]
+        ,cbIndex]
+        [RoutineCall,CB32_CheckRenameDLL]
+        [Loop,[SubToolGetCount],
+            [SubToolSelect,cbIndex]
+            [VarSet,cbWriteName,""]
+            [MemReadString,CB32OldNames,cbWriteName,cbIndex*1024,1]
+            [RoutineCall,CB32_ReadName]
+            [If,([StrLength,cbTrackName]!=[StrLength,cbWriteName])||([StrFind,cbWriteName,cbTrackName]!=0),
+                [RoutineCall,CB32_Rename]
+                [If,cbRenameOK==0,[VarSet,cbRecoveryOK,0]]
+            ]
+        ,cbIndex]
+        [Loop,[SubToolGetCount],
+            [SubToolSetStatus,cbIndex,[MVarGet,CB32RenameState,5+(cbIndex*2)]]
+        ,cbIndex]
+        [SubToolSelect,[MVarGet,CB32RenameState,1]]
+        [RoutineCall,CB32_RestoreEditingView]
+        [If,cbRecoveryOK==0,
+            [MessageOK,"Could not restore every SubTool name. The previous bank and names remain in memory; retry on the same Tool before continuing.","Camera Bank 25"][Exit]
+        ]
+        [MemCopy,CB32OriginalBank,0,CB25Data,0,111084]
+        [RoutineCall,CB32_Cleanup]
+        ]
+        ]
+    ,
+        // Escape during initial allocation, before activation of the snapshot.
+        [If,[MemGetSize,CB32OriginalBank]>0,[RoutineCall,CB32_Cleanup]]
+    ]
+]
+[RoutineDef,CB32_Fail,
+    [RoutineCall,CB32_Recover]
+    [MessageOK,cbMessage,"Camera Bank 25"][Exit]
+,cbMessage]
+[RoutineDef,CB32_BeginTransaction,
+    [RoutineCall,CB32_CheckRenameDLL]
+    [VarSet,cbBeforeSelected,[SubToolGetActiveIndex]]
+    [MemCreate,CB32OriginalBank,111084,0]
+    [MemCopy,CB25Data,0,CB32OriginalBank,0,111084]
+    [MemCreate,CB32OldNames,[SubToolGetCount]*1024,0]
+    [MVarDef,CB32RenameState,17+([SubToolGetCount]*2),0]
+    [MVarSet,CB32RenameState,0,[SubToolGetCount]]
+    [MVarSet,CB32RenameState,1,cbBeforeSelected]
+    [MVarSet,CB32RenameState,2,[ToolGetActiveIndex]]
+    [VarSet,cbViewBase,4+([SubToolGetCount]*2)]
+    [MTransformGet,CB32RenameState,cbViewBase]
+    [MVarSet,CB32RenameState,cbViewBase+9,[CanvasZoomGet]]
+    [MVarSet,CB32RenameState,cbViewBase+10,[CanvasPanGetH]][MVarSet,CB32RenameState,cbViewBase+11,[CanvasPanGetV]]
+    [MVarSet,CB32RenameState,cbViewBase+12,1]
+    // Record all statuses before selection changes make hidden parts active.
+    [Loop,[SubToolGetCount],
+        [MVarSet,CB32RenameState,4+(cbIndex*2),[SubToolGetID,cbIndex]]
+        [MVarSet,CB32RenameState,5+(cbIndex*2),[SubToolGetStatus,cbIndex]]
+    ,cbIndex]
+    [Loop,[SubToolGetCount],
+        [SubToolSelect,cbIndex][RoutineCall,CB32_ReadName]
+        [MemWriteString,CB32OldNames,cbTrackName,cbIndex*1024]
+    ,cbIndex]
+    [SubToolSelect,cbBeforeSelected]
+    [RoutineCall,CB32_RestoreEditingView]
+    [MVarSet,CB32RenameState,3,1]
+]
+[RoutineDef,CB32_RecordEffective,
+    [Loop,[SubToolGetCount],
+        [RoutineCall,CB32_VisibleNow,cbIndex]
+        [VarSet,cbCell,521+(cbSlot*1001)+cbIndex]
+        [MVarSet,CB25Data,cbCell,([MVarGet,CB25Data,cbCell]&3)+(cbTrackVisible*4)]
+    ,cbIndex]
+    [MVarSet,CB25Data,27746+cbSlot,[SubToolGetCount]]
+,cbSlot]
+[RoutineDef,CB32_RebaseForEdit,
+    [RoutineCall,CB32_CheckTracked]
+    [If,cbTrackValid==0,[MessageOK,cbTrackError,"Camera Bank 25"][Exit]]
+    [RoutineCall,CB32_BeginTransaction]
+    // Rebuild positional snapshots from groups before editing a prepared bank.
+    [Loop,25,
+        [If,[MVarGet,CB25Data,20+(cbSlot*20)]==1,
+            [MVarSet,CB25Data,520+(cbSlot*1001),[SubToolGetCount]]
+            [MVarSet,CB25Data,27746+cbSlot,[SubToolGetCount]]
+            [Loop,[SubToolGetCount],
+                [RoutineCall,CB32_GroupVisible,cbTrackGroups(cbIndex),cbSlot]
+                [MVarSet,CB25Data,521+(cbSlot*1001)+cbIndex,(cbTrackVisible*5)+2]
+            ,cbIndex]
+        ]
+    ,cbSlot]
+    [MVarSet,CB25Data,7,0]
+]
+[RoutineDef,CB32_StripTag,
+    [VarSet,cbBaseName,cbTrackName]
+    // Remove only a complete identifier of this format; retain the human name.
+    [Loop,[StrLength,cbTrackName],
+        [If,[StrLength,cbTrackName]>=(cbPos+20),
+            [If,([StrToAsc,cbTrackName,cbPos]==67)&&([StrToAsc,cbTrackName,cbPos+1]==66),
+                [If,([StrToAsc,cbTrackName,cbPos+14]==71)&&([StrToAsc,cbTrackName,cbPos+19]==95),
+                    [VarSet,cbValidTag,1]
+                    [Loop,12,
+                        [VarSet,cbChar,[StrToAsc,cbTrackName,cbPos+2+cbPart]]
+                        [If,(cbChar<48)||(cbChar>57),[VarSet,cbValidTag,0]]
+                    ,cbPart]
+                    [Loop,4,
+                        [VarSet,cbChar,[StrToAsc,cbTrackName,cbPos+15+cbPart]]
+                        [If,(cbChar<48)||(cbChar>57),[VarSet,cbValidTag,0]]
+                    ,cbPart]
+                    [If,cbValidTag==1,
+                        [VarSet,cbLeft,""][VarSet,cbRight,""]
+                        [If,cbPos>0,[VarSet,cbLeft,[StrExtract,cbTrackName,0,cbPos-1]]]
+                        [If,[StrLength,cbTrackName]>(cbPos+20),[VarSet,cbRight,[StrExtract,cbTrackName,cbPos+20,[StrLength,cbTrackName]-1]]]
+                        [VarSet,cbBaseName,[StrMerge,cbLeft,cbRight]][LoopExit]
+                    ]
+                ]
+            ]
+        ]
+    ,cbPos]
+]
+[RoutineDef,CB32_PrepareTransfer,
+    [VarSet,cbCameraCount,0]
+    [Loop,25,
+        [If,[MVarGet,CB25Data,20+(cbSlot*20)]==1,
+            [VarInc,cbCameraCount]
+            [If,[MVarGet,CB25Data,27746+cbSlot]!=[SubToolGetCount],
+                [RoutineCall,CB32_Fail,"A camera has no current effective-visibility snapshot. Recall and UPDATE ACTIVE on the ORIGINAL unmerged Tool before preparing this bank."]
+            ]
+        ]
+    ,cbSlot]
+    [If,cbCameraCount==0,[RoutineCall,CB32_Fail,"Store at least one camera before preparing a transfer."]]
+    [If,[MemGetSize,CB32RenameState]==0,[RoutineCall,CB32_BeginTransaction]]
+    [MemCreate,CB32Stage,111084,0][MemCopy,CB25Data,0,CB32Stage,0,111084]
+    [MVarDef,CB32NewGroups,[SubToolGetCount],0]
+    [VarSet,cbGroups,0]
+    [Loop,[SubToolGetCount],
+        [VarSet,cbLow,0][VarSet,cbHigh,0]
+        [Loop,25,
+            [If,[MVarGet,CB25Data,20+(cbSlot*20)]==1,
+                [If,([MVarGet,CB25Data,521+(cbSlot*1001)+cbIndex]&4)!=0,
+                    [RoutineCall,CB32_Bit,cbSlot]
+                    [If,cbTrackHalf==0,[VarSet,cbLow,cbLow+cbTrackBit],[VarSet,cbHigh,cbHigh+cbTrackBit]]
+                ]
+            ]
+        ,cbSlot]
+        [VarSet,cbMatch,0]
+        [Loop,cbGroups,
+            [If,([MVarGet,CB32Stage,25746+(cbGroup*2)]==cbLow)&&([MVarGet,CB32Stage,25747+(cbGroup*2)]==cbHigh),
+                [VarSet,cbMatch,cbGroup+1][LoopExit]
+            ]
+        ,cbGroup]
+        [If,cbMatch==0,
+            [MVarSet,CB32Stage,25746+(cbGroups*2),cbLow]
+            [MVarSet,CB32Stage,25747+(cbGroups*2),cbHigh]
+            [VarInc,cbGroups][VarSet,cbMatch,cbGroups]
+        ]
+        [MVarSet,CB32NewGroups,cbIndex,cbMatch]
+    ,cbIndex]
+    [VarSet,cbBankA,100000+IRAND(899999)][VarSet,cbBankB,100000+IRAND(899999)]
+    [If,(cbBankA==[MVarGet,CB25Data,8])&&(cbBankB==[MVarGet,CB25Data,9]),
+        [If,cbBankB<999999,[VarInc,cbBankB],[VarSet,cbBankB,100000]]
+    ]
+    [MVarSet,CB32Stage,7,1][MVarSet,CB32Stage,8,cbBankA][MVarSet,CB32Stage,9,cbBankB]
+    [MVarSet,CB32Stage,25745,cbGroups]
+    [Loop,[SubToolGetCount],
+        [NoteBar,"Preparing camera visibility identifiers",cbIndex/[SubToolGetCount]]
+        [SubToolSelect,cbIndex][RoutineCall,CB32_ReadName][RoutineCall,CB32_StripTag]
+        [If,([StrLength,cbBaseName]<1)||([StrLength,cbBaseName]>235),
+            [RoutineCall,CB32_Fail,"A SubTool name cannot accommodate its 20-character identifier without truncation. Shorten its human-readable name and retry."]
+        ]
+        [VarSet,cbGroupText,[StrMerge,10000+[MVarGet,CB32NewGroups,cbIndex]]]
+        [VarSet,cbGroupText,[StrExtract,cbGroupText,1,4]]
+        [VarSet,cbWriteName,[StrMerge,"CB",cbBankA,cbBankB,"G",cbGroupText,"_",cbBaseName]]
+        [RoutineCall,CB32_Rename]
+        [If,cbRenameOK==0,[RoutineCall,CB32_Fail,"Could not verify a SubTool identifier. Previous names and camera bank were restored."]]
+    ,cbIndex]
+    [Loop,[SubToolGetCount],[SubToolSetStatus,cbIndex,[MVarGet,CB32RenameState,5+(cbIndex*2)]],cbIndex]
+    [SubToolSelect,[MVarGet,CB32RenameState,1]]
+    [RoutineCall,CB32_RestoreEditingView]
+    [MemCopy,CB32Stage,0,CB25Data,0,111084]
+    [MVarSet,CB32RenameState,3,2]
+    [RoutineCall,CB32_Cleanup]
+]

@@ -27,8 +27,8 @@ async function workingFolder(value) {
   return process.platform === 'win32' ? folder : realpath(folder).catch(() => folder);
 }
 const publicSession = session => {
-  const { id, name, agent, cwd, bypass, effort, status, createdAt, lastOutputAt, lastInputAt, exitCode, nativeId, attention, activity, unread, completionVersion, lastCompletedId, cols, rows, open, pinned, tabOrder, tabColor, group, updatedAt, preview, hasConversation, restoreError, orchestrator, controllerId, workerModel, controlRequestId } = session;
-  return { id, name, agent, cwd, bypass, effort, status, createdAt, lastOutputAt, lastInputAt, exitCode, nativeId, attention, activity, unread, completionVersion, lastCompletedId, cols, rows, open, pinned, tabOrder, tabColor, group, updatedAt, preview, hasConversation, restoreError, orchestrator, controllerId, workerModel, controlRequestId, contextUsage: session.contextUsage };
+  const { id, name, agent, cwd, bypass, effort, status, createdAt, lastOutputAt, lastInputAt, exitCode, nativeId, attention, activity, unread, completionVersion, lastCompletedId, cols, rows, open, pinned, tabOrder, tabColor, group, updatedAt, preview, hasConversation, restoreError, orchestrator, controllerId, workerModel, controlRequestId, worktree } = session;
+  return { id, name, agent, cwd, bypass, effort, status, createdAt, lastOutputAt, lastInputAt, exitCode, nativeId, attention, activity, unread, completionVersion, lastCompletedId, cols, rows, open, pinned, tabOrder, tabColor, group, updatedAt, preview, hasConversation, restoreError, orchestrator, controllerId, workerModel, controlRequestId, worktree, contextUsage: session.contextUsage };
 };
 
 // Grouped tabs sit together at the position of their earliest open member; a tab
@@ -133,7 +133,7 @@ export class Sessions extends EventEmitter {
       cwd, bypass: options.bypass === true, createdAt: now, lastInputAt: null, lastOutputAt: null,
       effort: options.effort, group: groupLabel(options.group),
       orchestrator: options.orchestrator === true && agent !== 'shell', controllerId: options.controllerId, workerModel: options.workerModel,
-      controlRequestId: options.controlRequestId, controlSignature: options.controlSignature,
+      workerDir: options.workerDir, worktree: options.worktree || undefined, controlRequestId: options.controlRequestId, controlSignature: options.controlSignature,
       status: 'starting', nativeId: options.resumeId || (agent === 'claude' ? randomUUID() : null),
       open: true, pinned: false, updatedAt: now, preview: '', hasConversation: !!options.resumeId || !!options.initialPrompt, restoreError: null,
       attention: false, cols: Math.min(500, Math.max(20, options.cols || 90)), rows: Math.min(200, Math.max(5, options.rows || 32)),
@@ -193,7 +193,11 @@ export class Sessions extends EventEmitter {
     const noDaemon = session.agent === 'codex' && await codexSupportsNoDaemon(env);
     if (this.closed || !session.open) throw new Error('The chat was closed before its terminal started.');
     env = { ...env, ...this.controlEnvironment?.(session) };
-    const command = terminalCommand(session.agent, { bypass: session.bypass, resumeId, nativeId: session.nativeId, effort: session.effort, opencodeMajor, antigravityLog, noDaemon, ...first });
+    // An interactive Claude/Codex worker keeps its requested model, and Claude
+    // its handoff folder, on every launch, including a resume after a restart.
+    const worker = ['claude', 'codex'].includes(session.agent) && session.workerModel ? { workerModel: session.workerModel, readDir: session.agent === 'claude' ? session.workerDir : undefined } : {};
+    const launchOptions = Object.fromEntries(Object.entries(first).filter(([, value]) => value !== undefined));
+    const command = terminalCommand(session.agent, { bypass: session.bypass, resumeId, nativeId: session.nativeId, effort: session.effort, opencodeMajor, antigravityLog, noDaemon, ...worker, ...launchOptions });
     if (session.agent === 'codex') env.CODEX_INTERNAL_ORIGINATOR_OVERRIDE = `mrmak_chat_${session.id}`;
     if (session.terminal) this.resetTerminal(session);
     const proc = pty.spawn(command.file, command.args, ptyOptions({ cwd: session.cwd, env, cols: session.cols, rows: session.rows }));
@@ -355,13 +359,20 @@ export class Sessions extends EventEmitter {
 
   async followupWorker(id, text) {
     const session = this.get(id);
-    if (!session.workerModel || session.agent !== 'opencode' || !session.nativeId) throw new Error('This is not an automatic OpenCode worker.');
-    if (session.process) throw Object.assign(new Error('The worker is still running. Read its status and wait before sending corrections.'), { status: 409 });
-    const folder = path.join(this.stateDir, 'agent-control', id);
+    if (!session.workerModel || !['opencode', 'claude', 'codex'].includes(session.agent)) throw new Error('This is not an automatic worker.');
+    // OpenCode workers run one task per process; Claude and Codex workers stay
+    // open in their tab and take a follow-up only between turns.
+    const interactive = session.agent !== 'opencode';
+    if (!session.nativeId) throw new Error('The worker conversation has not been located yet. Read its screen before sending corrections.');
+    if (session.process && !interactive) throw Object.assign(new Error('The worker is still running. Read its status and wait before sending corrections.'), { status: 409 });
+    if (session.process && session.activity !== 'idle') throw Object.assign(new Error('The worker is working or waiting for input. Read its status and wait before sending corrections.'), { status: 409 });
+    const folder = session.workerDir || path.join(this.stateDir, 'agent-control', id);
     await mkdir(folder, { recursive: true });
-    const file = path.join(folder, `${randomUUID()}.txt`);
+    const file = path.join(folder, `followup-${randomUUID()}.txt`);
     await writeFile(file, text, { encoding: 'utf8', mode: 0o600 });
-    await this.launch(session, session.nativeId, await this.nativeBoundary(session, session.nativeId), {
+    const prompt = `Read the follow-up at ${file} and continue this same task. Preserve the original handoff constraints.`;
+    if (interactive && session.process) this.input(id, prompt, { coordinator: true, submit: true });
+    else await this.launch(session, session.nativeId, await this.nativeBoundary(session, session.nativeId), interactive ? { initialPrompt: prompt } : {
       workerModel: session.workerModel, workerFile: file, initialPrompt: 'Read the attached follow-up and continue this same task. Preserve the original handoff constraints.',
     });
     session.lastInputAt = new Date().toISOString(); session.updatedAt = session.lastInputAt;
@@ -753,7 +764,7 @@ export class Sessions extends EventEmitter {
   async persist() {
     this.saveChain = this.saveChain.catch(() => {}).then(async () => {
       this.dirty = false;
-      await saveJson(path.join(this.stateDir, 'sessions.json'), this.list().map(item => ({ ...item, projectGroup: this.items.get(item.id).projectGroup || undefined, controlSignature: this.items.get(item.id).controlSignature })));
+      await saveJson(path.join(this.stateDir, 'sessions.json'), this.list().map(item => ({ ...item, projectGroup: this.items.get(item.id).projectGroup || undefined, controlSignature: this.items.get(item.id).controlSignature, workerDir: this.items.get(item.id).workerDir })));
       let screenError;
       for (const session of this.items.values()) {
         if (!session.terminal) continue;

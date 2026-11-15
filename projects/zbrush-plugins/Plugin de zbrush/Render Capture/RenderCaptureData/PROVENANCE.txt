@@ -1,0 +1,8 @@
+ZFileUtils64.dll was copied locally from this user's installed ZBrush 2023:
+C:/Program Files/Maxon ZBrush 2023/ZStartup/ZPlugs64/MacroData/ZFileUtils64.dll
+
+This is Maxon's ZFileUtils library, not newly authored code. It supplies the
+native folder picker and folder creation functions. It is included in this
+local deliverable for the existing installation, with no global installation.
+Consult Maxon's ZFileUtils distribution terms before distributing it publicly.
+https://help.maxon.net/zbr/en-us/Content/html/user-guide/customizing-zbrush/zscripting/zfileutils/zfileutils.html

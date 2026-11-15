@@ -11,8 +11,8 @@ working. Ask for missing personal preferences; do not invent a biography.
   the default language of stored work.
 - Check `processes/` for an existing workflow and `knowledge/` for prior decisions.
 - For an owner-requested visible worker agent, follow
-  `processes/visible-agent-orchestration.md`. Automatic OpenCode worker control
-  is documented in `docs/agent-orchestration.md`; use only an explicitly enabled
+  `processes/visible-agent-orchestration.md`. Automatic OpenCode, Claude and Codex
+  worker control is documented in `docs/agent-orchestration.md`; use only an explicitly enabled
   orchestrator grant, preserve the requested model and review outputs independently.
 - For native Affinity montage, use `.agents/skills/affinity-native-assembly/SKILL.md`
   and `processes/affinity-native-assembly.md`. After crop review, ask the user to

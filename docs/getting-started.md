@@ -81,7 +81,7 @@ use OpenCode's native MCP controls to inspect its own connections.
 To let a new agent chat coordinate workers automatically, select **Allow this
 chat to coordinate workers** in New chat. This is a separate, default-off choice
 from CLI permission bypass. The orchestrator can use the scoped local client to
-open visible OpenCode tasks with an explicit model and handoff, inspect progress
+open visible OpenCode, Claude or Codex workers with an explicit model and handoff, inspect progress
 and send corrections to the same conversation. See
 [Automatic worker chats](agent-orchestration.md) for commands and limits.
 

@@ -1,0 +1,6589 @@
+// ============================================================
+// ZPASSCAPTURE FINAL v1.0
+// BUILT FROM VALIDATED SOURCES:
+// CameraBank25_v2_9
+// ZPassCapture_v0_9_JPG_FAST_MANUAL_PP
+// ZPassCapture_v1_2_BPR_CHAIN
+// ZPassCapture_v1_3_BPR_START
+// ============================================================
+
+
+// ============================================================
+// CAMERA BANK 25
+// ZBrush 2023.2.1
+//
+// VERSION 2.9
+//
+// FINAL COMPACT VISUAL DESIGN:
+//
+// ORANGE / ENABLED = STORED + RENDER ON
+// GRAY   / ENABLED = STORED + RENDER OFF
+// DARK   / DISABLED = EMPTY
+//
+// ONLY ONE BUTTON PER CAMERA.
+//
+// STORE NEW:
+// - temporarily enables EMPTY slots
+// - temporarily disables STORED slots
+// - click one empty slot to save
+// - Store Mode ends automatically
+//
+// CLEAR:
+// - click CLEAR
+// - then click one stored camera
+//
+// Camera Bank does NOT save/restore Polypaint.
+//
+// INTERNAL DATA VERSION = 6.
+// Compatible with v2.5 / v2.6 / v2.8 banks.
+//
+// MEMORY:
+// 0 magic
+// 1 version
+// 2 count
+// 3 clear mode
+// 4 UI guard
+// 5 active camera
+// 6 store mode
+//
+// camera base:
+// 20 + slot*20
+//
+// +0  occupied
+// +1  transform
+// +10 perspective
+// +11 focal
+// +12 canvas zoom
+// +13 pan H
+// +14 pan V
+// +15 focal type
+// +16 render enabled
+// +17 click state
+//
+// visual base:
+// 520 + slot*1001
+//
+// ============================================================
+
+
+// ============================================================
+// PLUGIN
+// ============================================================
+
+[ISubPalette,
+    "ZPlugin:Camera Bank 25"
+]
+
+
+// ============================================================
+// CREATE EMPTY BANK
+// ============================================================
+
+[RoutineDef,CB29_CreateEmptyBank,
+
+    [If,[MemGetSize,CB25Data] > 0,
+
+        [MemDelete,
+            CB25Data
+        ]
+    ]
+
+
+    [MVarDef,
+        CB25Data,
+        25545,
+        0
+    ]
+
+
+    [MVarSet,CB25Data,0,252523]
+    [MVarSet,CB25Data,1,6]
+    [MVarSet,CB25Data,2,25]
+
+    // CLEAR MODE
+    [MVarSet,CB25Data,3,0]
+
+    // UI GUARD
+    [MVarSet,CB25Data,4,0]
+
+    // ACTIVE CAMERA
+    [MVarSet,CB25Data,5,0]
+
+    // STORE MODE
+    [MVarSet,CB25Data,6,0]
+
+]
+
+
+// ============================================================
+// NORMALIZE RENDER FLAGS
+// ============================================================
+
+[RoutineDef,CB29_NormalizeRenderFlags,
+
+    [VarSet,nrSlot,0]
+
+
+    [Loop,25,
+
+        [VarSet,nrBase,
+            20 + (nrSlot * 20)
+        ]
+
+
+        [If,[MVarGet,CB25Data,nrBase] == 1,
+
+            [If,forceOn == 1,
+
+                [MVarSet,
+                    CB25Data,
+                    nrBase + 16,
+                    1
+                ]
+
+            ,
+
+                [VarSet,nrEnabled,
+                    [MVarGet,CB25Data,nrBase + 16]
+                ]
+
+
+                [If,
+                    (nrEnabled != 0)
+                    &&
+                    (nrEnabled != 1),
+
+                    [MVarSet,
+                        CB25Data,
+                        nrBase + 16,
+                        1
+                    ]
+                ]
+            ]
+
+
+            // FIRST OCCUPIED CLICK = RECALL ONLY
+
+            [MVarSet,
+                CB25Data,
+                nrBase + 17,
+                0
+            ]
+
+
+        ,
+
+
+            [MVarSet,
+                CB25Data,
+                nrBase + 16,
+                0
+            ]
+
+
+            [MVarSet,
+                CB25Data,
+                nrBase + 17,
+                0
+            ]
+        ]
+
+
+        [VarInc,nrSlot]
+    ]
+
+,forceOn]
+
+
+// ============================================================
+// INITIALIZE / UPGRADE
+// ============================================================
+
+[If,[MemGetSize,CB25Data] == 2080,
+
+
+    [If,[MemGetSize,CB29UpgradeTemp] > 0,
+
+        [MemDelete,
+            CB29UpgradeTemp
+        ]
+    ]
+
+
+    [MemCreate,
+        CB29UpgradeTemp,
+        2080,
+        0
+    ]
+
+
+    [MemCopy,
+        CB25Data,
+        0,
+        CB29UpgradeTemp,
+        0,
+        2080
+    ]
+
+
+    [MemDelete,
+        CB25Data
+    ]
+
+
+    [MVarDef,
+        CB25Data,
+        25545,
+        0
+    ]
+
+
+    [MemCopy,
+        CB29UpgradeTemp,
+        0,
+        CB25Data,
+        0,
+        2080
+    ]
+
+
+    [MemDelete,
+        CB29UpgradeTemp
+    ]
+
+
+    [MVarSet,CB25Data,1,6]
+    [MVarSet,CB25Data,3,0]
+    [MVarSet,CB25Data,4,0]
+    [MVarSet,CB25Data,5,0]
+    [MVarSet,CB25Data,6,0]
+
+
+    [RoutineCall,
+        CB29_NormalizeRenderFlags,
+        1
+    ]
+
+
+,
+
+
+    [If,[MemGetSize,CB25Data] != 102180,
+
+
+        [RoutineCall,
+            CB29_CreateEmptyBank
+        ]
+
+
+    ,
+
+
+        [If,
+            ([MVarGet,CB25Data,0] != 252523)
+            ||
+            ([MVarGet,CB25Data,2] != 25),
+
+
+            [RoutineCall,
+                CB29_CreateEmptyBank
+            ]
+
+
+        ,
+
+
+            [VarSet,currentVersion,
+                [MVarGet,CB25Data,1]
+            ]
+
+
+            [If,
+                (currentVersion == 3)
+                ||
+                (currentVersion == 4)
+                ||
+                (currentVersion == 5),
+
+
+                [MVarSet,CB25Data,1,6]
+                [MVarSet,CB25Data,3,0]
+                [MVarSet,CB25Data,4,0]
+                [MVarSet,CB25Data,5,0]
+                [MVarSet,CB25Data,6,0]
+
+
+                [RoutineCall,
+                    CB29_NormalizeRenderFlags,
+                    1
+                ]
+
+
+            ,
+
+
+                [If,currentVersion == 6,
+
+                    [MVarSet,CB25Data,3,0]
+                    [MVarSet,CB25Data,4,0]
+                    [MVarSet,CB25Data,6,0]
+
+
+                    [RoutineCall,
+                        CB29_NormalizeRenderFlags,
+                        0
+                    ]
+
+
+                ,
+
+
+                    [RoutineCall,
+                        CB29_CreateEmptyBank
+                    ]
+                ]
+            ]
+        ]
+    ]
+]
+
+
+// ============================================================
+// SAVE VISIBILITY
+//
+// NO POLYPAINT
+// ============================================================
+
+[RoutineDef,CB29_SaveVisualState,
+
+    [VarSet,visBase,
+        520 + (slot * 1001)
+    ]
+
+
+    [VarSet,subCount,
+        [SubToolGetCount]
+    ]
+
+
+    [MVarSet,
+        CB25Data,
+        visBase,
+        subCount
+    ]
+
+
+    [VarSet,st,0]
+
+
+    [Loop,subCount,
+
+        [VarSet,status,
+            [SubToolGetStatus,st]
+        ]
+
+
+        [VarSet,stateBits,
+            (status & 0x03)
+        ]
+
+
+        [MVarSet,
+            CB25Data,
+            visBase + 1 + st,
+            stateBits
+        ]
+
+
+        [VarInc,st]
+    ]
+
+,slot]
+
+
+// ============================================================
+// RESTORE VISIBILITY
+//
+// NO POLYPAINT
+// ============================================================
+
+[RoutineDef,CB29_RestoreVisualState,
+
+    [VarSet,visBase,
+        520 + (slot * 1001)
+    ]
+
+
+    [VarSet,savedCount,
+        [MVarGet,CB25Data,visBase]
+    ]
+
+
+    [VarSet,currentCount,
+        [SubToolGetCount]
+    ]
+
+
+    [If,
+        (savedCount > 0)
+        &&
+        (savedCount == currentCount),
+
+
+        // SUBTOOL EYES
+
+        [VarSet,st,0]
+
+
+        [Loop,savedCount,
+
+            [VarSet,savedState,
+
+                [MVarGet,
+                    CB25Data,
+                    visBase + 1 + st
+                ]
+            ]
+
+
+            [VarSet,savedEye,
+                (savedState & 0x01)
+            ]
+
+
+            [VarSet,currentStatus,
+                [SubToolGetStatus,st]
+            ]
+
+
+            [VarSet,currentEye,
+                (currentStatus & 0x01)
+            ]
+
+
+            [SubToolSetStatus,
+                st,
+                (currentStatus - currentEye) + savedEye
+            ]
+
+
+            [VarInc,st]
+        ]
+
+
+        // FOLDER EYES
+
+        [VarSet,st,0]
+
+
+        [Loop,savedCount,
+
+            [VarSet,savedState,
+
+                [MVarGet,
+                    CB25Data,
+                    visBase + 1 + st
+                ]
+            ]
+
+
+            [VarSet,savedFolderEye,
+                (savedState & 0x02)
+            ]
+
+
+            [VarSet,currentStatus,
+                [SubToolGetStatus,st]
+            ]
+
+
+            [VarSet,currentFolderEye,
+                (currentStatus & 0x02)
+            ]
+
+
+            [SubToolSetStatus,
+                st,
+                (currentStatus - currentFolderEye) + savedFolderEye
+            ]
+
+
+            [VarInc,st]
+        ]
+
+
+        [IUpdate,1,1]
+    ]
+
+,slot]
+
+
+// ============================================================
+// SAVE CAMERA
+// ============================================================
+
+[RoutineDef,CB29_SaveSlot,
+
+    [VarSet,displaySlot,
+        slot + 1
+    ]
+
+
+    [VarSet,base,
+        20 + (slot * 20)
+    ]
+
+
+    [If,[IExists,"Transform:Edit"],
+
+        [If,[IGet,"Transform:Edit"] == 0,
+
+            [MessageOK,
+                "Put the model in Edit Mode first.",
+                "Camera Bank 25"
+            ]
+
+            [Exit]
+        ]
+    ]
+
+
+    [VarSet,currentSubCount,
+        [SubToolGetCount]
+    ]
+
+
+    [If,currentSubCount > 1000,
+
+        [MessageOK,
+            "Camera Bank 25 supports up to 1000 SubTools.",
+            "Camera Bank 25"
+        ]
+
+        [Exit]
+    ]
+
+
+    // OCCUPIED
+
+    [MVarSet,
+        CB25Data,
+        base,
+        1
+    ]
+
+
+    // TRANSFORM
+
+    [MTransformGet,
+        CB25Data,
+        base + 1
+    ]
+
+
+    // PERSPECTIVE
+
+    [If,[IExists,"Draw:Perspective"],
+
+        [If,[IGet,"Draw:Perspective"] != 0,
+
+            [MVarSet,
+                CB25Data,
+                base + 10,
+                1
+            ]
+
+        ,
+
+            [MVarSet,
+                CB25Data,
+                base + 10,
+                0
+            ]
+        ]
+
+    ,
+
+        [MVarSet,
+            CB25Data,
+            base + 10,
+            -1
+        ]
+    ]
+
+
+    // FOCAL
+
+    [MVarSet,
+        CB25Data,
+        base + 15,
+        0
+    ]
+
+
+    [If,[IExists,"Draw:Focal Length(mm)"],
+
+        [MVarSet,
+            CB25Data,
+            base + 11,
+            [IGet,"Draw:Focal Length(mm)"]
+        ]
+
+
+        [MVarSet,
+            CB25Data,
+            base + 15,
+            1
+        ]
+
+
+    ,
+
+
+        [If,[IExists,"Draw:Focal Length"],
+
+            [MVarSet,
+                CB25Data,
+                base + 11,
+                [IGet,"Draw:Focal Length"]
+            ]
+
+
+            [MVarSet,
+                CB25Data,
+                base + 15,
+                2
+            ]
+
+
+        ,
+
+
+            [MVarSet,
+                CB25Data,
+                base + 11,
+                -9999
+            ]
+
+
+            [MVarSet,
+                CB25Data,
+                base + 15,
+                0
+            ]
+        ]
+    ]
+
+
+    // CANVAS
+
+    [MVarSet,
+        CB25Data,
+        base + 12,
+        [CanvasZoomGet]
+    ]
+
+
+    [MVarSet,
+        CB25Data,
+        base + 13,
+        [CanvasPanGetH]
+    ]
+
+
+    [MVarSet,
+        CB25Data,
+        base + 14,
+        [CanvasPanGetV]
+    ]
+
+
+    // VISIBILITY
+
+    [RoutineCall,
+        CB29_SaveVisualState,
+        slot
+    ]
+
+
+    // NEW CAMERA = RENDER ON
+
+    [MVarSet,
+        CB25Data,
+        base + 16,
+        1
+    ]
+
+
+    // NEXT CLICK = RECALL ONLY
+
+    [MVarSet,
+        CB25Data,
+        base + 17,
+        0
+    ]
+
+
+    // ACTIVE
+
+    [MVarSet,
+        CB25Data,
+        5,
+        displaySlot
+    ]
+
+
+    [Note,
+
+        [StrMerge,
+            "Camera ",
+            displaySlot,
+            " STORED | RENDER ON"
+        ],
+
+        ,
+        2
+    ]
+
+,slot]
+
+
+// ============================================================
+// LOAD CAMERA
+// ============================================================
+
+[RoutineDef,CB29_LoadSlot,
+
+    [VarSet,displaySlot,
+        slot + 1
+    ]
+
+
+    [VarSet,base,
+        20 + (slot * 20)
+    ]
+
+
+    [VarSet,visBase,
+        520 + (slot * 1001)
+    ]
+
+
+    [If,[MVarGet,CB25Data,base] != 1,
+
+        [Exit]
+    ]
+
+
+    [If,[IExists,"Transform:Edit"],
+
+        [If,[IGet,"Transform:Edit"] == 0,
+
+            [MessageOK,
+                "Put the model in Edit Mode first.",
+                "Camera Bank 25"
+            ]
+
+            [Exit]
+        ]
+    ]
+
+
+    [VarSet,savedPerspective,
+        [MVarGet,CB25Data,base + 10]
+    ]
+
+
+    [VarSet,savedFocal,
+        [MVarGet,CB25Data,base + 11]
+    ]
+
+
+    [VarSet,focalPathType,
+        [MVarGet,CB25Data,base + 15]
+    ]
+
+
+    // TRANSFORM
+
+    [MTransformSet,
+        CB25Data,
+        base + 1
+    ]
+
+
+    // CANVAS
+
+    [CanvasZoomSet,
+        [MVarGet,CB25Data,base + 12]
+    ]
+
+
+    [CanvasPanSet,
+        [MVarGet,CB25Data,base + 13],
+        [MVarGet,CB25Data,base + 14]
+    ]
+
+
+    // FOCAL
+
+    [If,focalPathType > 0,
+
+        [If,[IExists,"Draw:Perspective"],
+
+            [IPress,"Draw:Perspective"]
+            [IUpdate,1,1]
+        ]
+
+
+        [If,focalPathType == 1,
+
+            [If,[IExists,"Draw:Focal Length(mm)"],
+
+                [ISet,
+                    "Draw:Focal Length(mm)",
+                    savedFocal
+                ]
+
+                [IUpdate,1,1]
+            ]
+        ]
+
+
+        [If,focalPathType == 2,
+
+            [If,[IExists,"Draw:Focal Length"],
+
+                [ISet,
+                    "Draw:Focal Length",
+                    savedFocal
+                ]
+
+                [IUpdate,1,1]
+            ]
+        ]
+    ]
+
+
+    // PERSPECTIVE
+
+    [If,[IExists,"Draw:Perspective"],
+
+        [If,savedPerspective == 1,
+
+            [IPress,"Draw:Perspective"]
+            [IUpdate,1,1]
+        ]
+
+
+        [If,savedPerspective == 0,
+
+            [IUnPress,"Draw:Perspective"]
+            [IUpdate,1,1]
+        ]
+    ]
+
+
+    // VISIBILITY ONLY
+
+    [VarSet,savedVisualCount,
+        [MVarGet,CB25Data,visBase]
+    ]
+
+
+    [VarSet,currentVisualCount,
+        [SubToolGetCount]
+    ]
+
+
+    [If,
+        (savedVisualCount > 0)
+        &&
+        (savedVisualCount == currentVisualCount),
+
+        [RoutineCall,
+            CB29_RestoreVisualState,
+            slot
+        ]
+    ]
+
+
+    [MVarSet,
+        CB25Data,
+        5,
+        displaySlot
+    ]
+
+
+    [IUpdate,2,1]
+
+,slot]
+
+
+// ============================================================
+// CLEAR ONE
+// ============================================================
+
+[RoutineDef,CB29_ClearSlot,
+
+    [VarSet,displaySlot,
+        slot + 1
+    ]
+
+
+    [VarSet,base,
+        20 + (slot * 20)
+    ]
+
+
+    [VarSet,visBase,
+        520 + (slot * 1001)
+    ]
+
+
+    [If,[MVarGet,CB25Data,5] == displaySlot,
+
+        [MVarSet,
+            CB25Data,
+            5,
+            0
+        ]
+    ]
+
+
+    [VarSet,n,0]
+
+
+    [Loop,20,
+
+        [MVarSet,
+            CB25Data,
+            base + n,
+            0
+        ]
+
+        [VarInc,n]
+    ]
+
+
+    [VarSet,n,0]
+
+
+    [Loop,1001,
+
+        [MVarSet,
+            CB25Data,
+            visBase + n,
+            0
+        ]
+
+        [VarInc,n]
+    ]
+
+
+    [Note,
+
+        [StrMerge,
+            "Camera ",
+            displaySlot,
+            " CLEARED"
+        ],
+
+        ,
+        2
+    ]
+
+,slot]
+
+
+// ============================================================
+// APPLY VISUAL STATE
+//
+// NORMAL / CLEAR MODE:
+//
+// STORED ON  = ENABLED + ORANGE
+// STORED OFF = ENABLED + GRAY
+// EMPTY      = DISABLED / DARK
+//
+// STORE MODE:
+//
+// EMPTY      = ENABLED / GRAY
+// STORED     = DISABLED
+//
+// ============================================================
+
+[RoutineDef,CB29_ApplyVisual,
+
+    [VarSet,base,
+        20 + (slot * 20)
+    ]
+
+
+    [VarSet,displaySlot,
+        slot + 1
+    ]
+
+
+    // BUILD BUTTON PATH LOCALLY
+
+    [If,displaySlot < 10,
+
+        [VarSet,buttonPath,
+
+            [StrMerge,
+                "ZPlugin:Camera Bank 25:0",
+                displaySlot
+            ]
+        ]
+
+    ,
+
+        [VarSet,buttonPath,
+
+            [StrMerge,
+                "ZPlugin:Camera Bank 25:",
+                displaySlot
+            ]
+        ]
+    ]
+
+
+    [VarSet,isStored,
+        [MVarGet,CB25Data,base]
+    ]
+
+
+    [VarSet,renderEnabled,
+        [MVarGet,CB25Data,base + 16]
+    ]
+
+
+    // FIRST ENABLE SO ZBRUSH CAN UPDATE SWITCH STATE
+
+    [IEnable,
+        [Var,buttonPath]
+    ]
+
+
+    // SWITCH COLOR / VALUE
+
+    [If,isStored == 1,
+
+        [ISet,
+            [Var,buttonPath],
+            renderEnabled
+        ]
+
+    ,
+
+        [ISet,
+            [Var,buttonPath],
+            0
+        ]
+    ]
+
+
+    // ========================================================
+    // STORE MODE
+    // ========================================================
+
+    [If,[MVarGet,CB25Data,6] == 1,
+
+        // ONLY EMPTY SLOTS ARE CLICKABLE
+
+        [If,isStored == 1,
+
+            [IDisable,
+                [Var,buttonPath]
+            ]
+
+        ,
+
+            [IEnable,
+                [Var,buttonPath]
+            ]
+        ]
+
+
+    ,
+
+
+        // ====================================================
+        // NORMAL / CLEAR MODE
+        // ====================================================
+
+        // ONLY STORED SLOTS ARE CLICKABLE
+
+        [If,isStored == 1,
+
+            [IEnable,
+                [Var,buttonPath]
+            ]
+
+        ,
+
+            [IDisable,
+                [Var,buttonPath]
+            ]
+        ]
+    ]
+
+,slot]
+
+
+// ============================================================
+// SYNC ALL VISUALS
+// ============================================================
+
+[RoutineDef,CB29_SyncVisuals,
+
+    [MVarSet,
+        CB25Data,
+        4,
+        1
+    ]
+
+
+    [VarSet,syncSlot,0]
+
+
+    [Loop,25,
+
+        [RoutineCall,
+            CB29_ApplyVisual,
+            syncSlot
+        ]
+
+
+        [VarInc,syncSlot]
+    ]
+
+
+    // STORE NEW SWITCH
+
+    [ISet,
+        "ZPlugin:Camera Bank 25:STORE NEW",
+        [MVarGet,CB25Data,6]
+    ]
+
+
+    // CLEAR SWITCH
+
+    [ISet,
+        "ZPlugin:Camera Bank 25:CLEAR",
+        [MVarGet,CB25Data,3]
+    ]
+
+
+    [IUpdate,1,1]
+
+
+    [MVarSet,
+        CB25Data,
+        4,
+        0
+    ]
+
+]
+
+
+// ============================================================
+// ENTER STORE MODE
+// ============================================================
+
+[RoutineDef,CB29_EnterStoreMode,
+
+    [VarSet,emptyCount,0]
+    [VarSet,testSlot,0]
+
+
+    [Loop,25,
+
+        [VarSet,testBase,
+            20 + (testSlot * 20)
+        ]
+
+
+        [If,[MVarGet,CB25Data,testBase] != 1,
+
+            [VarInc,emptyCount]
+        ]
+
+
+        [VarInc,testSlot]
+    ]
+
+
+    [If,emptyCount == 0,
+
+        [MVarSet,CB25Data,6,0]
+
+        [MessageOK,
+            "All 25 camera slots are already occupied.",
+            "Camera Bank 25"
+        ]
+
+
+        [RoutineCall,
+            CB29_SyncVisuals
+        ]
+
+
+    ,
+
+
+        [MVarSet,CB25Data,3,0]
+        [MVarSet,CB25Data,6,1]
+
+
+        [RoutineCall,
+            CB29_SyncVisuals
+        ]
+
+
+        [Note,
+            "STORE NEW - Click an EMPTY camera slot",
+            ,
+            2
+        ]
+    ]
+
+]
+
+
+// ============================================================
+// EXIT STORE MODE
+// ============================================================
+
+[RoutineDef,CB29_ExitStoreMode,
+
+    [MVarSet,CB25Data,6,0]
+
+
+    [RoutineCall,
+        CB29_SyncVisuals
+    ]
+
+]
+
+
+// ============================================================
+// SLOT CLICK
+// ============================================================
+
+[RoutineDef,CB29_SlotClick,
+
+    [If,[MVarGet,CB25Data,4] == 0,
+
+
+        [VarSet,base,
+            20 + (slot * 20)
+        ]
+
+
+        [VarSet,displaySlot,
+            slot + 1
+        ]
+
+
+        // ====================================================
+        // STORE MODE
+        // ====================================================
+
+        [If,[MVarGet,CB25Data,6] == 1,
+
+
+            [If,[MVarGet,CB25Data,base] != 1,
+
+                [RoutineCall,
+                    CB29_SaveSlot,
+                    slot
+                ]
+            ]
+
+
+            // STORE MODE ENDS AUTOMATICALLY
+
+            [MVarSet,CB25Data,6,0]
+            [MVarSet,CB25Data,3,0]
+
+
+            [RoutineCall,
+                CB29_SyncVisuals
+            ]
+
+
+        ,
+
+
+            // =================================================
+            // CLEAR MODE
+            // =================================================
+
+            [If,[MVarGet,CB25Data,3] == 1,
+
+
+                [If,[MVarGet,CB25Data,base] == 1,
+
+                    [RoutineCall,
+                        CB29_ClearSlot,
+                        slot
+                    ]
+                ]
+
+
+                [MVarSet,CB25Data,3,0]
+                [MVarSet,CB25Data,6,0]
+
+
+                [RoutineCall,
+                    CB29_SyncVisuals
+                ]
+
+
+            ,
+
+
+                // =============================================
+                // NORMAL MODE
+                // =============================================
+
+                [If,[MVarGet,CB25Data,base] == 1,
+
+
+                    // RECALL
+
+                    [RoutineCall,
+                        CB29_LoadSlot,
+                        slot
+                    ]
+
+
+                    // -----------------------------------------
+                    // FIRST OCCUPIED CLICK = RECALL ONLY
+                    // -----------------------------------------
+
+                    [If,[MVarGet,CB25Data,base + 17] == 0,
+
+
+                        [MVarSet,
+                            CB25Data,
+                            base + 17,
+                            1
+                        ]
+
+
+                        [If,[MVarGet,CB25Data,base + 16] == 1,
+
+                            [MVarSet,
+                                CB25Data,
+                                5,
+                                displaySlot
+                            ]
+
+
+                            [Note,
+
+                                [StrMerge,
+                                    "Camera ",
+                                    displaySlot,
+                                    " RECALLED | RENDER ON"
+                                ],
+
+                                ,
+                                2
+                            ]
+
+
+                        ,
+
+
+                            [MVarSet,
+                                CB25Data,
+                                5,
+                                0
+                            ]
+
+
+                            [Note,
+
+                                [StrMerge,
+                                    "Camera ",
+                                    displaySlot,
+                                    " RECALLED | RENDER OFF"
+                                ],
+
+                                ,
+                                2
+                            ]
+                        ]
+
+
+                    ,
+
+
+                        // -------------------------------------
+                        // FOLLOWING CLICKS = TOGGLE RENDER
+                        // -------------------------------------
+
+                        [If,[MVarGet,CB25Data,base + 16] == 1,
+
+
+                            // ON -> OFF
+
+                            [MVarSet,
+                                CB25Data,
+                                base + 16,
+                                0
+                            ]
+
+
+                            [MVarSet,
+                                CB25Data,
+                                5,
+                                0
+                            ]
+
+
+                            [Note,
+
+                                [StrMerge,
+                                    "Camera ",
+                                    displaySlot,
+                                    " | RENDER OFF"
+                                ],
+
+                                ,
+                                2
+                            ]
+
+
+                        ,
+
+
+                            // OFF -> ON
+
+                            [MVarSet,
+                                CB25Data,
+                                base + 16,
+                                1
+                            ]
+
+
+                            [MVarSet,
+                                CB25Data,
+                                5,
+                                displaySlot
+                            ]
+
+
+                            [Note,
+
+                                [StrMerge,
+                                    "Camera ",
+                                    displaySlot,
+                                    " | RENDER ON"
+                                ],
+
+                                ,
+                                2
+                            ]
+                        ]
+                    ]
+
+
+                    [RoutineCall,
+                        CB29_SyncVisuals
+                    ]
+                ]
+            ]
+        ]
+    ]
+
+,slot]
+
+
+// ============================================================
+// CHECK ACTIVE
+// ============================================================
+
+[RoutineDef,CB29_CheckActive,
+
+    [VarSet,activeCamera,
+        [MVarGet,CB25Data,5]
+    ]
+
+
+    [If,activeCamera > 0,
+
+        [Note,
+
+            [StrMerge,
+                "ACTIVE CAMERA = ",
+                activeCamera
+            ],
+
+            ,
+            4
+        ]
+
+
+    ,
+
+
+        [Note,
+            "ACTIVE CAMERA = NONE",
+            ,
+            4
+        ]
+    ]
+
+]
+
+
+// ============================================================
+// CLEAR ALL
+// ============================================================
+
+[RoutineDef,CB29_ClearAll,
+
+    [VarSet,answer,
+
+        [MessageYesNo,
+            "Clear all 25 stored cameras and visibility snapshots?",
+            "Camera Bank 25"
+        ]
+    ]
+
+
+    [If,answer == 1,
+
+        [RoutineCall,
+            CB29_CreateEmptyBank
+        ]
+
+
+        [RoutineCall,
+            CB29_SyncVisuals
+        ]
+
+
+        [MessageOK,
+            "All 25 camera slots have been cleared.",
+            "Camera Bank 25"
+        ]
+    ]
+
+]
+
+
+// ============================================================
+// EXPORT BANK
+// ============================================================
+
+[RoutineDef,CB29_ExportBank,
+
+    [MVarSet,CB25Data,1,6]
+    [MVarSet,CB25Data,3,0]
+    [MVarSet,CB25Data,4,0]
+    [MVarSet,CB25Data,6,0]
+
+
+    // RESET CLICK STATES
+
+    [VarSet,exSlot,0]
+
+
+    [Loop,25,
+
+        [VarSet,exBase,
+            20 + (exSlot * 20)
+        ]
+
+
+        [MVarSet,
+            CB25Data,
+            exBase + 17,
+            0
+        ]
+
+
+        [VarInc,exSlot]
+    ]
+
+
+    [VarSet,saveFile,
+
+        [FileNameAsk,
+            "Camera Bank (*.zcv)|*.zcv||",
+            "CameraBank25_v2_9.zcv",
+            "Export Camera Bank 25 v2.9"
+        ]
+    ]
+
+
+    [If,[StrLength,saveFile] > 0,
+
+        [VarSet,saveResult,
+
+            [MemSaveToFile,
+                CB25Data,
+                saveFile,
+                1
+            ]
+        ]
+
+
+        [If,saveResult > 0,
+
+            [MessageOK,
+                "Camera Bank v2.9 exported successfully.",
+                "Camera Bank 25"
+            ]
+
+        ,
+
+            [MessageOK,
+                "Could not export Camera Bank.",
+                "Camera Bank 25"
+            ]
+        ]
+    ]
+
+]
+
+
+// ============================================================
+// IMPORT BANK
+// ============================================================
+
+[RoutineDef,CB29_ImportBank,
+
+    [VarSet,loadFile,
+
+        [FileNameAsk,
+            "Camera Bank (*.zcv)|*.zcv||",
+            ,
+            "Import Camera Bank 25"
+        ]
+    ]
+
+
+    [If,[StrLength,loadFile] > 0,
+
+
+        [If,[MemGetSize,CB29ImportTemp] > 0,
+
+            [MemDelete,
+                CB29ImportTemp
+            ]
+        ]
+
+
+        [VarSet,loadResult,
+
+            [MemCreateFromFile,
+                CB29ImportTemp,
+                loadFile
+            ]
+        ]
+
+
+        // ====================================================
+        // FULL SIZE BANK
+        // ====================================================
+
+        [If,loadResult == 102180,
+
+
+            [If,
+                ([MVarGet,CB29ImportTemp,0] == 252523)
+                &&
+                ([MVarGet,CB29ImportTemp,2] == 25),
+
+
+                [VarSet,importedVersion,
+                    [MVarGet,CB29ImportTemp,1]
+                ]
+
+
+                [If,
+                    (importedVersion == 3)
+                    ||
+                    (importedVersion == 4)
+                    ||
+                    (importedVersion == 5)
+                    ||
+                    (importedVersion == 6),
+
+
+                    [RoutineCall,
+                        CB29_CreateEmptyBank
+                    ]
+
+
+                    [MemCopy,
+                        CB29ImportTemp,
+                        0,
+                        CB25Data,
+                        0,
+                        102180
+                    ]
+
+
+                    [MVarSet,CB25Data,1,6]
+                    [MVarSet,CB25Data,3,0]
+                    [MVarSet,CB25Data,4,0]
+                    [MVarSet,CB25Data,5,0]
+                    [MVarSet,CB25Data,6,0]
+
+
+                    [If,importedVersion == 6,
+
+                        [RoutineCall,
+                            CB29_NormalizeRenderFlags,
+                            0
+                        ]
+
+                    ,
+
+                        [RoutineCall,
+                            CB29_NormalizeRenderFlags,
+                            1
+                        ]
+                    ]
+
+
+                    [RoutineCall,
+                        CB29_SyncVisuals
+                    ]
+
+
+                    [MessageOK,
+                        "Camera Bank imported successfully.",
+                        "Camera Bank 25"
+                    ]
+
+
+                ,
+
+
+                    [MessageOK,
+                        "Unsupported Camera Bank version.",
+                        "Camera Bank 25"
+                    ]
+                ]
+
+
+            ,
+
+
+                [MessageOK,
+                    "Invalid Camera Bank file.",
+                    "Camera Bank 25"
+                ]
+            ]
+
+
+        ,
+
+
+            // =================================================
+            // LEGACY BANK
+            // =================================================
+
+            [If,loadResult == 2080,
+
+
+                [If,
+                    ([MVarGet,CB29ImportTemp,0] == 252523)
+                    &&
+                    ([MVarGet,CB29ImportTemp,2] == 25),
+
+
+                    [RoutineCall,
+                        CB29_CreateEmptyBank
+                    ]
+
+
+                    [MemCopy,
+                        CB29ImportTemp,
+                        0,
+                        CB25Data,
+                        0,
+                        2080
+                    ]
+
+
+                    [MVarSet,CB25Data,1,6]
+                    [MVarSet,CB25Data,3,0]
+                    [MVarSet,CB25Data,4,0]
+                    [MVarSet,CB25Data,5,0]
+                    [MVarSet,CB25Data,6,0]
+
+
+                    [RoutineCall,
+                        CB29_NormalizeRenderFlags,
+                        1
+                    ]
+
+
+                    [RoutineCall,
+                        CB29_SyncVisuals
+                    ]
+
+
+                    [MessageOK,
+                        "Legacy Camera Bank imported successfully.",
+                        "Camera Bank 25"
+                    ]
+
+
+                ,
+
+
+                    [MessageOK,
+                        "Invalid legacy Camera Bank file.",
+                        "Camera Bank 25"
+                    ]
+                ]
+
+
+            ,
+
+
+                [MessageOK,
+                    "Could not import Camera Bank.",
+                    "Camera Bank 25"
+                ]
+            ]
+        ]
+
+
+        [If,[MemGetSize,CB29ImportTemp] > 0,
+
+            [MemDelete,
+                CB29ImportTemp
+            ]
+        ]
+    ]
+
+]
+
+
+// ============================================================
+// CAMERA BUTTONS
+// ============================================================
+
+
+// ROW 1
+
+[ISwitch,"ZPlugin:Camera Bank 25:01",[MVarGet,CB25Data,36],"Camera 01",
+[RoutineCall,CB29_SlotClick,0],[RoutineCall,CB29_SlotClick,0],0,.2]
+
+[ISwitch,"ZPlugin:Camera Bank 25:02",[MVarGet,CB25Data,56],"Camera 02",
+[RoutineCall,CB29_SlotClick,1],[RoutineCall,CB29_SlotClick,1],0,.2]
+
+[ISwitch,"ZPlugin:Camera Bank 25:03",[MVarGet,CB25Data,76],"Camera 03",
+[RoutineCall,CB29_SlotClick,2],[RoutineCall,CB29_SlotClick,2],0,.2]
+
+[ISwitch,"ZPlugin:Camera Bank 25:04",[MVarGet,CB25Data,96],"Camera 04",
+[RoutineCall,CB29_SlotClick,3],[RoutineCall,CB29_SlotClick,3],0,.2]
+
+[ISwitch,"ZPlugin:Camera Bank 25:05",[MVarGet,CB25Data,116],"Camera 05",
+[RoutineCall,CB29_SlotClick,4],[RoutineCall,CB29_SlotClick,4],0,.2]
+
+
+// ROW 2
+
+[ISwitch,"ZPlugin:Camera Bank 25:06",[MVarGet,CB25Data,136],"Camera 06",
+[RoutineCall,CB29_SlotClick,5],[RoutineCall,CB29_SlotClick,5],0,.2]
+
+[ISwitch,"ZPlugin:Camera Bank 25:07",[MVarGet,CB25Data,156],"Camera 07",
+[RoutineCall,CB29_SlotClick,6],[RoutineCall,CB29_SlotClick,6],0,.2]
+
+[ISwitch,"ZPlugin:Camera Bank 25:08",[MVarGet,CB25Data,176],"Camera 08",
+[RoutineCall,CB29_SlotClick,7],[RoutineCall,CB29_SlotClick,7],0,.2]
+
+[ISwitch,"ZPlugin:Camera Bank 25:09",[MVarGet,CB25Data,196],"Camera 09",
+[RoutineCall,CB29_SlotClick,8],[RoutineCall,CB29_SlotClick,8],0,.2]
+
+[ISwitch,"ZPlugin:Camera Bank 25:10",[MVarGet,CB25Data,216],"Camera 10",
+[RoutineCall,CB29_SlotClick,9],[RoutineCall,CB29_SlotClick,9],0,.2]
+
+
+// ROW 3
+
+[ISwitch,"ZPlugin:Camera Bank 25:11",[MVarGet,CB25Data,236],"Camera 11",
+[RoutineCall,CB29_SlotClick,10],[RoutineCall,CB29_SlotClick,10],0,.2]
+
+[ISwitch,"ZPlugin:Camera Bank 25:12",[MVarGet,CB25Data,256],"Camera 12",
+[RoutineCall,CB29_SlotClick,11],[RoutineCall,CB29_SlotClick,11],0,.2]
+
+[ISwitch,"ZPlugin:Camera Bank 25:13",[MVarGet,CB25Data,276],"Camera 13",
+[RoutineCall,CB29_SlotClick,12],[RoutineCall,CB29_SlotClick,12],0,.2]
+
+[ISwitch,"ZPlugin:Camera Bank 25:14",[MVarGet,CB25Data,296],"Camera 14",
+[RoutineCall,CB29_SlotClick,13],[RoutineCall,CB29_SlotClick,13],0,.2]
+
+[ISwitch,"ZPlugin:Camera Bank 25:15",[MVarGet,CB25Data,316],"Camera 15",
+[RoutineCall,CB29_SlotClick,14],[RoutineCall,CB29_SlotClick,14],0,.2]
+
+
+// ROW 4
+
+[ISwitch,"ZPlugin:Camera Bank 25:16",[MVarGet,CB25Data,336],"Camera 16",
+[RoutineCall,CB29_SlotClick,15],[RoutineCall,CB29_SlotClick,15],0,.2]
+
+[ISwitch,"ZPlugin:Camera Bank 25:17",[MVarGet,CB25Data,356],"Camera 17",
+[RoutineCall,CB29_SlotClick,16],[RoutineCall,CB29_SlotClick,16],0,.2]
+
+[ISwitch,"ZPlugin:Camera Bank 25:18",[MVarGet,CB25Data,376],"Camera 18",
+[RoutineCall,CB29_SlotClick,17],[RoutineCall,CB29_SlotClick,17],0,.2]
+
+[ISwitch,"ZPlugin:Camera Bank 25:19",[MVarGet,CB25Data,396],"Camera 19",
+[RoutineCall,CB29_SlotClick,18],[RoutineCall,CB29_SlotClick,18],0,.2]
+
+[ISwitch,"ZPlugin:Camera Bank 25:20",[MVarGet,CB25Data,416],"Camera 20",
+[RoutineCall,CB29_SlotClick,19],[RoutineCall,CB29_SlotClick,19],0,.2]
+
+
+// ROW 5
+
+[ISwitch,"ZPlugin:Camera Bank 25:21",[MVarGet,CB25Data,436],"Camera 21",
+[RoutineCall,CB29_SlotClick,20],[RoutineCall,CB29_SlotClick,20],0,.2]
+
+[ISwitch,"ZPlugin:Camera Bank 25:22",[MVarGet,CB25Data,456],"Camera 22",
+[RoutineCall,CB29_SlotClick,21],[RoutineCall,CB29_SlotClick,21],0,.2]
+
+[ISwitch,"ZPlugin:Camera Bank 25:23",[MVarGet,CB25Data,476],"Camera 23",
+[RoutineCall,CB29_SlotClick,22],[RoutineCall,CB29_SlotClick,22],0,.2]
+
+[ISwitch,"ZPlugin:Camera Bank 25:24",[MVarGet,CB25Data,496],"Camera 24",
+[RoutineCall,CB29_SlotClick,23],[RoutineCall,CB29_SlotClick,23],0,.2]
+
+[ISwitch,"ZPlugin:Camera Bank 25:25",[MVarGet,CB25Data,516],"Camera 25",
+[RoutineCall,CB29_SlotClick,24],[RoutineCall,CB29_SlotClick,24],0,.2]
+
+
+// ============================================================
+// STORE NEW
+// ============================================================
+
+[ISwitch,
+    "ZPlugin:Camera Bank 25:STORE NEW",
+    0,
+    "Enable empty camera slots so one new camera can be stored.",
+
+    [If,[MVarGet,CB25Data,4] == 0,
+
+        [RoutineCall,
+            CB29_EnterStoreMode
+        ]
+    ],
+
+    [If,[MVarGet,CB25Data,4] == 0,
+
+        [RoutineCall,
+            CB29_ExitStoreMode
+        ]
+    ],
+
+    0,
+    1
+]
+
+
+// ============================================================
+// CLEAR ONE
+// ============================================================
+
+[ISwitch,
+    "ZPlugin:Camera Bank 25:CLEAR",
+    0,
+    "Activate Clear Mode. Then click one stored camera.",
+
+    [If,[MVarGet,CB25Data,4] == 0,
+
+        [MVarSet,CB25Data,6,0]
+        [MVarSet,CB25Data,3,1]
+
+
+        [RoutineCall,
+            CB29_SyncVisuals
+        ]
+
+
+        [Note,
+            "CLEAR MODE - Click a stored camera",
+            ,
+            2
+        ]
+    ],
+
+    [If,[MVarGet,CB25Data,4] == 0,
+
+        [MVarSet,CB25Data,3,0]
+
+
+        [RoutineCall,
+            CB29_SyncVisuals
+        ]
+
+
+        [Note,
+            "CLEAR MODE cancelled",
+            ,
+            1
+        ]
+    ],
+
+    0,
+    .5
+]
+
+
+[IButton,
+    "ZPlugin:Camera Bank 25:CLEAR ALL",
+    "Delete all stored cameras.",
+
+    [RoutineCall,
+        CB29_ClearAll
+    ]
+
+    ,
+    ,
+    .5
+]
+
+
+// ============================================================
+// CHECK ACTIVE
+// ============================================================
+
+[IButton,
+    "ZPlugin:Camera Bank 25:CHECK ACTIVE",
+    "Display active camera.",
+
+    [RoutineCall,
+        CB29_CheckActive
+    ]
+
+    ,
+    ,
+    1
+]
+
+
+// ============================================================
+// EXPORT / IMPORT
+// ============================================================
+
+[IButton,
+    "ZPlugin:Camera Bank 25:EXPORT BANK",
+    "Export Camera Bank.",
+
+    [RoutineCall,
+        CB29_ExportBank
+    ]
+
+    ,
+    ,
+    .5
+]
+
+
+[IButton,
+    "ZPlugin:Camera Bank 25:IMPORT BANK",
+    "Import Camera Bank.",
+
+    [RoutineCall,
+        CB29_ImportBank
+    ]
+
+    ,
+    ,
+    .5
+]
+
+
+// ============================================================
+// INITIAL VISUAL SYNC
+// ============================================================
+
+[RoutineCall,
+    CB29_SyncVisuals
+]
+
+// ============================================================
+// ZPASS CAPTURE JPG FAST - MANUAL GLOBAL POLYPAINT
+// ZBrush 2023.2.1
+//
+// VERSION 0.9
+//
+// REQUIRES:
+// Camera Bank 25 v2.5 / data version 6
+//
+// IMPORTANT:
+//
+// THIS SCRIPT NEVER CHANGES POLYPAINT.
+//
+// USER WORKFLOW:
+//
+// 1. MANUALLY set ALL Polypaint ON globally.
+// 2. STEP 1 -> export all ZBrush Document.jpg
+//
+// 3. MANUALLY set ALL Polypaint OFF globally.
+// 4. STEP 2 -> export all a.jpg / d.jpg / z.jpg
+//
+// 5. MANUALLY set ALL Polypaint ON globally.
+//
+// Only STORED + RENDER ON cameras are exported.
+//
+// ============================================================
+
+
+// ============================================================
+// PLUGIN
+// ============================================================
+
+
+
+
+// ============================================================
+// GLOBALS
+// ============================================================
+
+[VarDef,gZP9Root,""]
+
+[VarDef,gZP9Label,""]
+
+[VarDef,gZP9Session,
+    "C:\ZPassCapture\ZPassJPGFast_v0_9_session.dat"
+]
+
+
+// ============================================================
+// VALIDATE
+// ============================================================
+
+[RoutineDef,ZP9_Validate,
+
+    [If,[MemGetSize,CB25Data] != 102180,
+
+        [MessageOK,
+            "Load Camera Bank 25 v2.5 first.",
+            "ZPass JPG FAST v0.9"
+        ]
+
+        [Exit]
+    ]
+
+
+    [If,[MVarGet,CB25Data,0] != 252523,
+
+        [MessageOK,
+            "Invalid Camera Bank data.",
+            "ZPass JPG FAST v0.9"
+        ]
+
+        [Exit]
+    ]
+
+
+    [If,[MVarGet,CB25Data,1] != 6,
+
+        [MessageOK,
+            "Camera Bank 25 v2.5 is required.",
+            "ZPass JPG FAST v0.9"
+        ]
+
+        [Exit]
+    ]
+
+
+    [If,[IExists,"Transform:Edit"],
+
+        [If,[IGet,"Transform:Edit"] == 0,
+
+            [MessageOK,
+                "Put the model in Edit Mode first.",
+                "ZPass JPG FAST v0.9"
+            ]
+
+            [Exit]
+        ]
+    ]
+
+
+    [If,[IExists,"Document:Export"] == 0,
+
+        [MessageOK,
+            "Document Export was not found.",
+            "ZPass JPG FAST v0.9"
+        ]
+
+        [Exit]
+    ]
+
+
+    [If,[FileExists,
+        "C:\ZPassCapture\ZPassAutoOK_Helper.vbs"
+    ] == 0,
+
+        [MessageOK,
+            "ZPassAutoOK_Helper.vbs is missing.",
+            "ZPass JPG FAST v0.9"
+        ]
+
+        [Exit]
+    ]
+
+
+    [If,[FileExists,
+        "C:\ZPassCapture\ZPassAutoOK_Launcher.cmd"
+    ] == 0,
+
+        [MessageOK,
+            "ZPassAutoOK_Launcher.cmd is missing.",
+            "ZPass JPG FAST v0.9"
+        ]
+
+        [Exit]
+    ]
+
+
+    [If,[FileExists,
+        "C:\ZPassCapture\ZPassCreateFolder.vbs"
+    ] == 0,
+
+        [MessageOK,
+            "ZPassCreateFolder.vbs is missing.",
+            "ZPass JPG FAST v0.9"
+        ]
+
+        [Exit]
+    ]
+
+
+    [If,[IExists,"Material:NormalRGBMat"] == 0,
+
+        [MessageOK,
+            "NormalRGBMat was not found.",
+            "ZPass JPG FAST v0.9"
+        ]
+
+        [Exit]
+    ]
+
+
+    [If,[IExists,"Material:DoubleShade1"] == 0,
+
+        [MessageOK,
+            "DoubleShade1 was not found.",
+            "ZPass JPG FAST v0.9"
+        ]
+
+        [Exit]
+    ]
+
+
+    [If,[IExists,"Material:Metal 11"] == 0,
+
+        [MessageOK,
+            "Metal 11 was not found.",
+            "ZPass JPG FAST v0.9"
+        ]
+
+        [Exit]
+    ]
+
+]
+
+
+// ============================================================
+// PREFLIGHT ENABLED CAMERAS
+// ============================================================
+
+[RoutineDef,ZP9_Preflight,
+
+    [VarSet,zp9Enabled,0]
+
+    [VarSet,zp9BadCamera,0]
+
+    [VarSet,zp9CurrentCount,
+        [SubToolGetCount]
+    ]
+
+    [VarSet,zp9Slot,0]
+
+
+    [Loop,25,
+
+        [VarSet,zp9Base,
+            20 + (zp9Slot * 20)
+        ]
+
+
+        [If,
+            ([MVarGet,CB25Data,zp9Base] == 1)
+            &&
+            ([MVarGet,CB25Data,zp9Base + 16] == 1),
+
+
+            [VarInc,zp9Enabled]
+
+
+            [VarSet,zp9VisBase,
+                520 + (zp9Slot * 1001)
+            ]
+
+
+            [VarSet,zp9SavedCount,
+                [MVarGet,CB25Data,zp9VisBase]
+            ]
+
+
+            [If,
+                (zp9BadCamera == 0)
+                &&
+                (
+                    (zp9SavedCount <= 0)
+                    ||
+                    (zp9SavedCount != zp9CurrentCount)
+                ),
+
+                [VarSet,
+                    zp9BadCamera,
+                    zp9Slot + 1
+                ]
+            ]
+        ]
+
+
+        [VarInc,zp9Slot]
+    ]
+
+
+    [If,zp9Enabled == 0,
+
+        [MessageOK,
+            "No Camera Bank cameras are enabled for Render.",
+            "ZPass JPG FAST v0.9"
+        ]
+
+        [Exit]
+    ]
+
+
+    [If,zp9BadCamera > 0,
+
+        [MessageOK,
+
+            [StrMerge,
+                "Camera ",
+                zp9BadCamera,
+                " has an incompatible visibility snapshot."
+            ],
+
+            "ZPass JPG FAST v0.9"
+        ]
+
+        [Exit]
+    ]
+
+]
+
+
+// ============================================================
+// RESTORE VISIBILITY ONLY
+//
+// NO POLYPAINT.
+//
+// ============================================================
+
+[RoutineDef,ZP9_RestoreVisibility,
+
+    [VarSet,zp9VisBase,
+        520 + (zp9Slot * 1001)
+    ]
+
+
+    [VarSet,zp9SavedCount,
+        [MVarGet,CB25Data,zp9VisBase]
+    ]
+
+
+    [VarSet,zp9CurrentCount,
+        [SubToolGetCount]
+    ]
+
+
+    [If,
+        (zp9SavedCount > 0)
+        &&
+        (zp9SavedCount == zp9CurrentCount),
+
+
+        // SUBTOOL EYES
+
+        [VarSet,zp9ST,0]
+
+
+        [Loop,zp9SavedCount,
+
+            [VarSet,zp9SavedState,
+
+                [MVarGet,
+                    CB25Data,
+                    zp9VisBase + 1 + zp9ST
+                ]
+            ]
+
+
+            [VarSet,zp9SavedEye,
+                (zp9SavedState & 0x01)
+            ]
+
+
+            [VarSet,zp9Status,
+                [SubToolGetStatus,zp9ST]
+            ]
+
+
+            [VarSet,zp9Eye,
+                (zp9Status & 0x01)
+            ]
+
+
+            [SubToolSetStatus,
+                zp9ST,
+                (zp9Status - zp9Eye) + zp9SavedEye
+            ]
+
+
+            [VarInc,zp9ST]
+        ]
+
+
+        // FOLDER EYES
+
+        [VarSet,zp9ST,0]
+
+
+        [Loop,zp9SavedCount,
+
+            [VarSet,zp9SavedState,
+
+                [MVarGet,
+                    CB25Data,
+                    zp9VisBase + 1 + zp9ST
+                ]
+            ]
+
+
+            [VarSet,zp9SavedFolder,
+                (zp9SavedState & 0x02)
+            ]
+
+
+            [VarSet,zp9Status,
+                [SubToolGetStatus,zp9ST]
+            ]
+
+
+            [VarSet,zp9Folder,
+                (zp9Status & 0x02)
+            ]
+
+
+            [SubToolSetStatus,
+                zp9ST,
+                (zp9Status - zp9Folder) + zp9SavedFolder
+            ]
+
+
+            [VarInc,zp9ST]
+        ]
+
+
+        [IUpdate,1,1]
+    ]
+
+,zp9Slot]
+
+
+// ============================================================
+// CAMERA RECALL
+//
+// DOES NOT TOUCH POLYPAINT.
+//
+// ============================================================
+
+[RoutineDef,ZP9_Recall,
+
+    [VarSet,zp9Slot,
+        zp9Camera - 1
+    ]
+
+
+    [VarSet,zp9Base,
+        20 + (zp9Slot * 20)
+    ]
+
+
+    [If,[MVarGet,CB25Data,zp9Base] != 1,
+
+        [Exit]
+    ]
+
+
+    [VarSet,zp9Perspective,
+        [MVarGet,CB25Data,zp9Base + 10]
+    ]
+
+
+    [VarSet,zp9Focal,
+        [MVarGet,CB25Data,zp9Base + 11]
+    ]
+
+
+    [VarSet,zp9FocalType,
+        [MVarGet,CB25Data,zp9Base + 15]
+    ]
+
+
+    [MTransformSet,
+        CB25Data,
+        zp9Base + 1
+    ]
+
+
+    [CanvasZoomSet,
+        [MVarGet,CB25Data,zp9Base + 12]
+    ]
+
+
+    [CanvasPanSet,
+        [MVarGet,CB25Data,zp9Base + 13],
+        [MVarGet,CB25Data,zp9Base + 14]
+    ]
+
+
+    [If,zp9FocalType > 0,
+
+        [If,[IExists,"Draw:Perspective"],
+
+            [IPress,"Draw:Perspective"]
+            [IUpdate,1,1]
+        ]
+
+
+        [If,zp9FocalType == 1,
+
+            [If,[IExists,"Draw:Focal Length(mm)"],
+
+                [ISet,
+                    "Draw:Focal Length(mm)",
+                    zp9Focal
+                ]
+
+                [IUpdate,1,1]
+            ]
+        ]
+
+
+        [If,zp9FocalType == 2,
+
+            [If,[IExists,"Draw:Focal Length"],
+
+                [ISet,
+                    "Draw:Focal Length",
+                    zp9Focal
+                ]
+
+                [IUpdate,1,1]
+            ]
+        ]
+    ]
+
+
+    [If,[IExists,"Draw:Perspective"],
+
+        [If,zp9Perspective == 1,
+
+            [IPress,"Draw:Perspective"]
+            [IUpdate,1,1]
+        ]
+
+
+        [If,zp9Perspective == 0,
+
+            [IUnPress,"Draw:Perspective"]
+            [IUpdate,1,1]
+        ]
+    ]
+
+
+    [RoutineCall,
+        ZP9_RestoreVisibility,
+        zp9Slot
+    ]
+
+
+    [MVarSet,
+        CB25Data,
+        5,
+        zp9Camera
+    ]
+
+
+    [IUpdate,2,1]
+    [Delay,0.05]
+
+,zp9Camera]
+
+
+// ============================================================
+// LABEL 01...25
+// ============================================================
+
+[RoutineDef,ZP9_Label,
+
+    [If,zp9Camera < 10,
+
+        [VarSet,gZP9Label,
+
+            [StrMerge,
+                "0",
+                zp9Camera
+            ]
+        ]
+
+    ,
+
+        [VarSet,gZP9Label,
+
+            [StrMerge,
+                "",
+                zp9Camera
+            ]
+        ]
+    ]
+
+,zp9Camera]
+
+
+// ============================================================
+// DELETE EXISTING FILE
+// ============================================================
+
+[RoutineDef,ZP9_DeleteIfExists,
+
+    [If,[FileExists,zp9File],
+
+        [FileDelete,
+            zp9File
+        ]
+    ]
+
+,zp9File]
+
+
+// ============================================================
+// CREATE CAMERA FOLDER
+// ============================================================
+
+[RoutineDef,ZP9_CreateFolder,
+
+    [VarSet,zp9TargetFile,
+        "C:\ZPassCapture\ZPassFolderTarget.txt"
+    ]
+
+
+    [VarSet,zp9StatusFile,
+        "C:\ZPassCapture\ZPassFolderOK.txt"
+    ]
+
+
+    [If,[FileExists,zp9StatusFile],
+
+        [FileDelete,
+            zp9StatusFile
+        ]
+    ]
+
+
+    [If,[FileExists,zp9TargetFile],
+
+        [FileDelete,
+            zp9TargetFile
+        ]
+    ]
+
+
+    [If,[MemGetSize,ZP9FolderMem] > 0,
+
+        [MemDelete,
+            ZP9FolderMem
+        ]
+    ]
+
+
+    [MemCreate,
+        ZP9FolderMem,
+        1024,
+        0
+    ]
+
+
+    [MemWriteString,
+        ZP9FolderMem,
+        zp9Folder,
+        0
+    ]
+
+
+    [VarSet,zp9WriteResult,
+
+        [MemSaveToFile,
+            ZP9FolderMem,
+            zp9TargetFile,
+            1
+        ]
+    ]
+
+
+    [MemDelete,
+        ZP9FolderMem
+    ]
+
+
+    [If,zp9WriteResult <= 0,
+
+        [MessageOK,
+            "Could not prepare camera folder.",
+            "ZPass JPG FAST v0.9"
+        ]
+
+        [Exit]
+    ]
+
+
+    [ShellExecute,
+        "C:\ZPassCapture\ZPassCreateFolder.vbs"
+    ]
+
+
+    [VarSet,zp9Ready,0]
+
+
+    [Loop,60,
+
+        [If,[FileExists,zp9StatusFile],
+
+            [VarSet,zp9Ready,1]
+            [LoopExit]
+        ]
+
+
+        [Delay,0.05]
+    ]
+
+
+    [If,zp9Ready == 0,
+
+        [MessageOK,
+            "Could not create camera folder.",
+            "ZPass JPG FAST v0.9"
+        ]
+
+        [Exit]
+    ]
+
+
+    [If,[FileExists,zp9StatusFile],
+
+        [FileDelete,
+            zp9StatusFile
+        ]
+    ]
+
+
+    [If,[FileExists,zp9TargetFile],
+
+        [FileDelete,
+            zp9TargetFile
+        ]
+    ]
+
+,zp9Folder]
+
+
+// ============================================================
+// EXPORT JPG
+// ============================================================
+
+[RoutineDef,ZP9_ExportJPG,
+
+    [RoutineCall,
+        ZP9_DeleteIfExists,
+        zp9Output
+    ]
+
+
+    [FileNameSetNext,
+        zp9Output
+    ]
+
+
+    [ShellExecute,
+        "C:\ZPassCapture\ZPassAutoOK_Launcher.cmd"
+    ]
+
+
+    [Delay,0.10]
+
+
+    [IPress,
+        "Document:Export"
+    ]
+
+
+    [IUpdate,1,1]
+
+,zp9Output]
+
+
+// ============================================================
+// SAVE SESSION ROOT
+// ============================================================
+
+[RoutineDef,ZP9_SaveSession,
+
+    [If,[FileExists,[Var,gZP9Session]],
+
+        [FileDelete,
+            [Var,gZP9Session]
+        ]
+    ]
+
+
+    [If,[MemGetSize,ZP9SessionMem] > 0,
+
+        [MemDelete,
+            ZP9SessionMem
+        ]
+    ]
+
+
+    [MemCreate,
+        ZP9SessionMem,
+        2048,
+        0
+    ]
+
+
+    [MemWriteString,
+        ZP9SessionMem,
+        [Var,gZP9Root],
+        0
+    ]
+
+
+    [VarSet,zp9SaveResult,
+
+        [MemSaveToFile,
+            ZP9SessionMem,
+            [Var,gZP9Session],
+            1
+        ]
+    ]
+
+
+    [MemDelete,
+        ZP9SessionMem
+    ]
+
+
+    [If,zp9SaveResult <= 0,
+
+        [MessageOK,
+            "Could not save JPG export session.",
+            "ZPass JPG FAST v0.9"
+        ]
+
+        [Exit]
+    ]
+
+]
+
+
+// ============================================================
+// LOAD SESSION ROOT
+// ============================================================
+
+[RoutineDef,ZP9_LoadSession,
+
+    [VarSet,gZP9Root,""]
+
+
+    [If,[FileExists,[Var,gZP9Session]] == 0,
+
+        [MessageOK,
+            "STEP 1 has not been completed yet.",
+            "ZPass JPG FAST v0.9"
+        ]
+
+        [Exit]
+    ]
+
+
+    [If,[MemGetSize,ZP9SessionMem] > 0,
+
+        [MemDelete,
+            ZP9SessionMem
+        ]
+    ]
+
+
+    [VarSet,zp9SessionSize,
+
+        [MemCreateFromFile,
+            ZP9SessionMem,
+            [Var,gZP9Session]
+        ]
+    ]
+
+
+    [If,zp9SessionSize <= 0,
+
+        [MessageOK,
+            "Could not read JPG export session.",
+            "ZPass JPG FAST v0.9"
+        ]
+
+        [Exit]
+    ]
+
+
+    [MemReadString,
+        ZP9SessionMem,
+        gZP9Root,
+        0
+    ]
+
+
+    [MemDelete,
+        ZP9SessionMem
+    ]
+
+]
+
+
+// ============================================================
+// STEP 1
+//
+// ZBRUSH DOCUMENTS
+//
+// USER MUST SET POLYPAINT ON MANUALLY BEFORE THIS.
+// ============================================================
+
+[RoutineDef,ZP9_Step1,
+
+    [RoutineCall,ZP9_Validate]
+    [RoutineCall,ZP9_Preflight]
+
+
+    [VarSet,zp9Selection,
+
+        [FileNameAsk,
+            "JPEG (*.jpg)|*.jpg||",
+            "ZBrush Document.jpg",
+            "ZPass JPG FAST v0.9 - Choose BASE folder"
+        ]
+    ]
+
+
+    [If,[StrLength,zp9Selection] == 0,
+
+        [Exit]
+    ]
+
+
+    [VarSet,gZP9Root,
+
+        [FileNameExtract,
+            zp9Selection,
+            1
+        ]
+    ]
+
+
+    [RoutineCall,
+        ZP9_SaveSession
+    ]
+
+
+    [VarSet,zp9Slot,0]
+
+
+    [Loop,25,
+
+        [VarSet,zp9Base,
+            20 + (zp9Slot * 20)
+        ]
+
+
+        [If,
+            ([MVarGet,CB25Data,zp9Base] == 1)
+            &&
+            ([MVarGet,CB25Data,zp9Base + 16] == 1),
+
+
+            [VarSet,zp9Camera,
+                zp9Slot + 1
+            ]
+
+
+            [RoutineCall,
+                ZP9_Label,
+                zp9Camera
+            ]
+
+
+            [RoutineCall,
+                ZP9_Recall,
+                zp9Camera
+            ]
+
+
+            [VarSet,zp9Folder,
+
+                [StrMerge,
+                    [Var,gZP9Root],
+                    [Var,gZP9Label]
+                ]
+            ]
+
+
+            [RoutineCall,
+                ZP9_CreateFolder,
+                zp9Folder
+            ]
+
+
+            [VarSet,zp9Output,
+
+                [StrMerge,
+                    zp9Folder,
+                    "\ZBrush Document.jpg"
+                ]
+            ]
+
+
+            [Note,
+
+                [StrMerge,
+                    "ZBrush Document | Camera ",
+                    [Var,gZP9Label]
+                ],
+
+                ,
+                1
+            ]
+
+
+            [RoutineCall,
+                ZP9_ExportJPG,
+                zp9Output
+            ]
+        ]
+
+
+        [VarInc,zp9Slot]
+    ]
+
+
+    [MessageOK,
+        "STEP 1 COMPLETE.\n\nNow set ALL Polypaint OFF globally.\n\nThen run STEP 2 - A D Z.",
+        "ZPass JPG FAST v0.9"
+    ]
+
+]
+
+
+// ============================================================
+// EXPORT ONE MATERIAL PASS
+// ============================================================
+
+[RoutineDef,ZP9_ExportPass,
+
+    [IPress,
+        materialPath
+    ]
+
+
+    [IUpdate,1,1]
+
+
+    [VarSet,zp9Slot,0]
+
+
+    [Loop,25,
+
+        [VarSet,zp9Base,
+            20 + (zp9Slot * 20)
+        ]
+
+
+        [If,
+            ([MVarGet,CB25Data,zp9Base] == 1)
+            &&
+            ([MVarGet,CB25Data,zp9Base + 16] == 1),
+
+
+            [VarSet,zp9Camera,
+                zp9Slot + 1
+            ]
+
+
+            [RoutineCall,
+                ZP9_Label,
+                zp9Camera
+            ]
+
+
+            [RoutineCall,
+                ZP9_Recall,
+                zp9Camera
+            ]
+
+
+            [VarSet,zp9Folder,
+
+                [StrMerge,
+                    [Var,gZP9Root],
+                    [Var,gZP9Label]
+                ]
+            ]
+
+
+            [VarSet,zp9Output,
+
+                [StrMerge,
+                    zp9Folder,
+                    "\",
+                    fileName
+                ]
+            ]
+
+
+            [RoutineCall,
+                ZP9_ExportJPG,
+                zp9Output
+            ]
+        ]
+
+
+        [VarInc,zp9Slot]
+    ]
+
+,materialPath,fileName]
+
+
+// ============================================================
+// STEP 2
+//
+// A + D + Z
+//
+// USER MUST SET POLYPAINT OFF MANUALLY BEFORE THIS.
+// ============================================================
+
+[RoutineDef,ZP9_Step2,
+
+    [RoutineCall,ZP9_Validate]
+    [RoutineCall,ZP9_Preflight]
+    [RoutineCall,ZP9_LoadSession]
+
+
+    [VarSet,zp9OriginalMaterial,
+        [IGet,"Material:ItemInfo"]
+    ]
+
+
+    // A
+
+    [Note,
+        "ZPass JPG FAST | A",
+        ,
+        1
+    ]
+
+
+    [RoutineCall,
+        ZP9_ExportPass,
+        "Material:NormalRGBMat",
+        "a.jpg"
+    ]
+
+
+    // D
+
+    [Note,
+        "ZPass JPG FAST | D",
+        ,
+        1
+    ]
+
+
+    [RoutineCall,
+        ZP9_ExportPass,
+        "Material:DoubleShade1",
+        "d.jpg"
+    ]
+
+
+    // Z
+
+    [Note,
+        "ZPass JPG FAST | Z",
+        ,
+        1
+    ]
+
+
+    [RoutineCall,
+        ZP9_ExportPass,
+        "Material:Metal 11",
+        "z.jpg"
+    ]
+
+
+    // RESTORE MATERIAL
+
+    [If,[IExists,"Material:ItemInfo"],
+
+        [ISet,
+            "Material:ItemInfo",
+            zp9OriginalMaterial
+        ]
+
+
+        [IUpdate,1,1]
+    ]
+
+
+    // FINISH SESSION
+
+    [If,[FileExists,[Var,gZP9Session]],
+
+        [FileDelete,
+            [Var,gZP9Session]
+        ]
+    ]
+
+
+    [MessageOK,
+        "JPG EXPORT COMPLETE.\n\nNow set ALL Polypaint ON globally.\n\nThe project is ready for BPR.",
+        "ZPass JPG FAST v0.9"
+    ]
+
+]
+
+
+
+// ============================================================
+// ZPASS CAPTURE - BPR CHAIN
+// ZBrush 2023.2.1
+//
+// VERSION 1.2
+//
+// FIX PRINCIPAL:
+//
+// ZBrush To Photoshop genera nombres como:
+//
+// \BPR #46428.PSD
+// \AO #46428.PSD
+// etc.
+//
+// GetFile devuelve el nombre comenzando con "\".
+// Por eso "bpr #" aparece en posicion 1 y NO en 0.
+//
+// v1.2 acepta "bpr #" en CUALQUIER posicion.
+//
+// TAMBIEN:
+//
+// - Lee estado pendiente de v1.0
+// - Lee estado pendiente de v1.1
+// - No vuelve a renderizar un batch pendiente
+// - Detecta automaticamente #xxxxx.PSD
+// - Copia 7 PSD
+// - Descarta Mask No AA
+// - Conserva ZBrushToPhotoshop.JSX
+//
+// ============================================================
+
+
+// ============================================================
+// PLUGIN
+//
+// Nombre NUEVO para evitar confundirlo con v1.0/v1.1.
+// ============================================================
+
+
+
+
+// ============================================================
+// GLOBALS
+// ============================================================
+
+[VarDef,gZP12Dll,
+"C:\Program Files\Maxon ZBrush 2023\ZStartup\ZPlugs64\ZWrap\ZFileUtils64.dll"
+]
+
+[VarDef,gZP12Passes,
+"C:\Program Files\Maxon ZBrush 2023\ZStartup\ZPlugs64\ZBrushToPhotoshopData\Passes"
+]
+
+[VarDef,gZP12StateFile,
+"C:\ZPassCapture\ZPassBPR_v1_2_state.dat"
+]
+
+[VarDef,gZP12LegacyState11,
+"C:\ZPassCapture\ZPassBPR_v1_1_state.dat"
+]
+
+[VarDef,gZP12LegacyState10,
+"C:\ZPassCapture\ZPassBPR_v1_0_state.dat"
+]
+
+
+[VarDef,gZP12Root,""]
+
+[VarDef,gZP12CurrentCam,0]
+
+[VarDef,gZP12NextCam,0]
+
+[VarDef,gZP12Label,""]
+
+[VarDef,gZP12CamText,""]
+
+
+[VarDef,gZP12BatchCount,0]
+
+[VarDef,gZP12BPRMatches,0]
+
+[VarDef,gZP12BPRName,""]
+
+[VarDef,gZP12Suffix,""]
+
+
+[VarDef,gZP12SrcAO,""]
+
+[VarDef,gZP12SrcBPR,""]
+
+[VarDef,gZP12SrcRender,""]
+
+[VarDef,gZP12SrcDepth,""]
+
+[VarDef,gZP12SrcMask,""]
+
+[VarDef,gZP12SrcMaskNoAA,""]
+
+[VarDef,gZP12SrcShadow,""]
+
+[VarDef,gZP12SrcSSS,""]
+
+
+[VarDef,gZP12LastErr,0]
+
+[VarDef,gZP12CopyFailed,0]
+
+
+// ============================================================
+// VALIDATE
+// ============================================================
+
+[RoutineDef,ZP12_Validate,
+
+
+    // CAMERA BANK
+
+    [If,[MemGetSize,CB25Data] != 102180,
+
+        [MessageOK,
+            "Load CameraBank25_v2_9.txt first.",
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+
+    [If,[MVarGet,CB25Data,0] != 252523,
+
+        [MessageOK,
+            "Invalid Camera Bank data.",
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+
+    [If,[MVarGet,CB25Data,1] != 6,
+
+        [MessageOK,
+            "Camera Bank data version 6 is required.",
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+
+    // ZFILEUTILS
+
+    [If,[FileExists,[Var,gZP12Dll]] == 0,
+
+        [MessageOK,
+            "ZFileUtils64.dll was not found.",
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+
+    [VarSet,zp12DllVersion,
+
+        [FileExecute,
+            [Var,gZP12Dll],
+            "Version"
+        ]
+    ]
+
+
+    [If,[Val,zp12DllVersion] < 8,
+
+        [MessageOK,
+            "ZFileUtils version 8 or newer is required.",
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+
+    // BPR
+
+    [If,[IExists,
+        "Render:BPR RenderPass:Render Best Preview"
+    ] == 0,
+
+        [MessageOK,
+            "BPR Render button was not found.",
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+
+    // SEND TO PHOTOSHOP
+
+    [If,[IExists,
+        "ZPlugin:ZBrush To Photoshop:Send To Photoshop CC"
+    ] == 0,
+
+        [MessageOK,
+            "ZBrush To Photoshop Send button was not found.",
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+]
+
+
+// ============================================================
+// PREFLIGHT CAMERAS
+// ============================================================
+
+[RoutineDef,ZP12_Preflight,
+
+    [VarSet,zp12EnabledCount,0]
+
+    [VarSet,zp12BadCamera,0]
+
+    [VarSet,zp12SubCount,
+        [SubToolGetCount]
+    ]
+
+    [VarSet,zp12Slot,0]
+
+
+    [Loop,25,
+
+        [VarSet,zp12Base,
+            20 + (zp12Slot * 20)
+        ]
+
+
+        [If,
+            ([MVarGet,CB25Data,zp12Base] == 1)
+            &&
+            ([MVarGet,CB25Data,zp12Base + 16] == 1),
+
+
+            [VarInc,zp12EnabledCount]
+
+
+            [VarSet,zp12VisBase,
+                520 + (zp12Slot * 1001)
+            ]
+
+
+            [VarSet,zp12SavedCount,
+                [MVarGet,CB25Data,zp12VisBase]
+            ]
+
+
+            [If,
+                (zp12BadCamera == 0)
+                &&
+                (
+                    (zp12SavedCount <= 0)
+                    ||
+                    (zp12SavedCount != zp12SubCount)
+                ),
+
+                [VarSet,
+                    zp12BadCamera,
+                    zp12Slot + 1
+                ]
+            ]
+        ]
+
+
+        [VarInc,zp12Slot]
+    ]
+
+
+    [If,zp12EnabledCount == 0,
+
+        [MessageOK,
+            "No Camera Bank cameras have RENDER ON.",
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+
+    [If,zp12BadCamera > 0,
+
+        [MessageOK,
+
+            [StrMerge,
+                "Camera ",
+                zp12BadCamera,
+                " has an incompatible visibility snapshot."
+            ],
+
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+]
+
+
+// ============================================================
+// CAMERA LABEL
+// 1 -> 01
+// 2 -> 02
+// ...
+// ============================================================
+
+[RoutineDef,ZP12_MakeLabel,
+
+    [If,zp12Camera < 10,
+
+        [VarSet,gZP12Label,
+
+            [StrMerge,
+                "0",
+                zp12Camera
+            ]
+        ]
+
+    ,
+
+        [VarSet,gZP12Label,
+
+            [StrMerge,
+                "",
+                zp12Camera
+            ]
+        ]
+    ]
+
+,zp12Camera]
+
+
+// ============================================================
+// RESTORE CAMERA VISIBILITY
+//
+// NO POLYPAINT.
+// ============================================================
+
+[RoutineDef,ZP12_RestoreVisibility,
+
+    [VarSet,zp12VisBase,
+        520 + (zp12Slot * 1001)
+    ]
+
+
+    [VarSet,zp12SavedCount,
+        [MVarGet,CB25Data,zp12VisBase]
+    ]
+
+
+    [VarSet,zp12CurrentCount,
+        [SubToolGetCount]
+    ]
+
+
+    [If,
+        (zp12SavedCount > 0)
+        &&
+        (zp12SavedCount == zp12CurrentCount),
+
+
+        // ----------------------------------------------------
+        // SUBTOOL EYES
+        // ----------------------------------------------------
+
+        [VarSet,zp12ST,0]
+
+
+        [Loop,zp12SavedCount,
+
+            [VarSet,zp12SavedState,
+
+                [MVarGet,
+                    CB25Data,
+                    zp12VisBase + 1 + zp12ST
+                ]
+            ]
+
+
+            [VarSet,zp12SavedEye,
+                (zp12SavedState & 0x01)
+            ]
+
+
+            [VarSet,zp12Status,
+                [SubToolGetStatus,zp12ST]
+            ]
+
+
+            [VarSet,zp12Eye,
+                (zp12Status & 0x01)
+            ]
+
+
+            [SubToolSetStatus,
+                zp12ST,
+                (zp12Status - zp12Eye) + zp12SavedEye
+            ]
+
+
+            [VarInc,zp12ST]
+        ]
+
+
+        // ----------------------------------------------------
+        // FOLDER EYES
+        // ----------------------------------------------------
+
+        [VarSet,zp12ST,0]
+
+
+        [Loop,zp12SavedCount,
+
+            [VarSet,zp12SavedState,
+
+                [MVarGet,
+                    CB25Data,
+                    zp12VisBase + 1 + zp12ST
+                ]
+            ]
+
+
+            [VarSet,zp12SavedFolder,
+                (zp12SavedState & 0x02)
+            ]
+
+
+            [VarSet,zp12Status,
+                [SubToolGetStatus,zp12ST]
+            ]
+
+
+            [VarSet,zp12Folder,
+                (zp12Status & 0x02)
+            ]
+
+
+            [SubToolSetStatus,
+                zp12ST,
+                (zp12Status - zp12Folder) + zp12SavedFolder
+            ]
+
+
+            [VarInc,zp12ST]
+        ]
+
+
+        [IUpdate,1,1]
+    ]
+
+,zp12Slot]
+
+
+// ============================================================
+// RECALL CAMERA
+//
+// NO POLYPAINT.
+// ============================================================
+
+[RoutineDef,ZP12_RecallCamera,
+
+    [VarSet,zp12Slot,
+        zp12Camera - 1
+    ]
+
+
+    [VarSet,zp12Base,
+        20 + (zp12Slot * 20)
+    ]
+
+
+    [If,[MVarGet,CB25Data,zp12Base] != 1,
+
+        [Exit]
+    ]
+
+
+    [VarSet,zp12Perspective,
+        [MVarGet,CB25Data,zp12Base + 10]
+    ]
+
+
+    [VarSet,zp12Focal,
+        [MVarGet,CB25Data,zp12Base + 11]
+    ]
+
+
+    [VarSet,zp12FocalType,
+        [MVarGet,CB25Data,zp12Base + 15]
+    ]
+
+
+    // TRANSFORM
+
+    [MTransformSet,
+        CB25Data,
+        zp12Base + 1
+    ]
+
+
+    // CANVAS
+
+    [CanvasZoomSet,
+        [MVarGet,CB25Data,zp12Base + 12]
+    ]
+
+
+    [CanvasPanSet,
+        [MVarGet,CB25Data,zp12Base + 13],
+        [MVarGet,CB25Data,zp12Base + 14]
+    ]
+
+
+    // FOCAL
+
+    [If,zp12FocalType > 0,
+
+        [If,[IExists,"Draw:Perspective"],
+
+            [IPress,
+                "Draw:Perspective"
+            ]
+
+            [IUpdate,1,1]
+        ]
+
+
+        [If,zp12FocalType == 1,
+
+            [If,[IExists,"Draw:Focal Length(mm)"],
+
+                [ISet,
+                    "Draw:Focal Length(mm)",
+                    zp12Focal
+                ]
+
+                [IUpdate,1,1]
+            ]
+        ]
+
+
+        [If,zp12FocalType == 2,
+
+            [If,[IExists,"Draw:Focal Length"],
+
+                [ISet,
+                    "Draw:Focal Length",
+                    zp12Focal
+                ]
+
+                [IUpdate,1,1]
+            ]
+        ]
+    ]
+
+
+    // PERSPECTIVE FINAL
+
+    [If,[IExists,"Draw:Perspective"],
+
+        [If,zp12Perspective == 1,
+
+            [IPress,
+                "Draw:Perspective"
+            ]
+
+            [IUpdate,1,1]
+        ]
+
+
+        [If,zp12Perspective == 0,
+
+            [IUnPress,
+                "Draw:Perspective"
+            ]
+
+            [IUpdate,1,1]
+        ]
+    ]
+
+
+    // VISIBILITY
+
+    [RoutineCall,
+        ZP12_RestoreVisibility,
+        zp12Slot
+    ]
+
+
+    [MVarSet,
+        CB25Data,
+        5,
+        zp12Camera
+    ]
+
+
+    [IUpdate,2,1]
+
+    [Delay,0.05]
+
+,zp12Camera]
+
+
+// ============================================================
+// FIND NEXT ENABLED CAMERA
+// ============================================================
+
+[RoutineDef,ZP12_FindNextCamera,
+
+    [VarSet,gZP12NextCam,0]
+
+    [VarSet,zp12Slot,0]
+
+
+    [Loop,25,
+
+        [VarSet,zp12Candidate,
+            zp12Slot + 1
+        ]
+
+
+        [VarSet,zp12Base,
+            20 + (zp12Slot * 20)
+        ]
+
+
+        [If,
+            (zp12Candidate > zp12AfterCam)
+            &&
+            ([MVarGet,CB25Data,zp12Base] == 1)
+            &&
+            ([MVarGet,CB25Data,zp12Base + 16] == 1),
+
+            [VarSet,
+                gZP12NextCam,
+                zp12Candidate
+            ]
+
+            [LoopExit]
+        ]
+
+
+        [VarInc,zp12Slot]
+    ]
+
+,zp12AfterCam]
+
+
+// ============================================================
+// CHOOSE ROOT FOLDER
+// ============================================================
+
+[RoutineDef,ZP12_ChooseRoot,
+
+    [VarSet,gZP12Root,""]
+
+
+    [If,[MemGetSize,ZP12FolderMem] > 0,
+
+        [MemDelete,
+            ZP12FolderMem
+        ]
+    ]
+
+
+    [MemCreate,
+        ZP12FolderMem,
+        2048,
+        0
+    ]
+
+
+    [VarSet,zp12FolderErr,
+
+        [FileExecute,
+            [Var,gZP12Dll],
+            "ChooseFolder",
+            ,
+            ,
+            ZP12FolderMem
+        ]
+    ]
+
+
+    [If,zp12FolderErr != 0,
+
+        [MemDelete,
+            ZP12FolderMem
+        ]
+
+        [Exit]
+    ]
+
+
+    [MemReadString,
+        ZP12FolderMem,
+        gZP12Root,
+        0,
+        1
+    ]
+
+
+    [MemDelete,
+        ZP12FolderMem
+    ]
+
+]
+
+
+// ============================================================
+// ENSURE CAMERA FOLDER EXISTS
+// ============================================================
+
+[RoutineDef,ZP12_EnsureCameraFolder,
+
+    [RoutineCall,
+        ZP12_MakeLabel,
+        zp12Camera
+    ]
+
+
+    [VarSet,zp12Folder,
+
+        [StrMerge,
+            [Var,gZP12Root],
+            "\",
+            [Var,gZP12Label]
+        ]
+    ]
+
+
+    [VarSet,zp12FolderExists,
+
+        [FileExecute,
+            [Var,gZP12Dll],
+            "FolderExists",
+            zp12Folder
+        ]
+    ]
+
+
+    [If,zp12FolderExists == 0,
+
+        [VarSet,zp12FolderErr,
+
+            [FileExecute,
+                [Var,gZP12Dll],
+                "MakeFolder",
+                zp12Folder
+            ]
+        ]
+
+
+        [If,zp12FolderErr != 0,
+
+            [MessageOK,
+
+                [StrMerge,
+                    "Could not create folder ",
+                    [Var,gZP12Label]
+                ],
+
+                "ZPass BPR v1.2"
+            ]
+
+            [Exit]
+        ]
+    ]
+
+,zp12Camera]
+
+
+// ============================================================
+// SAVE STATE
+// ============================================================
+
+[RoutineDef,ZP12_SaveState,
+
+    [If,[FileExists,[Var,gZP12StateFile]],
+
+        [FileDelete,
+            [Var,gZP12StateFile]
+        ]
+    ]
+
+
+    [If,[MemGetSize,ZP12StateMem] > 0,
+
+        [MemDelete,
+            ZP12StateMem
+        ]
+    ]
+
+
+    [MemCreate,
+        ZP12StateMem,
+        4096,
+        0
+    ]
+
+
+    // ROOT
+
+    [MemWriteString,
+        ZP12StateMem,
+        [Var,gZP12Root],
+        0
+    ]
+
+
+    // CAMERA NUMBER AS TEXT
+
+    [VarSet,gZP12CamText,
+
+        [StrMerge,
+            "",
+            [Var,gZP12CurrentCam]
+        ]
+    ]
+
+
+    [MemWriteString,
+        ZP12StateMem,
+        [Var,gZP12CamText],
+        2048
+    ]
+
+
+    [VarSet,zp12SaveResult,
+
+        [MemSaveToFile,
+            ZP12StateMem,
+            [Var,gZP12StateFile],
+            1
+        ]
+    ]
+
+
+    [MemDelete,
+        ZP12StateMem
+    ]
+
+
+    [If,zp12SaveResult <= 0,
+
+        [MessageOK,
+            "Could not save BPR chain state.",
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+]
+
+
+// ============================================================
+// LOAD STATE
+//
+// Priority:
+// v1.2
+// v1.1
+// v1.0
+// ============================================================
+
+[RoutineDef,ZP12_LoadState,
+
+    [VarSet,gZP12Root,""]
+
+    [VarSet,gZP12CamText,""]
+
+    [VarSet,gZP12CurrentCam,0]
+
+    [VarSet,zp12StateToLoad,""]
+
+
+    [If,[FileExists,[Var,gZP12StateFile]],
+
+        [VarSet,
+            zp12StateToLoad,
+            [Var,gZP12StateFile]
+        ]
+
+    ,
+
+        [If,[FileExists,[Var,gZP12LegacyState11]],
+
+            [VarSet,
+                zp12StateToLoad,
+                [Var,gZP12LegacyState11]
+            ]
+
+        ,
+
+            [If,[FileExists,[Var,gZP12LegacyState10]],
+
+                [VarSet,
+                    zp12StateToLoad,
+                    [Var,gZP12LegacyState10]
+                ]
+            ]
+        ]
+    ]
+
+
+    [If,[StrLength,zp12StateToLoad] == 0,
+
+        [MessageOK,
+            "No BPR chain state was found.",
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+
+    [If,[MemGetSize,ZP12StateMem] > 0,
+
+        [MemDelete,
+            ZP12StateMem
+        ]
+    ]
+
+
+    [VarSet,zp12StateSize,
+
+        [MemCreateFromFile,
+            ZP12StateMem,
+            zp12StateToLoad
+        ]
+    ]
+
+
+    [If,zp12StateSize <= 0,
+
+        [MessageOK,
+            "Could not read BPR chain state.",
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+
+    [MemReadString,
+        ZP12StateMem,
+        gZP12Root,
+        0,
+        1
+    ]
+
+
+    [MemReadString,
+        ZP12StateMem,
+        gZP12CamText,
+        2048,
+        1
+    ]
+
+
+    [MemDelete,
+        ZP12StateMem
+    ]
+
+
+    [VarSet,gZP12CurrentCam,
+        [Val,gZP12CamText]
+    ]
+
+
+    [If,
+        ([StrLength,[Var,gZP12Root]] == 0)
+        ||
+        ([Var,gZP12CurrentCam] < 1)
+        ||
+        ([Var,gZP12CurrentCam] > 25),
+
+        [MessageOK,
+            "Invalid BPR chain state.",
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+]
+
+
+// ============================================================
+// DELETE ALL CHAIN STATE VERSIONS
+// ============================================================
+
+[RoutineDef,ZP12_DeleteState,
+
+    [If,[FileExists,[Var,gZP12StateFile]],
+
+        [FileDelete,
+            [Var,gZP12StateFile]
+        ]
+    ]
+
+
+    [If,[FileExists,[Var,gZP12LegacyState11]],
+
+        [FileDelete,
+            [Var,gZP12LegacyState11]
+        ]
+    ]
+
+
+    [If,[FileExists,[Var,gZP12LegacyState10]],
+
+        [FileDelete,
+            [Var,gZP12LegacyState10]
+        ]
+    ]
+
+]
+
+
+// ============================================================
+// RESET SOURCE VARIABLES
+// ============================================================
+
+[RoutineDef,ZP12_ResetSources,
+
+    [VarSet,gZP12BatchCount,0]
+
+    [VarSet,gZP12BPRMatches,0]
+
+    [VarSet,gZP12BPRName,""]
+
+    [VarSet,gZP12Suffix,""]
+
+
+    [VarSet,gZP12SrcAO,""]
+
+    [VarSet,gZP12SrcBPR,""]
+
+    [VarSet,gZP12SrcRender,""]
+
+    [VarSet,gZP12SrcDepth,""]
+
+    [VarSet,gZP12SrcMask,""]
+
+    [VarSet,gZP12SrcMaskNoAA,""]
+
+    [VarSet,gZP12SrcShadow,""]
+
+    [VarSet,gZP12SrcSSS,""]
+
+]
+
+
+// ============================================================
+// SCAN PASSES FOLDER
+//
+// GetFile returns names similar to:
+//
+// \BPR #46428.PSD
+//
+// IMPORTANT FIX v1.2:
+//
+// "bpr #" can appear at position 1.
+// Therefore:
+//
+// StrFind >= 0
+//
+// NOT:
+//
+// StrFind == 0
+//
+// ============================================================
+
+[RoutineDef,ZP12_ScanBatch,
+
+    [RoutineCall,
+        ZP12_ResetSources
+    ]
+
+
+    // NUMBER OF FILES
+
+    [VarSet,zp12FileCount,
+
+        [FileExecute,
+            [Var,gZP12Dll],
+            "GetFileNumber",
+            [Var,gZP12Passes]
+        ]
+    ]
+
+
+    [If,zp12FileCount <= 0,
+
+        [Exit]
+    ]
+
+
+    // OPEN FOLDER
+
+    [VarSet,zp12OpenErr,
+
+        [FileExecute,
+            [Var,gZP12Dll],
+            "OpenFolder",
+            [Var,gZP12Passes]
+        ]
+    ]
+
+
+    [If,zp12OpenErr != 0,
+
+        [Exit]
+    ]
+
+
+    [If,[MemGetSize,ZP12ListMem] > 0,
+
+        [MemDelete,
+            ZP12ListMem
+        ]
+    ]
+
+
+    [MemCreate,
+        ZP12ListMem,
+        512,
+        0
+    ]
+
+
+    // ENUMERATE FILES
+
+    [Loop,zp12FileCount,
+
+        [VarSet,zp12GetErr,
+
+            [FileExecute,
+                [Var,gZP12Dll],
+                "GetFile",
+                ,
+                ,
+                ZP12ListMem
+            ]
+        ]
+
+
+        [If,zp12GetErr != 0,
+
+            [LoopExit]
+        ]
+
+
+        [VarSet,zp12FileName,""]
+
+
+        [MemReadString,
+            ZP12ListMem,
+            zp12FileName
+        ]
+
+
+        [VarSet,zp12LowerName,
+
+            [StrLower,
+                zp12FileName
+            ]
+        ]
+
+
+        // ====================================================
+        // THE IMPORTANT v1.2 FIX IS HERE
+        // ====================================================
+
+        [If,
+            ([StrFind,"bpr #",zp12LowerName] >= 0)
+            &&
+            ([StrFind,".psd",zp12LowerName] >= 0),
+
+            [VarInc,gZP12BPRMatches]
+
+            [VarSet,
+                gZP12BPRName,
+                zp12FileName
+            ]
+        ]
+    ]
+
+
+    [MemDelete,
+        ZP12ListMem
+    ]
+
+
+    // CLOSE FOLDER
+
+    [FileExecute,
+        [Var,gZP12Dll],
+        "CloseFolder",
+        [Var,gZP12Passes]
+    ]
+
+
+    // MUST BE EXACTLY ONE BPR BATCH
+
+    [If,[Var,gZP12BPRMatches] != 1,
+
+        [Exit]
+    ]
+
+
+    // FIND HASH POSITION
+
+    [VarSet,zp12HashPos,
+
+        [StrFind,
+            "#",
+            [Var,gZP12BPRName]
+        ]
+    ]
+
+
+    [If,zp12HashPos < 0,
+
+        [Exit]
+    ]
+
+
+    // EXAMPLE:
+    //
+    // \BPR #46428.PSD
+    //
+    // -> #46428.PSD
+
+    [VarSet,gZP12Suffix,
+
+        [StrExtract,
+            [Var,gZP12BPRName],
+            zp12HashPos,
+            ([StrLength,[Var,gZP12BPRName]] - 1)
+        ]
+    ]
+
+
+    // ========================================================
+    // BUILD EXACT SOURCE PATHS
+    // ========================================================
+
+    [VarSet,gZP12SrcAO,
+
+        [StrMerge,
+            [Var,gZP12Passes],
+            "\AO ",
+            [Var,gZP12Suffix]
+        ]
+    ]
+
+
+    [VarSet,gZP12SrcBPR,
+
+        [StrMerge,
+            [Var,gZP12Passes],
+            "\BPR ",
+            [Var,gZP12Suffix]
+        ]
+    ]
+
+
+    [VarSet,gZP12SrcRender,
+
+        [StrMerge,
+            [Var,gZP12Passes],
+            "\Base Render ",
+            [Var,gZP12Suffix]
+        ]
+    ]
+
+
+    [VarSet,gZP12SrcDepth,
+
+        [StrMerge,
+            [Var,gZP12Passes],
+            "\Depth ",
+            [Var,gZP12Suffix]
+        ]
+    ]
+
+
+    [VarSet,gZP12SrcMask,
+
+        [StrMerge,
+            [Var,gZP12Passes],
+            "\Mask ",
+            [Var,gZP12Suffix]
+        ]
+    ]
+
+
+    [VarSet,gZP12SrcMaskNoAA,
+
+        [StrMerge,
+            [Var,gZP12Passes],
+            "\Mask No AA ",
+            [Var,gZP12Suffix]
+        ]
+    ]
+
+
+    [VarSet,gZP12SrcShadow,
+
+        [StrMerge,
+            [Var,gZP12Passes],
+            "\Shadow ",
+            [Var,gZP12Suffix]
+        ]
+    ]
+
+
+    [VarSet,gZP12SrcSSS,
+
+        [StrMerge,
+            [Var,gZP12Passes],
+            "\SSS ",
+            [Var,gZP12Suffix]
+        ]
+    ]
+
+
+    // ========================================================
+    // COUNT EXPECTED 8 PSD FILES
+    // ========================================================
+
+    [If,[FileExists,[Var,gZP12SrcAO]],
+
+        [VarInc,gZP12BatchCount]
+    ]
+
+
+    [If,[FileExists,[Var,gZP12SrcBPR]],
+
+        [VarInc,gZP12BatchCount]
+    ]
+
+
+    [If,[FileExists,[Var,gZP12SrcRender]],
+
+        [VarInc,gZP12BatchCount]
+    ]
+
+
+    [If,[FileExists,[Var,gZP12SrcDepth]],
+
+        [VarInc,gZP12BatchCount]
+    ]
+
+
+    [If,[FileExists,[Var,gZP12SrcMask]],
+
+        [VarInc,gZP12BatchCount]
+    ]
+
+
+    [If,[FileExists,[Var,gZP12SrcMaskNoAA]],
+
+        [VarInc,gZP12BatchCount]
+    ]
+
+
+    [If,[FileExists,[Var,gZP12SrcShadow]],
+
+        [VarInc,gZP12BatchCount]
+    ]
+
+
+    [If,[FileExists,[Var,gZP12SrcSSS]],
+
+        [VarInc,gZP12BatchCount]
+    ]
+
+]
+
+
+// ============================================================
+// DELETE FILE
+// ============================================================
+
+[RoutineDef,ZP12_DeleteFile,
+
+    [If,[FileExists,zp12File],
+
+        [VarSet,gZP12LastErr,
+
+            [FileExecute,
+                [Var,gZP12Dll],
+                "FileDelete",
+                zp12File
+            ]
+        ]
+    ]
+
+,zp12File]
+
+
+// ============================================================
+// COPY FILE
+// ============================================================
+
+[RoutineDef,ZP12_CopyFile,
+
+    [VarSet,gZP12LastErr,1]
+
+
+    [If,[MemGetSize,ZP12CopyMem] > 0,
+
+        [MemDelete,
+            ZP12CopyMem
+        ]
+    ]
+
+
+    [MemCreate,
+        ZP12CopyMem,
+        2048,
+        0
+    ]
+
+
+    [MemWriteString,
+        ZP12CopyMem,
+        zp12Destination,
+        0
+    ]
+
+
+    [If,[FileExists,zp12Source],
+
+        [VarSet,gZP12LastErr,
+
+            [FileExecute,
+                [Var,gZP12Dll],
+                "FileCopyTo",
+                zp12Source,
+                ,
+                ZP12CopyMem
+            ]
+        ]
+    ]
+
+
+    [MemDelete,
+        ZP12CopyMem
+    ]
+
+,zp12Source,zp12Destination]
+
+
+// ============================================================
+// HARVEST CURRENT CAMERA
+//
+// Copies:
+//
+// BPR         -> _Composite.psd
+// Base Render -> _Render.psd
+// Depth       -> _Depth.psd
+// Shadow      -> _Shadow.psd
+// Mask        -> _Mask.psd
+// AO          -> _AO.psd
+// SSS         -> _SSS.psd
+//
+// Mask No AA is discarded AFTER successful verification.
+// ============================================================
+
+[RoutineDef,ZP12_Harvest,
+
+
+    // RESCAN CURRENT BATCH
+
+    [RoutineCall,
+        ZP12_ScanBatch
+    ]
+
+
+    [If,[Var,gZP12BPRMatches] != 1,
+
+        [MessageOK,
+
+            [StrMerge,
+                "Expected exactly one BPR batch.\n\nFound: ",
+                [Var,gZP12BPRMatches]
+            ],
+
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+
+    [If,[Var,gZP12BatchCount] != 8,
+
+        [MessageOK,
+
+            [StrMerge,
+                "PSD batch is incomplete: ",
+                [Var,gZP12BatchCount],
+                " / 8."
+            ],
+
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+
+    [RoutineCall,
+        ZP12_MakeLabel,
+        [Var,gZP12CurrentCam]
+    ]
+
+
+    [RoutineCall,
+        ZP12_EnsureCameraFolder,
+        [Var,gZP12CurrentCam]
+    ]
+
+
+    [VarSet,zp12Folder,
+
+        [StrMerge,
+            [Var,gZP12Root],
+            "\",
+            [Var,gZP12Label]
+        ]
+    ]
+
+
+    // ========================================================
+    // TARGET PATHS
+    // ========================================================
+
+    [VarSet,zp12DstComposite,
+
+        [StrMerge,
+            zp12Folder,
+            "\_Composite.psd"
+        ]
+    ]
+
+
+    [VarSet,zp12DstRender,
+
+        [StrMerge,
+            zp12Folder,
+            "\_Render.psd"
+        ]
+    ]
+
+
+    [VarSet,zp12DstDepth,
+
+        [StrMerge,
+            zp12Folder,
+            "\_Depth.psd"
+        ]
+    ]
+
+
+    [VarSet,zp12DstShadow,
+
+        [StrMerge,
+            zp12Folder,
+            "\_Shadow.psd"
+        ]
+    ]
+
+
+    [VarSet,zp12DstMask,
+
+        [StrMerge,
+            zp12Folder,
+            "\_Mask.psd"
+        ]
+    ]
+
+
+    [VarSet,zp12DstAO,
+
+        [StrMerge,
+            zp12Folder,
+            "\_AO.psd"
+        ]
+    ]
+
+
+    [VarSet,zp12DstSSS,
+
+        [StrMerge,
+            zp12Folder,
+            "\_SSS.psd"
+        ]
+    ]
+
+
+    // ========================================================
+    // DELETE OLD TARGETS IF PRESENT
+    // ========================================================
+
+    [RoutineCall,
+        ZP12_DeleteFile,
+        zp12DstComposite
+    ]
+
+    [RoutineCall,
+        ZP12_DeleteFile,
+        zp12DstRender
+    ]
+
+    [RoutineCall,
+        ZP12_DeleteFile,
+        zp12DstDepth
+    ]
+
+    [RoutineCall,
+        ZP12_DeleteFile,
+        zp12DstShadow
+    ]
+
+    [RoutineCall,
+        ZP12_DeleteFile,
+        zp12DstMask
+    ]
+
+    [RoutineCall,
+        ZP12_DeleteFile,
+        zp12DstAO
+    ]
+
+    [RoutineCall,
+        ZP12_DeleteFile,
+        zp12DstSSS
+    ]
+
+
+    [VarSet,gZP12CopyFailed,0]
+
+
+    // ========================================================
+    // COPY BPR -> COMPOSITE
+    // ========================================================
+
+    [RoutineCall,
+        ZP12_CopyFile,
+        [Var,gZP12SrcBPR],
+        zp12DstComposite
+    ]
+
+
+    [If,[Var,gZP12LastErr] != 0,
+
+        [VarSet,gZP12CopyFailed,1]
+    ]
+
+
+    // ========================================================
+    // COPY BASE RENDER
+    // ========================================================
+
+    [RoutineCall,
+        ZP12_CopyFile,
+        [Var,gZP12SrcRender],
+        zp12DstRender
+    ]
+
+
+    [If,[Var,gZP12LastErr] != 0,
+
+        [VarSet,gZP12CopyFailed,1]
+    ]
+
+
+    // ========================================================
+    // COPY DEPTH
+    // ========================================================
+
+    [RoutineCall,
+        ZP12_CopyFile,
+        [Var,gZP12SrcDepth],
+        zp12DstDepth
+    ]
+
+
+    [If,[Var,gZP12LastErr] != 0,
+
+        [VarSet,gZP12CopyFailed,1]
+    ]
+
+
+    // ========================================================
+    // COPY SHADOW
+    // ========================================================
+
+    [RoutineCall,
+        ZP12_CopyFile,
+        [Var,gZP12SrcShadow],
+        zp12DstShadow
+    ]
+
+
+    [If,[Var,gZP12LastErr] != 0,
+
+        [VarSet,gZP12CopyFailed,1]
+    ]
+
+
+    // ========================================================
+    // COPY MASK
+    // ========================================================
+
+    [RoutineCall,
+        ZP12_CopyFile,
+        [Var,gZP12SrcMask],
+        zp12DstMask
+    ]
+
+
+    [If,[Var,gZP12LastErr] != 0,
+
+        [VarSet,gZP12CopyFailed,1]
+    ]
+
+
+    // ========================================================
+    // COPY AO
+    // ========================================================
+
+    [RoutineCall,
+        ZP12_CopyFile,
+        [Var,gZP12SrcAO],
+        zp12DstAO
+    ]
+
+
+    [If,[Var,gZP12LastErr] != 0,
+
+        [VarSet,gZP12CopyFailed,1]
+    ]
+
+
+    // ========================================================
+    // COPY SSS
+    // ========================================================
+
+    [RoutineCall,
+        ZP12_CopyFile,
+        [Var,gZP12SrcSSS],
+        zp12DstSSS
+    ]
+
+
+    [If,[Var,gZP12LastErr] != 0,
+
+        [VarSet,gZP12CopyFailed,1]
+    ]
+
+
+    // ========================================================
+    // VERIFY ALL 7 TARGET FILES
+    // ========================================================
+
+    [If,[FileExists,zp12DstComposite] == 0,
+
+        [VarSet,gZP12CopyFailed,1]
+    ]
+
+
+    [If,[FileExists,zp12DstRender] == 0,
+
+        [VarSet,gZP12CopyFailed,1]
+    ]
+
+
+    [If,[FileExists,zp12DstDepth] == 0,
+
+        [VarSet,gZP12CopyFailed,1]
+    ]
+
+
+    [If,[FileExists,zp12DstShadow] == 0,
+
+        [VarSet,gZP12CopyFailed,1]
+    ]
+
+
+    [If,[FileExists,zp12DstMask] == 0,
+
+        [VarSet,gZP12CopyFailed,1]
+    ]
+
+
+    [If,[FileExists,zp12DstAO] == 0,
+
+        [VarSet,gZP12CopyFailed,1]
+    ]
+
+
+    [If,[FileExists,zp12DstSSS] == 0,
+
+        [VarSet,gZP12CopyFailed,1]
+    ]
+
+
+    // ========================================================
+    // IMPORTANT:
+    //
+    // IF COPY FAILED, DO NOT DELETE SOURCE PSD FILES.
+    // ========================================================
+
+    [If,[Var,gZP12CopyFailed] == 1,
+
+        [MessageOK,
+
+            [StrMerge,
+                "PSD copy/verification failed for Camera ",
+                [Var,gZP12Label],
+                ".\n\nSource PSD files were NOT deleted."
+            ],
+
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+
+    // ========================================================
+    // DELETE THE 8 SOURCE PSD FILES
+    //
+    // ZBrushToPhotoshop.JSX IS NOT TOUCHED.
+    // ========================================================
+
+    [RoutineCall,
+        ZP12_DeleteFile,
+        [Var,gZP12SrcAO]
+    ]
+
+
+    [RoutineCall,
+        ZP12_DeleteFile,
+        [Var,gZP12SrcBPR]
+    ]
+
+
+    [RoutineCall,
+        ZP12_DeleteFile,
+        [Var,gZP12SrcRender]
+    ]
+
+
+    [RoutineCall,
+        ZP12_DeleteFile,
+        [Var,gZP12SrcDepth]
+    ]
+
+
+    [RoutineCall,
+        ZP12_DeleteFile,
+        [Var,gZP12SrcMask]
+    ]
+
+
+    [RoutineCall,
+        ZP12_DeleteFile,
+        [Var,gZP12SrcMaskNoAA]
+    ]
+
+
+    [RoutineCall,
+        ZP12_DeleteFile,
+        [Var,gZP12SrcShadow]
+    ]
+
+
+    [RoutineCall,
+        ZP12_DeleteFile,
+        [Var,gZP12SrcSSS]
+    ]
+
+
+    [Note,
+
+        [StrMerge,
+            "Camera ",
+            [Var,gZP12Label],
+            " PSD files saved."
+        ],
+
+        ,
+        2
+    ]
+
+]
+
+
+// ============================================================
+// BPR PROPERTIES
+// ============================================================
+
+[RoutineDef,ZP12_PrepareBPR,
+
+    [If,[IExists,
+        "Render:Render Properties:AOcclusion"
+    ],
+
+        [ISet,
+            "Render:Render Properties:AOcclusion",
+            1
+        ]
+    ]
+
+
+    [If,[IExists,
+        "Render:Render Properties:Sss"
+    ],
+
+        [ISet,
+            "Render:Render Properties:Sss",
+            1
+        ]
+    ]
+
+
+    [IUpdate,1,1]
+
+]
+
+
+// ============================================================
+// LAUNCH CURRENT CAMERA
+//
+// BPR + SEND
+//
+// State is saved BEFORE Send To Photoshop.
+// ============================================================
+
+[RoutineDef,ZP12_LaunchCurrentCamera,
+
+    [RoutineCall,
+        ZP12_MakeLabel,
+        [Var,gZP12CurrentCam]
+    ]
+
+
+    [RoutineCall,
+        ZP12_EnsureCameraFolder,
+        [Var,gZP12CurrentCam]
+    ]
+
+
+    [RoutineCall,
+        ZP12_RecallCamera,
+        [Var,gZP12CurrentCam]
+    ]
+
+
+    [RoutineCall,
+        ZP12_PrepareBPR
+    ]
+
+
+    [Note,
+
+        [StrMerge,
+            "BPR | Camera ",
+            [Var,gZP12Label]
+        ],
+
+        ,
+        2
+    ]
+
+
+    // BPR
+
+    [IPress,
+        "Render:BPR RenderPass:Render Best Preview"
+    ]
+
+
+    [IUpdate,1,1]
+
+
+    // SAVE STATE BEFORE ASYNC SEND
+
+    [RoutineCall,
+        ZP12_SaveState
+    ]
+
+
+    [Note,
+
+        [StrMerge,
+            "SEND TO PHOTOSHOP | Camera ",
+            [Var,gZP12Label]
+        ],
+
+        ,
+        2
+    ]
+
+
+    [IPress,
+        "ZPlugin:ZBrush To Photoshop:Send To Photoshop CC"
+    ]
+
+]
+
+
+// ============================================================
+// START NEW CHAIN
+// ============================================================
+
+[RoutineDef,ZP12_Start,
+
+    [RoutineCall,
+        ZP12_Preflight
+    ]
+
+
+    // PASSES MUST NOT ALREADY CONTAIN A BATCH
+
+    [RoutineCall,
+        ZP12_ScanBatch
+    ]
+
+
+    [If,[Var,gZP12BatchCount] != 0,
+
+        [MessageOK,
+            "A PSD batch already exists in Passes.\n\nDo not start a new chain until it is handled.",
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+
+    // CHOOSE ROOT
+
+    [RoutineCall,
+        ZP12_ChooseRoot
+    ]
+
+
+    [If,[StrLength,[Var,gZP12Root]] == 0,
+
+        [Exit]
+    ]
+
+
+    // FIRST ENABLED CAMERA
+
+    [RoutineCall,
+        ZP12_FindNextCamera,
+        0
+    ]
+
+
+    [If,[Var,gZP12NextCam] == 0,
+
+        [MessageOK,
+            "No enabled camera was found.",
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+
+    [VarSet,
+        gZP12CurrentCam,
+        [Var,gZP12NextCam]
+    ]
+
+
+    [RoutineCall,
+        ZP12_LaunchCurrentCamera
+    ]
+
+]
+
+
+// ============================================================
+// CONTINUE EXISTING CHAIN
+// ============================================================
+
+[RoutineDef,ZP12_Continue,
+
+    // LOAD v1.2 / v1.1 / v1.0 STATE
+
+    [RoutineCall,
+        ZP12_LoadState
+    ]
+
+
+    // SCAN ACTUAL PASSES FOLDER
+
+    [RoutineCall,
+        ZP12_ScanBatch
+    ]
+
+
+    // NO BPR FILE YET
+
+    [If,[Var,gZP12BPRMatches] == 0,
+
+        [MessageOK,
+
+            [StrMerge,
+                "Camera ",
+                [Var,gZP12CurrentCam],
+                " PSD files are not ready yet.\n\nWait for ZBrush To Photoshop to finish, then click again."
+            ],
+
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+
+    // MORE THAN ONE BATCH
+
+    [If,[Var,gZP12BPRMatches] > 1,
+
+        [MessageOK,
+
+            [StrMerge,
+                "More than one BPR batch was found in Passes.\n\nBPR batches found: ",
+                [Var,gZP12BPRMatches]
+            ],
+
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+
+    // BATCH FOUND BUT INCOMPLETE
+
+    [If,[Var,gZP12BatchCount] != 8,
+
+        [MessageOK,
+
+            [StrMerge,
+                "The PSD batch is incomplete: ",
+                [Var,gZP12BatchCount],
+                " / 8 files.\n\nWait a little longer, then click again."
+            ],
+
+            "ZPass BPR v1.2"
+        ]
+
+        [Exit]
+    ]
+
+
+    // ========================================================
+    // COPY / VERIFY / CLEAN CURRENT CAMERA
+    // ========================================================
+
+    [RoutineCall,
+        ZP12_Harvest
+    ]
+
+
+    // ========================================================
+    // FIND NEXT ENABLED CAMERA
+    // ========================================================
+
+    [RoutineCall,
+        ZP12_FindNextCamera,
+        [Var,gZP12CurrentCam]
+    ]
+
+
+    // ========================================================
+    // NO MORE CAMERAS
+    // ========================================================
+
+    [If,[Var,gZP12NextCam] == 0,
+
+        [RoutineCall,
+            ZP12_DeleteState
+        ]
+
+
+        [MessageOK,
+            "BPR CHAIN COMPLETE.\n\nAll enabled cameras have been processed.",
+            "ZPass BPR v1.2"
+        ]
+
+
+        [Exit]
+    ]
+
+
+    // ========================================================
+    // NEXT CAMERA
+    // ========================================================
+
+    [VarSet,
+        gZP12CurrentCam,
+        [Var,gZP12NextCam]
+    ]
+
+
+    [RoutineCall,
+        ZP12_LaunchCurrentCamera
+    ]
+
+]
+
+
+// ============================================================
+// MAIN
+// ============================================================
+
+[RoutineDef,ZP12_Main,
+
+    [RoutineCall,
+        ZP12_Validate
+    ]
+
+
+    // ANY EXISTING STATE = CONTINUE
+
+    [If,
+        ([FileExists,[Var,gZP12StateFile]])
+        ||
+        ([FileExists,[Var,gZP12LegacyState11]])
+        ||
+        ([FileExists,[Var,gZP12LegacyState10]]),
+
+        [RoutineCall,
+            ZP12_Continue
+        ]
+
+    ,
+
+        [RoutineCall,
+            ZP12_Start
+        ]
+    ]
+
+]
+
+
+// ============================================================
+// RESET CHAIN
+//
+// DOES NOT DELETE PSD FILES.
+// ============================================================
+
+[RoutineDef,ZP12_Reset,
+
+    [RoutineCall,
+        ZP12_DeleteState
+    ]
+
+
+    [MessageOK,
+        "BPR chain state reset.\n\nNo PSD files were deleted.",
+        "ZPass BPR v1.2"
+    ]
+
+]
+
+
+
+// ============================================================
+// ZPASS CAPTURE - BPR START
+// VERSION 1.3
+// ZBrush 2023.2.1
+//
+// PURPOSE:
+// Starts a NEW BPR chain only.
+//
+// IMPORTANT:
+// - ChooseFolder is executed FIRST.
+// - Finds first stored camera with RENDER ON.
+// - Recalls that camera.
+// - Saves state in v1.2 format.
+// - Runs BPR.
+// - Sends to Photoshop.
+// - v1.2 then handles all CONTINUE operations.
+// ============================================================
+
+
+// ============================================================
+// PLUGIN
+// ============================================================
+
+
+
+
+// ============================================================
+// GLOBALS
+// ============================================================
+
+[VarDef,gZP13Dll,
+"C:\Program Files\Maxon ZBrush 2023\ZStartup\ZPlugs64\ZWrap\ZFileUtils64.dll"
+]
+
+[VarDef,gZP13StateFile,
+"C:\ZPassCapture\ZPassBPR_v1_2_state.dat"
+]
+
+[VarDef,gZP13Legacy10,
+"C:\ZPassCapture\ZPassBPR_v1_0_state.dat"
+]
+
+[VarDef,gZP13Legacy11,
+"C:\ZPassCapture\ZPassBPR_v1_1_state.dat"
+]
+
+[VarDef,gZP13Root,""]
+
+[VarDef,gZP13CurrentCam,0]
+
+[VarDef,gZP13CamText,""]
+
+[VarDef,gZP13Label,""]
+
+
+// ============================================================
+// CHOOSE OUTPUT ROOT
+//
+// THIS IS DELIBERATELY THE FIRST OPERATION.
+// ============================================================
+
+[RoutineDef,ZP13_ChooseRoot,
+
+    [VarSet,gZP13Root,""]
+
+
+    [If,[MemGetSize,ZP13FolderMem] > 0,
+
+        [MemDelete,ZP13FolderMem]
+    ]
+
+
+    [MemCreate,
+        ZP13FolderMem,
+        2048,
+        0
+    ]
+
+
+    [VarSet,zp13ChooseErr,
+
+        [FileExecute,
+            [Var,gZP13Dll],
+            "ChooseFolder",
+            ,
+            ,
+            ZP13FolderMem
+        ]
+    ]
+
+
+    [If,zp13ChooseErr == 0,
+
+        [MemReadString,
+            ZP13FolderMem,
+            gZP13Root,
+            0,
+            1
+        ]
+    ]
+
+
+    [MemDelete,ZP13FolderMem]
+
+]
+
+
+// ============================================================
+// CAMERA LABEL
+// ============================================================
+
+[RoutineDef,ZP13_MakeLabel,
+
+    [If,zp13Cam < 10,
+
+        [VarSet,gZP13Label,
+            [StrMerge,
+                "0",
+                zp13Cam
+            ]
+        ]
+
+    ,
+
+        [VarSet,gZP13Label,
+            [StrMerge,
+                "",
+                zp13Cam
+            ]
+        ]
+    ]
+
+,zp13Cam]
+
+
+// ============================================================
+// FIND FIRST ENABLED CAMERA
+// ============================================================
+
+[RoutineDef,ZP13_FindFirstCamera,
+
+    [VarSet,gZP13CurrentCam,0]
+
+    [VarSet,zp13Slot,0]
+
+
+    [Loop,25,
+
+        [VarSet,zp13Base,
+            20 + (zp13Slot * 20)
+        ]
+
+
+        [If,
+            ([MVarGet,CB25Data,zp13Base] == 1)
+            &&
+            ([MVarGet,CB25Data,zp13Base + 16] == 1),
+
+            [VarSet,
+                gZP13CurrentCam,
+                zp13Slot + 1
+            ]
+
+            [LoopExit]
+        ]
+
+
+        [VarInc,zp13Slot]
+    ]
+
+]
+
+
+// ============================================================
+// RESTORE VISIBILITY
+// ============================================================
+
+[RoutineDef,ZP13_RestoreVisibility,
+
+    [VarSet,zp13VisBase,
+        520 + (zp13Slot * 1001)
+    ]
+
+
+    [VarSet,zp13SavedCount,
+        [MVarGet,CB25Data,zp13VisBase]
+    ]
+
+
+    [VarSet,zp13CurrentCount,
+        [SubToolGetCount]
+    ]
+
+
+    [If,
+        (zp13SavedCount > 0)
+        &&
+        (zp13SavedCount == zp13CurrentCount),
+
+
+        // ----------------------------
+        // SUBTOOL EYES
+        // ----------------------------
+
+        [VarSet,zp13ST,0]
+
+
+        [Loop,zp13SavedCount,
+
+            [VarSet,zp13SavedState,
+                [MVarGet,
+                    CB25Data,
+                    zp13VisBase + 1 + zp13ST
+                ]
+            ]
+
+
+            [VarSet,zp13SavedEye,
+                (zp13SavedState & 0x01)
+            ]
+
+
+            [VarSet,zp13Status,
+                [SubToolGetStatus,zp13ST]
+            ]
+
+
+            [VarSet,zp13Eye,
+                (zp13Status & 0x01)
+            ]
+
+
+            [SubToolSetStatus,
+                zp13ST,
+                (zp13Status - zp13Eye) + zp13SavedEye
+            ]
+
+
+            [VarInc,zp13ST]
+        ]
+
+
+        // ----------------------------
+        // FOLDER EYES
+        // ----------------------------
+
+        [VarSet,zp13ST,0]
+
+
+        [Loop,zp13SavedCount,
+
+            [VarSet,zp13SavedState,
+                [MVarGet,
+                    CB25Data,
+                    zp13VisBase + 1 + zp13ST
+                ]
+            ]
+
+
+            [VarSet,zp13SavedFolder,
+                (zp13SavedState & 0x02)
+            ]
+
+
+            [VarSet,zp13Status,
+                [SubToolGetStatus,zp13ST]
+            ]
+
+
+            [VarSet,zp13Folder,
+                (zp13Status & 0x02)
+            ]
+
+
+            [SubToolSetStatus,
+                zp13ST,
+                (zp13Status - zp13Folder) + zp13SavedFolder
+            ]
+
+
+            [VarInc,zp13ST]
+        ]
+
+
+        [IUpdate,1,1]
+    ]
+
+,zp13Slot]
+
+
+// ============================================================
+// RECALL CAMERA
+// ============================================================
+
+[RoutineDef,ZP13_RecallCamera,
+
+    [VarSet,zp13Slot,
+        zp13Cam - 1
+    ]
+
+
+    [VarSet,zp13Base,
+        20 + (zp13Slot * 20)
+    ]
+
+
+    [VarSet,zp13Perspective,
+        [MVarGet,CB25Data,zp13Base + 10]
+    ]
+
+
+    [VarSet,zp13Focal,
+        [MVarGet,CB25Data,zp13Base + 11]
+    ]
+
+
+    [VarSet,zp13FocalType,
+        [MVarGet,CB25Data,zp13Base + 15]
+    ]
+
+
+    // TRANSFORM
+
+    [MTransformSet,
+        CB25Data,
+        zp13Base + 1
+    ]
+
+
+    // CANVAS
+
+    [CanvasZoomSet,
+        [MVarGet,CB25Data,zp13Base + 12]
+    ]
+
+
+    [CanvasPanSet,
+        [MVarGet,CB25Data,zp13Base + 13],
+        [MVarGet,CB25Data,zp13Base + 14]
+    ]
+
+
+    // FOCAL
+
+    [If,zp13FocalType > 0,
+
+        [If,[IExists,"Draw:Perspective"],
+
+            [IPress,"Draw:Perspective"]
+
+            [IUpdate,1,1]
+        ]
+
+
+        [If,zp13FocalType == 1,
+
+            [If,[IExists,"Draw:Focal Length(mm)"],
+
+                [ISet,
+                    "Draw:Focal Length(mm)",
+                    zp13Focal
+                ]
+
+                [IUpdate,1,1]
+            ]
+        ]
+
+
+        [If,zp13FocalType == 2,
+
+            [If,[IExists,"Draw:Focal Length"],
+
+                [ISet,
+                    "Draw:Focal Length",
+                    zp13Focal
+                ]
+
+                [IUpdate,1,1]
+            ]
+        ]
+    ]
+
+
+    // PERSPECTIVE FINAL
+
+    [If,[IExists,"Draw:Perspective"],
+
+        [If,zp13Perspective == 1,
+
+            [IPress,"Draw:Perspective"]
+
+            [IUpdate,1,1]
+        ]
+
+
+        [If,zp13Perspective == 0,
+
+            [IUnPress,"Draw:Perspective"]
+
+            [IUpdate,1,1]
+        ]
+    ]
+
+
+    // VISIBILITY
+
+    [RoutineCall,
+        ZP13_RestoreVisibility,
+        zp13Slot
+    ]
+
+
+    [MVarSet,
+        CB25Data,
+        5,
+        zp13Cam
+    ]
+
+
+    [IUpdate,2,1]
+
+    [Delay,0.05]
+
+,zp13Cam]
+
+
+// ============================================================
+// SAVE STATE EXACTLY FOR v1.2
+// ============================================================
+
+[RoutineDef,ZP13_SaveState,
+
+    [If,[FileExists,[Var,gZP13StateFile]],
+
+        [FileDelete,[Var,gZP13StateFile]]
+    ]
+
+
+    [If,[MemGetSize,ZP13StateMem] > 0,
+
+        [MemDelete,ZP13StateMem]
+    ]
+
+
+    [MemCreate,
+        ZP13StateMem,
+        4096,
+        0
+    ]
+
+
+    [MemWriteString,
+        ZP13StateMem,
+        [Var,gZP13Root],
+        0
+    ]
+
+
+    [VarSet,gZP13CamText,
+        [StrMerge,
+            "",
+            [Var,gZP13CurrentCam]
+        ]
+    ]
+
+
+    [MemWriteString,
+        ZP13StateMem,
+        [Var,gZP13CamText],
+        2048
+    ]
+
+
+    [MemSaveToFile,
+        ZP13StateMem,
+        [Var,gZP13StateFile],
+        1
+    ]
+
+
+    [MemDelete,ZP13StateMem]
+
+]
+
+
+// ============================================================
+// PREPARE BPR
+// ============================================================
+
+[RoutineDef,ZP13_PrepareBPR,
+
+    [If,[IExists,"Render:Render Properties:AOcclusion"],
+
+        [ISet,
+            "Render:Render Properties:AOcclusion",
+            1
+        ]
+    ]
+
+
+    [If,[IExists,"Render:Render Properties:Sss"],
+
+        [ISet,
+            "Render:Render Properties:Sss",
+            1
+        ]
+    ]
+
+
+    [IUpdate,1,1]
+
+]
+
+
+// ============================================================
+// START
+// ============================================================
+
+[RoutineDef,ZP13_Start,
+
+    // --------------------------------------------------------
+    // 1. CHOOSE ROOT FIRST
+    // --------------------------------------------------------
+
+    [RoutineCall,ZP13_ChooseRoot]
+
+
+    [If,[StrLength,[Var,gZP13Root]] == 0,
+
+        [MessageOK,
+            "No output folder was selected.",
+            "ZPass BPR START v1.3"
+        ]
+
+        [Exit]
+    ]
+
+
+    // --------------------------------------------------------
+    // 2. CHECK CAMERA BANK
+    // --------------------------------------------------------
+
+    [If,[MemGetSize,CB25Data] != 102180,
+
+        [MessageOK,
+            "Load CameraBank25_v2_9.txt and import your camera bank first.",
+            "ZPass BPR START v1.3"
+        ]
+
+        [Exit]
+    ]
+
+
+    [If,[MVarGet,CB25Data,0] != 252523,
+
+        [MessageOK,
+            "Camera Bank data is not valid.",
+            "ZPass BPR START v1.3"
+        ]
+
+        [Exit]
+    ]
+
+
+    // --------------------------------------------------------
+    // 3. MAKE SURE NO OLD STATE EXISTS
+    // --------------------------------------------------------
+
+    [If,
+        ([FileExists,[Var,gZP13StateFile]])
+        ||
+        ([FileExists,[Var,gZP13Legacy10]])
+        ||
+        ([FileExists,[Var,gZP13Legacy11]]),
+
+        [MessageOK,
+            "A BPR chain state already exists.\n\nDo not start another chain.",
+            "ZPass BPR START v1.3"
+        ]
+
+        [Exit]
+    ]
+
+
+    // --------------------------------------------------------
+    // 4. FIND CAMERA 01 / FIRST RENDER-ON CAMERA
+    // --------------------------------------------------------
+
+    [RoutineCall,ZP13_FindFirstCamera]
+
+
+    [If,[Var,gZP13CurrentCam] == 0,
+
+        [MessageOK,
+            "No stored camera has RENDER ON.",
+            "ZPass BPR START v1.3"
+        ]
+
+        [Exit]
+    ]
+
+
+    [RoutineCall,
+        ZP13_MakeLabel,
+        [Var,gZP13CurrentCam]
+    ]
+
+
+    // --------------------------------------------------------
+    // 5. RECALL CAMERA
+    // --------------------------------------------------------
+
+    [RoutineCall,
+        ZP13_RecallCamera,
+        [Var,gZP13CurrentCam]
+    ]
+
+
+    // --------------------------------------------------------
+    // 6. PREPARE BPR
+    // --------------------------------------------------------
+
+    [RoutineCall,ZP13_PrepareBPR]
+
+
+    [Note,
+        [StrMerge,
+            "BPR | Camera ",
+            [Var,gZP13Label]
+        ],
+        ,
+        2
+    ]
+
+
+    // --------------------------------------------------------
+    // 7. BPR
+    // --------------------------------------------------------
+
+    [IPress,
+        "Render:BPR RenderPass:Render Best Preview"
+    ]
+
+
+    [IUpdate,1,1]
+
+
+    // --------------------------------------------------------
+    // 8. SAVE STATE FOR v1.2
+    // --------------------------------------------------------
+
+    [RoutineCall,ZP13_SaveState]
+
+
+    // --------------------------------------------------------
+    // 9. SEND TO PHOTOSHOP
+    // --------------------------------------------------------
+
+    [Note,
+        [StrMerge,
+            "SEND TO PHOTOSHOP | Camera ",
+            [Var,gZP13Label]
+        ],
+        ,
+        2
+    ]
+
+
+    [IPress,
+        "ZPlugin:ZBrush To Photoshop:Send To Photoshop CC"
+    ]
+
+]
+
+
+
+
+
+// ============================================================
+// ZPASSCAPTURE FINAL
+// ZBrush 2023.2.1
+// VERSION 1.0
+// ============================================================
+
+[ISubPalette,
+    "ZPlugin:ZPassCapture FINAL v1.0"
+]
+
+
+// ============================================================
+// STEP 1 - DOCUMENTS
+// POLYPAINT MUST ALREADY BE GLOBALLY ON.
+// ============================================================
+
+[IButton,
+    "ZPlugin:ZPassCapture FINAL v1.0:STEP 1 - DOCUMENTS",
+    "Polypaint must already be globally ON. Exports ZBrush Document.jpg for all enabled cameras.",
+
+    [RoutineCall,
+        ZP9_Step1
+    ]
+
+    ,
+    ,
+    1
+]
+
+
+// ============================================================
+// STEP 2 - A D Z
+// POLYPAINT MUST ALREADY BE GLOBALLY OFF.
+// ============================================================
+
+[IButton,
+    "ZPlugin:ZPassCapture FINAL v1.0:STEP 2 - A D Z",
+    "Polypaint must already be globally OFF. Exports a.jpg, d.jpg and z.jpg for all enabled cameras.",
+
+    [RoutineCall,
+        ZP9_Step2
+    ]
+
+    ,
+    ,
+    1
+]
+
+
+// ============================================================
+// BPR START
+// POLYPAINT MUST ALREADY BE GLOBALLY ON.
+// ============================================================
+
+[IButton,
+    "ZPlugin:ZPassCapture FINAL v1.0:BPR START",
+    "Start a NEW BPR chain. Polypaint must already be globally ON. Choose the same output root used for the JPG files.",
+
+    [RoutineCall,
+        ZP13_Start
+    ]
+
+    ,
+    ,
+    1
+]
+
+
+// ============================================================
+// BPR CONTINUE
+// ============================================================
+
+[IButton,
+    "ZPlugin:ZPassCapture FINAL v1.0:BPR CONTINUE",
+    "After ZBrush To Photoshop finishes the current camera, harvest its PSD files and continue to the next enabled camera.",
+
+    [RoutineCall,
+        ZP12_Validate
+    ]
+
+    [If,
+        ([FileExists,[Var,gZP12StateFile]])
+        ||
+        ([FileExists,[Var,gZP12LegacyState11]])
+        ||
+        ([FileExists,[Var,gZP12LegacyState10]]),
+
+        [RoutineCall,
+            ZP12_Continue
+        ]
+
+    ,
+
+        [MessageOK,
+            "No BPR chain is currently active.",
+            "ZPassCapture FINAL v1.0"
+        ]
+    ]
+
+    ,
+    ,
+    1
+]
+
+
+// ============================================================
+// RESET BPR STATE
+// DOES NOT DELETE PSD FILES.
+// ============================================================
+
+[IButton,
+    "ZPlugin:ZPassCapture FINAL v1.0:RESET BPR STATE",
+    "Reset BPR chain state only. Does not delete PSD files.",
+
+    [RoutineCall,
+        ZP12_Reset
+    ]
+
+    ,
+    ,
+    .5
+]
+
+
+
+// ============================================================
+// ZPASS BPR EXTERNAL AUTO - INTEGRATED TEST
+// VERSION 1.3
+//
+// IMPORTANT:
+//
+// This controller is compiled INSIDE the same ZScript
+// as the validated FINAL v1.0.
+//
+// External watcher v1.2 remains unchanged.
+//
+// K -> bridge button
+// bridge -> validated FINAL BPR CONTINUE
+// ============================================================
+
+[ISubPalette,
+    "ZPlugin:ZPass BPR AUTO INTEGRATED v1.3"
+]
+
+// ============================================================
+// AUTO CONTINUE BRIDGE
+//
+// External watcher sends K.
+//
+// K activates THIS button.
+//
+// This button then presses the already validated:
+//
+// FINAL v1.0 -> BPR CONTINUE
+// ============================================================
+
+[IButton,
+    "ZPlugin:ZPass BPR AUTO INTEGRATED v1.3:AUTO CONTINUE BRIDGE",
+    "Bridge used automatically by the external BPR watcher.",
+
+    [Note,
+        "AUTO CONTINUE RECEIVED",
+        ,
+        2
+    ]
+
+    [IPress,
+        "ZPlugin:ZPassCapture FINAL v1.0:BPR CONTINUE"
+    ]
+
+    [Delay,0.10]
+
+    // -------------------------------------------------------
+    // FINAL CAMERA:
+    // state disappears -> release temporary K hotkey
+    // -------------------------------------------------------
+
+    [If,
+        ([FileExists,"C:\ZPassCapture\ZPassBPR_v1_2_state.dat"] == 0)
+        &&
+        ([FileExists,"C:\ZPassCapture\ZPassBPR_v1_1_state.dat"] == 0)
+        &&
+        ([FileExists,"C:\ZPassCapture\ZPassBPR_v1_0_state.dat"] == 0),
+
+        [ISetHotkey,
+            "ZPlugin:ZPass BPR AUTO INTEGRATED v1.3:AUTO CONTINUE BRIDGE",
+            0
+        ]
+    ]
+
+    ,
+    ,
+    1
+]
+
+// ============================================================
+// AUTO START
+// ============================================================
+
+[RoutineDef,ZPEA13_Start,
+
+    // -------------------------------------------------------
+    // WATCHER FILE
+    // -------------------------------------------------------
+
+    [If,
+        [FileExists,
+            "C:\ZPassCapture\ZPassBPR_Watcher_Helper_v1_2.vbs"
+        ] == 0,
+
+        [MessageOK,
+            "Watcher helper v1.2 was not found.",
+            "ZPass BPR AUTO INTEGRATED v1.3"
+        ]
+
+        [Exit]
+    ]
+
+    // -------------------------------------------------------
+    // LAUNCHER FILE
+    // -------------------------------------------------------
+
+    [If,
+        [FileExists,
+            "C:\ZPassCapture\ZPassBPR_Watcher_Launcher_v1_2.cmd"
+        ] == 0,
+
+        [MessageOK,
+            "Watcher launcher v1.2 was not found.",
+            "ZPass BPR AUTO INTEGRATED v1.3"
+        ]
+
+        [Exit]
+    ]
+
+    // -------------------------------------------------------
+    // VALIDATED BPR BUTTONS
+    // -------------------------------------------------------
+
+    [If,
+        [IExists,
+            "ZPlugin:ZPassCapture FINAL v1.0:BPR START"
+        ] == 0,
+
+        [MessageOK,
+            "Integrated FINAL BPR START was not found.",
+            "ZPass BPR AUTO INTEGRATED v1.3"
+        ]
+
+        [Exit]
+    ]
+
+    [If,
+        [IExists,
+            "ZPlugin:ZPassCapture FINAL v1.0:BPR CONTINUE"
+        ] == 0,
+
+        [MessageOK,
+            "Integrated FINAL BPR CONTINUE was not found.",
+            "ZPass BPR AUTO INTEGRATED v1.3"
+        ]
+
+        [Exit]
+    ]
+
+    // -------------------------------------------------------
+    // TEMPORARY HOTKEY
+    //
+    // K -> bridge
+    // -------------------------------------------------------
+
+    [ISetHotkey,
+        "ZPlugin:ZPass BPR AUTO INTEGRATED v1.3:AUTO CONTINUE BRIDGE",
+        'k'
+    ]
+
+    // -------------------------------------------------------
+    // CLEAN PREVIOUS WATCHER LOG
+    // -------------------------------------------------------
+
+    [If,
+        [FileExists,
+            "C:\ZPassCapture\ZPassBPR_Watcher_v1_2.log"
+        ],
+
+        [FileDelete,
+            "C:\ZPassCapture\ZPassBPR_Watcher_v1_2.log"
+        ]
+    ]
+
+    // -------------------------------------------------------
+    // LAUNCH EXTERNAL WATCHER THROUGH WORKING CMD PATTERN
+    // -------------------------------------------------------
+
+    [ShellExecute,
+        "C:\ZPassCapture\ZPassBPR_Watcher_Launcher_v1_2.cmd"
+    ]
+
+    [Delay,0.15]
+
+    // -------------------------------------------------------
+    // EXACT VALIDATED BPR START
+    // -------------------------------------------------------
+
+    [IPress,
+        "ZPlugin:ZPassCapture FINAL v1.0:BPR START"
+    ]
+
+]
+
+// ============================================================
+// START BUTTON
+// ============================================================
+
+[IButton,
+    "ZPlugin:ZPass BPR AUTO INTEGRATED v1.3:START AUTO BPR",
+    "Start the validated BPR chain and let the external watcher continue all enabled cameras automatically.",
+
+    [RoutineCall,ZPEA13_Start]
+
+    ,
+    ,
+    1
+]
