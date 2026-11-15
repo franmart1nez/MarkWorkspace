@@ -138,9 +138,11 @@
 
 [RoutineDef,RC_CB32_ReadName,
     [VarSet,cbTrackName,[IGetTitle,"Tool:ItemInfo"]]
-    [If,[StrLength,cbTrackName]>0,
-        [If,[StrToAsc,cbTrackName,[StrLength,cbTrackName]-1]==46,
-            [VarSet,cbTrackName,[StrExtract,cbTrackName,0,[StrLength,cbTrackName]-2]]
+    [VarSet,cbNameLength,[StrLength,cbTrackName]]
+    [If,cbNameLength>0,
+        [VarSet,cbNameLastAsc,[StrToAsc,cbTrackName,cbNameLength-1]]
+        [If,cbNameLastAsc==46,
+            [VarSet,cbTrackName,[StrExtract,cbTrackName,0,cbNameLength-2]]
         ]
     ]
 ]
@@ -149,7 +151,10 @@
     [VarSet,cbParsedGroup,0][VarSet,cbTagStart,-1][VarSet,cbTagCount,0]
     [Loop,[StrLength,cbTagName],
         [If,[StrLength,cbTagName]>=(cbPos+15),
-            [If,([StrToAsc,cbTagName,cbPos]==67)&&([StrToAsc,cbTagName,cbPos+1]==66)&&([StrToAsc,cbTagName,cbPos+14]==71),
+            [VarSet,cbNativeA,[StrToAsc,cbTagName,cbPos]]
+            [VarSet,cbNativeB,[StrToAsc,cbTagName,cbPos+1]]
+            [VarSet,cbNativeC,[StrToAsc,cbTagName,cbPos+14]]
+            [If,(cbNativeA==67)&&(cbNativeB==66)&&(cbNativeC==71),
                 [VarSet,cbDigitsOK,1]
                 [Loop,12,
                     [VarSet,cbDigit,[StrToAsc,cbTagName,cbPos+2+cbDigitIndex]]
@@ -164,7 +169,8 @@
                             [If,(cbDigit<0)||(cbDigit>9),[VarSet,cbDigitsOK,0]]
                             [VarSet,cbGroupDigits,(cbGroupDigits*10)+cbDigit]
                         ,cbDigitIndex]
-                        [If,([StrToAsc,cbTagName,cbPos+19]==95)&&(cbDigitsOK==1),
+                        [VarSet,cbNativeEnd,[StrToAsc,cbTagName,cbPos+19]]
+                        [If,(cbNativeEnd==95)&&(cbDigitsOK==1),
                             [If,[StrLength,cbTrackPrefix]==15,
                                 [If,[StrFind,cbTrackPrefix,[StrExtract,cbTagName,cbPos,cbPos+14]]==0,[VarSet,cbParsedGroup,cbGroupDigits]]
                             ]

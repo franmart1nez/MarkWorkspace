@@ -215,8 +215,12 @@
     // Remove only a complete identifier of this format; retain the human name.
     [Loop,[StrLength,cbTrackName],
         [If,[StrLength,cbTrackName]>=(cbPos+20),
-            [If,([StrToAsc,cbTrackName,cbPos]==67)&&([StrToAsc,cbTrackName,cbPos+1]==66),
-                [If,([StrToAsc,cbTrackName,cbPos+14]==71)&&([StrToAsc,cbTrackName,cbPos+19]==95),
+            [VarSet,cbNativeA,[StrToAsc,cbTrackName,cbPos]]
+            [VarSet,cbNativeB,[StrToAsc,cbTrackName,cbPos+1]]
+            [If,(cbNativeA==67)&&(cbNativeB==66),
+                [VarSet,cbNativeC,[StrToAsc,cbTrackName,cbPos+14]]
+                [VarSet,cbNativeEnd,[StrToAsc,cbTrackName,cbPos+19]]
+                [If,(cbNativeC==71)&&(cbNativeEnd==95),
                     [VarSet,cbValidTag,1]
                     [Loop,12,
                         [VarSet,cbChar,[StrToAsc,cbTrackName,cbPos+2+cbPart]]
@@ -288,7 +292,8 @@
         [If,([StrLength,cbBaseName]<1)||([StrLength,cbBaseName]>235),
             [RoutineCall,CB32_Fail,"A SubTool name cannot accommodate its 20-character identifier without truncation. Shorten its human-readable name and retry."]
         ]
-        [VarSet,cbGroupText,[StrMerge,10000+[MVarGet,CB32NewGroups,cbIndex]]]
+        [VarSet,cbGroupValue,10000+[MVarGet,CB32NewGroups,cbIndex]]
+        [VarSet,cbGroupText,[StrMerge,"",cbGroupValue]]
         [VarSet,cbGroupText,[StrExtract,cbGroupText,1,4]]
         [VarSet,cbWriteName,[StrMerge,"CB",cbBankA,cbBankB,"G",cbGroupText,"_",cbBaseName]]
         [RoutineCall,CB32_Rename]

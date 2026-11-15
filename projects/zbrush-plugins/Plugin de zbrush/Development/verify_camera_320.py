@@ -5,7 +5,7 @@ import struct
 import tempfile
 import unittest
 
-from verify import Host, Exit, ROOT, parse, clean
+from verify import Host, Exit, ROOT, parse, clean, node
 from verify_merge import parts, get
 
 
@@ -210,6 +210,53 @@ class Camera320(unittest.TestCase):
         body=h.routines['CB29_ExportBank'][0]
         self.assertLess(body.index('[MessageYesNo,'),body.index('[RoutineCall,CB32_Recover]'))
 
+    def test_native_ascii_condition_stop_is_avoided_during_store_refresh_and_recall(self):
+        h=self.host();new_reader=h.routines['CB32_ReadName']
+        # Frozen pre-fix body. The controller's native probe stops at this If
+        # condition after title/length checks, before the first name write.
+        h.routines['CB32_ReadName']=('''
+            [VarSet,cbTrackName,[IGetTitle,"Tool:ItemInfo"]]
+            [If,[StrLength,cbTrackName]>0,
+                [If,[StrToAsc,cbTrackName,[StrLength,cbTrackName]-1]==46,
+                    [VarSet,cbTrackName,[StrExtract,cbTrackName,0,[StrLength,cbTrackName]-2]]
+                ]
+            ]''',[])
+        original=h.cmd
+        def native_observed_stop(n):
+            # Fault injection for the observed 2023.2.1 condition, not a claim
+            # that this mock can generally reproduce the native interpreter.
+            if n[0]=='If' and '[StrToAsc,' in n[1]:raise Exit()
+            return original(n)
+        h.cmd=native_observed_stop
+        with self.assertRaises(Exit):h.call('CB29_SaveSlot',0)
+        self.assertEqual(get(h,20),0)
+        self.assertEqual(h.mem['CB32OldNames'],bytes(2048))
+        self.assertEqual(struct.unpack_from('<f',h.mem['CB32RenameState'],3*4)[0],0)
+        h.cmd=original;h.call('CB32_Recover')
+        h.routines['CB32_ReadName']=new_reader;h.cmd=native_observed_stop
+        h.call('CB29_SaveSlot',0)
+        self.assertEqual(get(h,20),1);self.assertEqual(get(h,7),1)
+        self.assertTrue(all(re.match(r'CB\d{12}G\d{4}_Part [AB]$',n) for n in h.names))
+        self.assertNotIn('CB32RenameState',h.mem)
+        h.status=[1,0];h.call('CB29_SaveSlot',1)
+        h.call('CB29_LoadSlot',0);self.assertEqual([s&1 for s in h.status],[1,1])
+        h.call('CB29_LoadSlot',1);self.assertEqual([s&1 for s in h.status],[1,0])
+        # Scan every If condition in both generated outputs, including branches
+        # that this particular fixture may not execute.
+        for path in [ROOT/'Camera Bank/CameraBank25.txt',ROOT/'Development/camera_reader.inc']:
+            source=clean(path.read_text(encoding='ascii'))
+            for match in re.finditer(r'\[If,',source):
+                condition=node(source,match.start())[0][1]
+                self.assertNotIn('[StrToAsc,',condition,path.name)
+        # Shared-reader parity is checked separately; both name readers must
+        # keep empty strings and a human trailing period safe as well.
+        for title,expected in [('', ''),('Part.', 'Part'),('Part..','Part.'),('Part','Part')]:
+            def title_cmd(n):
+                if n[:2]==['IGetTitle','"Tool:ItemInfo"']:return title
+                return native_observed_stop(n)
+            h.cmd=title_cmd;h.call('CB32_ReadName')
+            self.assertEqual(h.v['cbTrackName'],expected)
+
     def test_all_zscript_source_literals_fit_native_string_limit(self):
         # Include generated sources, generator inputs, the shared includes and
         # regression fixtures. Archived installed Recovery copies are excluded.
@@ -222,6 +269,35 @@ class Camera320(unittest.TestCase):
             checked.append(path)
         self.assertIn(ROOT/'Camera Bank/CameraBank25.txt',checked)
         self.assertIn(ROOT/'Development/camera_reader.inc',checked)
+
+    def test_native_strmerge_arity_and_group_identifier_format(self):
+        h=self.host()
+        for count in [0,1,13]:
+            with self.assertRaisesRegex(ValueError,'StrMerge requires 2..12 inputs'):
+                h.cmd(['StrMerge']+['"x"']*count)
+        self.assertEqual(h.cmd(['StrMerge','""','10001']),'10001')
+        self.assertEqual(h.cmd(['StrMerge']+['"x"']*12),'x'*12)
+        original=h.cmd
+        def native_group_conversion(n):
+            # Native candidate wrote G0000 when compound group arithmetic was
+            # passed directly as a StrMerge string input. Model that symptom
+            # explicitly; the generic mock's e() otherwise evaluates arithmetic.
+            if n[0]=='StrMerge' and any(a.startswith('10000+') for a in n[1:]):return '10000'
+            return original(n)
+        h.cmd=native_group_conversion
+        h.call('CB29_SaveSlot',0)
+        self.assertTrue(all(re.match(r'CB\d{12}G0001_Part [AB]$',name) for name in h.names))
+        h.status=[1,0];h.call('CB29_SaveSlot',1);h.call('CB29_LoadSlot',1)
+        self.assertEqual([s&1 for s in h.status],[1,0])
+        # Preserve the old source fixture verbatim; it intentionally retains
+        # the historical one-input call and is never a native plugin source.
+        for path in sorted(ROOT.rglob('*')):
+            if path.suffix not in {'.txt','.inc'} or 'Recovery' in path.relative_to(ROOT).parts:continue
+            if path==ROOT/'Development/tests/fixtures/camera_310_export.inc':continue
+            source=clean(path.read_text(encoding='utf-8-sig'))
+            for match in re.finditer(r'\[StrMerge(?=,|\])',source):
+                command=node(source,match.start())[0]
+                self.assertTrue(2<=len(command)-1<=12,f'{path.relative_to(ROOT)}: {command}')
 
     def test_legacy_versions_and_sizes_keep_known_fields_without_inventing_names(self):
         for version,size in [(v,2080) for v in range(1,7)]+[(v,102180) for v in range(3,7)]+[(7,102980)]:

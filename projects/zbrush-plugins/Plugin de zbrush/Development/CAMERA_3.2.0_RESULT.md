@@ -46,10 +46,10 @@ python build_all.py
 python -m unittest -v verify verify_merge verify_camera_320
 ```
 
-Follow-up result: **49 tests passed in 55.003 seconds** (Python 3.14, Windows):
-16 existing camera/renderer regressions, 16 adapted merge/recovery regressions,
-and 17 camera 3.2 regressions. The original delivery passed 47 tests before the
-additional literal-limit and final generated-routine ordering checks. Temporary
+Current worker result: **51 tests passed in 55.151 seconds** (Python 3.14,
+Windows): 16 existing camera/renderer regressions, 16 adapted merge/recovery
+regressions and 19 camera 3.2 regressions. Earlier deliveries passed 47 tests,
+then 49 after adding literal-limit and generated-routine ordering checks. Temporary
 bank files are actual binary files written/read by the mock host; image exports
 and native operations are mocked.
 
@@ -119,6 +119,61 @@ existing bank file. All checks pass against the regenerated final source.
 This correction changes only CameraBank25.txt, build_visibility.py, verify.py,
 verify_camera_320.py and this result document. No native lease was granted or
 used; native acceptance constraints and schema remain unchanged.
+
+## Native-blocker source correction
+
+The controller supplied native diagnostic evidence; this worker only read the
+scratch scripts, trace and memory dumps. No native lease or UI control was used.
+The first-store transaction had a valid empty bank, complete transform/status
+snapshot and phase 0, but both name slots were empty. A minimal nested name-loop
+probe then stopped immediately before the If condition containing StrToAsc.
+Assigning the same ASCII result with VarSet before comparing its numeric local
+completed the controller's two-SubTool probe. This rules out MTransformSet as the
+cause of that original stop: view restoration had not been reached.
+
+The correction precomputes ASCII scalars at all five direct StrToAsc condition
+sites in CB32_ReadName, CB32_ParseTag and CB32_StripTag. The shared reader and
+Camera Bank were regenerated. Name extraction, tag matching, data schema,
+transactions and geometry behavior are otherwise unchanged. Native scopes remain
+routine-local for these temporary numbers; persistent outputs still use the
+existing explicitly declared globals or memory blocks.
+
+The controller's next candidate reached identifier formatting and reported
+Insufficient inputs for the historical one-input StrMerge used to format the
+group number. The writer now adds 10000 in a numeric local, then uses
+`[StrMerge,"",cbGroupValue]` to convert it. A direct compound arithmetic input
+had produced G0000 in the native candidate; the numeric scalar candidate produced
+valid groups. The mock now rejects StrMerge calls outside the documented 2..12
+input range. The scan checked 142 calls total, including 140 production/input
+calls with valid arity. The frozen 3.1 fixture retains its original invalid call
+as historical source; it is never loaded natively.
+
+New offline regressions explicitly inject the observed direct-ASCII-condition
+stop and G0000 conversion symptom, rather than pretending that the mock is a
+native interpreter. They verify incomplete-snapshot recovery, first store,
+identifier refresh, recall, valid zero-padded groups, arity limits, empty names
+and trailing-period handling. A scan of generated If conditions prevents direct
+StrToAsc expressions from returning in either reader. The complete 51-test suite
+passed with the same reviewed render body and reproduction commands above.
+
+This correction changes these owned paths only:
+
+- `Camera Bank/CameraBank25.txt`
+- `Development/camera_reader.inc`
+- `Development/merge_visibility.inc`
+- `Development/merge_visibility_writer.inc`
+- `Development/verify.py`
+- `Development/verify_camera_320.py`
+- `Development/CAMERA_3.2.0_RESULT.md`
+
+Controller evidence confirms its equivalent scratch candidate completed three
+stores and two pre-reorder PNG captures at 640x480 and 480x640. That is controller
+probe evidence, not native acceptance of this committed worker source. A separate
+native handoff blocker remains: Save As under another ZTL basename changed the
+first name returned by Tool:ItemInfo to the filename stem, losing its visible
+marker, and subsequent recall rejected it. The controller is investigating Tool
+name alias versus actual SubTool name/save behavior. Do not claim save/reopen
+handoff acceptance until that is resolved; no title-path change is guessed here.
 
 ## Limits and integration requirements
 

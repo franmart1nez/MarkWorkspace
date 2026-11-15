@@ -37,9 +37,11 @@
 ,cbGroup,cbSlot]
 [RoutineDef,CB32_ReadName,
     [VarSet,cbTrackName,[IGetTitle,"Tool:ItemInfo"]]
-    [If,[StrLength,cbTrackName]>0,
-        [If,[StrToAsc,cbTrackName,[StrLength,cbTrackName]-1]==46,
-            [VarSet,cbTrackName,[StrExtract,cbTrackName,0,[StrLength,cbTrackName]-2]]
+    [VarSet,cbNameLength,[StrLength,cbTrackName]]
+    [If,cbNameLength>0,
+        [VarSet,cbNameLastAsc,[StrToAsc,cbTrackName,cbNameLength-1]]
+        [If,cbNameLastAsc==46,
+            [VarSet,cbTrackName,[StrExtract,cbTrackName,0,cbNameLength-2]]
         ]
     ]
 ]
@@ -47,7 +49,10 @@
     [VarSet,cbParsedGroup,0][VarSet,cbTagStart,-1][VarSet,cbTagCount,0]
     [Loop,[StrLength,cbTagName],
         [If,[StrLength,cbTagName]>=(cbPos+15),
-            [If,([StrToAsc,cbTagName,cbPos]==67)&&([StrToAsc,cbTagName,cbPos+1]==66)&&([StrToAsc,cbTagName,cbPos+14]==71),
+            [VarSet,cbNativeA,[StrToAsc,cbTagName,cbPos]]
+            [VarSet,cbNativeB,[StrToAsc,cbTagName,cbPos+1]]
+            [VarSet,cbNativeC,[StrToAsc,cbTagName,cbPos+14]]
+            [If,(cbNativeA==67)&&(cbNativeB==66)&&(cbNativeC==71),
                 [VarSet,cbDigitsOK,1]
                 [Loop,12,
                     [VarSet,cbDigit,[StrToAsc,cbTagName,cbPos+2+cbDigitIndex]]
@@ -62,7 +67,8 @@
                             [If,(cbDigit<0)||(cbDigit>9),[VarSet,cbDigitsOK,0]]
                             [VarSet,cbGroupDigits,(cbGroupDigits*10)+cbDigit]
                         ,cbDigitIndex]
-                        [If,([StrToAsc,cbTagName,cbPos+19]==95)&&(cbDigitsOK==1),
+                        [VarSet,cbNativeEnd,[StrToAsc,cbTagName,cbPos+19]]
+                        [If,(cbNativeEnd==95)&&(cbDigitsOK==1),
                             [If,[StrLength,cbTrackPrefix]==15,
                                 [If,[StrFind,cbTrackPrefix,[StrExtract,cbTagName,cbPos,cbPos+14]]==0,[VarSet,cbParsedGroup,cbGroupDigits]]
                             ]
@@ -420,8 +426,12 @@
     [If,cbTagCount>1,[RoutineCall,CB32_Fail,"A SubTool name contains ambiguous camera identifiers. Names and cameras were kept; restore a single valid source marker before updating."]]
     [Loop,[StrLength,cbTrackName],
         [If,[StrLength,cbTrackName]>=(cbPos+20),
-            [If,([StrToAsc,cbTrackName,cbPos]==67)&&([StrToAsc,cbTrackName,cbPos+1]==66),
-                [If,([StrToAsc,cbTrackName,cbPos+14]==71)&&([StrToAsc,cbTrackName,cbPos+19]==95),
+            [VarSet,cbNativeA,[StrToAsc,cbTrackName,cbPos]]
+            [VarSet,cbNativeB,[StrToAsc,cbTrackName,cbPos+1]]
+            [If,(cbNativeA==67)&&(cbNativeB==66),
+                [VarSet,cbNativeC,[StrToAsc,cbTrackName,cbPos+14]]
+                [VarSet,cbNativeEnd,[StrToAsc,cbTrackName,cbPos+19]]
+                [If,(cbNativeC==71)&&(cbNativeEnd==95),
                     [VarSet,cbValidTag,1]
                     [Loop,12,
                         [VarSet,cbChar,[StrToAsc,cbTrackName,cbPos+2+cbPart]]
@@ -493,7 +503,8 @@
         [If,([StrLength,cbBaseName]<1)||([StrLength,cbBaseName]>235),
             [RoutineCall,CB32_Fail,"A SubTool name cannot accommodate its 20-character identifier without truncation. Shorten its human-readable name and retry."]
         ]
-        [VarSet,cbGroupText,[StrMerge,10000+[MVarGet,CB32NewGroups,cbIndex]]]
+        [VarSet,cbGroupValue,10000+[MVarGet,CB32NewGroups,cbIndex]]
+        [VarSet,cbGroupText,[StrMerge,"",cbGroupValue]]
         [VarSet,cbGroupText,[StrExtract,cbGroupText,1,4]]
         [VarSet,cbWriteName,[StrMerge,"CB",cbBankA,cbBankB,"G",cbGroupText,"_",cbBaseName]]
         [RoutineCall,CB32_Rename]
