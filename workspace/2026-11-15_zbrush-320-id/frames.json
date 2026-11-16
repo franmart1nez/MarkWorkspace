@@ -1,0 +1,15 @@
+{
+  "input": "projects/zbrush-plugins/A ID Zbrush.mp4",
+  "entity": "2026-11-15_zbrush-320-id",
+  "threshold": 12.0,
+  "max_frames": 30,
+  "frame_count": 1,
+  "frames": [
+    {
+      "index": 1,
+      "frame": 0,
+      "timestamp": 0.0,
+      "path": "frames/0001.jpg"
+    }
+  ]
+}

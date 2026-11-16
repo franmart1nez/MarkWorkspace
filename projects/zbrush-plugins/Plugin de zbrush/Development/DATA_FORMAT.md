@@ -1,138 +1,90 @@
-# Camera Bank 3.2.0 / data v8
+# Camera Bank 3.2.1 / data v9
 
-The binary schema is unchanged: `CB25Data` has **27,771 single-precision float
-cells / 111,084 bytes**, saved with native `MemSaveToFile`. No new ancestry field
-is inferred. Existing tracked v8 pairs remain readable; v1-7 and untracked v8
-banks follow the migration rules below. Pre-v8 readers cannot read this data.
+The bank is **30,772 single-precision float cells / 123,088 bytes**. Version 9
+preserves the complete v8 prefix and appends a native SubTool ID table. All three
+3.2.1 components share this reader. Older plugin binaries do not read v9 banks.
 
-## Header and camera records
+## Layout
 
-| Cell | Value |
+| Cells | Contents |
 | --- | --- |
-| 0 | Magic 252523 |
-| 1 | Data version 8 |
-| 2 | Camera count 25 |
-| 3-6 | Clear mode, UI guard, active one-based camera, store mode |
-| 7 | Identifier mode: 0 untracked positional legacy, 1 visibility groups |
-| 8-9 | Two integer six-digit bank/revision nonce components, 100000-999999 |
-| 10-19 | Reserved |
+| 0–2 | Magic 252523, version 9, camera count 25 |
+| 3–6 | Clear mode, UI guard, active one-based camera, store mode |
+| 7 | Identity mode: 0 untracked legacy, 1 visibility groups |
+| 8–9 | Two six-digit bank/revision components |
+| 10–19 | Reserved |
+| 20 + slot × 20 | Camera record, for zero-based slots 0–24 |
+| 520 + slot × 1001 | Original positional visibility count + up to 1000 statuses |
+| 25545 + slot × 8 | Lens extension |
+| 25745 | Visibility-group count |
+| 25746 + (group−1) × 2 | Group visibility mask: low 13 bits, high 12 bits |
+| 27746 + slot | Effective-visibility snapshot count |
+| 27771 | Native-ID record count: 0–1000 |
+| 27772 + record × 3 | Native ID low 16 bits, high 16 bits, one-based group |
 
-Camera s (0-24) begins at `20+s*20`: offset 0 occupied; 1-9 MTransform;
-10 perspective; 11 focal length; 12-14 zoom/pan; 15 focal UI type; 16 render
-flag; 17 click state; 18-19 document width/height. The lens extension remains
-at `25545+s*8`: explicit FOV, validity, universal camera, align, automatic
-distance, crop factor, horizontal and vertical modes. Unknown legacy dimensions
-stay zero; unknown camera mode flags stay -1. Updating an occupied camera keeps
-its render flag, including gray cameras.
+Every ID half is an integer 0–65535. The all-zero ID is invalid. Splitting IDs
+preserves unsigned 32-bit values without float rounding. Repeated IDs are
+retained as separate records; they are not assumed unique. A zero record count
+is allowed for a migrated old bank that has not yet been matched to its Tool.
 
-The positional slice at `520+s*1001` contains the count followed by up to 1000
-status values. Bits 0/1 preserve individual/folder eye snapshots; bit 2 (4)
-records effective visibility, including folder eyes, Solo and the always-visible
-active SubTool. This internal bit is never passed to native SubTool status.
-`27746+s` contains the effective snapshot count; zero means unreviewed/unknown.
-Tracked recall ignores positional count/order and uses the names/group masks.
+Camera offsets are: 0 occupied; 1–9 MTransform; 10 perspective; 11 focal length;
+12–14 zoom/pan; 15 focal UI type; 16 render flag; 17 click state; 18–19 canvas
+width/height. Lens extensions store FOV, validity, universal camera, align,
+automatic distance, crop factor and horizontal/vertical modes. Missing legacy
+values stay unknown. Visibility bit 4 is the internal effective-visibility bit,
+including eyes, folders, Solo and the active SubTool; it is not a native status.
 
-## Persistent identity and compatible merges
+## Names and the filename exception
 
-Cell 25745 is the group count (1-1000 when tracked). One-based group g has two
-masks at `25746+(g-1)*2`: low 13 camera bits (0-8191) and high 12 bits (0-4095).
-These integer halves are exactly representable as single-precision floats.
-Every **occupied** camera participates, regardless of its render flag.
+Markers remain `CBaaaaaabbbbbbGgggg_`. Groups represent equal visibility in every
+occupied camera, including gray cameras. Valid markers are authoritative after
+reordering and compatible merges. Unknown parts, malformed or foreign markers,
+and ambiguous ancestry are rejected. No list-position fallback is used.
 
-The 20-character name marker is `CBaaaaaabbbbbbGgggg_`: two bank components and
-a zero-padded group number. The remaining human name is retained. Parts in one
-group have identical effective visibility across all occupied cameras.
+ZBrush 2023.2.1 can replace the first SubTool name with the ZTL filename stem.
+Version 9 accepts this one unmarked first SubTool only when its displayed name
+matches the current Tool basename and its native ID has exactly one supported
+visibility group. The resolver subtracts current, explicitly marked peers with
+the same native ID from the saved ID/group inventory. Multiple residual groups,
+excess peers or an unknown ID are rejected. It never guesses which duplicate
+was renamed. Dots and spaces in the filename stem are preserved.
 
-- Duplicate human names are supported: differing visibility produces differing
-  markers; identical visibility may share a marker. Mesh IDs are not persistent
-  visibility identity and duplicated native IDs do not alias groups.
-- Reordering is supported immediately after the first successful store. A human
-  rename is supported if its complete marker survives. Removing the marker is an
-  unknown identity, even if the human name still matches another part.
-- Unmarked additions, foreign/stale markers, malformed markers and multiple
-  marker candidates (including mixed-bank names) are rejected before recall or
-  update. There is no position fallback or guessed visibility for an addition.
-  Restore the matching Tool/marker, or start a fresh bank for a different model.
-- Native merges require equal visibility in **all occupied cameras**, including
-  gray ones, and a single compatible source marker in the resulting name.
-  Prefixes such as `Merged_` are accepted. Folder-derived names that discard the
-  marker require restoring that compatible source marker. Geometry is never
-  merged or modified by Camera Bank.
-- Missing groups visible in any remaining camera are rejected unless a surviving
-  group is equivalent after cleared-camera bits are masked out. Entirely hidden
-  groups may disappear. Deleting one part of a shared group cannot be detected
-  while another member survives. A retained marker proves a visibility class,
-  not geometric ancestry or completeness. Arbitrary incompatible native merges
-  cannot be reconstructed after source names have been discarded.
+Recall, rendering and ID capture use this identity without renaming the first
+SubTool. Store/update refreshes names and the ID table transactionally. A normal
+new v9 bank/model pair can therefore use an arbitrary ZTL filename. Markers on
+other SubTools must remain intact. Compatible merges still require equal
+visibility and a retained marker; a result whose native ID is new must have its
+ID inventory refreshed by store/update while the marker is intact before a
+filename alias can be resolved.
 
-## Automatic capture and atomic updates
+## Older banks
 
-There is no transfer-preparation button. Store/update records effective
-visibility and refreshes markers automatically. On a tracked Tool, all existing
-views are first remapped by surviving markers to the current SubTools. The edit
-is then captured and all occupied views regrouped. A new nonce pair is generated
-on every successful store/update. Save the matching **ZTL/ZPR after the latest
-edit**, then export its bank; older saved model/bank pairs remain separate.
+The importer accepts 2080-byte v1–6, 102180-byte v3–6, 102980-byte v7 and
+111084-byte v8 files, validates them before replacement, and allocates v9 data.
+Tracked v8 names and visibility groups remain usable. When a tracked old bank
+is imported on its matching, marked Tool in Edit mode, the new native-ID table
+is attached automatically; export a new bank afterward. Import on an unrelated
+Tool still succeeds without fabricating identity. If the first marker was
+already lost and the old bank contains no IDs, use the matching marked ZTL/ZPR
+once before migrating. The supplied case was migrated and tested on its original
+arbitrarily named ZTL.
 
-Native ZBrush 2023.2.1 ZTL **Save As** uses the filename stem as the first
-SubTool's name. Saving to an unrelated basename can therefore remove that
-SubTool's marker. Keep the marked default ZTL basename and choose any destination
-folder. If changing the basename, preserve that first SubTool's complete current
-`CB...G..._` marker; changing it is a SubTool rename under the identity rules
-above. A ZPR project may use an arbitrary project filename. The controller's
-safe-name native probe confirmed that saving with the marked ZTL stem and
-restoring the Tool path with ToolSetPath retained the marker. This does not add
-an automatic save/rename action or a positional fallback to Camera Bank.
+Untracked v1–8 banks still require reviewing/updating each occupied camera on
+the original unmerged Tool/order. Counts alone do not establish ancestry. Partial
+review is bound to the in-session Tool/list; import resets unbound ready bits.
 
-Names are verified after each rename before committing the staged bank. The
-20-character marker plus human name is limited to 255 characters (235 for the
-human name); native truncation is treated as failure with rollback. Native name
-limits/encoding still need acceptance on ZBrush 2023.2.1.
+## Transactions and export
 
-## Import, legacy review and export
+Name edits snapshot names, IDs, statuses, selection, view and the complete bank.
+Rename failures roll back. Old pending snapshots copy their actual byte length
+before startup migration, rather than reading beyond a v8 snapshot. Escape
+recovery remains session-bound and does not survive an application termination.
 
-Legacy byte sizes 2080 (v1-6), 102180 (v3-6), 102980 (v7), and 111084 (v8)
-are validated before replacing live data. V8 validates identifier mode, nonce
-components, group count, mask ranges and effective-ready counts. Known v7
-canvas/lens fields are retained; absent fields remain unknown.
+Export remains independent of Edit mode and the current Tool. It writes a copy,
+normalizes UI modes/click states in that copy and verifies all 30,772 cells after
+read-back. Cancel/declined overwrite preserves in-memory data. A failed confirmed
+replacement may leave a partial destination; keep original bank files separately.
 
-V1-7 contain no persistent name ancestry. Untracked v8 contains effective bits
-but no persistent name/order mapping. Import resets their effective-ready
-counts to zero. Recall explicitly asks the user to confirm the ORIGINAL unmerged
-Tool/order when there is no session binding; equal counts alone are not identity
-proof. Review and UPDATE ACTIVE for every occupied view. Automatic tracking
-finishes after the last review, without another button. A partial review is
-bound in session memory to Tool index, ordered names and mesh IDs; observed
-changes block further positional recall/update. Indistinguishable duplicate
-names/IDs still cannot prove an old order. The original unchanged Tool remains
-a migration precondition. Export/import or losing the session requires restarting
-an incomplete review; unbound ready bits are also reset on source reload.
-
-Export is independent of the currently selected Tool, Edit mode, name validity
-and Rename DLL. It serializes a copy, normalizing UI modes/click states only in
-that copy, and includes all occupied cameras and render flags. An untracked bank
-can be exported as an honest backup, with an explicit untracked warning.
-Cancellation (also during pending recovery) and declining overwrite leave memory
-and names unchanged. Existing destinations require explicit confirmation.
-Success requires the exact write length and a full float-cell read-back match.
-Write/read/mismatch errors retain cameras in memory and report that the selected
-destination may be incomplete. A confirmed replacement is a direct native write,
-not an atomic filesystem rename; keep a separate original bank when needed.
-
-## Session recovery and generated reader
-
-`CB32OriginalBank`, `CB32OldNames`, `CB32RenameState`, `CB32Stage` and
-`CB32NewGroups` hold the update transaction. Snapshot-incomplete, rollback and
-committed-cleanup phases remain distinct. New transaction state has one extra
-session-only cell for the previous legacy-binding flag; pending 3.1 snapshots
-remain recoverable. `CB32LegacyNames` / `CB32LegacyState` hold partial review
-identity, `CB32ReadView` preserves the view during name reads, and `CB32Export` /
-`CB32ExportCheck` are disposable export buffers. None are written into the bank.
-
-Handled failures restore names, statuses, selection, view and bank on the same
-unchanged Tool. Interrupted edits block the renderer until a Camera Bank action
-recovers them. Recovery does not survive process termination. The private shared
-reader is generated from the same camera routines and does not rename SubTools
-or toggle camera render flags. Render roots/recovery remain `RC30Root` and
-`RC30Recovery` (starting Solo in cell 16). No runtime state is written into the
-installation directory.
+Native checks cover ZBrush 2023.2.1. Larger IDs and repeated-ID ambiguity are
+covered offline; the native Duplicate fixture produced distinct IDs. Other host
+versions and every possible merge/history combination are not certified.

@@ -1,6 +1,6 @@
 [VarDef,cbFovPath,""]
 [VarDef,cbUniversalPath,""]
-// Data v8: groups describe identical effective visibility across all 25 views.
+// Data v9: visibility groups plus native-ID recovery for the ZTL filename alias.
 // Names carry CB<6-digit bank A><6-digit bank B>G<4-digit group>_.
 // Each mask half is <=13 bits, so single-precision cells stay exact.
 [VarDef,cbTrackValid,0]
@@ -17,6 +17,10 @@
 [VarDef,cbTrackEye(1000),0]
 [VarDef,cbTagCount,0]
 [VarDef,cbLegacyName,""]
+[VarDef,cbAliasPath,""]
+[VarDef,cbAliasName,""]
+[VarDef,cbIdRemaining(1000),0]
+[VarDef,cbFirstIdGroup,0]
 [RoutineDef,RC_CB31_Require3D,
     [If,([IsEnabled,"Transform:Edit"]==0)||([IGet,"Transform:Edit"]==0),
         [MessageOK,"No live 3D model is in Edit mode. Select your Tool, draw it on the canvas and press T (Edit), then try again. The camera has not been changed.","Camera Bank 25"]
@@ -121,6 +125,39 @@
     ]
 ,cbSlot]
 
+[RoutineDef,RC_CB321_ResolveFirstID,
+    [VarSet,cbFirstIdGroup,0]
+    [If,[MemGetSize,CB25Data]>=123088,
+        [VarSet,cbIdRecords,[MVarGet,CB25Data,27771]]
+        [VarSet,cbTargetId,[SubToolGetID,0]]
+        [VarSet,cbTargetHi,INT(cbTargetId/65536)]
+        [VarSet,cbTargetLo,cbTargetId-(cbTargetHi*65536)]
+        [VarSet,cbIdOK,1]
+        [Loop,1000,[VarSet,cbIdRemaining(cbIdI),0],cbIdI]
+        [Loop,cbIdRecords,
+            [If,([MVarGet,CB25Data,27772+(cbIdI*3)]==cbTargetLo)&&([MVarGet,CB25Data,27773+(cbIdI*3)]==cbTargetHi),
+                [VarSet,cbIdGroup,[MVarGet,CB25Data,27774+(cbIdI*3)]-1]
+                [VarInc,cbIdRemaining(cbIdGroup)]
+            ]
+        ,cbIdI]
+        [Loop,[SubToolGetCount]-1,
+            [VarSet,cbIdPeer,cbIdI+1]
+            [If,[SubToolGetID,cbIdPeer]==cbTargetId,
+                [VarSet,cbIdGroup,cbTrackGroups(cbIdPeer)-1]
+                [VarSet,cbIdRemaining(cbIdGroup),cbIdRemaining(cbIdGroup)-1]
+                [If,cbIdRemaining(cbIdGroup)<0,[VarSet,cbIdOK,0]]
+            ]
+        ,cbIdI]
+        [Loop,[MVarGet,CB25Data,25745],
+            [If,cbIdRemaining(cbIdI)>0,
+                [If,cbFirstIdGroup>0,[VarSet,cbIdOK,0]]
+                [VarSet,cbFirstIdGroup,cbIdI+1]
+            ]
+        ,cbIdI]
+        [If,cbIdOK==0,[VarSet,cbFirstIdGroup,0]]
+    ]
+]
+
 [RoutineDef,RC_CB32_Bit,
     [VarSet,cbTrackHalf,0][VarSet,cbBitSlot,cbSlot]
     [If,cbSlot>=13,[VarSet,cbTrackHalf,1][VarSet,cbBitSlot,cbSlot-13]]
@@ -214,6 +251,7 @@
 
 [RoutineDef,RC_CB32_CheckTracked,
     [VarSet,cbTrackValid,1][VarSet,cbTrackError,""]
+    [VarSet,cbPendingFirst,0]
     [VarSet,cbTrackPrefix,[StrMerge,"CB",[MVarGet,CB25Data,8],[MVarGet,CB25Data,9],"G"]]
     [VarSet,cbOldSelected,[SubToolGetActiveIndex]]
     [If,([SubToolGetCount]<1)||([SubToolGetCount]>1000),
@@ -229,17 +267,41 @@
             [SubToolSelect,cbIndex][RoutineCall,RC_CB32_ReadName]
             [RoutineCall,RC_CB32_ParseTag,cbTrackName]
             [If,(cbParsedGroup<1)||(cbParsedGroup>[MVarGet,CB25Data,25745]),
-                [VarSet,cbTrackValid,0]
-                [VarSet,cbTrackError,"A SubTool has no valid identifier for this bank. Open the matching prepared ZTL/ZPR and preserve the CB...G..._ name markers."]
-                [LoopExit]
+                [VarSet,cbAliasOK,0]
+                [If,(cbIndex==0)&&(cbTagCount==0),
+                    [VarSet,cbAliasTool,[ToolGetActiveIndex]]
+                    [VarSet,cbAliasPath,[ToolGetPath,cbAliasTool]]
+                    [VarSet,cbAliasName,[FileNameExtract,cbAliasPath,6]]
+                    [If,([StrLength,cbAliasName]>0)&&([StrLength,cbAliasName]==[StrLength,cbTrackName]),
+                        [If,[StrFind,cbAliasName,cbTrackName]==0,[VarSet,cbAliasOK,1]]
+                    ]
+                ]
+                [If,cbAliasOK==1,
+                    [VarSet,cbPendingFirst,1][VarSet,cbTrackGroups(0),0]
+                ,
+                    [VarSet,cbTrackValid,0]
+                    [VarSet,cbTrackError,"A SubTool has no valid identifier for this bank. Open the matching ZTL/ZPR. Only a first-SubTool filename alias with a verified native-ID match can be recovered."]
+                    [LoopExit]
+                ]
+            ,
+                [VarSet,cbTrackGroups(cbIndex),cbParsedGroup]
+                [VarSet,cbTrackSeen(cbParsedGroup-1),1]
             ]
-            [VarSet,cbTrackGroups(cbIndex),cbParsedGroup]
-            [VarSet,cbTrackSeen(cbParsedGroup-1),1]
         ,cbIndex]
         [SubToolSelect,cbOldSelected]
         [MTransformSet,CB32ReadView,0][CanvasZoomSet,[MVarGet,CB32ReadView,9]]
         [CanvasPanSet,[MVarGet,CB32ReadView,10],[MVarGet,CB32ReadView,11]]
         [MemDelete,CB32ReadView]
+    ]
+    [If,(cbTrackValid==1)&&(cbPendingFirst==1),
+        [RoutineCall,RC_CB321_ResolveFirstID]
+        [If,cbFirstIdGroup>0,
+            [VarSet,cbTrackGroups(0),cbFirstIdGroup]
+            [VarSet,cbTrackSeen(cbFirstIdGroup-1),1]
+        ,
+            [VarSet,cbTrackValid,0]
+            [VarSet,cbTrackError,"The first SubTool lost its name identifier and this bank has no unambiguous native-ID match. For an older bank, import it once on the matching marked Tool in 3.2.1 and export again."]
+        ]
     ]
     [VarSet,cbUsedLow,0][VarSet,cbUsedHigh,0]
     [Loop,25,

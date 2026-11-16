@@ -4,6 +4,30 @@
 [VarDef,cbBaseName,""]
 [VarDef,cbRenameOK,0]
 [VarDef,cbRecoveryOK,1]
+[RoutineDef,CB321_RecordNativeIDs,
+    // Used when importing a tracked v8 bank on its intact marked Tool.
+    // The importer stays independent of the current Tool if no match exists.
+    [If,([MVarGet,CB25Data,7]==1)&&([IGet,"Transform:Edit"]==1),
+        [RoutineCall,CB32_CheckTracked]
+        [If,cbTrackValid==1,
+            [VarSet,cbIdsValid,1]
+            [Loop,[SubToolGetCount],
+                [VarSet,cbNativeId,[SubToolGetID,cbIndex]]
+                [If,(cbNativeId<1)||(cbNativeId>4294967295),[VarSet,cbIdsValid,0]]
+            ,cbIndex]
+            [If,cbIdsValid==1,
+                [Loop,[SubToolGetCount],
+                    [VarSet,cbNativeId,[SubToolGetID,cbIndex]]
+                    [VarSet,cbNativeHi,INT(cbNativeId/65536)]
+                    [MVarSet,CB25Data,27772+(cbIndex*3),cbNativeId-(cbNativeHi*65536)]
+                    [MVarSet,CB25Data,27773+(cbIndex*3),cbNativeHi]
+                    [MVarSet,CB25Data,27774+(cbIndex*3),cbTrackGroups(cbIndex)]
+                ,cbIndex]
+                [MVarSet,CB25Data,27771,[SubToolGetCount]]
+            ]
+        ]
+    ]
+]
 [RoutineDef,CB32_ClearLegacyBinding,
     [If,[MemGetSize,CB32LegacyNames]>0,[MemDelete,CB32LegacyNames]]
     [If,[MemGetSize,CB32LegacyState]>0,[MemDelete,CB32LegacyState]]
@@ -133,7 +157,7 @@
         [If,cbRecoveryOK==0,
             [MessageOK,"Could not restore every SubTool name. The previous bank and names remain in memory; retry on the same Tool before continuing.","Camera Bank 25"][Exit]
         ]
-        [MemCopy,CB32OriginalBank,0,CB25Data,0,111084]
+        [MemCopy,CB32OriginalBank,0,CB25Data,0,[MemGetSize,CB32OriginalBank]]
         [VarSet,cbViewBase,4+([SubToolGetCount]*2)]
         // A pending 3.1 snapshot has one fewer cell and no legacy binding.
         [If,[MemGetSize,CB32RenameState]<((cbViewBase+14)*4),
@@ -156,8 +180,8 @@
 [RoutineDef,CB32_BeginTransaction,
     [RoutineCall,CB32_CheckRenameDLL]
     [VarSet,cbBeforeSelected,[SubToolGetActiveIndex]]
-    [MemCreate,CB32OriginalBank,111084,0]
-    [MemCopy,CB25Data,0,CB32OriginalBank,0,111084]
+    [MemCreate,CB32OriginalBank,123088,0]
+    [MemCopy,CB25Data,0,CB32OriginalBank,0,123088]
     [MemCreate,CB32OldNames,[SubToolGetCount]*1024,0]
     [MVarDef,CB32RenameState,18+([SubToolGetCount]*2),0]
     [MVarSet,CB32RenameState,0,[SubToolGetCount]]
@@ -254,7 +278,7 @@
     ,cbSlot]
     [If,cbCameraCount==0,[RoutineCall,CB32_Fail,"Store at least one camera before tracking visibility."]]
     [If,[MemGetSize,CB32RenameState]==0,[RoutineCall,CB32_BeginTransaction]]
-    [MemCreate,CB32Stage,111084,0][MemCopy,CB25Data,0,CB32Stage,0,111084]
+    [MemCreate,CB32Stage,123088,0][MemCopy,CB25Data,0,CB32Stage,0,123088]
     [MVarDef,CB32NewGroups,[SubToolGetCount],0]
     [VarSet,cbGroups,0]
     [Loop,[SubToolGetCount],
@@ -279,6 +303,14 @@
             [VarInc,cbGroups][VarSet,cbMatch,cbGroups]
         ]
         [MVarSet,CB32NewGroups,cbIndex,cbMatch]
+        [VarSet,cbNativeId,[SubToolGetID,cbIndex]]
+        [If,(cbNativeId<1)||(cbNativeId>4294967295),
+            [RoutineCall,CB32_Fail,"A native SubTool ID is outside the supported exact range. Previous names and cameras were kept."]
+        ]
+        [VarSet,cbNativeHi,INT(cbNativeId/65536)]
+        [MVarSet,CB32Stage,27772+(cbIndex*3),cbNativeId-(cbNativeHi*65536)]
+        [MVarSet,CB32Stage,27773+(cbIndex*3),cbNativeHi]
+        [MVarSet,CB32Stage,27774+(cbIndex*3),cbMatch]
     ,cbIndex]
     [VarSet,cbBankA,100000+IRAND(899999)][VarSet,cbBankB,100000+IRAND(899999)]
     [If,(cbBankA==[MVarGet,CB25Data,8])&&(cbBankB==[MVarGet,CB25Data,9]),
@@ -286,6 +318,7 @@
     ]
     [MVarSet,CB32Stage,7,1][MVarSet,CB32Stage,8,cbBankA][MVarSet,CB32Stage,9,cbBankB]
     [MVarSet,CB32Stage,25745,cbGroups]
+    [MVarSet,CB32Stage,27771,[SubToolGetCount]]
     [Loop,[SubToolGetCount],
         [NoteBar,"Tracking camera visibility identifiers",cbIndex/[SubToolGetCount]]
         [SubToolSelect,cbIndex][RoutineCall,CB32_ReadName][RoutineCall,CB32_StripTag]
@@ -302,7 +335,7 @@
     [Loop,[SubToolGetCount],[SubToolSetStatus,cbIndex,[MVarGet,CB32RenameState,5+(cbIndex*2)]],cbIndex]
     [SubToolSelect,[MVarGet,CB32RenameState,1]]
     [RoutineCall,CB32_RestoreEditingView]
-    [MemCopy,CB32Stage,0,CB25Data,0,111084]
+    [MemCopy,CB32Stage,0,CB25Data,0,123088]
     [MVarSet,CB32RenameState,3,2]
     [RoutineCall,CB32_ClearLegacyBinding]
     [RoutineCall,CB32_Cleanup]

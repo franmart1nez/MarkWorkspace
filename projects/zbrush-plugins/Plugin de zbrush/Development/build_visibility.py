@@ -1,4 +1,4 @@
-"""Camera Bank 3.2: automatic name tracking; retain the v8 binary schema."""
+"""Camera Bank 3.2.1: v9 adds native-ID recovery for ZTL filename aliases."""
 from pathlib import Path
 import re
 
@@ -10,19 +10,20 @@ def upgrade(camera, routine):
         camera=camera.replace(routine(camera,name),body)
 
     old=routine(camera,'CB29_CreateEmptyBank')
-    put('CB29_CreateEmptyBank',old.replace('25745','27771').replace('[MVarSet,CB25Data,1,7]','[MVarSet,CB25Data,1,8]').replace(
+    put('CB29_CreateEmptyBank',old.replace('25745','30772').replace('[MVarSet,CB25Data,1,7]','[MVarSet,CB25Data,1,9]').replace(
         '[RoutineDef,CB29_CreateEmptyBank,', '[RoutineDef,CB29_CreateEmptyBank,\n    [RoutineCall,CB32_ClearLegacyBinding]'))
 
     put('CB30_AcceptImport',r'''[RoutineDef,CB30_AcceptImport,
     [VarSet,cbImportValid,0]
-    [If,(cbImportSize==2080)||(cbImportSize==102180)||(cbImportSize==102980)||(cbImportSize==111084),
+    [If,(cbImportSize==2080)||(cbImportSize==102180)||(cbImportSize==102980)||(cbImportSize==111084)||(cbImportSize==123088),
         [If,([MVarGet,CB29ImportTemp,0]==252523)&&([MVarGet,CB29ImportTemp,2]==25),
             [VarSet,cbImportVersion,[MVarGet,CB29ImportTemp,1]]
             [If,(cbImportSize==111084)&&(cbImportVersion==8),[VarSet,cbImportValid,1]]
+            [If,(cbImportSize==123088)&&(cbImportVersion==9),[VarSet,cbImportValid,1]]
             [If,(cbImportSize==102980)&&(cbImportVersion==7),[VarSet,cbImportValid,1]]
             [If,(cbImportSize==102180)&&((cbImportVersion>=3)&&(cbImportVersion<=6)),[VarSet,cbImportValid,1]]
             [If,(cbImportSize==2080)&&((cbImportVersion>=1)&&(cbImportVersion<=6)),[VarSet,cbImportValid,1]]
-            [If,(cbImportValid==1)&&(cbImportVersion==8),
+            [If,(cbImportValid==1)&&(cbImportVersion>=8),
                 [VarSet,cbTracked,[MVarGet,CB29ImportTemp,7]]
                 [If,(cbTracked!=0)&&(cbTracked!=1),[VarSet,cbImportValid,0]]
                 [If,cbTracked==1,
@@ -45,6 +46,22 @@ def upgrade(camera, routine):
                     [VarSet,cbReady,[MVarGet,CB29ImportTemp,27746+cbS]]
                     [If,((cbReady<0)||(cbReady>1000))||(cbReady!=INT(cbReady)),[VarSet,cbImportValid,0]]
                 ,cbS]
+                [If,(cbImportValid==1)&&(cbImportVersion==9),
+                    [VarSet,cbIdCount,[MVarGet,CB29ImportTemp,27771]]
+                    [If,((cbIdCount<0)||(cbIdCount>1000))||(cbIdCount!=INT(cbIdCount)),[VarSet,cbImportValid,0]]
+                    [If,(cbTracked==0)&&(cbIdCount!=0),[VarSet,cbImportValid,0]]
+                    [If,cbImportValid==1,
+                        [Loop,cbIdCount,
+                            [VarSet,cbImportId,[MVarGet,CB29ImportTemp,27772+(cbIdI*3)]]
+                            [VarSet,cbImportHi,[MVarGet,CB29ImportTemp,27773+(cbIdI*3)]]
+                            [VarSet,cbImportGroup,[MVarGet,CB29ImportTemp,27774+(cbIdI*3)]]
+                            [If,((cbImportId<0)||(cbImportId>65535))||(cbImportId!=INT(cbImportId)),[VarSet,cbImportValid,0]]
+                            [If,((cbImportHi<0)||(cbImportHi>65535))||(cbImportHi!=INT(cbImportHi)),[VarSet,cbImportValid,0]]
+                            [If,(cbImportHi==0)&&(cbImportId==0),[VarSet,cbImportValid,0]]
+                            [If,((cbImportGroup<1)||(cbImportGroup>cbGroups))||(cbImportGroup!=INT(cbImportGroup)),[VarSet,cbImportValid,0]]
+                        ,cbIdI]
+                    ]
+                ]
             ]
         ]
     ]
@@ -65,16 +82,17 @@ def upgrade(camera, routine):
                 [Loop,6,[MVarSet,CB25Data,25547+(cbS*8)+cbUnknown,-1],cbUnknown]
             ,cbS]
         ]
-        [MVarSet,CB25Data,1,8]
+        [MVarSet,CB25Data,1,9]
         [MVarSet,CB25Data,3,0][MVarSet,CB25Data,4,0][MVarSet,CB25Data,5,0][MVarSet,CB25Data,6,0]
         [If,cbImportVersion>=6,[RoutineCall,CB29_NormalizeRenderFlags,0],[RoutineCall,CB29_NormalizeRenderFlags,1]]
+        [If,cbImportVersion<9,[RoutineCall,CB321_RecordNativeIDs]]
     ]
 ,cbImportSize]''')
 
     # Existing startup migration already validates old file sizes before replacement.
     a=camera.index('[If,[MemGetSize,CB25Data]>0,')
     b=camera.index('[RoutineDef,CB29_SaveVisualState,',a)
-    startup=camera[a:b].replace('102980','111084').replace('cbAlreadyV7','cbAlreadyV8').replace('CB25Data,1]==7','CB25Data,1]==8')
+    startup=camera[a:b].replace('102980','123088').replace('cbAlreadyV7','cbAlreadyV9').replace('CB25Data,1]==7','CB25Data,1]==9')
     camera=camera[:a]+'[RoutineCall,CB32_Recover]\n'+startup+'\n[RoutineCall,CB32_ResetUnboundLegacy]\n'+camera[b:]
 
     old=routine(camera,'CB29_RestoreVisualState')
@@ -124,7 +142,7 @@ def upgrade(camera, routine):
     put('CB29_ClearSlot',old.replace('[Loop,8,','[MVarSet,CB25Data,27746+slot,0]\n    [Loop,8,',1))
 
     put('CB29_ExportBank',r'''[RoutineDef,CB29_ExportBank,
-    [VarSet,saveFile,[FileNameAsk,"Camera Bank (*.zcv)|*.zcv||","CameraBank25_v3_2.zcv","Export Camera Bank 25 v3.2.0"]]
+    [VarSet,saveFile,[FileNameAsk,"Camera Bank (*.zcv)|*.zcv||","CameraBank25_v3_2.zcv","Export Camera Bank 25 v3.2.1"]]
     // Cancel is strictly read-only, including pending recovery and UI modes.
     [If,[StrLength,saveFile]==0,[Exit]]
     [If,[FileExists,saveFile]==1,
@@ -133,17 +151,17 @@ def upgrade(camera, routine):
     [RoutineCall,CB32_Recover]
     [If,[MemGetSize,CB32Export]>0,[MemDelete,CB32Export]]
     [If,[MemGetSize,CB32ExportCheck]>0,[MemDelete,CB32ExportCheck]]
-    [MemCreate,CB32Export,111084,0]
-    [MemCopy,CB25Data,0,CB32Export,0,111084]
-    [MVarSet,CB32Export,1,8]
+    [MemCreate,CB32Export,123088,0]
+    [MemCopy,CB25Data,0,CB32Export,0,123088]
+    [MVarSet,CB32Export,1,9]
     [MVarSet,CB32Export,3,0][MVarSet,CB32Export,4,0][MVarSet,CB32Export,6,0]
     [Loop,25,[MVarSet,CB32Export,20+(cbS*20)+17,0],cbS]
     [VarSet,saveResult,[MemSaveToFile,CB32Export,saveFile,1]]
     [VarSet,cbExportOK,0]
-    [If,saveResult==111084,
-        [If,[MemCreateFromFile,CB32ExportCheck,saveFile]==111084,
+    [If,saveResult==123088,
+        [If,[MemCreateFromFile,CB32ExportCheck,saveFile]==123088,
             [VarSet,cbExportOK,1]
-            [Loop,27771,
+            [Loop,30772,
                 [If,[MVarGet,CB32Export,cbCell]!=[MVarGet,CB32ExportCheck,cbCell],
                     [VarSet,cbExportOK,0][LoopExit]
                 ]

@@ -194,11 +194,11 @@
     {
       "id": "zbrush-plugins",
       "title": "ZBrush plugins",
-      "description": "3.2.0 installed and natively checked: automatic name-based cameras, shared BPR/non-BPR folders and one-button ID export. Three worker branches merged; source, ZSCs, installer and evidence included.",
+      "description": "3.2.3: Exportar ID exports manually prepared colors without regenerating mesh data. ZPass_1 reuse, overwrite notices and per-SubTool display restoration retained. 52 focused tests.",
       "type": "group",
       "category": "dev",
       "created": "2026-11-13",
-      "updated": "2026-11-15T21:32:42.997368+00:00",
+      "updated": "2026-11-16T20:59:27.801001+00:00",
       "folder": "2026-11-13_zbrush-plugins",
       "status": "active",
       "defaultStep": 0,
@@ -212,8 +212,16 @@
           "path": "video-analysis-3.2.0.md"
         },
         {
-          "name": "3.2 verification",
+          "name": "3.2.0 verification",
           "path": "verification-3.2.0.md"
+        },
+        {
+          "name": "ZTL recovery",
+          "path": "ztl-import-recovery.md"
+        },
+        {
+          "name": "3.2.1 verification",
+          "path": "verification-3.2.1.md"
         }
       ]
     }

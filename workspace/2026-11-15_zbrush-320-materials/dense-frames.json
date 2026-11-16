@@ -1,0 +1,106 @@
+{
+  "duration": 50.3194,
+  "fps": 29.51148066153412,
+  "frames": [
+    {
+      "time_seconds": 0,
+      "path": "t000.jpg"
+    },
+    {
+      "time_seconds": 2,
+      "path": "t002.jpg"
+    },
+    {
+      "time_seconds": 4,
+      "path": "t004.jpg"
+    },
+    {
+      "time_seconds": 6,
+      "path": "t006.jpg"
+    },
+    {
+      "time_seconds": 8,
+      "path": "t008.jpg"
+    },
+    {
+      "time_seconds": 10,
+      "path": "t010.jpg"
+    },
+    {
+      "time_seconds": 12,
+      "path": "t012.jpg"
+    },
+    {
+      "time_seconds": 14,
+      "path": "t014.jpg"
+    },
+    {
+      "time_seconds": 16,
+      "path": "t016.jpg"
+    },
+    {
+      "time_seconds": 18,
+      "path": "t018.jpg"
+    },
+    {
+      "time_seconds": 20,
+      "path": "t020.jpg"
+    },
+    {
+      "time_seconds": 22,
+      "path": "t022.jpg"
+    },
+    {
+      "time_seconds": 24,
+      "path": "t024.jpg"
+    },
+    {
+      "time_seconds": 26,
+      "path": "t026.jpg"
+    },
+    {
+      "time_seconds": 28,
+      "path": "t028.jpg"
+    },
+    {
+      "time_seconds": 30,
+      "path": "t030.jpg"
+    },
+    {
+      "time_seconds": 32,
+      "path": "t032.jpg"
+    },
+    {
+      "time_seconds": 34,
+      "path": "t034.jpg"
+    },
+    {
+      "time_seconds": 36,
+      "path": "t036.jpg"
+    },
+    {
+      "time_seconds": 38,
+      "path": "t038.jpg"
+    },
+    {
+      "time_seconds": 40,
+      "path": "t040.jpg"
+    },
+    {
+      "time_seconds": 42,
+      "path": "t042.jpg"
+    },
+    {
+      "time_seconds": 44,
+      "path": "t044.jpg"
+    },
+    {
+      "time_seconds": 46,
+      "path": "t046.jpg"
+    },
+    {
+      "time_seconds": 48,
+      "path": "t048.jpg"
+    }
+  ]
+}

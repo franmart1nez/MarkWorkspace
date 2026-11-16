@@ -102,7 +102,7 @@ foreach ($spec in $specs) {
         $paletteName = 'ZPlugin:Camera Bank 25:'
     }
     if ($spec.Name -eq 'GenerateExportID') {
-        $controlNames = @('Generar y exportar ID')
+        $controlNames = @('Generar y exportar ID','Exportar ID')
         $paletteName = 'ZPlugin:Generar y exportar ID:'
     }
     $loaderReset = ''

@@ -239,6 +239,12 @@ class Host:
         if c=='SubToolGetID':return self.ids[int(E(0))]
         if c=='SubToolGetFolderIndex':return self.folders[int(E(0))]
         if c=='ToolGetActiveIndex':return self.tool_index
+        if c=='ToolGetPath':return getattr(self,'tool_path','')
+        if c=='FileNameExtract':
+            filename=E(0).replace('\\','/').rsplit('/',1)[-1]
+            if E(1)==6:return filename
+            if E(1)==2:return filename.rsplit('.',1)[0]
+            raise NotImplementedError(n)
         if c=='SubToolGetActiveIndex':return self.st
         if c=='SubToolSelect':self.st=int(E(0));return
         if c=='MTransformGet':
@@ -297,7 +303,7 @@ class Regression(unittest.TestCase):
             struct.pack_into('<f',old,(base+1)*4,slot+123)
             struct.pack_into('<f',old,(520+slot*1001)*4,2)
         h.mem['CB29ImportTemp']=old;h.call('CB30_AcceptImport',len(old))
-        new=h.mem['CB25Data'];self.assertEqual(len(new),111084)
+        new=h.mem['CB25Data'];self.assertEqual(len(new),123088)
         for slot in range(25):
             get=lambda p:struct.unpack_from('<f',new,p*4)[0]
             self.assertEqual(get(20+slot*20+16),slot%2)
@@ -342,13 +348,13 @@ class Regression(unittest.TestCase):
             for e in h.exports:
                 self.assertEqual(e['color'],[255]*3);self.assertEqual(e['shadow'],0)
                 self.assertEqual(e['dims'],[1920,1080] if '/01/' in e['path'] else [800,600])
-                self.assertEqual(e['pp'],[1,1] if e['path'].endswith('Z document.png') else [0,0])
+                self.assertEqual(e['pp'],[0,1] if e['path'].endswith('Z document.png') else [0,0])
             self.assertEqual(h.pp,[0,1]);self.assertEqual(h.tx,[1,0])
             self.assertEqual(h.ui['Color:R'],20);self.assertEqual(h.ui['Material:ItemInfo'],0)
-            with self.assertRaises(Exit):h.call('RC_NonBPR')
-            self.assertEqual(len(h.exports),8)
-            h.call('RC_BPR');self.assertEqual(len(h.exports),22)
-            for e in h.exports[8:]:
+            h.call('RC_NonBPR')
+            self.assertEqual(len(h.exports),16)
+            h.call('RC_BPR');self.assertEqual(len(h.exports),30)
+            for e in h.exports[16:]:
                 self.assertEqual((e['shadow'],e['ao'],e['sss']),(1,1,1))
             self.assertEqual(h.ui['Render:Render Properties:AOcclusion'],0)
             self.assertEqual(h.light_on,{1556:1,1557:0});self.assertEqual(h.light_sss,{1556:0,1557:0})
@@ -387,10 +393,10 @@ class Regression(unittest.TestCase):
             h.chosen=d;h.call('RC_CreateFolders')
             shot=Path(h.v['rcRoot'])/'Screenshots/10.png';shot.write_bytes(b'preserve existing')
             ui=h.ui.copy();h.call('RC_Materials')
-            with self.assertRaises(Exit):h.call('RC_NonBPR')
-            self.assertEqual(h.exports,[]);self.assertEqual(shot.read_bytes(),b'preserve existing')
-            self.assertEqual(h.ui,ui);self.assertEqual(h.pp,[0,1])
-            self.assertIn('screenshot already exists',h.messages[-1].lower())
+            h.call('RC_NonBPR')
+            self.assertEqual(len(h.exports),8);self.assertNotEqual(shot.read_bytes(),b'preserve existing')
+            self.assertEqual(h.ui["Material:ItemInfo"],ui["Material:ItemInfo"]);self.assertEqual(h.pp,[0,1])
+            self.assertTrue(any('Screenshots/10.png' in m for m in h.messages))
 
     def test_screenshot_copy_failure_restores_display_state(self):
         for silent in [False,True]:

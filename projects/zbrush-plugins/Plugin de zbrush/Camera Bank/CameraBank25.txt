@@ -1,9 +1,9 @@
-// Camera Bank 25 v3.2.0 - Windows / ZBrush 2023.2.1 target.
-// v3.2.0: automatic name identifiers on store/update; independent verified bank export.
+// Camera Bank 25 v3.2.1 - Windows / ZBrush 2023.2.1 target.
+// v3.2.1: native-ID fallback for the first SubTool filename alias.
 // Derived from the supplied CameraBank25_v2_9, retaining its slot UI.
-// Data v8: 27771 floats / 111084 bytes. See Development/DATA_FORMAT.md.
+// Data v9: 30772 floats / 123088 bytes. See Development/DATA_FORMAT.md.
 // Automatic identifier updates use the bundled ZFileUtils library.
-// Native acceptance and limitations: Development/VERIFICATION_3.2.0.md.
+// Native acceptance and limitations: Development/VERIFICATION_3.2.1.md.
 [VarDef,cbFovPath,""]
 [VarDef,cbUniversalPath,""]
 [VarDef,cbImportValid,0]
@@ -22,6 +22,42 @@
 [VarDef,cbTrackEye(1000),0]
 [VarDef,cbTagCount,0]
 [VarDef,cbLegacyName,""]
+[VarDef,cbAliasPath,""]
+[VarDef,cbAliasName,""]
+[VarDef,cbIdRemaining(1000),0]
+[VarDef,cbFirstIdGroup,0]
+[RoutineDef,CB321_ResolveFirstID,
+    [VarSet,cbFirstIdGroup,0]
+    [If,[MemGetSize,CB25Data]>=123088,
+        [VarSet,cbIdRecords,[MVarGet,CB25Data,27771]]
+        [VarSet,cbTargetId,[SubToolGetID,0]]
+        [VarSet,cbTargetHi,INT(cbTargetId/65536)]
+        [VarSet,cbTargetLo,cbTargetId-(cbTargetHi*65536)]
+        [VarSet,cbIdOK,1]
+        [Loop,1000,[VarSet,cbIdRemaining(cbIdI),0],cbIdI]
+        [Loop,cbIdRecords,
+            [If,([MVarGet,CB25Data,27772+(cbIdI*3)]==cbTargetLo)&&([MVarGet,CB25Data,27773+(cbIdI*3)]==cbTargetHi),
+                [VarSet,cbIdGroup,[MVarGet,CB25Data,27774+(cbIdI*3)]-1]
+                [VarInc,cbIdRemaining(cbIdGroup)]
+            ]
+        ,cbIdI]
+        [Loop,[SubToolGetCount]-1,
+            [VarSet,cbIdPeer,cbIdI+1]
+            [If,[SubToolGetID,cbIdPeer]==cbTargetId,
+                [VarSet,cbIdGroup,cbTrackGroups(cbIdPeer)-1]
+                [VarSet,cbIdRemaining(cbIdGroup),cbIdRemaining(cbIdGroup)-1]
+                [If,cbIdRemaining(cbIdGroup)<0,[VarSet,cbIdOK,0]]
+            ]
+        ,cbIdI]
+        [Loop,[MVarGet,CB25Data,25745],
+            [If,cbIdRemaining(cbIdI)>0,
+                [If,cbFirstIdGroup>0,[VarSet,cbIdOK,0]]
+                [VarSet,cbFirstIdGroup,cbIdI+1]
+            ]
+        ,cbIdI]
+        [If,cbIdOK==0,[VarSet,cbFirstIdGroup,0]]
+    ]
+]
 [RoutineDef,CB32_Bit,
     [VarSet,cbTrackHalf,0][VarSet,cbBitSlot,cbSlot]
     [If,cbSlot>=13,[VarSet,cbTrackHalf,1][VarSet,cbBitSlot,cbSlot-13]]
@@ -110,6 +146,7 @@
 ]
 [RoutineDef,CB32_CheckTracked,
     [VarSet,cbTrackValid,1][VarSet,cbTrackError,""]
+    [VarSet,cbPendingFirst,0]
     [VarSet,cbTrackPrefix,[StrMerge,"CB",[MVarGet,CB25Data,8],[MVarGet,CB25Data,9],"G"]]
     [VarSet,cbOldSelected,[SubToolGetActiveIndex]]
     [If,([SubToolGetCount]<1)||([SubToolGetCount]>1000),
@@ -125,17 +162,41 @@
             [SubToolSelect,cbIndex][RoutineCall,CB32_ReadName]
             [RoutineCall,CB32_ParseTag,cbTrackName]
             [If,(cbParsedGroup<1)||(cbParsedGroup>[MVarGet,CB25Data,25745]),
-                [VarSet,cbTrackValid,0]
-                [VarSet,cbTrackError,"A SubTool has no valid identifier for this bank. Open the matching prepared ZTL/ZPR and preserve the CB...G..._ name markers."]
-                [LoopExit]
+                [VarSet,cbAliasOK,0]
+                [If,(cbIndex==0)&&(cbTagCount==0),
+                    [VarSet,cbAliasTool,[ToolGetActiveIndex]]
+                    [VarSet,cbAliasPath,[ToolGetPath,cbAliasTool]]
+                    [VarSet,cbAliasName,[FileNameExtract,cbAliasPath,6]]
+                    [If,([StrLength,cbAliasName]>0)&&([StrLength,cbAliasName]==[StrLength,cbTrackName]),
+                        [If,[StrFind,cbAliasName,cbTrackName]==0,[VarSet,cbAliasOK,1]]
+                    ]
+                ]
+                [If,cbAliasOK==1,
+                    [VarSet,cbPendingFirst,1][VarSet,cbTrackGroups(0),0]
+                ,
+                    [VarSet,cbTrackValid,0]
+                    [VarSet,cbTrackError,"A SubTool has no valid identifier for this bank. Open the matching ZTL/ZPR. Only a first-SubTool filename alias with a verified native-ID match can be recovered."]
+                    [LoopExit]
+                ]
+            ,
+                [VarSet,cbTrackGroups(cbIndex),cbParsedGroup]
+                [VarSet,cbTrackSeen(cbParsedGroup-1),1]
             ]
-            [VarSet,cbTrackGroups(cbIndex),cbParsedGroup]
-            [VarSet,cbTrackSeen(cbParsedGroup-1),1]
         ,cbIndex]
         [SubToolSelect,cbOldSelected]
         [MTransformSet,CB32ReadView,0][CanvasZoomSet,[MVarGet,CB32ReadView,9]]
         [CanvasPanSet,[MVarGet,CB32ReadView,10],[MVarGet,CB32ReadView,11]]
         [MemDelete,CB32ReadView]
+    ]
+    [If,(cbTrackValid==1)&&(cbPendingFirst==1),
+        [RoutineCall,CB321_ResolveFirstID]
+        [If,cbFirstIdGroup>0,
+            [VarSet,cbTrackGroups(0),cbFirstIdGroup]
+            [VarSet,cbTrackSeen(cbFirstIdGroup-1),1]
+        ,
+            [VarSet,cbTrackValid,0]
+            [VarSet,cbTrackError,"The first SubTool lost its name identifier and this bank has no unambiguous native-ID match. For an older bank, import it once on the matching marked Tool in 3.2.1 and export again."]
+        ]
     ]
     [VarSet,cbUsedLow,0][VarSet,cbUsedHigh,0]
     [Loop,25,
@@ -224,6 +285,28 @@
 [VarDef,cbBaseName,""]
 [VarDef,cbRenameOK,0]
 [VarDef,cbRecoveryOK,1]
+[RoutineDef,CB321_RecordNativeIDs,
+    [If,([MVarGet,CB25Data,7]==1)&&([IGet,"Transform:Edit"]==1),
+        [RoutineCall,CB32_CheckTracked]
+        [If,cbTrackValid==1,
+            [VarSet,cbIdsValid,1]
+            [Loop,[SubToolGetCount],
+                [VarSet,cbNativeId,[SubToolGetID,cbIndex]]
+                [If,(cbNativeId<1)||(cbNativeId>4294967295),[VarSet,cbIdsValid,0]]
+            ,cbIndex]
+            [If,cbIdsValid==1,
+                [Loop,[SubToolGetCount],
+                    [VarSet,cbNativeId,[SubToolGetID,cbIndex]]
+                    [VarSet,cbNativeHi,INT(cbNativeId/65536)]
+                    [MVarSet,CB25Data,27772+(cbIndex*3),cbNativeId-(cbNativeHi*65536)]
+                    [MVarSet,CB25Data,27773+(cbIndex*3),cbNativeHi]
+                    [MVarSet,CB25Data,27774+(cbIndex*3),cbTrackGroups(cbIndex)]
+                ,cbIndex]
+                [MVarSet,CB25Data,27771,[SubToolGetCount]]
+            ]
+        ]
+    ]
+]
 [RoutineDef,CB32_ClearLegacyBinding,
     [If,[MemGetSize,CB32LegacyNames]>0,[MemDelete,CB32LegacyNames]]
     [If,[MemGetSize,CB32LegacyState]>0,[MemDelete,CB32LegacyState]]
@@ -349,7 +432,7 @@
         [If,cbRecoveryOK==0,
             [MessageOK,"Could not restore every SubTool name. The previous bank and names remain in memory; retry on the same Tool before continuing.","Camera Bank 25"][Exit]
         ]
-        [MemCopy,CB32OriginalBank,0,CB25Data,0,111084]
+        [MemCopy,CB32OriginalBank,0,CB25Data,0,[MemGetSize,CB32OriginalBank]]
         [VarSet,cbViewBase,4+([SubToolGetCount]*2)]
         [If,[MemGetSize,CB32RenameState]<((cbViewBase+14)*4),
             [RoutineCall,CB32_ClearLegacyBinding]
@@ -370,8 +453,8 @@
 [RoutineDef,CB32_BeginTransaction,
     [RoutineCall,CB32_CheckRenameDLL]
     [VarSet,cbBeforeSelected,[SubToolGetActiveIndex]]
-    [MemCreate,CB32OriginalBank,111084,0]
-    [MemCopy,CB25Data,0,CB32OriginalBank,0,111084]
+    [MemCreate,CB32OriginalBank,123088,0]
+    [MemCopy,CB25Data,0,CB32OriginalBank,0,123088]
     [MemCreate,CB32OldNames,[SubToolGetCount]*1024,0]
     [MVarDef,CB32RenameState,18+([SubToolGetCount]*2),0]
     [MVarSet,CB32RenameState,0,[SubToolGetCount]]
@@ -465,7 +548,7 @@
     ,cbSlot]
     [If,cbCameraCount==0,[RoutineCall,CB32_Fail,"Store at least one camera before tracking visibility."]]
     [If,[MemGetSize,CB32RenameState]==0,[RoutineCall,CB32_BeginTransaction]]
-    [MemCreate,CB32Stage,111084,0][MemCopy,CB25Data,0,CB32Stage,0,111084]
+    [MemCreate,CB32Stage,123088,0][MemCopy,CB25Data,0,CB32Stage,0,123088]
     [MVarDef,CB32NewGroups,[SubToolGetCount],0]
     [VarSet,cbGroups,0]
     [Loop,[SubToolGetCount],
@@ -490,6 +573,14 @@
             [VarInc,cbGroups][VarSet,cbMatch,cbGroups]
         ]
         [MVarSet,CB32NewGroups,cbIndex,cbMatch]
+        [VarSet,cbNativeId,[SubToolGetID,cbIndex]]
+        [If,(cbNativeId<1)||(cbNativeId>4294967295),
+            [RoutineCall,CB32_Fail,"A native SubTool ID is outside the supported exact range. Previous names and cameras were kept."]
+        ]
+        [VarSet,cbNativeHi,INT(cbNativeId/65536)]
+        [MVarSet,CB32Stage,27772+(cbIndex*3),cbNativeId-(cbNativeHi*65536)]
+        [MVarSet,CB32Stage,27773+(cbIndex*3),cbNativeHi]
+        [MVarSet,CB32Stage,27774+(cbIndex*3),cbMatch]
     ,cbIndex]
     [VarSet,cbBankA,100000+IRAND(899999)][VarSet,cbBankB,100000+IRAND(899999)]
     [If,(cbBankA==[MVarGet,CB25Data,8])&&(cbBankB==[MVarGet,CB25Data,9]),
@@ -497,6 +588,7 @@
     ]
     [MVarSet,CB32Stage,7,1][MVarSet,CB32Stage,8,cbBankA][MVarSet,CB32Stage,9,cbBankB]
     [MVarSet,CB32Stage,25745,cbGroups]
+    [MVarSet,CB32Stage,27771,[SubToolGetCount]]
     [Loop,[SubToolGetCount],
         [NoteBar,"Tracking camera visibility identifiers",cbIndex/[SubToolGetCount]]
         [SubToolSelect,cbIndex][RoutineCall,CB32_ReadName][RoutineCall,CB32_StripTag]
@@ -513,7 +605,7 @@
     [Loop,[SubToolGetCount],[SubToolSetStatus,cbIndex,[MVarGet,CB32RenameState,5+(cbIndex*2)]],cbIndex]
     [SubToolSelect,[MVarGet,CB32RenameState,1]]
     [RoutineCall,CB32_RestoreEditingView]
-    [MemCopy,CB32Stage,0,CB25Data,0,111084]
+    [MemCopy,CB32Stage,0,CB25Data,0,123088]
     [MVarSet,CB32RenameState,3,2]
     [RoutineCall,CB32_ClearLegacyBinding]
     [RoutineCall,CB32_Cleanup]
@@ -530,11 +622,11 @@
     ]
     [MVarDef,
         CB25Data,
-        27771,
+        30772,
         0
     ]
     [MVarSet,CB25Data,0,252523]
-    [MVarSet,CB25Data,1,8]
+    [MVarSet,CB25Data,1,9]
     [MVarSet,CB25Data,2,25]
     [MVarSet,CB25Data,3,0]
     [MVarSet,CB25Data,4,0]
@@ -591,14 +683,15 @@
 ,forceOn]
 [RoutineDef,CB30_AcceptImport,
     [VarSet,cbImportValid,0]
-    [If,(cbImportSize==2080)||(cbImportSize==102180)||(cbImportSize==102980)||(cbImportSize==111084),
+    [If,(cbImportSize==2080)||(cbImportSize==102180)||(cbImportSize==102980)||(cbImportSize==111084)||(cbImportSize==123088),
         [If,([MVarGet,CB29ImportTemp,0]==252523)&&([MVarGet,CB29ImportTemp,2]==25),
             [VarSet,cbImportVersion,[MVarGet,CB29ImportTemp,1]]
             [If,(cbImportSize==111084)&&(cbImportVersion==8),[VarSet,cbImportValid,1]]
+            [If,(cbImportSize==123088)&&(cbImportVersion==9),[VarSet,cbImportValid,1]]
             [If,(cbImportSize==102980)&&(cbImportVersion==7),[VarSet,cbImportValid,1]]
             [If,(cbImportSize==102180)&&((cbImportVersion>=3)&&(cbImportVersion<=6)),[VarSet,cbImportValid,1]]
             [If,(cbImportSize==2080)&&((cbImportVersion>=1)&&(cbImportVersion<=6)),[VarSet,cbImportValid,1]]
-            [If,(cbImportValid==1)&&(cbImportVersion==8),
+            [If,(cbImportValid==1)&&(cbImportVersion>=8),
                 [VarSet,cbTracked,[MVarGet,CB29ImportTemp,7]]
                 [If,(cbTracked!=0)&&(cbTracked!=1),[VarSet,cbImportValid,0]]
                 [If,cbTracked==1,
@@ -621,6 +714,22 @@
                     [VarSet,cbReady,[MVarGet,CB29ImportTemp,27746+cbS]]
                     [If,((cbReady<0)||(cbReady>1000))||(cbReady!=INT(cbReady)),[VarSet,cbImportValid,0]]
                 ,cbS]
+                [If,(cbImportValid==1)&&(cbImportVersion==9),
+                    [VarSet,cbIdCount,[MVarGet,CB29ImportTemp,27771]]
+                    [If,((cbIdCount<0)||(cbIdCount>1000))||(cbIdCount!=INT(cbIdCount)),[VarSet,cbImportValid,0]]
+                    [If,(cbTracked==0)&&(cbIdCount!=0),[VarSet,cbImportValid,0]]
+                    [If,cbImportValid==1,
+                        [Loop,cbIdCount,
+                            [VarSet,cbImportId,[MVarGet,CB29ImportTemp,27772+(cbIdI*3)]]
+                            [VarSet,cbImportHi,[MVarGet,CB29ImportTemp,27773+(cbIdI*3)]]
+                            [VarSet,cbImportGroup,[MVarGet,CB29ImportTemp,27774+(cbIdI*3)]]
+                            [If,((cbImportId<0)||(cbImportId>65535))||(cbImportId!=INT(cbImportId)),[VarSet,cbImportValid,0]]
+                            [If,((cbImportHi<0)||(cbImportHi>65535))||(cbImportHi!=INT(cbImportHi)),[VarSet,cbImportValid,0]]
+                            [If,(cbImportHi==0)&&(cbImportId==0),[VarSet,cbImportValid,0]]
+                            [If,((cbImportGroup<1)||(cbImportGroup>cbGroups))||(cbImportGroup!=INT(cbImportGroup)),[VarSet,cbImportValid,0]]
+                        ,cbIdI]
+                    ]
+                ]
             ]
         ]
     ]
@@ -639,21 +748,22 @@
                 [Loop,6,[MVarSet,CB25Data,25547+(cbS*8)+cbUnknown,-1],cbUnknown]
             ,cbS]
         ]
-        [MVarSet,CB25Data,1,8]
+        [MVarSet,CB25Data,1,9]
         [MVarSet,CB25Data,3,0][MVarSet,CB25Data,4,0][MVarSet,CB25Data,5,0][MVarSet,CB25Data,6,0]
         [If,cbImportVersion>=6,[RoutineCall,CB29_NormalizeRenderFlags,0],[RoutineCall,CB29_NormalizeRenderFlags,1]]
+        [If,cbImportVersion<9,[RoutineCall,CB321_RecordNativeIDs]]
     ]
 ,cbImportSize]
 [RoutineCall,CB32_Recover]
 [If,[MemGetSize,CB25Data]>0,
     [VarSet,cbStartupSize,[MemGetSize,CB25Data]]
-    [VarSet,cbAlreadyV8,0]
-    [If,cbStartupSize==111084,
-        [If,([MVarGet,CB25Data,0]==252523)&&([MVarGet,CB25Data,1]==8)&&([MVarGet,CB25Data,2]==25),
-            [VarSet,cbAlreadyV8,1]
+    [VarSet,cbAlreadyV9,0]
+    [If,cbStartupSize==123088,
+        [If,([MVarGet,CB25Data,0]==252523)&&([MVarGet,CB25Data,1]==9)&&([MVarGet,CB25Data,2]==25),
+            [VarSet,cbAlreadyV9,1]
         ]
     ]
-    [If,cbAlreadyV8==1,
+    [If,cbAlreadyV9==1,
         [MVarSet,CB25Data,3,0][MVarSet,CB25Data,4,0][MVarSet,CB25Data,6,0]
         [RoutineCall,CB29_NormalizeRenderFlags,0]
     ,
@@ -1390,7 +1500,7 @@
     ]
 ]
 [RoutineDef,CB29_ExportBank,
-    [VarSet,saveFile,[FileNameAsk,"Camera Bank (*.zcv)|*.zcv||","CameraBank25_v3_2.zcv","Export Camera Bank 25 v3.2.0"]]
+    [VarSet,saveFile,[FileNameAsk,"Camera Bank (*.zcv)|*.zcv||","CameraBank25_v3_2.zcv","Export Camera Bank 25 v3.2.1"]]
     [If,[StrLength,saveFile]==0,[Exit]]
     [If,[FileExists,saveFile]==1,
         [If,[MessageYesNo,"Replace the selected bank file? Keep a separate copy if this is an original bank.","Camera Bank 25"]!=1,[Exit]]
@@ -1398,17 +1508,17 @@
     [RoutineCall,CB32_Recover]
     [If,[MemGetSize,CB32Export]>0,[MemDelete,CB32Export]]
     [If,[MemGetSize,CB32ExportCheck]>0,[MemDelete,CB32ExportCheck]]
-    [MemCreate,CB32Export,111084,0]
-    [MemCopy,CB25Data,0,CB32Export,0,111084]
-    [MVarSet,CB32Export,1,8]
+    [MemCreate,CB32Export,123088,0]
+    [MemCopy,CB25Data,0,CB32Export,0,123088]
+    [MVarSet,CB32Export,1,9]
     [MVarSet,CB32Export,3,0][MVarSet,CB32Export,4,0][MVarSet,CB32Export,6,0]
     [Loop,25,[MVarSet,CB32Export,20+(cbS*20)+17,0],cbS]
     [VarSet,saveResult,[MemSaveToFile,CB32Export,saveFile,1]]
     [VarSet,cbExportOK,0]
-    [If,saveResult==111084,
-        [If,[MemCreateFromFile,CB32ExportCheck,saveFile]==111084,
+    [If,saveResult==123088,
+        [If,[MemCreateFromFile,CB32ExportCheck,saveFile]==123088,
             [VarSet,cbExportOK,1]
-            [Loop,27771,
+            [Loop,30772,
                 [If,[MVarGet,CB32Export,cbCell]!=[MVarGet,CB32ExportCheck,cbCell],
                     [VarSet,cbExportOK,0][LoopExit]
                 ]

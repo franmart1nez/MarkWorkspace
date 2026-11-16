@@ -1,21 +1,20 @@
-# Camera Bank 3.2.0 - automatic name visibility
+# Camera Bank 3.2.1 - automatic visibility and ZTL filename recovery
 
 Store/update now records effective visibility and updates SubTool name identifiers
 without a PREPARE TRANSFER button. Export writes the stored bank without requiring
-Edit mode, a selected matching Tool, or the renaming library. Data remains v8
-(**111,084 bytes**); see [DATA_FORMAT.md](DATA_FORMAT.md) for the complete schema.
+Edit mode, a selected matching Tool, or the renaming library. Data is now v9
+(**123,088 bytes**); see [DATA_FORMAT.md](DATA_FORMAT.md) for the complete schema.
 
 ## Normal workflow
 
-1. Load the reviewed 3.2.0 Camera Bank source and the regenerated Render Capture
-   source together. The orchestrator owns regeneration/integration of the latter.
-   Store cameras on the original editable Tool. Identifiers appear automatically
+1. Load all three reviewed 3.2.1 components together: Camera Bank, Render Capture
+   and Generate and Export ID. Store cameras on the original editable Tool. Identifiers appear automatically
    on the first store, and refresh on each store/update. Gray occupied cameras
    participate equally; UPDATE ACTIVE keeps their render flags.
 2. Inspect framing, canvas/lens and visible geometry. Save the **ZTL/ZPR after
-   the latest store/update**, then EXPORT BANK. For ZTL, keep the marked default
-   basename and choose any folder; a changed basename must retain the first
-   SubTool's complete current marker. ZPR allows an arbitrary project filename.
+   the latest store/update**, then EXPORT BANK. New v9 pairs allow an arbitrary ZTL basename:
+   the saved native-ID table recovers the first SubTool filename alias. Other
+   SubTool markers must remain intact. ZPR also allows arbitrary filenames.
    Send both matching files. The plugin does not save or overwrite the model
    file for you.
 3. Open that pair, import the bank, then reorder or perform supported native
@@ -30,17 +29,22 @@ Edit mode, a selected matching Tool, or the renaming library. Data remains v8
 
 Human names may be duplicated or renamed while the marker remains intact.
 Equal-visibility duplicates share a group; unequal-visibility duplicates receive
-separate groups. Unknown/added/unmarked parts, missing identifiers, foreign or
+separate groups. Unknown/added/unmarked parts (except the verified first-SubTool filename alias), missing identifiers, foreign or
 stale identifiers, malformed identifiers and multiple markers are rejected.
 There is no positional guess or automatic adoption of unknown geometry.
 
-Native ZBrush 2023.2.1 ZTL Save As makes the filename stem the first SubTool's
-name. A plain new basename can erase its marker, so it counts as renaming that
-SubTool and must preserve the marker. The controller's safe-name probe confirmed
-the marker survived saving with the marked ZTL stem and ToolSetPath restoration.
-Keep that marked default stem for ordinary ZTL transfer, changing only the
-folder, or use ZPR when the project needs an arbitrary filename. This preserves
-the existing strict name-identity contract without adding a fallback.
+ZBrush 2023.2.1 Save As/Load Tool can replace the first SubTool's name with
+the ZTL basename. Version 3.2.1 stores native IDs and groups in data v9 and
+resolves that one unmarked filename alias using its exact native ID. IDs are
+stored in two 16-bit halves; duplicate IDs are resolved only when the explicitly
+marked peers leave one possible visibility group. Unknown or ambiguous results
+remain rejected. Recall does not rename the Tool. Store/update refreshes the
+ID inventory with the name transaction.
+
+For a tracked v8 bank, import once on its matching marked Tool in Edit mode and
+export again. This attaches native IDs automatically. An already unmarked first
+SubTool cannot be identified from a v8 bank alone; use the matching marked
+ZTL/ZPR for that one migration. See DATA_FORMAT.md for the exact v9 layout.
 
 A missing group needed by any occupied view is rejected unless a surviving
 group has the same visibility across the remaining occupied cameras. Entirely
@@ -100,24 +104,24 @@ python 'projects/zbrush-plugins/Plugin de zbrush/Development/verify_merge.py'
 python 'projects/zbrush-plugins/Plugin de zbrush/Development/verify_camera_320.py'
 ```
 
-The first command regenerates Camera Bank, its shared reader, and a **local**
-RenderCapture.txt for regression testing. This worker does not commit that render
-file; the orchestrator regenerates it after source integration. See
-[CAMERA_3.2.0_RESULT.md](CAMERA_3.2.0_RESULT.md) for actual results and delivery.
-These are mock/source tests, not native compilation or rendered-image review.
+The first command regenerates all three component sources and their shared
+reader. Rebuilding changes source timestamps and requires fresh native compilation
+before reinstalling. Do not rebuild for documentation-only edits. See
+[VERIFICATION_3.2.1.md](VERIFICATION_3.2.1.md) for the completed integrated suite,
+native checks and delivery. The commands above are source/model tests; they do
+not substitute for native compilation or rendered-image review.
 
-After independent source review, the orchestrator should use a disposable saved
-Tool under its exclusive ZBrush lease:
+For future source changes, use a disposable saved Tool with one native operator:
 
 1. Load both integrated TXT sources in ZBrush 2023.2.1. Verify native compilation,
    DLL resolution, no preparation button and automatic verified name changes.
 2. Store three views with different dimensions/lenses; make one gray. Include
    duplicate human names, hidden folders, Solo and a hidden active part. Recall,
    UPDATE ACTIVE on the gray camera, and compare framing and effective geometry.
-3. Save a new ZTL with its marked basename (or ZPR with any project filename)
+3. Save a new ZTL with an arbitrary basename (or ZPR with any project filename)
    and bank; reopen/import and compare all occupied cameras.
    Test export cancellation, a new writable path, confirmed overwrite and a
-   failing path. Export with Edit off must still produce a usable 111,084-byte bank.
+   failing path. Export with Edit off must still produce a usable 123,088-byte bank.
 4. Reorder, MergeDown compatible parts, and probe actual MergeVisible/folder name
    retention/truncation. Compare all views, then update and save/reopen a fresh
    pair. Reject missing/mixed/foreign markers before canvas changes.

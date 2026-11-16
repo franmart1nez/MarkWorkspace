@@ -298,7 +298,7 @@ class IDExport(unittest.TestCase):
 
     def click(self, h):
         buttons = [n for n in parse(OUTPUT.read_text('ascii')) if n[0] == 'IButton']
-        self.assertEqual(len(buttons), 1)
+        self.assertEqual(len(buttons), 2)
         self.assertEqual(buttons[0][1], '"ZPlugin:Generar y exportar ID:Generar y exportar ID"')
         h.run(buttons[0][3])
 
@@ -306,6 +306,87 @@ class IDExport(unittest.TestCase):
         self.assertEqual(h.meshes, before)
         self.assertFalse(any(e[0] in {'fill', 'groups', 'polypaint', 'unmask'} for e in h.events))
         self.assertEqual(h.exports, [])
+
+    def export_only(self, h):
+        buttons = [n for n in parse(OUTPUT.read_text('ascii')) if n[0] == 'IButton']
+        button = next(n for n in buttons if n[1] == '"ZPlugin:Generar y exportar ID:Exportar ID"')
+        h.run(button[3])
+
+    def test_manual_export_preserves_mesh_data_and_display_across_views(self):
+        for reorder in (False, True):
+            with self.subTest(reorder=reorder), tempfile.TemporaryDirectory() as d:
+                h = self.host(reorder)
+                h.chosen = d
+                before = copy.deepcopy(h.meshes)
+                state = (h.pp[:], h.tx[:], h.status[:], h.st, h.transform[:],
+                         h.zoom, h.pan[:], copy.deepcopy(h.ui))
+                original = h.cmd
+                def inspect(n):
+                    if n[0] == 'IPress' and h.e(n[1]) == 'Document:Export':
+                        self.assertEqual(h.ui['Render:Flat'], 1)
+                        self.assertEqual(h.meshes, before)
+                        self.assertEqual((h.pp, h.tx), state[:2])
+                    return original(n)
+                h.cmd = inspect
+                self.export_only(h)
+                self.assertEqual(h.meshes, before)
+                self.assertTrue(all(e[0] == 'export' for e in h.events))
+                self.assertEqual([Path(e['path']).parts[-2:] for e in h.exports],
+                                 [('01', 'ID.png'), ('10', 'ID.png')])
+                self.assertEqual((h.pp,h.tx,h.status,h.st,h.transform,h.zoom,h.pan,h.ui), state)
+                self.assertFalse(list(Path(d).rglob('*.ztl')))
+
+    def test_manual_export_does_not_require_generation_controls_or_flat_material(self):
+        with tempfile.TemporaryDirectory() as d:
+            h = self.host(); h.chosen = d
+            for name in ['Color:FillObject', 'Tool:Polygroups:Auto Groups',
+                         'Tool:Polypaint:Polypaint From Polygroups', 'Tool:Masking:Clear']:
+                h.enabled[name] = False
+            h.mats = [name for name in h.mats if 'Flat Color' not in name]
+            self.export_only(h)
+            self.assertEqual(len(h.exports), 2)
+            self.assertTrue(all(e[0] == 'export' for e in h.events))
+
+    def test_manual_export_repeat_notifies_and_generation_button_still_generates(self):
+        with tempfile.TemporaryDirectory() as d:
+            h = self.host(); h.chosen = d
+            self.export_only(h)
+            h.messages.clear()
+            self.export_only(h)
+            self.assertTrue(any('01/ID.png' in m for m in h.messages))
+            self.assertTrue(all(m['generation'] == 0 for m in h.meshes))
+            self.click(h)
+            self.assertEqual([m['generation'] for m in h.meshes], [1,1,1,0,0])
+
+    def test_manual_export_failure_restores_without_mesh_changes(self):
+        with tempfile.TemporaryDirectory() as d:
+            h = self.host(); h.chosen = d; h.export_failure = True
+            before = copy.deepcopy(h.meshes)
+            state = (h.pp[:],h.tx[:],h.status[:],h.st,h.transform[:])
+            with self.assertRaises(Exit): self.export_only(h)
+            self.assertEqual(h.meshes, before)
+            self.assertEqual((h.pp,h.tx,h.status,h.st,h.transform),state)
+            self.assertFalse(any('Mesh data may have changed' in m for m in h.messages))
+
+    def test_manual_export_interruption_recovers_from_either_button_without_generation(self):
+        for other_button in (False, True):
+            with self.subTest(other_button=other_button), tempfile.TemporaryDirectory() as d:
+                h = self.host(); h.chosen = d
+                before = copy.deepcopy(h.meshes)
+                state = (h.pp[:],h.tx[:],h.status[:],h.st,h.transform[:])
+                original = h.cmd
+                def interrupt(n):
+                    result = original(n)
+                    if n[0]=='IPress' and h.e(n[1])=='Document:Export': raise Exit()
+                    return result
+                h.cmd = interrupt
+                with self.assertRaises(Exit): self.export_only(h)
+                h.cmd = original
+                with self.assertRaises(Exit):
+                    (self.click if other_button else self.export_only)(h)
+                self.assertEqual(h.meshes,before)
+                self.assertEqual((h.pp,h.tx,h.status,h.st,h.transform),state)
+                self.assertEqual(len(h.exports),1)
 
     def test_generated_source_matches_current_inputs(self):
         self.assertEqual(OUTPUT.read_text('ascii'), compose(camera_root=CAMERA_ROOT))
@@ -343,10 +424,7 @@ class IDExport(unittest.TestCase):
                 for e in fills:
                     self.assertEqual(e[2], e[3]['rgb'])
                     self.assertEqual(e[3]['material'], 'Flat Color')
-                self.assertEqual(h.events[0][0], 'backup')
-                self.assertEqual(h.events[0][2], before)
-                self.assertEqual(h.events[0][3:], (state[0], 0))  # Save from the top mesh.
-                self.assertEqual(Path(h.events[0][1]).stem, before_names[0])
+                self.assertFalse(any(e[0] == 'backup' for e in h.events))
                 self.assertEqual(h.names, before_names)
                 self.assertEqual(h.exports[0]['mesh_rgb'], h.exports[1]['mesh_rgb'])
                 for export in h.exports:
@@ -363,10 +441,8 @@ class IDExport(unittest.TestCase):
                 self.assertEqual(h.ui, state[6])
                 self.assertEqual(h.tool_path, state[7])
                 self.assertEqual(cell(h, 5), state[8])
-                self.assertTrue(all(h.pp[i] == 1 for i in needed))
+                self.assertEqual(h.pp, before_pp)
                 self.assertEqual(struct.unpack_from('<f', h.mem['ID32Recovery'])[0], 0)
-                self.assertTrue(Path(h.v['idBackup']).is_file())
-                self.assertIn('complete', Path(h.v['idRecord']).read_text().lower())
                 self.assertFalse((Path(h.v['idRoot']) / '25').exists())
                 self.assertFalse(list(Path(d).rglob('*.tmp')))
                 self.assertFalse(any('BPR' in str(e) for e in h.events))
@@ -374,7 +450,7 @@ class IDExport(unittest.TestCase):
     def test_existing_root_other_passes_and_unique_recovery(self):
         h = self.host()
         with tempfile.TemporaryDirectory() as d:
-            session = Path(d) / 'ZPass_3'
+            session = Path(d) / 'ZPass_1'
             (session / '01').mkdir(parents=True)
             other = session / '01/_Depth.psd'
             other.write_bytes(b'keep')
@@ -387,8 +463,6 @@ class IDExport(unittest.TestCase):
             self.assertEqual(Path(h.v['idRoot']), session)
             self.assertEqual(other.read_bytes(), b'keep')
             self.assertEqual(old.read_bytes(), b'old backup')
-            self.assertEqual(Path(h.v['idBackup']).parent.name, 'Before_ID_2')
-            self.assertEqual(Path(h.v['idBackup']).stem, h.names[0])
 
     def test_resize_items_can_be_disabled_until_shared_reader_leaves_edit(self):
         h = self.host()
@@ -430,21 +504,29 @@ class IDExport(unittest.TestCase):
             h.mem['RC30Root'] = bytearray(str(Path(d)/'missing').encode()+b'\0')
             h.chosen = d
             self.click(h)
-            self.assertEqual(Path(h.v['idRoot']).name, 'ZPass_2')
+            self.assertEqual(Path(h.v['idRoot']).name, 'ZPass_1')
 
-    def test_collision_in_later_camera_is_before_backup_and_mutation(self):
-        h = self.host()
+    def test_collision_notified_before_mutation_and_overwritten(self):
         with tempfile.TemporaryDirectory() as d:
-            (Path(d)/'10').mkdir()
-            target = Path(d)/'10/ID.png'
-            target.write_bytes(b'keep')
-            h.mem['RC30Root'] = bytearray(d.encode()+b'\0')
-            before = copy.deepcopy(h.meshes)
-            with self.assertRaises(Exit):
-                self.click(h)
-            self.unchanged_meshes(h, before)
-            self.assertFalse(h.events)
-            self.assertEqual(target.read_bytes(), b'keep')
+            h = self.host()
+            h.chosen = d
+            target = Path(d)/'ZPass_1/10/ID.png'
+            target.parent.mkdir(parents=True)
+            target.write_bytes(b'old')
+            pp = h.pp[:]
+            original = h.cmd
+            def inspect(n):
+                if n[0] == 'IPress' and h.e(n[1]) == 'Color:FillObject':
+                    self.assertTrue(any('10/ID.png' in m for m in h.messages))
+                return original(n)
+            h.cmd = inspect
+            self.click(h)
+            self.assertTrue(target.read_bytes().startswith(bytes([137,80,78,71])))
+            self.assertEqual(h.pp, pp)
+            self.assertFalse(any(e[0] == 'backup' for e in h.events))
+            self.assertFalse(list(Path(d).rglob('*.ztl')))
+            self.assertFalse((Path(d)/'ZPass_2').exists())
+
 
     def test_cancel_choose_has_no_mesh_changes(self):
         h = self.host()
@@ -488,7 +570,7 @@ class IDExport(unittest.TestCase):
                 self.unchanged_meshes(h, before)
 
     def test_output_write_and_backup_failures_precede_mutation(self):
-        for case in ['write', 'record', 'backup_cancel', 'backup_empty', 'backup_short', 'path_restore']:
+        for case in ['write']:
             with self.subTest(case=case), tempfile.TemporaryDirectory() as d:
                 h = self.host()
                 h.chosen = d
@@ -533,7 +615,6 @@ class IDExport(unittest.TestCase):
                 self.click(h)
             self.assertEqual((h.status, h.st, h.pp, h.tx, h.transform), state)
             self.assertEqual([m['generation'] for m in h.meshes], [1, 1, 1, 0, 0])
-            self.assertTrue(Path(h.v['idBackup']).is_file())
             self.assertTrue(any('Mesh data may have changed' in m for m in h.messages))
 
     def test_escape_then_same_button_recovers_without_rerunning_and_guards_other_tool(self):
@@ -558,7 +639,6 @@ class IDExport(unittest.TestCase):
             self.assertEqual(h.events, events)
             self.assertEqual((h.status, h.st, h.pp, h.tx, h.transform), state)
             self.assertTrue(any('Nothing was rerun' in message for message in h.messages))
-            self.assertTrue(Path(h.v['idBackup']).is_file())
 
     def test_corrupt_png_is_reported_after_mutation_without_overwriting(self):
         h = self.host()
@@ -715,10 +795,9 @@ class IDExport(unittest.TestCase):
             if item[0] in ['StrMerge', 'MessageOK', 'NoteBar']:
                 h.cmd(item)
         self.assertGreater(len(h.string_merges), 20)
-        self.assertTrue(any(backup in value for _, value in h.string_merges))
         self.assertTrue(any('25 cameras, 1000 meshes.' in value for _, value in h.string_merges))
         self.assertLessEqual(max(len(value) for _, value in h.string_merges), 255)
-        self.assertEqual(max(len(value) for _, value in h.string_merges), 254)
+
 
     def max_session(self, directory):
         base = str(Path(directory).resolve())
@@ -727,65 +806,9 @@ class IDExport(unittest.TestCase):
         self.assertEqual(len(str(session)), 180)
         return session
 
-    def test_max_path_action_is_unblocked_and_record_contains_complete_backup_path(self):
-        with tempfile.TemporaryDirectory() as d:
-            h = self.host()
-            session = self.max_session(d)
-            h.mem['RC30Root'] = bytearray(str(session).encode()+b'\0')
-            h.backup_number = 9999
-            h.names[0] = h.names[0][:20] + 'A'*11  # 31 chars: path reaches 240.
-            before_names = h.names[:]
-            self.click(h)
-            self.assertEqual(Path(h.v['idBackup']).parent.name, 'Before_ID_9999')
-            self.assertEqual(Path(h.v['idBackup']).stem, before_names[0])
-            self.assertEqual(h.names, before_names)
-            self.assertEqual(len(h.v['idBackup']), 240)
-            first_export = next(i for i, event in enumerate(h.events) if event[0] == 'export')
-            self.assertFalse([notice for notice in h.notices
-                              if notice[0] == 'MessageOK' and notice[2] <= first_export])
-            self.assertTrue(any(kind == 'NoteBar' and 'Backup saved:' in value
-                                for kind, value, _ in h.notices))
-            record = Path(h.v['idRecord']).read_text('ascii')
-            self.assertIn(h.v['idBackup'], record)
-            self.assertNotIn('\0', record)
-            self.assertEqual(record.count('\n'), 2)
-            self.assertTrue(any(h.v['idBackup'] in message for message in h.messages))
-            h.v['idExportedCount'] = 25
-            h.v['idProcessedCount'] = 1000
-            h.call('ID_ShowResult')
-            self.assertEqual(max(len(value) for _, value in h.string_merges), 254)
 
-    def test_max_path_failure_and_interrupted_recovery_messages(self):
-        for case in ['export', 'backup_cancel', 'write', 'groups', 'backup_notice']:
-            with self.subTest(case=case), tempfile.TemporaryDirectory() as d:
-                h = self.host()
-                session = self.max_session(d)
-                h.mem['RC30Root'] = bytearray(str(session).encode()+b'\0')
-                h.backup_number = 9999
-                if case == 'export':
-                    h.export_failure = True
-                if case == 'backup_cancel':
-                    h.save_failure = 'cancel'
-                if case == 'write':
-                    h.write_failure = 'ID_write_test_'
-                if case in ['groups', 'backup_notice']:
-                    h.interrupt_on = case
-                with self.assertRaises(Exit):
-                    self.click(h)
-                if case in ['groups', 'backup_notice']:
-                    h.interrupt_on = None
-                    h.tool_index += 1
-                    with self.assertRaises(Exit):
-                        self.click(h)
-                    self.assertTrue(any('same Tool' in message for message in h.messages))
-                    h.tool_index -= 1
-                    h.load(OUTPUT)
-                    with self.assertRaises(Exit):
-                        self.click(h)
-                    expected = 'Nothing was rerun' if case == 'groups' else 'No ID mesh processing started'
-                    self.assertTrue(any(expected in message for message in h.messages))
-                self.assertLessEqual(max(len(value) for _, value in h.string_merges), 255)
-                self.assertLessEqual(max(len(value) for value in h.messages), 255)
+
+
 
     def test_mock_reproduces_save_as_marker_loss_without_toolsetpath_repair(self):
         h = self.host()
@@ -801,126 +824,15 @@ class IDExport(unittest.TestCase):
             h.call('ID_CB32_CheckTracked')
             self.assertEqual(h.v['idCamTrackValid'], 0)
 
-    def test_exact_name_backup_model_reopens_with_matching_bank(self):
-        for target in ['first', 'selected']:
-            with self.subTest(rename_target=target), tempfile.TemporaryDirectory() as d:
-                h = self.host(reorder=True)
-                h.save_rename_target = target
-                h.chosen = d
-                names = h.names[:]
-                selected = h.st
-                self.click(h)
-                self.assertEqual(h.names, names)
-                self.assertEqual(h.st, selected)
-                saved = h.backup_states[h.v['idBackup']]
-                self.assertEqual(saved['names'], names)
-                self.assertEqual(saved['st'], 0)
-                self.assertTrue(all(mesh['generation'] == 0 for mesh in saved['meshes']))
-                # Reopen the modeled pre-ID mesh data into a new mock host and
-                # execute the actual strict reader against the matching bank.
-                receiver = IDHost()
-                receiver.load(OUTPUT)
-                receiver.mem['CB25Data'] = bytearray(h.mem['CB25Data'])
-                for key, value in saved.items():
-                    setattr(receiver, key, copy.deepcopy(value))
-                receiver.call('ID_CB32_CheckTracked')
-                self.assertEqual(receiver.v['idCamTrackValid'], 1)
-                for index, slot in enumerate([0, 9]):
-                    receiver.call('ID_CB29_LoadSlot', slot)
-                    self.assertEqual([status & 1 for status in receiver.status], h.exports[index]['visibility'])
 
-    def test_filename_validator_uses_actual_routine_for_windows_rules(self):
-        h = IDHost()
-        h.load(OUTPUT)
-        rejected = ['', '.', '..', 'end.', 'end ', 'CON', 'prn.dat', 'aux.a',
-                    'NUL.tar.gz', 'COM1', 'lpt9.abc', 'com'+chr(185), 'lpt'+chr(178)]
-        rejected += ['a'+character+'b' for character in '<>:"/\\|?*'+chr(0)+chr(1)+chr(31)+chr(127)]
-        for stem in rejected:
-            with self.subTest(stem=repr(stem)):
-                h.v['idBackupStem'] = stem
-                h.call('ID_ValidateBackupStem')
-                self.assertTrue(h.v['idFilenameError'])
-                self.assertEqual(h.v['idBackupStem'], stem)
-        for stem in ['CB123456654321G0001_mesh', '.CB123456654321G0001_mesh',
-                     'Merged_CB123456654321G0001_Part 1 (A).rev2', 'COM0', 'console']:
-            with self.subTest(stem=stem):
-                h.v['idBackupStem'] = stem
-                h.call('ID_ValidateBackupStem')
-                self.assertEqual(h.v['idFilenameError'], '')
-                self.assertEqual(h.v['idBackupStem'], stem)
-        for item in commands((ROOT/'Development/id_body.txt').read_text('ascii')):
-            if item[0] == 'If':
-                self.assertNotIn('[StrToAsc', item[1])
 
-    def test_unsafe_first_names_abort_before_save_without_changing_names(self):
-        names = ['tail'+character+'name' for character in '<>:"/\\|?*'+chr(1)+chr(127)]
-        names += ['trailing.', 'trailing ', 'CON.prefix', 'LPT1.prefix']
-        with tempfile.TemporaryDirectory() as d:
-            for unsafe in names:
-                with self.subTest(name=repr(unsafe)):
-                    h = self.host()
-                    if unsafe in ['CON.prefix', 'LPT1.prefix']:
-                        h.names[0] = unsafe.split('.')[0]+'.'+h.names[0]
-                    else:
-                        h.names[0] += unsafe
-                    original_names = h.names[:]
-                    selected = h.st
-                    before = copy.deepcopy(h.meshes)
-                    h.chosen = d
-                    with self.assertRaises(Exit):
-                        self.click(h)
-                    self.assertTrue(h.v['idFilenameError'])
-                    self.assertEqual(h.names, original_names)
-                    self.assertEqual(h.st, selected)
-                    self.unchanged_meshes(h, before)
-                    self.assertFalse(h.events)
 
-    def test_backup_path_over_limit_aborts_without_truncation_or_save(self):
-        h = self.host()
-        with tempfile.TemporaryDirectory() as d:
-            session = self.max_session(d)
-            h.mem['RC30Root'] = bytearray(str(session).encode()+b'\0')
-            h.backup_number = 9999
-            h.names[0] = h.names[0][:20]+'A'*12  # Would create a 241-character path.
-            names = h.names[:]
-            before = copy.deepcopy(h.meshes)
-            with self.assertRaises(Exit):
-                self.click(h)
-            self.assertEqual(h.names, names)
-            self.unchanged_meshes(h, before)
-            self.assertFalse(h.events)
-            self.assertTrue(any('backup path too long' in message for message in h.messages))
-            self.assertFalse(list((session/'Recovery').iterdir()))
 
-    def test_fresh_backup_folder_and_save_interruption_preserve_names(self):
-        h = self.host()
-        with tempfile.TemporaryDirectory() as d:
-            session = Path(d)
-            recovery = session/'Recovery'
-            recovery.mkdir()
-            (recovery/'Before_ID_1').mkdir()  # Empty folders are still occupied.
-            old = recovery/'Before_ID_2.ztl'
-            old.write_bytes(b'legacy recovery')
-            occupied = recovery/'Before_ID_3'
-            occupied.write_bytes(b'occupied path')
-            h.mem['RC30Root'] = bytearray(str(session).encode()+b'\0')
-            h.interrupt_on = 'save'
-            names, selected = h.names[:], h.st
-            with self.assertRaises(Exit):
-                self.click(h)
-            self.assertEqual(Path(h.v['idBackup']).parent.name, 'Before_ID_4')
-            self.assertEqual(Path(h.v['idBackup']).stem, names[0])
-            self.assertEqual(h.names, names)
-            h.interrupt_on = None
-            h.load(OUTPUT)
-            with self.assertRaises(Exit):
-                self.click(h)
-            self.assertEqual(h.names, names)
-            self.assertEqual(h.st, selected)
-            self.assertEqual(h.tool_path, 'owner/Original')
-            self.assertEqual(old.read_bytes(), b'legacy recovery')
-            self.assertEqual(occupied.read_bytes(), b'occupied path')
-            self.assertFalse(any(event[0] == 'groups' for event in h.events))
+
+
+
+
+
 
     def test_native_draw_polyframe_path_is_disabled_for_export_then_restored(self):
         for original in [0, 1]:
@@ -1064,7 +976,7 @@ class IDExport(unittest.TestCase):
 
     def test_native_toolsetpath_uses_scalar_index_and_result_at_both_sites(self):
         h = self.host()
-        for routine in ['ID_Restore', 'ID_BackupTool']:
+        for routine in ['ID_Restore']:
             nodes = list(commands(h.routines[routine][0]))
             setters = [item for item in nodes if item[0] == 'ToolSetPath']
             self.assertEqual(len(setters), 1)
@@ -1085,7 +997,7 @@ class IDExport(unittest.TestCase):
             self.click(h)
             # Display recovery before backup, backup path restoration, final
             # display recovery: both actual sites execute with the dynamic ID.
-            self.assertEqual(h.path_updates, [(9, 'owner/Original', 0)]*3)
+            self.assertEqual(h.path_updates, [(9, 'owner/Original', 0)]*2)
             self.assertEqual(h.tool_path, 'owner/Original')
             self.assertEqual(len(h.exports), 2)
 

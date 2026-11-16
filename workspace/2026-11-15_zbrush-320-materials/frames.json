@@ -1,0 +1,27 @@
+{
+  "input": "projects/zbrush-plugins/A Materails All Tools.mp4",
+  "entity": "2026-11-15_zbrush-320-materials",
+  "threshold": 12.0,
+  "max_frames": 25,
+  "frame_count": 3,
+  "frames": [
+    {
+      "index": 1,
+      "frame": 0,
+      "timestamp": 0.0,
+      "path": "frames/0001.jpg"
+    },
+    {
+      "index": 2,
+      "frame": 504,
+      "timestamp": 17.07,
+      "path": "frames/0002.jpg"
+    },
+    {
+      "index": 3,
+      "frame": 733,
+      "timestamp": 24.85,
+      "path": "frames/0003.jpg"
+    }
+  ]
+}

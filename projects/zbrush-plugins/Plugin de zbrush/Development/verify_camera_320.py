@@ -26,6 +26,7 @@ class Camera320(unittest.TestCase):
 
     def normalized(self,h):
         data=bytearray(h.mem['CB25Data'])
+        struct.pack_into('<f',data,4,9)
         for index in [3,4,6]+[20+s*20+17 for s in range(25)]:
             struct.pack_into('<f',data,index*4,0)
         return bytes(data)
@@ -125,7 +126,7 @@ class Camera320(unittest.TestCase):
             h.ask=str(Path(d)/'all.zcv');before=bytes(h.mem['CB25Data'])
             self.button(h,'EXPORT BANK')
             self.assertEqual(Path(h.ask).read_bytes(),self.normalized(h))
-            self.assertEqual(len(Path(h.ask).read_bytes()),111084)
+            self.assertEqual(len(Path(h.ask).read_bytes()),123088)
             self.assertEqual(bytes(h.mem['CB25Data']),before)
             r=self.host();parts(r,h.names[::-1]);r.ask=h.ask;self.button(r,'IMPORT BANK')
             for slot in range(25):
@@ -164,7 +165,7 @@ class Camera320(unittest.TestCase):
                 def cmd(n):
                     if n[0]=='MemSaveToFile' and n[1]=='CB32Export':
                         if mode=='short_write':Path(h.ask).write_bytes(b'partial');return 7
-                        if mode=='lying_write':return 111084
+                        if mode=='lying_write':return 123088
                     if n[0]=='MemCreateFromFile' and n[1]=='CB32ExportCheck':
                         if mode=='read_error':return -3
                         if mode=='read_corruption':
@@ -312,7 +313,7 @@ class Camera320(unittest.TestCase):
                     struct.pack_into('<2f',data,25545*4,47,1)
                 h.mem['CB29ImportTemp']=data;h.call('CB30_AcceptImport',size)
                 self.assertEqual(h.v['cbImportValid'],1)
-                self.assertEqual(get(h,1),8);self.assertEqual(get(h,7),0)
+                self.assertEqual(get(h,1),9);self.assertEqual(get(h,7),0)
                 self.assertEqual(get(h,8),0);self.assertEqual(get(h,25745),0)
                 self.assertEqual(get(h,27746),0);self.assertEqual(get(h,21),42.25)
                 self.assertEqual(get(h,36),0 if version>=6 else 1)

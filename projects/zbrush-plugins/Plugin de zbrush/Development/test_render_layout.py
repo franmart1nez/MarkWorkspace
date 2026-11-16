@@ -91,7 +91,7 @@ class RenderLayout(unittest.TestCase):
         reader = (ROOT / 'Development/camera_reader.inc').read_text(encoding='ascii')
         self.assertEqual((ROOT / 'Render Capture/RenderCapture.txt').read_text(encoding='ascii'),
                          reader + '\n\n' + body)
-        self.assertTrue(body.startswith('// Render Capture 3.2.0'))
+        self.assertTrue(body.startswith('// Render Capture 3.2.2'))
         switches = [n[1].strip('"').removeprefix('ZPlugin:Camera Bank 25:')
                     for n in parse((ROOT / 'Camera Bank/CameraBank25.txt').read_text(encoding='ascii'))
                     if n[0] == 'ISwitch' and n[1].startswith('"ZPlugin:Camera Bank 25:')]
@@ -122,7 +122,7 @@ class RenderLayout(unittest.TestCase):
                     if name in PNG_NAMES:
                         self.assertEqual(export['color'], [255, 255, 255])
                         self.assertEqual(export['shadow'], 0)
-                        self.assertEqual(export['pp'], [1, 1] if name == PNG_NAMES[0] else [0, 0])
+                        self.assertEqual(export['pp'], before[1] if name == PNG_NAMES[0] else [0, 0])
                         self.assertEqual(export['material'], dict(zip(PNG_NAMES, (
                             'Basic Thor (1)', 'NormalRGBMat', 'DoubleShade1', 'Metal 11')))[name])
                     else:
@@ -132,51 +132,11 @@ class RenderLayout(unittest.TestCase):
                                    ('Render:BPR AO:Rays', 30), ('Render:BPR RenderPass:SPix', 2)):
                     self.assertEqual(h.ui[key], value)
 
-    def test_same_phase_reruns_preserve_both_sets_without_exporting(self):
-        for order in ORDERS:
-            with self.subTest(order=order), tempfile.TemporaryDirectory() as parent:
-                h = self.host()
-                root = self.session(h, parent)
-                for phase in order:
-                    h.call(phase)
-                before, settings, count = files(root), display(h), len(h.exports)
-                for phase in order:
-                    with self.assertRaises(Exit):
-                        h.call(phase)
-                    self.assertEqual(files(root), before)
-                    self.assertEqual(display(h), settings)
-                    self.assertEqual(len(h.exports), count)
 
-    def test_every_pass_collision_on_last_camera_blocks_whole_phase(self):
-        for phase, names in PHASES.items():
-            for name in names:
-                with self.subTest(phase=phase, name=name), tempfile.TemporaryDirectory() as parent:
-                    h = self.host()
-                    root = self.session(h, parent)
-                    (root / '25' / name).write_bytes(b'\x00\xffpreserve existing pass')
-                    before, settings = files(root), display(h)
-                    with self.assertRaises(Exit):
-                        h.call(phase)
-                    self.assertEqual(files(root), before)
-                    self.assertEqual(display(h), settings)
-                    self.assertEqual(h.exports, [])
-                    self.assertIn('phase already has output', h.messages[-1])
 
-    def test_screenshot_collision_blocks_non_bpr_but_allows_bpr(self):
-        with tempfile.TemporaryDirectory() as parent:
-            h = self.host()
-            root = self.session(h, parent)
-            shot = root / 'Screenshots/25.png'
-            shot.write_bytes(b'\x00\xffpreserve screenshot')
-            before, settings = files(root), display(h)
-            with self.assertRaises(Exit):
-                h.call('RC_NonBPR')
-            self.assertEqual(h.exports, [])
-            self.assertEqual(files(root), before)
-            self.assertEqual(display(h), settings)
-            h.call('RC_BPR')
-            self.assertEqual(len(h.exports), 21)
-            self.assertEqual(shot.read_bytes(), before['Screenshots/25.png'])
+
+
+
 
     def test_disabled_and_empty_camera_collisions_are_ignored(self):
         with tempfile.TemporaryDirectory() as parent:
@@ -195,25 +155,7 @@ class RenderLayout(unittest.TestCase):
             self.assertEqual(len(h.exports), 33)
             self.assertTrue(all(Path(e['path']).parent.name in CAMERAS for e in h.exports))
 
-    def test_new_sessions_skip_existing_numbers_and_leave_previous_files(self):
-        with tempfile.TemporaryDirectory() as parent:
-            for number in (1, 3):
-                previous = Path(parent) / f'ZPass_{number}'
-                previous.mkdir()
-                (previous / 'keep.bin').write_bytes(b'existing session')
-            h = self.host()
-            first = self.session(h, parent)
-            self.assertEqual(first.name, 'ZPass_2')
-            h.call('RC_NonBPR')
-            h.call('RC_BPR')
-            before = files(Path(parent))
-            second = self.session(h, parent)
-            self.assertEqual(second.name, 'ZPass_4')
-            self.assertEqual(files(Path(parent)), before)
-            h.call('RC_BPR')
-            h.call('RC_NonBPR')
-            self.assert_complete(h, second)
-            self.assertEqual({name: files(Path(parent))[name] for name in before}, before)
+
 
     def test_source_reload_keeps_session_and_allows_other_phase(self):
         for order in ORDERS:
@@ -254,10 +196,38 @@ class RenderLayout(unittest.TestCase):
                 self.assertEqual(h.cmd(['MVarGet', 'RC30Recovery', '0']), 0)
                 self.assertEqual({name: files(root)[name] for name in partial}, partial)
                 before, count = files(root), len(h.exports)
-                with self.assertRaises(Exit):
-                    h.call(order[0])
-                self.assertEqual(files(root), before)
-                self.assertEqual(len(h.exports), count)
+                h.call(order[0])
+                self.assertGreater(len(h.exports), count)
+                self.assertEqual(display(h), settings)
+
+    def test_reuse_overwrite_and_notice_before_render(self):
+        for phase, names in PHASES.items():
+            with self.subTest(phase=phase), tempfile.TemporaryDirectory() as parent:
+                h = self.host()
+                root = self.session(h, parent)
+                h.call(phase)
+                old = files(root)
+                (root / '25/keep.txt').write_bytes(b'untouched')
+                h.messages.clear()
+                original = h.cmd
+                def inspect(n):
+                    if n[0] == 'IPress' and h.e(n[1]) in ['Render:Preview', 'Render:BPR RenderPass:Render Best Preview']:
+                        notices = ' '.join(h.messages)
+                        for label in CAMERAS:
+                            for name in names:
+                                self.assertIn(label+'/'+name, notices)
+                    return original(n)
+                h.cmd = inspect
+                before = display(h)
+                h.call(phase)
+                self.assertEqual(display(h), before)
+                self.assertEqual((root/'25/keep.txt').read_bytes(), b'untouched')
+                self.assertEqual({k: files(root)[k] for k in old}, old)
+                for chosen in (parent, str(root), str(root)+'/'):
+                    h.chosen = chosen
+                    h.call('RC_CreateFolders')
+                    self.assertEqual(Path(h.v['rcRoot']), root)
+                self.assertFalse((Path(parent)/'ZPass_2').exists())
 
 
 if __name__ == '__main__':

@@ -1,0 +1,320 @@
+{
+  "version": "3.2.1",
+  "host": "ZBrush 2023.2.1 / Windows",
+  "completed": "2026-11-16T03:30:18.912231+00:00",
+  "automated": {
+    "tests": 114,
+    "seconds": 150.279,
+    "result": "OK",
+    "final_log_sha256": "5fbe984713f1e3141e824e9729ad95981939d38be08326e2a631c0db3b079d39",
+    "production_sources_unchanged_after_tests": true
+  },
+  "native": {
+    "ztl_filename": "my new.project.ztl",
+    "camera_image_pairs": [
+      {
+        "camera": 1,
+        "before_sha256": "44d2dede90f97df82719ba3c81ac8e0e6bd2f9159abf453fcf022d24996c6b01",
+        "after_sha256": "44d2dede90f97df82719ba3c81ac8e0e6bd2f9159abf453fcf022d24996c6b01",
+        "byte_identical": true
+      },
+      {
+        "camera": 2,
+        "before_sha256": "44d2dede90f97df82719ba3c81ac8e0e6bd2f9159abf453fcf022d24996c6b01",
+        "after_sha256": "44d2dede90f97df82719ba3c81ac8e0e6bd2f9159abf453fcf022d24996c6b01",
+        "byte_identical": true
+      },
+      {
+        "camera": 3,
+        "before_sha256": "e104c40847795e645d3bd1f66c0c43985ae9ad925210ce90d23add9f2c037ec3",
+        "after_sha256": "e104c40847795e645d3bd1f66c0c43985ae9ad925210ce90d23add9f2c037ec3",
+        "byte_identical": true
+      }
+    ],
+    "duplicated_meshes_native_ids": [
+      6806552,
+      7993886,
+      3372108
+    ],
+    "same_id_ambiguity_coverage": "automated only; native Duplicate produced distinct IDs",
+    "render_reader": {
+      "cameras": [
+        1,
+        2
+      ],
+      "byte_identical_to_camera_bank": true,
+      "full_bpr_non_bpr_rerun": false
+    },
+    "id_public_action": {
+      "cameras": [
+        1,
+        2
+      ],
+      "processed_meshes": 3,
+      "colorize_on": true,
+      "gray_03_omitted": true
+    },
+    "id_backup": {
+      "reopened": true,
+      "subtools": 3,
+      "public_recall_cameras": [
+        1,
+        2
+      ],
+      "original_metallic_surface_observed": true
+    },
+    "public_bank_round_trip": {
+      "bytes": 123088,
+      "data_version": 9,
+      "native_id_groups": [
+        [
+          6806552,
+          1
+        ],
+        [
+          7993886,
+          2
+        ],
+        [
+          3372108,
+          3
+        ]
+      ],
+      "persistent_cells_unchanged": true,
+      "changed_ui_cells": [
+        5,
+        57
+      ],
+      "camera_02_width": 640,
+      "camera_02_height": 480,
+      "camera_02_visible": [
+        false,
+        true,
+        true
+      ]
+    },
+    "original_case": {
+      "input_hashes_unchanged": true,
+      "views": [
+        {
+          "camera": 1,
+          "width": 1872,
+          "height": 1280,
+          "subtools": 10,
+          "visible": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "camera": 2,
+          "width": 1564,
+          "height": 4561,
+          "subtools": 10,
+          "visible": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "camera": 3,
+          "width": 710,
+          "height": 636,
+          "subtools": 10,
+          "visible": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "camera": 4,
+          "width": 1872,
+          "height": 1280,
+          "subtools": 10,
+          "visible": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "camera": 5,
+          "width": 1564,
+          "height": 4561,
+          "subtools": 10,
+          "visible": [
+            true,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        }
+      ],
+      "migrated_bank_sha256": "eb58d2db62dcd3dd07290a361e4f3bb1d135805b4d08752a444e17a203f9f244"
+    },
+    "startup": {
+      "camera_control": true,
+      "render_control": true,
+      "id_control": true,
+      "bank_version": 9
+    },
+    "restoration": {
+      "width": 2122,
+      "height": 1280,
+      "edit": false,
+      "screen_saver_seconds": 60,
+      "rgb_intensity": 25,
+      "z_intensity": 25,
+      "stroke": "Dots",
+      "alpha": "Off",
+      "client_closed": true,
+      "app_running_after_client_exit": true
+    }
+  },
+  "session_incident": "MCP-owned launches ended when the client closed. Independent app launch survived client cleanup; owner restoration was repeated. Original and QA backups preserved.",
+  "compiled": [
+    {
+      "source": "Camera Bank/CameraBank25.txt",
+      "source_sha256": "96ff50fe65cd1e457660cd94fb1aad3a0d17c1a87ca5d9337265e2e7f156f364",
+      "binary": "Camera Bank/CameraBank25.zsc",
+      "binary_sha256": "4bedb619bced75144e3fe8553b6ffaa11ae0687964e89086024aa44cbf9b0ff0",
+      "bytes": 86544
+    },
+    {
+      "source": "Render Capture/RenderCapture.txt",
+      "source_sha256": "10b370a4d8c2f7b01b21405829ca8c500f219f479945c0350851c336d35d4e26",
+      "binary": "Render Capture/RenderCapture.zsc",
+      "binary_sha256": "f323a1467065fc0082014a4487d364f91a161f6cd6d977830b1cdf5c6852885c",
+      "bytes": 71716
+    },
+    {
+      "source": "Generate and Export ID/GenerateExportID.txt",
+      "source_sha256": "9775fb620f9637400e47b67233422e1ff059bfb0611f74b09b4edebfe629e8fc",
+      "binary": "Generate and Export ID/GenerateExportID.zsc",
+      "binary_sha256": "11c1f9bb4293a98d15f4b4fe89632a96d2ff681be9f71b4791438f4d8f74885f",
+      "bytes": 86420
+    }
+  ],
+  "delivery_checks": {
+    "archive_allowlist_and_hashes": "passed",
+    "changed_report_local_links": 44,
+    "preview_tabs": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "widths": [
+      1440,
+      768,
+      390
+    ],
+    "themes": [
+      "dark",
+      "light"
+    ],
+    "image_preview_download_close": "passed",
+    "page_errors": [],
+    "repository_template_check": "pre-existing failure: expected four sample cards; HEAD and current registry both have zero; unrelated cards unchanged"
+  },
+  "images": [
+    {
+      "path": "fresh-after-0.png",
+      "bytes": 923648,
+      "sha256": "44d2dede90f97df82719ba3c81ac8e0e6bd2f9159abf453fcf022d24996c6b01"
+    },
+    {
+      "path": "fresh-after-1.png",
+      "bytes": 923648,
+      "sha256": "44d2dede90f97df82719ba3c81ac8e0e6bd2f9159abf453fcf022d24996c6b01"
+    },
+    {
+      "path": "fresh-after-2.png",
+      "bytes": 923648,
+      "sha256": "e104c40847795e645d3bd1f66c0c43985ae9ad925210ce90d23add9f2c037ec3"
+    },
+    {
+      "path": "fresh-before-0.png",
+      "bytes": 923648,
+      "sha256": "44d2dede90f97df82719ba3c81ac8e0e6bd2f9159abf453fcf022d24996c6b01"
+    },
+    {
+      "path": "fresh-before-1.png",
+      "bytes": 923648,
+      "sha256": "44d2dede90f97df82719ba3c81ac8e0e6bd2f9159abf453fcf022d24996c6b01"
+    },
+    {
+      "path": "fresh-before-2.png",
+      "bytes": 923648,
+      "sha256": "e104c40847795e645d3bd1f66c0c43985ae9ad925210ce90d23add9f2c037ec3"
+    },
+    {
+      "path": "id-01.png",
+      "bytes": 923648,
+      "sha256": "14d3616c6f2ffd6a76640c3aeb4fcbde44cbdf57eebd28a35da5e1b6a2c3403e"
+    },
+    {
+      "path": "id-02.png",
+      "bytes": 923648,
+      "sha256": "7bcfa2d057216d478af4ff84478344712243ffad62c3dfe52d78c0661f88852c"
+    },
+    {
+      "path": "id-backup-camera-02.png",
+      "bytes": 923648,
+      "sha256": "34f1586e85e9ce08bd91e211eda4725b23a49791563680d3d664f3aa6234e46a"
+    },
+    {
+      "path": "render-reader-0.png",
+      "bytes": 923648,
+      "sha256": "44d2dede90f97df82719ba3c81ac8e0e6bd2f9159abf453fcf022d24996c6b01"
+    },
+    {
+      "path": "render-reader-1.png",
+      "bytes": 923648,
+      "sha256": "44d2dede90f97df82719ba3c81ac8e0e6bd2f9159abf453fcf022d24996c6b01"
+    }
+  ],
+  "limits": [
+    "Other ZBrush versions not certified",
+    "Large and repeated-ID edge cases modeled offline",
+    "Full render acceptance remains historical 3.2.0 evidence",
+    "Owner visual acceptance separate"
+  ]
+}

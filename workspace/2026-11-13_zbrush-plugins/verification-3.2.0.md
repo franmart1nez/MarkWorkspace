@@ -1,5 +1,7 @@
 # ZBrush 3.2.0 — verified delivery
 
+Historical 3.2.0 record. The current installed release and filename fix are documented in [3.2.1 verification](verification-3.2.1.md).
+
 All three plugins are integrated, compiled and installed in ZBrush 2023.2.1. The three worker branches were reviewed and merged locally. No push, application restart or worker closure occurred.
 
 The integrated suite passed **100 tests**. Six installer/uninstaller checks then passed after adding two loaded-file regressions, covering **102 distinct scenarios** in total. Native tests covered bank export/import, name tracking after actual reorder and compatible MergeDown, both render orders, ID generation and backup reopening.
@@ -32,7 +34,7 @@ Both views retained geometry and framing after native MoveUp. Camera 02 was byte
 
 ## Delivery and limits
 
-[Download the 3.2.0 package](zbrush-plugins-source.zip)
+[Download the current 3.2.1 package](zbrush-plugins-source.zip)
 
 The package includes editable sources, generators/tests, native ZSCs, installer/uninstaller, manifest hashes and the full Development/VERIFICATION_3.2.0.md record. Keep the marked default ZTL filename or use ZPR for an arbitrary project name. Compatible merges retain one matching marker; unknown ancestry is never guessed from position.
 

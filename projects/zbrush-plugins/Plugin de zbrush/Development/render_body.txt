@@ -1,4 +1,4 @@
-// Render Capture 3.2.0 - Windows / ZBrush 2023.2.1 target.
+// Render Capture 3.2.2 - Windows / ZBrush 2023.2.1 target.
 // Exactly three public buttons. Reads Camera Bank v8 via CB25Data.
 // 3.2.0: both phases share each camera folder. See Development/VERIFICATION_3.2.0.md.
 // Source verification and native limits: Development/RENDER_3.2.0_RESULT.md.
@@ -127,11 +127,11 @@
     ]
 ]
 [RoutineDef,RC_CheckBank,
-    [If,[MemGetSize,CB25Data]!=111084,
-        [RoutineCall,RC_Fail,"Load CameraBank25.txt v3.2 first, then import or store your cameras."]
+    [If,[MemGetSize,CB25Data]!=123088,
+        [RoutineCall,RC_Fail,"Load CameraBank25.txt v3.2.1 first, then import or store your cameras."]
     ]
-    [If,([MVarGet,CB25Data,0]!=252523)||([MVarGet,CB25Data,1]!=8)||([MVarGet,CB25Data,2]!=25),
-        [RoutineCall,RC_Fail,"Unsupported Camera Bank. Use v3.2 (data v8)."]
+    [If,([MVarGet,CB25Data,0]!=252523)||([MVarGet,CB25Data,1]!=9)||([MVarGet,CB25Data,2]!=25),
+        [RoutineCall,RC_Fail,"Unsupported Camera Bank. Use v3.2.1 (data v9)."]
     ]
     [If,[SubToolGetCount]>1000,[RoutineCall,RC_Fail,"Maximum supported SubTools: 1000."]]
     [VarSet,rcCameraCount,0]
@@ -187,6 +187,13 @@
 [RoutineDef,RC_GetRoot,
     [VarSet,rcRoot,""]
     [If,[MemGetSize,RC30Root]>0,[MemReadString,RC30Root,rcRoot,0,1]]
+    // Discard pre-3.2.2 session roots; only the fixed output folder is valid.
+    [If,[StrLength,rcRoot]>0,
+        [If,[StrLength,rcRoot]<8,[VarSet,rcRoot,""],
+            [VarSet,rcTail,[StrLower,[StrExtract,rcRoot,[StrLength,rcRoot]-8,[StrLength,rcRoot]-1]]]
+            [If,([StrFind,"/zpass_1",rcTail]!=0)&&([StrFind,"\zpass_1",rcTail]!=0),[VarSet,rcRoot,""]]
+        ]
+    ]
     [If,[StrLength,rcRoot]==0,[RoutineCall,RC_Fail,"Press 1 - CREATE FOLDERS first."]]
     [RoutineCall,RC_CheckDLL]
     [If,[FileExecute,[Var,rcDll],"FolderExists",rcRoot]==0,[RoutineCall,RC_Fail,"Output folder no longer exists. Press 1 - CREATE FOLDERS."]]
@@ -203,13 +210,24 @@
     [MemReadString,RC30Choose,rcChosenRoot,0,1]
     [MemDelete,RC30Choose]
     [If,[StrLength,rcChosenRoot]==0,[Exit]]
-    [VarSet,rcSession,1]
-    [Loop,9999,
-        [VarSet,rcRoot,[StrMerge,rcChosenRoot,"/ZPass_",rcSession]]
-        [If,[FileExecute,[Var,rcDll],"FolderExists",rcRoot]==0,[LoopExit]]
-        [VarInc,rcSession]
+    [If,[StrLength,rcChosenRoot]>180,[RoutineCall,RC_Fail,"Choose a shorter output path (maximum 180 characters)."]]
+    // Accept either the parent directory or ZPass_1 itself, including a trailing separator.
+    [Loop,1024,
+        [If,[StrLength,rcChosenRoot]<2,[LoopExit]]
+        [VarSet,rcLast,[StrToAsc,rcChosenRoot,[StrLength,rcChosenRoot]-1]]
+        [If,(rcLast!=47)&&(rcLast!=92),[LoopExit]]
+        [VarSet,rcChosenRoot,[StrExtract,rcChosenRoot,0,[StrLength,rcChosenRoot]-2]]
     ]
-    [If,rcSession>9999,[RoutineCall,RC_Fail,"Choose a different output folder."]]
+    [VarSet,rcRoot,[StrMerge,rcChosenRoot,"/ZPass_1"]]
+    [If,[StrLength,rcChosenRoot]>=7,
+        [VarSet,rcTail,[StrLower,[StrExtract,rcChosenRoot,[StrLength,rcChosenRoot]-7,[StrLength,rcChosenRoot]-1]]]
+        [If,[StrFind,"zpass_1",rcTail]==0,
+            [If,[StrLength,rcChosenRoot]==7,[VarSet,rcRoot,rcChosenRoot],
+                [VarSet,rcLast,[StrToAsc,rcChosenRoot,[StrLength,rcChosenRoot]-8]]
+                [If,(rcLast==47)||(rcLast==92),[VarSet,rcRoot,rcChosenRoot]]
+            ]
+        ]
+    ]
     [RoutineCall,RC_Folder,rcRoot]
     [RoutineCall,RC_Folder,[StrMerge,rcRoot,"/Screenshots"]]
     [Loop,25,
@@ -269,7 +287,7 @@
     [VarSet,rcSelected,[SubToolGetActiveIndex]]
     [Loop,[SubToolGetCount],
         [SubToolSelect,rcPPIndex]
-        [If,[IsEnabled,"Tool:Polypaint:Colorize"],[ISet,"Tool:Polypaint:Colorize",rcPP]]
+        [If,[IsEnabled,"Tool:Polypaint:Colorize"],[ISet,"Tool:Polypaint:Colorize",rcPP*[MVarGet,RC30Recovery,33+(rcPPIndex*3)]]]
         [If,rcPP==0,
             [If,[IsEnabled,"Tool:Texture Map:Texture On"],[IUnPress,"Tool:Texture Map:Texture On"]]
         ,
@@ -285,27 +303,32 @@
     [VarSet,rcOutput,[StrMerge,rcRoot,"/",rcLabel]]
     [RoutineCall,RC_Folder,rcOutput]
 ]
-// Reject collisions BEFORE changing display state. Create a new session to rerun.
+// List every collision BEFORE changing display state or rendering.
 // Check only this phase's filenames so the other phase can share the folder.
 [RoutineDef,RC_CheckOutput,
     [Loop,25,
         [VarSet,rcBase,20+(rcSlot*20)]
         [If,([MVarGet,CB25Data,rcBase]==1)&&([MVarGet,CB25Data,rcBase+16]==1),
             [RoutineCall,RC_OutputFolder]
+            [VarSet,rcOverwrite,""]
             [If,rcCheckScreenshots==1,
                 [If,[FileExists,[StrMerge,rcRoot,"/Screenshots/",rcLabel,".png"]]>0,
-                    [RoutineCall,RC_Fail,"A screenshot already exists for a selected camera. Press CREATE FOLDERS to start a new session; existing images are preserved."]
+                    [VarSet,rcOverwrite,[StrMerge,rcOverwrite," Screenshots/",rcLabel,".png;"]]
                 ]
             ]
             [Loop,rcPassCount,
                 [If,[FileExists,[StrMerge,rcOutput,"/",rcPassNames(rcFileIndex)]]>0,
-                    [RoutineCall,RC_Fail,"This phase already has output files. Press CREATE FOLDERS to start a new session; existing renders are preserved."]
+                    [VarSet,rcOverwrite,[StrMerge,rcOverwrite," ",rcLabel,"/",rcPassNames(rcFileIndex),";"]]
                 ]
             ,rcFileIndex]
+            [If,[StrLength,rcOverwrite]>0,[MessageOK,[StrMerge,"Will overwrite in ZPass_1:",rcOverwrite],"Render Capture"]]
         ]
     ,rcSlot]
 ,rcCheckScreenshots]
 [RoutineDef,RC_Export,
+    [If,[FileExists,rcOutputFile]>0,
+        [If,[FileDelete,rcOutputFile]!=0,[RoutineCall,RC_Fail,[StrMerge,"Cannot replace: ",rcOutputFile]]]
+    ]
     [FileNameSetNext,[Var,rcOutputFile]]
     [IPress,[Var,rcExportID]]
     [IUpdate,1,1]
@@ -314,7 +337,9 @@
 [RoutineDef,RC_CopyScreenshot,
     [VarSet,rcShotFile,[StrMerge,rcRoot,"/Screenshots/",rcLabel,".png"]]
     // FileCopyTo copies the exported PNG bytes; do not render or export again.
-    [If,[FileExists,rcShotFile]>0,[RoutineCall,RC_Fail,"Screenshot already exists. Create a new session; existing images are preserved."]]
+    [If,[FileExists,rcShotFile]>0,
+        [If,[FileDelete,rcShotFile]!=0,[RoutineCall,RC_Fail,[StrMerge,"Cannot replace: ",rcShotFile]]]
+    ]
     [If,[MemGetSize,RC31CopyPath]>0,[MemDelete,RC31CopyPath]]
     [MemCreate,RC31CopyPath,1024,0]
     [MemWriteString,RC31CopyPath,rcShotFile,0]
@@ -344,7 +369,7 @@
             [RoutineCall,RC_OutputFolder]
             [ISet,"Render:Render Properties:Shadows",0]
             [IColorSet,255,255,255]
-            // Preserve the original workflow: document uses Polypaint ON;
+            // Preserve the original workflow: document uses each original Polypaint flag;
             // Normal / Double / Metal use Polypaint and texture display OFF.
             [RoutineCall,RC_Polypaint,1]
             [IPress,[Var,rcThor]]
@@ -437,7 +462,7 @@
     [NoteBar,"BPR complete",1]
     [MessageOK,[StrMerge,rcCameraCount," cameras: 7 PSD files each. Output: ",rcRoot],"Render Capture"]
 ]
-[IButton,"ZPlugin:Render Capture:1 - CREATE FOLDERS","Choose an output parent folder. Creates a new session with folders for each enabled camera.",
+[IButton,"ZPlugin:Render Capture:1 - CREATE FOLDERS","Choose an output parent folder. Reuses ZPass_1 with folders for each enabled camera.",
     [RoutineCall,RC_CreateFolders]
 ,,1]
 [IButton,"ZPlugin:Render Capture:2 - RENDER NON BPR","Export four PNG passes for all orange cameras and copy Z document to Screenshots with its camera number. Shadows OFF and active color white.",

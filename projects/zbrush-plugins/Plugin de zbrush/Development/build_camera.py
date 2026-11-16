@@ -331,12 +331,12 @@ camera,merge_globals,merge_names=runpy.run_path(str(ROOT/'Development/build_visi
 # Compact inherited whitespace/comments; retain original behavior and editable source.
 camera=re.sub(r'(?m)^\s*//.*\n','',camera)
 camera=re.sub(r'\n\s*\n','\n',camera)
-header='''// Camera Bank 25 v3.2.0 - Windows / ZBrush 2023.2.1 target.
-// v3.2.0: automatic name identifiers on store/update; independent verified bank export.
+header='''// Camera Bank 25 v3.2.1 - Windows / ZBrush 2023.2.1 target.
+// v3.2.1: native-ID fallback for the first SubTool filename alias.
 // Derived from the supplied CameraBank25_v2_9, retaining its slot UI.
-// Data v8: 27771 floats / 111084 bytes. See Development/DATA_FORMAT.md.
+// Data v9: 30772 floats / 123088 bytes. See Development/DATA_FORMAT.md.
 // Automatic identifier updates use the bundled ZFileUtils library.
-// Native acceptance and limitations: Development/VERIFICATION_3.2.0.md.
+// Native acceptance and limitations: Development/VERIFICATION_3.2.1.md.
 [VarDef,cbFovPath,""]
 [VarDef,cbUniversalPath,""]
 [VarDef,cbImportValid,0]

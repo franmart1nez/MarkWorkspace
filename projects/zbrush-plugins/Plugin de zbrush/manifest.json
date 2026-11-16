@@ -1,43 +1,44 @@
 {
-  "version": "3.2.0",
-  "bank_data_version": 8,
-  "updated": "2026-11-15T21:32:42.997368+00:00",
-  "delivery": "Three editable/generated sources and genuine native ZSC files, compiled and installed in ZBrush 2023.2.1. No restart or push.",
-  "source_validation": "100 integrated tests passed; six installer/uninstaller checks passed after the loaded-DLL fix, 102 distinct scenarios overall.",
-  "native_validation": "Public bank export/import, actual reorder and compatible MergeDown recall, both render phase orders, standalone ID, color/Colorize, collision protection, backup reopening and installed loaders passed. Owner document restored. See Development/VERIFICATION_3.2.0.md for limits.",
+  "version": "3.2.3",
+  "bank_data_version": 9,
+  "bank_bytes": 123088,
+  "updated": "2026-11-16T21:05:24.413774+00:00",
+  "delivery": "Three editable/generated sources and genuine native ZSC files, compiled, loaded and installed in ZBrush 2023.2.1. No commit or push.",
+  "source_validation": "52 focused ID, installer/uninstaller and camera-identity tests passed. Five new export-only regressions.",
+  "native_validation": "Actual Exportar ID button exported two 640x480 cameras with exact independently prepared RGB, retaining assigned metallic materials. Native source compiled and installed; see Development/VERIFICATION_3.2.3.md.",
   "compiled": [
     {
       "source": "Camera Bank/CameraBank25.txt",
-      "source_sha256": "1526cb4a18a2c2b49bf9795233cbb8f20d580483ee2c5b380a3101c97fd9eca9",
+      "source_sha256": "96ff50fe65cd1e457660cd94fb1aad3a0d17c1a87ca5d9337265e2e7f156f364",
       "binary": "Camera Bank/CameraBank25.zsc",
-      "binary_sha256": "2863c05c4f8ac4edb0eaba0237f66f32db5a8aeaaa8cd3ae7220af89391cadbe",
-      "bytes": 82432
+      "binary_sha256": "4bedb619bced75144e3fe8553b6ffaa11ae0687964e89086024aa44cbf9b0ff0",
+      "bytes": 86544
     },
     {
       "source": "Render Capture/RenderCapture.txt",
-      "source_sha256": "d8daa2e4b82c7aced197c3c879316ee2e0dcafa3b456fb3741b160893b22e453",
+      "source_sha256": "61b17c194af9592447b9b7b4b2485b6f4488708d2efedab947b3dffa8693cf91",
       "binary": "Render Capture/RenderCapture.zsc",
-      "binary_sha256": "d788c46e992e7dbce53fe83c0374805efc72850525e616443cb9c05d508aba5c",
-      "bytes": 69736
+      "binary_sha256": "1b713075a879f5c7ef5097f717f27117b0ff2e994eab270156787de561e7bba8",
+      "bytes": 72644
     },
     {
       "source": "Generate and Export ID/GenerateExportID.txt",
-      "source_sha256": "c3253ce436892be0a99a2d7128be352146bcf996380c7e8edda0d21a3dc859b5",
+      "source_sha256": "acc3f004b4e7e54b7d1b47ade20ed10ad7a111c376e56f92f84614a0f40acea7",
       "binary": "Generate and Export ID/GenerateExportID.zsc",
-      "binary_sha256": "6e8c75366914f7b00374864b1383003aa6c6ecd476e81b9914bd97f66df5f397",
-      "bytes": 84212
+      "binary_sha256": "7a3701d4e8f5a345422ec6ef3a1ca2b039e74d6db2397ed4c7530a53046fa93b",
+      "bytes": 79736
     }
   ],
   "files": [
     {
       "path": "Camera Bank/CameraBank25.txt",
-      "bytes": 62225,
-      "sha256": "1526cb4a18a2c2b49bf9795233cbb8f20d580483ee2c5b380a3101c97fd9eca9"
+      "bytes": 67933,
+      "sha256": "96ff50fe65cd1e457660cd94fb1aad3a0d17c1a87ca5d9337265e2e7f156f364"
     },
     {
       "path": "Camera Bank/CameraBank25.zsc",
-      "bytes": 82432,
-      "sha256": "2863c05c4f8ac4edb0eaba0237f66f32db5a8aeaaa8cd3ae7220af89391cadbe"
+      "bytes": 86544,
+      "sha256": "4bedb619bced75144e3fe8553b6ffaa11ae0687964e89086024aa44cbf9b0ff0"
     },
     {
       "path": "Camera Bank/INSTALAR CAMERA BANK.cmd",
@@ -50,39 +51,14 @@
       "sha256": "e274b61c6647995cd06b691f7e478ae0a755a7b17de14643cd313059fb0f7538"
     },
     {
-      "path": "Development/build_all.py",
-      "bytes": 480,
-      "sha256": "10204eadd69a59a2ec4d086558daefa6fac88e053f4d70aa06be863c39101958"
-    },
-    {
-      "path": "Development/build_camera.py",
-      "bytes": 16717,
-      "sha256": "4ec18fe8a1291776e899ab3a57f1316b9d771580abc8c685782c0074d332f215"
-    },
-    {
-      "path": "Development/build_id.py",
-      "bytes": 3513,
-      "sha256": "7d8805e69afd7e7f8ebf9120208ac39f796f3558d5a50689ecc4c73d264b4e55"
-    },
-    {
-      "path": "Development/build_visibility.py",
-      "bytes": 10345,
-      "sha256": "ed4d61d1bff92acc03360fc073b9e8eb358cb67463ebf0e8a3e965e8fda02ba8"
-    },
-    {
       "path": "Development/CAMERA_3.2.0_RESULT.md",
       "bytes": 13465,
       "sha256": "c2a8685193f56a55a8f2b8d43feb166965d7eb5de50f9a9a7283847b9f8d4c43"
     },
     {
-      "path": "Development/camera_reader.inc",
-      "bytes": 18476,
-      "sha256": "51fbf8b96aeffbb3c97f60b84e0ddb212c1f461b59a1912762fef15b795277e2"
-    },
-    {
       "path": "Development/DATA_FORMAT.md",
-      "bytes": 8423,
-      "sha256": "a01aa565da41c908d9fd2fe63fafaa2215f0d3bca04b46b3fb2a893d5aa1b6f6"
+      "bytes": 5146,
+      "sha256": "2003334a31886fa50a92db9d4f47dc62782c141293af954ce918889e4ab2285f"
     },
     {
       "path": "Development/ID_3.2.0_RESULT.md",
@@ -90,24 +66,9 @@
       "sha256": "aa2b6415ea587f1cd93810f61311f4a7a588ff1fded1d78c0301ca65a8cb066d"
     },
     {
-      "path": "Development/id_body.txt",
-      "bytes": 39649,
-      "sha256": "dc210c21b867dd9176e7e2393b6d59d15738520d7ff9281e9bf592bf47454d79"
-    },
-    {
       "path": "Development/MERGE_HANDOFF.md",
-      "bytes": 8440,
-      "sha256": "e4fa75e2322421a914425e132a2966d841f056a3d8f49ed10196e673bf67296f"
-    },
-    {
-      "path": "Development/merge_visibility.inc",
-      "bytes": 11006,
-      "sha256": "4448c40ac40abacc963f72758b6d0da5a2990ba5ad1f85af8acfbe5a06f6caf9"
-    },
-    {
-      "path": "Development/merge_visibility_writer.inc",
-      "bytes": 15361,
-      "sha256": "5d358b3b0f5ffa82304db1a880718648460229516d6a9cbe6dcd99f3357ec927"
+      "bytes": 8910,
+      "sha256": "1b9484a20b41381a5976cb8c3221fe03989d4b2d1cff4d551bb4b54cdd7fb756"
     },
     {
       "path": "Development/NATIVE_TEST.md",
@@ -115,44 +76,9 @@
       "sha256": "ca23079ae7e9f3b5579862a46d6ff8f3b2130e2e4e22249040661afc255abe61"
     },
     {
-      "path": "Development/original_integrated.txt",
-      "bytes": 119171,
-      "sha256": "af2021fc0aad19bdec83e718af3d513146ecde55afa2875702354b29b0d566c7"
-    },
-    {
       "path": "Development/RENDER_3.2.0_RESULT.md",
       "bytes": 5903,
       "sha256": "aa45195e7e1f91662612fb62e054b48ef5d005c403534aeabc249c7172b902b9"
-    },
-    {
-      "path": "Development/render_body.txt",
-      "bytes": 22381,
-      "sha256": "60e8c2defbfb6aae3bc4613a7507dac2c56962794f94134599da11d7344fb9f6"
-    },
-    {
-      "path": "Development/test_id_export.py",
-      "bytes": 53428,
-      "sha256": "dd7b644bf58920c99707bf2f867e1c60133d934b2a20d2f7c37c3374e3db8fd2"
-    },
-    {
-      "path": "Development/test_installer.py",
-      "bytes": 11222,
-      "sha256": "0d7e834875f0eddbbf5098c0c560d43df5a844114e469322a5b85b6d1084508a"
-    },
-    {
-      "path": "Development/test_render_layout.py",
-      "bytes": 13103,
-      "sha256": "712a6a7906e503e63d77c5ded2e15209edca7f79b5e6f246bed511d7d23a3cf4"
-    },
-    {
-      "path": "Development/test_uninstaller.py",
-      "bytes": 2839,
-      "sha256": "6d85fac0d4bd567e30d40c382765b54a93ccc991280fcd797bfbc1bcbbeb8bcc"
-    },
-    {
-      "path": "Development/tests/fixtures/camera_310_export.inc",
-      "bytes": 4813,
-      "sha256": "e737490325cc0b562346529288210bdabb029319c65accf85b954ab7dbb59d1f"
     },
     {
       "path": "Development/VERIFICATION.md",
@@ -165,14 +91,109 @@
       "sha256": "cec04af2f90d9c7395ed19293318a2d5cf4cdd635b6e49dbb7022dba6f4baa03"
     },
     {
+      "path": "Development/VERIFICATION_3.2.1.md",
+      "bytes": 7744,
+      "sha256": "3630329bd5c6cb6896b4f147022ba6492055fcf8e5e238cf0ee472fd90007406"
+    },
+    {
+      "path": "Development/VERIFICATION_3.2.2.md",
+      "bytes": 3179,
+      "sha256": "907ab9d66d7eae5c873ffc603253909c68ed67e8062e285e45647031b85711a7"
+    },
+    {
+      "path": "Development/VERIFICATION_3.2.3.md",
+      "bytes": 2836,
+      "sha256": "d7879080ff727e73fe04bd852b69c07706aabeb329fa9497acaccebec6c0f472"
+    },
+    {
+      "path": "Development/build_all.py",
+      "bytes": 480,
+      "sha256": "10204eadd69a59a2ec4d086558daefa6fac88e053f4d70aa06be863c39101958"
+    },
+    {
+      "path": "Development/build_camera.py",
+      "bytes": 17048,
+      "sha256": "ca909c668cff2ffa2603c35e08cb388a71d28d66450dbe95e0cd34ddfe5f5d7b"
+    },
+    {
+      "path": "Development/build_id.py",
+      "bytes": 3585,
+      "sha256": "071ceb148175c373bca4cebba445d5eef2a15899b3ffae7985de8f524dcc1b97"
+    },
+    {
+      "path": "Development/build_visibility.py",
+      "bytes": 11958,
+      "sha256": "00e2e2ca874a4765b4df751a18ee34c4c7f98ea0ff04c9bc86e80581ea37ce0c"
+    },
+    {
+      "path": "Development/camera_reader.inc",
+      "bytes": 21244,
+      "sha256": "4e0809465797a34622a8cfcd1108629bbb9261bf72be948b664c494935f75aaa"
+    },
+    {
+      "path": "Development/id_body.txt",
+      "bytes": 31637,
+      "sha256": "83a5d01f888a19c291108f78df7b30337edbfba8f7d88f88bd8fa996cdf22487"
+    },
+    {
+      "path": "Development/merge_visibility.inc",
+      "bytes": 14289,
+      "sha256": "8736a2735885813fd15da99a17cb04ec1f05411a6fd99411fb79f241960dfcc0"
+    },
+    {
+      "path": "Development/merge_visibility_writer.inc",
+      "bytes": 17362,
+      "sha256": "3b49d21c365e6da8237a10c231c48145eb7203cdc211a83b6b0d245060235022"
+    },
+    {
+      "path": "Development/original_integrated.txt",
+      "bytes": 119171,
+      "sha256": "af2021fc0aad19bdec83e718af3d513146ecde55afa2875702354b29b0d566c7"
+    },
+    {
+      "path": "Development/render_body.txt",
+      "bytes": 24174,
+      "sha256": "c6e08fd2462ac55eb6db18ab866b3cd5382c699d8d0963489f9b7efe110079d8"
+    },
+    {
+      "path": "Development/test_id_export.py",
+      "bytes": 48736,
+      "sha256": "e84230c976ce8e1791d5dbf512b14f595b6774ecb55d05f5e67bcd1a4d646e99"
+    },
+    {
+      "path": "Development/test_installer.py",
+      "bytes": 11222,
+      "sha256": "0d7e834875f0eddbbf5098c0c560d43df5a844114e469322a5b85b6d1084508a"
+    },
+    {
+      "path": "Development/test_render_layout.py",
+      "bytes": 11570,
+      "sha256": "49b5d3ae65b94d8cde2ddf92b8dc6e5a9d123e5f6ae40ebbc3f0c0e3f26222ae"
+    },
+    {
+      "path": "Development/test_uninstaller.py",
+      "bytes": 2839,
+      "sha256": "6d85fac0d4bd567e30d40c382765b54a93ccc991280fcd797bfbc1bcbbeb8bcc"
+    },
+    {
+      "path": "Development/test_ztl_identity.py",
+      "bytes": 6583,
+      "sha256": "f09ed6c6d32b04dff2d3c2ab9093aae6d879eceb311e7ec552bc9cde730d5370"
+    },
+    {
+      "path": "Development/tests/fixtures/camera_310_export.inc",
+      "bytes": 4813,
+      "sha256": "e737490325cc0b562346529288210bdabb029319c65accf85b954ab7dbb59d1f"
+    },
+    {
       "path": "Development/verify.py",
-      "bytes": 27569,
-      "sha256": "72e5983f0c28d1003aa40dca111cb4e0d02b0a656312d4e926b83877555877f3"
+      "bytes": 28369,
+      "sha256": "25353bd3cfdea2155886314cecb4612969a3d31c24f4c41853d2c4ea49a89bd5"
     },
     {
       "path": "Development/verify_camera_320.py",
-      "bytes": 23338,
-      "sha256": "8196ef30dedeafe434d43ddcfc89a91a6436d7317127ce74cf916b333c332598"
+      "bytes": 23786,
+      "sha256": "4b49effca4e441b3f66763b19d10665c9632b648253004829fa06d945bfef292"
     },
     {
       "path": "Development/verify_merge.py",
@@ -181,13 +202,13 @@
     },
     {
       "path": "Generate and Export ID/GenerateExportID.txt",
-      "bytes": 59366,
-      "sha256": "c3253ce436892be0a99a2d7128be352146bcf996380c7e8edda0d21a3dc859b5"
+      "bytes": 53724,
+      "sha256": "acc3f004b4e7e54b7d1b47ade20ed10ad7a111c376e56f92f84614a0f40acea7"
     },
     {
       "path": "Generate and Export ID/GenerateExportID.zsc",
-      "bytes": 84212,
-      "sha256": "6e8c75366914f7b00374864b1383003aa6c6ecd476e81b9914bd97f66df5f397"
+      "bytes": 79736,
+      "sha256": "7a3701d4e8f5a345422ec6ef3a1ca2b039e74d6db2397ed4c7530a53046fa93b"
     },
     {
       "path": "Generate and Export ID/INSTALAR ID.cmd",
@@ -201,13 +222,13 @@
     },
     {
       "path": "Install.ps1",
-      "bytes": 11912,
-      "sha256": "88e8994e118c3d3e8ef5cae3cf2fe48f438423d016e8b53d70faf18309ad0503"
+      "bytes": 11926,
+      "sha256": "baddcde6b6815b1b3057aba67fcf0bdca9a69c34e8c8bfa9e97b0559280a1322"
     },
     {
       "path": "README.txt",
-      "bytes": 6967,
-      "sha256": "2bd0039ea41cd230b191079d19224f28ae98d0b7b9f21ba0894d979ba3de4d03"
+      "bytes": 7377,
+      "sha256": "71de6c192819fc8ae7898a4de94e90cea12e6a6672a898fdf686883978b6d493"
     },
     {
       "path": "Render Capture/INSTALAR RENDER CAPTURE.cmd",
@@ -216,13 +237,13 @@
     },
     {
       "path": "Render Capture/RenderCapture.txt",
-      "bytes": 41309,
-      "sha256": "d8daa2e4b82c7aced197c3c879316ee2e0dcafa3b456fb3741b160893b22e453"
+      "bytes": 45422,
+      "sha256": "61b17c194af9592447b9b7b4b2485b6f4488708d2efedab947b3dffa8693cf91"
     },
     {
       "path": "Render Capture/RenderCapture.zsc",
-      "bytes": 69736,
-      "sha256": "d788c46e992e7dbce53fe83c0374805efc72850525e616443cb9c05d508aba5c"
+      "bytes": 72644,
+      "sha256": "1b713075a879f5c7ef5097f717f27117b0ff2e994eab270156787de561e7bba8"
     },
     {
       "path": "Render Capture/RenderCaptureData/PROVENANCE.txt",
@@ -258,6 +279,66 @@
       "path": "Verification/v3.2.0/validation.json",
       "bytes": 6411,
       "sha256": "c00a593884b72131b2497a9d2f1903ce9f3f1bbe7a3ca5320fa1939e244993d0"
+    },
+    {
+      "path": "Verification/v3.2.1/fresh-after-0.png",
+      "bytes": 923648,
+      "sha256": "44d2dede90f97df82719ba3c81ac8e0e6bd2f9159abf453fcf022d24996c6b01"
+    },
+    {
+      "path": "Verification/v3.2.1/fresh-after-1.png",
+      "bytes": 923648,
+      "sha256": "44d2dede90f97df82719ba3c81ac8e0e6bd2f9159abf453fcf022d24996c6b01"
+    },
+    {
+      "path": "Verification/v3.2.1/fresh-after-2.png",
+      "bytes": 923648,
+      "sha256": "e104c40847795e645d3bd1f66c0c43985ae9ad925210ce90d23add9f2c037ec3"
+    },
+    {
+      "path": "Verification/v3.2.1/fresh-before-0.png",
+      "bytes": 923648,
+      "sha256": "44d2dede90f97df82719ba3c81ac8e0e6bd2f9159abf453fcf022d24996c6b01"
+    },
+    {
+      "path": "Verification/v3.2.1/fresh-before-1.png",
+      "bytes": 923648,
+      "sha256": "44d2dede90f97df82719ba3c81ac8e0e6bd2f9159abf453fcf022d24996c6b01"
+    },
+    {
+      "path": "Verification/v3.2.1/fresh-before-2.png",
+      "bytes": 923648,
+      "sha256": "e104c40847795e645d3bd1f66c0c43985ae9ad925210ce90d23add9f2c037ec3"
+    },
+    {
+      "path": "Verification/v3.2.1/id-01.png",
+      "bytes": 923648,
+      "sha256": "14d3616c6f2ffd6a76640c3aeb4fcbde44cbdf57eebd28a35da5e1b6a2c3403e"
+    },
+    {
+      "path": "Verification/v3.2.1/id-02.png",
+      "bytes": 923648,
+      "sha256": "7bcfa2d057216d478af4ff84478344712243ffad62c3dfe52d78c0661f88852c"
+    },
+    {
+      "path": "Verification/v3.2.1/id-backup-camera-02.png",
+      "bytes": 923648,
+      "sha256": "34f1586e85e9ce08bd91e211eda4725b23a49791563680d3d664f3aa6234e46a"
+    },
+    {
+      "path": "Verification/v3.2.1/render-reader-0.png",
+      "bytes": 923648,
+      "sha256": "44d2dede90f97df82719ba3c81ac8e0e6bd2f9159abf453fcf022d24996c6b01"
+    },
+    {
+      "path": "Verification/v3.2.1/render-reader-1.png",
+      "bytes": 923648,
+      "sha256": "44d2dede90f97df82719ba3c81ac8e0e6bd2f9159abf453fcf022d24996c6b01"
+    },
+    {
+      "path": "Verification/v3.2.1/validation.json",
+      "bytes": 8649,
+      "sha256": "1b5e4447ae3c73f625138af18d61c34094f799bfe6bc50c999c7be2e8fcf85a5"
     }
   ]
 }
