@@ -1,0 +1,637 @@
+{
+  "version": 1,
+  "settings": {
+    "source": "D:\\AI\\Game_References",
+    "destination": "D:\\AI\\Game_References\\Clasificadas",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "effort": "high",
+    "threads": 7,
+    "limit": 250,
+    "mode": "move",
+    "threshold": 80,
+    "unhide": true,
+    "timeout": 180,
+    "instructions": "Mira la imagen y elige la carpeta que mejor la describe. Si hay varios personajes, elige el más prominente.",
+    "shortcuts": []
+  },
+  "groups": [
+    {
+      "id": "94b1515b7d",
+      "name": "Contenido General",
+      "color": "#4caf7d",
+      "description": "personaje vestido y sin insinuación sexual; señales ropa que cubre torso y genitales, pose neutra. NO si hay desnudo, lencería o pose insinuante. erotico: desnudo o insinuación visible sin acto sexual. explicito: acto sexual visible con penetración o genitales en acción.",
+      "include": [
+        "ropa completa",
+        "pose neutral"
+      ],
+      "exclude": [
+        "desnudo"
+      ]
+    },
+    {
+      "id": "0e1a3f18f4",
+      "name": "Contenido erótico",
+      "color": "#e0a03a",
+      "description": "Contenido erótico con desnudo o insinuación sexual visible y sin acto explícito. Señales: genitales, pechos o nalgas descubiertos, lencería o ropa interior visible, contacto corporal íntimo. NO si el acto sexual es explícito (penetración o genitales en acción): eso va en sexual.",
+      "include": [
+        "desnudo",
+        "lencería",
+        "pose insinuante"
+      ],
+      "exclude": [
+        "acto sexual explícito",
+        "Un desnudo sin contexto sexual (estudio anatómico, estatua, figura no viva) no va aquí."
+      ]
+    },
+    {
+      "id": "f01e24b24a",
+      "name": "Contenido sexual",
+      "color": "#d9534f",
+      "description": "Contenido sexual explícito",
+      "include": [
+        "acto sexual explícito"
+      ],
+      "exclude": []
+    }
+  ],
+  "root": {
+    "id": "root",
+    "name": "Clasificadas",
+    "kind": "folder",
+    "description": "",
+    "include": [],
+    "exclude": [],
+    "group": null,
+    "open": false,
+    "openHint": "",
+    "children": [
+      {
+        "id": "83ea36e07e",
+        "name": "No realista",
+        "kind": "folder",
+        "description": "Imágenes dibujadas, pintadas o generadas con formas, colores o materiales estilizados que no buscan parecer fotografía: cartoon, anime, cómic, pixel art, pintura digital y 3D estilizado tipo Pixar o videojuego. Señales: trazo visible, colores planos, contornos marcados, formas simplificadas, proporciones exageradas, materiales tipo plástico. NO si anatomía, piel, tela y luz son físicamente plausibles: eso es foto o render fotorrealista.",
+        "include": [
+          "trazo visible",
+          "colores planos",
+          "contornos marcados",
+          "formas simplificadas",
+          "proporciones exageradas",
+          "textura pictórica"
+        ],
+        "exclude": [
+          "fotografía",
+          "render fotorrealista",
+          "piel con poros",
+          "iluminación fotográfica"
+        ],
+        "group": null,
+        "open": false,
+        "openHint": "",
+        "children": [
+          {
+            "id": "312447ed58",
+            "name": "personajes",
+            "kind": "folder",
+            "description": "Una o varias figuras con aspecto de personaje como sujeto principal",
+            "include": [],
+            "exclude": [],
+            "group": null,
+            "open": false,
+            "openHint": "",
+            "children": [
+              {
+                "id": "e40441d5fe",
+                "name": "especie",
+                "kind": "variable",
+                "description": "Género aparente del personaje principal: masculino, femenino o desconocido. Usa desconocido si el rostro, la silueta y la ropa no permiten decidirlo (armadura total, casco, cuerpo andrógino, alien). En grupos, decide por el personaje más grande o más cercano a cámara.",
+                "include": [],
+                "exclude": [],
+                "group": null,
+                "open": false,
+                "openHint": "",
+                "children": [
+                  {
+                    "id": "17f007f6ab",
+                    "name": "masculino",
+                    "kind": "folder",
+                    "description": "Personaje principal masculino",
+                    "include": [],
+                    "exclude": [],
+                    "group": null,
+                    "open": false,
+                    "openHint": "",
+                    "children": [
+                      {
+                        "id": "0ba0e2026f",
+                        "name": "normal",
+                        "kind": "folder",
+                        "description": "",
+                        "include": [],
+                        "exclude": [],
+                        "group": "94b1515b7d",
+                        "open": false,
+                        "openHint": "",
+                        "children": []
+                      },
+                      {
+                        "id": "1784cdf16d",
+                        "name": "erotica",
+                        "kind": "folder",
+                        "description": "",
+                        "include": [],
+                        "exclude": [],
+                        "group": "0e1a3f18f4",
+                        "open": false,
+                        "openHint": "",
+                        "children": []
+                      },
+                      {
+                        "id": "191adb17e9",
+                        "name": "sexual",
+                        "kind": "folder",
+                        "description": "",
+                        "include": [],
+                        "exclude": [],
+                        "group": "f01e24b24a",
+                        "open": false,
+                        "openHint": "",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "fdf6e2c5b8",
+                    "name": "femenino",
+                    "kind": "folder",
+                    "description": "Personaje principal femenino",
+                    "include": [],
+                    "exclude": [],
+                    "group": null,
+                    "open": false,
+                    "openHint": "",
+                    "children": [
+                      {
+                        "id": "9a24c73a6a",
+                        "name": "normal",
+                        "kind": "folder",
+                        "description": "",
+                        "include": [],
+                        "exclude": [],
+                        "group": "94b1515b7d",
+                        "open": false,
+                        "openHint": "",
+                        "children": []
+                      },
+                      {
+                        "id": "4fd3fd855f",
+                        "name": "erotica",
+                        "kind": "folder",
+                        "description": "",
+                        "include": [],
+                        "exclude": [],
+                        "group": "0e1a3f18f4",
+                        "open": false,
+                        "openHint": "",
+                        "children": []
+                      },
+                      {
+                        "id": "0781b0bda1",
+                        "name": "sexual",
+                        "kind": "folder",
+                        "description": "",
+                        "include": [],
+                        "exclude": [],
+                        "group": "f01e24b24a",
+                        "open": false,
+                        "openHint": "",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "a91b3d8adc",
+                    "name": "desconocido",
+                    "kind": "folder",
+                    "description": "Personajes no realistas cuyo sexo aparente no se puede determinar: cubiertos por armadura, casco, silueta andrógina o cuerpo alienígena.",
+                    "include": [
+                      "casco o armadura total",
+                      "rostro cubierto",
+                      "silueta ambigua",
+                      "cuerpo alienígena",
+                      "rasgos no humanos",
+                      "ropa sin forma"
+                    ],
+                    "exclude": [
+                      "rostro masculino claro",
+                      "rostro femenino claro",
+                      "foto o render realista",
+                      "sin figura de personaje"
+                    ],
+                    "group": null,
+                    "open": false,
+                    "openHint": "",
+                    "children": [
+                      {
+                        "id": "8213fb9309",
+                        "name": "normal",
+                        "kind": "folder",
+                        "description": "",
+                        "include": [],
+                        "exclude": [],
+                        "group": "94b1515b7d",
+                        "open": false,
+                        "openHint": "",
+                        "children": []
+                      },
+                      {
+                        "id": "0f8253d97a",
+                        "name": "erotica",
+                        "kind": "folder",
+                        "description": "",
+                        "include": [],
+                        "exclude": [],
+                        "group": "0e1a3f18f4",
+                        "open": false,
+                        "openHint": "",
+                        "children": []
+                      },
+                      {
+                        "id": "63b1a42fd3",
+                        "name": "sexual",
+                        "kind": "folder",
+                        "description": "",
+                        "include": [],
+                        "exclude": [],
+                        "group": "f01e24b24a",
+                        "open": false,
+                        "openHint": "",
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "0727af76e9",
+            "name": "animales",
+            "kind": "folder",
+            "description": "Animal como sujeto principal",
+            "include": [],
+            "exclude": [],
+            "group": null,
+            "open": false,
+            "openHint": "",
+            "children": [
+              {
+                "id": "992d78e7d8",
+                "name": "especie",
+                "kind": "variable",
+                "description": "Animal concreto que es sujeto principal, en singular, minúsculas y sin tildes. Si hay varios animales de especies distintas, usa la especie del más grande o más cercano a cámara; si están igualados, usa grupo; si no es identificable, usa desconocido.",
+                "include": [],
+                "exclude": [],
+                "group": null,
+                "open": false,
+                "openHint": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "cf47a8b35a",
+            "name": "escenarios",
+            "kind": "folder",
+            "description": "Lugar o paisaje como tema principal, sin personaje protagonista. Incluye escenas con figuras pequeñas o lejanas (menos de una décima parte del encuadre) o siluetas sin rasgos. NO si se distinguen cara, ropa o pose de una figura: eso va en personajes.",
+            "include": [],
+            "exclude": [],
+            "group": null,
+            "open": false,
+            "openHint": "",
+            "children": [
+              {
+                "id": "dda692d9f5",
+                "name": "interior",
+                "kind": "folder",
+                "description": "Escenario interior (habitación, cueva, taberna...)",
+                "include": [],
+                "exclude": [],
+                "group": null,
+                "open": false,
+                "openHint": "",
+                "children": []
+              },
+              {
+                "id": "082eab86c2",
+                "name": "exterior",
+                "kind": "folder",
+                "description": "Escenario exterior (bosque, ciudad, montaña...)",
+                "include": [],
+                "exclude": [],
+                "group": null,
+                "open": false,
+                "openHint": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "5325b44c3f",
+            "name": "otros",
+            "kind": "folder",
+            "description": "Subcategoría del sujeto, en singular, minúsculas y sin tildes (mapa, objeto, interfaz, icono, patron, texto, diagrama). Escribe el nombre de la subcategoría que describa el sujeto; si ninguno de los ejemplos encaja, crea uno nuevo con esa misma regla. personajes, animales y escenarios no van aquí aunque haya texto o HUD encima.",
+            "include": [],
+            "exclude": [],
+            "group": null,
+            "open": true,
+            "openHint": "subcategoría de la imagen (mapa, objeto, interfaz...)",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "5bc0c84d72",
+        "name": "realista",
+        "kind": "folder",
+        "description": "Imágenes que parecen fotografías o renders fotorrealistas, con luz, materiales y anatomía coherentes con la realidad física.\nTambién pueden incluirse imágenes borrosas como selfies.",
+        "include": [
+          "textura de piel real",
+          "luz y sombras físicas",
+          "perspectiva fotográfica",
+          "reflejos y materiales reales",
+          "profundidad de campo"
+        ],
+        "exclude": [
+          "trazo visible",
+          "colores planos",
+          "formas simplificadas",
+          "estilo cartoon"
+        ],
+        "group": null,
+        "open": false,
+        "openHint": "",
+        "children": [
+          {
+            "id": "63276c1a48",
+            "name": "personajes",
+            "kind": "folder",
+            "description": "personajes: una o varias figuras humanas o antropomorfas son el sujeto principal (retrato, busto, cuerpo completo o grupo), sean personas reales o ficticias. Si hay varias figuras, se elige la más grande o la más cercana a cámara para decidir especie y género. NO si el ser vivo es un animal de anatomía natural, ni si no hay ninguna figura.",
+            "include": [],
+            "exclude": [],
+            "group": null,
+            "open": false,
+            "openHint": "",
+            "children": [
+              {
+                "id": "f17ca633cb",
+                "name": "especie",
+                "kind": "variable",
+                "description": "Especie o tipo del personaje antropomorfo, en singular, minúsculas y sin tildes (humano, orco, elfo, goblin, dragonborn, androide). Solo cuenta si la figura es bípeda, tiene cara y manos de personaje, lleve ropa o no. NO si el ser vivo tiene anatomía animal natural (cuadrípedo, sin manos ni cara de personaje): eso va en animales.",
+                "include": [],
+                "exclude": [],
+                "group": null,
+                "open": false,
+                "openHint": "",
+                "children": [
+                  {
+                    "id": "9d3180f9bb",
+                    "name": "masculino",
+                    "kind": "folder",
+                    "description": "Personaje principal masculino",
+                    "include": [],
+                    "exclude": [],
+                    "group": null,
+                    "open": false,
+                    "openHint": "",
+                    "children": [
+                      {
+                        "id": "d98861b416",
+                        "name": "normal",
+                        "kind": "folder",
+                        "description": "",
+                        "include": [],
+                        "exclude": [],
+                        "group": "94b1515b7d",
+                        "open": false,
+                        "openHint": "",
+                        "children": []
+                      },
+                      {
+                        "id": "b178efe274",
+                        "name": "erotica",
+                        "kind": "folder",
+                        "description": "",
+                        "include": [],
+                        "exclude": [],
+                        "group": "0e1a3f18f4",
+                        "open": false,
+                        "openHint": "",
+                        "children": []
+                      },
+                      {
+                        "id": "bde4443fd1",
+                        "name": "sexual",
+                        "kind": "folder",
+                        "description": "",
+                        "include": [],
+                        "exclude": [],
+                        "group": "f01e24b24a",
+                        "open": false,
+                        "openHint": "",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1f28db0ef0",
+                    "name": "femenino",
+                    "kind": "folder",
+                    "description": "Personaje principal femenino",
+                    "include": [],
+                    "exclude": [],
+                    "group": null,
+                    "open": false,
+                    "openHint": "",
+                    "children": [
+                      {
+                        "id": "810e06b2e4",
+                        "name": "normal",
+                        "kind": "folder",
+                        "description": "",
+                        "include": [],
+                        "exclude": [],
+                        "group": "94b1515b7d",
+                        "open": false,
+                        "openHint": "",
+                        "children": []
+                      },
+                      {
+                        "id": "d96ccd6f4b",
+                        "name": "erotica",
+                        "kind": "folder",
+                        "description": "",
+                        "include": [],
+                        "exclude": [],
+                        "group": "0e1a3f18f4",
+                        "open": false,
+                        "openHint": "",
+                        "children": []
+                      },
+                      {
+                        "id": "b1e498d6e7",
+                        "name": "sexual",
+                        "kind": "folder",
+                        "description": "",
+                        "include": [],
+                        "exclude": [],
+                        "group": "f01e24b24a",
+                        "open": false,
+                        "openHint": "",
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "24ec06c138",
+                    "name": "desconocido",
+                    "kind": "folder",
+                    "description": "Personajes no realistas cuyo sexo aparente no se puede determinar: cubiertos por armadura, casco, silueta andrógina o cuerpo alienígena.",
+                    "include": [
+                      "casco o armadura total",
+                      "rostro cubierto",
+                      "silueta ambigua",
+                      "cuerpo alienígena",
+                      "rasgos no humanos",
+                      "ropa sin forma"
+                    ],
+                    "exclude": [
+                      "rostro masculino claro",
+                      "rostro femenino claro",
+                      "foto o render realista",
+                      "sin figura de personaje"
+                    ],
+                    "group": null,
+                    "open": false,
+                    "openHint": "",
+                    "children": [
+                      {
+                        "id": "a950149e75",
+                        "name": "normal",
+                        "kind": "folder",
+                        "description": "",
+                        "include": [],
+                        "exclude": [],
+                        "group": "94b1515b7d",
+                        "open": false,
+                        "openHint": "",
+                        "children": []
+                      },
+                      {
+                        "id": "a4e82bb546",
+                        "name": "erotica",
+                        "kind": "folder",
+                        "description": "",
+                        "include": [],
+                        "exclude": [],
+                        "group": "0e1a3f18f4",
+                        "open": false,
+                        "openHint": "",
+                        "children": []
+                      },
+                      {
+                        "id": "0a4e5a68f5",
+                        "name": "sexual",
+                        "kind": "folder",
+                        "description": "",
+                        "include": [],
+                        "exclude": [],
+                        "group": "f01e24b24a",
+                        "open": false,
+                        "openHint": "",
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "a001a00e46",
+            "name": "animales",
+            "kind": "folder",
+            "description": "Animal como sujeto principal",
+            "include": [],
+            "exclude": [],
+            "group": null,
+            "open": false,
+            "openHint": "",
+            "children": [
+              {
+                "id": "42a94bfdb8",
+                "name": "especie",
+                "kind": "variable",
+                "description": "animal concreto, en singular y en minúsculas",
+                "include": [],
+                "exclude": [],
+                "group": null,
+                "open": false,
+                "openHint": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "8a0a0d6949",
+            "name": "escenarios",
+            "kind": "folder",
+            "description": "Lugar o paisaje como tema principal, sin personaje protagonista. Incluye escenas con figuras pequeñas o lejanas (menos de una décima parte del encuadre) o siluetas sin rasgos. NO si se distinguen cara, ropa o pose de una figura: eso va en personajes.",
+            "include": [],
+            "exclude": [],
+            "group": null,
+            "open": false,
+            "openHint": "",
+            "children": [
+              {
+                "id": "48448a02c8",
+                "name": "interior",
+                "kind": "folder",
+                "description": "Escenario interior (habitación, cueva, taberna...)",
+                "include": [],
+                "exclude": [],
+                "group": null,
+                "open": false,
+                "openHint": "",
+                "children": []
+              },
+              {
+                "id": "6913d7fe23",
+                "name": "exterior",
+                "kind": "folder",
+                "description": "Escenario exterior (bosque, ciudad, montaña...)",
+                "include": [],
+                "exclude": [],
+                "group": null,
+                "open": false,
+                "openHint": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": "1f696b32a3",
+            "name": "otros",
+            "kind": "folder",
+            "description": "Imagen realista cuyo sujeto principal es un objeto, comida, producto, vehículo, arma, textura, documento o captura de pantalla. Se aplica si el objeto ocupa la mayor parte del encuadre y el espacio es fondo secundario o desenfocado. NO si una figura o un animal es el sujeto, ni si el espacio es el tema del encuadre.",
+            "include": [],
+            "exclude": [],
+            "group": null,
+            "open": true,
+            "openHint": "subcategoría de la imagen (mapa, objeto, interfaz...)",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+}

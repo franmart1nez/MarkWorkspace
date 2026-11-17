@@ -4,52 +4,27 @@
 
 ## Total (in)Sanitation
 
-Art-only production hub created 2026-11-12. Current focus: finish the modular
-Basement environment in the owner's pharmaceutical-company game. Direction:
-predominantly 1970s interiors with medieval fantasy accents, blending
-semi-realism and stylization. Public-facing polish contrasts with neglected,
-dungeon-like back-of-house spaces. Characters, weapons and UI are deferred.
+Stages 1–2 of the approved art reset are complete: retired AI asset/Basement records
+were removed, the hub simplified and the source/FBX/Unreal file contract verified. Preserve
+the Office Level Builder, essential tooling, owner originals and selected mascot/sign
+prototypes. Follow `projects/total-insanitation/AGENTS.md` and `README.md`.
 
-- Read `projects/total-insanitation/README.md` and its `AGENTS.md`.
-- Pinned card: `workspace/2026-11-12_total-insanitation/`, registry ID
-  `total-insanitation`; overview, Basement/assets, art bible/materials/decisions,
-  and tools.
-- Unreal: `D:/GItHub/BoomeRacist/BoomeRacist.uproject`, UE 5.8.4. Only
-  `Inteior_Lobby`, `LaCarlota`, `Streaming_Levels/Main_Lights` and
-  `Streaming_Levels/Basement` are in scope.
-- Sources: `D:/GameJam/Total (in)Sanitation/`. Preserve editable originals.
-- Owner confirmed 256/512 px/m references. Floors and ceilings may deliberately
-  use other densities to match their tileables; preserve these UV exceptions.
-- New structures/shop assets belong inside the existing `Interior_Building.blend`;
-  individual props belong inside `Enviroment_Assets.blend`. Create a new blend
-  only when explicitly needed. FBX delivery uses Super Duper Batch Exporter and
-  `Unreal_Only_FBX`; read the project’s `BLENDER_WORKFLOW.md`.
-- Obsolete texture references were removed after atlas replacement. A fresh
-  read-only check found no missing unpacked file images in either saved blend.
-- Epic Unreal MCP and the existing Blender Lab MCP were verified with real
-  native calls; Designer's cooker/renderer passed a material export check.
-  Interactive Designer graph control is not yet verified.
-- Basement pass 01 is implemented and agent-verified: a service sign and warm
-  task light, one corrected ORM texture, three matched PIE pairs and a verified
-  copied 4 m module group. The owner permitted overwriting art assets if changes
-  are marked; Pass 01 lists four changed packages and nine additions. Original
-  building source retained. Owner visual acceptance remains pending.
-- Temp's 12 supplied references and notes are incorporated into the same card.
-  Main_Lights is saved in Basement and LaCarlota. Continue from the project's
-  `NEXT_SESSION.md` and `MODULE_CONTRACT.md`.
-- Latest: four new native PIE captures after walking the corridor/stair route,
-  three generated dressing concepts and a seven-family asset/material proposal
-  are in Basement → Corridor concepts / Asset proposal. The owner accepted the
-  concept direction for modeling and requested a visible OpenCode worker with
-  DeepSeek V4.1 Flash 1017 (Max), supervised and reviewed by the current agent.
-  Read `CORRIDOR_ASSET_HANDOFF.md` and `processes/visible-agent-orchestration.md`.
-  The owner manually started **sub-agente 1**, OpenCode Go / deepseek-v4.1-flash /
-  max. The 25-mesh N01–N07 set, 25 FBXs and T01 are delivered and orchestrator-
-  verified in saved Blender sources and native Unreal (13,694 triangles, 473 old
-  objects preserved). See Basement → Models / Model review. Owner aesthetics
-  and final Basement placement remain pending.
-  A scoped automatic worker bridge is prepared/tested in app source/build;
-  `docs/agent-orchestration.md` explains it. Not activated in the running service.
+- Card: `workspace/2026-11-12_total-insanitation/`, ID `total-insanitation`.
+- Stage status: the card's `EXECUTION_LOG.md` (Plan → Progress). Stage-2 source/FBX/
+  Unreal rules and resource classifications are recorded in Rules & tools → File
+  rules. Next planned: stage 3, native Unreal references/material showcase.
+  Stages 3–7 remain pending; native link repairs were not performed.
+- Sources: `D:/GameJam/Total (in)Sanitation/`; Unreal:
+  `D:/GItHub/BoomeRacist/BoomeRacist.uproject`. Stages 1–2 preserve native sources.
+- Direction: 1970s corporate interiors with medieval fantasy accents,
+  semi-realism/stylization; public polish versus neglected service spaces.
+- Preserve the owner's existing building/prop Blender sources and batch export
+  recipe. Keep 256/512 px/m references and intentional floor/ceiling UV exceptions.
+- Game text: English with future localization. Future UI goes under `/Game/Art/UI`;
+  characters under `/Game/Art/Characters`. Rebuild final visual references from Unreal.
+- Later stages define the wizard mascot, signage/UI, future atlas changes, a new
+  Basement direction and individual assets using `/Game/Art/MI/Utility_Materials`.
+  Artistic review milestones remain ahead. Do not resume retired production.
 
 ## Sculpture Colorization
 

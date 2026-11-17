@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clasificador</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%237c9cff'/%3E%3Cpath d='M16 6v6M16 12H8v6M16 12h8v6M8 18v4M24 18v4' stroke='white' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="logo"></span>Clasificador</div>
+  <nav class="tabs" id="tabs">
+    <button data-tab="tree" class="active" title="Alt+1">Árbol</button>
+    <button data-tab="images" title="Alt+2">Imágenes</button>
+    <button data-tab="classify" title="Alt+3">Clasificar <span class="pill" id="review-pill" hidden></span></button>
+    <button data-tab="settings" title="Alt+4">Ajustes</button>
+  </nav>
+  <div class="top-actions">
+    <span id="save-state" class="save-state">Guardado</span>
+    <button class="icon-btn" id="btn-undo" title="Deshacer cambio del árbol (Ctrl+Z)"></button>
+    <button class="icon-btn" id="btn-redo" title="Rehacer (Ctrl+Y)"></button>
+    <button class="btn ai" id="btn-assistant" title="Asistente IA (Ctrl+K)"><span class="i-spark"></span>Asistente</button>
+  </div>
+</header>
+
+<main>
+  <!-- ======================= TREE ======================= -->
+  <section class="tab-page active" id="tab-tree">
+    <aside class="side" id="groups-panel">
+      <div class="side-head">
+        <h3>Grupos</h3>
+        <button class="btn small" id="btn-new-group">+ Nuevo</button>
+      </div>
+      <p class="hint">Un grupo comparte una misma descripción e identificadores entre varias carpetas. Cambias el grupo y cambian todas.</p>
+      <div id="groups-list"></div>
+      <div class="side-head"><h3>Problemas</h3><span id="problem-count" class="muted"></span></div>
+      <div id="problems-list"></div>
+    </aside>
+
+    <div class="canvas" id="canvas" tabindex="0">
+      <div class="canvas-toolbar">
+        <div class="search-box"><input id="tree-search" placeholder="Buscar carpeta, descripción o identificador…" autocomplete="off"><span id="search-count" class="muted"></span></div>
+        <div class="seg" id="orient">
+          <button data-o="v" title="Árbol vertical (genealógico)">Vertical</button>
+          <button data-o="h" title="Árbol horizontal">Horizontal</button>
+        </div>
+        <button class="icon-btn" id="btn-fit" title="Ajustar a la pantalla (F)"></button>
+        <button class="icon-btn" id="btn-expand" title="Expandir todo"></button>
+        <button class="icon-btn" id="btn-collapse" title="Contraer todo"></button>
+        <span class="sep"></span>
+        <button class="btn small" id="btn-prompt" title="Lo que recibe la IA por cada imagen">Ver prompt</button>
+        <button class="btn small ai" id="btn-audit" title="La IA busca solapamientos y descripciones vagas"><span class="i-spark"></span>Revisar criterios</button>
+        <div class="menu-wrap">
+          <button class="btn small" id="btn-disk-menu">Disco ▾</button>
+          <div class="menu" id="disk-menu" hidden>
+            <button data-act="import">Importar carpetas del disco al árbol</button>
+            <button data-act="create">Crear en disco las carpetas que faltan</button>
+            <button data-act="stats">Actualizar recuentos</button>
+          </div>
+        </div>
+      </div>
+      <div class="world" id="world">
+        <svg class="links" id="links"></svg>
+        <div id="nodes"></div>
+      </div>
+      <div class="canvas-help">Doble clic: editar · Arrastra: mover rama · Tab: subcarpeta · Enter: hermana · Supr: borrar · Ctrl+D: duplicar · Ctrl+clic: selección múltiple</div>
+    </div>
+
+    <aside class="side inspector" id="inspector"></aside>
+  </section>
+
+  <!-- ======================= IMAGES ======================= -->
+  <section class="tab-page" id="tab-images">
+    <aside class="side" id="fs-side">
+      <div class="side-head"><h3>Ubicaciones</h3></div>
+      <div id="locations"></div>
+      <div class="side-head"><h3>Carpetas</h3><button class="icon-btn" id="btn-fs-refresh" title="Actualizar"></button></div>
+      <div id="fs-tree" class="fs-tree"></div>
+      <div class="side-head"><h3>Atajos 1–9</h3></div>
+      <p class="hint">Clic derecho en una carpeta → «Fijar atajo». Luego pulsa 1–9 para mover la imagen seleccionada.</p>
+      <div id="shortcut-list"></div>
+    </aside>
+    <div class="browser" id="browser">
+      <div class="browser-bar">
+        <button class="icon-btn" id="btn-up" title="Carpeta superior (Retroceso)"></button>
+        <div class="crumbs" id="crumbs"></div>
+        <div class="grow"></div>
+        <input id="img-filter" placeholder="Filtrar por nombre…" autocomplete="off">
+        <select id="img-sort">
+          <option value="name">Nombre</option>
+          <option value="mtime">Más recientes</option>
+          <option value="size">Tamaño</option>
+        </select>
+        <label class="check" title="Mostrar también las imágenes de las subcarpetas"><input type="checkbox" id="img-recursive">Subcarpetas</label>
+        <input type="range" id="img-size" min="90" max="420" value="180" title="Tamaño de miniaturas">
+      </div>
+      <div class="selection-bar" id="selection-bar" hidden>
+        <span id="sel-count"></span>
+        <button class="btn small" data-act="all">Seleccionar todo</button>
+        <button class="btn small" data-act="none">Quitar selección</button>
+        <span class="grow"></span>
+        <button class="btn small" data-act="move">Mover a…</button>
+        <button class="btn small" data-act="copy">Copiar a…</button>
+        <button class="btn small ai" data-act="classify"><span class="i-spark"></span>Clasificar con IA</button>
+        <button class="btn small" data-act="reveal">Explorador</button>
+        <button class="btn small danger" data-act="trash">Papelera</button>
+      </div>
+      <div class="browser-body" id="browser-body">
+        <div class="dir-tiles" id="dir-tiles"></div>
+        <div class="grid" id="grid"></div>
+        <div id="grid-sentinel"></div>
+        <div class="empty" id="grid-empty" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= CLASSIFY ======================= -->
+  <section class="tab-page" id="tab-classify">
+    <aside class="side wide" id="run-panel">
+      <div class="side-head"><h3>Nueva clasificación</h3></div>
+      <label class="field">Carpeta de origen
+        <div class="row"><input id="run-source"><button class="icon-btn" id="run-pick" title="Elegir carpeta"></button></div>
+      </label>
+      <label class="check"><input type="checkbox" id="run-recursive">Incluir subcarpetas del origen</label>
+      <div class="field">Modo
+        <div class="mode-cards" id="run-mode">
+          <button data-mode="review"><b>Revisar antes</b><span>La IA propone; tú apruebas o corriges cada imagen.</span></button>
+          <button data-mode="move"><b>Mover</b><span>Mueve sola las seguras; las dudosas quedan para revisar.</span></button>
+          <button data-mode="copy"><b>Copiar</b><span>Igual que mover, pero deja el original.</span></button>
+        </div>
+      </div>
+      <label class="field" id="run-threshold-wrap">Confianza mínima para aplicar sola: <b id="run-threshold-val"></b>
+        <input type="range" id="run-threshold" min="0" max="100" step="5">
+      </label>
+      <div class="row2">
+        <label class="field">Límite <input type="number" id="run-limit" min="0" placeholder="todas"></label>
+        <label class="field">A la vez <input type="number" id="run-threads" min="1" max="16"></label>
+      </div>
+      <button class="btn primary big" id="run-start"><span class="i-spark"></span>Clasificar</button>
+      <p class="hint" id="run-model"></p>
+      <div class="side-head"><h3>Tandas</h3><button class="btn small" id="btn-undo-batch" title="Revierte el último movimiento o copia de archivos">Deshacer último lote</button></div>
+      <div id="job-list"></div>
+    </aside>
+    <div class="review" id="review">
+      <div class="empty big">Elige una carpeta de origen y pulsa <b>Clasificar</b>. Las propuestas aparecerán aquí.</div>
+    </div>
+  </section>
+
+  <!-- ======================= SETTINGS ======================= -->
+  <section class="tab-page" id="tab-settings">
+    <div class="settings" id="settings"></div>
+  </section>
+</main>
+
+<aside class="drawer" id="assistant" hidden>
+  <div class="drawer-head"><h3><span class="i-spark"></span>Asistente</h3><button class="icon-btn" id="assistant-close" title="Cerrar (Esc)"></button></div>
+  <div class="chat" id="chat">
+    <div class="msg ai">Pídeme cambios en el árbol o ayuda con los criterios. Por ejemplo:
+      <ul>
+        <li data-q="Crea una rama 'vehiculos' dentro de anime con subcarpetas por tipo">Crea una rama «vehiculos» dentro de anime con subcarpetas por tipo</li>
+        <li data-q="Mejora las descripciones de las carpetas finales que están vacías">Mejora las descripciones vacías</li>
+        <li data-q="¿Qué carpetas se solapan y cómo las distingo mejor?">¿Qué carpetas se solapan?</li>
+      </ul>
+      Te enseñaré los cambios antes de aplicarlos.</div>
+  </div>
+  <form class="chat-input" id="chat-form">
+    <textarea id="chat-text" rows="2" placeholder="Escribe aquí… (Enter envía, Shift+Enter salto de línea)"></textarea>
+    <button class="btn primary" type="submit">Enviar</button>
+  </form>
+</aside>
+
+<div class="lightbox" id="lightbox" hidden>
+  <div class="lb-stage" id="lb-stage"><img id="lb-img" alt=""></div>
+  <button class="lb-nav prev" id="lb-prev" title="Anterior (←)">‹</button>
+  <button class="lb-nav next" id="lb-next" title="Siguiente (→)">›</button>
+  <div class="lb-top">
+    <span id="lb-title"></span><span class="grow"></span>
+    <span id="lb-zoom" class="muted"></span>
+    <button class="btn small" id="lb-move" title="M">Mover a…</button>
+    <button class="btn small ai" id="lb-classify"><span class="i-spark"></span>¿Dónde va?</button>
+    <button class="btn small" id="lb-reveal">Explorador</button>
+    <button class="btn small danger" id="lb-trash" title="Supr">Papelera</button>
+    <button class="icon-btn" id="lb-close" title="Cerrar (Esc)"></button>
+  </div>
+  <div class="lb-bottom">
+    <div id="lb-info" class="muted"></div>
+    <div id="lb-shortcuts" class="lb-shortcuts"></div>
+  </div>
+</div>
+
+<div class="modal-root" id="modal-root"></div>
+<div class="ctx-menu" id="ctx-menu" hidden></div>
+<div class="toasts" id="toasts"></div>
+
+<script src="/static/util.js"></script>
+<script src="/static/tree.js"></script>
+<script src="/static/images.js"></script>
+<script src="/static/classify.js"></script>
+<script src="/static/main.js"></script>
+</body>
+</html>

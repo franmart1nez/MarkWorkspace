@@ -1,0 +1,4 @@
+data/
+__pycache__/
+clasificador.json.bak
+clasificador.json.tmp

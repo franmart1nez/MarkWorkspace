@@ -1,0 +1,4347 @@
+{
+  "format": "total-insanitation-workspace-reset",
+  "version": 1,
+  "stage": 1,
+  "state": "complete",
+  "prepared": "2026-11-16T22:50:41.11005-03:00",
+  "scope": "Workspace-only; native production files are unchanged",
+  "targets": [
+    {
+      "path": ".mrmak/total-insanitation/author_cards.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/author_cards.py",
+          "bytes": 17123,
+          "sha256": "e01028fdf3d92f8bd3e67834cf47f209312324ee78eba5bfd2a558cd96b3973e"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/basement-review",
+      "kind": "directory",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/basement-review/assembly-check.json",
+          "bytes": 2768,
+          "sha256": "b0b252f00a507a129e40b64552cf5b6934254edba52b8124e4982e9e56448708"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/assembly_check.py",
+          "bytes": 932,
+          "sha256": "d294cdedb3077aefdbe5f306463e14956256fa4db495496721cc38d8a6835b07"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/backups/Basement.umap",
+          "bytes": 500699,
+          "sha256": "b5f0cac53f260504b0240664bf7cc4e0fa66585d1d03a7f4f1fb37da039f8cc8"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/backups/Basement_Shop.uasset",
+          "bytes": 47158,
+          "sha256": "3a3e73d02b08d76f01e70d503acfcecebb02f283aa3c56a1b31d4b5091dfb11f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/backups/CobbleStone_02_occlusionRoughnessMetallic.uasset",
+          "bytes": 1218225,
+          "sha256": "ff05a26e606c4684fb3731fe2901f098ecaeafa8bc5af02891584f2195e4176d"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/Basement-audit.json",
+          "bytes": 709371,
+          "sha256": "4e7a83dee5886977f16bda4ae950bb38657398687c4209b86c96a554807f4060"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/Basement-before-audit.json",
+          "bytes": 702181,
+          "sha256": "9088649246dd93cbca70cd2f429f5f09ff279f4466a4d3a3634e6acfd19e87fe"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/basement-crossing-after-gameplay.metadata.json",
+          "bytes": 478,
+          "sha256": "130d6b858b66165d613cead529e2c0aa1b5f9c391c533c713e58cdb04026f232"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/basement-crossing-after-gameplay.png",
+          "bytes": 1155169,
+          "sha256": "70cfb56e987697c40bddfb9cdc495bdea3efa96f5a43da81b27fedf643a7e417"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/basement-crossing-before-gameplay.metadata.json",
+          "bytes": 479,
+          "sha256": "64b1d8d7122753ea948f1459553a22f1500ab8d981f84462877c8556dd2089ee"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/basement-crossing-before-gameplay.png",
+          "bytes": 900875,
+          "sha256": "5cb7ffdfbcccf76250d9772adbc093fd8f666cf45c1ece82ee04c4e0771d6b45"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/Basement-detail.json",
+          "bytes": 57395,
+          "sha256": "dcc5563c8263c85c63edc514737c2eaade0472ea8311592da07c005f0a1708e7"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/basement-junction-after-gameplay.metadata.json",
+          "bytes": 477,
+          "sha256": "122d2ac2e849253a5a09a9f47de16d1418d65e6609f9cf14b8db16573693403f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/basement-junction-after-gameplay.png",
+          "bytes": 1402782,
+          "sha256": "c93f0e5d53a73dd63d5a85661d5dfd16d4699c75ba166c68b82fe06b1ffe2dce"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/basement-junction-before-gameplay.metadata.json",
+          "bytes": 479,
+          "sha256": "b6f1812ff3561386eff5da45c0c2f020906981c8e99aedc4d38a96be985b503c"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/basement-junction-before-gameplay.png",
+          "bytes": 1272547,
+          "sha256": "6e2cdd9314bca2053cb4f51cfa7f6394a2a0395c04f7230c048d7670dc439e16"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/basement-shop-after-gameplay.metadata.json",
+          "bytes": 474,
+          "sha256": "8e458eab6b6e75bff21d2e801cd23597e4cab92cf38d15e6dfa5553320fdbb91"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/basement-shop-after-gameplay.png",
+          "bytes": 1545261,
+          "sha256": "e93cf6026361f1dd8be4e417a1b582c2d59c395d9854edb110a5071bc6b46c8c"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/basement-shop-before-gameplay.metadata.json",
+          "bytes": 475,
+          "sha256": "45c15c29f173e3f45fe7f5fc2d98d43650b9d77c90fa14555d0a468aa84c28ce"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/basement-shop-before-gameplay.png",
+          "bytes": 1706994,
+          "sha256": "7fba31f6005ebd0efb94e088638ec0606e79479e51b0686ab02a53d4761c6698"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/blend-hash-before.json",
+          "bytes": 175,
+          "sha256": "911b64cb5cda5d8fa9822325aa39c8ff6bc78a92cf05b5a36255513f55a0da7a"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/blender-trial-corrected.log",
+          "bytes": 1008,
+          "sha256": "f314576c77a00a77dc29dfc76f0c5598f7dc01d278904321432ca87231e4dea5"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/blender-trial.log",
+          "bytes": 1008,
+          "sha256": "7dcd28ccd9dd2ba3fd307af7c7cce744bb910344391c63b22ff2c76168f87634"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/capture.json",
+          "bytes": 153,
+          "sha256": "996abe993093ec400324c3d6a53b42c02a262aaf04d9fa7222b029c5d18f24bb"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/check_preservation.py",
+          "bytes": 2048,
+          "sha256": "3e27efae7fac089eeb6b6b2cc50c4dd069743a0db6fb15e5d9a6677c50049389"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/content-hashes-after.json",
+          "bytes": 167515,
+          "sha256": "56005a1a4c8bf34118427035f0671d57e3081e4c96cfa0a420315907d4c61055"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/content-hashes-before.json",
+          "bytes": 165459,
+          "sha256": "156e2be43ec2413bb9b48a709d6a7fae807a16724475f548d3987871886c08df"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/delivery-summary.json",
+          "bytes": 2017,
+          "sha256": "b38575bba93470312926f232b911ab6cac2038180b15355b9036c6057a5ccce4"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/detail_audit.py",
+          "bytes": 2442,
+          "sha256": "c15deec7595002a3637ee9a07c75cd387764efa0fe80700bb45af49034efc316"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/finalize_validation.py",
+          "bytes": 1034,
+          "sha256": "396f579c7f399a82e93cb63892e87da7acbee4ce433095c4ca245ea3da007ac2"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/fix_validation_corner.py",
+          "bytes": 821,
+          "sha256": "1cdcd315f757bcd0e20bc1466a6030cb5c64184111062717f9f48f021502df3e"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/fresh-vertex.json",
+          "bytes": 263,
+          "sha256": "6c458883113afb258d62af8adedf5194935e82e9c3be20e9de21e690f693b4dd"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/fresh_vertex_import.py",
+          "bytes": 1984,
+          "sha256": "db77913c9d2c999512b858d4055a1fa88c760b61cfd57e90b9564095d408934f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/gameplay-capture-request.json",
+          "bytes": 44,
+          "sha256": "4544e739a99e906dab6aa746579197cc71b62ee0429eb08c9029dcebae0b8261"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/git-before.txt",
+          "bytes": 2185,
+          "sha256": "b1b0fefbe5a4d1eb41873b52d16d068d9db022d8cf0e4aec3ad7a2824e8a37ea"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/LaCarlota-audit.json",
+          "bytes": 1528784,
+          "sha256": "c7a7617716f6faba1377f0afa991a0224918cef5087a7ba3c25465eb6dd04ab3"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/LaCarlota-before-audit.json",
+          "bytes": 1509753,
+          "sha256": "69c8f7e7e1c4225d54c2679e4eb0471dbfc86173e87807dce83c34c96cc96737"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/lacarlota-gameplay.png",
+          "bytes": 910110,
+          "sha256": "9fc0a3043ead8c94be4a6d965b57305c068b2662c40c150222b19fb52dde7e77"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/lacarlota-play-0.png",
+          "bytes": 1105511,
+          "sha256": "5ec30ddd8421cb006e914c0ea09df497cbd7bd01f24752f72abf91518d59b363"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/lacarlota-play.json",
+          "bytes": 1474464,
+          "sha256": "f83941f44fc69f1f556e9c3cd613947c9f58b12ed0fa008211651a084e0bdcae"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/LaCarlota.before-save.umap",
+          "bytes": 1067310,
+          "sha256": "5cfbda7fa4cced38e21e6a29386784ed6c7d9bbb091bcddd9a96f2a05a5c60de"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-assembly-0.png",
+          "bytes": 2148872,
+          "sha256": "d64c4ca51aec69f289a0d743655ac3830806e10a2807d57c572dc6acd4644191"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-assembly.json",
+          "bytes": 2865595,
+          "sha256": "560541ace1242c6ea988de050944968c5fde2c89309e7e92ff9a3089b5d3c758"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-trial/Basement_Module_Trial.blend",
+          "bytes": 11706921,
+          "sha256": "ba9d3a77af22b4077989bfd393cd4e0afac1c1b2c833d2e5ad76f9f25186e743"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-trial/Basement_Module_Trial.blend1",
+          "bytes": 11706921,
+          "sha256": "0ed13c220545a3e50228269142b53225e7c17b6fdd2940a08be77c83761fab17"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-trial/blender-trial-initial-unit-mismatch.json",
+          "bytes": 9478,
+          "sha256": "4e5d3cb7dd0b76e3f3a158bcf41fe71422aca3aba7dca7da1b41bee16a3dbbcd"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-trial/blender-trial.json",
+          "bytes": 9477,
+          "sha256": "61ef35ed7a616712210c4fcc0254dcab7b4445c265b73599d78eea8bea976010"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-trial/collision-traces.json",
+          "bytes": 902,
+          "sha256": "b4483944e6d821259e467869acc497f53ca95ae6c96360443bccff271d78267d"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-trial/exported-uv-color-check.json",
+          "bytes": 2521,
+          "sha256": "642c0bc574df3e881df33c30d07d72a47bfe336ead8e6c93664e6d8236affad5"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-trial/reimport/Trial_Floor_01.fbx",
+          "bytes": 15468,
+          "sha256": "1af0c8298fa2ca37a3671d8775665ade5202d3cc24f4ec138f2b4390c31fcd08"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-trial/reimport/Trial_Wall_01.fbx",
+          "bytes": 19116,
+          "sha256": "0e8138770e68a94b29db7ded315bf963ca811c9058ba91fe484916abdfbc6352"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-trial/reimport/Trial_Wall_Corner_01.fbx",
+          "bytes": 19100,
+          "sha256": "fa53135b9a2d302644f5dfb94d070c5d5a2fbb37d3f18196398c17f792e7bc57"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-trial/reimport/Trial_Wall_VertexColor_01.fbx",
+          "bytes": 24236,
+          "sha256": "610ad32d1ff70e345a45cf3623823dfe947feedb2d58e2a5af6bab6c4de38776"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-trial/Trial_Floor_01.fbx",
+          "bytes": 15468,
+          "sha256": "1af0c8298fa2ca37a3671d8775665ade5202d3cc24f4ec138f2b4390c31fcd08"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-trial/Trial_Wall_01.fbx",
+          "bytes": 19116,
+          "sha256": "0e8138770e68a94b29db7ded315bf963ca811c9058ba91fe484916abdfbc6352"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-trial/Trial_Wall_Corner_01.fbx",
+          "bytes": 19100,
+          "sha256": "fa53135b9a2d302644f5dfb94d070c5d5a2fbb37d3f18196398c17f792e7bc57"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-trial/Trial_Wall_VertexColor_01.fbx",
+          "bytes": 24236,
+          "sha256": "610ad32d1ff70e345a45cf3623823dfe947feedb2d58e2a5af6bab6c4de38776"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-trial/unreal-export/Roundtrip_Floor_01.fbx",
+          "bytes": 20080,
+          "sha256": "39dcdbd18c6701e6ac326855c39c940baec0a37afafaf110b7e0ab8bf2714d20"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-trial/unreal-export/Roundtrip_Wall_01.fbx",
+          "bytes": 20112,
+          "sha256": "3f62cea3179e2e011972847b9cd0fa0ef106d0706dada0d3cc3710decf5c6233"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-trial/unreal-export/Roundtrip_Wall_Corner_01.fbx",
+          "bytes": 20208,
+          "sha256": "cdb66c0382edff689e92f66f75b53fcdc7aae6812be3fdd18332f0c7eff64cad"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-trial/unreal-export/Roundtrip_Wall_VertexColor_01.fbx",
+          "bytes": 21696,
+          "sha256": "09bd390e43c28bb6043e10c7cccc5ade8d0083d47957e1a1c0a57f51675fef66"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-trial/unreal-roundtrip.json",
+          "bytes": 6505,
+          "sha256": "3106252ea5034eab548b7160fd329388cd8106c7df04965349ff3f43314af483"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-trial/validation-assembly.json",
+          "bytes": 1630,
+          "sha256": "deaa41feefbd0e698c0602b5c25894489e14d8b7e978dc556da5d58f204d695f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/module-uv-check.log",
+          "bytes": 204,
+          "sha256": "08d673111b17cecb217f6f01c59f543c4c9be70763c6f63c17187249db3510bd"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/runtime-audit.json",
+          "bytes": 472,
+          "sha256": "aff1bdd140ff8c84728773f95c8f42a57431913187e72a371fcaab39c3ce5cf4"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/runtime_audit.py",
+          "bytes": 1173,
+          "sha256": "200ce99e5919c5173cc99e956522d2ee0a4553d48ca58b7f2184e71d8e363302"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/service-pass-receipt.json",
+          "bytes": 5519,
+          "sha256": "095df5c34829d4c9bfd6adc4cff6a699885211406106e144d754ac6340375a7a"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/service-sign.log",
+          "bytes": 1125,
+          "sha256": "e6a6d2e021139392b53ccafe1f4ac4e7e70d0e8b38529869c1b8474480ffaf64"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/shop-before-0.png",
+          "bytes": 2418545,
+          "sha256": "23e567f0f98e5054d3c25860839f199bfb07c0148f20cc023b6c6e9575d4a1ab"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/shop-before-clean-0.png",
+          "bytes": 2315542,
+          "sha256": "74f77ab75610e5490f478dc76b30bd4667783bc3c4c03242023c66a4ac424be4"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/shop-before-clean.json",
+          "bytes": 3087844,
+          "sha256": "58f9374a12245efb06701763b4990b377297a3a01c78f78b89f5795bf7f49386"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/shop-before.json",
+          "bytes": 3225180,
+          "sha256": "08061a665616bfe715b4c2049b26cc597067c81cd7b83caddaf4008866655635"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/shop-light-first-probe-rejected.png",
+          "bytes": 1516223,
+          "sha256": "abe68f5e99bb0f31582f8603016e82c23014ed7db5059d3ce83e498b454eb963"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/sign-check.json",
+          "bytes": 4140,
+          "sha256": "f35ddde0fbf098a553f41b63348172ff6f77d9974ed55ce8c8f9fcd5b901becf"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/sign-close-0.png",
+          "bytes": 2857427,
+          "sha256": "92bc3e2c6882bd436fcbcdec390f6627bf9a8d7f55e26faf75e21841b5b36aa3"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/sign-close.json",
+          "bytes": 3810297,
+          "sha256": "648305c2b7edef0223ae224a021c115b52ead5a9b2a7340cc477b95f1380edc9"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/sign_check.py",
+          "bytes": 1492,
+          "sha256": "a2dcb7c8e1dffefd67d426a012dda95f3b0d3b287dc13aa994c2183e42b00ea8"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/vertex-api.json",
+          "bytes": 1857,
+          "sha256": "79b4cf8d68e300b8281cf56cb62a43427db15505733bbbad0b5b05d50fc1b8fd"
+        },
+        {
+          "path": ".mrmak/total-insanitation/basement-review/vertex_api_check.py",
+          "bytes": 805,
+          "sha256": "27289f1fdd74ec7832448d92a3d9e6f0aaf2ef95d2f9dac8931ed2e1db58e543"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/blender-live-path.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/blender-live-path.json",
+          "bytes": 1167,
+          "sha256": "f5f8797032aedeb482899052b874966baf306635dcf02805eb30c84e8374c5f5"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/blender-source-window-0.png",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/blender-source-window-0.png",
+          "bytes": 371811,
+          "sha256": "6e773b055c0296f8c67cd162982bea1ae2e7f820e9c6198a9033af66d50bd800"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/blender-source-window.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/blender-source-window.json",
+          "bytes": 495882,
+          "sha256": "84e52ef4930c8d869a707fd65ee8977f9efbf06aef8121fdba62691d9d6f5a73"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/blender-tools.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/blender-tools.json",
+          "bytes": 27338,
+          "sha256": "05725ef234af851e873b67901f9af6d3879e417c969e3dcf96d52149f4701db5"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/building-audit.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/building-audit.json",
+          "bytes": 164527,
+          "sha256": "429cdc140e8019da322c34cca784e4f5271524585aea830feb93359cdbdd72df"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/camera-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/camera-args.json",
+          "bytes": 102,
+          "sha256": "b77fea3880ad115b24756b547cb1a5008e6b1737366bd6d0c919411216ddf9b5"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/capture-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/capture-args.json",
+          "bytes": 162,
+          "sha256": "ef1a3b9ee8f83bd2818aa94b6574c854b772b0d4c1c72e74b1e7cb4906794c44"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/capture-shop-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/capture-shop-args.json",
+          "bytes": 315,
+          "sha256": "3f7893de1b730546885f6b68ba4c50b0bafba00b4792fff4ae919c53d20e2faf"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/corridor-concepts",
+      "kind": "directory",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/01-junction-native.metadata.json",
+          "bytes": 833,
+          "sha256": "6921ff183fae8aecca617fc377ba54b7ca58ce1c37038e4fc7ba49c7fbc3fe8a"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/01-junction-native.png",
+          "bytes": 1278434,
+          "sha256": "3a8037c0ad3e2d5557c70e991850268983b6390e3ef21940b9fbc23bb0f1e673"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/02-service-corridor-native.metadata.json",
+          "bytes": 846,
+          "sha256": "4d8093ed51795e312d0d5812688460f00cf2c42df41bdd94e39a79dc3439e5ef"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/02-service-corridor-native.png",
+          "bytes": 1300069,
+          "sha256": "892de1f59531dbbb87c75af374806e9afd7715e3c30616f884a521410e4fd81d"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/03-stair-threshold-native.metadata.json",
+          "bytes": 801,
+          "sha256": "e7856f1f6ddbc0f56e096f91bf405df4ea2b840bdd7aa0cd19359f411981b7ad"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/03-stair-threshold-native.png",
+          "bytes": 1462873,
+          "sha256": "0a87622e277fb06c19c757afbba02ae67b4f691e15869a5a611f98c1638381c6"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/04-shop-approach-native.metadata.json",
+          "bytes": 852,
+          "sha256": "9142b3bd66e373a022cbdb131d88218dab5c31582af966193df9fa74bed5b1da"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/04-shop-approach-native.png",
+          "bytes": 1605603,
+          "sha256": "bdb6f243a290d36eba31b1ba5e92d6cc33357dce899f43bc6db0c75e8685e6b4"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/asset-capture-args.json",
+          "bytes": 166,
+          "sha256": "f64027c087addc8dd1e448c189d5b760512237b51dac61d27d7534415c5c5ea1"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/drafts/01-junction-checker-cart.png",
+          "bytes": 1834836,
+          "sha256": "15816ec53dfbac8ac2a124b7337917128d8edf6c4d7c2a55c7e64dffda3d8e41"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/drafts/01-junction-tall-cart.png",
+          "bytes": 2006211,
+          "sha256": "15c9ac9bbe7975308f6c0c7fd7e484e7c9c5bf7d9f6a0b9fa896211c24ac171c"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/drafts/02-service-backward-arrow.png",
+          "bytes": 2028345,
+          "sha256": "8fd6d370909b1a97aeba7326ea938231be78c4bdbab1b452a832c6e7b05eec0f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/editor-after.json",
+          "bytes": 709371,
+          "sha256": "4e7a83dee5886977f16bda4ae950bb38657398687c4209b86c96a554807f4060"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/editor-before.json",
+          "bytes": 709371,
+          "sha256": "1ac2408b17e7dd0be7cb32851b7b03dec3c6cce4afe1a224ee80a78acf95e20b"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/git-after.txt",
+          "bytes": 2472,
+          "sha256": "a891082d5c90289b463b24f3062892114af65bdfbc442e03e9c15a41228e6a96"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/git-before.txt",
+          "bytes": 2472,
+          "sha256": "a891082d5c90289b463b24f3062892114af65bdfbc442e03e9c15a41228e6a96"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/request.json",
+          "bytes": 165,
+          "sha256": "06f3532cacf6279266ab448904312470b037ce1c5b3f74dbf9322f73747ad6b1"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/reuse-janitor-cart-0.png",
+          "bytes": 67595,
+          "sha256": "1a19ba12c19b3d59a3c67ae8c37f58e0912f1bf6be7a4098150e3991e5a94cb2"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/reuse-janitor-cart.json",
+          "bytes": 90289,
+          "sha256": "55461307abb3eb84dff3f725806797bbb4bdd72c0ec129d0e6b99eea8349a553"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/reuse-lab-shelf-0.png",
+          "bytes": 62062,
+          "sha256": "3e405968106a857b57014f9bdd954c67159ba9e933a458546c9d76ecd6b1a197"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/reuse-lab-shelf.json",
+          "bytes": 82913,
+          "sha256": "7f84b366948844e4be0a029e3fb02742988e2bd950fa0656a176d1a1a4e887ea"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/status.json",
+          "bytes": 758,
+          "sha256": "40402639261c1140bda875d1a74d5b53d5dd36aed6c5c17b9acef2752f64149a"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/ui-check/1440-dark-0.png",
+          "bytes": 454778,
+          "sha256": "03ff6496ad454b5c2e92adc5aca16ef7cccef296b345706609275cffa2ce7710"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/ui-check/1440-dark-1.png",
+          "bytes": 387917,
+          "sha256": "0a0eccb28341f9612416329120eb7020981cb4336c885555a7c7f6e35c0a85ae"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/ui-check/1440-dark-10.png",
+          "bytes": 169931,
+          "sha256": "101a0cf4e710e572d0afd797375492b75e54fd0ca406f5116b08d60739935d9e"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/ui-check/1440-dark-9.png",
+          "bytes": 409815,
+          "sha256": "ecb6ad2b7029a9f233894e7dd5dbfc0a721f4f29c37856ab7b4219a871b11f25"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/ui-check/390-light-0.png",
+          "bytes": 138424,
+          "sha256": "d91f898c795ce9618c098d687c3c6b1bc8bdf2a230d5a5d38c8e0cfcc4c58e5f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/ui-check/390-light-1.png",
+          "bytes": 140852,
+          "sha256": "32132e1d9365146d182235f8eaf2555458d68aecd1da7a37ef0e56e277d5428b"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/ui-check/390-light-10.png",
+          "bytes": 81893,
+          "sha256": "1be0f2740c23959c6120756ce5c51488f65b4e1b9abc7661dde0a6166baad84b"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/ui-check/390-light-9.png",
+          "bytes": 142807,
+          "sha256": "f61875f23138dbce0904e5cff2775a91d33e37df13e06c7423f413883ed9dd14"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/ui-check/checks.json",
+          "bytes": 2546,
+          "sha256": "f3c190be77dcab90511fdf67510747f9248d90ae9fca7f0740d9da319ed894b3"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/ui-verify.log",
+          "bytes": 88,
+          "sha256": "365f9c99b7c6c8373154ca992635c141199ae2237d59c9f1b1b3e59748827a8b"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/walk-01-junction.walk.json",
+          "bytes": 7696,
+          "sha256": "575ec8208ccceca849f85e69cccb6e1dc17b76192e1cff1d5201fc00a9a3bdff"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/walk-02-service-corridor.walk.json",
+          "bytes": 2904,
+          "sha256": "7d6b70a5e7be41673b8d28564f5cbd3d73bee9c9fa834b16e61a00f68ceb8a1f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/walk-03-stair-approach.walk.json",
+          "bytes": 2673,
+          "sha256": "54b7446dcb9e0da88a4a69223b82682ec6b1738e9f4ec6faa362ee9d593907fa"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-concepts/walk-04-descend-to-shop.walk.json",
+          "bytes": 3039,
+          "sha256": "df54540d13fcd945b875de2fbd16e9e1ed7796540f610143d68ad2da3710c7b3"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/corridor-production",
+      "kind": "directory",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/authoring/__pycache__/build_building.cpython-313.pyc",
+          "bytes": 21589,
+          "sha256": "694b90c245048b5ba5f8fc0608cf07d246f340588792bbf30da9d98a293afd8c"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/authoring/__pycache__/build_props.cpython-313.pyc",
+          "bytes": 19483,
+          "sha256": "44dd03df4b2c05a69c560899a1914f1b42ff5d01456229c2ec27f23169e20e75"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/authoring/__pycache__/corridor_lib.cpython-313.pyc",
+          "bytes": 41604,
+          "sha256": "87126694db2e6e23eba8596061eb844d8b130027ff50e1635689ada43157ddd9"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/authoring/__pycache__/eevee_preview.cpython-313.pyc",
+          "bytes": 12652,
+          "sha256": "b30d049639b6fe494f152483bd4b0623e8b21bf11b068e120cd7db41e4237fe1"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/authoring/__pycache__/export_pass.cpython-313.pyc",
+          "bytes": 5487,
+          "sha256": "9b61520d4f54081de77dfe66f45dcf60a3df12e217489af262134dcc08abb038"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/authoring/__pycache__/preview_lib.cpython-313.pyc",
+          "bytes": 12728,
+          "sha256": "882190fca1932f228a27cb6118897a14bdfc88a7cfbea4fa24e4e21983cbe0ec"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/authoring/__pycache__/t01_atlas.cpython-313.pyc",
+          "bytes": 28637,
+          "sha256": "a21a985a6491600628cf308daf7975693c02316cb8abcbfd4b8f32d696f03018"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/authoring/build_building.py",
+          "bytes": 13356,
+          "sha256": "a70f0912a088065fa62bc5691da6dfe5615838761ea9c59b25e1ab0ef541e902"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/authoring/build_props.py",
+          "bytes": 14472,
+          "sha256": "2229046f566d86f8b125d727e2e7cfbbebe66e5c4eed906568e7a17eba9da0ac"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/authoring/corridor_lib.py",
+          "bytes": 22961,
+          "sha256": "73684cd14c195fa9fcfb26d07191b8100a63b1fbe0d224c0e0e01d5d95b1fe94"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/authoring/eevee_preview.py",
+          "bytes": 7178,
+          "sha256": "1d0e78c0843fedad83e24176074e33ca8c61ecbbf1542187bfc3af123f7470a2"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/authoring/export_pass.py",
+          "bytes": 2710,
+          "sha256": "2515e473205002fa1c6d421ab1dacd187cdb49493ffc56895d7323b4f2f20e7a"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/authoring/preview_lib.py",
+          "bytes": 7419,
+          "sha256": "26203408ca2f41386fccacd3f51115873d0c1dd26eefa55b334360bec196b594"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/authoring/t01_atlas.py",
+          "bytes": 17931,
+          "sha256": "08d4de6e7ec731ddcc0a483dfc95f1e1cb79d26f9960015ff15e348da7821eca"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/baseline-building-snapshot.json",
+          "bytes": 203928,
+          "sha256": "740fb3175e7b0cd4dc61c989ad3ed3cee38e7e9cf9d84cd1d0dd53ee57ad2cde"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/baseline-building.json",
+          "bytes": 204194,
+          "sha256": "754b7c7a8f61829f6da82475130728794d52967bea327edc4fcc2c34471a5d9f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/baseline-env.json",
+          "bytes": 144692,
+          "sha256": "f89b56fe2dd60e196c438e6c654a4e3a37729923ad1d5a19b300f9583b6c5ee2"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/building-build.json",
+          "bytes": 16655,
+          "sha256": "e08b443c8bacb64a67aae5e8f709e4d2c782cdfc7e8107987644ecd93b99932b"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/building-independent-final.json",
+          "bytes": 16527,
+          "sha256": "5b90c129104c677fdc84a69db0d76950df40e1f1ef9f8ef03aac23aabf232f02"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/building-independent-final.log",
+          "bytes": 344,
+          "sha256": "2d7bbaafb7bc214738da76073e655186989d1169e9fb6d9c4e2cf5f865983a96"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/building-independent-r5.json",
+          "bytes": 16527,
+          "sha256": "5b90c129104c677fdc84a69db0d76950df40e1f1ef9f8ef03aac23aabf232f02"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/building-independent-r5.log",
+          "bytes": 341,
+          "sha256": "6f533b9061b709d068c246cc2057e413bd41249086a600f3106523695f0c5e74"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/building-live-before.json",
+          "bytes": 223909,
+          "sha256": "91988add667328902a4d6ce846fa91c08a1b80ee07d91944185820570a2ba650"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/export-building.json",
+          "bytes": 4239,
+          "sha256": "32caddac89147cce58cfa819dbbb6bacc1adb60534ef1c74465ddbff26f48b86"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/export-props.json",
+          "bytes": 1806,
+          "sha256": "9f5aaf393ed37efdcb919b548661cfb9957ebe096b55711203bfa8378ed35c95"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/fbx-independent-final.json",
+          "bytes": 32481,
+          "sha256": "f7c37beaabddaef00130e389ba918a1334db076ad865f443fd72bb85b056419b"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/fbx-independent-final.log",
+          "bytes": 583,
+          "sha256": "11647cf84e7e736670851e0da3a2bba908b10a91ca4eef9835123b4ffae9a634"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/fbx-independent-prelim.json",
+          "bytes": 32481,
+          "sha256": "f7c37beaabddaef00130e389ba918a1334db076ad865f443fd72bb85b056419b"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/fbx-independent-prelim.log",
+          "bytes": 450,
+          "sha256": "c24935221dd757c84e81c5d60f5a58a1bf3f937c3fb9dbdbef83d5010a079d7b"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/fbx-rejected-layout-offsets.json",
+          "bytes": 23215,
+          "sha256": "9b43c0db1ea49f86d94b814f44b29a77997b335c72e6dd1cb3d4874f2ccf6a50"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/final-ui-check/1440-dark-0.png",
+          "bytes": 303612,
+          "sha256": "2b0146ac1b23b1cbb53c02323d74c29ddb1d11eff2b91c1fc7c424e2f078100d"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/final-ui-check/1440-dark-1.png",
+          "bytes": 354128,
+          "sha256": "53bae30c86f2a87835356bd282adc9d2ba74c23522c662aa760e2fab1a399af8"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/final-ui-check/1440-dark-11.png",
+          "bytes": 185888,
+          "sha256": "0750cc20822594efb92f5f41a3f49139a31e76230cd60f0a162152a757662263"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/final-ui-check/1440-dark-13.png",
+          "bytes": 402925,
+          "sha256": "e9b5b57901c2189a1539a00fcb70ff226171245340163dfaad4ae9de8b1f60b4"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/final-ui-check/1440-dark-14.png",
+          "bytes": 158889,
+          "sha256": "f3db0211d33077e076bce4cd19f348782772a0d48b07e5ad86a82e55726afb13"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/final-ui-check/1440-dark-2.png",
+          "bytes": 172931,
+          "sha256": "18e013726c118b384f1b1b930c430b766ecc844b5cc582bea6d93e6bba5dcb9d"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/final-ui-check/390-light-0.png",
+          "bytes": 87278,
+          "sha256": "5cf8fe906f5ae2bf65d947500c267ec8b54392275524837fdc0030858b4339b7"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/final-ui-check/390-light-1.png",
+          "bytes": 100064,
+          "sha256": "df0165100d180312bfe58fa3a9a98f606fe117f76644efb04e7c98707a9569ef"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/final-ui-check/390-light-11.png",
+          "bytes": 80713,
+          "sha256": "98e8c7d9519abc494b333b2d507374f781beb1f20599531cd90f392008b4bdc1"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/final-ui-check/390-light-13.png",
+          "bytes": 100468,
+          "sha256": "e36330351dd3a8cd0cc2f116a1d397b02847e28b02f700b4aed26a605253e7ac"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/final-ui-check/390-light-14.png",
+          "bytes": 78685,
+          "sha256": "5c326e5f0ef76ca1c54b4fce213a9251306a851d12938af5116a6d76cc511cd3"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/final-ui-check/390-light-2.png",
+          "bytes": 73410,
+          "sha256": "c8fd1cfa5d58cc9b0234dd91a1a377fc49df3aa8e6f9e44eb0ce456bb8e6f548"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/final-ui-check/checks.json",
+          "bytes": 3720,
+          "sha256": "e95623d819ccd2bdc6eecc390934d120958f6c0cbb1002beebb0a168a50d045c"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/final-ui-verify.log",
+          "bytes": 88,
+          "sha256": "7e0c84d13afe3b8dfedb21927c5267860d0fd874396c334987fbfbcd4049d3b3"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/native-acceptance-send.json",
+          "bytes": 853,
+          "sha256": "bc551ced5a600285f181ba2f25df0f3d28e410831798da244313ab318d346430"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/native-previews/unreal-corridor-bay.png",
+          "bytes": 3090912,
+          "sha256": "2a22dc6cf95e9b3f1ddf7b3ab5728cf6380f89df48d88dda7365fc4e7e28d2c7"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/native-previews/unreal-corridor-cabinet.png",
+          "bytes": 3090912,
+          "sha256": "cbf5a2745c33b4e7ffee2d29e6136b4664135a2abb0f66ec227d136ea7c21a7d"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/native-previews/unreal-corridor-corner.png",
+          "bytes": 4252804,
+          "sha256": "b0fe960210d4df198a841e75133b7511d6284704bd0333d2a3343e3ed2347e34"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/native-review3-send.json",
+          "bytes": 749,
+          "sha256": "40eb4a8b0a2a9b52e2980695ca4e8f8c678bc9a1b638d90476b647dc3bdeffec"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/native-review4-send.json",
+          "bytes": 766,
+          "sha256": "fdce7691fe4061ab62a4158e7671a4b2a7c8391716656f1bead7c4078ebebc61"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/native-review5-send.json",
+          "bytes": 759,
+          "sha256": "5c333f47f6aca2ce4ca0d650aba25879f231d12ecc111700933a490e93c04c19"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/preservation-env.json",
+          "bytes": 567,
+          "sha256": "2d1c7a1a582e15c00fa1a66a4ce42e9f54d053129a3f2e2fd25238e156c08c57"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/props-build.json",
+          "bytes": 7604,
+          "sha256": "56281d955525a7f2212e389c7c5e2aa5b6c74386a8808838006619ea8a95235f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/props-independent-final.json",
+          "bytes": 17142,
+          "sha256": "a7a515bba71cf443ca4df8709f7747fdd685166be4ef942e2b486ea843ecdc16"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/props-independent-final.log",
+          "bytes": 349,
+          "sha256": "73b9e331aa415249f7883f2714ae562ffeab4b0225c1657461c319fa7cb1ec16"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/props-independent-prelim.json",
+          "bytes": 17443,
+          "sha256": "3d8c2334f47475eb85152b0cb71ad7daff6492bbd172abd4eeb26867335c5aae"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/props-independent-prelim.log",
+          "bytes": 350,
+          "sha256": "86c4fee1feed9df6f72a409aeee2139647f860f591b67e13ed3b6fdc33ab8c4d"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/props-independent-r5.json",
+          "bytes": 17142,
+          "sha256": "a7a515bba71cf443ca4df8709f7747fdd685166be4ef942e2b486ea843ecdc16"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/props-independent-r5.log",
+          "bytes": 346,
+          "sha256": "1899546f614c0a36334bfa5f340e5077f37e9d29511f4238abba09ee869082a8"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/recovery/Enviroment_Assets.pre-corridor-20261112.blend",
+          "bytes": 50224709,
+          "sha256": "f22e4588957adcd770ece472c2c52a35b0a009d31b053713a38e8e09c3bd1dcb"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/recovery/Interior_Building.disk-copy-20261112.blend",
+          "bytes": 11620110,
+          "sha256": "48896043547cfe828175bfe7e0df6f82ac8389bad49ac281ede444ffe0fd20ca"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/recovery/Interior_Building.pre-corridor-20261112.blend",
+          "bytes": 11620110,
+          "sha256": "563b93209042085468c4c37fa6b4b86d0a1f365cc8675b5bf6cb6a95db9fcf97"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/reimport-check.json",
+          "bytes": 1397,
+          "sha256": "259a2d4c22b228cc1d44d2d167f2016a96899994eded90adc4ef7424ef03f168"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/rejected-previews-r2/n03_cabinet_detail.png",
+          "bytes": 1020361,
+          "sha256": "84f7ea2998d7fd5f392191d8f6e65082a8b6db1969f03ad031bd0ae0ab740e2e"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/rejected-previews-r2/n03_cabinet_front.png",
+          "bytes": 993189,
+          "sha256": "936af6fe87b728dac64be6e50eeeb6ed6b96b1ccf10ed383ea987fe0d7e97f13"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/rejected-previews-r2/n03_cabinet_side.png",
+          "bytes": 998957,
+          "sha256": "87ce61cb7103125038556298a4d64906332b770c8c904bb2ddd50263d0ffc6f2"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/rejected-previews-r2/n05_panel_detail.png",
+          "bytes": 1038786,
+          "sha256": "f671db71427208ead88429c647737c8c495e79caf683e779ecc87e3bf4fe5cfc"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/rejected-previews-r2/n05_panel_front.png",
+          "bytes": 985563,
+          "sha256": "29bd5f429557ffed974031ceca7988d12741d8f589fc600887c0b75409cb3ac1"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/rejected-previews-r2/n05_panel_side.png",
+          "bytes": 1063648,
+          "sha256": "f36302f2f7680126169de1f7b08c0e9d7660d208eaf27428058f2b13e09869e7"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/rejected-previews-r2/n06_reel_detail.png",
+          "bytes": 1039013,
+          "sha256": "497d131c52abfb165812f3ae57244d421a3f4ef27cbf7475ee9832d7f1418b21"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/rejected-previews-r2/n06_reel_front.png",
+          "bytes": 1041342,
+          "sha256": "74ad40bde17331f6509613582baea701e3b99432a572f76ed172af9c673e1c47"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/rejected-previews-r2/n06_reel_side.png",
+          "bytes": 1042609,
+          "sha256": "f5ae397d42980595763fbab96f7b31905f8e0af16bce8fa435ca50e84f2b5374"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/rejected-previews-r2/n07_containers_detail.png",
+          "bytes": 1039804,
+          "sha256": "aa68881c02ddf2eab3f27c5be4bbf6f6456159ed732efcca8f95beed2969e570"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/rejected-previews-r2/n07_containers_front.png",
+          "bytes": 1017203,
+          "sha256": "6f2c5a0fe158e2ef2901d5e40db48067075b9b3189015c31603f2a5156dfa762"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/rejected-previews-r2/n07_containers_side.png",
+          "bytes": 1060918,
+          "sha256": "c03d973a1cd03c8101a4cebb2618304bca9b0a00c8f286821342f7dc2a7788a6"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/rejected-previews-r2/props-build.json",
+          "bytes": 6156,
+          "sha256": "6a725a192080fbd677c4aa1663c71e09b7bf2636294267e956d1c8ae729aeb75"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/review-control.json",
+          "bytes": 563,
+          "sha256": "737bcb990a0ec9f3906c0e5e11ce739dec9d59c5e8a671a5bcc0c1d33bfce190"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/review_fbx.py",
+          "bytes": 1612,
+          "sha256": "5c1be72d5deec12ecd62bfa2d888454c7ce27957eeaf5c0eaf86768e8528634d"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/review_source.py",
+          "bytes": 4460,
+          "sha256": "8153ca215939f0205bbe5ccb8db995958ec2b5bdb48028b39adaf972d0d21eb9"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/session-discovery.json",
+          "bytes": 152,
+          "sha256": "92baa41b7125fd6ed963ad1f13c2e81070ba9f226368d4c4a20f358f83c91541"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_args.json",
+          "bytes": 144,
+          "sha256": "6a4dc91e87dbc7c92a58b1825e2616a86558ebf2ad0bcc003f2d1614adb946f6"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_args_build.json",
+          "bytes": 141,
+          "sha256": "72af5070da8a748fa4119ebaaaff250a062e2a30a5b309cda558827c5f221542"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_args_state.json",
+          "bytes": 97,
+          "sha256": "eb31addba3febec158aa38e677ce6ff0e3108da0dbc5d27951645a1d67eb1b52"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_baseline-out.json",
+          "bytes": 1178,
+          "sha256": "e9c0d3220d1941586bc910b6265b9013a73c2485994b2e9af68c411a68548d5e"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_build-out.json",
+          "bytes": 2521,
+          "sha256": "8105605385017a43dbadeb4451235d1e9e883d92447c98807a4781f4583393f1"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_env_args.json",
+          "bytes": 237,
+          "sha256": "a496b123c45efcb46c7202884792a2f44dfff72135c5ad40b8f19d5e939e0114"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_env_probe-out.json",
+          "bytes": 183,
+          "sha256": "e9edadffd874ea5e6bc0389844b2dd68a53241ea9384caad972af2981b99c3f0"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_env_probe.py",
+          "bytes": 491,
+          "sha256": "b00812e85bc7e0f5a3de9a6e9dc06988b8dede453c9632445241a2af1eec1ca2"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_export-out.json",
+          "bytes": 16593,
+          "sha256": "3b1d817fbd424a47ff9ac706e6c6da3648d3099554c300a9a74a5222d7ca71fe"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_patch.py",
+          "bytes": 624,
+          "sha256": "5915437f1891ea2f4bc303d05b8e52341fb80f1984c8aebd3a29976c3aec9b74"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_patch2.py",
+          "bytes": 1217,
+          "sha256": "b9c3943d231d14a7ed54ecb013c01b0459229c50ceea7674d4b91ba60eeb0a8a"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_patch3.py",
+          "bytes": 695,
+          "sha256": "3965940079efbec96d8aeccdd3475531bfb3d33a190f2a3c06b310e048cdc0e1"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_probe-out.json",
+          "bytes": 1261,
+          "sha256": "faaf6986033072a3f198ec700f1ea3b10ba36676cb3af5212e6b81ea05e0e2f2"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_probe.py",
+          "bytes": 761,
+          "sha256": "3f184c1cc40d2c0e12185dfefe7116eef070916fc1ba47cf5891f43e03d8677f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_probe2-out.json",
+          "bytes": 4875,
+          "sha256": "a46832e2f0d426b894b49d59e6f057e337a30cd1d37a4eb53157209fcf9607e6"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_probe2.py",
+          "bytes": 653,
+          "sha256": "8961a639002f9954b392b91717062f938a249aa734955631aa23e97c44d03350"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_probe3-out.json",
+          "bytes": 31277,
+          "sha256": "180f3c599ddd1f6242afdd5d1795e9759c1b711650e6abab8b09c11397e928c3"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_probe3.py",
+          "bytes": 1157,
+          "sha256": "75560bb4cbd83814f2d1220f27c92fadcec8cfa4e7800cd72cb719c1ac917034"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_probe4-out.json",
+          "bytes": 14857,
+          "sha256": "5f0ef2d16bc70c0f0cca103ef80b7d3db5a3b0170598b7d6a7861f471a74e526"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_probe4.py",
+          "bytes": 417,
+          "sha256": "f02df37869182802a20ce5b05e7c2d23289dbca25ec7d75dbb9571ed74b7df71"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/_state-out.json",
+          "bytes": 487,
+          "sha256": "02823354a1fd94bcb3b49fddc72c0d25a17544cbe7bf32618f3c41028ac4c28c"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/addon-checks.json",
+          "bytes": 736,
+          "sha256": "efd65bd7a8476ec83103282ada98626f5ee06f2f04ab98cc810cc7b4cf920e99"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/atlas-copies/Text_Atlas_normal.png",
+          "bytes": 93951,
+          "sha256": "b561a4b0586fefa4983553eac8b5cfa1d02b2a6b487057c7a61fd7905858ac89"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/atlas-copies/Text_Atlas_reference.png",
+          "bytes": 148446,
+          "sha256": "3718813712698ff7f409d87df4f541cd34c73fc15a6bac2a3d3b22d8730d7dab"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/baseline_building.py",
+          "bytes": 2806,
+          "sha256": "48da600ce563dc1d89d6494ec29f88ff4b3f2b2cf42d54bf6f25f4c12e9fb17b"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/building-test/n01_pipes_detail.png",
+          "bytes": 3847544,
+          "sha256": "8d1c81caa50a99b912f8201c5a2efc395cdb3a0396f98ab99cec498b3b409d13"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/building-test/n01_pipes_front.png",
+          "bytes": 3847544,
+          "sha256": "9598fbe049499f64d8787b34b3c01c2a2b719b1a21d641725cae673fce8f91a9"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/building-test/n01_pipes_side.png",
+          "bytes": 3847544,
+          "sha256": "3bed9962b96c435b5058a83e93b893d691b4de7c13b791f2c0a2fb4f13213b5d"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/building-test/n01_straight_detail.png",
+          "bytes": 3366678,
+          "sha256": "3068775205104adea1231fff971ba274c3838a7600af00af0eecc7ddd7c3dc6f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/building-test/n01_straight_front.png",
+          "bytes": 3366678,
+          "sha256": "4c7fe5922dd40f295d6501c8b9fd2cb1a11825c8b4a2e1200259825dec3c37ac"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/building-test/n01_straight_side.png",
+          "bytes": 3366678,
+          "sha256": "a481fdd8e85e55bd8d68eaaa110bd5eed5d46907e90e24a281504e5c5bd6e416"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/building-test/n01_valve_detail.png",
+          "bytes": 2164934,
+          "sha256": "4e1a7f7a4e929c36265646176031313e98241db371fb8beaaf3b19f49acf6dc3"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/building-test/n01_valve_front.png",
+          "bytes": 2164934,
+          "sha256": "88b24b7423f83c4c033e426fc140940bf32b2866b479581efbcfbfae2e4e6262"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/building-test/n01_valve_side.png",
+          "bytes": 2164934,
+          "sha256": "533110f02134a39e8a134a8a325528647797ca2668ae4184852046d361530677"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/building-test/n02_conduit_detail.png",
+          "bytes": 3156306,
+          "sha256": "585a445191a3735dc6a6120f35f79892edd966319e84cf9899956febf172259e"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/building-test/n02_conduit_front.png",
+          "bytes": 3156306,
+          "sha256": "cbd08505721a9c20b31f1ac4d43dcea637c73d45ff32142be3d1847cf65dcb67"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/building-test/n02_conduit_side.png",
+          "bytes": 3156306,
+          "sha256": "7ac8d1fdbcff50303519e6eb40b1ef487989866d4e7bfeb50a0a50b5cac79984"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/building-test/n04_signs_detail.png",
+          "bytes": 3156306,
+          "sha256": "97df253a435a72c9e4589b627fe9f7cb14fc6d7f07fd422976d2de10a5d6ae3f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/building-test/n04_signs_front.png",
+          "bytes": 3156306,
+          "sha256": "5b4d4f3b4102474cf65c3a568bc416f1c069b4720a1a06b13847541bb4a070e7"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/building-test/n04_signs_side.png",
+          "bytes": 3156306,
+          "sha256": "16ef5d6b6a60faa6100ba4bf3f1a9d5b92dfa124552740013b0fb42734478b1f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/check_addon.py",
+          "bytes": 807,
+          "sha256": "42a07526dd1f4fb447ed9b4587a9c12d6f81952e0f8460e7c3c0e0cae6c48e03"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/debug_bay.py",
+          "bytes": 995,
+          "sha256": "c7edb5749bce24d470451150b6a299ce76d55a5d2f543401cdc2d1706ef9a19c"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/export_building.py",
+          "bytes": 513,
+          "sha256": "8a5176a9a4e471d77c59673826ffb3abf8062c8b2ae148e269d595bdabb8dd6a"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/export_props_only.py",
+          "bytes": 504,
+          "sha256": "3fa64851ab358ee82a9e8f548b8712935d68226811fa52db785c1c855652ba93"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/fingerprint.py",
+          "bytes": 2060,
+          "sha256": "ff029f92130c2367df0901928e20a296b591fefd6cb0cee07ade9cb4b4a7a9e8"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/preservation_env.py",
+          "bytes": 2162,
+          "sha256": "e669f594ea7470c9ac79548bdeb94f022b2a06146227e16e1f005079e49acbb5"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/preview_bay_only.py",
+          "bytes": 3177,
+          "sha256": "20d90bbeb05985bf8e34de20dfe454d1a91da366efa41f4cec224fd0003c85a8"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/preview_building_eevee.py",
+          "bytes": 3573,
+          "sha256": "2040b2e4511946a85a79e46daed71a32f7ae0e73cee9001aa327cf2f3a0ea159"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/preview_props_eevee.py",
+          "bytes": 1882,
+          "sha256": "17e68c7eb7216307ff1602531fdecf03bbd2e99522166ca8ab135b23fba15fd8"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/preview_props_family.py",
+          "bytes": 1425,
+          "sha256": "0f53dae82130dd065e73f88d5d58727594d6144c8d41dedc3d4337c3d0a5d449"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/probe-env-mats.json",
+          "bytes": 28435,
+          "sha256": "495f4de701557882624902c639e676ccb90b24bcbd8eccb9f35764bbda2501d3"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/probe-env.json",
+          "bytes": 3000,
+          "sha256": "236e2eb819b6f5abee33f118f910961db4c8de68f735a71f654b0bef685ff314"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/probe-env2.json",
+          "bytes": 3201,
+          "sha256": "d88981f4a8b114779cd81b7872fd5bfd07ea5c591bb1a9a7fca5037feab5b2e7"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/probe3.json",
+          "bytes": 31277,
+          "sha256": "180f3c599ddd1f6242afdd5d1795e9759c1b711650e6abab8b09c11397e928c3"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/probe_env.py",
+          "bytes": 1603,
+          "sha256": "6d8e1764279ba2db5bb310b072ed1dda1c42ffe4e33e9df2bf451f74c357e51a"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/probe_env2.py",
+          "bytes": 1461,
+          "sha256": "68fa4f7909570073748c7c2fa8cbccafc271e981ea284909c4271458abbd928c"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/probe_env_mats.py",
+          "bytes": 2238,
+          "sha256": "10af1e8f3dbcbe80de784140b95525fb65b7bacb76d63da236bb5fb01d5a5bad"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/probe_images.py",
+          "bytes": 351,
+          "sha256": "92328d74ef233dead36aa1dae56734c3cab3fd9d5eaadb8ae0747a3e85648f0c"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/probe_props_row.py",
+          "bytes": 1204,
+          "sha256": "6fa2f17c4193f0de22857e623f15480c9f13e168792a6cdb7991e5ae0f2d55a9"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/probe_uvs.py",
+          "bytes": 988,
+          "sha256": "7a0ac5daa892efb43ac9ffe36334a68e8de32c08c9569ced85840eeffdfa163f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/reimport_check.py",
+          "bytes": 1614,
+          "sha256": "3022a4e886b799b5154de57826a91fed093d9bc0e559aeba9d49c2cd7fafb23d"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/render-test/eevee.png",
+          "bytes": 63268,
+          "sha256": "7714a28ab003cca415059f9bf881c00ab5ea39bc40ba2f18b237df18248782c5"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/render-test/render-test.json",
+          "bytes": 184,
+          "sha256": "55afe6c8e1c03146a9fac2ca6eee0faa2de8bc90ae80763101b9b7a174142bfc"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/render-test/test_BLENDER_WORKBENCH.png",
+          "bytes": 59396,
+          "sha256": "ca1ef5f59261112908dede5aad187688961c3485e08171144a2475e4c98c0fcb"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/run_building.py",
+          "bytes": 2366,
+          "sha256": "ea2c85ccc310eb415461a287b119692dfd6a1a7e983e06deeb4da4c616a48458"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/run_props.py",
+          "bytes": 3643,
+          "sha256": "fe56047d430d615c71e17de81904a0dd40bbf309d60c8c43e4abc1270b31bca7"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/t01-text-layer.png",
+          "bytes": 354053,
+          "sha256": "b52e7084b4682a375fed0a1a2131c447fc3635c4209d79cb0023fb4d990580cb"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/test_atlas.py",
+          "bytes": 679,
+          "sha256": "65f16fd510f35acad134e87d81abbe81eab4e0079325d17eaa48786937675c52"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/test_building_bg.py",
+          "bytes": 1720,
+          "sha256": "bed1e6d23a74e66bd529b44b9326743010933a19437de90a7305ce1ab58681eb"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/test_eevee.py",
+          "bytes": 1155,
+          "sha256": "afe3d32a8c4b23a0fcd79c5e39d2edd592d6558c5f469d156aca5626b41e91ea"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/test_render.py",
+          "bytes": 1624,
+          "sha256": "e89a91611a3d334080c5c820f7d3785a4b43d1812071689d93f4b59f04581891"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/tools/write_manifest.py",
+          "bytes": 9007,
+          "sha256": "f822c4aff2a75640f3ad931da2c5192d4154f6568c307280f76757d3fe6c93e3"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/ui-check/1440-dark-10.png",
+          "bytes": 180401,
+          "sha256": "e84cb5f5749a572e92456d6bb3b1ceef54a94d36a2a7ba3cc3e71bf55157014d"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/ui-check/1440-dark-11.png",
+          "bytes": 165105,
+          "sha256": "ad23fcbe4822a000ae54fd69171f7c56d3acf4564028b29412a4dd3347eb5f35"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/ui-check/1440-dark-9.png",
+          "bytes": 400639,
+          "sha256": "11c29774930a8415c14a2a6090308ac8ecdf0b6b473b3ed8b1f1ee7ef3b2c82e"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/ui-check/390-light-10.png",
+          "bytes": 78928,
+          "sha256": "75ff97a639d52f8595b7fcb617d626b3eb37df3d52637bb16554ea73e7efd864"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/ui-check/390-light-11.png",
+          "bytes": 72716,
+          "sha256": "07ea51de5e6e55404307498d6daa5eab0a7250eb8c3adf2bf898f0cff07de23e"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/ui-check/390-light-9.png",
+          "bytes": 119484,
+          "sha256": "f168795ffecc341d044bf268c6e29a2999fd6be19fa1088147a69da03a6ccdbd"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/ui-check/checks.json",
+          "bytes": 1989,
+          "sha256": "2341adb2d61bd76b6581b7c02ef159506d59a7fac370ccb8ad782f1a821d7a4b"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/ui-verify.log",
+          "bytes": 88,
+          "sha256": "d0ec507746d651c95329302b0087944423ebb99e412d7d642a4ae87196bcc13d"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/unreal-before-review.txt",
+          "bytes": 2524,
+          "sha256": "039854170de2b24c33ce00e3892d7b595971dd14fa0cadfc921f0ea848b7b8aa"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/unreal-capture-request.json",
+          "bytes": 22,
+          "sha256": "fc837ef1f8a9eb13f5258af66ccddab1656042c0f8e2e32ca66e273806e0046f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/unreal-import-receipt.json",
+          "bytes": 28284,
+          "sha256": "91c7c62507bf8cbb24253e1b08e49123a3f4c9bd622559864bfdc1af72ddad24"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/unreal-import-request.json",
+          "bytes": 16,
+          "sha256": "eaff2e4485c57e9fed683de898959926f3171f92a3c79c75e98dd1f1f0a56c48"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/unreal-material-review.json",
+          "bytes": 12180,
+          "sha256": "f24f25841c6632485f75a41807a5a6ca7305e88fc9955b2a8b9b6bceafaadabc"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/unreal-review-prep.json",
+          "bytes": 525342,
+          "sha256": "1bca259151b0163c8880eed1d60e163fec2381cb33f6d11bada107afa6b8733d"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/unreal_capture_corridor.py",
+          "bytes": 7412,
+          "sha256": "dbb7b78cb79d3f986a4038ae3204637eaa198cd232d25a3f1751508f6ed93129"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/unreal_import_corridor.py",
+          "bytes": 3906,
+          "sha256": "6ce48e40012c5b28b67a657e7783a843fa9c6e39091bbc3f5aafcd7f245f52dd"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/unreal_material_review.py",
+          "bytes": 8239,
+          "sha256": "84d9df0e3e8486b37d06f9a94c64250258b1ab3b707707dbb54f957be47c5c04"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/unreal_review_prep.py",
+          "bytes": 2125,
+          "sha256": "927f164ecda8e38b152fc085f3a921a2c14112761449d61bd1e84d7d29c9c35e"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/worker-chat.json",
+          "bytes": 212,
+          "sha256": "380963c92e8cb902ccbb08a69807b27edbf03d0d077f62c3dc020e6434b51bd3"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/worker-status.json",
+          "bytes": 3112,
+          "sha256": "e2e81015fe0d1337964a7513822ec9eeb4f666327b1053f18e326a2c07816c3b"
+        },
+        {
+          "path": ".mrmak/total-insanitation/corridor-production/worker-transcript.json",
+          "bytes": 888174,
+          "sha256": "4bd0d131482edb7fb6fe4fc69d7aba1c1e301a7a5f1ee3f39b56456f5c62ccaf"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/corridor-source-before.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/corridor-source-before.json",
+          "bytes": 386,
+          "sha256": "6c7c6da942ec137cdf1d3b7cd9270215ff7e97977714e81af13b517d7d119965"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/current-level-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/current-level-args.json",
+          "bytes": 111,
+          "sha256": "61290490a4972da5270768cc9f47cd82dad962c6416a6665c3c8ee4aad5d21b7"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/current-unreal-schema.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/current-unreal-schema.json",
+          "bytes": 1813,
+          "sha256": "60602d231ceef6aef712833fba5a53e1ffcdcf69d9b1f63ace8ebbe557dca4f7"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/describe-actor.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/describe-actor.json",
+          "bytes": 60,
+          "sha256": "02cc238fc9c85f5e39a449deeb56f1f8baa92f3d3aa293a8da19e2c715f85dac"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/describe-editor.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/describe-editor.json",
+          "bytes": 50,
+          "sha256": "85cf127d2ceb878a0a10f43561470a6dd422212c81ef418697859c25e00f480a"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/describe-scene.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/describe-scene.json",
+          "bytes": 60,
+          "sha256": "82c812264e80c9f67f290f9be1cb1b37afd44a6a0f66b41030f9c38a680a2db0"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/describe-slate.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/describe-slate.json",
+          "bytes": 63,
+          "sha256": "44c418f47d08127df3af0283bcd2ea50db8c2c5558e01182f4278f47eab66c2e"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/designer-check",
+      "kind": "directory",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/designer-check/Brutalist_Concrete_01.sbsar",
+          "bytes": 7976463,
+          "sha256": "db4b2b46293f6f3869b714697efdac4051e8bba6953f774a33b59c9ca3aba79c"
+        },
+        {
+          "path": ".mrmak/total-insanitation/designer-check/Brutalist_Concrete_01_Brutalist_Concrete_01_basecolor.png",
+          "bytes": 118632,
+          "sha256": "def0c075a8725e45b12a7c34f199cbb50d408ef286e9cd2d674ea87ba8e28366"
+        },
+        {
+          "path": ".mrmak/total-insanitation/designer-check/Brutalist_Concrete_01_Brutalist_Concrete_01_normal.png",
+          "bytes": 82568,
+          "sha256": "10a2046806343a4d164de04de3006addf52740bb2ff5d5cf284a98751be8b41b"
+        },
+        {
+          "path": ".mrmak/total-insanitation/designer-check/Brutalist_Concrete_01_Brutalist_Concrete_01_occlusionRoughnessMetallic.png",
+          "bytes": 174885,
+          "sha256": "80235fb1b6f2be4542cdc35b32269ee2bffb66e419c7730274acc3a5f706f621"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/designer-cook.log",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/designer-cook.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/designer-render.log",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/designer-render.log",
+          "bytes": 3844,
+          "sha256": "3fc67d2d01fec0a0fa7bd8eeda6aa4d3e7337479b0f719031bd6f491e3110d05"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/find-shop-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/find-shop-args.json",
+          "bytes": 206,
+          "sha256": "4fb576a4142f3771fd2a5b067243ab62e041690bf95741b308f8fce7f95b9d46"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/load-basement-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/load-basement-args.json",
+          "bytes": 158,
+          "sha256": "368c2f4ca7acee354ebdfee9894af4a0871676e370d919289d32ef675ee10e24"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/aerial-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/aerial-args.json",
+          "bytes": 301,
+          "sha256": "bc60dcb4466e1de8292051590b49dc97c6f82c6122ac5b8aff8d2242c0b0a615"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/aerial2-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/aerial2-args.json",
+          "bytes": 301,
+          "sha256": "0adb53d750e59a385c1d75876e3d83f147b72ccf437d455d4d34b5b7138d12d1"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/cap.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/cap.py",
+          "bytes": 1252,
+          "sha256": "058e65a02a39d9452f23352c694e058afc0e991fb0ea33bd322ca3f6137ced57"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/captures",
+      "kind": "directory",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/aerial-0.png",
+          "bytes": 1654659,
+          "sha256": "500e2e2736580fcc02b8aa48f7a464de0e5fed45be773ad2bbb01db4b0da4e33"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/aerial.json",
+          "bytes": 2206642,
+          "sha256": "798b0ad00841b59bb479a746f191dccf3c6182d175694edd01e7da2fcf7a2bd0"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/aerial2-0.png",
+          "bytes": 1830713,
+          "sha256": "3a6b20476b63cd31cec93194ed6fb443be479c37ab830ee1435330c7a78b9def"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/aerial2.json",
+          "bytes": 2441382,
+          "sha256": "6cde8b50d605e4695457cf8b15da8a0a14af498d238179790e976a3e7519b39a"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/cornerAB-0.png",
+          "bytes": 2092642,
+          "sha256": "a19ed445eb4190ede3a9d4a81322d913e48304f3eaab0686a1a85df85328a478"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/cornerAB.json",
+          "bytes": 2790603,
+          "sha256": "4220884484c0f1d0fd292fe450064e451fcb832c40ec8344b6c5098f033c8f49"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/cornerAD-0.png",
+          "bytes": 2313162,
+          "sha256": "29e57fe8265fa9bf5fbac886e0e09d7d68fe3503e465face26861717755a29cd"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/cornerAD.json",
+          "bytes": 3084626,
+          "sha256": "13419954128ee89685d4183830e7d51fa9b5999e68329001b75c6f99fb432d2c"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/cornerBC-0.png",
+          "bytes": 2591238,
+          "sha256": "5f33ed367b114c68c607d62404cc75a89b15569896717c74678671f5b611395f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/cornerBC.json",
+          "bytes": 3455360,
+          "sha256": "52d24d0be58616af8e7ff57836b13d267b9491c3029032b8f6b1a11240ddebfd"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/corridorD_u-0.png",
+          "bytes": 1388631,
+          "sha256": "0f7e08068f20468dc9406c59100620043c8606f3f68e0c29013fa47062ec011e"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/corridorD_u.json",
+          "bytes": 1851918,
+          "sha256": "0a42ce21477b076bed9cc46729b3e4fb4f7ae95c057c8d77a996434b6a36364f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/exterior-0.png",
+          "bytes": 2355558,
+          "sha256": "5ad51d8328163a4f6f7f2aba71f59b979341aa28f5f36be27a38fa74a9fd9006"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/exterior.json",
+          "bytes": 3141143,
+          "sha256": "f508a406a215aa2fba924e5fc2e20719f1b6a29ed5dae33607c54a655325f58c"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/junctionAB-0.png",
+          "bytes": 2351494,
+          "sha256": "ab76fec8b285460f56b5346d292593aff8fb7e86eec007eb964ce9c3d6416137"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/junctionAB.json",
+          "bytes": 3135722,
+          "sha256": "88c565ffe10b93e9b18bfff0eb6ed898edb1285130170ca7f8d9d652caf8b98f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/junctionAB_u-0.png",
+          "bytes": 2566736,
+          "sha256": "c3cdc4bc55fb5aa0004ea5356b2eed7a5d4dadf7f8a6173e73c7054a1f8668c3"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/junctionAB_u.json",
+          "bytes": 3422710,
+          "sha256": "2bff89404ba59a4c727697161d0781ac36b26d4b67ec20500869c68dd160d417"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/lightsB-0.png",
+          "bytes": 2511389,
+          "sha256": "0b5514e12d3ea41e02393403d8959fc3f5845f2f57d61647fd191b5ce1433632"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/lightsB.json",
+          "bytes": 3348895,
+          "sha256": "1614fbd9ad8665089cfa0f2a721ed6da9788ae2c3562d39945752b67b1fb81dc"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/lightsD-0.png",
+          "bytes": 4657397,
+          "sha256": "2465a319b31a9a82aff5a156433d7c5914bc3ecc1a64b133555c15cecf5e709d"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/lightsD.json",
+          "bytes": 6210273,
+          "sha256": "ea0c9e457bbcd9a3b10f24eb8710cc48d1d7de4674df93c9bc152e4d5def6711"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/lowerE_u-0.png",
+          "bytes": 2454334,
+          "sha256": "d63de7b81d5a545b429510dc2f7895a5224a33f073cd84d0d1af251cbe05b49c"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/lowerE_u.json",
+          "bytes": 3272864,
+          "sha256": "cc78b199b81b79685ec6e17456dccdcafbda23955111cff250ee4731adb7f0bc"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/oblique-0.png",
+          "bytes": 2224737,
+          "sha256": "ad792b4fa135e0710f9b414937b26ad9a2d4ef3ce7df1d38867807af1d11dbc6"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/oblique.json",
+          "bytes": 2966727,
+          "sha256": "79987ce1447efd812b8eab76266e8ae9df72a0a61ef25390b47c1882e7f06893"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/roomA-0.png",
+          "bytes": 945111,
+          "sha256": "d67034d87ef30b5a59f1a604d99021fd26504eebedc2b67ccc520bcc27f8e0e4"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/roomA.json",
+          "bytes": 1260541,
+          "sha256": "b4a58e21f5eff3d91e20f999218354c68574ef8336712d67736bfca62bbde85b"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/stairDown-0.png",
+          "bytes": 1726876,
+          "sha256": "a11875b85db7a2c2061ccffbb4758006a2e819bbef959e8eba1b076d9545687d"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/stairDown.json",
+          "bytes": 2302899,
+          "sha256": "d97a45d7c77683f606138c3ab1fb8bbaecb13a33f8a6dcd99da9ff6b8156c8b0"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/stairIn-0.png",
+          "bytes": 2675041,
+          "sha256": "805ecb6220aaeaa37a5c664ddcea0279410ba235dead9bc913aa63bc8a8a1714"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/stairIn.json",
+          "bytes": 3567154,
+          "sha256": "0ceb7542c9a26824d2e1fc257692ed00b7bff1d6efa87153f3dea6c9ee604868"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/stairSide-0.png",
+          "bytes": 2321127,
+          "sha256": "3588e8c8d01b36703639872fa66955f3d9f11e24ea400594800251d0c1bbeb7e"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/stairSide.json",
+          "bytes": 3095247,
+          "sha256": "3620d00e0011927069fe3339bb78aba8bb0f67ab0636013c87b0d231531da9ae"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/stairUp-0.png",
+          "bytes": 2005169,
+          "sha256": "43dfff9e82bc8148f74aec19b96cbf88ad06631560673a5c319c18f530afde38"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/stairUp.json",
+          "bytes": 2673969,
+          "sha256": "2e88a38a8972ba21db3fc15fcdcf7551b1c3afb128666e8d5a13647937f562d2"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/stairUp2-0.png",
+          "bytes": 2343616,
+          "sha256": "6a2080b230e81df5ee2557648d314b69d95a4cb33377c7a433760d624910744b"
+        },
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/captures/stairUp2.json",
+          "bytes": 3125233,
+          "sha256": "3cf078764aacfe5e366d5173e70be5f162abadabdae4526b0554245900b497ac"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/cornerAB-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/cornerAB-args.json",
+          "bytes": 300,
+          "sha256": "2e71d5d88885ff9c4dd44c264a2f4c756b78c3df0d5e2b60c0f46051d5e67a6b"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/cornerAD-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/cornerAD-args.json",
+          "bytes": 299,
+          "sha256": "a7faa052205fc944b595fef52ff075d41e32299bc3dd112fda132b67dd92a9fd"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/cornerBC-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/cornerBC-args.json",
+          "bytes": 298,
+          "sha256": "3595ba5023a57f6ea1d688a2c1f31f1fb6605a8f07212aaa9c76cf50bcd4be62"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/corridorD_u-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/corridorD_u-args.json",
+          "bytes": 300,
+          "sha256": "1cd0baafd4a55f5ad5d3035efb06f348bb4efaba67c704c2a543aad528a2150f"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/exterior-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/exterior-args.json",
+          "bytes": 301,
+          "sha256": "f78210603e65433ede1e8e4ba4213a7e05f9b96e727d4dac1210218bcd61e287"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/finalize.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/finalize.json",
+          "bytes": 504,
+          "sha256": "9db2766f9cefbec774d6bd4c57231017e9c74080f6b7329333dd31ae6114fc6b"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/finalize.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/finalize.py",
+          "bytes": 1517,
+          "sha256": "709fc0f368694c288488fed3c9897b895b36614d3382e19f66756adfee1c8248"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/hide_ceilings.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/hide_ceilings.py",
+          "bytes": 641,
+          "sha256": "c0c195b0342d848dbe1d3e9bb1ce100d6176b6e6084398980782f28aab44bbb3"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/junctionAB-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/junctionAB-args.json",
+          "bytes": 300,
+          "sha256": "cb70ff9ec16c4568be6e66ab1171ed2ae970753a442bfc772ccf01b442299798"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/junctionAB_u-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/junctionAB_u-args.json",
+          "bytes": 300,
+          "sha256": "cb70ff9ec16c4568be6e66ab1171ed2ae970753a442bfc772ccf01b442299798"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/LaCarlota.before-olb-demo.umap",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/LaCarlota.before-olb-demo.umap",
+          "bytes": 1106920,
+          "sha256": "4854b957b3297a861f2925d21ee4456f1f521bfdc71f9d702c8ce5c7fe104433"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/lightsB-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/lightsB-args.json",
+          "bytes": 297,
+          "sha256": "e18d0a8195ec0809436aca4421fb55e1963a82b965bb8d17c4ca7d91f39059aa"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/lightsD-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/lightsD-args.json",
+          "bytes": 298,
+          "sha256": "27a19c903752947b2bf1eadf43ae2850ac63911bc828f0baadda84abb2597a8c"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/lowerE_u-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/lowerE_u-args.json",
+          "bytes": 301,
+          "sha256": "001992350d927cdab224d67fc9c3ab30c23c3f6a2516c37c50c38ec63715f8a6"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/move_demo_stair.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/move_demo_stair.py",
+          "bytes": 1016,
+          "sha256": "e9b82c490f84f7cc798359412771098f8796483854ff550b7fad3019c25c575d"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/oblique-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/oblique-args.json",
+          "bytes": 301,
+          "sha256": "bedf2414bf1c01081d095ba571ed4856e8d1302ced0155d8f988cb3d62baa62c"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/roomA-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/roomA-args.json",
+          "bytes": 298,
+          "sha256": "acf5447c87267c4b6860db7d16fb9abe1ee3553c1e9757a19b8042e83aa5df84"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/stairDown-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/stairDown-args.json",
+          "bytes": 301,
+          "sha256": "3b804a70ca25ad2cbd68acd971367a7774bd694d18e89fe0896fe94b74cc01c0"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/stairIn-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/stairIn-args.json",
+          "bytes": 299,
+          "sha256": "722f2724ee8d0e89626885c6dc2c88400ab3f035cb7a776ea07fe9010dd3555f"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/stairSide-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/stairSide-args.json",
+          "bytes": 301,
+          "sha256": "89be13d99dbbe3f3ba06b7c5e8aff35882b1511ccfae100af267f670f662c62d"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/stairUp-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/stairUp-args.json",
+          "bytes": 298,
+          "sha256": "27a19c903752947b2bf1eadf43ae2850ac63911bc828f0baadda84abb2597a8c"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/stairUp2-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/stairUp2-args.json",
+          "bytes": 299,
+          "sha256": "9ce2f1a6b43cab50ec597631bd610f90c1bfa0dc2930afe9ad9faad6f0a37d11"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/state.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/state.json",
+          "bytes": 1496,
+          "sha256": "2fef86a986415a63c33d81bb3d72991ab34197692612f0d3a3f2b7779420df0e"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/state.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/state.py",
+          "bytes": 1082,
+          "sha256": "97787d7b38c5611ef08cf0715e3465b31c5500e05977abb0b91688cacdd2dc2b"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/test-light-axes.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/test-light-axes.json",
+          "bytes": 382,
+          "sha256": "1c21a8faff7f7056eee560222f170b73db3bfbc5c0f54df14b584284a6125155"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/office-level-builder/test_light_axes.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/office-level-builder/test_light_axes.py",
+          "bytes": 1449,
+          "sha256": "b613e89be45e2b7e86e942485c01b5db590da6eb0a5929f32bc40cb446cf90ed"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/opencode-model-default.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/opencode-model-default.json",
+          "bytes": 944,
+          "sha256": "dcb46e5786de3840ece33f41d7b3546267e3688b4946685f3dafd59ce4b9d522"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/opencode-models.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/opencode-models.json",
+          "bytes": 70720,
+          "sha256": "130c029cda11bdf3050ab936b7e95a714deaafe42a86a84458246f7efc99b462"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/opencode-openapi-discovery.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/opencode-openapi-discovery.json",
+          "bytes": 444745,
+          "sha256": "5b9585ed3bb7bcd5964af398d9298077dde864cc4416e8459a46ed4c711c56bb"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/opencode-openapi.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/opencode-openapi.json",
+          "bytes": 9308,
+          "sha256": "7958a972bccf9880a615d2456cc397c791660d7d5c674a9808ecac430f7c8df4"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/opencode-provider.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/opencode-provider.json",
+          "bytes": 549,
+          "sha256": "3c068a46c36c6f9f635a06124dc77a9455b70b475a4ef0c8d2d406103900a4e4"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/opencode-session.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/opencode-session.json",
+          "bytes": 24717,
+          "sha256": "0cae55c7fd69840be1f261918dc44254094b6616ef14aa00f2aa1d8bff7ecd17"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/owner-setup-20261112",
+      "kind": "directory",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/owner-setup-20261112/audit_images.py",
+          "bytes": 1510,
+          "sha256": "72189cdb7b8dc2cdea80ef889f29c7c3055b7fae091b247fadef42e5eed7131d"
+        },
+        {
+          "path": ".mrmak/total-insanitation/owner-setup-20261112/before/context/goals.md",
+          "bytes": 4791,
+          "sha256": "fa1c427aeaa76569914af463dc12e2f7a2335b90560f02d155a06b67cae1ea70"
+        },
+        {
+          "path": ".mrmak/total-insanitation/owner-setup-20261112/before/projects/total-insanitation/AGENTS.md",
+          "bytes": 2998,
+          "sha256": "c242635e049fc971bcd435162077e5dfb2b11b17ae29d37a19eb097262f944aa"
+        },
+        {
+          "path": ".mrmak/total-insanitation/owner-setup-20261112/before/projects/total-insanitation/MODULE_CONTRACT.md",
+          "bytes": 3487,
+          "sha256": "0bbbbb70732a57d137666b1b558b94b03f4afb538557ddd48e2ad35394d7638f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/owner-setup-20261112/before/projects/total-insanitation/NEXT_SESSION.md",
+          "bytes": 3559,
+          "sha256": "d8c65d045d617b1e06c7c599bcd9ffb6c6560ddaad4fa266aa918a4b2d66e5fc"
+        },
+        {
+          "path": ".mrmak/total-insanitation/owner-setup-20261112/before/projects/total-insanitation/README.md",
+          "bytes": 1975,
+          "sha256": "626a136b19c3af5b8b52a69b995804b571fda34bf90ba00010f3a01bf6e12de7"
+        },
+        {
+          "path": ".mrmak/total-insanitation/owner-setup-20261112/before/projects/total-insanitation/scripts/build_service_sign.py",
+          "bytes": 3487,
+          "sha256": "1f4278283e174cca62a4e4c26cece9953e44564165623e2f3fc25ab924b120a4"
+        },
+        {
+          "path": ".mrmak/total-insanitation/owner-setup-20261112/before/projects/total-insanitation/scripts/write_basement_review.py",
+          "bytes": 28138,
+          "sha256": "cba2082c2768295380ff75d5bf374b122d84013a104d53d40198fdf63250fab7"
+        },
+        {
+          "path": ".mrmak/total-insanitation/owner-setup-20261112/before/projects/total-insanitation/VERIFICATION.md",
+          "bytes": 5550,
+          "sha256": "f5cbd1d2020e7c3ea45fe7e8a85863ed11a321fcff14a29c0c9c8ae19f5d7fa9"
+        },
+        {
+          "path": ".mrmak/total-insanitation/owner-setup-20261112/before/workspace/2026-11-12_total-insanitation/art-bible.card.json",
+          "bytes": 6333,
+          "sha256": "cec5f4bae8a0cc2d87c744c1248b41134747ac7bb7f1f5305372f02875bf6934"
+        },
+        {
+          "path": ".mrmak/total-insanitation/owner-setup-20261112/before/workspace/2026-11-12_total-insanitation/ASSETS.md",
+          "bytes": 6109,
+          "sha256": "c323ff2c47255eaa26e9b162fbb7dcac54d31a9914163334def1afbd1bf7b238"
+        },
+        {
+          "path": ".mrmak/total-insanitation/owner-setup-20261112/before/workspace/2026-11-12_total-insanitation/basement.card.json",
+          "bytes": 4058,
+          "sha256": "2b7c97540325208a2e0eb46be233cf1088e9d925cbb4a8e5a54b057ab7fd28ae"
+        },
+        {
+          "path": ".mrmak/total-insanitation/owner-setup-20261112/before/workspace/2026-11-12_total-insanitation/BASEMENT_PASS_01.md",
+          "bytes": 9004,
+          "sha256": "87c78c9aa8340cd74acd57212868f77da1e26c291eb4bc2df85f304b2c84a86e"
+        },
+        {
+          "path": ".mrmak/total-insanitation/owner-setup-20261112/before/workspace/2026-11-12_total-insanitation/decisions.card.json",
+          "bytes": 4137,
+          "sha256": "ad09ede245daa221917eb9c08f3c6698979259e602024cb27d4c82ad1c9bf1b9"
+        },
+        {
+          "path": ".mrmak/total-insanitation/owner-setup-20261112/before/workspace/2026-11-12_total-insanitation/index.html",
+          "bytes": 5077,
+          "sha256": "8cdde31ae5b9d223237f5155e4fba2710471b0f9656e7b695217e8d33ff4b58e"
+        },
+        {
+          "path": ".mrmak/total-insanitation/owner-setup-20261112/before/workspace/2026-11-12_total-insanitation/materials.card.json",
+          "bytes": 10006,
+          "sha256": "22c65eb0700ac3d4c535a41b02dedcd5d7bc115a1797507717d96754723c92de"
+        },
+        {
+          "path": ".mrmak/total-insanitation/owner-setup-20261112/before/workspace/2026-11-12_total-insanitation/TOOLS.md",
+          "bytes": 10356,
+          "sha256": "68e1380f42868b91d0a42046a4e9126c48fc1c5a10990a885986a64ab5b3acb1"
+        },
+        {
+          "path": ".mrmak/total-insanitation/owner-setup-20261112/before/workspace/workspace.json",
+          "bytes": 4799,
+          "sha256": "89e9489b30c4c463bf5c4efe19fcfe3e87b85a40d0670ae7045e77dadb76d6dd"
+        },
+        {
+          "path": ".mrmak/total-insanitation/owner-setup-20261112/image-audit.json",
+          "bytes": 348,
+          "sha256": "ba5ae5f08a8523c90a34a942dce156bad4f937eed74936f8a82ed806ebbac884"
+        },
+        {
+          "path": ".mrmak/total-insanitation/owner-setup-20261112/update_docs.py",
+          "bytes": 25307,
+          "sha256": "7e1cbbba5e7276b63d2aba131a648f763752fed0f5ec12cab87d64f12185f1c5"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/props-audit.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/props-audit.json",
+          "bytes": 120008,
+          "sha256": "80094be23f73256bbcd031eedf8f62d96241cc3d56c18b7214e2f8ec31c42ee5"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/reset-plan-20261116",
+      "kind": "directory",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/reset-plan-20261116/building.json",
+          "bytes": 164185,
+          "sha256": "6047b7a3431a5b624deab170c1cac1b8ae3dc71428ec1097e51577bd017d48d5"
+        },
+        {
+          "path": ".mrmak/total-insanitation/reset-plan-20261116/inspect_links.py",
+          "bytes": 600,
+          "sha256": "891fa6d5b124ffd3e20d371efe756d838456c299ddf1a3f116c147ae907abcfc"
+        },
+        {
+          "path": ".mrmak/total-insanitation/reset-plan-20261116/plan-dark-1440.png",
+          "bytes": 148164,
+          "sha256": "a8f4be4ddbeb60bfb09f784709d95c8596c281791c959eabe09c1d39cc6f9d64"
+        },
+        {
+          "path": ".mrmak/total-insanitation/reset-plan-20261116/plan-dark-390.png",
+          "bytes": 80788,
+          "sha256": "46a070d16777469bc2441a1f71a6a0c30b5c789ecf048263ff5d5b2816eb2747"
+        },
+        {
+          "path": ".mrmak/total-insanitation/reset-plan-20261116/plan-dark-768.png",
+          "bytes": 124928,
+          "sha256": "04d4d915979239993e0a826b1ad454d673bd23e0a8c412665734f58d190f310b"
+        },
+        {
+          "path": ".mrmak/total-insanitation/reset-plan-20261116/plan-light-1440.png",
+          "bytes": 149508,
+          "sha256": "9e2ec52bb68f056d09b8d581ec30e48679b442125a21cd1232d2f375ae4c148a"
+        },
+        {
+          "path": ".mrmak/total-insanitation/reset-plan-20261116/plan-light-390.png",
+          "bytes": 81255,
+          "sha256": "4e34475d9aebacc2a4dddc1d47802edff1747fd83bcb8cfc7e4ccfb19cf71b68"
+        },
+        {
+          "path": ".mrmak/total-insanitation/reset-plan-20261116/plan-light-768.png",
+          "bytes": 126128,
+          "sha256": "3fb5aca867a0ecf763efca940ef9ff35f5603144d184c62b1e461e39a5bcec99"
+        },
+        {
+          "path": ".mrmak/total-insanitation/reset-plan-20261116/props.json",
+          "bytes": 120078,
+          "sha256": "1b9fc287a3abb7d0ca297926fafa82e3e8c1eb04edd1c8c397074a292a74fcfe"
+        },
+        {
+          "path": ".mrmak/total-insanitation/reset-plan-20261116/verify-plan.mjs",
+          "bytes": 3287,
+          "sha256": "485aed617e53ea996589389ff2c114c99bd34c80e9205155770e26370628a9c7"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/shop-transform-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/shop-transform-args.json",
+          "bytes": 218,
+          "sha256": "97a64be8c2201f4c264a3235c28cbf4503137ba292a7718a540fdd1bd41979ce"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/slate-capture-args.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/slate-capture-args.json",
+          "bytes": 116,
+          "sha256": "d3a4a5ae7ad8f4838ee4d05ee0c9c2039d44a354363f8e1297cbe5becceec7fb"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/ui-check",
+      "kind": "directory",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/ui-check/1440-dark-0.png",
+          "bytes": 428753,
+          "sha256": "33ba096482379ba7a79aa1f1e36f8004acfe124fad005d35581a564a893ec34a"
+        },
+        {
+          "path": ".mrmak/total-insanitation/ui-check/1440-dark-1.png",
+          "bytes": 368487,
+          "sha256": "cca84857e934da3a85e144bc923ca6507db4a5a9162941dbfb73744b279166e7"
+        },
+        {
+          "path": ".mrmak/total-insanitation/ui-check/1440-dark-2.png",
+          "bytes": 163146,
+          "sha256": "096073b205406061aa5241c3dd734ca77fda9b0fbc2324a0f053f482a051de35"
+        },
+        {
+          "path": ".mrmak/total-insanitation/ui-check/1440-dark-3.png",
+          "bytes": 152102,
+          "sha256": "5d2ec193e0894013e2658b6b5f8f5022340c3ce20e01660ca681f68314bee63c"
+        },
+        {
+          "path": ".mrmak/total-insanitation/ui-check/1440-dark-4.png",
+          "bytes": 291173,
+          "sha256": "f61ddf1cd934b11fe034229fcf15d9d76455c63cef59409a3341c8fbca5bb460"
+        },
+        {
+          "path": ".mrmak/total-insanitation/ui-check/1440-dark-5.png",
+          "bytes": 153328,
+          "sha256": "b7d38c9423f3c90a158508a3da62bc3748181e00f63d9beb1ea46db1b78b424f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/ui-check/1440-dark-6.png",
+          "bytes": 171028,
+          "sha256": "829ac2a3a7df861107738f641a8d400c225ea97f26d9509d50c132a59bec3f83"
+        },
+        {
+          "path": ".mrmak/total-insanitation/ui-check/1440-dark-7.png",
+          "bytes": 431764,
+          "sha256": "de3390b9737a76bbf7dd3858c2bf489567cd94be810d3b8fa8e41de548a35004"
+        },
+        {
+          "path": ".mrmak/total-insanitation/ui-check/1440-dark-8.png",
+          "bytes": 342855,
+          "sha256": "6f86d63df57618f40ade1c9641a0cde0bb33568df00fdeb4dcca291b18d19378"
+        },
+        {
+          "path": ".mrmak/total-insanitation/ui-check/390-light-0.png",
+          "bytes": 132615,
+          "sha256": "5a4e970d5ad1a3e2adee4fabb9648815ece6af15f4349da7a6064310e6371bf3"
+        },
+        {
+          "path": ".mrmak/total-insanitation/ui-check/390-light-1.png",
+          "bytes": 117589,
+          "sha256": "7a3670de260ead4841d3e80d2ec968b9bdb721eec28da4479bb782c86cfc6e86"
+        },
+        {
+          "path": ".mrmak/total-insanitation/ui-check/390-light-2.png",
+          "bytes": 67308,
+          "sha256": "f7abd9199cd3e0e93961d13851510d1440f1408a475af47956d0ff06e313993d"
+        },
+        {
+          "path": ".mrmak/total-insanitation/ui-check/390-light-3.png",
+          "bytes": 69630,
+          "sha256": "7e3cf1f6fa8fcd35ecdc500cdd95ccbb9078c31016e8ae9b491497879a97f7f5"
+        },
+        {
+          "path": ".mrmak/total-insanitation/ui-check/390-light-4.png",
+          "bytes": 124153,
+          "sha256": "1a41b74d3bb5e24c98d07e2f8d7421b16b703dcc7c82c3feae02d4dc97d5017e"
+        },
+        {
+          "path": ".mrmak/total-insanitation/ui-check/390-light-5.png",
+          "bytes": 69201,
+          "sha256": "dfa2ddcf436c9c5ea2aeaa5f79a49f6b1f07ac8c2550a608ea7a6da6d1e9d52c"
+        },
+        {
+          "path": ".mrmak/total-insanitation/ui-check/390-light-6.png",
+          "bytes": 54999,
+          "sha256": "9ca8d60dc424236ab1cf2fc312663d69935158da6d59d10f34b30ea2cf02ce4c"
+        },
+        {
+          "path": ".mrmak/total-insanitation/ui-check/390-light-7.png",
+          "bytes": 76489,
+          "sha256": "5610249f3dea6a7b23ba77ef5ebe7d46cc4105395704d37989d3d12ad7e30581"
+        },
+        {
+          "path": ".mrmak/total-insanitation/ui-check/390-light-8.png",
+          "bytes": 134302,
+          "sha256": "ea16d02c732a36dcae9bcece6c0f08a13ed58cf8d69e290944e4db8a8b424c2f"
+        },
+        {
+          "path": ".mrmak/total-insanitation/ui-check/checks.json",
+          "bytes": 5487,
+          "sha256": "33379dcc3902b26f826c4ee76c6d77379c84da2b36c922a2451ee5338b4edad2"
+        },
+        {
+          "path": ".mrmak/total-insanitation/ui-check/overflow.png",
+          "bytes": 45298,
+          "sha256": "e2519361e4f80df696fbeba475c1e881c62348943887b5d0d18301e9295c32aa"
+        },
+        {
+          "path": ".mrmak/total-insanitation/ui-check/overview-checks.json",
+          "bytes": 641,
+          "sha256": "d6952ea4caed790e1889e70ebb3e7cbead6b0c8319f1a2ccec244d57fccf8610"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-actor-schema.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-actor-schema.json",
+          "bytes": 19192,
+          "sha256": "e4b7b8abbad4bb9fb84632b37e53b593bd48e4374e1d6ec31cb2955e1e6d11a3"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-baseline-capture.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-baseline-capture.json",
+          "bytes": 234,
+          "sha256": "f5ff232123bd6a1f26c45203dc91abe5e71a6a93cef7fc25053e68b0e3f48d48"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-basement-capture.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-basement-capture.json",
+          "bytes": 1273600,
+          "sha256": "8d15465bf29d03cba4c465f6c4022078bc61cd01ed531f86c5a31bbef978b2c6"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-basement.png",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-basement.png",
+          "bytes": 954861,
+          "sha256": "c1400ce430d9550939b36a1a24c9c5ec901911fe291b9aa99f736192698129ec"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-camera.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-camera.json",
+          "bytes": 310,
+          "sha256": "d3a6f3fb1566c7fecf8d0b172c0a1ba7aa076003c8bbe7f80c0bbd9a5a61773f"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-current-level.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-current-level.json",
+          "bytes": 149,
+          "sha256": "4a3243571d55b829bf80979d57916a75656bff034885e5edf76116d00cbe0836"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-editor-schema.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-editor-schema.json",
+          "bytes": 22889,
+          "sha256": "bfe5f48cc32b634ee0a76f0a03ba9a0608d0cc6182c4d2d4c4840e4ac38cb658"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-live-audit.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-live-audit.json",
+          "bytes": 62224,
+          "sha256": "741a21b68f701c65e1a2ed949d1bc3b69028c7f392a3826fd3c9f7f916ce0226"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-live.log",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-live.log",
+          "bytes": 357882,
+          "sha256": "8587f6b7d61a8e9df05abf747487c4cdbc5756af76a348bad87627aad02ccf93"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-load-basement.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-load-basement.json",
+          "bytes": 123,
+          "sha256": "f207ce2695d79d166f1925fdc5f7c423daae3fc24fad636f87ecdad303c1772c"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-scene-schema.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-scene-schema.json",
+          "bytes": 26803,
+          "sha256": "1e0c5e3f9753a107628d8d58956bbb027a321514c3da4b3f719cb98945c840c3"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-setup.log",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-setup.log",
+          "bytes": 510296,
+          "sha256": "662fce9d4f8c94f9405f1122443816273dd733d63ad10a71e0391803ddb5cfcf"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-shop-actors.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-shop-actors.json",
+          "bytes": 220,
+          "sha256": "a7dfe54531c73eb42c4493e5acd9a3cbd077edd26365d7bd939201d74e593aad"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-shop-capture-0.png",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-shop-capture-0.png",
+          "bytes": 500159,
+          "sha256": "e3a3fdccb062c004ec514ebe0b12c793d40b9d9d61002ac17cd713a4876ccf99"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-shop-capture.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-shop-capture.json",
+          "bytes": 667319,
+          "sha256": "b8d961265bc2900fedb9066b33356e1405831235f2642fba00f3051d4ebb2ff6"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-shop-transform.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-shop-transform.json",
+          "bytes": 271,
+          "sha256": "1a07175390e412bfef492b9defc458d66d0fcd3f21418b7f4b9469c4dfa31138"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-slate-schema.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-slate-schema.json",
+          "bytes": 11121,
+          "sha256": "5a538ac80807a072d63bae1768407638f26291f8ab8b08d1bfc200f37c35fa58"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-source-window.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-source-window.json",
+          "bytes": 1368601,
+          "sha256": "bc1aa0a3de911692712c9f5ad5aa960f950fe66c5bf97eb911f5c531b108682b"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-source-window.png",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-source-window.png",
+          "bytes": 1026329,
+          "sha256": "414f32ed6bd34d0d3ba294ef29e57645ff7daa5a4e0765f38c59b2da28af5d9f"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-tools.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-tools.json",
+          "bytes": 1813,
+          "sha256": "60602d231ceef6aef712833fba5a53e1ffcdcf69d9b1f63ace8ebbe557dca4f7"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/unreal-toolsets.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/unreal-toolsets.json",
+          "bytes": 3876,
+          "sha256": "2736b44ad2a688af504c021ece94e71b1134b43278c4e62c915e3c14e872beba"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/verify-agent-production.mjs",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/verify-agent-production.mjs",
+          "bytes": 5509,
+          "sha256": "3ac2d1bb786645b91f90b85efbc4d819b37b1e603a30d320ea671254de0dc501"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/verify-corridor-concepts.mjs",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/verify-corridor-concepts.mjs",
+          "bytes": 5519,
+          "sha256": "24942958f0742fc91010178c0fc2da7f4ffdee3ed96f539a71aee11357238587"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/verify-final-corridor-models.mjs",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/verify-final-corridor-models.mjs",
+          "bytes": 5557,
+          "sha256": "bc5b273db190671d90ff9884676c6da91456ad185bc4af815a47cb34c25f516e"
+        }
+      ]
+    },
+    {
+      "path": ".mrmak/total-insanitation/verify-hub.mjs",
+      "kind": "file",
+      "files": [
+        {
+          "path": ".mrmak/total-insanitation/verify-hub.mjs",
+          "bytes": 5347,
+          "sha256": "ffe0c37ca36549f171089ddf8c1fa16c80e981f129eaaaa12f08a9bbc33107a1"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/corridor-assets.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": "projects/total-insanitation/corridor-assets.json",
+          "bytes": 33262,
+          "sha256": "51ac2cf0185805b1ea03a5e4c7222ef24742dc0161ba5f2143950cacd64a2661"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/corridor-production",
+      "kind": "directory",
+      "files": [
+        {
+          "path": "projects/total-insanitation/corridor-production/source/build_building.py",
+          "bytes": 13356,
+          "sha256": "a70f0912a088065fa62bc5691da6dfe5615838761ea9c59b25e1ab0ef541e902"
+        },
+        {
+          "path": "projects/total-insanitation/corridor-production/source/build_props.py",
+          "bytes": 14472,
+          "sha256": "2229046f566d86f8b125d727e2e7cfbbebe66e5c4eed906568e7a17eba9da0ac"
+        },
+        {
+          "path": "projects/total-insanitation/corridor-production/source/corridor_lib.py",
+          "bytes": 22961,
+          "sha256": "73684cd14c195fa9fcfb26d07191b8100a63b1fbe0d224c0e0e01d5d95b1fe94"
+        },
+        {
+          "path": "projects/total-insanitation/corridor-production/source/eevee_preview.py",
+          "bytes": 7178,
+          "sha256": "1d0e78c0843fedad83e24176074e33ca8c61ecbbf1542187bfc3af123f7470a2"
+        },
+        {
+          "path": "projects/total-insanitation/corridor-production/source/export_pass.py",
+          "bytes": 2710,
+          "sha256": "2515e473205002fa1c6d421ab1dacd187cdb49493ffc56895d7323b4f2f20e7a"
+        },
+        {
+          "path": "projects/total-insanitation/corridor-production/source/preview_lib.py",
+          "bytes": 7419,
+          "sha256": "26203408ca2f41386fccacd3f51115873d0c1dd26eefa55b334360bec196b594"
+        },
+        {
+          "path": "projects/total-insanitation/corridor-production/source/README.md",
+          "bytes": 2045,
+          "sha256": "d1c4f635a9986cf1a966ba476e3f233bbe5c58ca8f670f1235cf0ee311b594a2"
+        },
+        {
+          "path": "projects/total-insanitation/corridor-production/source/t01_atlas.py",
+          "bytes": 17931,
+          "sha256": "08d4de6e7ec731ddcc0a483dfc95f1e1cb79d26f9960015ff15e348da7821eca"
+        },
+        {
+          "path": "projects/total-insanitation/corridor-production/source/write_manifest.py",
+          "bytes": 9007,
+          "sha256": "f822c4aff2a75640f3ad931da2c5192d4154f6568c307280f76757d3fe6c93e3"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/CORRIDOR_ASSET_HANDOFF.md",
+      "kind": "file",
+      "files": [
+        {
+          "path": "projects/total-insanitation/CORRIDOR_ASSET_HANDOFF.md",
+          "bytes": 12405,
+          "sha256": "753a713f4600bc9c967e8c08407cc2f1c10267eb862c583b47b646010ecf9456"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/CORRIDOR_IMPLEMENTATION.md",
+      "kind": "file",
+      "files": [
+        {
+          "path": "projects/total-insanitation/CORRIDOR_IMPLEMENTATION.md",
+          "bytes": 12212,
+          "sha256": "543c6d806fddf3ee88bdfc6d581bbf49b80923edbed6db7ed2a565621096c808"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/renders",
+      "kind": "directory",
+      "files": [
+        {
+          "path": "projects/total-insanitation/renders/corridor/assembly_bay_eye.png",
+          "bytes": 5109686,
+          "sha256": "6491d51163f3406d48113f1b3805b0c85562804daea56dd76505b14a7c140070"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/assembly_bay_wide.png",
+          "bytes": 5109686,
+          "sha256": "a00aa0ba1e1bf62f2b0257eaf8f276308300af85c0eedd2831186cd0e3bfd566"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n01_fittings_front.png",
+          "bytes": 3787499,
+          "sha256": "caf5f5eb20c5236d18c953dc93e8ed5d0ae8f50302ba6a8db55b8feab89dbfed"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n01_fittings_threequarter.png",
+          "bytes": 3787499,
+          "sha256": "c837e2e5f44c5ba9acba6aba1a511795bc8b807de2e3b7bd818f7dee2f7dfcf0"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n01_pipes_front.png",
+          "bytes": 3787499,
+          "sha256": "d10a98a15ff61fa82cbf4ad86941a08597941bf4745aca9a8fc61eb875e2385a"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n01_pipes_threequarter.png",
+          "bytes": 3787499,
+          "sha256": "9cd8851a012e2eebf6d54b9a019d94e17730eb8dc6c6603f863066ecdc7bc222"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n02_conduit_front.png",
+          "bytes": 3787499,
+          "sha256": "0a0f28b7f8708210e46877fc1f8dd21ea23e1d43a7348c25ce7dae25c29f6aa2"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n02_conduit_threequarter.png",
+          "bytes": 3787499,
+          "sha256": "22be251c2c037f7ae2ade92112c02d36bb5cad328219816ef2afd19515d33085"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n03_cabinet_detail.png",
+          "bytes": 928407,
+          "sha256": "c0636e2e41614f11870625de3dd623a661927fea982dd4bb440264d169dd4c7a"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n03_cabinet_front.png",
+          "bytes": 1067962,
+          "sha256": "20f455862489db99381878def9f608df184e91abff3451388a471ebf8e9633d7"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n03_cabinet_side.png",
+          "bytes": 926177,
+          "sha256": "0fdfc45582702d624ffb8ae0e6737a4364da9408433e73af6c013ad6c878ec65"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n03_cabinet_threequarter.png",
+          "bytes": 1087246,
+          "sha256": "3d983cb17f177aed39b9f5ad96c6b4fb73c398a0c74bb5b8ca8deee3c50d2701"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n04_signs_front.png",
+          "bytes": 3787499,
+          "sha256": "d9630c4a6c8c4392f6c35b593cc16dc5efc67fa027ef128d591fe06d1dc58719"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n04_signs_threequarter.png",
+          "bytes": 3787499,
+          "sha256": "c9913ae589acc061507e5c946a3621a946317c59c6b3de10996940fa8bb713e1"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n05_panel_detail.png",
+          "bytes": 1010173,
+          "sha256": "92b478e462216939cb3e4e37d4f277d75342c44245d387dce44a60e8a1c416a9"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n05_panel_front.png",
+          "bytes": 982055,
+          "sha256": "aca6168f9076384e112eb73f67f27fbafc8607066eb0bd768dbd75007cd41878"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n05_panel_side.png",
+          "bytes": 959016,
+          "sha256": "4378ed63db686889bec0278071ea91a96bad9574af1a80fa4cbbae6341709f49"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n05_panel_threequarter.png",
+          "bytes": 1006782,
+          "sha256": "6e62c1c40f31f45771f7b544434429461427c18a13194f8e6a992e02576827f9"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n05_paper_detail.png",
+          "bytes": 594966,
+          "sha256": "9bf3cd12781d0e39dab49cf183e75ba1642eac407ae5b71ee025995844886494"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n05_paper_front.png",
+          "bytes": 628990,
+          "sha256": "ffd2a065d65af2924b4b8e2a396f78d8f4191011dc9f9031dbd7088ad63810ed"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n05_paper_side.png",
+          "bytes": 530140,
+          "sha256": "1913b4941edf3cf189636587999cf29561952eed3ab28e25dd61b95ff323c803"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n06_reel_detail.png",
+          "bytes": 1026795,
+          "sha256": "d1ccaecaec0c7a84490abb6bb09c11850254136bf1405cdf051fd361e127ebc8"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n06_reel_front.png",
+          "bytes": 1113471,
+          "sha256": "02b0bc8a0688eefefeed815f98e4cbc7e33a0168fd0f9a1d43646f165dafac10"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n06_reel_side.png",
+          "bytes": 1005113,
+          "sha256": "ec50241945b223b70fd2519c2e47b39cee8c5849b5a67460eeb45f461ad7442a"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n06_reel_threequarter.png",
+          "bytes": 1100950,
+          "sha256": "560855027ba21b0a1918b40a72fc80f7cd5704e0c032c73ca59804df82dd5633"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n07_containers_detail.png",
+          "bytes": 978225,
+          "sha256": "e86623a2537e740ca3bd744f8ca8753a56d48ce9225caf2c2f584d19423844d6"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n07_containers_front.png",
+          "bytes": 973476,
+          "sha256": "71070a283776cb88a01aee85e49ba456e5740a18ce6d90369365ac87846f7b98"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n07_containers_side.png",
+          "bytes": 973552,
+          "sha256": "ae17d0891fc63f30dfa4c78cf5042469f43e13ac6a3cda3af008f052ba308263"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/n07_containers_threequarter.png",
+          "bytes": 999426,
+          "sha256": "63310a7115e92e96da20c6e5228b2d45a81e1bb66c79d68544c78b69550bfe29"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/props_family_detail.png",
+          "bytes": 1406440,
+          "sha256": "e6f7ca3c7c8c69b6d12ec20bc02474fa40c7fd856affbcdddb2feb9c7b1ffc0b"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/props_family_overview.png",
+          "bytes": 1455583,
+          "sha256": "acfeb8d21be1a5fb4cd2dbb3a90ddb5950302b9b6126d5560903230ea7239af2"
+        },
+        {
+          "path": "projects/total-insanitation/renders/corridor/props_row_overview.png",
+          "bytes": 1305826,
+          "sha256": "6b6ace7ff9edeabc529d43b7fb7598b2733485af22f7b71af1c8644eee738bdd"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/scripts/__pycache__",
+      "kind": "directory",
+      "files": [
+        {
+          "path": "projects/total-insanitation/scripts/__pycache__/apply_shop_service_pass.cpython-311.pyc",
+          "bytes": 13314,
+          "sha256": "df01fa9c03a6e9d29b83ef4252fab8d875e40ebe9e82057926f58c68e5eb0c67"
+        },
+        {
+          "path": "projects/total-insanitation/scripts/__pycache__/basement_review_audit.cpython-311.pyc",
+          "bytes": 12133,
+          "sha256": "db7f319b9a4a828c810a7105ffbeee928e08c3a7e744353b64d2db86ebc82a34"
+        },
+        {
+          "path": "projects/total-insanitation/scripts/__pycache__/blender_audit.cpython-311.pyc",
+          "bytes": 4245,
+          "sha256": "4b7df8afe27e926346567ebb423b07890d6c758d1b44d20d445ad51c71ce89e6"
+        },
+        {
+          "path": "projects/total-insanitation/scripts/__pycache__/build_module_validation_scene.cpython-311.pyc",
+          "bytes": 5334,
+          "sha256": "6b7e1f8efe0fc7b16f5ea3c266d2710433c0dbb87327791ded7e5ebddf77874f"
+        },
+        {
+          "path": "projects/total-insanitation/scripts/__pycache__/build_service_sign.cpython-311.pyc",
+          "bytes": 6452,
+          "sha256": "d4ec2df9afa3ee56766ed97210fb292c5bf6d0cc5e336594f777c48a3dca1543"
+        },
+        {
+          "path": "projects/total-insanitation/scripts/__pycache__/capture_gameplay_review.cpython-311.pyc",
+          "bytes": 2693,
+          "sha256": "8e5b32974a4a209d9704b73c713c45817d8da8e79305fc9cbbf2b24b9b6771c7"
+        },
+        {
+          "path": "projects/total-insanitation/scripts/__pycache__/check_exported_module_uvs.cpython-311.pyc",
+          "bytes": 5774,
+          "sha256": "8dbf79f9d2cfbbb7b16aa19782b172a561f19b567eebcbc13fff5eab1f114c3d"
+        },
+        {
+          "path": "projects/total-insanitation/scripts/__pycache__/designer_audit.cpython-311.pyc",
+          "bytes": 2367,
+          "sha256": "83c7bebab09b45b8ee45c5b904aa0634a22a90a001a0dbfb1ae1cf598ee4fa2f"
+        },
+        {
+          "path": "projects/total-insanitation/scripts/__pycache__/export_validation_meshes.cpython-311.pyc",
+          "bytes": 1852,
+          "sha256": "858388baa1c97a2a2c18ffacb1b405b8694db185846758f467e7d88f66eef644"
+        },
+        {
+          "path": "projects/total-insanitation/scripts/__pycache__/mcp_client.cpython-311.pyc",
+          "bytes": 7352,
+          "sha256": "d337bf1c8c36750766e07abac607262642168c23a3fc368b5186b1402336057a"
+        },
+        {
+          "path": "projects/total-insanitation/scripts/__pycache__/modular_copy_trial.cpython-311.pyc",
+          "bytes": 7742,
+          "sha256": "1289dac7fc74ee71b1660334a3c664ee61682456d2df5d1abdb7ad9aff737189"
+        },
+        {
+          "path": "projects/total-insanitation/scripts/__pycache__/sync_shop_pass_instances.cpython-311.pyc",
+          "bytes": 3284,
+          "sha256": "5e8e402d67d2d5c36ab83fb4f97117b5fab52ec08e45c8c3800cd33afa4ec275"
+        },
+        {
+          "path": "projects/total-insanitation/scripts/__pycache__/unreal_audit.cpython-311.pyc",
+          "bytes": 3279,
+          "sha256": "75b76a4dadcbe75ef7a7acb581cb5261fc1eadc54b2840b2399a80d0f18356e2"
+        },
+        {
+          "path": "projects/total-insanitation/scripts/__pycache__/validate_module_roundtrip.cpython-311.pyc",
+          "bytes": 8803,
+          "sha256": "d4bdb98587742f41ba277c420892f019d255d0f64a9b27c2778fc4803f012edf"
+        },
+        {
+          "path": "projects/total-insanitation/scripts/__pycache__/write_basement_review.cpython-311.pyc",
+          "bytes": 37116,
+          "sha256": "a82f90ff6823fb3aa31423b7addfb8ea8273929b4ed28a5fb824a6f51d2ed6d1"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/scripts/apply_shop_service_pass.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": "projects/total-insanitation/scripts/apply_shop_service_pass.py",
+          "bytes": 7682,
+          "sha256": "cd83a8b0d203b2314c49a6ee557f325171fbf354d089ff4f8eb107456d3aa7ca"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/scripts/basement_review_audit.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": "projects/total-insanitation/scripts/basement_review_audit.py",
+          "bytes": 6338,
+          "sha256": "1490d7fe0faaae2a237f55f59a39462e44d0cb0f0ea9cf1a494e6d5b5c302df1"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/scripts/build_module_validation_scene.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": "projects/total-insanitation/scripts/build_module_validation_scene.py",
+          "bytes": 3135,
+          "sha256": "02c246483be88384053963da74f2bc61ddf21f8e6b03976260c72e35c80b365a"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/scripts/build_service_sign.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": "projects/total-insanitation/scripts/build_service_sign.py",
+          "bytes": 3709,
+          "sha256": "625b281393bc8391135c91b021ef2a7c837309137b964003c98f94909bf7e851"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/scripts/capture_gameplay_review.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": "projects/total-insanitation/scripts/capture_gameplay_review.py",
+          "bytes": 1275,
+          "sha256": "6148b3249c9dfec9925d10c91218281db3b329da1206857cd98bf1b61e1711d4"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/scripts/check_exported_module_uvs.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": "projects/total-insanitation/scripts/check_exported_module_uvs.py",
+          "bytes": 2628,
+          "sha256": "e01fdbe8b7e02b0bc889dd15839191e1ccb85a324b28bad8ee80d359c5dbabd5"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/scripts/corridor_walkthrough.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": "projects/total-insanitation/scripts/corridor_walkthrough.py",
+          "bytes": 5017,
+          "sha256": "6c67875776a8eeb0fd6b5c1fc160c94434e91bf761f69794bbee691419aa2be1"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/scripts/export_validation_meshes.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": "projects/total-insanitation/scripts/export_validation_meshes.py",
+          "bytes": 1019,
+          "sha256": "0323d0a8e826d974563c517de25ffca7c3ef3b8acdbe8583d56bb1d08988aab1"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/scripts/modular_copy_trial.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": "projects/total-insanitation/scripts/modular_copy_trial.py",
+          "bytes": 4230,
+          "sha256": "e5f6354a61382e6df7a849e161bb23d6b96a73079b08d0415e740f5d49c28969"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/scripts/olb_migrate_light_spacing.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": "projects/total-insanitation/scripts/olb_migrate_light_spacing.py",
+          "bytes": 3205,
+          "sha256": "6a4a1f44fbf55a9f7b0de5bc6dd9b45380e5d78bca28ef16d7ecbc3758f8741c"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/scripts/olb_place_demo.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": "projects/total-insanitation/scripts/olb_place_demo.py",
+          "bytes": 2680,
+          "sha256": "78b78195e2afd6634b319e2f43fd7391c758dbc185bc8a559e74319298f3ad6c"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/scripts/sync_shop_pass_instances.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": "projects/total-insanitation/scripts/sync_shop_pass_instances.py",
+          "bytes": 1798,
+          "sha256": "a5edee4bba2fd0149e670bff4a7da2f53c3b2a7813b9ecbfe10ead8fd0d7c5b1"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/scripts/validate_module_roundtrip.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": "projects/total-insanitation/scripts/validate_module_roundtrip.py",
+          "bytes": 4905,
+          "sha256": "84e36431c8ae7e56c4b972dd1d49624e10755e7d3cbbd22dad518d17939c8a7b"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/scripts/write_basement_review.py",
+      "kind": "file",
+      "files": [
+        {
+          "path": "projects/total-insanitation/scripts/write_basement_review.py",
+          "bytes": 28337,
+          "sha256": "abe42926a6c19e90364391ed6e08323418cd93ee262ece41c97fe46b6eaaeb57"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/sources",
+      "kind": "directory",
+      "files": [
+        {
+          "path": "projects/total-insanitation/sources/shop-service-pass/Shop_Equipment_Sign.blend",
+          "bytes": 103094,
+          "sha256": "54e35ba5d06e79f5526a775433b7179a05d0dae98c8366fbf44c7edadaddb346"
+        },
+        {
+          "path": "projects/total-insanitation/sources/shop-service-pass/SM_Shop_Equipment_Sign.fbx",
+          "bytes": 100188,
+          "sha256": "19bf94eb9aa6df6e9c7343fadfbd52fbec505f862d953201ea514d364aef4702"
+        }
+      ]
+    },
+    {
+      "path": "projects/total-insanitation/VERIFICATION.md",
+      "kind": "file",
+      "files": [
+        {
+          "path": "projects/total-insanitation/VERIFICATION.md",
+          "bytes": 14725,
+          "sha256": "50cfdbea987d6a6fcebffaa080eb62531529b4c8ccdefc620b37e87e76c0b218"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/AGENT_PRODUCTION.md",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/AGENT_PRODUCTION.md",
+          "bytes": 7606,
+          "sha256": "bd9bb902f8cd397d64de5f56365df15314f00eb6a514363dad94820e4e69c21c"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/ASSETS.md",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/ASSETS.md",
+          "bytes": 6663,
+          "sha256": "d02c444c8b4c767bf5f1731595265248325161042eb12e47d0e5afa12033c244"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/basement.card.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/basement.card.json",
+          "bytes": 6141,
+          "sha256": "0fc2d5e1cf665b0c742b797e782fb314a86dc3350d3c1aa718862fb45ff991f3"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/BASEMENT_PASS_01.md",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/BASEMENT_PASS_01.md",
+          "bytes": 9334,
+          "sha256": "4618531af611bd30a7ccfa130d2df7e5b0ada27f92c8acaacc5a8e3da0e41441"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/corridor-concepts.card.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/corridor-concepts.card.json",
+          "bytes": 21120,
+          "sha256": "d4d2010ba2d2136e04d19d0112fb05bb4567b033f2768269b3d818e0c94ea834"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/corridor-models.card.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/corridor-models.card.json",
+          "bytes": 7283,
+          "sha256": "1986789ce7d7b89e1036070cd8577444578c8cfa47b1bfe6708ba4d90a29172d"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/CORRIDOR_ASSET_PROPOSAL.md",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/CORRIDOR_ASSET_PROPOSAL.md",
+          "bytes": 18294,
+          "sha256": "bc4602d85a914e450135717ea6e07e7416a169d4430d8b0740614960b354a0fc"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/CORRIDOR_MODEL_MANIFEST.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/CORRIDOR_MODEL_MANIFEST.json",
+          "bytes": 58789,
+          "sha256": "6459a0dfa9d7b5532e7b7f5a1f43f156c84f7d2e3c3d878d57c2e6e4fb68e94c"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/CORRIDOR_MODEL_REVIEW.md",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/CORRIDOR_MODEL_REVIEW.md",
+          "bytes": 7348,
+          "sha256": "4df4e4582b64fa1e1f051a3a5f51293784d989d7f18add218cc78ef95f028615"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/CORRIDOR_PROMPTS.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/CORRIDOR_PROMPTS.json",
+          "bytes": 13489,
+          "sha256": "99f483b56aac26d83c8412b7fcf87db833f47a9e9067c12c239a616ea22be36b"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/decisions.card.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/decisions.card.json",
+          "bytes": 6183,
+          "sha256": "d27db2eefc707a485421de6359d9c3ee672d6da7d238336e38ceadad83d0ca33"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/desk.css",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/desk.css",
+          "bytes": 2793,
+          "sha256": "1303fbf60ade558600dcc69abba4a60b475276e42983fdfad49787b6e29c747a"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/materials.card.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/materials.card.json",
+          "bytes": 10110,
+          "sha256": "320a471e408544f46dc9a60d8fe5e4924b022b03cc94b8aa0f35c0ec365b6a4d"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/basement-baseline.png",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/basement-baseline.png",
+          "bytes": 954861,
+          "sha256": "c1400ce430d9550939b36a1a24c9c5ec901911fe291b9aa99f736192698129ec"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/blender-source.png",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/blender-source.png",
+          "bytes": 371811,
+          "sha256": "6e773b055c0296f8c67cd162982bea1ae2e7f820e9c6198a9033af66d50bd800"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/corridor-concepts",
+      "kind": "directory",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-concepts/01-junction-concept.png",
+          "bytes": 1748513,
+          "sha256": "9f8dbc26fb0569bc45406b236fcd14567863f2a0f0dc36cfe47370943150d055"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-concepts/01-junction-native.metadata.json",
+          "bytes": 833,
+          "sha256": "6921ff183fae8aecca617fc377ba54b7ca58ce1c37038e4fc7ba49c7fbc3fe8a"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-concepts/01-junction-native.png",
+          "bytes": 1278434,
+          "sha256": "3a8037c0ad3e2d5557c70e991850268983b6390e3ef21940b9fbc23bb0f1e673"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-concepts/02-service-corridor-concept.png",
+          "bytes": 1900374,
+          "sha256": "0f95e978afa07e0bde4736ea8e4a0448975066fa0c94abf7b0d120e8e417541b"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-concepts/02-service-corridor-native.metadata.json",
+          "bytes": 846,
+          "sha256": "4d8093ed51795e312d0d5812688460f00cf2c42df41bdd94e39a79dc3439e5ef"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-concepts/02-service-corridor-native.png",
+          "bytes": 1300069,
+          "sha256": "892de1f59531dbbb87c75af374806e9afd7715e3c30616f884a521410e4fd81d"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-concepts/03-stair-threshold-native.metadata.json",
+          "bytes": 801,
+          "sha256": "e7856f1f6ddbc0f56e096f91bf405df4ea2b840bdd7aa0cd19359f411981b7ad"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-concepts/03-stair-threshold-native.png",
+          "bytes": 1462873,
+          "sha256": "0a87622e277fb06c19c757afbba02ae67b4f691e15869a5a611f98c1638381c6"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-concepts/04-shop-approach-concept.png",
+          "bytes": 2164936,
+          "sha256": "ae302b258371bebdf47a5ed28037f8f8b5152e14c5a2e0045785795f1fc24c93"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-concepts/04-shop-approach-native.metadata.json",
+          "bytes": 852,
+          "sha256": "9142b3bd66e373a022cbdb131d88218dab5c31582af966193df9fa74bed5b1da"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-concepts/04-shop-approach-native.png",
+          "bytes": 1605603,
+          "sha256": "bdb6f243a290d36eba31b1ba5e92d6cc33357dce899f43bc6db0c75e8685e6b4"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-concepts/reuse-janitor-cart.png",
+          "bytes": 67595,
+          "sha256": "1a19ba12c19b3d59a3c67ae8c37f58e0912f1bf6be7a4098150e3991e5a94cb2"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-concepts/reuse-lab-shelf.png",
+          "bytes": 62062,
+          "sha256": "3e405968106a857b57014f9bdd954c67159ba9e933a458546c9d76ecd6b1a197"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/corridor-models",
+      "kind": "directory",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-models/blender-assembly_bay_eye.png",
+          "bytes": 5109686,
+          "sha256": "6491d51163f3406d48113f1b3805b0c85562804daea56dd76505b14a7c140070"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-models/blender-assembly_bay_wide.png",
+          "bytes": 5109686,
+          "sha256": "a00aa0ba1e1bf62f2b0257eaf8f276308300af85c0eedd2831186cd0e3bfd566"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-models/blender-n01_fittings_threequarter.png",
+          "bytes": 3787499,
+          "sha256": "c837e2e5f44c5ba9acba6aba1a511795bc8b807de2e3b7bd818f7dee2f7dfcf0"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-models/blender-n01_pipes_threequarter.png",
+          "bytes": 3787499,
+          "sha256": "9cd8851a012e2eebf6d54b9a019d94e17730eb8dc6c6603f863066ecdc7bc222"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-models/blender-n02_conduit_threequarter.png",
+          "bytes": 3787499,
+          "sha256": "22be251c2c037f7ae2ade92112c02d36bb5cad328219816ef2afd19515d33085"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-models/blender-n03_cabinet_threequarter.png",
+          "bytes": 1087246,
+          "sha256": "3d983cb17f177aed39b9f5ad96c6b4fb73c398a0c74bb5b8ca8deee3c50d2701"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-models/blender-n04_signs_front.png",
+          "bytes": 3787499,
+          "sha256": "d9630c4a6c8c4392f6c35b593cc16dc5efc67fa027ef128d591fe06d1dc58719"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-models/blender-n05_panel_threequarter.png",
+          "bytes": 1006782,
+          "sha256": "6e62c1c40f31f45771f7b544434429461427c18a13194f8e6a992e02576827f9"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-models/blender-n06_reel_threequarter.png",
+          "bytes": 1100950,
+          "sha256": "560855027ba21b0a1918b40a72fc80f7cd5704e0c032c73ca59804df82dd5633"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-models/blender-n07_containers_threequarter.png",
+          "bytes": 999426,
+          "sha256": "63310a7115e92e96da20c6e5228b2d45a81e1bb66c79d68544c78b69550bfe29"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-models/blender-props_row_overview.png",
+          "bytes": 1305826,
+          "sha256": "6b6ace7ff9edeabc529d43b7fb7598b2733485af22f7b71af1c8644eee738bdd"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-models/corridor-models-fbx-atlas-sources.zip",
+          "bytes": 712316,
+          "sha256": "a2a135c163069307e6c748f2ce6278bc309b18d4822c00094e9f89894518a3da"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-models/unreal-corridor-bay.png",
+          "bytes": 3090912,
+          "sha256": "2a22dc6cf95e9b3f1ddf7b3ab5728cf6380f89df48d88dda7365fc4e7e28d2c7"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-models/unreal-corridor-cabinet.png",
+          "bytes": 3090912,
+          "sha256": "cbf5a2745c33b4e7ffee2d29e6136b4664135a2abb0f66ec227d136ea7c21a7d"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/corridor-models/unreal-corridor-corner.png",
+          "bytes": 4252804,
+          "sha256": "b0fe960210d4df198a841e75133b7511d6284704bd0333d2a3343e3ed2347e34"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/designer-concrete-check.png",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/designer-concrete-check.png",
+          "bytes": 118632,
+          "sha256": "def0c075a8725e45b12a7c34f199cbb50d408ef286e9cd2d674ea87ba8e28366"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/material-brutalist-concrete.jpg",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/material-brutalist-concrete.jpg",
+          "bytes": 92447,
+          "sha256": "c8f21f680617135fdaa259b1909c2b2fae47bd1555d33829a27e6e56a7a66336"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/material-ceiling.jpg",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/material-ceiling.jpg",
+          "bytes": 29171,
+          "sha256": "9d85438f8399d07f1e61739b61636fc698762dccacae26d783a82297906116b7"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/material-concrete-01.jpg",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/material-concrete-01.jpg",
+          "bytes": 94765,
+          "sha256": "b3313e6a894fceee879308543afe473df5bcea29b5422d9bd95bc0a4c2f253c3"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/material-concrete-02.jpg",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/material-concrete-02.jpg",
+          "bytes": 66220,
+          "sha256": "db31f656351c628c90c356e9da16cd19185224c4b3c24bc530a53098761365a8"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/material-dirty-bricks-01.jpg",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/material-dirty-bricks-01.jpg",
+          "bytes": 21332,
+          "sha256": "f746244688f1c021d4af13f8bdcbc0c6ba8a3a637774f14a78a1a6e48a4e4eaf"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/material-metal-blinds.jpg",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/material-metal-blinds.jpg",
+          "bytes": 22026,
+          "sha256": "833d19b83a0e4f205589c334f261429e64a909092bb57e324fcc6cc3524885a2"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/material-mosaic.jpg",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/material-mosaic.jpg",
+          "bytes": 87176,
+          "sha256": "a17b57622ad259aa73c6f68222b017cc337bd19dd550b8139bc8eb2ee85b26ca"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/material-rug.jpg",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/material-rug.jpg",
+          "bytes": 198660,
+          "sha256": "c025bb9ac38d7686708e0496ece0b271cde82a1da36c3f70adbe6878485948d9"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/material-rusty-metal.jpg",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/material-rusty-metal.jpg",
+          "bytes": 127389,
+          "sha256": "51d8e2e0f3f85df9cd714c8adc589aa2f12e351818a09ac67137bed00542e7ea"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/material-trim.jpg",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/material-trim.jpg",
+          "bytes": 34915,
+          "sha256": "737c154dced108767b1f940b527663fa6abed8536e03b53f4354ae7ffe767992"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/material-wallpaper.jpg",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/material-wallpaper.jpg",
+          "bytes": 43683,
+          "sha256": "3e2959c6ac4a4eb50bdeb5d736ccaff0631590807074b48786da5eb682a7b1e8"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/material-wood-wall.jpg",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/material-wood-wall.jpg",
+          "bytes": 17664,
+          "sha256": "d42e260a49d19ceac375f2b53add064bf47f3a1628840dcf1621aded8ed38d3f"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/office-level-builder",
+      "kind": "directory",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/office-level-builder/corridor-light-interval.png",
+          "bytes": 2511389,
+          "sha256": "0b5514e12d3ea41e02393403d8959fc3f5845f2f57d61647fd191b5ce1433632"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/office-level-builder/demo-exterior.png",
+          "bytes": 2355558,
+          "sha256": "5ad51d8328163a4f6f7f2aba71f59b979341aa28f5f36be27a38fa74a9fd9006"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/office-level-builder/open-corner-corridor-lab.png",
+          "bytes": 2591238,
+          "sha256": "5f33ed367b114c68c607d62404cc75a89b15569896717c74678671f5b611395f"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/office-level-builder/open-corner-room-corridor.png",
+          "bytes": 2092642,
+          "sha256": "a19ed445eb4190ede3a9d4a81322d913e48304f3eaab0686a1a85df85328a478"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/office-level-builder/stair-from-corridor.png",
+          "bytes": 2343616,
+          "sha256": "6a2080b230e81df5ee2557648d314b69d95a4cb33377c7a433760d624910744b"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/office-level-builder/stair-from-upper-room.png",
+          "bytes": 1726876,
+          "sha256": "a11875b85db7a2c2061ccffbb4758006a2e819bbef959e8eba1b076d9545687d"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/owner-references",
+      "kind": "directory",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/owner-references/basement_01.png",
+          "bytes": 3771216,
+          "sha256": "e19ce2a054ba518b410b04f2e3e87828bd2a28c90971d50d5a4cef125479348b"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/owner-references/basement_02.png",
+          "bytes": 2891345,
+          "sha256": "f1f1fee791109bdbce7bdc72d69f1ea63ab837df60c0c68ebad54cc6e023b30e"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/owner-references/basement_03.png",
+          "bytes": 3010011,
+          "sha256": "6c0f23aac4b6f1c159078788d5cd216d53ba45288f6bf27a637da2efb8f21889"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/owner-references/basement_04.png",
+          "bytes": 4692708,
+          "sha256": "e1ffc6ae03c092eff72bf99d78b4e1ad9cd379954dc771ebe0f74d91dcd78dda"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/owner-references/basement_blocks.png",
+          "bytes": 2964011,
+          "sha256": "7781a79d4a350bc7426c5838674824e905ba04ff55b7bcbaa59e703003fa5d6a"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/owner-references/materials.png",
+          "bytes": 1244935,
+          "sha256": "5271906984068e8d53425513483683659d89c0b0f4020610c3abbfd2236f230b"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/owner-references/office_lab-blocks.png",
+          "bytes": 2569134,
+          "sha256": "01bbb073bce372f1a61ed52144ff3ff6fe6b27a15f85598205f024b0dc4da6de"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/owner-references/office_lab_01.png",
+          "bytes": 4427873,
+          "sha256": "ca050e37464d215fffdd5488aa4164ba01f49b92627b8a6cb0252660584272c1"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/owner-references/office_lab_02.png",
+          "bytes": 5184748,
+          "sha256": "148813ed3098f22d11d32a8be5a4ce568bc0b12ccb6de1bb4ffa914001737b8b"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/owner-references/office_lab_03.png",
+          "bytes": 7412369,
+          "sha256": "0f678a6de69ec6ffe418ead795ba22e7f69245865cb38bc4eb3100e67c1c1eff"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/owner-references/office_lab_04.png",
+          "bytes": 5203837,
+          "sha256": "ebbe7095cb683b1c222ffbbfaad323afd01661c1f51af0462049e4981f992505"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/owner-references/office_lab_05.png",
+          "bytes": 5422314,
+          "sha256": "324d80c7974107b67b3a49b7893d58688ed4fe0e3821e79450f2fa4e633952a4"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/pass-01",
+      "kind": "directory",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/pass-01/basement-crossing-after-gameplay.png",
+          "bytes": 1155169,
+          "sha256": "70cfb56e987697c40bddfb9cdc495bdea3efa96f5a43da81b27fedf643a7e417"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/pass-01/basement-crossing-before-gameplay.png",
+          "bytes": 900875,
+          "sha256": "5cb7ffdfbcccf76250d9772adbc093fd8f666cf45c1ece82ee04c4e0771d6b45"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/pass-01/basement-junction-after-gameplay.png",
+          "bytes": 1402782,
+          "sha256": "c93f0e5d53a73dd63d5a85661d5dfd16d4699c75ba166c68b82fe06b1ffe2dce"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/pass-01/basement-junction-before-gameplay.png",
+          "bytes": 1272547,
+          "sha256": "6e2cdd9314bca2053cb4f51cfa7f6394a2a0395c04f7230c048d7670dc439e16"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/pass-01/basement-shop-after-gameplay.png",
+          "bytes": 1545261,
+          "sha256": "e93cf6026361f1dd8be4e417a1b582c2d59c395d9854edb110a5071bc6b46c8c"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/pass-01/basement-shop-before-gameplay.png",
+          "bytes": 1706994,
+          "sha256": "7fba31f6005ebd0efb94e088638ec0606e79479e51b0686ab02a53d4761c6698"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/pass-01/lacarlota-play.png",
+          "bytes": 910110,
+          "sha256": "9fc0a3043ead8c94be4a6d965b57305c068b2662c40c150222b19fb52dde7e77"
+        },
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/pass-01/module-assembly.png",
+          "bytes": 2148872,
+          "sha256": "d64c4ca51aec69f289a0d743655ac3830806e10a2807d57c572dc6acd4644191"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/media/unreal-connection.png",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/media/unreal-connection.png",
+          "bytes": 1026329,
+          "sha256": "414f32ed6bd34d0d3ba294ef29e57645ff7daa5a4e0765f38c59b2da28af5d9f"
+        }
+      ]
+    },
+    {
+      "path": "workspace/2026-11-12_total-insanitation/references.card.json",
+      "kind": "file",
+      "files": [
+        {
+          "path": "workspace/2026-11-12_total-insanitation/references.card.json",
+          "bytes": 6811,
+          "sha256": "912b7493a9065422997ba73031f1c9596751756f601056c63ba6c024993e6c55"
+        }
+      ]
+    }
+  ],
+  "file_count": 624,
+  "bytes": 549044569,
+  "preserved": [
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\Temp\\General.txt",
+      "bytes": 835,
+      "sha256": "b22af37e2413dbcc2e8bac1062d93b7ed6d0a8a7215fe9a7eb61d2172d72114e"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\Temp\\Basement\\basement.txt",
+      "bytes": 387,
+      "sha256": "64ad4cee6a9c0e35f69b97e693667e2cbdd60718fb485f60cedbbca3c5b89094"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\Temp\\Basement\\Basement_01.png",
+      "bytes": 3771216,
+      "sha256": "e19ce2a054ba518b410b04f2e3e87828bd2a28c90971d50d5a4cef125479348b"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\Temp\\Basement\\Basement_02.png",
+      "bytes": 2891345,
+      "sha256": "f1f1fee791109bdbce7bdc72d69f1ea63ab837df60c0c68ebad54cc6e023b30e"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\Temp\\Basement\\Basement_03.png",
+      "bytes": 3010011,
+      "sha256": "6c0f23aac4b6f1c159078788d5cd216d53ba45288f6bf27a637da2efb8f21889"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\Temp\\Basement\\Basement_04.png",
+      "bytes": 4692708,
+      "sha256": "e1ffc6ae03c092eff72bf99d78b4e1ad9cd379954dc771ebe0f74d91dcd78dda"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\Temp\\Materials\\Materials.png",
+      "bytes": 1244935,
+      "sha256": "5271906984068e8d53425513483683659d89c0b0f4020610c3abbfd2236f230b"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\Temp\\Materials\\Materials.txt",
+      "bytes": 148,
+      "sha256": "beabe1737e166e510c257ff7190767916c5aa50f060f8460cdac9f6e1d5afd8b"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\Temp\\Modular Blocks\\Basement_Blocks.png",
+      "bytes": 2964011,
+      "sha256": "7781a79d4a350bc7426c5838674824e905ba04ff55b7bcbaa59e703003fa5d6a"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\Temp\\Modular Blocks\\Modular Blocks.txt",
+      "bytes": 757,
+      "sha256": "2b3935ba151d4b8daf0179a9634d507b64ac77b5f483d5898563dab7b7bdcc34"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\Temp\\Modular Blocks\\Office_Lab Blocks.png",
+      "bytes": 2569134,
+      "sha256": "01bbb073bce372f1a61ed52144ff3ff6fe6b27a15f85598205f024b0dc4da6de"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\Temp\\Office_Lab\\Office_lab.txt",
+      "bytes": 376,
+      "sha256": "6ee835a3efa48ad33f9ac1a985a6acfef2d1a4482b2ddb429674e227b9421f83"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\Temp\\Office_Lab\\Office_Lab_01.png",
+      "bytes": 4427873,
+      "sha256": "ca050e37464d215fffdd5488aa4164ba01f49b92627b8a6cb0252660584272c1"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\Temp\\Office_Lab\\Office_Lab_02.png",
+      "bytes": 5184748,
+      "sha256": "148813ed3098f22d11d32a8be5a4ce568bc0b12ccb6de1bb4ffa914001737b8b"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\Temp\\Office_Lab\\Office_Lab_03.png",
+      "bytes": 7412369,
+      "sha256": "0f678a6de69ec6ffe418ead795ba22e7f69245865cb38bc4eb3100e67c1c1eff"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\Temp\\Office_Lab\\Office_Lab_04.png",
+      "bytes": 5203837,
+      "sha256": "ebbe7095cb683b1c222ffbbfaad323afd01661c1f51af0462049e4981f992505"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\Temp\\Office_Lab\\Office_Lab_05.png",
+      "bytes": 5422314,
+      "sha256": "324d80c7974107b67b3a49b7893d58688ed4fe0e3821e79450f2fa4e633952a4"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\workspace\\2026-11-12_total-insanitation\\media\\export-settings.png",
+      "bytes": 83294,
+      "sha256": "9e615f41c7f9a18f49cba4ef64e4703d39f01ddce06c884b7c16d52a2f277592"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\scripts\\olb_setup_assets.py",
+      "bytes": 7543,
+      "sha256": "9c79a1680fbc5b319880e0ae2e15bb2df25b5b74c9ceded1f8677e3edc48385f"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\scripts\\blender_audit.py",
+      "bytes": 1922,
+      "sha256": "5c830ad3fc36949f7207370fc284685650d5b6c279fbffa469063fcdf6c6ee3c"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\scripts\\designer_audit.py",
+      "bytes": 1245,
+      "sha256": "58857405e19d35bff42071ae9307971b8da47d6df49c930acc42b691a087d852"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\scripts\\unreal_audit.py",
+      "bytes": 1786,
+      "sha256": "3de4008362e094248f89c91e6a4a6a37d630911cbb2fd0c9b7bc297d8788056b"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\projects\\total-insanitation\\scripts\\mcp_client.py",
+      "bytes": 3944,
+      "sha256": "566742b06c64732a81090b239891ebe9d3bca250e3f911f6f632bb53f78e4b04"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\.mrmak\\total-insanitation\\owner-brief-original.txt",
+      "bytes": 7238,
+      "sha256": "ca68600640e91ac763d1a60f6661de55c99dedf03ac620596fd90a1dce07df98"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\.mrmak\\total-insanitation\\requirements-lock.txt",
+      "bytes": 815,
+      "sha256": "00aafa01c13c5d75a8b7295d1c1bb7bebf3b567b2d6a737313887b3f85db116e"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\.mrmak\\total-insanitation\\BoomeRacist.before-tools.uproject",
+      "bytes": 759,
+      "sha256": "0bb74d31c3894863f7808378429dd94d23e23b1dfe2ae268ba1772fb2a360d7c"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\.mrmak\\total-insanitation\\DefaultEditorPerProjectUserSettings.before-tools.ini",
+      "bytes": 70,
+      "sha256": "d0992e75056c6858059bb7fbfcedeb6881b1c1498414518f602e84273d262e59"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\.mrmak\\total-insanitation\\setup-receipt.json",
+      "bytes": 679,
+      "sha256": "b1f1f97ad484a68624a8f4e6f5af262b23f289729e71542fe02fe877b88c2443"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\.codex\\config.toml",
+      "bytes": 1125,
+      "sha256": "dec94f78e48bfec1bbae547874cc902e762adb23b0bd78d398207b47cdb3cce7"
+    },
+    {
+      "path": "D:\\AI\\MarkWorkspace\\.mcp.json",
+      "bytes": 760,
+      "sha256": "d90f86086d40fab3584f947c58843441e1738802e1fbfa4a2d864122b30d5dd6"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Building\\Interior_Building.blend",
+      "bytes": 11779542,
+      "sha256": "0eca078db6395a652d2fdfb6d9ecc8f51f7c66188557e7b35a858a8b593590a4"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Enviroment_Assets\\Enviroment_Assets.blend",
+      "bytes": 50250653,
+      "sha256": "7702a1069c3f80737a2834c2fa9aad1149caae3f7d15af3e0b627d035112fbaf"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Utility_Materials\\TrimSheet&Atlas\\General_Atlas\\General_Atlas.sbs",
+      "bytes": 39778,
+      "sha256": "3947002209a66b8adac54a0f6b1516019ff113a0045f57cc416db5330797ee56"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Utility_Materials\\TrimSheet&Atlas\\General_Atlas\\Resources\\Pet\\Stick_figure_being_electrocuted_7484df88_2K.jpg",
+      "bytes": 704872,
+      "sha256": "1302245c6b22fec4ff6fa50d39aca362653647e4b80756796412a38fa3478eb4"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Utility_Materials\\TrimSheet&Atlas\\General_Atlas\\Resources\\Pet\\Stick_figure_dissolving_in_acid_1b6c544f_2K.jpg",
+      "bytes": 552862,
+      "sha256": "f5e422af2355b29560977fcc008c9c2c7d4e3d65718d5cfa2857edc9ab11d9b5"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Utility_Materials\\TrimSheet&Atlas\\General_Atlas\\Resources\\Pet\\Stick_figure_mascot_waving_33412cac_2K.jpg",
+      "bytes": 405131,
+      "sha256": "8d614fae7a17f953ae1d377f9a6622cffbbe855608f56ec2a9b9b934795a606c"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Utility_Materials\\TrimSheet&Atlas\\General_Atlas\\Resources\\Pet\\Stick_figure_mopping_floor_41bd2ffa_2K.jpg",
+      "bytes": 565225,
+      "sha256": "d7e20dc210d17bee66a8e4be9171e2036f51a818ad56820ee1e52bfbba77d22d"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Utility_Materials\\TrimSheet&Atlas\\General_Atlas\\Resources\\Pet\\Stick_figure_wizard_falling_3013aaa0_2K.jpg",
+      "bytes": 344852,
+      "sha256": "e7e5c96911d21048924d41f2e36d7d9f386e02e54d77652e566363f0237b8a39"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Utility_Materials\\TrimSheet&Atlas\\General_Atlas\\Resources\\Pet\\Wizard_running_from_fireball_5dc395c3_2K.jpg",
+      "bytes": 707082,
+      "sha256": "a275e492c2d8734640508b7b8615d30ab7fbb952156f97abc791747c83851229"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Utility_Materials\\TrimSheet&Atlas\\General_Atlas\\Resources\\Warning_Sign_Goblin\\atencion.png",
+      "bytes": 18153,
+      "sha256": "17fb16d36e4b0ec0da0dc6ed2523a44bb4a2fbf664e843a05f1a523016a63a75"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Utility_Materials\\TrimSheet&Atlas\\General_Atlas\\Resources\\Warning_Sign_Goblin\\warning-sign-attention-caution-exclamation-sign-alert-danger-vector-yellow-triangle-icon.webp",
+      "bytes": 9880,
+      "sha256": "702f29ddd904f3f0ddec69c5b5ac3485a8140056627001fb76c964b3b90a120f"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Utility_Materials\\TrimSheet&Atlas\\General_Atlas\\Resources\\Warning_Sign_Goblin\\Warning_sign_with_toxic_text_202608271217 (1).jpeg",
+      "bytes": 2432155,
+      "sha256": "9e193ac1b08df876edbfe8853cd9a95e08373063f30685a25ea07513f0103ec0"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Utility_Materials\\TrimSheet&Atlas\\General_Atlas\\Resources\\Warning_Sign_Goblin\\Warning_sign_with_toxic_text_202608271217.jpeg",
+      "bytes": 2066192,
+      "sha256": "9a6de13db36ca099ca4e16ccf90306fc5e5d2c6c7b9d4b321e5726c652217a50"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Utility_Materials\\TrimSheet&Atlas\\General_Atlas\\Resources\\Warning_Sign_Goblin\\Warning_sign_with_toxic_text_Goblin.aseprite",
+      "bytes": 2634411,
+      "sha256": "4864f574fa0a363fab4646805f4785e41ee188dd62d78ace7aabb270d094edce"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Utility_Materials\\TrimSheet&Atlas\\General_Atlas\\Resources\\Warning_Sign_Goblin\\Warning_sign_with_toxic_text_Goblin.jpeg",
+      "bytes": 1053905,
+      "sha256": "2a43528f881650f309f99369c65685cbaf8462f88732c5bd71ea62208272e49a"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Utility_Materials\\TrimSheet&Atlas\\General_Atlas\\Resources\\Warning_Sign_Goblin\\Warning_sign_with_toxic_text_Goblin.png",
+      "bytes": 1876924,
+      "sha256": "fc35124c65f013dd8d56d353fde7608c41d0cb2ad0543db75d263e255707e0a4"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\UI\\Stop_Sign\\image.png",
+      "bytes": 111021,
+      "sha256": "0ab5c304d008dd4fb4781935d8412f9b71a7ba1aa7c85ef45e3c21536406bdf1"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\UI\\Stop_Sign\\Stop.gif",
+      "bytes": 11476,
+      "sha256": "4a7b1fce2f1e00a091cf4053125a2e4387c5fa67fbb60707c8275bc33c2bd15e"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\UI\\Stop_Sign\\Stop_Sign.sbs",
+      "bytes": 4716,
+      "sha256": "4cab0356e19b78519b4b5ef02a75ab0dd6e2898e3ce95e9af86b736712b33dc3"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\UI\\Stop_Sign\\Substance_graph_stop_1.png",
+      "bytes": 1615,
+      "sha256": "5b4d9bc2ab9b75db95c275613a67b1e50f1d6dfa22f045c4d82f7783f74eb1c5"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\UI\\Stop_Sign\\.autosave\\Stop_Sign.sbs",
+      "bytes": 14968,
+      "sha256": "e77fd1a30917b99df27484df320e59c059cccb6d8cde3986dc9ec5dbd4d20c30"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\UI\\Stop_Sign\\.autosave\\Stop_Sign_0.sbs",
+      "bytes": 14968,
+      "sha256": "e77fd1a30917b99df27484df320e59c059cccb6d8cde3986dc9ec5dbd4d20c30"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\UI\\Stop_Sign\\.autosave\\Stop_Sign_1.sbs",
+      "bytes": 14968,
+      "sha256": "e77fd1a30917b99df27484df320e59c059cccb6d8cde3986dc9ec5dbd4d20c30"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\UI\\Stop_Sign\\.autosave\\Stop_Sign_2.sbs",
+      "bytes": 14968,
+      "sha256": "e77fd1a30917b99df27484df320e59c059cccb6d8cde3986dc9ec5dbd4d20c30"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\UI\\Stop_Sign\\.autosave\\Stop_Sign_3.sbs",
+      "bytes": 14968,
+      "sha256": "e77fd1a30917b99df27484df320e59c059cccb6d8cde3986dc9ec5dbd4d20c30"
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\UI\\Stop_Sign\\.autosave\\Stop_Sign_4.sbs",
+      "bytes": 14968,
+      "sha256": "e77fd1a30917b99df27484df320e59c059cccb6d8cde3986dc9ec5dbd4d20c30"
+    },
+    {
+      "path": "D:\\GItHub\\BoomeRacist\\Content\\Art\\Tools\\OfficeLevelBuilder\\BP_OLB_Builder.uasset",
+      "bytes": 50154,
+      "sha256": "02c26fd534cdfb6e211b828d495b4e556c734443c0aed98298153988c7175f6b"
+    },
+    {
+      "path": "D:\\GItHub\\BoomeRacist\\Content\\Art\\Tools\\OfficeLevelBuilder\\BP_OLB_Room.uasset",
+      "bytes": 43707,
+      "sha256": "918304758f85480bc516710e6bebf34aa6d7ea950e96529294e88fcd797fcd1b"
+    },
+    {
+      "path": "D:\\GItHub\\BoomeRacist\\Content\\Art\\Tools\\OfficeLevelBuilder\\BP_OLB_Stair.uasset",
+      "bytes": 38545,
+      "sha256": "35f35f1e9e7b7a0e6cdc98dbc7848d7c2601b4979595d9b185c297c76949b7f5"
+    },
+    {
+      "path": "D:\\GItHub\\BoomeRacist\\Content\\Art\\Tools\\OfficeLevelBuilder\\Python\\olb_build.py",
+      "bytes": 18739,
+      "sha256": "15f88025664568705adaa55a3de21911061e39da0619bd957095afb8c02c816a"
+    }
+  ],
+  "removed": "2026-11-17T01:51:55.3701347Z",
+  "removed_targets": 148,
+  "verified": "2026-11-17T01:58:14.213617+00:00",
+  "checks": {
+    "removed_targets_absent": 148,
+    "protected_sha256_matches": 60,
+    "card_schema": "valid",
+    "registry_targets": 6,
+    "root_tabs": 4,
+    "ui_checks": 36,
+    "widths": [
+      1440,
+      768,
+      390
+    ],
+    "themes": [
+      "dark",
+      "light"
+    ],
+    "console_errors": 0,
+    "export_image_controls": "enlarge, fit, download and close passed",
+    "native_files": "unchanged",
+    "tool_environment_file_counts": "unchanged",
+    "unrelated_registry_and_goals": "unchanged"
+  }
+}

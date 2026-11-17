@@ -47,11 +47,11 @@ Write a request JSON file containing:
 
 ```json
 {
-  "requestId": "basement-assets-20261112",
+  "requestId": "example-assets-YYYYMMDD",
   "agent": "opencode",
-  "name": "Basement Asset Production",
-  "model": "opencode-go/deepseek-v4.1-flash#max",
-  "handoff": "projects/total-insanitation/CORRIDOR_ASSET_HANDOFF.md"
+  "name": "Asset Production",
+  "model": "provider/exact-model#variant",
+  "handoff": "projects/example/HANDOFF.md"
 }
 ```
 
@@ -92,10 +92,9 @@ checkout:
   conversation stays in a folder Mr. Mak knows. A new folder may make a CLI ask
   for folder trust once; answer it in the worker's tab.
 
-The model ID above was verified against the owner's installed OpenCode 2.2.6
-catalog: **DeepSeek V4.1 Flash 1017 / OpenCode Go / max**. It is not an alias for
-the similarly named free or other-provider model. Verify availability on a later
-machine/account. Never silently substitute another model.
+The example model is a placeholder. Verify the exact provider/model/variant in the
+current installed catalog and preserve the owner's selection. Never silently
+substitute another model.
 
 From the enabled orchestrator chat:
 
@@ -161,6 +160,6 @@ node desktop/service/test-opencode-native.mjs --binary ABSOLUTE_OPENCODE_BINARY 
 node desktop/service/test/agent-control-ui.mjs
 ```
 
-See `workspace/2026-11-12_total-insanitation/AGENT_PRODUCTION.md` for the actual
-production worker's state. A passing loopback integration test does not prove
-that its meshes are finished or accepted.
+A passing loopback integration test does not prove that a project deliverable
+is finished or accepted. Record actual task state and independent review in
+the current project's execution log.

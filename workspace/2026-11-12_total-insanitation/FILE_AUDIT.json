@@ -1,0 +1,3124 @@
+{
+  "audited_utc": "2026-11-17T02:31:37.558742+00:00",
+  "scope": "Read-only source, existing-FBX and native Unreal package audit; no production saves or repairs.",
+  "summary": {
+    "blends": 19,
+    "fbxs": 94,
+    "fbx_nodes": 107,
+    "fbx_families": {
+      "Building": 20,
+      "Cleaning_Tools": 8,
+      "Enviroment_Assets": 43,
+      "Trash": 2,
+      "Demon": 1,
+      "Elf": 2,
+      "Fairy": 1,
+      "Goblin": 2,
+      "Orc": 3,
+      "01_Letters": 12
+    },
+    "native_packages": 557,
+    "package_classes": {
+      "ObjectRedirector": 70,
+      "Basement_Shop_C": 1,
+      "StaticMesh": 185,
+      "Texture2D": 161,
+      "MaterialInstanceConstant": 103,
+      "BP_Floor_Concrete_01_C": 1,
+      "BP_Floor_Concrete_02_C": 1,
+      "BP_Floor_Mosaic_01_C": 1,
+      "BP_Floor_Rug_01_C": 1,
+      "BP_Floor_Rug_02_C": 1,
+      "BP_Floor_Rug_03_C": 1,
+      "BP_Floor_Wood_01_C": 1,
+      "BP_Wall_Concrete_02_C": 1,
+      "BP_Wall_LabConcrete_01_C": 1,
+      "BP_Wall_LabConcrete_Corner_01_C": 1,
+      "BP_Wall_VertexConcrete_01_C": 1,
+      "BP_Wall_VertexConcrete_02_C": 1,
+      "BP_Wall_VertexConcrete_03_C": 1,
+      "BP_Wall_VertexConcrete_04_C": 1,
+      "BP_Wall_VertexConcrete_05_C": 1,
+      "BP_Wall_VertexConcrete_06_C": 1,
+      "BP_Wall_VertexConcrete_Corner_01_C": 1,
+      "BP_Wall_Wallpaper_01_C": 1,
+      "BP_Wall_Wood_01_C": 1,
+      "BP_Wall_Wood_02_C": 1,
+      "BP_Wall_Wood_Corner_01_C": 1,
+      "BP_Roof_01_C": 1,
+      "BP_Roof_Concrete_01_C": 1,
+      "BP_Roof_Concrete_Lights_01_C": 1,
+      "BP_Roof_Lights_01_C": 1,
+      "BP_Roof_Lights_02_C": 1,
+      "BP_Stair_Basement_01_C": 1,
+      "BP_Stair_Concrete_01_C": 1,
+      "BP_Basement_Kit_Validation_C": 1,
+      "SkeletalMesh": 2,
+      "AnimSequence": 2,
+      "PhysicsAsset": 2,
+      "Skeleton": 2
+    },
+    "dirty_packages": [],
+    "fbx_import_records": 189,
+    "mapped_existing_fbx_records": 96,
+    "same_md5_import_records": 67
+  },
+  "sources": [
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Building\\Interior_Building.blend",
+      "blender": "5.2.4 LTS",
+      "unit_system": "METRIC",
+      "scale_length": 1.0,
+      "root_collections": [
+        "Reference",
+        "Floors",
+        "Janitor",
+        "Janitor_Elevator.002",
+        "Utility (ignore)",
+        "Modular_Blocks"
+      ],
+      "objects": 282,
+      "parented_objects": 0,
+      "missing_images": [
+        {
+          "name": "T01_Corridor_Graphics",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Building\\..\\..\\Delivery\\Basement\\Corridor\\Textures\\T01_Corridor_Graphics.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\..\\Delivery\\Basement\\Corridor\\Textures\\T01_Corridor_Graphics.png",
+          "users": 1,
+          "color_space": "sRGB",
+          "datablock_users": [
+            {
+              "type": "Material",
+              "name": "Corridor_Atlas_T01"
+            }
+          ],
+          "material_nodes": [
+            {
+              "material": "Corridor_Atlas_T01",
+              "objects": [],
+              "tree": "Shader Nodetree",
+              "node": "Image Texture",
+              "image": "T01_Corridor_Graphics",
+              "linked_outputs": true
+            }
+          ],
+          "image_objects": []
+        },
+        {
+          "name": "Trimsheet_Wall_01_basecolor.png.002",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Building\\..\\..\\Utility_Materials\\TrimSheet\\Trimsheet_Structure_01\\Trimsheet_Wall_01_basecolor.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\..\\Utility_Materials\\TrimSheet\\Trimsheet_Structure_01\\Trimsheet_Wall_01_basecolor.png",
+          "users": 2,
+          "color_space": "sRGB",
+          "datablock_users": [
+            {
+              "type": "Material",
+              "name": "TrimSheet_01.001"
+            },
+            {
+              "type": "Material",
+              "name": "TrimSheet_01"
+            }
+          ],
+          "material_nodes": [
+            {
+              "material": "TrimSheet_01",
+              "objects": [
+                "100_Floor_Building_Glass.028",
+                "100_Floor_Building_Glass.029",
+                "100_Floor_Building_Glass.030",
+                "100_Floor_Building_Glass.031",
+                "Floor_Decorations_Concrete_01",
+                "Roof_Decorations_Concrete_01"
+              ],
+              "tree": "Shader Nodetree",
+              "node": "Image Texture",
+              "image": "Trimsheet_Wall_01_basecolor.png.002",
+              "linked_outputs": true
+            },
+            {
+              "material": "TrimSheet_01.001",
+              "objects": [
+                "Floor_Decorations_Concrete_Corner_01"
+              ],
+              "tree": "Shader Nodetree",
+              "node": "Image Texture",
+              "image": "Trimsheet_Wall_01_basecolor.png.002",
+              "linked_outputs": true
+            }
+          ],
+          "image_objects": []
+        }
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Cleaning_Tools\\Chicken\\Chicken.blend",
+      "blender": "5.2.4 LTS",
+      "unit_system": "METRIC",
+      "scale_length": 1.0,
+      "root_collections": [
+        "Chicken_Phoenix",
+        "To Modddif"
+      ],
+      "objects": 3,
+      "parented_objects": 1,
+      "missing_images": []
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Cleaning_Tools\\Cleaning_Tools\\Cleaning_Tools.blend",
+      "blender": "5.2.4 LTS",
+      "unit_system": "METRIC",
+      "scale_length": 1.0,
+      "root_collections": [
+        "Cleaning_Tools_Backup",
+        "Reference",
+        "Delivery",
+        "Janitor_Cart_Tool.001",
+        "Box_Bucket_Tool.001",
+        "Triangle_Bucket_Tool.001",
+        "Cleaning_Bucket_Tool.001"
+      ],
+      "objects": 140,
+      "parented_objects": 2,
+      "missing_images": []
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Cleaning_Tools\\Snake_Sucker\\Snake_Sucker.blend",
+      "blender": "5.2.4 LTS",
+      "unit_system": "METRIC",
+      "scale_length": 1.0,
+      "root_collections": [
+        "Collection",
+        "Snake_Sucker"
+      ],
+      "objects": 10,
+      "parented_objects": 0,
+      "missing_images": []
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Cleaning_Tools\\Tongue_Mop\\Tongue_Mop.blend",
+      "blender": "5.2.4 LTS",
+      "unit_system": "METRIC",
+      "scale_length": 1.0,
+      "root_collections": [
+        "Reference",
+        "Tongue_Mop"
+      ],
+      "objects": 6,
+      "parented_objects": 4,
+      "missing_images": [
+        {
+          "name": "CleaningTools_Base_color.png",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Cleaning_Tools\\Tongue_Mop\\cleaning-cart (1)\\source\\CleaningCart\\CleaningTools_Base_color.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//cleaning-cart (1)\\source\\CleaningCart\\CleaningTools_Base_color.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "CleaningTools_Metallic.png",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Cleaning_Tools\\Tongue_Mop\\cleaning-cart (1)\\source\\CleaningCart\\CleaningTools_Metallic.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//cleaning-cart (1)\\source\\CleaningCart\\CleaningTools_Metallic.png",
+          "users": 0,
+          "color_space": "Non-Color",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "CleaningTools_Normal_OpenGL.png",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Cleaning_Tools\\Tongue_Mop\\cleaning-cart (1)\\source\\CleaningCart\\CleaningTools_Normal_OpenGL.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//cleaning-cart (1)\\source\\CleaningCart\\CleaningTools_Normal_OpenGL.png",
+          "users": 0,
+          "color_space": "Non-Color",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "CleaningTools_Roughness.png",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Cleaning_Tools\\Tongue_Mop\\cleaning-cart (1)\\source\\CleaningCart\\CleaningTools_Roughness.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//cleaning-cart (1)\\source\\CleaningCart\\CleaningTools_Roughness.png",
+          "users": 0,
+          "color_space": "Non-Color",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        }
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Cleaning_Tools\\Water_Gem\\Water_Gem.blend",
+      "blender": "5.2.4 LTS",
+      "unit_system": "METRIC",
+      "scale_length": 1.0,
+      "root_collections": [
+        "Collection",
+        "Reference"
+      ],
+      "objects": 5,
+      "parented_objects": 0,
+      "missing_images": []
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Enviroment_Assets\\Enviroment_Assets.blend",
+      "blender": "5.2.4 LTS",
+      "unit_system": "METRIC",
+      "scale_length": 1.0,
+      "root_collections": [
+        "Lab",
+        "Glass",
+        "Concrete",
+        "Pipes and Cigar",
+        "Reference",
+        "Cutters",
+        "Not_For_Now",
+        "Importer assets (ignore)"
+      ],
+      "objects": 191,
+      "parented_objects": 0,
+      "missing_images": [
+        {
+          "name": "T01_Corridor_Graphics",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Enviroment_Assets\\..\\..\\Delivery\\Basement\\Corridor\\Textures\\T01_Corridor_Graphics.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\..\\Delivery\\Basement\\Corridor\\Textures\\T01_Corridor_Graphics.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "Text_Atlas_normal.png",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Enviroment_Assets\\Unreal_Textures\\Text_Atlas_normal.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//Unreal_Textures\\Text_Atlas_normal.png",
+          "users": 1,
+          "color_space": "sRGB",
+          "datablock_users": [
+            {
+              "type": "Material",
+              "name": "Atlas"
+            }
+          ],
+          "material_nodes": [
+            {
+              "material": "Atlas",
+              "objects": [
+                "Ashtray_01",
+                "Cigarette_01",
+                "Cigarette_02",
+                "Cigarette_03",
+                "Cigarette_04",
+                "Cigarette_05",
+                "Pipes_01",
+                "Pipes_02",
+                "Pipes_03",
+                "SM_Centrifuge"
+              ],
+              "tree": "Shader Nodetree",
+              "node": "Image Texture.001",
+              "image": "Text_Atlas_normal.png",
+              "linked_outputs": true
+            }
+          ],
+          "image_objects": []
+        },
+        {
+          "name": "Text_Atlas_reference.png",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Enviroment_Assets\\Unreal_Textures\\Text_Atlas_reference.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//Unreal_Textures\\Text_Atlas_reference.png",
+          "users": 1,
+          "color_space": "sRGB",
+          "datablock_users": [
+            {
+              "type": "Material",
+              "name": "Atlas"
+            }
+          ],
+          "material_nodes": [
+            {
+              "material": "Atlas",
+              "objects": [
+                "Ashtray_01",
+                "Cigarette_01",
+                "Cigarette_02",
+                "Cigarette_03",
+                "Cigarette_04",
+                "Cigarette_05",
+                "Pipes_01",
+                "Pipes_02",
+                "Pipes_03",
+                "SM_Centrifuge"
+              ],
+              "tree": "Shader Nodetree",
+              "node": "Image Texture",
+              "image": "Text_Atlas_reference.png",
+              "linked_outputs": true
+            }
+          ],
+          "image_objects": []
+        }
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Trash\\Black_Hole\\Black_Hole.blend",
+      "blender": "5.2.4 LTS",
+      "unit_system": "METRIC",
+      "scale_length": 1.0,
+      "root_collections": [
+        "Delivery",
+        "Collection",
+        "Reference"
+      ],
+      "objects": 26,
+      "parented_objects": 0,
+      "missing_images": []
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Weapons\\Crossbow\\Crossbow.blend",
+      "blender": "5.2.4 LTS",
+      "unit_system": "METRIC",
+      "scale_length": 1.0,
+      "root_collections": [
+        "Collection",
+        "Crossbow_01",
+        "Delivery_Crossbow",
+        "Backup",
+        "Delivery_Crossbow_SubstancePainter",
+        "Delivery_Crossbow_No_Animation"
+      ],
+      "objects": 95,
+      "parented_objects": 1,
+      "missing_images": []
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\Female_Demon.blend",
+      "blender": "5.2.4 LTS",
+      "unit_system": "METRIC",
+      "scale_length": 1.0,
+      "root_collections": [
+        "Collection"
+      ],
+      "objects": 1,
+      "parented_objects": 0,
+      "missing_images": [
+        {
+          "name": "texture_pbr_20250901.png",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\..\\tails\\texture_pbr_20250901.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\tails\\texture_pbr_20250901.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901.png.001",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\..\\head\\texture_pbr_20250901.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\head\\texture_pbr_20250901.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901.png.002",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\..\\hair\\texture_pbr_20250901.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\hair\\texture_pbr_20250901.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901.png.003",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\..\\body\\texture_pbr_20250901.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\body\\texture_pbr_20250901.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901.png.004",
+          "path": "D:\\GameJam\\BoomeRacist\\Characters\\Demon\\Female\\hair2\\texture_pbr_20250901.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "D:\\GameJam\\BoomeRacist\\Characters\\Demon\\Female\\hair2\\texture_pbr_20250901.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901_metallic.png",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\..\\tails\\texture_pbr_20250901_metallic.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\tails\\texture_pbr_20250901_metallic.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901_metallic.png.001",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\..\\head\\texture_pbr_20250901_metallic.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\head\\texture_pbr_20250901_metallic.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901_metallic.png.002",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\..\\hair\\texture_pbr_20250901_metallic.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\hair\\texture_pbr_20250901_metallic.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901_metallic.png.003",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\..\\body\\texture_pbr_20250901_metallic.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\body\\texture_pbr_20250901_metallic.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901_metallic.png.004",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\..\\hair2\\texture_pbr_20250901_metallic.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\hair2\\texture_pbr_20250901_metallic.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901_normal.png",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\..\\tails\\texture_pbr_20250901_normal.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\tails\\texture_pbr_20250901_normal.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901_normal.png.001",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\..\\head\\texture_pbr_20250901_normal.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\head\\texture_pbr_20250901_normal.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901_normal.png.002",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\..\\hair\\texture_pbr_20250901_normal.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\hair\\texture_pbr_20250901_normal.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901_normal.png.003",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\..\\body\\texture_pbr_20250901_normal.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\body\\texture_pbr_20250901_normal.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901_normal.png.004",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\..\\hair2\\texture_pbr_20250901_normal.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\hair2\\texture_pbr_20250901_normal.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901_roughness.png",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\..\\tails\\texture_pbr_20250901_roughness.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\tails\\texture_pbr_20250901_roughness.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901_roughness.png.001",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\..\\head\\texture_pbr_20250901_roughness.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\head\\texture_pbr_20250901_roughness.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901_roughness.png.002",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\..\\hair\\texture_pbr_20250901_roughness.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\hair\\texture_pbr_20250901_roughness.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901_roughness.png.003",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\..\\body\\texture_pbr_20250901_roughness.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\body\\texture_pbr_20250901_roughness.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901_roughness.png.004",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\..\\hair2\\texture_pbr_20250901_roughness.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\hair2\\texture_pbr_20250901_roughness.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        }
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Elf\\Female\\Blender\\Female_Elf.blend",
+      "blender": "5.2.4 LTS",
+      "unit_system": "METRIC",
+      "scale_length": 1.0,
+      "root_collections": [
+        "Collection"
+      ],
+      "objects": 9,
+      "parented_objects": 0,
+      "missing_images": []
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Elf\\Male\\Blender\\Male_Elf.blend",
+      "blender": "5.2.4 LTS",
+      "unit_system": "METRIC",
+      "scale_length": 1.0,
+      "root_collections": [
+        "Collection"
+      ],
+      "objects": 1,
+      "parented_objects": 0,
+      "missing_images": [
+        {
+          "name": "hair.png",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Elf\\Male\\Blender\\hair.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//hair.png",
+          "users": 1,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        }
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Fairy\\Female\\Blender\\Female_Fairy.blend",
+      "blender": "5.2.4 LTS",
+      "unit_system": "METRIC",
+      "scale_length": 1.0,
+      "root_collections": [
+        "Collection"
+      ],
+      "objects": 1,
+      "parented_objects": 0,
+      "missing_images": []
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Goblin\\Female\\Blender\\Female_Goblin.blend",
+      "blender": "5.2.4 LTS",
+      "unit_system": "METRIC",
+      "scale_length": 1.0,
+      "root_collections": [
+        "Collection"
+      ],
+      "objects": 1,
+      "parented_objects": 0,
+      "missing_images": []
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Goblin\\Male\\Blender\\Goblin_Male.blend",
+      "blender": "5.2.4 LTS",
+      "unit_system": "METRIC",
+      "scale_length": 1.0,
+      "root_collections": [
+        "Collection"
+      ],
+      "objects": 1,
+      "parented_objects": 0,
+      "missing_images": []
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Orc\\Female\\Blender\\Female_Orc.blend",
+      "blender": "5.2.4 LTS",
+      "unit_system": "METRIC",
+      "scale_length": 1.0,
+      "root_collections": [
+        "Collection"
+      ],
+      "objects": 1,
+      "parented_objects": 0,
+      "missing_images": []
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Orc\\Femboy\\Blender\\Femboy_Orc.blend",
+      "blender": "5.2.4 LTS",
+      "unit_system": "METRIC",
+      "scale_length": 1.0,
+      "root_collections": [
+        "Collection"
+      ],
+      "objects": 1,
+      "parented_objects": 0,
+      "missing_images": [
+        {
+          "name": "head.png",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Orc\\Femboy\\Blender\\head.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//head.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901.png.003",
+          "path": "D:\\GameJam\\BoomeRacist\\Characters\\Orc\\Femboy\\hair2\\texture_pbr_20250901.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "D:\\GameJam\\BoomeRacist\\Characters\\Orc\\Femboy\\hair2\\texture_pbr_20250901.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901_metallic.png.003",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Orc\\Femboy\\Blender\\..\\hair2\\texture_pbr_20250901_metallic.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\hair2\\texture_pbr_20250901_metallic.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901_normal.png.003",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Orc\\Femboy\\Blender\\..\\hair2\\texture_pbr_20250901_normal.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\hair2\\texture_pbr_20250901_normal.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        },
+        {
+          "name": "texture_pbr_20250901_roughness.png.003",
+          "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Orc\\Femboy\\Blender\\..\\hair2\\texture_pbr_20250901_roughness.png",
+          "exists": false,
+          "packed": false,
+          "raw_path": "//..\\hair2\\texture_pbr_20250901_roughness.png",
+          "users": 0,
+          "color_space": "sRGB",
+          "datablock_users": [],
+          "material_nodes": [],
+          "image_objects": []
+        }
+      ]
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Orc\\Male\\Blender\\Male_Orc.blend",
+      "blender": "5.2.4 LTS",
+      "unit_system": "METRIC",
+      "scale_length": 1.0,
+      "root_collections": [
+        "Collection"
+      ],
+      "objects": 1,
+      "parented_objects": 0,
+      "missing_images": []
+    },
+    {
+      "source": "D:\\GameJam\\Total (in)Sanitation\\Utility_Materials\\01_Letters\\Untitled.blend",
+      "blender": "5.2.4 LTS",
+      "unit_system": "METRIC",
+      "scale_length": 1.0,
+      "root_collections": [
+        "Collection"
+      ],
+      "objects": 12,
+      "parented_objects": 0,
+      "missing_images": []
+    }
+  ],
+  "protected_source_hashes": [
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Building\\Interior_Building.blend",
+      "sha256": "0eca078db6395a652d2fdfb6d9ecc8f51f7c66188557e7b35a858a8b593590a4",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Cleaning_Tools\\Chicken\\Chicken.blend",
+      "sha256": "9f55b737ce5aeeb5c31a87f82df9b7e15195dd75e92d9dd33a474152168cf1b3",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Cleaning_Tools\\Cleaning_Tools\\Cleaning_Tools.blend",
+      "sha256": "44decce7d85e4fde0fb02d45a585508660f37f95d799f23f15970b35b7c9c1f4",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Cleaning_Tools\\Snake_Sucker\\Snake_Sucker.blend",
+      "sha256": "73cc95241774e4fc93bc5f51c9f33bd94db3ea2af2326807eda4ec49dc601b2d",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Cleaning_Tools\\Tongue_Mop\\Tongue_Mop.blend",
+      "sha256": "7cc450e5d6e7a59dc2b85d800e2b6bdfda093f57da31adca3461f093bd57c322",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Cleaning_Tools\\Water_Gem\\Water_Gem.blend",
+      "sha256": "63371d56d2acb7ad2c088a9e33c5de1c270d82372527e568c6c30dc279ab6164",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Enviroment_Assets\\Enviroment_Assets.blend",
+      "sha256": "7702a1069c3f80737a2834c2fa9aad1149caae3f7d15af3e0b627d035112fbaf",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Trash\\Black_Hole\\Black_Hole.blend",
+      "sha256": "52db58df46e5c02fd120adf7322bafab2c9ef9bda53440eaae08fe53192cf4f6",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Assets\\Weapons\\Crossbow\\Crossbow.blend",
+      "sha256": "a439dc78557aae0d64dc79b8063168314f2af650e65b6f5a42ff0582c8574d60",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Demon\\Female\\Blender\\Female_Demon.blend",
+      "sha256": "1ba3512bdd46cc7e8019878d0f7475297c340845ed3f8b52c7f74e5fe581a366",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Elf\\Female\\Blender\\Female_Elf.blend",
+      "sha256": "fa56549db666917aa4611b057df1a2386cd185dde1a57ba55c56a9414507313d",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Elf\\Male\\Blender\\Male_Elf.blend",
+      "sha256": "b56534747a00f828531fd7d9350a8ac97d3c0a209e000f92d757e3af1706759b",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Fairy\\Female\\Blender\\Female_Fairy.blend",
+      "sha256": "bad5a80dcd96062eb46ee5d27c6d6407e7329778c5a621956a193014b500a740",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Goblin\\Female\\Blender\\Female_Goblin.blend",
+      "sha256": "54e0da32a6775e35f84251fd7aea85a4438a9bb7253054ca65b8258b20d502b1",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Goblin\\Male\\Blender\\Goblin_Male.blend",
+      "sha256": "bf7e208a4004dd0e97a28fe0fe137facacef8f15108e63a3040e8f26ba9bc4f3",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Orc\\Female\\Blender\\Female_Orc.blend",
+      "sha256": "afa947ddd4449b6306e76e150e839395584befab54d7362c4be90de51e4701b7",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Orc\\Femboy\\Blender\\Femboy_Orc.blend",
+      "sha256": "75cff3bdb715c102481da5dafc64047e4edafd773a428bf64b0571158b0f2a00",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Characters\\Orc\\Male\\Blender\\Male_Orc.blend",
+      "sha256": "e39f6b364e7419a7f90c8a27c8c6da988ccbf5b88f87bc9f0d67ba6baff21462",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Utility_Materials\\01_Letters\\Untitled.blend",
+      "sha256": "8296c57fdd02c0ec947abe7940e75ae9aa6be2a13700a1782672c01cda143067",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\GameJam\\Total (in)Sanitation\\Utility_Materials\\TrimSheet&Atlas\\General_Atlas\\General_Atlas.sbs",
+      "sha256": "3947002209a66b8adac54a0f6b1516019ff113a0045f57cc416db5330797ee56",
+      "unchanged": true
+    }
+  ],
+  "source_inventory_unchanged": 3236,
+  "unreal_package_inventory_unchanged": 8014,
+  "unreal_project": "D:/GItHub/BoomeRacist/BoomeRacist.uproject",
+  "unreal_engine": "5.8.4",
+  "current_map_at_start": "/Game/Levels/Test",
+  "current_map_dirty_at_start": false,
+  "pie_at_start": false,
+  "searches": {
+    "Atlas": [
+      "/Game/Art/Assets/Building/Janitor/Elevator/Textures/Elevator_Atlas_basecolor",
+      "/Game/Art/Assets/Building/Janitor/Elevator/Textures/Elevator_Atlas_normal",
+      "/Game/Art/Assets/Building/Janitor/Elevator/Textures/Elevator_Atlas_occlusionRoughnessMetallic",
+      "/Game/Art/Assets/Building/Janitor/Elevator/Textures/MI_Elevator_Atlas_basecolor"
+    ],
+    "Stop_Sign": [
+      "/Game/Programming/DialogueSystem/Example/Stop_Sign/TX_Stop_Sign",
+      "/Game/Programming/DialogueSystem/Example/Stop_Sign/MI_Stop_Sign"
+    ],
+    "Substance_graph_stop": [],
+    "Snake_Sucker": [],
+    "Female_Demon": [],
+    "Female_Elf": [],
+    "Male_Elf": [],
+    "Female_Fairy": [],
+    "Female_Goblin": [],
+    "Goblin_Male": [],
+    "Female_Orc": [],
+    "Femboy_Orc": [],
+    "Male_Orc": []
+  },
+  "import_records": [
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Basement/Shop/Cube_003",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Basement/Shop/Cube_003.fbx",
+      "current": "Assets/Building/Delivery/Basement/Shop/Cube_003.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "d9965a69af9c98b7d0192c51e4c27997"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Basement/Shop/Cube_051",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Basement/Shop/Cube_051.fbx",
+      "current": "Assets/Building/Delivery/Basement/Shop/Cube_051.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "d981b0d5c1bcaf7aef1f015f40d7f039"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Basement/Shop/Cube_079",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Basement/Shop/Cube_079.fbx",
+      "current": "Assets/Building/Delivery/Basement/Shop/Cube_079.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "413cbcc346a79824ca5e525858eaf3d4"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Basement/Shop/Cube_082",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Basement/Shop/Cube_082.fbx",
+      "current": "Assets/Building/Delivery/Basement/Shop/Cube_082.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "63a548c65a12d71f4374ea20b8e78c56"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Basement/Shop/Cube_089",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Basement/Shop/Cube_089.fbx",
+      "current": "Assets/Building/Delivery/Basement/Shop/Cube_089.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "9773c6058a489c344229c189378b4637"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Basement/Shop/Cube_090",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Basement/Shop/Cube_090.fbx",
+      "current": "Assets/Building/Delivery/Basement/Shop/Cube_090.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "9f26097fdda3f61ac60cde2797f9997f"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Basement/Shop/Cube_091",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Basement/Shop/Cube_091.fbx",
+      "current": "Assets/Building/Delivery/Basement/Shop/Cube_091.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "992f4a3d0d2def5ed23c36391cf8863f"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Basement/Shop/Cube_097",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Basement/Shop/Cube_097.fbx",
+      "current": "Assets/Building/Delivery/Basement/Shop/Cube_097.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "41fd110097dc3b3ed48c825332501fab"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Basement/Shop/Cube_098",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Basement/Shop/Cube_098.fbx",
+      "current": "Assets/Building/Delivery/Basement/Shop/Cube_098.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "39c72f7250431f5cede7fb833170a455"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Basement/Shop/Cube_102",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Basement/Shop/Cube_102.fbx",
+      "current": "Assets/Building/Delivery/Basement/Shop/Cube_102.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "dfe7d1f2c9ce821021eec5351823b485"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Basement/Shop/Cube_103",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Basement/Shop/Cube_103.fbx",
+      "current": "Assets/Building/Delivery/Basement/Shop/Cube_103.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "05f18cb7418c3a2c4b9944d4392814ac"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Basement/Shop/Cube_104",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Basement/Shop/Cube_104.fbx",
+      "current": "Assets/Building/Delivery/Basement/Shop/Cube_104.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "1ce4cb51da7200372487a87ce6b21915"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Basement/Shop/Cube_105",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Basement/Shop/Cube_105.fbx",
+      "current": "Assets/Building/Delivery/Basement/Shop/Cube_105.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "76a3da779b8fe7b06ff345dde62341fa"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Basement/Shop/Cube_113",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Basement/Shop/Cube_113.fbx",
+      "current": "Assets/Building/Delivery/Basement/Shop/Cube_113.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "4cf59fdc44861b2525b287633a33dc44"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Basement/Shop/Cube_114",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Basement/Shop/Cube_114.fbx",
+      "current": "Assets/Building/Delivery/Basement/Shop/Cube_114.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "00cee692ade0cd15e91cc3c41b156420"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Basement/Shop/Plane_010",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Basement/Shop/Plane_010.fbx",
+      "current": "Assets/Building/Delivery/Basement/Shop/Plane_010.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "7cd0c580af8bec88f941489b67c83fdf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Day_1/Cube_026",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Day_1.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6af421a5c60a83d6e83a4cb9da478c4b"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Day_1/Cube_107",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Day_1.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6af421a5c60a83d6e83a4cb9da478c4b"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Day_1/Plane",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Day_1.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6af421a5c60a83d6e83a4cb9da478c4b"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Day_1/Plane_003",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Day_1.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6af421a5c60a83d6e83a4cb9da478c4b"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Day_1/Plane_004",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Day_1.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6af421a5c60a83d6e83a4cb9da478c4b"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Day_1/Plane_011",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Day_1.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6af421a5c60a83d6e83a4cb9da478c4b"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Day_1/Plane_012",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Day_1.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6af421a5c60a83d6e83a4cb9da478c4b"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Day_1/Plane_013",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Day_1.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6af421a5c60a83d6e83a4cb9da478c4b"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Day_1/Plane_014",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Day_1.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6af421a5c60a83d6e83a4cb9da478c4b"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Day_1/Plane_015",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Day_1.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6af421a5c60a83d6e83a4cb9da478c4b"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Day_1/Plane_016",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Day_1.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6af421a5c60a83d6e83a4cb9da478c4b"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Day_1/Plane_017",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Day_1.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6af421a5c60a83d6e83a4cb9da478c4b"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Day_1/Plane_018",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Day_1.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6af421a5c60a83d6e83a4cb9da478c4b"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Day_2/Plane_002",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building_Delivery/Day_2.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "c4d2774e5da932d4d5348872cd6dc40b"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Day_2/Plane_005",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building_Delivery/Day_2.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "c4d2774e5da932d4d5348872cd6dc40b"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Day_2/Plane_007",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building_Delivery/Day_2.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "c4d2774e5da932d4d5348872cd6dc40b"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Day_2/Plane_008",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building_Delivery/Day_2.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "c4d2774e5da932d4d5348872cd6dc40b"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Day_3/Plane_001",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building_Delivery/Day_3.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "ba38d4e539043976421e88de18cbf291"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Day_3/Plane_006",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building_Delivery/Day_3.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "ba38d4e539043976421e88de18cbf291"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Day_3/Plane_009",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building_Delivery/Day_3.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "ba38d4e539043976421e88de18cbf291"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/100_Floor_Building_Glass",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/100_Floor_Building_Glass_001",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/100_Floor_Building_Glass_002",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/100_Floor_Building_Glass_003",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/100_Floor_Building_Glass_004",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/100_Floor_Building_Glass_005",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/100_Floor_Building_Glass_006",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/100_Floor_Building_Glass_007",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/100_Floor_Building_Glass_008",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/100_Floor_Building_Glass_009",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/100_Floor_Building_Glass_010",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/100_Floor_Building_Glass_016",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/100_Floor_Building_Glass_025",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/100_Floor_Building_Glass_032",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/100_Floor_Building_Glass_033",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/100_Floor_Building_Glass_034",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cube_001",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cube_002",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cube_004",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cube_005",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cube_006",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cube_009",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cube_010",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cube_011",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cube_012",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cube_013",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cube_017",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cube_018",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cube_022",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cube_024",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cube_025",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cube_032",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cube_033",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cube_034",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cube_052",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cube_108",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cylinder_001",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cylinder_002",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Floors/Lobby/Cylinder_003",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Floors/Lobby.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6d52750b24d0dfdc13a570c463c26abf"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Janitor/Elevator/Janitor_Elevator_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Janitor/Elevator.fbx",
+      "current": "Assets/Building/Delivery/Janitor/Elevator.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "52163802af4b917fc13bb8f2ccfa4990"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Janitor/Elevator/Janitor_Elevator_Doors_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Janitor/Elevator.fbx",
+      "current": "Assets/Building/Delivery/Janitor/Elevator.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "52163802af4b917fc13bb8f2ccfa4990"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Janitor/Janitor_Building_Floor_01_Blend",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current": "Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "f28b1880ce0b7fed7cabfd229fa9bd8a"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Janitor/Janitor_Building_Floor_02_Blend",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current": "Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "f28b1880ce0b7fed7cabfd229fa9bd8a"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Janitor/Janitor_Building_Roof_Blend",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current": "Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "f28b1880ce0b7fed7cabfd229fa9bd8a"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Janitor/Janitor_Building_Wall_Blend",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current": "Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "f28b1880ce0b7fed7cabfd229fa9bd8a"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Janitor/Janitor_Building_Wall_PB_Blend",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current": "Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "f28b1880ce0b7fed7cabfd229fa9bd8a"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Janitor/Janitor_Door_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current": "Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "f28b1880ce0b7fed7cabfd229fa9bd8a"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Janitor/Janitor_Door_02",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current": "Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "f28b1880ce0b7fed7cabfd229fa9bd8a"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Janitor/Janitor_Door_03",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current": "Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "f28b1880ce0b7fed7cabfd229fa9bd8a"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Janitor/Janitor_Satirs_01_Blend",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current": "Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "f28b1880ce0b7fed7cabfd229fa9bd8a"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Janitor/Janitor_Satirs_01_Blend_002",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current": "Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "f28b1880ce0b7fed7cabfd229fa9bd8a"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Janitor/Janitor_Satirs_02",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current": "Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "f28b1880ce0b7fed7cabfd229fa9bd8a"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Janitor/Janitor_Satirs_03",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current": "Assets/Building/Delivery/Janitor/Janitor_Building.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "f28b1880ce0b7fed7cabfd229fa9bd8a"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Floor/Floor_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Floors/Modular_Blocks.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "a4b6220d1190d4731f0c5b4b4a9222b6"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Floor_Decorations/Floor_Decorations_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Modular_Blocks/Floor_Decorations_01.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "b5fae0af7508ecef3a18a104e09c5c19"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Floor_Decorations/Floor_Decorations_Concrete_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Modular_Blocks/Floor_Decorations_Concrete_01.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "85408835860f47f2af96813fbb620d29"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Floor_Decorations/Floor_Decorations_Concrete_Corner_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Modular_Blocks/Floor_Decorations_Concrete_Corner_01.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "a9236b08352beffe0b131b0bd3c764c4"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Floor_Decorations/Floor_Decorations_Corner_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Modular_Blocks/Floor_Decorations_Corner_01.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6c0ace5765adff56751b150540335f17"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Lights/Fluorescent_Light_Basement_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Floors/Modular_Blocks.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "2857114a2ab8bfba2a0a0d7a67b1f273"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Modular_Walls/Wall_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Floors/Modular_Blocks.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "cb6d540a52e564111fbf3c93176150ed"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Modular_Walls/Wall_02",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Floors/Modular_Blocks.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "cb6d540a52e564111fbf3c93176150ed"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Modular_Walls/Wall_Corner_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Floors/Modular_Blocks.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "cb6d540a52e564111fbf3c93176150ed"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Modular_Walls/Wall_Corner_VertexColor_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Modular_Blocks/Wall_Corner_VertexColor_01.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "814b9c6269b3682050a5f6bd52c6fccd"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Modular_Walls/Wall_VertexColor_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Modular_Blocks/Wall_VertexColor_01.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "01ba14106cdb60e9e09da8f7dc3911b9"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Modular_Walls/Wall_VertexColor_02",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Modular_Blocks/Wall_VertexColor_02.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "69b0be6113b92e7461094a22d64cb2fc"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Modular_Walls/Wall_VertexColor_03",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Modular_Blocks/Wall_VertexColor_03.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "b6b00b07243399a4939a56b5e61924b6"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Roof/Roof_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Floors/Modular_Blocks.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "84330c438786556b7e674daecdf78128"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Roof/Roof_02",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Floors/Modular_Blocks.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "84330c438786556b7e674daecdf78128"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/Roof_Decorations_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Modular_Blocks/Roof_Decorations_01.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "1368e7ab2539d099c915780a25bb93e8"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/Roof_Decorations_Concrete_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Modular_Blocks/Roof_Decorations_Concrete_01.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "0c6b134fd2a1b78023fa3143d31a3a06"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/Roof_Decorations_Corner_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Modular_Blocks/Roof_Decorations_Corner_01.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "6791f4459b0beaf63a49ef6722e36f47"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Stairs/Stair_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Modular_Blocks/Stair_01.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "0fb6c9983494f7f5594289bc858aee0c"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Validation/Basement_20261112/Trial_Floor_01",
+      "class": "StaticMesh",
+      "recorded": "D:/AI/MarkWorkspace/.mrmak/total-insanitation/basement-review/module-trial/reimport/Trial_Floor_01.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "748da5cac894290ffd5515696c691639"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Validation/Basement_20261112/Trial_VertexPaint_Verified",
+      "class": "StaticMesh",
+      "recorded": "D:/AI/MarkWorkspace/.mrmak/total-insanitation/basement-review/module-trial/reimport/Trial_Wall_VertexColor_01.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "d7ecba69505d73cd554c09e37e61f8c6"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Validation/Basement_20261112/Trial_Wall_01",
+      "class": "StaticMesh",
+      "recorded": "D:/AI/MarkWorkspace/.mrmak/total-insanitation/basement-review/module-trial/reimport/Trial_Wall_01.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "329c11961c25d3bbadc645c9f4808d08"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Validation/Basement_20261112/Trial_Wall_Corner_01",
+      "class": "StaticMesh",
+      "recorded": "D:/AI/MarkWorkspace/.mrmak/total-insanitation/basement-review/module-trial/reimport/Trial_Wall_Corner_01.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "b832977a1f307b8dbc3f445474ba386e"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Wall_Decorations/Wall_Decorations_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Modular_Blocks/Wall_Decorations_01.fbx",
+      "current": "Assets/Building/Delivery/Modular_Blocks/Wall_Decorations_01.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "649221d93dc43f14fa6109da4d3e59e9"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Wall_Decorations/Wall_Decorations_Corner_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Assets/Building/Delivery/Modular_Blocks/Wall_Decorations_Corner_01.fbx",
+      "current": "Assets/Building/Delivery/Modular_Blocks/Wall_Decorations_Corner_01.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "dd28ae4598a4d0e8ab77d046db734ee1"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Public_Elevators/Janitor_Elevator_01_001",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building_Delivery/Public_Elevators.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "bda46ffbb902ed1fc0cac0664ac72542"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Public_Elevators/Janitor_Elevator_01_005",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building_Delivery/Public_Elevators.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "bda46ffbb902ed1fc0cac0664ac72542"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Public_Elevators/Janitor_Elevator_01_007",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building_Delivery/Public_Elevators.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "bda46ffbb902ed1fc0cac0664ac72542"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Public_Elevators/Janitor_Elevator_01_008",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building_Delivery/Public_Elevators.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "bda46ffbb902ed1fc0cac0664ac72542"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Public_Elevators/Janitor_Elevator_01_009",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building_Delivery/Public_Elevators.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "bda46ffbb902ed1fc0cac0664ac72542"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Public_Elevators/Janitor_Elevator_01_010",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building_Delivery/Public_Elevators.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "bda46ffbb902ed1fc0cac0664ac72542"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Public_Elevators/Janitor_Elevator_01_011",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building_Delivery/Public_Elevators.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "bda46ffbb902ed1fc0cac0664ac72542"
+    },
+    {
+      "package": "/Game/Art/Assets/Building/Public_Elevators/Janitor_Elevator_01_012",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Building_Delivery/Public_Elevators.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "bda46ffbb902ed1fc0cac0664ac72542"
+    },
+    {
+      "package": "/Game/Art/Assets/Clean_Tools/Box_Bucket_Tool",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Cleaning_Tools/Cleaning_Tools/Box/Box_Bucket_Tool.fbx",
+      "current": "Assets/Cleaning_Tools/Cleaning_Tools/Box/Box_Bucket_Tool.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "f29b0b4d3453188605a6630523c246c1"
+    },
+    {
+      "package": "/Game/Art/Assets/Clean_Tools/Chicken/Chicken",
+      "class": "SkeletalMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Cleaning_Tools/Chicken/Chicken.fbx",
+      "current": "Assets/Cleaning_Tools/Chicken/Chicken.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "7c328844d5e620acf0242633a8a1f7e1"
+    },
+    {
+      "package": "/Game/Art/Assets/Clean_Tools/Chicken/Chicken_Anim",
+      "class": "AnimSequence",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Cleaning_Tools/Chicken/Chicken.fbx",
+      "current": "Assets/Cleaning_Tools/Chicken/Chicken.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "7c328844d5e620acf0242633a8a1f7e1"
+    },
+    {
+      "package": "/Game/Art/Assets/Clean_Tools/Cleaning_Bucket_Tool",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Cleaning_Tools/Cleaning_Tools/Bucket/Cleaning_Bucket_Tool.fbx",
+      "current": "Assets/Cleaning_Tools/Cleaning_Tools/Bucket/Cleaning_Bucket_Tool.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "fddc0df7d0f748fe191776695e7ad294"
+    },
+    {
+      "package": "/Game/Art/Assets/Clean_Tools/Janitor_Cart/Janitor_Cart",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Cleaning_Tools/Cleaning_Tools/Janitor_Cart/Janitor_Cart.fbx",
+      "current": "Assets/Cleaning_Tools/Cleaning_Tools/Janitor_Cart/Janitor_Cart.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "ee78f43244b246df21c8e337def72b0c"
+    },
+    {
+      "package": "/Game/Art/Assets/Clean_Tools/Janitor_Cart/Janitor_Cart_Tool_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Cleaning_Tools/Cleaning_Tools/Janitor_Cart/Janitor_Cart.fbx",
+      "current": "Assets/Cleaning_Tools/Cleaning_Tools/Janitor_Cart/Janitor_Cart.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "ee78f43244b246df21c8e337def72b0c"
+    },
+    {
+      "package": "/Game/Art/Assets/Clean_Tools/Tongue_Mop/Tongue_Mop",
+      "class": "SkeletalMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Cleaning_Tools/Tongue_Mop/Tongue_Mop.fbx",
+      "current": "Assets/Cleaning_Tools/Tongue_Mop/Tongue_Mop.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "43729736b44fcdd6acc49220c79d2feb"
+    },
+    {
+      "package": "/Game/Art/Assets/Clean_Tools/Tongue_Mop/Tongue_Mop_Anim",
+      "class": "AnimSequence",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Cleaning_Tools/Tongue_Mop/Tongue_Mop.fbx",
+      "current": "Assets/Cleaning_Tools/Tongue_Mop/Tongue_Mop.fbx",
+      "current_exists": true,
+      "md5_matches": false,
+      "md5": "43729736b44fcdd6acc49220c79d2feb"
+    },
+    {
+      "package": "/Game/Art/Assets/Clean_Tools/Triangle_Bucket_Tool",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Cleaning_Tools/Cleaning_Tools/Triangle/Triangle_Bucket_Tool.fbx",
+      "current": "Assets/Cleaning_Tools/Cleaning_Tools/Triangle/Triangle_Bucket_Tool.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "3b18097073081b7b22d55af12122ae4c"
+    },
+    {
+      "package": "/Game/Art/Assets/Clean_Tools/Water_Gem/Water_Gem",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Cleaning_Tools/Water_Gem/Water_Gem.fbx",
+      "current": "Assets/Cleaning_Tools/Water_Gem/Water_Gem.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "28af26ff164b7f750d8bf82bda26a2ef"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Concrete_Pieces/Concrete_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_01.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_01.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "62c4140f778439bdfb352198b646bf8f"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Concrete_Pieces/Concrete_02",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_02.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_02.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "7e7b88ee4373283b0046ce04f0ef7699"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Concrete_Pieces/Concrete_03",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_03.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_03.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "5b7aae41499c82448a14487c9adbeeef"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Concrete_Pieces/Concrete_04",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_04.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_04.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "ef29a67c8e08ba43cfda34e7a0d431c1"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Concrete_Pieces/Concrete_05",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_05.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_05.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "80f2b4d22f71141d4c819cdfe0a9a02c"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Concrete_Pieces/Concrete_06",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_06.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_06.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "3890a36ff3226b48f11cf18546c6d659"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Concrete_Pieces/Concrete_07",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_07.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_07.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "8f33c90b08c620fd12dfada951a2ce8a"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Concrete_Pieces/Concrete_08",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_08.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_08.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "5fe46b50e7b08201b9beb541b321fe69"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Glass_Pieces/Glass_Piece_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_01.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_01.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "04e6d259d804db5bfb59ac1ef9ebe813"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Glass_Pieces/Glass_Piece_02",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_02.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_02.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "c0c96767101dd43564b54fc8c1b2735d"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Glass_Pieces/Glass_Piece_03",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_03.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_03.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "7c2f2e6cb5bafb6591efc1bfce99219e"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Glass_Pieces/Glass_Piece_04",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_04.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_04.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "9b3682b3d249a30a48fec4724d464d17"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Glass_Pieces/Glass_Piece_05",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_05.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_05.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "3e33ce3c6657d56e3cb419dd50094fac"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Glass_Pieces/Glass_Piece_06",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_06.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_06.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "c21d1c6a70221d392b01551a7c95da6e"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Glass_Pieces/Glass_Piece_07",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_07.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_07.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "2859a87013d30710197f5b11b4ba9148"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Glass_Pieces/Glass_Piece_08",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_08.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_08.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "53301524aa07a704f441aa2c302c8bc3"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Lab/Big/SM_Fridge",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Big/SM_Fridge.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Lab/Big/SM_Fridge.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "6d02ca7ccf68f9d1f4ddd953206406ed"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Lab/Big/SM_LabShelf",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Big/SM_LabShelf.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Lab/Big/SM_LabShelf.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "11f27f445b1c70845d57d189e190ad12"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Lab/Big/SM_Worktable",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Big/SM_Worktable.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Lab/Big/SM_Worktable.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "ffd09a24cc708b4ed202ee3c84c61d6e"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Lab/Enormes/SM_Window_Big",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Aenormus/SM_Window_Big.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "a3275a063b77fc0f260ce606f2dd4edb"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Lab/Enormes/SM_Window_Medium",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Aenormus/SM_Window_Medium.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "325e45b3f138cbbd0124452f6e76860e"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Lab/Enormes/SM_Window_Small",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Aenormus/SM_Window_Small.fbx",
+      "current": "",
+      "current_exists": false,
+      "md5_matches": false,
+      "md5": "691fd57c36f58b85ed3726714ae33229"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Lab/Medium/SM_Centrifuge",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Medium/SM_Centrifuge.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Lab/Medium/SM_Centrifuge.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "9f51a8e241db8e6a772be5927debf9d6"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Lab/Medium/SM_Dissecator",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Medium/SM_Dissecator.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Lab/Medium/SM_Dissecator.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "4ac02946cdd2ab0ec7c85cecf5f2dadd"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Lab/Medium/SM_Microscope",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Medium/SM_Microscope.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Lab/Medium/SM_Microscope.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "753d7b7e615b5df8befdcf4b6d655ec4"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Lab/Medium/SM_Stool",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Medium/SM_Stool.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Lab/Medium/SM_Stool.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "b10b30725f55f6245a42e7e49ac614c2"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Lab/Medium/SM_WaterBath",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Medium/SM_WaterBath.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Lab/Medium/SM_WaterBath.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "8ddb641b6d75f5859f2fad443612c8de"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Lab/Small/SM_Beaker",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Small/SM_Beaker.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Lab/Small/SM_Beaker.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "7997ed9e3d24b8e47d7b02beab8698e6"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Lab/Small/SM_ErlenmeyerFlask",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Small/SM_ErlenmeyerFlask.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Lab/Small/SM_ErlenmeyerFlask.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "83d6cb0c85387be4e349d91951aa6e75"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Lab/Small/SM_GraduatedCylinder",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Small/SM_GraduatedCylinder.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Lab/Small/SM_GraduatedCylinder.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "db94cbd890d89284faf8ef485d0a840b"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Lab/Small/SM_StirringRod",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Small/SM_StirringRod.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Lab/Small/SM_StirringRod.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "a66ccd75bdec79befe4d827d28a6ed23"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Lab/Small/SM_TestTube",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Small/SM_TestTube.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Lab/Small/SM_TestTube.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "6d6db03f4144c0d962358feeeea6aaa6"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Lab/Small/SM_TestTubeHolder",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Small/SM_TestTubeHolder.FBX",
+      "current": "Assets/Enviroment_Assets/Delivery/Lab/Small/SM_TestTubeHolder.FBX",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "139f987e27992ab4bb037e0dbae2354e"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Lab/Small/SM_VortexMixer",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Small/SM_VortexMixer.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Lab/Small/SM_VortexMixer.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "069a1308e1fb856ff79d41e27e1aaff0"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Pipes_And_Cigarette/Ashtray_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Ashtray_01.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Ashtray_01.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "7e50af93717aaec44704267bc0509f1a"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Pipes_And_Cigarette/Cigarette_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Cigarette_01.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Cigarette_01.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "6ca28d31710b440996070926592dc1b6"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Pipes_And_Cigarette/Cigarette_02",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Cigarette_02.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Cigarette_02.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "c7b55fc1c3184a0718006c01a1877639"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Pipes_And_Cigarette/Cigarette_03",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Cigarette_03.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Cigarette_03.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "74ebd8fc66035baf6c79e0acca9b3978"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Pipes_And_Cigarette/Cigarette_04",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Cigarette_04.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Cigarette_04.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "b422a7a180765a2ac8ea7442ccccea29"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Pipes_And_Cigarette/Cigarette_05",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Cigarette_05.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Cigarette_05.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "8f319297b813a5d386af1c09a128da93"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Pipes_And_Cigarette/Pipes_01",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Pipes_01.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Pipes_01.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "b526c93d77bc75ae5a5d039fae668498"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Pipes_And_Cigarette/Pipes_02",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Pipes_02.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Pipes_02.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "a63a503b046a65d40b4e6ee227c2d23e"
+    },
+    {
+      "package": "/Game/Art/Assets/Enviroment_Assets/Pipes_And_Cigarette/Pipes_03",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Pipes_03.fbx",
+      "current": "Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Pipes_03.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "d77767df1aa391f7b520a00abc328f92"
+    },
+    {
+      "package": "/Game/Art/Assets/Trash/Black_Hole/Portal",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Trash/Black_Hole/Portal.fbx",
+      "current": "Assets/Trash/Black_Hole/Portal.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "76b9e8c922a08288ca36a598be5ce06c"
+    },
+    {
+      "package": "/Game/Art/Assets/Trash/Black_Hole/Trash_Hole",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Assets/Trash/Black_Hole/Trash_Hole.fbx",
+      "current": "Assets/Trash/Black_Hole/Trash_Hole.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "2b62d3b211281e456d3209ce7ca69a1b"
+    },
+    {
+      "package": "/Game/Art/MI/Utility_Materials/01_Letters/Text",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Utility_Materials/01_Letters/Text.fbx",
+      "current": "Utility_Materials/01_Letters/Text.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "f3f6c1a49d54a1037ee4f2feef959402"
+    },
+    {
+      "package": "/Game/Art/MI/Utility_Materials/01_Letters/Text_001",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Utility_Materials/01_Letters/Text.001.fbx",
+      "current": "Utility_Materials/01_Letters/Text.001.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "79eef6f8115f276180ea76ea5a931e2c"
+    },
+    {
+      "package": "/Game/Art/MI/Utility_Materials/01_Letters/Text_002",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Utility_Materials/01_Letters/Text.002.fbx",
+      "current": "Utility_Materials/01_Letters/Text.002.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "9e73b09a81644b601732958b160079e4"
+    },
+    {
+      "package": "/Game/Art/MI/Utility_Materials/01_Letters/Text_003",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Utility_Materials/01_Letters/Text.003.fbx",
+      "current": "Utility_Materials/01_Letters/Text.003.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "6133228697b17fab9c00e8d46f8ae76b"
+    },
+    {
+      "package": "/Game/Art/MI/Utility_Materials/01_Letters/Text_004",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Utility_Materials/01_Letters/Text.004.fbx",
+      "current": "Utility_Materials/01_Letters/Text.004.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "393ac61c9bf6d2884bb1acd0a2eb15e2"
+    },
+    {
+      "package": "/Game/Art/MI/Utility_Materials/01_Letters/Text_005",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Utility_Materials/01_Letters/Text.005.fbx",
+      "current": "Utility_Materials/01_Letters/Text.005.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "a9561e6f7684f79c4c5999c0a2a41c8f"
+    },
+    {
+      "package": "/Game/Art/MI/Utility_Materials/01_Letters/Text_006",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Utility_Materials/01_Letters/Text.006.fbx",
+      "current": "Utility_Materials/01_Letters/Text.006.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "6329014f1f1884ff51688404a3c575b2"
+    },
+    {
+      "package": "/Game/Art/MI/Utility_Materials/01_Letters/Text_007",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/BoomeRacist/Utility_Materials/01_Letters/Text.007.fbx",
+      "current": "Utility_Materials/01_Letters/Text.007.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "60d31964fbcf233a949e321bf0cf343b"
+    },
+    {
+      "package": "/Game/Art/MI/Utility_Materials/01_Letters/Text_008",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Utility_Materials/01_Letters/Text.008.fbx",
+      "current": "Utility_Materials/01_Letters/Text.008.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "42503f02564173bf2d1ee2c91554d256"
+    },
+    {
+      "package": "/Game/Art/MI/Utility_Materials/01_Letters/Text_009",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Utility_Materials/01_Letters/Text.009.fbx",
+      "current": "Utility_Materials/01_Letters/Text.009.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "43736a5d75ab68fea05934739d4c65d4"
+    },
+    {
+      "package": "/Game/Art/MI/Utility_Materials/01_Letters/Text_010",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Utility_Materials/01_Letters/Text.010.fbx",
+      "current": "Utility_Materials/01_Letters/Text.010.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "ae04065037226ea809272ff224df81ca"
+    },
+    {
+      "package": "/Game/Art/MI/Utility_Materials/01_Letters/Text_011",
+      "class": "StaticMesh",
+      "recorded": "D:/GameJam/Total (in)Sanitation/Utility_Materials/01_Letters/Text.011.fbx",
+      "current": "Utility_Materials/01_Letters/Text.011.fbx",
+      "current_exists": true,
+      "md5_matches": true,
+      "md5": "4b92bb1dabc9a82d539d0a33b12706ca"
+    }
+  ],
+  "retained_builder": [
+    {
+      "path": "/Game/Art/Tools/OfficeLevelBuilder/BP_OLB_Builder",
+      "referencers": [
+        "/Game/Levels/LaCarlota"
+      ],
+      "dirty": false
+    },
+    {
+      "path": "/Game/Art/Tools/OfficeLevelBuilder/BP_OLB_Room",
+      "referencers": [
+        "/Game/Levels/LaCarlota"
+      ],
+      "dirty": false
+    },
+    {
+      "path": "/Game/Art/Tools/OfficeLevelBuilder/BP_OLB_Stair",
+      "referencers": [
+        "/Game/Levels/LaCarlota"
+      ],
+      "dirty": false
+    }
+  ],
+  "limitations": [
+    "No new export/reimport or visual acceptance.",
+    "No native link repair, orphan purge, redirector fixup or package migration.",
+    "Native reference library and stages 3-7 remain pending."
+  ],
+  "final_native_state": {
+    "level": "/Game/Levels/Test",
+    "level_dirty": false,
+    "ui_exists": false,
+    "characters_exists": false,
+    "stop_sign": {
+      "tags": {
+        "Format": "DXT1",
+        "AssetImportData": "[{ \"RelativeFilename\" : \"D:/GameJam/BoomeRacist/UI/Substance_graph_stop_1.png\", \"Timestamp\" : \"1787353946\", \"FileMD5\" : \"83d92fd2fb0c2b101bb63c3be859bb19\", \"DisplayLabelName\" : \"\" }]",
+        "Filter": "TF_Default",
+        "LODGroup": "TEXTUREGROUP_World",
+        "AddressX": "TA_Wrap",
+        "AddressY": "TA_Wrap",
+        "CompressionSettings": "TC_Default",
+        "Dimensions": "64x64",
+        "HasAlphaChannel": "False",
+        "LODBias": "0",
+        "NeverStream": "False",
+        "SRGB": "True",
+        "MipLoadOptions": "Default",
+        "SourceCompression": "UE Delta",
+        "VirtualTextureStreaming": "False",
+        "Availability": "GPU",
+        "IsSourceValid": "True",
+        "MaxTextureSize": "0",
+        "MipGenSettings": "TMGS_FromTextureGroup",
+        "PowerOfTwoMode": "None",
+        "SourceFormat": "TSF RGBA16"
+      },
+      "referencers": [
+        "/Game/Art/MM/Utility_Materials/MM_Panner_Image"
+      ]
+    }
+  },
+  "presentation_verification": {
+    "state": "passed",
+    "phase": "layout-and-links",
+    "checks": [
+      {
+        "tab": "Overview",
+        "theme": "dark",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "tab": "Art bible",
+        "theme": "dark",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "tab": "Plan",
+        "theme": "dark",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "tab": "Progress",
+        "theme": "dark",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "tab": "Rules & tools",
+        "theme": "dark",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "tab": "Level builder",
+        "theme": "dark",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "tab": "File rules",
+        "theme": "dark",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "tab": "Overview",
+        "theme": "dark",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "tab": "Art bible",
+        "theme": "dark",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "tab": "Plan",
+        "theme": "dark",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "tab": "Progress",
+        "theme": "dark",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "tab": "Rules & tools",
+        "theme": "dark",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "tab": "Level builder",
+        "theme": "dark",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "tab": "File rules",
+        "theme": "dark",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "tab": "Overview",
+        "theme": "dark",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "tab": "Art bible",
+        "theme": "dark",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "tab": "Plan",
+        "theme": "dark",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "tab": "Progress",
+        "theme": "dark",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "tab": "Rules & tools",
+        "theme": "dark",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "tab": "Level builder",
+        "theme": "dark",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "tab": "File rules",
+        "theme": "dark",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "tab": "Overview",
+        "theme": "light",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "tab": "Art bible",
+        "theme": "light",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "tab": "Plan",
+        "theme": "light",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "tab": "Progress",
+        "theme": "light",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "tab": "Rules & tools",
+        "theme": "light",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "tab": "Level builder",
+        "theme": "light",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "tab": "File rules",
+        "theme": "light",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "tab": "Overview",
+        "theme": "light",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "tab": "Art bible",
+        "theme": "light",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "tab": "Plan",
+        "theme": "light",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "tab": "Progress",
+        "theme": "light",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "tab": "Rules & tools",
+        "theme": "light",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "tab": "Level builder",
+        "theme": "light",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "tab": "File rules",
+        "theme": "light",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "tab": "Overview",
+        "theme": "light",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "tab": "Art bible",
+        "theme": "light",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "tab": "Plan",
+        "theme": "light",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "tab": "Progress",
+        "theme": "light",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "tab": "Rules & tools",
+        "theme": "light",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "tab": "Level builder",
+        "theme": "light",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "tab": "File rules",
+        "theme": "light",
+        "width": 390,
+        "passed": true
+      }
+    ],
+    "consoleErrors": 0,
+    "registryTargets": 7
+  },
+  "completed_utc": "2026-11-17T02:34:48.406893+00:00",
+  "final_status_presentation_verification": {
+    "state": "passed",
+    "phase": "final-status",
+    "checks": [
+      {
+        "tab": "Overview",
+        "theme": "dark",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "tab": "Plan",
+        "theme": "dark",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "tab": "Progress",
+        "theme": "dark",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "tab": "Overview",
+        "theme": "dark",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "tab": "Plan",
+        "theme": "dark",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "tab": "Progress",
+        "theme": "dark",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "tab": "Overview",
+        "theme": "dark",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "tab": "Plan",
+        "theme": "dark",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "tab": "Progress",
+        "theme": "dark",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "tab": "Overview",
+        "theme": "light",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "tab": "Plan",
+        "theme": "light",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "tab": "Progress",
+        "theme": "light",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "tab": "Overview",
+        "theme": "light",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "tab": "Plan",
+        "theme": "light",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "tab": "Progress",
+        "theme": "light",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "tab": "Overview",
+        "theme": "light",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "tab": "Plan",
+        "theme": "light",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "tab": "Progress",
+        "theme": "light",
+        "width": 390,
+        "passed": true
+      }
+    ],
+    "consoleErrors": 0,
+    "registryTargets": 7
+  }
+}

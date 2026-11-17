@@ -41,5 +41,3 @@ preparing a build is not activation.
 ## Reusable owner request
 
 “Act as orchestrator. Follow `processes/visible-agent-orchestration.md` and the project's current handoff. Open a new visible [CLI] chat in Mr. Mak with [exact model + variant], send the handoff, monitor it, review the delivered artifacts independently and return any corrections to that same worker. Preserve existing sessions and permissions.”
-
-For Total (in)Sanitation corridor modeling, the task packet is **`projects/total-insanitation/CORRIDOR_ASSET_HANDOFF.md`**. The requested worker is **OpenCode / DeepSeek V4.1 Flash 1017 (Max)** and its suggested title is **Basement Asset Production**.

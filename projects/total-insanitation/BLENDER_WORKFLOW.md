@@ -1,65 +1,37 @@
 # Blender authoring and FBX delivery
 
-**Owner instructions, 12 November 2026.** This is the production workflow for future assets and exports. Read it with `AGENTS.md` and `MODULE_CONTRACT.md`.
+Owner-confirmed production rules, checked against the installed exporter/preset during stage 2 on 2026-11-17 UTC. Follow the [file placement contract](../../workspace/2026-11-12_total-insanitation/FILE_PLACEMENT.md) for current directories and the existing-FBX map. This audit did not create a new export or verify a new asset round trip.
 
-## Existing editable sources
+## Editable sources
 
-All paths are relative to `D:/GameJam/Total (in)Sanitation/`.
+Paths are relative to `D:/GameJam/Total (in)Sanitation/`.
 
 | Work | Source |
 | --- | --- |
-| Structures, modular building pieces, floor-specific geometry and shop work; current priority | `Assets/Building/Interior_Building.blend` |
+| Structures, modular kit and floor-specific/shop geometry | `Assets/Building/Interior_Building.blend` |
 | Individual environment assets and props | `Assets/Enviroment_Assets/Enviroment_Assets.blend` |
 
-Create new assets inside the appropriate existing source. Create a new `.blend` only when the task explicitly requires one; do not make a separate file for each new asset. Preserve collections, unrelated work and editable construction. The separate Pass 01 sign source and module-test copies predate this instruction; retain them as historical editable evidence, not as a template for future authoring.
+Use the existing blends and collections. Create a separate blend only when explicitly needed. Preserve owner construction, names, pivots and unrelated objects. Keep reference/importer/backup collections out of the visible export batch.
 
 ## Super Duper Batch Exporter
 
-Use the owner's installed [Super Duper Batch Exporter](https://extensions.blender.org/add-ons/superduperbatchexporter/) for Blender → Unreal FBX exports. The local extension manifest was inspected: version **2.9.3**. The owner's screenshot defines the panel configuration:
-
-| Setting | Required value |
+| Setting | Owner configuration |
 | --- | --- |
-| Directory | Set for the current asset destination; the screenshot's `//Delivery\Basement\Shop\` is an example relative to the source blend |
+| Directory | Actual destination for the selected family; validate after restructuring |
 | Filename | `$OBJ` |
-| Format | FBX (`.fbx`) |
-| Mode | Parent Objects |
-| Limit to | Visible |
+| Format / Mode / Limit to | FBX / Parent Objects / Visible |
 | Preset | `Unreal_Only_FBX` |
-| Apply Modifiers | Enabled |
-| Object Types | Mesh only |
-| Transform on Export | Disabled |
-| Create LOD | Disabled |
+| Apply Modifiers / Object Types | On / Mesh only |
+| Transform on Export / Create LOD | Off / Off |
 
-The [owner's panel screenshot](../../workspace/2026-11-12_total-insanitation/media/export-settings.png) is preserved in the Workspace Tools and Decisions tabs. Before exporting, verify the intended parents, child meshes, visibility and destination so the visible batch contains only the intended delivery assets. Preserve names and pivots.
+The installed preset uses scale 1, apply units, `FBX_SCALE_NONE`, forward `-Z`, up `Y`, face smoothing, tangent space, SRGB vertex colors and no animation/embedded textures. Reinspect it before a new delivery. It still stores an old `D:/GameJam/BoomeRacist/...` filepath; the batch add-on overwrites this per job. Set Directory explicitly, check any Project Directory override and the export preview. Neither main blend stores current `scene.batch_export` settings; Props' legacy `export_folder` is also stale.
 
-### Installed preset checked locally
+This is the static-mesh recipe. Chicken and Tongue Mop have armatures and existing Unreal SkeletalMesh assets; do not overwrite those with a Mesh-only export. Existing cleaning-tool FBXs bundle unparented UCX nodes with render meshes; Parent Objects alone will not reproduce those bundles. Preserve their established contents until a specific per-tool export is checked.
 
-The existing preset was read from `%APPDATA%/Blender Foundation/Blender/5.2/scripts/presets/operator/export_scene.fbx/Unreal_Only_FBX.py`. Important values:
+The owner's panel screenshot remains at `workspace/2026-11-12_total-insanitation/media/export-settings.png`. Before delivery, verify parents, visibility and destination, then check dimensions/orientation, pivots, material slots, UVs, vertex colors and reimport behavior in Unreal. Assign materials through the project's modular Blueprint workflow where applicable; use the existing Unreal Utility_Materials library.
 
-| Option | Value |
-| --- | --- |
-| Scale | `global_scale=1.0`, `apply_unit_scale=True`, `apply_scale_options='FBX_SCALE_NONE'` |
-| Axes | Forward `-Z`, Up `Y` |
-| Space transforms | `use_space_transform=True`, `bake_space_transform=False` |
-| Geometry | Mesh only; modifiers enabled; smoothing `FACE`; tangent space enabled; automatic triangulation disabled |
-| Vertex colors | `colors_type='SRGB'`, `prioritize_active_color=False` |
-| Animation | Disabled |
-| Textures | `path_mode='AUTO'`, embedded textures disabled |
+## UVs and links
 
-The installed extension loads the selected preset and overrides the output filepath, selection and modifier toggle for each batch job. Its output directory is the panel Directory; do not reuse the old filepath stored inside the preset. Other preset values remain unchanged.
+Owner references are 256 px/m for some structures and 512 px/m for simple props. Floors/ceilings may intentionally differ to match tileables. Preserve these exceptions.
 
-The earlier copied-module test used direct FBX export with different axes (`-Y / Z`). It remains historical evidence for that particular test. Future production uses the owner's preset above. No export/import round trip through this exact addon/preset was performed during this documentation update. On the next asset delivery, check size, orientation, pivots, materials, UVs and vertex colors in Unreal; do not silently substitute the older test settings. Materials continue to be assigned in modular Blueprints.
-
-## Texel density and tileable alignment
-
-**Production recipe verified, 12 November 2026:** the corridor pass exported 25 real meshes through Super Duper Batch Exporter / Unreal_Only_FBX, reimported all FBXs and imported all 25 into Unreal. All library-layout translations were removed temporarily for export and source transforms restored. Native imports retained the 400 cm span, prop dimensions, unit scale, material slot names and one UV channel; totals match 13,694 triangles. The documented export axes were not substituted. See `CORRIDOR_IMPLEMENTATION.md` and the Workspace **Model review** tab. This supersedes the earlier “exact addon/preset round trip unverified” setup limit for this delivered set.
-
-The normal references remain **256 px/m** for some modular structures and **512 px/m** for simple props. Some existing modular floors and ceilings deliberately depart from those values to match their specific tileable textures. Preserve those UVs and material tiling; do not normalize them merely to meet a nominal density.
-
-The sampled wall measured about 256 px/m; the sampled concrete floor measured about 128 px/m. The floor belongs to this intentional exception policy and is not an outstanding density fix.
-
-## Retired texture warnings
-
-The owner confirmed that old texture references in `Enviroment_Assets` were removed because an atlas replaced them. A fresh read-only audit of both saved sources on 12 November 2026 found **zero missing unpacked file images in either source**. The old Bars, Chains and Old_Elevator_Door warning is closed. Do not regenerate or relink those retired textures.
-
-Raw audit evidence is local under `.mrmak/total-insanitation/owner-setup-20261112/image-audit.json`. The audit did not save either source or change the active graphical Blender session.
+The stage-2 contract records the moved structural trim replacement, seven consuming building objects, two missing atlas images used by ten props, and confirmed zero-user retired materials/links. Preserve active and owner-reference data. No links were changed or native files saved. After a separately authorized targeted relink/removal, rerun the audit and keep relative links where practical.

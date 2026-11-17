@@ -2,66 +2,56 @@
   "format": "mrmak-card",
   "version": 1,
   "template": "research",
-  "title": "Art bible / v0.2",
-  "summary": "A living record of the owner’s direction and the existing assets. “Confirmed” comes from the owner; “Observed” comes from local evidence; “Proposed” awaits review. A completed note does not imply the whole environment is finished.",
+  "title": "Art bible / confirmed foundations",
+  "summary": "Owner-confirmed direction retained after the reset. The categorized Unreal image library is pending stage 3. These decisions are not completed art deliverables; use Plan → Progress for execution status.",
   "items": [
     {
       "id": "identity",
       "title": "The company and the janitor",
       "status": "done",
-      "body": "**Confirmed by the owner.** A janitor works inside a pharmaceutical company, cleaning damage caused by clandestine experiments and fighting employees transformed into demonic or malicious creatures. The entire game takes place in the company building. Doom and Viscera Cleanup Detail are gameplay reference points. Our scope is the art."
+      "body": "**Owner-confirmed setting.** A janitor works in a pharmaceutical company, cleaning the consequences of clandestine experiments and facing transformed employees. The art supports this company and its contrast between public presentation and hidden work."
     },
     {
       "id": "style",
       "title": "1970s corporate interiors + medieval fantasy",
       "status": "done",
-      "body": "**Confirmed by the owner.** Semi-realism and stylization, with 1970s corporate interiors as the dominant language and medieval fantasy as an accent.\n\n**New owner evidence:** the References subtab now contains the supplied office/lab shells, modular kits and assembled Basement. Wood paneling, wallpaper, carpet, regular luminous ceiling grids and a light concrete lab band give concrete project examples. No numeric style ratio has been chosen.\n\n**Pass 01 application:** a simple olive/cream service sign and warm fluorescent task area; the existing spikes/bars carry the fantasy accent."
+      "body": "**Owner direction.** Predominantly 1970s corporate interiors, with medieval fantasy accents; a blend of semi-realism and stylization. No numerical style ratio or new palette is approved by this reset."
     },
     {
       "id": "public-private",
-      "title": "Public polish / neglected back-of-house",
+      "title": "Public polish / neglected service spaces",
       "status": "done",
-      "body": "**Confirmed.** Public-facing company spaces look clean, polished and professional. The company treats hidden employees poorly. The janitor's basement should feel neglected, partly abandoned and in places dungeon-like. This contrast is environmental storytelling.\n\nDo not interpret the brief as a mandate to turn every wall or prop into medieval architecture."
-    },
-    {
-      "id": "basement-role",
-      "title": "Basement: preparation and equipment",
-      "image": "media/pass-01/basement-shop-after-gameplay.png",
-      "alt": "Verified gameplay view of the equipment service counter after pass 01",
-      "status": "review",
-      "body": "**Confirmed.** The player prepares for a cleaning assignment here. The NPC serves through the open counter; the separate spikes/bars opening releases equipment. NPC identity and gameplay are still undecided.\n\n**Implemented, 12 November 2026.** Pass 01 makes the counter a visible destination using a sign and one warm local light. Existing geometry and the rest of the corridor layout were retained. The owner has not yet reviewed this new treatment."
-    },
-    {
-      "id": "modularity",
-      "title": "Structures become modular; special pieces stay specific",
-      "status": "done",
-      "body": "**Confirmed in Temp and measured natively.** Walls, floor and roof modules use a 4 m grid. Regular walls are 4 m high, 4 m long and 15 cm thick; corners shorten to 3.85 m. Decorations follow the module length, with corresponding corner trims. Materials are assigned in modular Blueprints after Blender import.\n\nThe shop remains floor-specific. Existing building sources were preserved. The copied trial is in LaCarlota; see Basement → Pass 01. Doorway meshes need a reusable Blueprint. Window migration remains a future library decision.\n\n**Authoring rule, 12 November 2026.** Create new structures and shop assets inside `Assets/Building/Interior_Building.blend`; create individual environment assets and props inside `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Paths are relative to `D:/GameJam/Total (in)Sanitation/`. Use these existing files and their collections. Create a new `.blend` only when the task explicitly requires one. Historical Pass 01 sources are retained as editable evidence."
+      "body": "Public spaces are clean, polished and professional. Hidden service areas are neglected and can feel dungeon-like. Apply this contrast through actual environments and materials, with fresh Unreal references in stage 3."
     },
     {
       "id": "surfaces",
-      "title": "Tileables, trims and a few unique atlases",
+      "title": "Existing Unreal materials first",
       "status": "done",
-      "body": "**Confirmed.** Reuse tileables, the structural trim sheet and the elevator atlas. The Materials tab now also shows the owner’s LaCarlota variant board and the actual Basement material families.\n\n**Technical correction in pass 01:** CobbleStone_02’s ORM texture was changed from sRGB/default compression to linear/masks after tracing its references to Basement and LaCarlota. RGB channels remain AO / roughness / metallic. No Designer graph or original texture pixels were changed.\n\nMeasured wall UV scale supports about 256 px/m with 512 px textures. The sampled floor has about 128 px/m with its current 512 px concrete; this intentional exception aligns the specific tileable texture. Preserve the floor and ceiling exceptions instead of normalizing their UVs."
+      "body": "Use `/Game/Art/MI/Utility_Materials` for asset material decisions. Reuse tileables, trims and the current atlas system before proposing missing surfaces. Final production-reference images must come from Unreal; source albedos and generated concepts are not equivalent evidence."
     },
     {
       "id": "technical-target",
-      "title": "Texel density / preserve intentional tileable exceptions",
+      "title": "Density and intentional tileable exceptions",
       "status": "done",
-      "body": "**Confirmed by the owner, 12 November 2026.** use 256 px/m for some modular structures and 512 px/m for simple props. Some floors and ceilings intentionally use another density to match their specific tileable texture. Preserve those UV scales and material tiling; do not normalize them to the nominal values. The sampled concrete floor at about 128 px/m is an intentional exception, not an outstanding fix."
+      "body": "The owner confirmed 256/512 px/m as normal references. Some floors and ceilings intentionally differ to align tileable textures. Preserve those UV scales and material tiling. Recheck current file links during stage 2."
+    },
+    {
+      "id": "mascot-direction",
+      "title": "Wizard mascot / prototype to standardize",
+      "status": "idea",
+      "body": "**Owner-selected identity.** A simple figure with a wizard hat and staff, used as the company/game spokesperson across signs and decoration. Source prototypes remain in `Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet`. Master design and consistent poses are stage 4; none has been regenerated in the reset."
+    },
+    {
+      "id": "graphic-direction",
+      "title": "Signage and UI / definition pending",
+      "status": "idea",
+      "body": "Stage 5 will define coherent typography, signs, decoration, mascot applications and the current UI. **Confirmed:** English game text with future localization; Unreal graphics/UI under `/Game/Art/UI`; characters under `/Game/Art/Characters`. Review examples before atlas or UI implementation."
     },
     {
       "id": "review-contract",
-      "title": "How this bible grows",
-      "status": "done",
-      "body": "Add dated native views and accepted examples as work is reviewed. Keep proposed, implemented, agent-verified and owner-accepted states distinct. Preserve stable entry IDs and source files. Revise this card rather than creating a new project card for every pass.\n\nThe older PureRef file is optional historical context and does not override accepted examples or the owner's direction. Characters, weapons and UI remain deferred."
-    },
-    {
-      "id": "owner-office-context",
-      "title": "Office and laboratory context from Temp",
-      "image": "media/owner-references/office_lab_01.png",
-      "alt": "Owner-supplied office gameplay with wood walls and a luminous ceiling grid",
-      "status": "done",
-      "body": "**Owner-supplied current work.** These are early shells, mostly walls, floor, ceiling and lights. Most office floors are intended to include a laboratory, particularly the first level. Furnishing and layouts are still developing.\n\nKeep the public/private contrast: warmer, orderly offices above; worn concrete, masonry and utility lights below. All twelve images are in References."
+      "title": "Reference library and review status",
+      "status": "idea",
+      "body": "Stage 3 will organize Unreal captures by environments, materials, assets and characters, with dedicated mascot and signage/UI entries. Owner originals remain in project `Temp`; they are not a replacement for fresh captures. Keep proposals, implementation, technical checks and owner approval distinct. The retired production image galleries have been removed."
     }
   ]
 }

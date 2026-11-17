@@ -1,26 +1,17 @@
 # Total (in)Sanitation
 
-Art production hub for the owner's game. Current priority: finish the modular **Basement** environment inside the pharmaceutical company.
+Art production hub for the owner's pharmaceutical-company game. Stages 1–2 are complete: Workspace reset and the source/FBX/Unreal file contract. The old AI asset/Basement production records remain retired. Use the current plan and execution log rather than earlier deliveries or chat history.
 
-- Workspace: `workspace/2026-11-12_total-insanitation/` (registered as `total-insanitation`).
-- Unreal project: `D:/GItHub/BoomeRacist/BoomeRacist.uproject` — installed Unreal **5.8.4**.
-- Asset root: `D:/GameJam/Total (in)Sanitation/`.
-- Owner's brief: `D:/Descargas/Total (In)Sanitation Documento.txt`, received 2026-11-12.
-- Read `AGENTS.md`, the Workspace's art bible and tools tab before production.
-- Continue from `NEXT_SESSION.md`; Basement pass 01 is implemented and agent-verified, ready for owner visual review.
-- Evidence and exact changes: `workspace/2026-11-12_total-insanitation/BASEMENT_PASS_01.md`.
-- Latest proposal: Basement → **Corridor concepts / Asset proposal**. Four fresh native gameplay captures, three generated dressing concepts and a seven-family asset/material plan. The owner accepted the direction for modeling; concepts are not implemented assets. See `CORRIDOR_ASSET_PROPOSAL.md` in the same Workspace card.
-- Delegated corridor production is complete: OpenCode Go / DeepSeek V4.1 Flash 1017 / max delivered 25 meshes, 25 FBXs and T01. Independent saved-source, export and Unreal checks passed. Read `CORRIDOR_IMPLEMENTATION.md`, `corridor-assets.json` and Workspace **Models / Model review**. Owner aesthetics and final Basement placement remain pending. The repeatable orchestration procedure is `processes/visible-agent-orchestration.md`.
-- **Office Level Builder** (12 November 2026, agent-verified, owner review pending): drag-and-build 4 m modular levels with automatic open-corner pieces and stairs. Blueprints in `/Game/Art/Tools/OfficeLevelBuilder/`; guide in the Workspace **Level builder** tab (`OFFICE_LEVEL_BUILDER.md`). Setup/demo scripts: `scripts/olb_setup_assets.py`, `scripts/olb_place_demo.py`.
-- Production Blender source and export rules: `BLENDER_WORKFLOW.md`. New assets belong in the existing building/prop blends; FBX delivery uses the owner’s Super Duper Batch Exporter preset.
-- Verified kit contract: `MODULE_CONTRACT.md`. Owner-supplied references and notes remain in `Temp/`.
-- Completed checks and limits: `VERIFICATION.md`.
+- Workspace card: `workspace/2026-11-12_total-insanitation/`, ID `total-insanitation`.
+- Plan: `workspace/2026-11-12_total-insanitation/ACTION_PLAN_2026-11-16.md`.
+- Authoritative stage status: `workspace/2026-11-12_total-insanitation/EXECUTION_LOG.md`.
+- File placement/export contract: [FILE_PLACEMENT.md](../../workspace/2026-11-12_total-insanitation/FILE_PLACEMENT.md), also in Rules & tools → File rules, with the existing-FBX map and audit evidence.
+- Source root: `D:/GameJam/Total (in)Sanitation/`.
+- Unreal project: `D:/GItHub/BoomeRacist/BoomeRacist.uproject`.
+- Owner-supplied original notes/images: `Temp/`; original brief remains under ignored `.mrmak/total-insanitation/owner-brief-original.txt`.
 
-## Deliverables and acceptance
+Read `AGENTS.md`, `NEXT_SESSION.md` and `BLENDER_WORKFLOW.md` before working. The Art bible retains owner-confirmed direction; its new Unreal image library is scheduled for stage 3. Tool setup details and the retained Office Level Builder guide are in **Rules & tools**.
 
-1. **Project hub and art bible v0.1.** One pinned card, visual overview, editable art notes, source inventory, tools and decisions. Verify every tab at desktop, 768 px and 390 px.
-2. **Working art tools.** Reuse Blender Lab MCP; enable Epic's bundled Unreal MCP and the editor toolset; verify real read-only calls. For Designer, verify its native tools and prepare an API audit. Record prepared, connected and verified states separately.
-3. **Basement baseline.** Capture existing source evidence, list modular parts/materials and outstanding questions. Do not treat an asset-source view as an Unreal gameplay capture.
-4. **Next production pass.** Review the basement in engine; propose a small, evidence-based pass covering module gaps, shop, materials and lighting. Preserve editable originals and obtain the owner's direction on unresolved artistic choices.
+Current direction: predominantly 1970s corporate interiors, medieval fantasy accents, semi-realism and stylization. Public areas are polished; back-of-house spaces are neglected and dungeon-like. Graphic design includes the wizard mascot, signage and UI, with English game text and future localization.
 
-No new paid generation is needed for setup. Further stages follow `3d-production-routing`, then the applicable level/material/native-review skill.
+The owner requested stage-2 continuation from the New Setup handoff. This stage documents placement, export exceptions and native resource usage without production saves. Stages 3–7 remain pending. The next planned stage is the Unreal reference library/material showcase, requiring its own continuation instruction. Do not begin art production or regenerate deleted resources from old records.
