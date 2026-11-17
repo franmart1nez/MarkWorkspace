@@ -24,7 +24,7 @@ Essential connections and production rules retained after the reset. Earlier set
 
 ## Retained helpers
 
-Project scripts: `blender_audit.py`, `unreal_audit.py`, `designer_audit.py`, `mcp_client.py`, `olb_setup_assets.py` and the retained builder's `olb_build.py` source. The generic audit helpers are read-only. MCP access can mutate data when explicitly called with a mutation tool; discover/inspect first.
+Project scripts: `blender_audit.py`, `unreal_audit.py`, `designer_audit.py`, `mcp_client.py`, `olb_setup_assets.py`, the retained builder's `olb_build.py`, and stage 3's [material-review setup source](../../projects/total-insanitation/scripts/unreal_reference_showcase.py). The generic audit helpers are read-only. The showcase creator refuses existing targets; inspect `/Game/Levels/Art_Material_Reference` rather than rerunning it over saved work. Its [capture notes](REFERENCE_LIBRARY.md) and [reference index](REFERENCE_INDEX.json) record the rig and current limitations. MCP access can mutate data when explicitly called with a mutation tool; discover/inspect first.
 
 The native client can be used without restarting this chat:
 

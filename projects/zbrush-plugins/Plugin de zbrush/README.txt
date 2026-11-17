@@ -1,64 +1,32 @@
-ZBRUSH PLUGINS 3.2.3
-Camera Bank 25 + Render Capture + Generar y exportar ID
-Windows / native compilation and selected validation: ZBrush 2023.2.1
+ZBRUSH RENDER / ID PLUGINS 3.2.6
+Windows / ZBrush 2023.2.1 native compilation
 
-STATUS AND SOURCE
-All three components are integrated, compiled and installed on the target
-machine. Editable TXT sources, generators, tests and genuine native ZSC files
-are included. Development/VERIFICATION_3.2.3.md records the actual checks and
-limits. Sources are maintained in projects/zbrush-plugins/Plugin de zbrush.
+Camera Bank Fast is the ONLY camera writer. This package contains Render
+Capture and Generate and Export ID. The old Camera Bank folder, compiled
+writer and camera installation option have been removed.
 
 INSTALL / LOAD
-Run INSTALAR.cmd for all three components. Individual component folders contain
-launchers for Camera, Render and ID. -Component Both retains the former two-plugin
-selection; All is the new default. Sources, loaders and ZFileUtils64.dll are
-installed with backups of replaced files. Identical files are not rewritten,
-so an already loaded identical DLL does not require an application restart.
-An incompatible old compiled plugin/loader is backed up and retired.
+Install Camera Bank Fast 0.3 separately using INSTALAR FAST.cmd. It can import
+client-native ZAppLink .vws files with IMPORT VWS. See its README.txt.
+Run INSTALAR.cmd here for Render and ID. All/Both are aliases for both consumers;
+Render/ID individual selections are also available. No Camera option remains.
+The installer backs up and retires only explicit old Camera Bank installed
+files, preserving saved banks, Fast and unrelated plugins. It never restarts
+ZBrush. Controls from an old loaded writer may persist until a normal launch.
 
-In an already open ZBrush, use Macro > Reload All Macros > Mak Plugins, then
-Load Camera Bank, Load Render Capture and Load Generate and Export ID.
-No application is closed or restarted by the installer. The three ZSC files are
-also placed in ZStartup/ZPlugs64. All three controls loaded automatically on
-the independent recovery launch; see the verification record for session handling.
+In an open ZBrush: Macro > Reload All Macros > Mak Plugins > Load Camera Bank
+Fast / Load Render Capture / Load Generate and Export ID. Orange Fast cameras
+export. Fast 0.3 VWS imports start orange with Render ON. The two bulk
+controls above the numbered slots set Render OFF or ON for all stored cameras.
 
-The included ZSC files were compiled in 2023.2.1. If rebuilding/editing TXT,
-load the updated source through ZScript > Load and reinstall its new native
-ZSC. Renaming a TXT extension to ZSC is not compilation. The installer uses
-Windows 2023-2026.0 installation layout; other versions are not validated.
+New camera imports use current canvas, lens and visibility as editable defaults.
+Recall and configure a camera as needed, then press UPDATE ACTIVE. Save the
+matching ZTL/ZPR after identifier updates and EXPORT BANK. Fast banks remain
+v9, 123,088 bytes. Matching .zcv import and legacy migration remain in Fast.
 
-CAMERA BANK
-STORE NEW, then an empty 01-25 slot, stores the current view. Orange cameras
-render; gray occupied cameras do not. A first click recalls a stored view;
-clicking the active view again toggles its render flag. UPDATE ACTIVE captures
-the current view while retaining the render flag, including gray cameras.
-
-Store/update automatically captures effective visibility (eyes, folders, Solo
-and active SubTool), dimensions, lens and transform. PREPARE TRANSFER is gone.
-Name markers are maintained automatically. Recall resolves those names after
-reordering and compatible native merges, without a positional guess. All
-occupied cameras participate in compatibility, including gray ones.
-
-Save the matching model after the latest store/update, then EXPORT BANK.
-Export works independently of Edit mode and read-back verifies all bank cells.
-New exports use data v9: 123,088 bytes. Cancellation preserves the in-memory cameras.
-
-ZTL FILENAMES AND OLDER BANKS
-New 3.2.1 banks store native mesh IDs as well as name markers. You can save and
-reopen a matching ZTL with an arbitrary filename: the first SubTool filename
-alias is resolved automatically when its identity is unambiguous. Names on
-other SubTools must retain their markers. Ambiguous or unknown identity is
-rejected instead of guessed. The reader is shared by Camera, Render and ID.
-
-Data is now v9: 123,088 bytes. Install/update all three components together;
-older binaries cannot read v9. Old v1-v8 banks still import. For a tracked v8
-bank, open the matching marked Tool in Edit mode, import the bank and export
-it again to attach native IDs. If the first marker was already lost, use its
-matching marked ZTL/ZPR for this one migration. Untracked banks retain their
-review/update workflow. ZPR filenames can also be chosen freely.
-
-The source of this correction and its checks are in
-Development/VERIFICATION_3.2.1.md and Development/DATA_FORMAT.md.
+The included ZSC binaries are genuinely compiled. Editing TXT requires native
+recompilation and reinstalling. The installer targets the Windows 2023-2026.0
+layout; only 2023.2.1 is validated here. Renaming TXT to ZSC is not compilation.
 
 RENDER CAPTURE
 1 - CREATE FOLDERS creates/reuses ZPass_1 inside the chosen parent.
@@ -75,19 +43,20 @@ Each Z document is copied byte-for-byte to Screenshots/01.png, 02.png, etc.
 BPR: Shadow Rays 30, Shadow Angle 15, AO Rays 30, SPix 2. Shadows, AO and SSS
 are enabled for capture; all seven maps are checked. Native Depth stays 16-bit.
 There is no Light:Save/Load. The existing display/light recovery is retained.
-Existing matching files are listed by camera before any render starts, then
-replaced. Other filenames and disabled cameras are left alone.
+Existing matching files are replaced automatically without overwrite prompts. Other filenames and disabled cameras are left alone.
 
 GENERAR Y EXPORTAR ID
-Two actions export ID.png for EVERY enabled Camera Bank camera. Each reuses
+Two actions export ID.png for EVERY enabled Camera Bank Fast camera. Each reuses
 the active ZPass_1 folder or chooses/creates ZPass_1 itself. No separate
 Render Capture folder-preparation step is required.
 
 Generar y exportar ID generates the IDs and exports them.
 Exportar ID exports existing manually prepared colors/textures using Render Flat.
-It does not fill materials, regenerate RGB/PolyGroups, or clear masks. Colorize
-and texture toggles remain as prepared. Both actions restore display/view state.
-For manual export, prepare the visible colors and mask display before capture.
+It enables and verifies Colorize on every required SubTool before each camera.
+It does not fill materials, regenerate RGB/PolyGroups, or clear masks. Texture
+toggles remain as prepared. Both actions restore original display/view state.
+Prepare the existing Polypaint colors and mask display before capture. Matching
+ID.png files are replaced automatically without overwrite prompts.
 
 The generating action prepares the union of required visible meshes once, preserving ID
 colors across cameras: Flat Color material-only fill, Auto Groups, Polypaint
@@ -113,17 +82,14 @@ No BPR or NonBPR child folders are created. Existing folders are not migrated.
 The shown camera names are the bank's displayed labels 01 through 25.
 
 VERIFICATION / DEVELOPMENT
-52 focused automated tests passed for 3.2.3. See Development/VERIFICATION_3.2.3.md.
-The 104-test 3.2.2 acceptance is retained in its historical record.
-Historical identity and full render evidence remains in the 3.2.1/3.2.0 records.
-
-From Development, use:
-  python build_all.py
-  python -m unittest -v verify verify_merge verify_camera_320 test_render_layout test_id_export test_installer test_uninstaller test_ztl_identity
-Regenerate before native compilation. Camera and ID logic live in their build
-inputs/includes; the generated reader is shared by the two capture plugins.
+See Development/VERIFICATION_3.2.6.md for this cleanup and Fast 0.2 import.
+Historical identity and full-render evidence stays in the 3.2.1/3.2.0 records.
+Build sources with python Development/build_all.py, then compile in ZBrush.
+Development/tests/fixtures/legacy_camera_321.txt is a historical compatibility
+test input, not an installable camera plugin. The old camera builder is retired.
+Run python -m unittest discover -s Development -p "test_*.py" for consumers.
 
 UNINSTALL
-DESINSTALAR.cmd backs up and removes only this package's explicit files. It
-preserves unrelated plugins, saved banks and other user files. Loaded controls
-can remain until a later normal launch. Recovery folders are not part of the ZIP.
+DESINSTALAR.cmd backs up and removes only this package's explicit installed
+files, including historical owned files. Fast, saved banks and unrelated
+plugins are preserved. Recovery folders are excluded from the ZIP.

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en" data-view="hud">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Total (in)Sanitation · UI proposal</title>
+<style>
+  :root {
+    --cream: #f4e7ca;
+    --green: #193c35;
+    --ink: #1d211e;
+    --rust: #a43e22;
+    --chalk: #fff7e4;
+    --step: clamp(.72px, .078125vw, 1.5px);
+    color: var(--cream);
+    font: 700 calc(20 * var(--step)) Bahnschrift, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    display: grid;
+    min-height: 100dvh;
+    background: #171d1b;
+  }
+  .scene {
+    position: relative;
+    width: 100%;
+    min-height: 100dvh;
+    overflow: hidden;
+    background: #171d1b url("lobby-scene.webp") center / cover no-repeat;
+  }
+  .hud {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: calc(7 * var(--step)) calc(18 * var(--step));
+    position: absolute;
+    inset: 13% auto auto 3.1%;
+    width: calc(189 * var(--step));
+    min-height: calc(60 * var(--step));
+    padding: calc(10 * var(--step)) calc(14 * var(--step));
+    border: 1px solid #b7a98b;
+    border-left: calc(4 * var(--step)) solid var(--cream);
+    background: #162622fa;
+    color: var(--chalk);
+    font-size: calc(16 * var(--step));
+  }
+  .hud span { letter-spacing: .07em; }
+  .hud output { font-variant-numeric: tabular-nums; }
+  .health-track {
+    grid-column: 1 / -1;
+    height: calc(7 * var(--step));
+    background: #52675d;
+  }
+  .health-fill { display: block; height: 100%; width: var(--health); background: var(--cream); }
+  .health-fill[data-condition="critical"] { background: #ef8d72; }
+  .menu {
+    position: absolute;
+    display: none;
+    align-content: center;
+    inset: 0 auto 0 0;
+    width: min(46vw, calc(470 * var(--step)));
+    padding: calc(34 * var(--step)) calc(47 * var(--step));
+    border-right: calc(4 * var(--step)) solid var(--cream);
+    background: var(--green);
+  }
+  .title { display: flex; align-items: end; justify-content: space-between; gap: calc(14 * var(--step)); }
+  .title h1 {
+    margin: 0;
+    font: 700 calc(41 * var(--step)) / .98 Georgia, serif;
+    letter-spacing: -.045em;
+  }
+  .badge {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: calc(76 * var(--step));
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--cream);
+    box-shadow: inset 0 0 0 calc(3 * var(--step)) var(--rust);
+  }
+  .badge img { display: block; width: 90%; }
+  .menu-rule { height: calc(10 * var(--step)); margin: calc(24 * var(--step)) 0; border-block: 2px solid var(--cream); }
+  .menu nav { display: grid; gap: calc(7 * var(--step)); }
+  .menu button {
+    min-height: calc(43 * var(--step));
+    padding: calc(8 * var(--step)) calc(16 * var(--step));
+    border: 1px solid #9baf9a;
+    border-left: calc(4 * var(--step)) solid #9baf9a;
+    border-radius: 0;
+    color: var(--chalk);
+    background: transparent;
+    font: inherit;
+    line-height: 1.12;
+    text-align: left;
+    overflow-wrap: anywhere;
+  }
+  .menu button[data-primary] {
+    color: var(--ink);
+    background: var(--cream);
+    border-color: var(--cream);
+    border-left-color: var(--rust);
+  }
+  .menu button:hover:not([data-primary], :disabled) {
+    background: #365c4e;
+    border-left-color: var(--cream);
+  }
+  .menu button:focus-visible { outline: 2px solid var(--chalk); outline-offset: 3px; }
+  .menu button:disabled { color: #b9c4b9; border-color: #718b7f; }
+  .menu .divider { margin-top: calc(11 * var(--step)); }
+  [data-view="menu"] .menu { display: grid; }
+  [data-view="menu"] .hud { display: none; }
+  [data-view="menu"] .scene { background-image: url("lobby-menu-scene.webp"); }
+  [data-view="damage"] .scene { background-image: url("lobby-damage-scene.webp"); }
+  @media (max-aspect-ratio: 6/5) {
+    .menu { width: min(100%, 360px); padding-inline: 28px; }
+  }
+  @media (max-height: 440px) {
+    .menu { padding-block: 14px; }
+    .menu-rule { margin-block: 10px; }
+    .menu nav { gap: 4px; }
+    .badge { width: 46px; }
+    .title h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<main class="scene">
+  <aside class="hud" aria-label="Health">
+    <span id="health-label">HEALTH</span>
+    <output id="health-value" aria-labelledby="health-label">100%</output>
+    <div class="health-track" aria-hidden="true"><i class="health-fill" style="--health:100%"></i></div>
+  </aside>
+  <section class="menu" aria-label="Main menu">
+    <header class="title">
+      <h1>Total<br>(in)Sanitation</h1>
+      <span class="badge"><img src="ui-wizard.svg" alt=""></span>
+    </header>
+    <div class="menu-rule" aria-hidden="true"></div>
+    <nav aria-label="Game actions">
+      <button type="button" data-primary>Start</button>
+      <button type="button">Load</button>
+      <button type="button">Options</button>
+      <button type="button">Leaderboard</button>
+      <button type="button" class="divider">Quit</button>
+    </nav>
+  </section>
+</main>
+<script>
+  const options = new URLSearchParams(location.search);
+  const view = options.get('view');
+  document.documentElement.dataset.view = ['menu', 'damage'].includes(view) ? view : 'hud';
+  if (options.has('stress')) {
+    document.querySelectorAll('.menu button').forEach((button, index) => {
+      button.textContent = ['Start a new shift', 'Load a saved shift', 'Game and display options', 'View leaderboard standings', 'Quit to desktop'][index];
+    });
+  }
+  if (options.has('empty')) document.querySelector('.menu button:nth-child(2)').disabled = true;
+  if (options.has('critical')) {
+    document.querySelector('#health-value').textContent = '19%';
+    const fill = document.querySelector('.health-fill');
+    fill.style.setProperty('--health', '19%');
+    fill.dataset.condition = 'critical';
+  }
+</script>
+</body>
+</html>

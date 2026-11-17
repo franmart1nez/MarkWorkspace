@@ -1,5 +1,5 @@
-// Render Capture 3.2.2 - Windows / ZBrush 2023.2.1 target.
-// Exactly three public buttons. Reads Camera Bank v8 via CB25Data.
+// Render Capture 3.2.5 - Windows / ZBrush 2023.2.1 target.
+// Exactly three public buttons. Reads standalone Camera Bank Fast data v9 via FB25Data.
 // 3.2.0: both phases share each camera folder. See Development/VERIFICATION_3.2.0.md.
 // Source verification and native limits: Development/RENDER_3.2.0_RESULT.md.
 [ISubPalette,"ZPlugin:Render Capture"]
@@ -127,21 +127,22 @@
     ]
 ]
 [RoutineDef,RC_CheckBank,
-    [If,[MemGetSize,CB25Data]!=123088,
-        [RoutineCall,RC_Fail,"Load CameraBank25.txt v3.2.1 first, then import or store your cameras."]
+    [If,[MemGetSize,FB25Data]!=123088,
+        [RoutineCall,RC_Fail,"Open Camera Bank Fast, then import or store your cameras. Its standalone plugin must be loaded."]
     ]
-    [If,([MVarGet,CB25Data,0]!=252523)||([MVarGet,CB25Data,1]!=9)||([MVarGet,CB25Data,2]!=25),
-        [RoutineCall,RC_Fail,"Unsupported Camera Bank. Use v3.2.1 (data v9)."]
+    [If,([MVarGet,FB25Data,0]!=252523)||([MVarGet,FB25Data,1]!=9)||([MVarGet,FB25Data,2]!=25),
+        [RoutineCall,RC_Fail,"Unsupported Camera Bank Fast data. Expected data v9."]
     ]
+    [RoutineCall,RC_CB325_RequireFastReady]
     [If,[SubToolGetCount]>1000,[RoutineCall,RC_Fail,"Maximum supported SubTools: 1000."]]
     [VarSet,rcCameraCount,0]
     [Loop,25,
         [VarSet,rcCheckBase,20+(rcCheckSlot*20)]
-        [If,([MVarGet,CB25Data,rcCheckBase]==1)&&([MVarGet,CB25Data,rcCheckBase+16]==1),
+        [If,([MVarGet,FB25Data,rcCheckBase]==1)&&([MVarGet,FB25Data,rcCheckBase+16]==1),
             [VarInc,rcCameraCount]
         ]
     ,rcCheckSlot]
-    [If,rcCameraCount==0,[RoutineCall,RC_Fail,"Enable at least one stored camera (orange) in Camera Bank 25."]]
+    [If,rcCameraCount==0,[RoutineCall,RC_Fail,"Enable at least one stored camera (orange) in Camera Bank Fast."]]
 ]
 [RoutineDef,RC_Preflight,
     [RoutineCall,RC_CheckBank]
@@ -149,12 +150,12 @@
     [If,[SubToolGetCount]<1,[RoutineCall,RC_Fail,"No editable mesh was found. Convert a primitive/ZSphere to PolyMesh3D or adaptive skin before rendering."]]
     [Loop,25,
         [VarSet,rcCheckBase,20+(rcCheckSlot*20)]
-        [If,([MVarGet,CB25Data,rcCheckBase]==1)&&([MVarGet,CB25Data,rcCheckBase+16]==1),
+        [If,([MVarGet,FB25Data,rcCheckBase]==1)&&([MVarGet,FB25Data,rcCheckBase+16]==1),
             [RoutineCall,RC_CB32_RequireVisibility,rcCheckSlot]
-            [If,([MVarGet,CB25Data,rcCheckBase+18]<=0)||([MVarGet,CB25Data,rcCheckBase+19]<=0),
+            [If,([MVarGet,FB25Data,rcCheckBase+18]<=0)||([MVarGet,FB25Data,rcCheckBase+19]<=0),
                 [RoutineCall,RC_Fail,[StrMerge,"Camera ",rcCheckSlot+1," has no saved canvas size. Recall it, set the correct document size and lens, then press UPDATE ACTIVE."]]
             ]
-            [If,([MVarGet,CB25Data,rcCheckBase+18]>[IGetMax,"Document:Width"])||([MVarGet,CB25Data,rcCheckBase+19]>[IGetMax,"Document:Height"]),
+            [If,([MVarGet,FB25Data,rcCheckBase+18]>[IGetMax,"Document:Width"])||([MVarGet,FB25Data,rcCheckBase+19]>[IGetMax,"Document:Height"]),
                 [RoutineCall,RC_Fail,"A camera's resolution exceeds the current document size limits."]
             ]
         ]
@@ -232,7 +233,7 @@
     [RoutineCall,RC_Folder,[StrMerge,rcRoot,"/Screenshots"]]
     [Loop,25,
         [VarSet,rcBase,20+(rcSlot*20)]
-        [If,([MVarGet,CB25Data,rcBase]==1)&&([MVarGet,CB25Data,rcBase+16]==1),
+        [If,([MVarGet,FB25Data,rcBase]==1)&&([MVarGet,FB25Data,rcBase+16]==1),
             [RoutineCall,RC_Label,rcSlot+1]
             [RoutineCall,RC_Folder,[StrMerge,rcRoot,"/",rcLabel]]
         ]
@@ -303,25 +304,13 @@
     [VarSet,rcOutput,[StrMerge,rcRoot,"/",rcLabel]]
     [RoutineCall,RC_Folder,rcOutput]
 ]
-// List every collision BEFORE changing display state or rendering.
-// Check only this phase's filenames so the other phase can share the folder.
+// Prepare enabled camera folders before changing display state or rendering.
+// Matching outputs are replaced silently by RC_Export / RC_CopyScreenshot.
 [RoutineDef,RC_CheckOutput,
     [Loop,25,
         [VarSet,rcBase,20+(rcSlot*20)]
-        [If,([MVarGet,CB25Data,rcBase]==1)&&([MVarGet,CB25Data,rcBase+16]==1),
+        [If,([MVarGet,FB25Data,rcBase]==1)&&([MVarGet,FB25Data,rcBase+16]==1),
             [RoutineCall,RC_OutputFolder]
-            [VarSet,rcOverwrite,""]
-            [If,rcCheckScreenshots==1,
-                [If,[FileExists,[StrMerge,rcRoot,"/Screenshots/",rcLabel,".png"]]>0,
-                    [VarSet,rcOverwrite,[StrMerge,rcOverwrite," Screenshots/",rcLabel,".png;"]]
-                ]
-            ]
-            [Loop,rcPassCount,
-                [If,[FileExists,[StrMerge,rcOutput,"/",rcPassNames(rcFileIndex)]]>0,
-                    [VarSet,rcOverwrite,[StrMerge,rcOverwrite," ",rcLabel,"/",rcPassNames(rcFileIndex),";"]]
-                ]
-            ,rcFileIndex]
-            [If,[StrLength,rcOverwrite]>0,[MessageOK,[StrMerge,"Will overwrite in ZPass_1:",rcOverwrite],"Render Capture"]]
         ]
     ,rcSlot]
 ,rcCheckScreenshots]
@@ -364,7 +353,7 @@
     [RoutineCall,RC_Snapshot]
     [Loop,25,
         [VarSet,rcBase,20+(rcSlot*20)]
-        [If,([MVarGet,CB25Data,rcBase]==1)&&([MVarGet,CB25Data,rcBase+16]==1),
+        [If,([MVarGet,FB25Data,rcBase]==1)&&([MVarGet,FB25Data,rcBase+16]==1),
             [RoutineCall,RC_CB29_LoadSlot,rcSlot]
             [RoutineCall,RC_OutputFolder]
             [ISet,"Render:Render Properties:Shadows",0]
@@ -433,7 +422,7 @@
     [RoutineCall,RC_PrepareSSSLight]
     [Loop,25,
         [VarSet,rcBase,20+(rcSlot*20)]
-        [If,([MVarGet,CB25Data,rcBase]==1)&&([MVarGet,CB25Data,rcBase+16]==1),
+        [If,([MVarGet,FB25Data,rcBase]==1)&&([MVarGet,FB25Data,rcBase+16]==1),
             [RoutineCall,RC_CB29_LoadSlot,rcSlot]
             [RoutineCall,RC_OutputFolder]
             [ISet,"Render:Render Properties:Shadows",1]

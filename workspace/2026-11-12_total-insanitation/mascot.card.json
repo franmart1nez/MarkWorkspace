@@ -1,0 +1,93 @@
+{
+  "format": "mrmak-card",
+  "version": 1,
+  "template": "gallery",
+  "title": "Wizard mascot",
+  "summary": "The twelve owner-approved poses for signs and UI. Use the editable SVGs for layout and the transparent PNGs for fixed-size placement. [Download all assets](sources/mascot-stage4-library.zip) · [Contact sheet](media/mascot-stage4-library/wizard-library-contact.png) · [Usage notes](sources/mascot-stage4-library/USAGE.md).",
+  "items": [
+    {
+      "id": "pose-neutral-welcome",
+      "title": "Welcome",
+      "image": "media/mascot-stage4-library/neutral-welcome.webp",
+      "alt": "Black wizard mascot standing with open palm and staff",
+      "body": "[Black SVG](sources/mascot-trace-v03/wizard-neutral-welcome-v03.svg) · [White SVG](sources/mascot-trace-v03/wizard-neutral-welcome-v03-white.svg)\n\n[Black PNG](sources/mascot-trace-v03/wizard-neutral-welcome-v03-1024.png) · [White PNG](sources/mascot-trace-v03/wizard-neutral-welcome-v03-white-1024.png)"
+    },
+    {
+      "id": "pose-greeting",
+      "title": "Greeting",
+      "image": "media/mascot-stage4-library/greeting.webp",
+      "alt": "Black wizard mascot waving with the staff in the other hand",
+      "body": "[Black SVG](sources/mascot-trace-v03/wizard-greeting-v03.svg) · [White SVG](sources/mascot-trace-v03/wizard-greeting-v03-white.svg)\n\n[Black PNG](sources/mascot-trace-v03/wizard-greeting-v03-1024.png) · [White PNG](sources/mascot-trace-v03/wizard-greeting-v03-white-1024.png)"
+    },
+    {
+      "id": "pose-point-left",
+      "title": "Pointing left",
+      "image": "media/mascot-stage4-library/point-left.webp",
+      "alt": "Black wizard mascot pointing left with the staff in the other hand",
+      "body": "[Black SVG](sources/mascot-trace-v02/wizard-point-left-v02.svg) · [White SVG](sources/mascot-trace-v02/wizard-point-left-v02-white.svg)\n\n[Black PNG](sources/mascot-trace-v02/wizard-point-left-v02-1024.png) · [White PNG](sources/mascot-trace-v02/wizard-point-left-v02-white-1024.png)"
+    },
+    {
+      "id": "pose-point-right",
+      "title": "Pointing right",
+      "image": "media/mascot-stage4-library/point-right.webp",
+      "alt": "Black wizard mascot pointing right with the staff in the other hand",
+      "body": "[Black SVG](sources/mascot-trace-v03/wizard-point-right-v03.svg) · [White SVG](sources/mascot-trace-v03/wizard-point-right-v03-white.svg)\n\n[Black PNG](sources/mascot-trace-v03/wizard-point-right-v03-1024.png) · [White PNG](sources/mascot-trace-v03/wizard-point-right-v03-white-1024.png)"
+    },
+    {
+      "id": "pose-mopping",
+      "title": "Mopping",
+      "image": "media/mascot-stage4-library/mopping.webp",
+      "alt": "Black wizard mascot mopping the floor with both hands",
+      "body": "[Black SVG](sources/mascot-trace-v02/wizard-mopping-v02.svg) · [White SVG](sources/mascot-trace-v02/wizard-mopping-v02-white.svg)\n\n[Black PNG](sources/mascot-trace-v02/wizard-mopping-v02-1024.png) · [White PNG](sources/mascot-trace-v02/wizard-mopping-v02-white-1024.png)"
+    },
+    {
+      "id": "pose-pushing-equipment",
+      "title": "Pushing equipment",
+      "image": "media/mascot-stage4-library/pushing-equipment.webp",
+      "alt": "Black wizard mascot pushing a cleaning cart",
+      "body": "[Black SVG](sources/mascot-trace-v03/wizard-pushing-equipment-v03.svg) · [White SVG](sources/mascot-trace-v03/wizard-pushing-equipment-v03-white.svg)\n\n[Black PNG](sources/mascot-trace-v03/wizard-pushing-equipment-v03-1024.png) · [White PNG](sources/mascot-trace-v03/wizard-pushing-equipment-v03-white-1024.png)"
+    },
+    {
+      "id": "pose-carrying-supplies",
+      "title": "Carrying supplies",
+      "image": "media/mascot-stage4-library/carrying-supplies.webp",
+      "alt": "Black wizard mascot carrying a tray of cleaning bottles",
+      "body": "[Black SVG](sources/mascot-trace-v03/wizard-carrying-supplies-v03.svg) · [White SVG](sources/mascot-trace-v03/wizard-carrying-supplies-v03-white.svg)\n\n[Black PNG](sources/mascot-trace-v03/wizard-carrying-supplies-v03-1024.png) · [White PNG](sources/mascot-trace-v03/wizard-carrying-supplies-v03-white-1024.png)"
+    },
+    {
+      "id": "pose-explaining-instructions",
+      "title": "Explaining instructions",
+      "image": "media/mascot-stage4-library/explaining-instructions.webp",
+      "alt": "Black wizard mascot holding the staff and gesturing with an open palm",
+      "body": "[Black SVG](sources/mascot-trace-v03/wizard-explaining-instructions-v03.svg) · [White SVG](sources/mascot-trace-v03/wizard-explaining-instructions-v03-white.svg)\n\n[Black PNG](sources/mascot-trace-v03/wizard-explaining-instructions-v03-1024.png) · [White PNG](sources/mascot-trace-v03/wizard-explaining-instructions-v03-white-1024.png)"
+    },
+    {
+      "id": "pose-slipping-falling",
+      "title": "Slipping / falling",
+      "image": "media/mascot-stage4-library/slipping-falling.webp",
+      "alt": "Black wizard mascot slipping backward with arms out",
+      "body": "[Black SVG](sources/mascot-trace-v04/wizard-slipping-falling-v04.svg) · [White SVG](sources/mascot-trace-v04/wizard-slipping-falling-v04-white.svg)\n\n[Black PNG](sources/mascot-trace-v04/wizard-slipping-falling-v04-1024.png) · [White PNG](sources/mascot-trace-v04/wizard-slipping-falling-v04-white-1024.png)"
+    },
+    {
+      "id": "pose-electrical-accident",
+      "title": "Electrical accident",
+      "image": "media/mascot-stage4-library/electrical-accident.webp",
+      "alt": "Black wizard mascot caught in a lightning strike with a visible skeleton and five digits per hand",
+      "body": "Final artwork with five digits on each hand.\n\n[Black SVG](sources/mascot-trace-v04/wizard-electrical-accident-v04.svg) · [White SVG](sources/mascot-trace-v04/wizard-electrical-accident-v04-white.svg)\n\n[Black PNG](sources/mascot-trace-v04/wizard-electrical-accident-v04-1024.png) · [White PNG](sources/mascot-trace-v04/wizard-electrical-accident-v04-white-1024.png)"
+    },
+    {
+      "id": "pose-chemical-accident",
+      "title": "Acid on the floor",
+      "image": "media/mascot-stage4-library/chemical-accident.webp",
+      "alt": "Black wizard mascot recoiling from an acid puddle",
+      "body": "[Black SVG](sources/mascot-trace-v04/wizard-chemical-accident-v04.svg) · [White SVG](sources/mascot-trace-v04/wizard-chemical-accident-v04-white.svg)\n\n[Black PNG](sources/mascot-trace-v04/wizard-chemical-accident-v04-1024.png) · [White PNG](sources/mascot-trace-v04/wizard-chemical-accident-v04-white-1024.png)"
+    },
+    {
+      "id": "pose-fleeing-fire-magic",
+      "title": "Fleeing fire",
+      "image": "media/mascot-stage4-library/fleeing-fire-magic.webp",
+      "alt": "Black wizard mascot running from flames while carrying the staff",
+      "body": "[Black SVG](sources/mascot-trace-v04/wizard-fleeing-fire-magic-v04.svg) · [White SVG](sources/mascot-trace-v04/wizard-fleeing-fire-magic-v04-white.svg)\n\n[Black PNG](sources/mascot-trace-v04/wizard-fleeing-fire-magic-v04-1024.png) · [White PNG](sources/mascot-trace-v04/wizard-fleeing-fire-magic-v04-white-1024.png)"
+    }
+  ]
+}

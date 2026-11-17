@@ -1,0 +1,122 @@
+{
+  "status": "owner-selected, with requested five-digit correction to pose 08",
+  "edit": {
+    "provider": "ChatGPT built-in image_gen",
+    "model_identifier": "Not exposed",
+    "seed": "Not reported",
+    "quoted_cost": "Not exposed",
+    "prompt": "Make a STRICT local correction of the supplied black-on-white wizard electrocution pictogram. Each of the two black hands accidentally has SIX protruding fingers. Make each hand have EXACTLY FIVE total visible digits: one thumb and four fingers. Do this by erasing only the lowest/shortest extra outward finger on each hand (left hand: little prong pointing down-left near pixel x328 y453; right hand: little prong pointing down-right near x957 y567). Smooth only the tiny contour where each excised prong joined the palm. Keep the other five well separated digits per hand in their existing locations. Preserve both palms, white wrist bones, all remaining anatomy, the exact skeleton, all lightning bolts, hat, original pose, overall scale and placement, and background across the entire rest of the canvas. Use the identical black and white and 1254-square framing. Do not redraw, move, resize, add or remove anything else. Verify the visible fingertip count before returning: 5 on screen left, 5 on screen right.",
+    "donor_sha256": "8ccb3f5973c217c5a67ae9c48f2f89e14e4c3270f13d368e7de8d8ec900134f1",
+    "previous_image": "media/mascot-chatgpt-round-03/electrical-accident-03.png",
+    "previous_sha256": "b2cb39584dbadc2713b8ea5c40fa6d5ae857f5296604287ac11ee4c5a4b95ec7",
+    "preservation": "Only the generated correction inside each hand rectangle is applied over the previous raster. Coordinates use the original canvas.",
+    "changed_windows_xyxy": [
+      [
+        285,
+        379,
+        389,
+        477
+      ],
+      [
+        909,
+        500,
+        1013,
+        594
+      ]
+    ]
+  },
+  "outputs": [
+    {
+      "id": "slipping-falling-03",
+      "number": 7,
+      "title": "Slipping / falling",
+      "notes": "The torso is nearly horizontal, both feet are airborne, and the outstretched arms and motion arcs emphasize the fall.",
+      "image": "media/mascot-chatgpt-round-03/slipping-falling-03.png",
+      "previous": "media/mascot-chatgpt-round-02/slipping-falling-02.png",
+      "source_image": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_ChatGPT_Round_03/slipping-falling-03.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "9a7092037cb9f669ea59354078bfa5306f762536b55cdabac9823929040fc5c2",
+      "references": [
+        {
+          "path": "D:/AI/MarkWorkspace/workspace/2026-11-12_total-insanitation/media/mascot-chatgpt-round-02/slipping-falling-02.png",
+          "sha256": "643bdcb00067a022690e052f977d5acd74ac6a873437dfe2abb6e34a209a9faf"
+        }
+      ],
+      "prompt": "Edit the supplied black-on-white wizard mascot fall pictogram. Make the fall visibly more exaggerated: the wizard has already lost balance, is falling backward toward the floor with the torso almost horizontal (about 20–30 degrees above the floor), one leg kicked high and the other bent and slipping away, two arms flung wide with startled open hands. Show no weight-bearing stance. Use two small curved motion accents near the kicked foot and low back. Keep the original face entirely blank, the distinctive bent pointed hat on the head, smooth black silhouettes, rounded joints, two arms and two legs, and no staff. Match the source's clear simple vector-ready graphic language. One standalone square raster, smooth pure black ink on plain white, no text or border, generous margins, keep the entire figure and every accent visible. No added texture, gradients, shading, or scenery.",
+      "status": "owner-selected"
+    },
+    {
+      "id": "electrical-accident-04",
+      "number": 8,
+      "title": "Electrical accident",
+      "notes": "Exactly five visible digits on each hand. The source canvas outside the two local correction windows is preserved.",
+      "image": "media/mascot-chatgpt-round-04/electrical-accident-04.png",
+      "previous": "media/mascot-chatgpt-round-03/electrical-accident-03.png",
+      "source_image": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_ChatGPT_Round_04/electrical-accident-04.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "6457d01244fa87dffffa131ef216a10d43cbdbf42fff0d90456a6a7d64232cb9",
+      "references": [
+        {
+          "path": "media/mascot-chatgpt-round-03/electrical-accident-03.png",
+          "sha256": "b2cb39584dbadc2713b8ea5c40fa6d5ae857f5296604287ac11ee4c5a4b95ec7"
+        }
+      ],
+      "prompt": "Make a STRICT local correction of the supplied black-on-white wizard electrocution pictogram. Each of the two black hands accidentally has SIX protruding fingers. Make each hand have EXACTLY FIVE total visible digits: one thumb and four fingers. Do this by erasing only the lowest/shortest extra outward finger on each hand (left hand: little prong pointing down-left near pixel x328 y453; right hand: little prong pointing down-right near x957 y567). Smooth only the tiny contour where each excised prong joined the palm. Keep the other five well separated digits per hand in their existing locations. Preserve both palms, white wrist bones, all remaining anatomy, the exact skeleton, all lightning bolts, hat, original pose, overall scale and placement, and background across the entire rest of the canvas. Use the identical black and white and 1254-square framing. Do not redraw, move, resize, add or remove anything else. Verify the visible fingertip count before returning: 5 on screen left, 5 on screen right.",
+      "status": "owner-selected with five-digit correction"
+    },
+    {
+      "id": "chemical-accident-03",
+      "number": 9,
+      "title": "Acid on the floor",
+      "notes": "One shoe touches the bubbling floor puddle. A small wisp and the softened toe show contact while the rest of the figure stays intact.",
+      "image": "media/mascot-chatgpt-round-03/chemical-accident-03.png",
+      "previous": "media/mascot-chatgpt-round-02/chemical-accident-02.png",
+      "source_image": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_ChatGPT_Round_03/chemical-accident-03.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "29e2a4d47addf689402fb6e0578fb327ff7b54f68b68e7141e714f735511c460",
+      "references": [
+        {
+          "path": "D:/AI/MarkWorkspace/workspace/2026-11-12_total-insanitation/media/mascot-chatgpt-round-02/chemical-accident-02.png",
+          "sha256": "f9f5b18136557702a9dc5388a7e85c987621c54f65fabd6de55c7fbfa6861fe1"
+        },
+        {
+          "path": "D:/AI/MarkWorkspace/workspace/2026-11-12_total-insanitation/media/development/Stick_figure_dissolving_in_acid_1b6c544f_2K.jpg",
+          "sha256": "f5e422af2355b29560977fcc008c9c2c7d4e3d65718d5cfa2857edc9ab11d9b5"
+        }
+      ],
+      "prompt": "Revise Image 1, the current wizard mascot, using Image 2 only for the floor-level acid-puddle concept. The hazard is a low shallow acid puddle already on the floor. A wizard shoe is visibly touching or partly planted in its edge and being singed; one small curled smoke wisplet directly at that shoe, two or three bold simple bubbles in the puddle, and at most one tiny softened/dripping toe edge. The other foot is visibly lifted clear of the puddle. The wizard leans sharply away and throws an open hand up in shock. Both hands empty: remove the flask and all drops above the ground. Keep the round blank head, bent hat with its cutout, body, both arms and both legs intact and clearly visible. Show early contact, much less extreme than Image 2; no melting torso, limb loss, graphic injury or large eruption. Plain white, smooth black only, clean bold editable-trace-friendly silhouette, one square image, no text, borders, staff, shading or scenery. Give the whole figure and puddle generous margins.",
+      "status": "owner-selected"
+    },
+    {
+      "id": "fleeing-fire-magic-03",
+      "number": 10,
+      "title": "Fleeing fire",
+      "notes": "A large wall of flame follows the wizard. The longer stride, forward lean, and raised hand show alarm while keeping the face blank.",
+      "image": "media/mascot-chatgpt-round-03/fleeing-fire-magic-03.png",
+      "previous": "media/mascot-chatgpt-round-02/fleeing-fire-magic-02.png",
+      "source_image": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_ChatGPT_Round_03/fleeing-fire-magic-03.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "b47155dcbab4cf2b37e457ef03f610804b3b9e49f9ae8b13f4bf73a3f4d59b3c",
+      "references": [
+        {
+          "path": "D:/AI/MarkWorkspace/workspace/2026-11-12_total-insanitation/media/mascot-chatgpt-round-02/fleeing-fire-magic-02.png",
+          "sha256": "0dc1e44c8797e90ed00d8419b6ed2f9a7ad8edad9e0a2e732b92b32969942d0b"
+        }
+      ],
+      "prompt": "Edit this same wizard fleeing from fire pictogram. Make the flame threatening and much larger: one tall sweeping mass of fire surges in from screen-left behind the wizard, its tip as high as the wizard's hat, with three to five bold flame tongues curving toward them, plus one broad white interior flame cutout. Leave a clear white gap between flame and mascot. Convey panic through silhouette: lean much farther forward into a fast long stride to the right, tilt the head back to glance over the shoulder toward the fire, raise the free open hand near the head in alarm, splay the fingers, and carry the original circular sparkling orb staff angled forward. Keep the mascot's head completely faceless, original bent hat on head, same simple proportions, exactly two arms and two legs. Render a polished, clear black-on-white square sign pictogram, with all parts and the entire large flame fully framed and generous margins. No words, border, scene, gradients, texture, or shadow. Preserve smooth rounded silhouette construction and deliberate white grip gaps.",
+      "status": "owner-selected"
+    }
+  ]
+}

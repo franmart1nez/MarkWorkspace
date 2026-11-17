@@ -1,0 +1,227 @@
+// Fast variant: indexed identity checks between full model bindings.
+[VarDef,fxCacheHit,0]
+[VarDef,fxWriteFast,0]
+[VarDef,fxStoreCheck,0]
+[VarDef,fxUsedLow,0]
+[VarDef,fxUsedHigh,0]
+[VarDef,fxHead(2048),-1]
+[VarDef,fxNext(1000),-1]
+[VarDef,fxLow(1000),0]
+[VarDef,fxHigh(1000),0]
+[VarDef,fxUsed(1000),0]
+[RoutineDef,CBF_Invalidate,
+    [If,[MemGetSize,CBFCache]>0,[MemDelete,CBFCache]]
+]
+[RoutineDef,CBF_UsedCameras,
+    [VarSet,fxUsedLow,0][VarSet,fxUsedHigh,0]
+    [Loop,25,
+        [If,[MVarGet,CB25Data,20+(fxS*20)]==1,
+            [RoutineCall,CB32_Bit,fxS]
+            [If,cbTrackHalf==0,[VarSet,fxUsedLow,fxUsedLow+cbTrackBit],[VarSet,fxUsedHigh,fxUsedHigh+cbTrackBit]]
+        ]
+    ,fxS]
+]
+[RoutineDef,CBF_Publish,
+    [RoutineCall,CBF_Invalidate]
+    [MVarDef,CBFCache,16+([SubToolGetCount]*5),0]
+    [MVarSet,CBFCache,1,[SubToolGetCount]]
+    [MVarSet,CBFCache,2,[ToolGetActiveIndex]]
+    [MVarSet,CBFCache,3,[MVarGet,CB25Data,8]]
+    [MVarSet,CBFCache,4,[MVarGet,CB25Data,9]]
+    [MVarSet,CBFCache,5,[MVarGet,CB25Data,25745]]
+    [RoutineCall,CBF_UsedCameras]
+    [Loop,2048,[VarSet,fxHead(fxI),-1],fxI]
+    [Loop,[SubToolGetCount],
+        [VarSet,fxID,[SubToolGetID,fxI]]
+        [VarSet,fxHigh(fxI),INT(fxID/65536)]
+        [VarSet,fxLow(fxI),fxID-(fxHigh(fxI)*65536)]
+        [VarSet,fxB,16+(fxI*5)]
+        [MVarSet,CBFCache,fxB,fxLow(fxI)]
+        [MVarSet,CBFCache,fxB+1,fxHigh(fxI)]
+        [MVarSet,CBFCache,fxB+2,cbTrackGroups(fxI)]
+        [VarSet,fxBucket,(fxLow(fxI)+(fxHigh(fxI)*17))&2047]
+        [VarSet,fxPeer,fxHead(fxBucket)]
+        [Loop,fxI,
+            [If,fxPeer<0,[LoopExit]]
+            [If,(fxLow(fxPeer)==fxLow(fxI))&&(fxHigh(fxPeer)==fxHigh(fxI)),
+                [VarSet,fxG,cbTrackGroups(fxI)-1]
+                [VarSet,fxP,cbTrackGroups(fxPeer)-1]
+                [If,fxG!=fxP,
+                    [MVarSet,CBFCache,fxB+4,1][MVarSet,CBFCache,16+(fxPeer*5)+4,1]
+                    [If,(([MVarGet,CB25Data,25746+(fxG*2)]&fxUsedLow)!=([MVarGet,CB25Data,25746+(fxP*2)]&fxUsedLow))||(([MVarGet,CB25Data,25747+(fxG*2)]&fxUsedHigh)!=([MVarGet,CB25Data,25747+(fxP*2)]&fxUsedHigh)),
+                        [MVarSet,CBFCache,fxB+3,1][MVarSet,CBFCache,16+(fxPeer*5)+3,1]
+                    ]
+                ]
+            ]
+            [VarSet,fxPeer,fxNext(fxPeer)]
+        ]
+        [VarSet,fxNext(fxI),fxHead(fxBucket)][VarSet,fxHead(fxBucket),fxI]
+    ,fxI]
+    // Publish only after every cache entry and ambiguity flag is complete.
+    [MVarSet,CBFCache,0,1]
+]
+[RoutineDef,CBF_TryCache,
+    [VarSet,fxCacheHit,0]
+    [If,[MemGetSize,CBFCache]>0,
+        [If,[MVarGet,CBFCache,0]==1,
+            [If,([MVarGet,CBFCache,1]==[SubToolGetCount])&&([MVarGet,CBFCache,2]==[ToolGetActiveIndex]),
+                [If,([MVarGet,CBFCache,3]==[MVarGet,CB25Data,8])&&([MVarGet,CBFCache,4]==[MVarGet,CB25Data,9]),
+                    [If,[MVarGet,CBFCache,5]==[MVarGet,CB25Data,25745],[VarSet,fxCacheHit,1]]
+                ]
+            ]
+        ]
+    ]
+    [If,fxCacheHit==1,
+        [Loop,[SubToolGetCount],
+            [VarSet,fxB,16+(fxI*5)]
+            [VarSet,fxID,[SubToolGetID,fxI]][VarSet,fxHi,INT(fxID/65536)]
+            [VarSet,fxLo,fxID-(fxHi*65536)]
+            [If,(fxLo!=[MVarGet,CBFCache,fxB])||(fxHi!=[MVarGet,CBFCache,fxB+1]),[VarSet,fxCacheHit,0][LoopExit]]
+            [VarSet,cbTrackGroups(fxI),[MVarGet,CBFCache,fxB+2]]
+        ,fxI]
+    ]
+    [If,fxCacheHit==1,
+        [VarSet,fxSelected,[SubToolGetActiveIndex]]
+        [VarSet,cbTrackPrefix,[StrMerge,"CB",[MVarGet,CB25Data,8],[MVarGet,CB25Data,9],"G"]]
+        [RoutineCall,CB32_ReadName][RoutineCall,CB32_ParseTag,cbTrackName]
+        [If,cbParsedGroup!=cbTrackGroups(fxSelected),
+            [VarSet,fxCacheHit,0]
+            // Preserve the reviewed first-SubTool filename alias exception.
+            [If,(fxSelected==0)&&(cbTagCount==0),
+                [VarSet,fxTool,[ToolGetActiveIndex]][VarSet,fxPath,[ToolGetPath,fxTool]]
+                [VarSet,fxAlias,[FileNameExtract,fxPath,6]]
+                [If,([StrLength,fxAlias]>0)&&([StrLength,fxAlias]==[StrLength,cbTrackName]),
+                    [If,[StrFind,fxAlias,cbTrackName]==0,
+                        [RoutineCall,CB321_ResolveFirstID]
+                        [If,cbFirstIdGroup==cbTrackGroups(0),[VarSet,fxCacheHit,1]]
+                    ]
+                ]
+            ]
+        ]
+    ]
+    [If,fxCacheHit==1,
+        [VarSet,fxNeedsSelection,0]
+        [Loop,[SubToolGetCount],
+            [If,[MVarGet,CBFCache,16+(fxI*5)+3+fxStoreCheck]==1,[VarSet,fxNeedsSelection,1][LoopExit]]
+        ,fxI]
+        [If,fxNeedsSelection==1,
+            [If,[MemGetSize,CBFReadView]>0,[MemDelete,CBFReadView]]
+            [MVarDef,CBFReadView,12,0][MTransformGet,CBFReadView,0]
+            [MVarSet,CBFReadView,9,[CanvasZoomGet]]
+            [MVarSet,CBFReadView,10,[CanvasPanGetH]][MVarSet,CBFReadView,11,[CanvasPanGetV]]
+            [IFreeze,[Loop,[SubToolGetCount],
+                [If,[MVarGet,CBFCache,16+(fxI*5)+3+fxStoreCheck]==1,
+                    [SubToolSelect,fxI][RoutineCall,CB32_ReadName][RoutineCall,CB32_ParseTag,cbTrackName]
+                    [If,cbParsedGroup!=cbTrackGroups(fxI),[VarSet,fxCacheHit,0][LoopExit]]
+                ]
+            ,fxI]]
+            [SubToolSelect,fxSelected][MTransformSet,CBFReadView,0]
+            [CanvasZoomSet,[MVarGet,CBFReadView,9]][CanvasPanSet,[MVarGet,CBFReadView,10],[MVarGet,CBFReadView,11]]
+            [MemDelete,CBFReadView]
+        ]
+    ]
+]
+[RoutineDef,CB32_CheckTracked,
+    [RoutineCall,CBF_TryCache]
+    [If,fxCacheHit==1,[VarSet,cbTrackValid,1][VarSet,cbTrackError,""],
+        [RoutineCall,CBF_Invalidate]
+        [IFreeze,[RoutineCall,CBF_FullCheck]]
+        [If,cbTrackValid==1,[RoutineCall,CBF_Publish]]
+    ]
+]
+[RoutineDef,CBF_CanFastWrite,
+    [VarSet,fxWriteFast,0]
+    [If,[MVarGet,CB25Data,27771]==[SubToolGetCount],
+        [VarSet,fxWriteFast,1]
+        [Loop,1000,[VarSet,fxUsed(fxI),0],fxI]
+        [Loop,[SubToolGetCount],
+            [VarSet,fxG,cbTrackGroups(fxI)-1]
+            // Every mesh must already have its own stable marker.
+            [If,fxUsed(fxG)==1,[VarSet,fxWriteFast,0][LoopExit]]
+            [VarSet,fxUsed(fxG),1]
+            [VarSet,fxID,[SubToolGetID,fxI]][VarSet,fxHi,INT(fxID/65536)]
+            [VarSet,fxLo,fxID-(fxHi*65536)]
+            [If,(fxLo!=[MVarGet,CB25Data,27772+(fxI*3)])||(fxHi!=[MVarGet,CB25Data,27773+(fxI*3)]),[VarSet,fxWriteFast,0][LoopExit]]
+            [If,cbTrackGroups(fxI)!=[MVarGet,CB25Data,27774+(fxI*3)],[VarSet,fxWriteFast,0][LoopExit]]
+        ,fxI]
+    ]
+]
+[RoutineDef,CB32_BeginTransaction,
+    [If,fxWriteFast==0,[RoutineCall,CBF_FullBegin],
+        [MemCreate,CBFOriginal,123088,0][MemCopy,CB25Data,0,CBFOriginal,0,123088]
+        [MVarDef,CBFTxn,16+([SubToolGetCount]*3),0]
+        [MVarSet,CBFTxn,1,[SubToolGetCount]][MVarSet,CBFTxn,2,[ToolGetActiveIndex]]
+        [MVarSet,CBFTxn,3,[SubToolGetActiveIndex]]
+        [MTransformGet,CBFTxn,4]
+        [MVarSet,CBFTxn,13,[CanvasZoomGet]][MVarSet,CBFTxn,14,[CanvasPanGetH]][MVarSet,CBFTxn,15,[CanvasPanGetV]]
+        [Loop,[SubToolGetCount],
+            [VarSet,fxID,[SubToolGetID,fxI]][VarSet,fxHi,INT(fxID/65536)]
+            [MVarSet,CBFTxn,16+(fxI*3),fxID-(fxHi*65536)]
+            [MVarSet,CBFTxn,17+(fxI*3),fxHi]
+            [MVarSet,CBFTxn,18+(fxI*3),[SubToolGetStatus,fxI]]
+        ,fxI]
+        [MVarSet,CBFTxn,0,1]
+    ]
+]
+[RoutineDef,CBF_Cleanup,
+    [If,[MemGetSize,CBFTxn]>0,[MemDelete,CBFTxn]]
+    [If,[MemGetSize,CBFOriginal]>0,[MemDelete,CBFOriginal]]
+    [VarSet,fxWriteFast,0]
+]
+[RoutineDef,CB32_Recover,
+    [If,[MemGetSize,CBFTxn]>0,
+        [If,[MVarGet,CBFTxn,0]==1,
+            [VarSet,fxRecoverOK,1]
+            [If,([MVarGet,CBFTxn,1]!=[SubToolGetCount])||([MVarGet,CBFTxn,2]!=[ToolGetActiveIndex]),[VarSet,fxRecoverOK,0]]
+            [If,fxRecoverOK==1,
+                [Loop,[SubToolGetCount],
+                    [VarSet,fxID,[SubToolGetID,fxI]][VarSet,fxHi,INT(fxID/65536)]
+                    [If,((fxID-(fxHi*65536))!=[MVarGet,CBFTxn,16+(fxI*3)])||(fxHi!=[MVarGet,CBFTxn,17+(fxI*3)]),[VarSet,fxRecoverOK,0][LoopExit]]
+                ,fxI]
+            ]
+            [If,fxRecoverOK==0,[MessageOK,"An interrupted Fast camera update needs the same Tool and SubTool order. Restore that Tool before continuing; the saved bank is still in session memory.","Camera Bank Fast"][Exit]]
+            [MemCopy,CBFOriginal,0,CB25Data,0,123088]
+            [Loop,[SubToolGetCount],[SubToolSetStatus,fxI,[MVarGet,CBFTxn,18+(fxI*3)]],fxI]
+            [SubToolSelect,[MVarGet,CBFTxn,3]][MTransformSet,CBFTxn,4]
+            [CanvasZoomSet,[MVarGet,CBFTxn,13]][CanvasPanSet,[MVarGet,CBFTxn,14],[MVarGet,CBFTxn,15]]
+            [RoutineCall,CBF_Invalidate]
+        ]
+        [RoutineCall,CBF_Cleanup]
+    ,
+        [If,[MemGetSize,CBFOriginal]>0,[RoutineCall,CBF_Cleanup]]
+    ]
+    [RoutineCall,CBF_FullRecover]
+]
+[RoutineDef,CB32_RefreshIdentifiers,
+    [If,[MemGetSize,CBFTxn]==0,[IFreeze,[RoutineCall,CBF_FullRefresh]],
+        // Ordinary camera updates change bank masks, never mesh names.
+        [RoutineCall,CBF_Invalidate]
+        [Loop,[MVarGet,CB25Data,25745],
+            [MVarSet,CB25Data,25746+(fxG*2),0][MVarSet,CB25Data,25747+(fxG*2),0]
+        ,fxG]
+        [Loop,[SubToolGetCount],
+            [VarSet,fxLowMask,0][VarSet,fxHighMask,0]
+            [Loop,25,
+                [If,[MVarGet,CB25Data,20+(fxS*20)]==1,
+                    [If,([MVarGet,CB25Data,521+(fxS*1001)+fxI]&4)!=0,
+                        [RoutineCall,CB32_Bit,fxS]
+                        [If,cbTrackHalf==0,[VarSet,fxLowMask,fxLowMask+cbTrackBit],[VarSet,fxHighMask,fxHighMask+cbTrackBit]]
+                    ]
+                ]
+            ,fxS]
+            [VarSet,fxG,cbTrackGroups(fxI)-1]
+            [MVarSet,CB25Data,25746+(fxG*2),fxLowMask][MVarSet,CB25Data,25747+(fxG*2),fxHighMask]
+        ,fxI]
+        [MVarSet,CB25Data,7,1]
+        // Commit before cache rebuilding; Escape cannot roll back a completed save.
+        [MVarSet,CBFTxn,0,2]
+        [RoutineCall,CBF_Cleanup][RoutineCall,CBF_Publish]
+    ]
+]
+[RoutineDef,CBF_Rescan,
+    [RoutineCall,CB32_Recover][RoutineCall,CB31_Require3D]
+    [RoutineCall,CBF_Invalidate][VarSet,fxStoreCheck,1]
+    [RoutineCall,CB32_CheckTracked][VarSet,fxStoreCheck,0]
+    [If,cbTrackValid==0,[MessageOK,cbTrackError,"Camera Bank Fast"][Exit]]
+    [Note,"Model bindings refreshed. Camera visibility and mesh data were kept.",,2]
+]

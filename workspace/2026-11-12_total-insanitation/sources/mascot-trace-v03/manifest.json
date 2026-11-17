@@ -1,0 +1,178 @@
+{
+  "version": "trace-v03",
+  "status": "owner-selected-rasters / SVG review",
+  "method": "Adobe image_vectorize and the v02 winding-aware compound path method",
+  "canonical_source": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_Trace_v03",
+  "items": [
+    {
+      "pose": "neutral-welcome",
+      "title": "Neutral / welcome",
+      "approved_raster": "media/mascot-chatgpt-round-02/neutral-welcome-02.png",
+      "approved_raster_sha256": "6d65f8b6089470cc32b5422931e818573ca215386421e07640d423e830206e21",
+      "raw_adobe_svg_sha256": "027a5b1d94a7b1f9dc8e1edc95f2779089b6fc8a62f628e5e353375a4863a49c",
+      "adobe_path_count": 8,
+      "compound_contours": 6,
+      "svg": "wizard-neutral-welcome-v03.svg",
+      "white_svg": "wizard-neutral-welcome-v03-white.svg",
+      "fidelity": {
+        "foreground_iou_percent": 99.73284308280198,
+        "different_binary_pixels": 481,
+        "outside_one_pixel_band": 0
+      },
+      "black_white_alpha_max_difference_by_px": {
+        "32": 0,
+        "48": 0,
+        "64": 1,
+        "96": 1,
+        "128": 1,
+        "256": 1,
+        "512": 0,
+        "1024": 0
+      }
+    },
+    {
+      "pose": "greeting",
+      "title": "Greeting / wave",
+      "approved_raster": "media/mascot-chatgpt-round-02/greeting-02.png",
+      "approved_raster_sha256": "e647211fc8ab1c7c3e99f3d411714b57217531a964242b206cde33922c9b620c",
+      "raw_adobe_svg_sha256": "1c9b0181f964bee44760796116d064e4281aff8f13e12a6adf3e3a2a799dbbf5",
+      "adobe_path_count": 6,
+      "compound_contours": 5,
+      "svg": "wizard-greeting-v03.svg",
+      "white_svg": "wizard-greeting-v03-white.svg",
+      "fidelity": {
+        "foreground_iou_percent": 99.61888272461901,
+        "different_binary_pixels": 722,
+        "outside_one_pixel_band": 0
+      },
+      "black_white_alpha_max_difference_by_px": {
+        "32": 0,
+        "48": 1,
+        "64": 1,
+        "96": 1,
+        "128": 1,
+        "256": 1,
+        "512": 0,
+        "1024": 0
+      }
+    },
+    {
+      "pose": "point-right",
+      "title": "Pointing right",
+      "approved_raster": "media/mascot-chatgpt-round-02/point-right-02.png",
+      "approved_raster_sha256": "c3522dc2100e3edc7e4029513fce3514216ccde252fdd0b7eb94f5015ba1b7d6",
+      "raw_adobe_svg_sha256": "2bc957e97f60bb706fd291ce6887bef9d6d2db4b600b78edf6f85a8ffe7ec322",
+      "adobe_path_count": 6,
+      "compound_contours": 5,
+      "svg": "wizard-point-right-v03.svg",
+      "white_svg": "wizard-point-right-v03-white.svg",
+      "fidelity": {
+        "foreground_iou_percent": 99.54623791967539,
+        "different_binary_pixels": 832,
+        "outside_one_pixel_band": 0
+      },
+      "black_white_alpha_max_difference_by_px": {
+        "32": 0,
+        "48": 1,
+        "64": 1,
+        "96": 1,
+        "128": 1,
+        "256": 1,
+        "512": 0,
+        "1024": 0
+      }
+    },
+    {
+      "pose": "pushing-equipment",
+      "title": "Pushing cleaning equipment",
+      "approved_raster": "media/mascot-chatgpt-round-02/pushing-equipment-02.png",
+      "approved_raster_sha256": "8684ecdd180c8d9dcad4b8a54345bba866948ed6f9ca04cef8462a97059f544e",
+      "raw_adobe_svg_sha256": "91d7062e3b7f85e9c4442b260820d29d8544aee39df323529a9d99a471e44b08",
+      "adobe_path_count": 12,
+      "compound_contours": 11,
+      "svg": "wizard-pushing-equipment-v03.svg",
+      "white_svg": "wizard-pushing-equipment-v03-white.svg",
+      "fidelity": {
+        "foreground_iou_percent": 99.37560186433497,
+        "different_binary_pixels": 1621,
+        "outside_one_pixel_band": 0
+      },
+      "black_white_alpha_max_difference_by_px": {
+        "32": 0,
+        "48": 1,
+        "64": 1,
+        "96": 1,
+        "128": 1,
+        "256": 1,
+        "512": 0,
+        "1024": 0
+      }
+    },
+    {
+      "pose": "carrying-supplies",
+      "title": "Carrying supplies",
+      "approved_raster": "media/mascot-chatgpt-round-02/carrying-supplies-02.png",
+      "approved_raster_sha256": "ebe9ae2830da46d988eab9aefc462e0d21c107c8ec74ab53f4d38ff591bc7642",
+      "raw_adobe_svg_sha256": "7de069e9c71d7d740711510208af67b37cac0dbd436db9778960b1b3bde1b229",
+      "adobe_path_count": 10,
+      "compound_contours": 9,
+      "svg": "wizard-carrying-supplies-v03.svg",
+      "white_svg": "wizard-carrying-supplies-v03-white.svg",
+      "fidelity": {
+        "foreground_iou_percent": 99.50160074114902,
+        "different_binary_pixels": 850,
+        "outside_one_pixel_band": 0
+      },
+      "black_white_alpha_max_difference_by_px": {
+        "32": 0,
+        "48": 0,
+        "64": 1,
+        "96": 1,
+        "128": 1,
+        "256": 1,
+        "512": 0,
+        "1024": 0
+      }
+    },
+    {
+      "pose": "explaining-instructions",
+      "title": "Explaining instructions",
+      "approved_raster": "media/mascot-chatgpt-round-02/explaining-instructions-02.png",
+      "approved_raster_sha256": "021039d7ee54f541e477e1bebdb3f46f11ed96a97cdc9490d970a9aebf6e0bb5",
+      "raw_adobe_svg_sha256": "7d5f6ffe98a5d2c576d665bda94c9d08f7e4ee16d5fa91836c4a827af641461a",
+      "adobe_path_count": 6,
+      "compound_contours": 5,
+      "svg": "wizard-explaining-instructions-v03.svg",
+      "white_svg": "wizard-explaining-instructions-v03-white.svg",
+      "fidelity": {
+        "foreground_iou_percent": 99.52208760073644,
+        "different_binary_pixels": 867,
+        "outside_one_pixel_band": 0
+      },
+      "black_white_alpha_max_difference_by_px": {
+        "32": 0,
+        "48": 1,
+        "64": 1,
+        "96": 1,
+        "128": 1,
+        "256": 1,
+        "512": 0,
+        "1024": 0
+      }
+    }
+  ],
+  "svg_hashes": {
+    "wizard-neutral-welcome-v03.svg": "1a29b3ab1be78fa04c4830f70f4b91eceb954c38910c26dbfcbdedc00c940868",
+    "wizard-neutral-welcome-v03-white.svg": "25073910b15316c9a709a0659a0f4c603bbbf53a55a1b91907b6a42d8f607612",
+    "wizard-greeting-v03.svg": "a3708a371c968975f54cae18e5cdc5ff659586f3ee4a387cc45d748e870c3a2d",
+    "wizard-greeting-v03-white.svg": "065348fa7f528acf6b2c6efa71c3009ad0c06ec8988a8bbaffd31b9f16442712",
+    "wizard-point-right-v03.svg": "9188c955dc140bac2a4a8520b0b5b0fb5a411d674b4e7065d7ada56098b9a52c",
+    "wizard-point-right-v03-white.svg": "34c1f95cfa7f628702310ffe76209a2b49d3488d90fafa95a17ad6f5fb6da244",
+    "wizard-pushing-equipment-v03.svg": "d448157fb03ef18bd043f5f6bd2533b431fdb37f2261516a2e1dd3b0fd95d01b",
+    "wizard-pushing-equipment-v03-white.svg": "9288baa80608b15e9a948663b05871edf883c01a9f7dbb7e0b8915ae13ecdc6f",
+    "wizard-carrying-supplies-v03.svg": "832a35472908454f16410d2678f923e1d0cc64b02814c923eb08e0b26a2e7e9f",
+    "wizard-carrying-supplies-v03-white.svg": "3599f52f1fc4b312f6a9dde971d46f610080cd017b87b266b8bbb6d525957237",
+    "wizard-explaining-instructions-v03.svg": "28a57f14e533450bda2b04dd502d8bde62f6a0cc86f0ae7da737cbf63008e305",
+    "wizard-explaining-instructions-v03-white.svg": "46453c0ea585d9b5b842f1c28fe14b26f796b4e7f75fcc65849110a651def5af"
+  }
+}

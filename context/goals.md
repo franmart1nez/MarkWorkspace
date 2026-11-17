@@ -4,27 +4,28 @@
 
 ## Total (in)Sanitation
 
-Stages 1–2 of the approved art reset are complete: retired AI asset/Basement records
-were removed, the hub simplified and the source/FBX/Unreal file contract verified. Preserve
-the Office Level Builder, essential tooling, owner originals and selected mascot/sign
-prototypes. Follow `projects/total-insanitation/AGENTS.md` and `README.md`.
+Stages 1–4 of the approved art reset are complete. Keep the Office Level Builder, essential tooling, owner originals and selected art prototypes. See `projects/total-insanitation/AGENTS.md` and `README.md`.
 
 - Card: `workspace/2026-11-12_total-insanitation/`, ID `total-insanitation`.
 - Stage status: the card's `EXECUTION_LOG.md` (Plan → Progress). Stage-2 source/FBX/
   Unreal rules and resource classifications are recorded in Rules & tools → File
-  rules. Next planned: stage 3, native Unreal references/material showcase.
-  Stages 3–7 remain pending; native link repairs were not performed.
+  rules. Art bible has six category tabs, 88 native material renders and current
+  environment and asset references. **Art bible → Mascot** contains the twelve
+  approved poses as editable SVGs and transparent PNGs. **Art bible → Signage & UI**
+  has the four sign proposals, HUD and main menu for Stage 5 owner review.
 - Sources: `D:/GameJam/Total (in)Sanitation/`; Unreal:
-  `D:/GItHub/BoomeRacist/BoomeRacist.uproject`. Stages 1–2 preserve native sources.
+  `D:/GItHub/BoomeRacist/BoomeRacist.uproject`. Existing native sources are preserved.
+  Stage 3 added only `/Game/Levels/Art_Material_Reference` and its neutral helper;
+  352 assignments were verified after reopening. Unreal returned to clean Test.
 - Direction: 1970s corporate interiors with medieval fantasy accents,
   semi-realism/stylization; public polish versus neglected service spaces.
 - Preserve the owner's existing building/prop Blender sources and batch export
   recipe. Keep 256/512 px/m references and intentional floor/ceiling UV exceptions.
 - Game text: English with future localization. Future UI goes under `/Game/Art/UI`;
-  characters under `/Game/Art/Characters`. Rebuild final visual references from Unreal.
-- Later stages define the wizard mascot, signage/UI, future atlas changes, a new
-  Basement direction and individual assets using `/Game/Art/MI/Utility_Materials`.
-  Artistic review milestones remain ahead. Do not resume retired production.
+  characters under `/Game/Art/Characters`. Use current Unreal visual references.
+- The graphic direction decision comes before atlas specification, native sign
+  and UI work, Basement direction and individual assets using
+  `/Game/Art/MI/Utility_Materials`.
 
 ## Sculpture Colorization
 

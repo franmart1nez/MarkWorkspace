@@ -12,7 +12,7 @@ def get(h,index):return struct.unpack_from('<f',h.mem['CB25Data'],index*4)[0]
 
 class MergeVisibility(unittest.TestCase):
     def host(self):
-        h=Host();h.load(ROOT/'Camera Bank/CameraBank25.txt');return h
+        h=Host();h.load(ROOT/'Development/tests/fixtures/legacy_camera_321.txt');return h
     def prepared(self):
         h=self.host();parts(h,['A','B','C','D'],[1,1,0,0],0)
         h.call('CB29_SaveSlot',0)

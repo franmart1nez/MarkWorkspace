@@ -1,0 +1,113 @@
+{
+  "format": "mrmak-card",
+  "version": 1,
+  "template": "gallery",
+  "title": "Environments / current Unreal baseline",
+  "summary": "Current lit editor captures of the permitted lobby, service and Basement spaces, LaCarlota and the shared Main_Lights setup. The new isolated material-review level supplements the existing showcase. These images document current implementation, including unfinished assignments. [Capture notes](REFERENCE_LIBRARY.md).",
+  "items": [
+    {
+      "id": "lobby-entry",
+      "title": "Lobby / entry connection",
+      "image": "media/unreal-2026-11-17/lobby-entry.webp",
+      "alt": "Lobby / entry connection in the current Unreal editor",
+      "body": "**Unreal map:** `/Game/Levels/Inteior_Lobby`\n\n**Capture:** 2026-11-17 · lit editor viewport · persistent world `/Game/Levels/Inteior_Lobby` with `/Game/Levels/Streaming_Levels/Main_Lights` loaded. These are editor images, not gameplay captures.\n\n**Camera:** (-2400, -400, 170) cm; pitch -1°, yaw 90°, roll 0°; FOV 75°\n\n**Source relationship:** Existing saved Unreal level and its native mesh/Blueprint/material consumers; Building pieces trace to `Assets/Building/Interior_Building.blend`.\n\n**Intended use / observations:** The present lobby has unfinished WorldGrid wall/ceiling assignments. Use this capture for architecture and connections; the intended polished public finish is still an art direction, not current implementation.\n\n**Review:** Native baseline verified; artistic approval is separate. Production levels were not saved.",
+      "status": "review"
+    },
+    {
+      "id": "lobby-atrium",
+      "title": "Lobby / atrium and glazing",
+      "image": "media/unreal-2026-11-17/lobby-atrium.webp",
+      "alt": "Lobby / atrium and glazing in the current Unreal editor",
+      "body": "**Unreal map:** `/Game/Levels/Inteior_Lobby`\n\n**Capture:** 2026-11-17 · lit editor viewport · persistent world `/Game/Levels/Inteior_Lobby` with `/Game/Levels/Streaming_Levels/Main_Lights` loaded. These are editor images, not gameplay captures.\n\n**Camera:** (-3500, 1200, 170) cm; pitch 0°, yaw 35°, roll 0°; FOV 75°\n\n**Source relationship:** Existing saved Unreal level and its native mesh/Blueprint/material consumers; Building pieces trace to `Assets/Building/Interior_Building.blend`.\n\n**Intended use / observations:** The lit baseline shows atrium scale, columns, galleries and glazing. Existing low-light and WorldGrid areas are preserved; no exposure or material correction was applied.\n\n**Review:** Native baseline verified; artistic approval is separate. Production levels were not saved.",
+      "status": "review"
+    },
+    {
+      "id": "lobby-reverse",
+      "title": "Lobby / reverse view",
+      "image": "media/unreal-2026-11-17/lobby-reverse.webp",
+      "alt": "Lobby / reverse view in the current Unreal editor",
+      "body": "**Unreal map:** `/Game/Levels/Inteior_Lobby`\n\n**Capture:** 2026-11-17 · lit editor viewport · persistent world `/Game/Levels/Inteior_Lobby` with `/Game/Levels/Streaming_Levels/Main_Lights` loaded. These are editor images, not gameplay captures.\n\n**Camera:** (-2200, 3500, 170) cm; pitch 0°, yaw -90°, roll 0°; FOV 75°\n\n**Source relationship:** Existing saved Unreal level and its native mesh/Blueprint/material consumers; Building pieces trace to `Assets/Building/Interior_Building.blend`.\n\n**Intended use / observations:** Reverse orientation records the same public-space shell and its current unfinished material coverage.\n\n**Review:** Native baseline verified; artistic approval is separate. Production levels were not saved.",
+      "status": "review"
+    },
+    {
+      "id": "janitor-service",
+      "title": "Janitor / service stair room",
+      "image": "media/unreal-2026-11-17/janitor-service.webp",
+      "alt": "Janitor / service stair room in the current Unreal editor",
+      "body": "**Unreal map:** `/Game/Levels/Inteior_Lobby`\n\n**Capture:** 2026-11-17 · lit editor viewport · persistent world `/Game/Levels/Inteior_Lobby` with `/Game/Levels/Streaming_Levels/Main_Lights` loaded. These are editor images, not gameplay captures.\n\n**Camera:** (500, -2450, 170) cm; pitch 0°, yaw 90°, roll 0°; FOV 75°\n\n**Source relationship:** Existing saved Unreal level and its native mesh/Blueprint/material consumers; Building pieces trace to `Assets/Building/Interior_Building.blend`.\n\n**Intended use / observations:** Current neglected service finish: worn wall layers, exposed masonry, bars and the stair. Use as a native material and public/service contrast reference.\n\n**Review:** Native baseline verified; artistic approval is separate. Production levels were not saved.",
+      "status": "review"
+    },
+    {
+      "id": "basement-entry",
+      "title": "Basement / entry stair",
+      "image": "media/unreal-2026-11-17/basement-entry.webp",
+      "alt": "Basement / entry stair in the current Unreal editor",
+      "body": "**Unreal map:** `/Game/Levels/Streaming_Levels/Basement`\n\n**Capture:** 2026-11-17 · lit editor viewport · persistent world `/Game/Levels/Inteior_Lobby` with `/Game/Levels/Streaming_Levels/Main_Lights` loaded. These are editor images, not gameplay captures.\n\n**Camera:** (-100, -1900, 160) cm; pitch -20°, yaw -90°, roll 0°; FOV 75°\n\n**Source relationship:** Existing saved Unreal level and its native mesh/Blueprint/material consumers; Building pieces trace to `Assets/Building/Interior_Building.blend`.\n\n**Intended use / observations:** Current stair/entry connection, captured through the persistent Lobby with Basement and Main_Lights loaded.\n\n**Review:** Native baseline verified; artistic approval is separate. Production levels were not saved.",
+      "status": "review"
+    },
+    {
+      "id": "basement-corridor",
+      "title": "Basement / concrete corridor",
+      "image": "media/unreal-2026-11-17/basement-corridor.webp",
+      "alt": "Basement / concrete corridor in the current Unreal editor",
+      "body": "**Unreal map:** `/Game/Levels/Streaming_Levels/Basement`\n\n**Capture:** 2026-11-17 · lit editor viewport · persistent world `/Game/Levels/Inteior_Lobby` with `/Game/Levels/Streaming_Levels/Main_Lights` loaded. These are editor images, not gameplay captures.\n\n**Camera:** (0, -2900, -230) cm; pitch 0°, yaw 0°, roll 0°; FOV 75°\n\n**Source relationship:** Existing saved Unreal level and its native mesh/Blueprint/material consumers; Building pieces trace to `Assets/Building/Interior_Building.blend`.\n\n**Intended use / observations:** Existing concrete surface response and fluorescent rhythm. Native lighting is dark and includes renderer noise; this is the current baseline, not a new Basement proposal.\n\n**Review:** Native baseline verified; artistic approval is separate. Production levels were not saved.",
+      "status": "review"
+    },
+    {
+      "id": "basement-crossing",
+      "title": "Basement / descending connection",
+      "image": "media/unreal-2026-11-17/basement-crossing.webp",
+      "alt": "Basement / descending connection in the current Unreal editor",
+      "body": "**Unreal map:** `/Game/Levels/Streaming_Levels/Basement`\n\n**Capture:** 2026-11-17 · lit editor viewport · persistent world `/Game/Levels/Inteior_Lobby` with `/Game/Levels/Streaming_Levels/Main_Lights` loaded. These are editor images, not gameplay captures.\n\n**Camera:** (2800, -4500, -1030) cm; pitch -5°, yaw -90°, roll 0°; FOV 75°\n\n**Source relationship:** Existing saved Unreal level and its native mesh/Blueprint/material consumers; Building pieces trace to `Assets/Building/Interior_Building.blend`.\n\n**Intended use / observations:** Existing descending route under its current lighting. This stage records the baseline; stage 6 will take its own fresh route captures after graphic approval.\n\n**Review:** Native baseline verified; artistic approval is separate. Production levels were not saved.",
+      "status": "review"
+    },
+    {
+      "id": "basement-shop",
+      "title": "Basement / shop counter",
+      "image": "media/unreal-2026-11-17/basement-shop.webp",
+      "alt": "Basement / shop counter in the current Unreal editor",
+      "body": "**Unreal map:** `/Game/Levels/Streaming_Levels/Basement`\n\n**Capture:** 2026-11-17 · lit editor viewport · persistent world `/Game/Levels/Inteior_Lobby` with `/Game/Levels/Streaming_Levels/Main_Lights` loaded. These are editor images, not gameplay captures.\n\n**Camera:** (7000, -7900, -1830) cm; pitch 0°, yaw 20°, roll 0°; FOV 75°\n\n**Source relationship:** Existing saved Unreal level and its native mesh/Blueprint/material consumers; Building pieces trace to `Assets/Building/Interior_Building.blend`.\n\n**Intended use / observations:** Current metal blinds, worn counter, masonry and grille structure. No dressing or graphic additions were made.\n\n**Review:** Native baseline verified; artistic approval is separate. Production levels were not saved. Key direct instances include `Metallic/Metal_Blinds_01/Metal_Blinds_01`, `Concrete/Stylized_Concrete_01/Stylized_Concrete_01` and `Concrete/Concrete_01/MI_Concrete_01_01` under `/Game/Art/MI/Utility_Materials`, plus the existing `/Game/Art/MI/Vertex_Paint_Blend` materials.",
+      "status": "review"
+    },
+    {
+      "id": "lacarlota-tools",
+      "title": "LaCarlota / cleaning tools",
+      "image": "media/unreal-2026-11-17/lacarlota-tools.webp",
+      "alt": "LaCarlota / cleaning tools in the current Unreal editor",
+      "body": "**Unreal map:** `/Game/Levels/LaCarlota`\n\n**Capture:** 2026-11-17 · lit editor viewport · persistent world `/Game/Levels/LaCarlota` with `/Game/Levels/Streaming_Levels/Main_Lights` loaded. These are editor images, not gameplay captures.\n\n**Camera:** (-1100, -500, 180) cm; pitch -10°, yaw 50°, roll 0°; FOV 75°\n\n**Source relationship:** Existing saved Unreal level and its native mesh/Blueprint/material consumers; Building pieces trace to `Assets/Building/Interior_Building.blend`.\n\n**Intended use / observations:** The existing tool test area shows the native cleaning equipment and current material bindings. Several unrelated laboratory test actors have empty mesh assignments; their loadable assets remain in Assets.\n\n**Review:** Native baseline verified; artistic approval is separate. Production levels were not saved.",
+      "status": "review"
+    },
+    {
+      "id": "lacarlota-materials",
+      "title": "LaCarlota / existing flat samples",
+      "image": "media/unreal-2026-11-17/lacarlota-materials.webp",
+      "alt": "LaCarlota / existing flat samples in the current Unreal editor",
+      "body": "**Unreal map:** `/Game/Levels/LaCarlota`\n\n**Capture:** 2026-11-17 · lit editor viewport · persistent world `/Game/Levels/LaCarlota` with `/Game/Levels/Streaming_Levels/Main_Lights` loaded. These are editor images, not gameplay captures.\n\n**Camera:** (-10800, 600, 300) cm; pitch -15°, yaw -90°, roll 0°; FOV 75°\n\n**Source relationship:** Existing saved Unreal level and its native mesh/Blueprint/material consumers; Building pieces trace to `Assets/Building/Interior_Building.blend`.\n\n**Intended use / observations:** The existing showcase uses flat samples, without consistent curved/edged counterparts. It was preserved and supplemented by the separate Art_Material_Reference level.\n\n**Review:** Native baseline verified; artistic approval is separate. Production levels were not saved.",
+      "status": "review"
+    },
+    {
+      "id": "lacarlota-modules",
+      "title": "LaCarlota / modular finish context",
+      "image": "media/unreal-2026-11-17/lacarlota-modules.webp",
+      "alt": "LaCarlota / modular finish context in the current Unreal editor",
+      "body": "**Unreal map:** `/Game/Levels/LaCarlota`\n\n**Capture:** 2026-11-17 · lit editor viewport · persistent world `/Game/Levels/LaCarlota` with `/Game/Levels/Streaming_Levels/Main_Lights` loaded. These are editor images, not gameplay captures.\n\n**Camera:** (8000, 9000, 2500) cm; pitch -40°, yaw 135°, roll 4.15192e-15°; FOV 75°\n\n**Source relationship:** Existing saved Unreal level and its native mesh/Blueprint/material consumers; Building pieces trace to `Assets/Building/Interior_Building.blend`.\n\n**Intended use / observations:** Existing floor, wall and roof Blueprint samples show contextual surface scale and trim placement. Generic material spheres cannot replace these authored UV/material assignments.\n\n**Review:** Native baseline verified; artistic approval is separate. Production levels were not saved.",
+      "status": "review"
+    },
+    {
+      "id": "main-lights-context",
+      "title": "Main_Lights / shared native setup",
+      "image": "media/unreal-2026-11-17/lacarlota-tools.webp",
+      "alt": "LaCarlota rendered with the shared Main Lights setup",
+      "status": "review",
+      "body": "**Unreal level:** `/Game/Levels/Streaming_Levels/Main_Lights`. **Capture:** 2026-11-17, lit editor viewport in `/Game/Levels/LaCarlota`; the same image is also shown in the cleaning-tool entry.\n\n**Verified setup:** DirectionalLight, ExponentialHeightFog, PostProcessVolume, SkyAtmosphere and SkyLight. This is a shared lighting sublevel, not a standalone furnished environment. Basement Blueprint lights remain in Basement.\n\n**Intended use:** Read environment captures in their actual shared lighting context. Its five native actors and both persistent-map load relationships were inspected. No lighting values or existing levels were saved. Artistic approval is separate."
+    },
+    {
+      "id": "material-reference-level",
+      "title": "Material review / isolated comparison rig",
+      "image": "media/unreal-2026-11-17/material-001.webp",
+      "alt": "The new native material comparison rig",
+      "status": "review",
+      "body": "**Unreal level:** `/Game/Levels/Art_Material_Reference`. **Capture:** 2026-11-17 · native editor viewport, 55° FOV.\n\n**Scale:** 2 m panel, 1 m cube, 1 m diameter sphere, 1 m panel, from left to right. The same existing MI is assigned to all four shapes. Neutral ground/backdrop and fixed white directional/cubemap lighting provide consistent comparisons. Glass stations include contrast bars.\n\n**Source:** [Editable setup script](../../projects/total-insanitation/scripts/unreal_reference_showcase.py), with a review-only helper material under `/Game/Art/Tools/MaterialReference`. Reopened and verified: 88 materials, 352 assignments.\n\n**Intended use:** Material choice for later designs. Comparison UVs are not production texel-density calibration. No existing material instance, mesh or level was changed. Artistic approval remains separate."
+    }
+  ]
+}

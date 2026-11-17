@@ -1,0 +1,98 @@
+{
+  "version": "v01",
+  "status": "proposed-owner-review",
+  "date": "2026-11-17",
+  "method": "Manually authored SVG paths; deterministic local browser raster exports",
+  "generator": {
+    "provider": null,
+    "model": null,
+    "submissions": 0,
+    "external_cost": 0
+  },
+  "source_root": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_Master_v01",
+  "primary_reference": "media/development/Stick_figure_mascot_waving_33412cac_2K.jpg",
+  "construction": {
+    "viewbox": [
+      -100,
+      0,
+      800,
+      800
+    ],
+    "head_diameter": 110,
+    "hat_brim_width": 178,
+    "torso_width": 70,
+    "arm_weight": 32,
+    "leg_weight": 41,
+    "staff_shaft": 14,
+    "clear_space": 55,
+    "full_min_canvas_px": 96,
+    "compact_min_canvas_px": 64
+  },
+  "invariants": [
+    "round faceless head",
+    "same bent hat and brim",
+    "same orb staff",
+    "rounded limbs",
+    "one-color fill",
+    "transparent cutouts"
+  ],
+  "staff_policy": {
+    "greeting": "held in screen-right hand",
+    "point-right": "same staff in support hand, screen-left",
+    "mopping": "omitted for two-hand tool use",
+    "slipping": "omitted for action clarity"
+  },
+  "review_only_action_studies": [
+    "point-right",
+    "mopping",
+    "slipping"
+  ],
+  "remaining_pose_batch": "Not started; master/style approval required",
+  "implementation": "No Unreal import, atlas edit or UI replacement",
+  "files": [
+    "applications-v01.svg",
+    "context-v01.svg",
+    "master-sheet-v01.svg",
+    "readability-v01.svg",
+    "study-mopping-v01.svg",
+    "study-point-right-v01.svg",
+    "study-slipping-v01.svg",
+    "wizard-mascot-v01-compact-white.svg",
+    "wizard-mascot-v01-compact.svg",
+    "wizard-mascot-v01-white.svg",
+    "wizard-mascot-v01.svg"
+  ],
+  "exports": [
+    "applications-v01.png",
+    "context-v01.png",
+    "master-sheet-v01.png",
+    "readability-v01.png",
+    "study-mopping-v01-1024.png",
+    "study-mopping-v01-512.png",
+    "study-point-right-v01-1024.png",
+    "study-point-right-v01-512.png",
+    "study-slipping-v01-1024.png",
+    "study-slipping-v01-512.png",
+    "wizard-mascot-v01-1024.png",
+    "wizard-mascot-v01-512.png",
+    "wizard-mascot-v01-compact-1024.png",
+    "wizard-mascot-v01-compact-512.png",
+    "wizard-mascot-v01-compact-white-1024.png",
+    "wizard-mascot-v01-compact-white-512.png",
+    "wizard-mascot-v01-white-1024.png",
+    "wizard-mascot-v01-white-512.png"
+  ],
+  "source_hashes": {
+    "applications-v01.svg": "335775655099e3523c6d200edaf9a4e600e1b59720d2c6ae0067c188be64c7c4",
+    "context-v01.svg": "384d4c9ff2d1182d599bad3f25841871b4ac0474bf7b50531c74fccccc0a32e2",
+    "master-sheet-v01.svg": "33e700bc7501f8247a3f47cedfd2b2e914defece4d3588515db14db62b22a441",
+    "readability-v01.svg": "63fec77859041bae1f1145508786c8528f40b866196cd2fc6f52211c58e14961",
+    "study-mopping-v01.svg": "0cd1aee157288ce40cba85105433ec043a5a96ae60ca7686a05a99f00bda2df8",
+    "study-point-right-v01.svg": "def98fd41c11dafca58f308532d43230e2db47d04ae28c02315fbdf4d65453bc",
+    "study-slipping-v01.svg": "09915601d4681a8c9b1868ad636ca7c0f056c502226e2ff233401d78bb8017d3",
+    "wizard-mascot-v01-compact-white.svg": "d6316c02f9078a8b37468caf8c1fdd5d5c23b851e5e738fa486080e4e8320826",
+    "wizard-mascot-v01-compact.svg": "92e95d265d5f663b87b7a589b6a391f6ac7896a94a1e6ef923ee866234be201a",
+    "wizard-mascot-v01-white.svg": "9e8a385bf4069f1e5f28dab2adf9840453787964a9934447a8ea07af173d84b2",
+    "wizard-mascot-v01.svg": "b58a7aa7775f44235d5884ab78716e5820544f680bde8b5c687e6223435e419e"
+  }
+}

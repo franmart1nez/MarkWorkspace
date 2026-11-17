@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [string]$ZBrushPath,
-    [ValidateSet('All','Both','Camera','Render','ID')][string]$Component = 'All',
+    [ValidateSet('RenderID','All','Both','Render','ID')][string]$Component = 'RenderID',
     [switch]$PlanOnly
 )
 $ErrorActionPreference = 'Stop'
@@ -51,16 +51,30 @@ $macroRoot = Join-Path $zbRoot 'ZStartup\Macros\Mak Plugins'
 if (-not (Test-Path -LiteralPath $plugRoot)) { throw "ZStartup\ZPlugs64 not found in $zbRoot" }
 
 $specs = @()
-if ($Component -in @('All','Both','Camera')) {
-    $specs += [pscustomobject]@{ Folder='Camera Bank'; Name='CameraBank25'; Data='MakCameraBankData'; Macro='Load Camera Bank' }
-}
-if ($Component -in @('All','Both','Render')) {
+if ($Component -in @('RenderID','All','Both','Render')) {
     $specs += [pscustomobject]@{ Folder='Render Capture'; Name='RenderCapture'; Data='RenderCaptureData'; Macro='Load Render Capture' }
 }
-if ($Component -in @('All','ID')) {
+if ($Component -in @('RenderID','All','Both','ID')) {
     $specs += [pscustomobject]@{ Folder='Generate and Export ID'; Name='GenerateExportID'; Data='GenerateExportIDData'; Macro='Load Generate and Export ID' }
 }
 $actions = @()
+# Retire only the old writer's explicit installed files. Backups and rollback
+# use the same verified mechanism as replacements; saved banks and Fast are kept.
+foreach ($legacyRelative in @(
+    'ZStartup\ZPlugs64\CameraBank25.zsc',
+    'ZStartup\ZPlugs64\MakCameraBankData\CameraBank25.txt',
+    'ZStartup\ZPlugs64\MakCameraBankData\CameraBank25.zsc',
+    'ZStartup\ZPlugs64\MakCameraBankData\ZFileUtils64.dll',
+    'ZStartup\Macros\Mak Plugins\Load Camera Bank.txt',
+    'ZStartup\Macros\Mak Plugins\Load Camera Bank.zsc'
+)) {
+    $legacyTarget = [IO.Path]::GetFullPath((Join-Path $zbRoot $legacyRelative))
+    if (-not $legacyTarget.StartsWith($zbRoot.TrimEnd('\')+'\',[StringComparison]::OrdinalIgnoreCase)) { throw 'Unsafe legacy retirement path.' }
+    if (Test-Path -LiteralPath $legacyTarget) {
+        if ((Get-Item -LiteralPath $legacyTarget).Attributes -band [IO.FileAttributes]::ReparsePoint) { throw "Unexpected link: $legacyTarget" }
+        $actions += [pscustomobject]@{ Kind='Retire'; Source=$null; Target=$legacyTarget }
+    }
+}
 foreach ($spec in $specs) {
     $source = Join-Path (Join-Path $packageRoot $spec.Folder) ($spec.Name+'.txt')
     if (-not (Test-Path -LiteralPath $source)) { throw "Missing source: $source" }
@@ -83,6 +97,11 @@ foreach ($spec in $specs) {
     $actions += [pscustomobject]@{ Kind='Copy'; Source=$source; Target=$dataSource }
     if ($compiledCandidate) {
         $actions += [pscustomobject]@{ Kind='Copy'; Source=$compiledCandidate; Target=(Join-Path $plugRoot ($spec.Name+'.zsc')) }
+        # Source reloads must not find a previous compiled consumer beside the
+        # updated TXT. Keep the startup and adjacent native binaries identical.
+        if ($spec.Name -in @('RenderCapture','GenerateExportID')) {
+            $actions += [pscustomobject]@{ Kind='Copy'; Source=$compiledCandidate; Target=$installedCompiled }
+        }
     } else {
         # Do not leave an older-format plugin auto-loading beside new sources.
         foreach ($obsolete in @((Join-Path $plugRoot ($spec.Name+'.zsc')),$installedCompiled)) {
@@ -96,11 +115,6 @@ foreach ($spec in $specs) {
     $pluginSource = ('ZBRUSH_ZSTARTUP/ZPlugs64/'+$spec.Data+'/'+$spec.Name+'.txt')
     $controlNames = @('1 - CREATE FOLDERS','2 - RENDER NON BPR','3 - RENDER BPR')
     $paletteName = 'ZPlugin:Render Capture:'
-    if ($spec.Name -eq 'CameraBank25') {
-        # Retire the legacy PREPARE TRANSFER control when reloading 3.2.0.
-        $controlNames = @(1..25 | ForEach-Object { '{0:00}' -f $_ }) + @('STORE NEW','CLEAR','CLEAR ALL','CHECK ACTIVE','EXPORT BANK','IMPORT BANK','UPDATE ACTIVE','PREPARE TRANSFER')
-        $paletteName = 'ZPlugin:Camera Bank 25:'
-    }
     if ($spec.Name -eq 'GenerateExportID') {
         $controlNames = @('Generar y exportar ID','Exportar ID')
         $paletteName = 'ZPlugin:Generar y exportar ID:'
@@ -122,8 +136,8 @@ foreach ($spec in $specs) {
         $actions += [pscustomobject]@{ Kind='Retire'; Source=$null; Target=$macroCompiled }
     }
     $actions += [pscustomobject]@{ Kind='Text'; Source=$macroText; Target=$macroTarget }
-    # All three components use the same reviewed Maxon utility.
-    if ($spec.Name -in @('CameraBank25','RenderCapture','GenerateExportID')) {
+    # Both consumers use the same reviewed Maxon utility.
+    if ($spec.Name -in @('RenderCapture','GenerateExportID')) {
         $dll = Join-Path $packageRoot 'Render Capture\RenderCaptureData\ZFileUtils64.dll'
         if (-not (Test-Path -LiteralPath $dll)) { $dll = Join-Path $plugRoot 'MacroData\ZFileUtils64.dll' }
         if (-not (Test-Path -LiteralPath $dll)) { throw 'The ZBrush ZFileUtils64.dll dependency was not found.' }
@@ -171,8 +185,9 @@ try {
     }
     Write-Host ''
     Write-Host 'Installed. No application was closed or restarted.' -ForegroundColor Green
-    Write-Host 'In ZBrush: Macro > Reload All Macros, then Mak Plugins > Load Camera Bank / Load Render Capture / Load Generate and Export ID.'
-    Write-Host 'Their controls appear under ZPlugin. Load Camera Bank first.'
+    Write-Host 'Render Capture and ID use the separately installed Camera Bank Fast.'
+    Write-Host 'In ZBrush: load Camera Bank Fast first, then Macro > Reload All Macros > Mak Plugins > Load Render Capture / Load Generate and Export ID.'
+    Write-Host 'Legacy Camera Bank 25 installed files were retired with verified backups. Camera Bank Fast is the only camera writer.'
     Write-Host 'For automatic startup: load each package TXT once via ZScript > Load, then run INSTALAR.cmd again.'
     Write-Host 'The installer copies the real ZSC files generated by ZBrush when they are available.'
     if (Test-Path -LiteralPath $backupRoot) { Write-Host "Backups: $backupRoot" }

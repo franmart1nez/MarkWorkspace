@@ -15,45 +15,36 @@ class InstallerTests(unittest.TestCase):
             (plugs/'unrelated.txt').write_text('keep')
             env=os.environ.copy();env['LOCALAPPDATA']=str(fixture/'LocalAppData')
             def run(*args):
+                component_args=() if '-Component' in args else ('-Component','All')
                 r=subprocess.run(['powershell.exe','-NoProfile','-File',str(ROOT/'Install.ps1'),
-                    '-ZBrushPath',str(zb),*args],env=env,capture_output=True,text=True)
+                    '-ZBrushPath',str(zb),*component_args,*args],env=env,capture_output=True,text=True)
                 self.assertEqual(r.returncode,0,r.stdout+r.stderr)
                 return r.stdout
-            plan=json.loads(run('-PlanOnly','-Component','Camera'))
-            compiled=ROOT/'Camera Bank/CameraBank25.zsc'
-            source=compiled.with_suffix('.txt')
-            has_compiled=compiled.exists() and compiled.stat().st_mtime_ns >= source.stat().st_mtime_ns
-            self.assertEqual(len(plan['Actions']),4 if has_compiled else 3)
-            self.assertFalse((plugs/'MakCameraBankData').exists())
-            if not has_compiled:
-                (plugs/'CameraBank25.zsc').write_bytes(b'stale older-format plugin')
+            plan=json.loads(run('-PlanOnly','-Component','All'))
+            self.assertFalse(any('CameraBank' in x['Target'] for x in plan['Actions']))
+            legacy=plugs/'MakCameraBankData';legacy.mkdir()
+            (legacy/'CameraBank25.txt').write_bytes(b'legacy source')
+            (legacy/'keep.zcv').write_bytes(b'owner bank')
+            (plugs/'CameraBank25.zsc').write_bytes(b'legacy bytecode')
+            fast=plugs/'MakCameraBankFastData';fast.mkdir()
+            (fast/'CameraBankFast25.txt').write_bytes(b'keep Fast')
             run()
-            self.assertEqual((plugs/'MakCameraBankData/CameraBank25.txt').read_bytes(),
-                             (ROOT/'Camera Bank/CameraBank25.txt').read_bytes())
-            self.assertEqual((plugs/'RenderCaptureData/RenderCapture.txt').read_bytes(),
-                             (ROOT/'Render Capture/RenderCapture.txt').read_bytes())
-            self.assertTrue((plugs/'RenderCaptureData/ZFileUtils64.dll').exists())
-            self.assertTrue((plugs/'MakCameraBankData/ZFileUtils64.dll').exists())
-            self.assertEqual((plugs/'GenerateExportIDData/GenerateExportID.txt').read_bytes(),
-                             (ROOT/'Generate and Export ID/GenerateExportID.txt').read_bytes())
-            self.assertTrue((plugs/'GenerateExportIDData/ZFileUtils64.dll').exists())
-            self.assertIn('ZPlugin:Generar y exportar ID:Generar y exportar ID',
-                          (zb/'ZStartup/Macros/Mak Plugins/Load Generate and Export ID.txt').read_text())
-            self.assertIn('PREPARE TRANSFER',(zb/'ZStartup/Macros/Mak Plugins/Load Camera Bank.txt').read_text())
-            self.assertIn('ZScript:Load',(zb/'ZStartup/Macros/Mak Plugins/Load Camera Bank.txt').read_text())
-            self.assertEqual((plugs/'CameraBank25.zsc').exists(),has_compiled)
-            if not has_compiled:
-                retired=list((fixture/'LocalAppData/MakZBrushPlugins/InstallBackups').glob('*/ZStartup/ZPlugs64/CameraBank25.zsc'))
-                self.assertEqual(len(retired),1)
-                self.assertEqual(retired[0].read_bytes(),b'stale older-format plugin')
-            if has_compiled:
-                self.assertEqual((plugs/'CameraBank25.zsc').read_bytes(),(ROOT/'Camera Bank/CameraBank25.zsc').read_bytes())
-            original_time=(plugs/'MakCameraBankData/CameraBank25.txt').stat().st_mtime_ns
-            run()
-            self.assertEqual((plugs/'MakCameraBankData/CameraBank25.txt').stat().st_mtime_ns,original_time)
-            (plugs/'MakCameraBankData/CameraBank25.txt').write_bytes(b'older source to back up')
-            run()
-            self.assertTrue(list((fixture/'LocalAppData/MakZBrushPlugins/InstallBackups').glob('*/ZStartup/ZPlugs64/MakCameraBankData/CameraBank25.txt')))
+            for folder,name,data in [('Render Capture','RenderCapture','RenderCaptureData'),
+                                     ('Generate and Export ID','GenerateExportID','GenerateExportIDData')]:
+                installed=plugs/data/(name+'.txt')
+                self.assertEqual(installed.read_bytes(),(ROOT/folder/(name+'.txt')).read_bytes())
+                self.assertTrue((plugs/data/'ZFileUtils64.dll').exists())
+            self.assertFalse((plugs/'CameraBank25.zsc').exists())
+            self.assertFalse((legacy/'CameraBank25.txt').exists())
+            self.assertEqual((legacy/'keep.zcv').read_bytes(),b'owner bank')
+            self.assertEqual((fast/'CameraBankFast25.txt').read_bytes(),b'keep Fast')
+            backups=fixture/'LocalAppData/MakZBrushPlugins/InstallBackups'
+            self.assertTrue(list(backups.glob('*/ZStartup/ZPlugs64/CameraBank25.zsc')))
+            self.assertTrue(list(backups.glob('*/ZStartup/ZPlugs64/MakCameraBankData/CameraBank25.txt')))
+            source=plugs/'RenderCaptureData/RenderCapture.txt';mtime=source.stat().st_mtime_ns
+            run();self.assertEqual(source.stat().st_mtime_ns,mtime)
+            source.write_bytes(b'old Render');run()
+            self.assertTrue(list(backups.glob('*/ZStartup/ZPlugs64/RenderCaptureData/RenderCapture.txt')))
             self.assertEqual((plugs/'unrelated.txt').read_text(),'keep')
 
     def test_id_only_and_legacy_both_selection(self):
@@ -76,7 +67,8 @@ class InstallerTests(unittest.TestCase):
             self.assertFalse((plugs/'MakCameraBankData').exists())
             self.assertFalse((plugs/'RenderCaptureData').exists())
             both=json.loads(run('Both',True))
-            self.assertFalse(any('GenerateExportID' in a['Target'] for a in both['Actions']))
+            self.assertTrue(any('GenerateExportID' in a['Target'] for a in both['Actions']))
+            self.assertFalse(any('CameraBank25' in a['Target'] for a in both['Actions']))
 
     def test_newer_installed_binary_with_different_source_is_retired(self):
         # A newly compiled old source is not a compiled copy of this release.
@@ -84,34 +76,34 @@ class InstallerTests(unittest.TestCase):
             fixture=Path(tmp).resolve()
             package=fixture/'Package';package.mkdir()
             (package/'Install.ps1').write_bytes((ROOT/'Install.ps1').read_bytes())
-            src=package/'Camera Bank/CameraBank25.txt';src.parent.mkdir();src.write_text('// new release')
-            dll=package/'Render Capture/RenderCaptureData/ZFileUtils64.dll';dll.parent.mkdir(parents=True);dll.write_bytes(b'fixture dll')
+            src=package/'Render Capture/RenderCapture.txt';src.parent.mkdir();src.write_text('// new release')
+            dll=package/'Render Capture/RenderCaptureData/ZFileUtils64.dll';dll.parent.mkdir(parents=True,exist_ok=True);dll.write_bytes(b'fixture dll')
             zb=fixture/'ZBrush';zb.mkdir();(zb/'ZBrush.exe').write_bytes(b'fixture only')
             plugs=zb/'ZStartup/ZPlugs64';plugs.mkdir(parents=True)
-            data=plugs/'MakCameraBankData';data.mkdir()
-            (data/'CameraBank25.txt').write_text('// different release')
-            old=data/'CameraBank25.zsc';old.write_bytes(b'old compiled source')
+            data=plugs/'RenderCaptureData';data.mkdir()
+            (data/'RenderCapture.txt').write_text('// different release')
+            old=data/'RenderCapture.zsc';old.write_bytes(b'old compiled source')
             os.utime(old,(src.stat().st_mtime+60,src.stat().st_mtime+60))
-            (plugs/'CameraBank25.zsc').write_bytes(b'old startup')
+            (plugs/'RenderCapture.zsc').write_bytes(b'old startup')
             macros=zb/'ZStartup/Macros/Mak Plugins';macros.mkdir(parents=True)
-            (macros/'Load Camera Bank.txt').write_text('// old loader')
-            (macros/'Load Camera Bank.zsc').write_bytes(b'old loader binary')
+            (macros/'Load Render Capture.txt').write_text('// old loader')
+            (macros/'Load Render Capture.zsc').write_bytes(b'old loader binary')
             env=os.environ.copy();env['LOCALAPPDATA']=str(fixture/'LocalAppData')
             r=subprocess.run(['powershell.exe','-NoProfile','-File',str(package/'Install.ps1'),
-                              '-ZBrushPath',str(zb),'-Component','Camera'],env=env,capture_output=True,text=True)
+                              '-ZBrushPath',str(zb),'-Component','Render'],env=env,capture_output=True,text=True)
             self.assertEqual(r.returncode,0,r.stdout+r.stderr)
             self.assertFalse(old.exists())
-            self.assertFalse((plugs/'CameraBank25.zsc').exists())
-            self.assertFalse((macros/'Load Camera Bank.zsc').exists())
-            self.assertIn('ZScript:Load',(macros/'Load Camera Bank.txt').read_text())
-            self.assertEqual((data/'CameraBank25.txt').read_bytes(),src.read_bytes())
-            self.assertTrue(list((fixture/'LocalAppData').rglob('CameraBank25.zsc')))
+            self.assertFalse((plugs/'RenderCapture.zsc').exists())
+            self.assertFalse((macros/'Load Render Capture.zsc').exists())
+            self.assertIn('ZScript:Load',(macros/'Load Render Capture.txt').read_text())
+            self.assertEqual((data/'RenderCapture.txt').read_bytes(),src.read_bytes())
+            self.assertTrue(list((fixture/'LocalAppData').rglob('RenderCapture.zsc')))
 
     def locked_fixture(self, fixture):
         self.assertTrue(fixture.is_relative_to((ROOT/'Development').resolve()))
         package=fixture/'Package';package.mkdir()
         (package/'Install.ps1').write_bytes((ROOT/'Install.ps1').read_bytes())
-        for folder,name in [('Camera Bank','CameraBank25'),('Render Capture','RenderCapture'),('Generate and Export ID','GenerateExportID')]:
+        for folder,name in [('Render Capture','RenderCapture'),('Generate and Export ID','GenerateExportID')]:
             p=package/folder/(name+'.txt');p.parent.mkdir();p.write_text('// fixture source v1')
         dll=package/'Render Capture/RenderCaptureData/ZFileUtils64.dll';dll.parent.mkdir();dll.write_bytes(b'dll fixture v1')
         zb=fixture/'ZBrush';zb.mkdir();(zb/'ZBrush.exe').write_bytes(b'fixture only - never execute')
@@ -144,8 +136,9 @@ class InstallerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix='installer-test-',dir=ROOT/'Development') as tmp:
             package,plugs,run=self.locked_fixture(Path(tmp).resolve())
             first=run('Both');self.assertEqual(first.returncode,0,first.stdout+first.stderr)
+            (plugs/'CameraBank25.zsc').write_bytes(b'legacy writer restored on rollback')
             before={p.relative_to(plugs).as_posix():p.read_bytes() for p in plugs.rglob('*') if p.is_file()}
-            (package/'Camera Bank/CameraBank25.txt').write_text('// fixture source v2')
+            (package/'Generate and Export ID/GenerateExportID.txt').write_text('// fixture source v2')
             (package/'Render Capture/RenderCapture.txt').write_text('// fixture source v2')
             (package/'Render Capture/RenderCaptureData/ZFileUtils64.dll').write_bytes(b'dll fixture v2')
             failed=run('Both',plugs/'RenderCaptureData/ZFileUtils64.dll')

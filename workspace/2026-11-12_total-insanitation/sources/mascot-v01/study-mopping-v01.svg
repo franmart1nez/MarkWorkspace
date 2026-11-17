@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="-100 0 800 800" style="color:#000000">
+    <title>Proposed company wizard v01 / mopping / full</title><desc>Editable manually authored vector proposal. Owner approval pending. Source greeting prototype preserved.</desc><defs>
+    <mask id="hat-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="800"><rect width="600" height="800" fill="white"/><path d="M246 179 Q267 175 290 177" fill="none" stroke="black" stroke-width="8" stroke-linecap="round"/></mask>
+    <mask id="orb-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="800"><rect width="600" height="800" fill="white"/><path d="M483,300 Q485,310 495,312 Q485,314 483,324 Q481,314 471,312 Q481,310 483,300Z" fill="black"/></mask>
+    <mask id="greeting-cut" maskUnits="userSpaceOnUse" x="-100" y="0" width="800" height="800"><rect x="-100" width="800" height="800" fill="white"/><ellipse cx="470" cy="448" rx="23" ry="27" fill="black"/><ellipse cx="470" cy="448" rx="16" ry="20" fill="white"/></mask>
+    <mask id="point-cut" maskUnits="userSpaceOnUse" x="-100" y="0" width="800" height="800"><rect x="-100" width="800" height="800" fill="white"/><ellipse cx="113" cy="448" rx="23" ry="27" fill="black"/><ellipse cx="113" cy="448" rx="16" ry="20" fill="white"/></mask>
+    <mask id="mop-cut" maskUnits="userSpaceOnUse" x="-100" y="0" width="800" height="800"><rect x="-100" width="800" height="800" fill="white"/><circle cx="334" cy="426" r="21" fill="black"/><circle cx="334" cy="426" r="14" fill="white"/><circle cx="390" cy="504" r="21" fill="black"/><circle cx="390" cy="504" r="14" fill="white"/></mask>
+    <g id="head-standard" fill="currentColor">
+      <circle id="face-no-features" cx="300" cy="238" r="55"/>
+      <g id="hat" mask="url(#hat-cut)"><path id="bent-crown" d="M235 181 L275 71 Q280 61 289 68 L356 112 Q365 120 357 122 L315 112 L333 181Z"/><ellipse id="hat-brim" cx="294" cy="187" rx="89" ry="18"/></g>
+    </g>
+    <g id="torso-standard" fill="currentColor"><path d="M269 325 Q272 315 285 315 L315 315 Q328 315 335 326 L333 493 L266 493Z"/></g>
+    <g id="legs-standard" fill="none" stroke="currentColor" stroke-width="41" stroke-linecap="round" stroke-linejoin="round"><path d="M283 485 L242 706 M315 485 L354 706"/></g>
+    <g id="feet-standard" fill="currentColor"><ellipse cx="228" cy="716" rx="34" ry="16"/><ellipse cx="374" cy="716" rx="34" ry="16"/></g>
+    <g id="staff-standard" fill="currentColor"><path id="shaft" d="M481 337 L460 725" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round"/><circle id="staff-collar" cx="480" cy="337" r="11"/><circle id="orb" cx="483" cy="312" r="24" mask="url(#orb-cut)"/></g>
+    <g id="pose-greeting" mask="url(#greeting-cut)">
+      <use href="#head-standard"/><use href="#torso-standard"/><use href="#legs-standard"/><use href="#feet-standard"/>
+      <g id="greeting-arms" fill="none" stroke="currentColor" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"><path d="M277 338 L204 361 L162 281 M327 339 L384 427 L457 448"/></g>
+      <circle id="greeting-palm" cx="151" cy="263" r="20" fill="currentColor"/><g id="greeting-fingers" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round">
+      <path d="M142 250 L128 232 M150 247 L143 221 M160 249 L161 221 M166 261 L179 245"/>
+    </g>
+      <use href="#staff-standard"/><ellipse id="gripping-hand" cx="470" cy="448" rx="16" ry="20" fill="currentColor"/>
+    </g>
+    <g id="pose-point-right" mask="url(#point-cut)">
+      <use href="#head-standard"/><use href="#torso-standard"/><use href="#legs-standard"/><use href="#feet-standard"/>
+      <g fill="none" stroke="currentColor" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"><path d="M277 338 L204 425 L130 448 M327 339 L415 339 L482 339"/></g>
+      <use href="#staff-standard" transform="translate(-357 0)"/><ellipse cx="113" cy="448" rx="16" ry="20" fill="currentColor"/>
+      <path id="pointing-hand" d="M476 339 L527 339" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round"/><ellipse cx="481" cy="349" rx="19" ry="15" fill="currentColor"/>
+    </g>
+    <g id="pose-mopping" mask="url(#mop-cut)">
+      <use href="#head-standard" transform="rotate(-10 300 238)"/>
+      <path id="mopping-torso" d="M282 326 Q306 311 336 326 L370 494 L295 494Z" fill="currentColor"/>
+      <g fill="none" stroke="currentColor" stroke-width="41" stroke-linecap="round" stroke-linejoin="round"><path d="M312 485 L218 706 M347 485 L382 706"/></g><ellipse cx="203" cy="716" rx="34" ry="16" fill="currentColor"/><ellipse cx="401" cy="716" rx="34" ry="16" fill="currentColor"/>
+      <path id="mop-shaft" d="M257 320 L507 670" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round"/>
+      <g fill="none" stroke="currentColor" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"><path d="M283 341 L247 381 L334 426 M335 341 L404 414 L390 504"/></g><circle cx="334" cy="426" r="14" fill="currentColor"/><circle cx="390" cy="504" r="14" fill="currentColor"/>
+      <path id="mop-pad" d="M458 678 Q504 656 550 678 L558 704 Q508 719 450 704Z" fill="currentColor"/>
+    </g>
+    <g id="pose-slipping"><g id="falling-body" transform="rotate(-25 335 485)">
+      <use href="#head-standard" transform="translate(-30 15)"/>
+      <path id="slipping-torso" d="M276 338 Q301 324 320 345 L368 468 L307 501Z" fill="currentColor"/>
+      <g fill="none" stroke="currentColor" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"><path d="M290 353 L385 312 L418 260 M281 366 L198 398 L153 360"/></g><circle cx="418" cy="260" r="18" fill="currentColor"/><circle cx="153" cy="360" r="18" fill="currentColor"/>
+      <g fill="none" stroke="currentColor" stroke-width="41" stroke-linecap="round" stroke-linejoin="round"><path d="M333 473 L393 530 L476 490 M340 490 L329 581 L403 635"/></g><ellipse cx="489" cy="487" rx="33" ry="16" fill="currentColor" transform="rotate(-20 489 487)"/><ellipse cx="415" cy="640" rx="33" ry="16" fill="currentColor" transform="rotate(25 415 640)"/>
+      </g><path id="wet-floor-cue" d="M270 700 Q361 676 470 700 M309 719 Q367 707 426 719" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+    </g>
+    </defs><g id="wizard-artwork"><use href="#pose-mopping"/></g></svg>

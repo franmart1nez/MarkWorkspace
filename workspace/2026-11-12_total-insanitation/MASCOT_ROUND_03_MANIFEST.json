@@ -1,0 +1,102 @@
+{
+  "provider": "ChatGPT built-in image_gen",
+  "model_identifier": "Not exposed",
+  "seed": "Not reported",
+  "quoted_cost": "Not exposed",
+  "status": "awaiting-owner-raster-selection",
+  "submissions": 4,
+  "outputs": [
+    {
+      "id": "slipping-falling-03",
+      "number": 7,
+      "title": "Slipping / falling",
+      "notes": "The torso is nearly horizontal, both feet are airborne, and the outstretched arms and motion arcs emphasize the fall.",
+      "image": "media/mascot-chatgpt-round-03/slipping-falling-03.png",
+      "previous": "media/mascot-chatgpt-round-02/slipping-falling-02.png",
+      "source_image": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_ChatGPT_Round_03/slipping-falling-03.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "9a7092037cb9f669ea59354078bfa5306f762536b55cdabac9823929040fc5c2",
+      "references": [
+        {
+          "path": "D:/AI/MarkWorkspace/workspace/2026-11-12_total-insanitation/media/mascot-chatgpt-round-02/slipping-falling-02.png",
+          "sha256": "643bdcb00067a022690e052f977d5acd74ac6a873437dfe2abb6e34a209a9faf"
+        }
+      ],
+      "prompt": "Edit the supplied black-on-white wizard mascot fall pictogram. Make the fall visibly more exaggerated: the wizard has already lost balance, is falling backward toward the floor with the torso almost horizontal (about 20–30 degrees above the floor), one leg kicked high and the other bent and slipping away, two arms flung wide with startled open hands. Show no weight-bearing stance. Use two small curved motion accents near the kicked foot and low back. Keep the original face entirely blank, the distinctive bent pointed hat on the head, smooth black silhouettes, rounded joints, two arms and two legs, and no staff. Match the source's clear simple vector-ready graphic language. One standalone square raster, smooth pure black ink on plain white, no text or border, generous margins, keep the entire figure and every accent visible. No added texture, gradients, shading, or scenery."
+    },
+    {
+      "id": "electrical-accident-03",
+      "number": 8,
+      "title": "Electrical accident",
+      "notes": "The shock lifts both feet and reveals a simplified X-ray skeleton. One large strike and surrounding bolts make the cause clear.",
+      "image": "media/mascot-chatgpt-round-03/electrical-accident-03.png",
+      "previous": "media/mascot-chatgpt-round-02/electrical-accident-02.png",
+      "source_image": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_ChatGPT_Round_03/electrical-accident-03.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "b2cb39584dbadc2713b8ea5c40fa6d5ae857f5296604287ac11ee4c5a4b95ec7",
+      "references": [
+        {
+          "path": "D:/AI/MarkWorkspace/workspace/2026-11-12_total-insanitation/media/mascot-chatgpt-round-02/electrical-accident-02.png",
+          "sha256": "c497652e47d96402abf833e45b447b9756e27d7587ffb304e00329c6d3073d28"
+        },
+        {
+          "path": "D:/AI/MarkWorkspace/workspace/2026-11-12_total-insanitation/media/development/Stick_figure_being_electrocuted_7484df88_2K.jpg",
+          "sha256": "1302245c6b22fec4ff6fa50d39aca362653647e4b80756796412a38fa3478eb4"
+        }
+      ],
+      "prompt": "Edit Image 1, the current clean wizard pictogram, using Image 2 as the action reference for the visible skeleton and electrical energy only. Exaggerate the electrocution: the whole figure jerks rigidly into the air, back arched, elbows raised, fingers splayed and both feet lifting. Show a simplified cartoon X-ray skeleton inside the intact black wizard silhouette, as broad white cutouts: clearly recognizable small skull with two black eye sockets, a few strong white ribs, simple spine, and simple white bones inside arms and legs. Use one bold lightning bolt striking near the point of the hat and three or four larger readable electric zigzags around the body, with ample white separation and no tiny branching clutter. Keep the bent hat and original mascot proportions from Image 1. No staff, border, gore, actual injury detail, text, scenery, shading or gradients. Smooth clean black-on-white sign pictogram, one square raster with generous margins and every detail in frame."
+    },
+    {
+      "id": "chemical-accident-03",
+      "number": 9,
+      "title": "Acid on the floor",
+      "notes": "One shoe touches the bubbling floor puddle. A small wisp and the softened toe show contact while the rest of the figure stays intact.",
+      "image": "media/mascot-chatgpt-round-03/chemical-accident-03.png",
+      "previous": "media/mascot-chatgpt-round-02/chemical-accident-02.png",
+      "source_image": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_ChatGPT_Round_03/chemical-accident-03.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "29e2a4d47addf689402fb6e0578fb327ff7b54f68b68e7141e714f735511c460",
+      "references": [
+        {
+          "path": "D:/AI/MarkWorkspace/workspace/2026-11-12_total-insanitation/media/mascot-chatgpt-round-02/chemical-accident-02.png",
+          "sha256": "f9f5b18136557702a9dc5388a7e85c987621c54f65fabd6de55c7fbfa6861fe1"
+        },
+        {
+          "path": "D:/AI/MarkWorkspace/workspace/2026-11-12_total-insanitation/media/development/Stick_figure_dissolving_in_acid_1b6c544f_2K.jpg",
+          "sha256": "f5e422af2355b29560977fcc008c9c2c7d4e3d65718d5cfa2857edc9ab11d9b5"
+        }
+      ],
+      "prompt": "Revise Image 1, the current wizard mascot, using Image 2 only for the floor-level acid-puddle concept. The hazard is a low shallow acid puddle already on the floor. A wizard shoe is visibly touching or partly planted in its edge and being singed; one small curled smoke wisplet directly at that shoe, two or three bold simple bubbles in the puddle, and at most one tiny softened/dripping toe edge. The other foot is visibly lifted clear of the puddle. The wizard leans sharply away and throws an open hand up in shock. Both hands empty: remove the flask and all drops above the ground. Keep the round blank head, bent hat with its cutout, body, both arms and both legs intact and clearly visible. Show early contact, much less extreme than Image 2; no melting torso, limb loss, graphic injury or large eruption. Plain white, smooth black only, clean bold editable-trace-friendly silhouette, one square image, no text, borders, staff, shading or scenery. Give the whole figure and puddle generous margins."
+    },
+    {
+      "id": "fleeing-fire-magic-03",
+      "number": 10,
+      "title": "Fleeing fire",
+      "notes": "A large wall of flame follows the wizard. The longer stride, forward lean, and raised hand show alarm while keeping the face blank.",
+      "image": "media/mascot-chatgpt-round-03/fleeing-fire-magic-03.png",
+      "previous": "media/mascot-chatgpt-round-02/fleeing-fire-magic-02.png",
+      "source_image": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_ChatGPT_Round_03/fleeing-fire-magic-03.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "b47155dcbab4cf2b37e457ef03f610804b3b9e49f9ae8b13f4bf73a3f4d59b3c",
+      "references": [
+        {
+          "path": "D:/AI/MarkWorkspace/workspace/2026-11-12_total-insanitation/media/mascot-chatgpt-round-02/fleeing-fire-magic-02.png",
+          "sha256": "0dc1e44c8797e90ed00d8419b6ed2f9a7ad8edad9e0a2e732b92b32969942d0b"
+        }
+      ],
+      "prompt": "Edit this same wizard fleeing from fire pictogram. Make the flame threatening and much larger: one tall sweeping mass of fire surges in from screen-left behind the wizard, its tip as high as the wizard's hat, with three to five bold flame tongues curving toward them, plus one broad white interior flame cutout. Leave a clear white gap between flame and mascot. Convey panic through silhouette: lean much farther forward into a fast long stride to the right, tilt the head back to glance over the shoulder toward the fire, raise the free open hand near the head in alarm, splay the fingers, and carry the original circular sparkling orb staff angled forward. Keep the mascot's head completely faceless, original bent hat on head, same simple proportions, exactly two arms and two legs. Render a polished, clear black-on-white square sign pictogram, with all parts and the entire large flame fully framed and generous margins. No words, border, scene, gradients, texture, or shadow. Preserve smooth rounded silhouette construction and deliberate white grip gaps."
+    }
+  ]
+}

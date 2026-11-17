@@ -1,0 +1,2 @@
+ZFileUtils64.dll copied from the reviewed local standard package, originally from this installed ZBrush 2023. Native Maxon dependency; unchanged.
+SHA256 is recorded in manifest.json.

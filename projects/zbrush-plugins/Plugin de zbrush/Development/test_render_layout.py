@@ -51,7 +51,7 @@ class LayoutHost(Host):
 class RenderLayout(unittest.TestCase):
     def host(self):
         h = LayoutHost()
-        h.load(ROOT / 'Camera Bank/CameraBank25.txt')
+        h.load(ROOT.parent / 'Camera Bank Fast/CameraBankFast25.txt')
         # Sparse labels catch camera renumbering and wrong-camera copies.
         for slot, dims, visibility in ((0, (1920, 1080), [1, 0]),
                                        (2, (640, 480), [1, 1]),
@@ -60,8 +60,8 @@ class RenderLayout(unittest.TestCase):
             h.ui.update({'Document:Width': dims[0], 'Document:Height': dims[1]})
             h.status = visibility[:]
             h.st = visibility.index(1)
-            h.call('CB29_SaveSlot', slot)
-        h.cmd(['MVarSet', 'CB25Data', str(20 + (2 * 20) + 16), '0'])
+            h.call('FB29_SaveSlot', slot)
+        h.cmd(['MVarSet', 'FB25Data', str(20 + (2 * 20) + 16), '0'])
         h.load(ROOT / 'Render Capture/RenderCapture.txt')
         return h
 
@@ -91,10 +91,10 @@ class RenderLayout(unittest.TestCase):
         reader = (ROOT / 'Development/camera_reader.inc').read_text(encoding='ascii')
         self.assertEqual((ROOT / 'Render Capture/RenderCapture.txt').read_text(encoding='ascii'),
                          reader + '\n\n' + body)
-        self.assertTrue(body.startswith('// Render Capture 3.2.2'))
-        switches = [n[1].strip('"').removeprefix('ZPlugin:Camera Bank 25:')
-                    for n in parse((ROOT / 'Camera Bank/CameraBank25.txt').read_text(encoding='ascii'))
-                    if n[0] == 'ISwitch' and n[1].startswith('"ZPlugin:Camera Bank 25:')]
+        self.assertTrue(body.startswith('// Render Capture 3.2.5'))
+        switches = [n[1].strip('"').removeprefix('ZPlugin:Camera Bank Fast:')
+                    for n in parse((ROOT.parent / 'Camera Bank Fast/CameraBankFast25.txt').read_text(encoding='ascii'))
+                    if n[0] == 'ISwitch' and n[1].startswith('"ZPlugin:Camera Bank Fast:')]
         labels = [f'{camera:02d}' for camera in range(1, 26)]
         self.assertEqual([label for label in switches if label in labels], labels)
         h = self.host()
@@ -200,7 +200,7 @@ class RenderLayout(unittest.TestCase):
                 self.assertGreater(len(h.exports), count)
                 self.assertEqual(display(h), settings)
 
-    def test_reuse_overwrite_and_notice_before_render(self):
+    def test_reuse_silently_overwrites_both_phases(self):
         for phase, names in PHASES.items():
             with self.subTest(phase=phase), tempfile.TemporaryDirectory() as parent:
                 h = self.host()
@@ -212,14 +212,12 @@ class RenderLayout(unittest.TestCase):
                 original = h.cmd
                 def inspect(n):
                     if n[0] == 'IPress' and h.e(n[1]) in ['Render:Preview', 'Render:BPR RenderPass:Render Best Preview']:
-                        notices = ' '.join(h.messages)
-                        for label in CAMERAS:
-                            for name in names:
-                                self.assertIn(label+'/'+name, notices)
+                        self.assertFalse(any('overwrite' in m.lower() for m in h.messages))
                     return original(n)
                 h.cmd = inspect
                 before = display(h)
                 h.call(phase)
+                self.assertFalse(any('overwrite' in m.lower() for m in h.messages))
                 self.assertEqual(display(h), before)
                 self.assertEqual((root/'25/keep.txt').read_bytes(), b'untouched')
                 self.assertEqual({k: files(root)[k] for k in old}, old)

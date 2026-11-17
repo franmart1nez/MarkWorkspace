@@ -1,10 +1,10 @@
 # Total (in)Sanitation — art reset and production plan
 
-**Approved plan · Stages 1–2 complete.** Stage 2 continuation was requested from the New Setup handoff. See the [execution log](EXECUTION_LOG.md) for completion evidence and the [file contract](FILE_PLACEMENT.md) for its findings. Stages 3–7 remain pending.
+**Approved plan. Stages 1–4 are complete.** The [mascot library](MASCOT_STAGE4_LIBRARY.md) contains twelve approved poses. See the [execution log](EXECUTION_LOG.md) for current status.
 
 Reset the project's old AI production records, document the owner's current file hierarchy, and rebuild the art reference library from Unreal before defining the mascot, signage, UI and a new Basement direction.
 
-This plan follows the owner's reset brief. The old AI asset/Basement production is retired; earlier approvals do not authorize restoring it. The owner reported removing its base files and Unreal assets. Stage 1 removed the corresponding Workspace data while retaining the Office Level Builder. Stage 2 audits placement and dependencies without native production saves. Native production edits, generation and later stages are outside the current execution.
+This plan follows the owner's reset brief. The old AI asset/Basement production is retired; earlier approvals do not authorize restoring it. The owner reported removing its base files and Unreal assets. Stage 1 removed the corresponding Workspace data while retaining the Office Level Builder. Stage 2 audited placement and dependencies without native production saves. Stage 3 rebuilt the library and added only the isolated review level/helper material. Generation, native resource repairs and later-stage production remain outside this execution.
 
 ## Execution order
 
@@ -18,7 +18,7 @@ This plan follows the owner's reset brief. The old AI asset/Basement production 
 | 6. Basement concepts | Fresh native captures and proposals in a separate ChatGPT conversation | Owner selects a direction that fits the actual scene and approved graphics |
 | 7. Asset production | Individual approved asset sheets, material assignments and creation methods | Each asset has a source, export destination, Unreal destination and native acceptance check |
 
-The material showcase from the owner's point 7 moves into stage 3 so it can inform all later concepts. Stage 4's master and stage 5's first graphic examples should be reviewed together. Finish the pose batch only after that shared direction is accepted. Basement concepts follow graphic approval; asset production follows Basement concept approval. Atlas implementation remains a later step after its content/layout approval.
+The Stage 3 material showcase informs later concepts. Basement concepts follow graphic approval, and asset production follows Basement concept approval. Atlas implementation follows approval of its content and layout.
 
 ## Evidence already checked
 
@@ -98,15 +98,7 @@ Each entry records the exact Unreal asset/MI or map path, family/scenario, captu
 
 ## 4. Standardize and expand the mascot
 
-Start from the six files in `Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet`. Preserve the monigote identity: a simple figure with a wizard hat and staff, acting as the company's recurring spokesperson on instructions, warnings and decoration.
-
-First produce a master sheet defining head/body proportions, hat silhouette, staff design, hands, feet, fill/outline treatment, clear space and minimum readable detail. Review one neutral/welcoming image alongside three representative applications: direction, cleaning instruction and hazard. Treat details beyond the owner's brief as proposals.
-
-After master/style approval, complete a proposed **12-pose library**: neutral/welcome, greeting, point left, point right, mopping, pushing equipment, carrying supplies, explaining instructions, slipping/falling, electrical accident, chemical/acid accident, and fleeing fire/magic. Reconcile the first two if they read too similarly. Keep consistent proportions and recognizable accessories; define when a staff is held, stowed or omitted for task clarity. Review poses as a set at the intended on-screen/sign size.
-
-Deliver approved transparent images plus an editable graphic master appropriate to the chosen treatment, a contact sheet and usage rules. Generated drafts alone are not the final reusable source. Keep them in the existing mascot branch, with final destinations specified by stage 2.
-
-**Verification:** silhouettes stay consistent; actions read without captions; no unintended limbs, hat/staff changes or framing shifts. Owner accepts the master before the remaining generation batch. Exact generation model, batch size and cost limit are recorded before submission; no paid generations are included in this planning session.
+**Complete.** Art bible → **Mascot** contains the [twelve approved poses](MASCOT_STAGE4_LIBRARY.md) with their editable SVGs, transparent PNGs and usage guidance. The wizard acts as the company's recurring spokesperson on instructions, warnings and decoration. Preserve the approved silhouettes, framing and accessory details when placing them in graphics.
 
 ## 5. Define signage, UI and the future atlas
 
@@ -152,4 +144,4 @@ The owner answered all three planning questions:
 
 No planning clarification remains open. Exact future generation settings, artistic choices, atlas changes and new asset designs will be resolved against concrete review material at their respective stages.
 
-**Most recent execution:** stage 2's placement/export audit and contract is complete, following stage-1 cleanup. Completion evidence is in Progress. Native resource repair and a new export round trip are separate future work; stages 3–7 remain pending. Artistic approval is requested against concrete review sheets at stages 4–7. Extra atlases, broader character production, weapon production and unrelated gameplay changes remain outside this plan's required work.
+**Most recent execution:** stage 3's native library and 88-material review level are complete and acknowledged. Both ChatGPT action images are owner-approved and now have faithful editable SVG v02 traces with background/size presentation. The remaining pose set, native implementation, new export round trips and stages 5–7 remain future work. Preserve the approved source images and trace contours when making later revisions.

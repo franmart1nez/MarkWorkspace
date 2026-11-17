@@ -79,6 +79,9 @@
 [RoutineDef,ID_Restore,
     [If,[MemGetSize,ID32Recovery]>0,
         [If,[MVarGet,ID32Recovery,0]>0,
+            [If,[MVarGet,ID32Recovery,26]!=325,
+                [MessageOK,"A legacy ID export needs recovery with its previous plugin before switching camera providers. The existing recovery record was kept.","Generar y exportar ID"][Exit]
+            ]
             [RoutineCall,ID_CheckIdentity]
             [If,idSameTool==0,
                 [MessageOK,"ID recovery requires the same Tool and unchanged SubTool names/order. Restore that Tool and press ID again. No automatic Tool backup is created.","Generar y exportar ID"]
@@ -155,7 +158,11 @@
             [CanvasZoomSet,[MVarGet,ID32Recovery,14]]
             [CanvasPanSet,[MVarGet,ID32Recovery,15],[MVarGet,ID32Recovery,16]]
             [If,[MVarGet,ID32Recovery,56]>=0,[ISet,"Draw:Lock Camera",[MVarGet,ID32Recovery,56]]]
-            [MVarSet,CB25Data,5,[MVarGet,ID32Recovery,18]]
+            [If,[MemGetSize,FB25Data]==idBankBytes,
+                [If,([MVarGet,FB25Data,8]==[MVarGet,ID32Recovery,27])&&([MVarGet,FB25Data,9]==[MVarGet,ID32Recovery,28]),
+                    [MVarSet,FB25Data,5,[MVarGet,ID32Recovery,18]]
+                ]
+            ]
             [VarSet,idOldToolPath,""]
             [MemReadString,ID32ToolPath,idOldToolPath,0]
             [VarSet,idPathToolIndex,[ToolGetActiveIndex]]
@@ -249,22 +256,23 @@
     [RoutineCall,ID_Require,[Var,idFlat]]
 ]
 [RoutineDef,ID_CheckBank,
-    [If,[MemGetSize,CB25Data]!=idBankBytes,[RoutineCall,ID_Fail,"Load the matching Camera Bank source, then import or store the cameras first."]]
-    [If,([MVarGet,CB25Data,0]!=252523)||([MVarGet,CB25Data,1]!=idBankVersion)||([MVarGet,CB25Data,2]!=25),[RoutineCall,ID_Fail,"Unsupported Camera Bank data. Rebuild ID with the matching shared reader."]]
+    [If,[MemGetSize,FB25Data]!=idBankBytes,[RoutineCall,ID_Fail,"Open Camera Bank Fast, then import or store your cameras. Its standalone plugin must be loaded."]]
+    [If,([MVarGet,FB25Data,0]!=252523)||([MVarGet,FB25Data,1]!=idBankVersion)||([MVarGet,FB25Data,2]!=25),[RoutineCall,ID_Fail,"Unsupported Camera Bank Fast data. Expected the matching Fast reader."]]
+    [RoutineCall,ID_CB325_RequireFastReady]
     // Reject legacy positional-only data; identifiers must decide visibility.
     [If,idBankVersion>=8,
-        [If,[MVarGet,CB25Data,7]!=1,[RoutineCall,ID_Fail,"This bank has positional visibility only. Update cameras with the matching Camera Bank before ID export; name tracking is required."]]
+        [If,[MVarGet,FB25Data,7]!=1,[RoutineCall,ID_Fail,"This bank has positional visibility only. Update cameras with the matching Camera Bank Fast before ID export; name tracking is required."]]
     ]
     [VarSet,idCameraCount,0]
     [Loop,25,
         [VarSet,idBankBase,20+(idCheckSlot*20)]
-        [If,([MVarGet,CB25Data,idBankBase]==1)&&([MVarGet,CB25Data,idBankBase+16]==1),
+        [If,([MVarGet,FB25Data,idBankBase]==1)&&([MVarGet,FB25Data,idBankBase+16]==1),
             [VarInc,idCameraCount]
-            [If,([MVarGet,CB25Data,idBankBase+18]<=0)||([MVarGet,CB25Data,idBankBase+19]<=0),[RoutineCall,ID_Fail,"An enabled camera has no saved document size. Update it first."]]
-            [If,([MVarGet,CB25Data,idBankBase+18]>[IGetMax,"Document:Width"])||([MVarGet,CB25Data,idBankBase+19]>[IGetMax,"Document:Height"]),[RoutineCall,ID_Fail,"A camera exceeds the current document size limits."]]
+            [If,([MVarGet,FB25Data,idBankBase+18]<=0)||([MVarGet,FB25Data,idBankBase+19]<=0),[RoutineCall,ID_Fail,"An enabled camera has no saved document size. Update it first."]]
+            [If,([MVarGet,FB25Data,idBankBase+18]>[IGetMax,"Document:Width"])||([MVarGet,FB25Data,idBankBase+19]>[IGetMax,"Document:Height"]),[RoutineCall,ID_Fail,"A camera exceeds the current document size limits."]]
         ]
     ,idCheckSlot]
-    [If,idCameraCount==0,[RoutineCall,ID_Fail,"Enable at least one occupied Camera Bank view (orange). Gray cameras are omitted."]]
+    [If,idCameraCount==0,[RoutineCall,ID_Fail,"Enable at least one occupied Camera Bank Fast view (orange). Gray cameras are omitted."]]
 ]
 [RoutineDef,ID_CheckDLL,
     [VarSet,idDll,[FileNameResolvePath,"GenerateExportIDData/ZFileUtils64.dll"]]
@@ -350,11 +358,10 @@
     // All enabled targets are checked before ANY material/PolyGroup/RGB edits.
     [Loop,25,
         [VarSet,idOutputBase,20+(idOutputSlot*20)]
-        [If,([MVarGet,CB25Data,idOutputBase]==1)&&([MVarGet,CB25Data,idOutputBase+16]==1),
+        [If,([MVarGet,FB25Data,idOutputBase]==1)&&([MVarGet,FB25Data,idOutputBase+16]==1),
             [RoutineCall,ID_Label,idOutputSlot+1]
             [VarSet,idCameraFolder,[StrMerge,idRoot,"/",idLabel]]
             [If,[FileExecute,idDll,"FolderExists",[StrMerge,idCameraFolder,"/ID.png"]]>0,[RoutineCall,ID_Fail,"ID.png is a directory. Remove the conflicting directory first."]]
-            [If,[FileExists,[StrMerge,idCameraFolder,"/ID.png"]]>0,[MessageOK,[StrMerge,"Will overwrite in ZPass_1: ",idLabel,"/ID.png"],"Generar y exportar ID"]]
             [RoutineCall,ID_Folder,idCameraFolder]
             [RoutineCall,ID_WriteProbe,idCameraFolder]
         ]
@@ -365,6 +372,8 @@
     [If,[MemGetSize,ID32Names]>0,[MemDelete,ID32Names]]
     [If,[MemGetSize,ID32ToolPath]>0,[MemDelete,ID32ToolPath]]
     [MVarDef,ID32Recovery,6064,0]
+    [MVarSet,ID32Recovery,26,325]
+    [MVarSet,ID32Recovery,27,[MVarGet,FB25Data,8]][MVarSet,ID32Recovery,28,[MVarGet,FB25Data,9]]
     [MemCreate,ID32Names,256000,0]
     [MemCreate,ID32ToolPath,256,0]
     [VarSet,idOldToolPath,[ToolGetPath,[ToolGetActiveIndex]]]
@@ -382,7 +391,7 @@
     [MVarSet,ID32Recovery,13,[IGet,"Document:Pro"]]
     [MVarSet,ID32Recovery,14,[CanvasZoomGet]][MVarSet,ID32Recovery,15,[CanvasPanGetH]][MVarSet,ID32Recovery,16,[CanvasPanGetV]]
     [If,[IExists,"Transform:Solo"],[MVarSet,ID32Recovery,17,[IGet,"Transform:Solo"]]]
-    [MVarSet,ID32Recovery,18,[MVarGet,CB25Data,5]]
+    [MVarSet,ID32Recovery,18,[MVarGet,FB25Data,5]]
     [MVarSet,ID32Recovery,19,[IGet,idPolyPath]]
     [If,[IGet,"Render:Best"]==1,[MVarSet,ID32Recovery,20,1]]
     [If,[IGet,"Render:Fast"]==1,[MVarSet,ID32Recovery,20,2]]
@@ -428,7 +437,7 @@
     // Recall through the shared name-aware reader, then inspect effective eyes.
     [Loop,25,
         [VarSet,idUnionBase,20+(idUnionSlot*20)]
-        [If,([MVarGet,CB25Data,idUnionBase]==1)&&([MVarGet,CB25Data,idUnionBase+16]==1),
+        [If,([MVarGet,FB25Data,idUnionBase]==1)&&([MVarGet,FB25Data,idUnionBase+16]==1),
             [RoutineCall,ID_CB32_RequireVisibility,idUnionSlot]
             [RoutineCall,ID_CB29_LoadSlot,idUnionSlot]
             [VarSet,idVisibleCount,0]
@@ -443,10 +452,10 @@
     [Loop,[SubToolGetCount],
         [If,idNeeded(idMeshIndex)==1,
             [SubToolSelect,idMeshIndex]
+            [RoutineCall,ID_Require,idControls(8)]
             [If,idExportOnly==0,
             [RoutineCall,ID_Require,idControls(6)]
             [RoutineCall,ID_Require,idControls(7)]
-            [RoutineCall,ID_Require,idControls(8)]
             [RoutineCall,ID_Require,idControls(18)]
             [RoutineCall,ID_Require,idControls(2)]
             [If,[IExists,"Tool:Texture Map:Texture On"],
@@ -482,19 +491,32 @@
         ]
     ,idPrepareIndex]
 ]
+[RoutineDef,ID_EnablePolypaint,
+    // Enable existing RGB for every mesh used by the enabled cameras.
+    // Run BEFORE camera recall so selection cannot disturb saved framing.
+    [Loop,[SubToolGetCount],
+        [If,idNeeded(idPaintIndex)==1,
+            [SubToolSelect,idPaintIndex]
+            [RoutineCall,ID_Require,idControls(8)]
+            [ISet,idControls(8),1]
+            [If,[IGet,idControls(8)]!=1,[RoutineCall,ID_Fail,"Colorize could not be enabled on a required SubTool."]]
+        ]
+    ,idPaintIndex]
+]
 [RoutineDef,ID_ExportCameras,
     [VarSet,idExportedCount,0]
     [Loop,25,
         [VarSet,idExportBase,20+(idExportSlot*20)]
-        [If,([MVarGet,CB25Data,idExportBase]==1)&&([MVarGet,CB25Data,idExportBase+16]==1),
+        [If,([MVarGet,FB25Data,idExportBase]==1)&&([MVarGet,FB25Data,idExportBase+16]==1),
             [RoutineCall,ID_CheckIdentity]
             [If,idSameTool==0,[RoutineCall,ID_Fail,"Tool identity changed during ID capture."]]
+            [RoutineCall,ID_EnablePolypaint]
             [RoutineCall,ID_CB29_LoadSlot,idExportSlot]
             [If,idExportOnly==0,[IPress,[Var,idFlat]][IColorSet,255,255,255]]
             [IUnPress,idPolyPath]
             [If,[IExists,"Draw:Floor"],[IUnPress,"Draw:Floor"]]
             // Flat rendering captures manual colors/textures without filling
-            // materials or changing RGB, PolyGroups, masks or Colorize flags.
+            // materials or changing RGB, PolyGroups or masks. Colorize is on.
             [If,idExportOnly==1,[IPress,"Render:Flat"],[IPress,"Render:Preview"]]
             [IUpdate,2,1]
             [RoutineCall,ID_Label,idExportSlot+1]
@@ -562,6 +584,6 @@
 [IButton,"ZPlugin:Generar y exportar ID:Generar y exportar ID","Create flat polypainted IDs without a Tool backup, once per required mesh and export enabled Camera Bank views.",
     [RoutineCall,ID_Run,0]
 ,,1]
-[IButton,"ZPlugin:Generar y exportar ID:Exportar ID","Export manually prepared ID colors/textures for enabled cameras, without generating or changing mesh data. Uses ZPass_1 and restores display settings.",
+[IButton,"ZPlugin:Generar y exportar ID:Exportar ID","Enable Polypaint and export existing ID colors for enabled cameras. Replaces matching files in ZPass_1 without prompts and restores display settings.",
     [RoutineCall,ID_Run,1]
 ,,1]

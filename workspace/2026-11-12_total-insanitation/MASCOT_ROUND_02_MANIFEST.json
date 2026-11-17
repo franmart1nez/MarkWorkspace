@@ -1,0 +1,176 @@
+{
+  "provider": "ChatGPT built-in image_gen",
+  "model_identifier": "Not exposed by tool",
+  "seed": "Not reported",
+  "cost": "Not quoted by tool; no price inferred; no external API/provider",
+  "scope": "One initial raster per each of the ten remaining poses; owner selection before any SVG tracing. No automatic variation or retry batch.",
+  "reference": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Stick_figure_mascot_waving_33412cac_2K.jpg",
+  "reference_sha256": "8d614fae7a17f953ae1d377f9a6622cffbbe855608f56ec2a9b9b934795a606c",
+  "reference_role": "Sole visual identity and finish-quality input",
+  "owner_decision": "2026-11-17: v02 SVG traces approved; owner requested the same quality for other poses.",
+  "created": "2026-11-17T19:20:43.986Z",
+  "outputs": [
+    {
+      "id": "neutral-welcome-02",
+      "title": "Neutral / welcome",
+      "action": "Stand upright, calm and front-facing, feet planted apart. Hold the original staff in the screen-right hand. The other arm rests low with a small open palm offered outward at waist level, a quiet welcoming posture. Both elbows remain below the shoulders. This must clearly differ from the raised waving greeting; no raised hand or pointing finger.",
+      "prompt": "Use the supplied ORIGINAL greeting JPG as the sole visual identity and finish-quality reference. Create ONE standalone action image of this exact company wizard mascot. Change the action, preserving the character design.\n\nMatch the original round featureless black head, tall bent pointed wizard hat with its tip bending toward screen-right, broad elliptical brim and short curved white hat-band cutout; simple gently tapered torso, rounded arms and legs, and shoe-like feet. Keep its body/head proportions and polished one-color pictogram language. Where a staff is requested, preserve the original slim slightly leaning staff, circular orb, four-point white sparkle and small collar. Exactly two arms, two hands and two legs. Keep deliberate white separations at grips and overlaps.\n\nSmooth continuous silhouette curves, seamless shoulder/elbow/hip joins, balanced hands and feet, and crisp intentional negative spaces are essential. No bumpy primitive overlaps, kinks, extra limbs or fingers, facial features, beard, costume ornaments, gradients, texture or shading. Solid pure black artwork on a plain pure white background. Full figure, hat, hands, feet and every requested accessory entirely visible with generous white margin on all sides, square canvas and framing comparable to the reference. A simple short ground stroke is acceptable for standing actions. No lettering, labels, border, scene, watermark, collage, extra characters or SVG/code. This is a raster proposal for owner selection before faithful vector tracing.\n\nACTION: Stand upright, calm and front-facing, feet planted apart. Hold the original staff in the screen-right hand. The other arm rests low with a small open palm offered outward at waist level, a quiet welcoming posture. Both elbows remain below the shoulders. This must clearly differ from the raised waving greeting; no raised hand or pointing finger.",
+      "status": "selected-by-owner / traced-v03",
+      "image": "media/mascot-chatgpt-round-02/neutral-welcome-02.png",
+      "source_image": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_ChatGPT_Round_02/neutral-welcome-02.png",
+      "sha256": "6d65f8b6089470cc32b5422931e818573ca215386421e07640d423e830206e21",
+      "size": [
+        1254,
+        1254
+      ],
+      "agent_review": "Low open hand and staff; deliberately distinct from the raised greeting.",
+      "review": "MASCOT_TRACES_V03.md"
+    },
+    {
+      "id": "greeting-02",
+      "title": "Greeting / wave",
+      "action": "Show a friendly raised open-hand wave, like the original: screen-left forearm lifted beside the head with a simple open waving hand, screen-right hand holding the original staff. Upright relaxed stance, feet planted. Keep the original polished waving character proportions and finish. Distinguish this energetic high hand from the low neutral/welcome posture.",
+      "prompt": "Use the supplied ORIGINAL greeting JPG as the sole visual identity and finish-quality reference. Create ONE standalone action image of this exact company wizard mascot. Change the action, preserving the character design.\n\nMatch the original round featureless black head, tall bent pointed wizard hat with its tip bending toward screen-right, broad elliptical brim and short curved white hat-band cutout; simple gently tapered torso, rounded arms and legs, and shoe-like feet. Keep its body/head proportions and polished one-color pictogram language. Where a staff is requested, preserve the original slim slightly leaning staff, circular orb, four-point white sparkle and small collar. Exactly two arms, two hands and two legs. Keep deliberate white separations at grips and overlaps.\n\nSmooth continuous silhouette curves, seamless shoulder/elbow/hip joins, balanced hands and feet, and crisp intentional negative spaces are essential. No bumpy primitive overlaps, kinks, extra limbs or fingers, facial features, beard, costume ornaments, gradients, texture or shading. Solid pure black artwork on a plain pure white background. Full figure, hat, hands, feet and every requested accessory entirely visible with generous white margin on all sides, square canvas and framing comparable to the reference. A simple short ground stroke is acceptable for standing actions. No lettering, labels, border, scene, watermark, collage, extra characters or SVG/code. This is a raster proposal for owner selection before faithful vector tracing.\n\nACTION: Show a friendly raised open-hand wave, like the original: screen-left forearm lifted beside the head with a simple open waving hand, screen-right hand holding the original staff. Upright relaxed stance, feet planted. Keep the original polished waving character proportions and finish. Distinguish this energetic high hand from the low neutral/welcome posture.",
+      "status": "selected-by-owner / traced-v03",
+      "image": "media/mascot-chatgpt-round-02/greeting-02.png",
+      "source_image": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_ChatGPT_Round_02/greeting-02.png",
+      "sha256": "e647211fc8ab1c7c3e99f3d411714b57217531a964242b206cde33922c9b620c",
+      "size": [
+        1254,
+        1254
+      ],
+      "agent_review": "Raised open-hand wave; staff stays in the other hand. Compare the hand and shoulder curve with the original.",
+      "review": "MASCOT_TRACES_V03.md"
+    },
+    {
+      "id": "point-right-02",
+      "title": "Pointing right",
+      "action": "Point clearly toward screen-right with the screen-right arm extended naturally and a clean simple pointing hand. Hold the original orb staff in the screen-left hand, on the opposite side from the pointing arm. Keep the hat tip bending toward screen-right as in the original; do not merely mirror the entire character. Two planted feet and an upright confident pose. No arrow or destination symbol.",
+      "prompt": "Use the supplied ORIGINAL greeting JPG as the sole visual identity and finish-quality reference. Create ONE standalone action image of this exact company wizard mascot. Change the action, preserving the character design.\n\nMatch the original round featureless black head, tall bent pointed wizard hat with its tip bending toward screen-right, broad elliptical brim and short curved white hat-band cutout; simple gently tapered torso, rounded arms and legs, and shoe-like feet. Keep its body/head proportions and polished one-color pictogram language. Where a staff is requested, preserve the original slim slightly leaning staff, circular orb, four-point white sparkle and small collar. Exactly two arms, two hands and two legs. Keep deliberate white separations at grips and overlaps.\n\nSmooth continuous silhouette curves, seamless shoulder/elbow/hip joins, balanced hands and feet, and crisp intentional negative spaces are essential. No bumpy primitive overlaps, kinks, extra limbs or fingers, facial features, beard, costume ornaments, gradients, texture or shading. Solid pure black artwork on a plain pure white background. Full figure, hat, hands, feet and every requested accessory entirely visible with generous white margin on all sides, square canvas and framing comparable to the reference. A simple short ground stroke is acceptable for standing actions. No lettering, labels, border, scene, watermark, collage, extra characters or SVG/code. This is a raster proposal for owner selection before faithful vector tracing.\n\nACTION: Point clearly toward screen-right with the screen-right arm extended naturally and a clean simple pointing hand. Hold the original orb staff in the screen-left hand, on the opposite side from the pointing arm. Keep the hat tip bending toward screen-right as in the original; do not merely mirror the entire character. Two planted feet and an upright confident pose. No arrow or destination symbol.",
+      "status": "selected-by-owner / traced-v03",
+      "image": "media/mascot-chatgpt-round-02/point-right-02.png",
+      "source_image": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_ChatGPT_Round_02/point-right-02.png",
+      "sha256": "c3522dc2100e3edc7e4029513fce3514216ccde252fdd0b7eb94f5015ba1b7d6",
+      "size": [
+        1254,
+        1254
+      ],
+      "agent_review": "Arm points right; staff changes to the left side while the hat tip still bends right.",
+      "review": "MASCOT_TRACES_V03.md"
+    },
+    {
+      "id": "pushing-equipment-02",
+      "title": "Pushing cleaning equipment",
+      "action": "Push a simple compact two-wheel janitor trolley toward screen-right. Lean slightly forward, both hands visibly gripping one push bar. The trolley has a clear tray/frame, two round wheels and a single simple bucket silhouette. Keep broad shapes and clear white gaps; avoid tiny tool clutter. Both feet show a natural walking step. The staff is omitted for this two-handed task. The mascot remains the dominant readable shape.",
+      "prompt": "Use the supplied ORIGINAL greeting JPG as the sole visual identity and finish-quality reference. Create ONE standalone action image of this exact company wizard mascot. Change the action, preserving the character design.\n\nMatch the original round featureless black head, tall bent pointed wizard hat with its tip bending toward screen-right, broad elliptical brim and short curved white hat-band cutout; simple gently tapered torso, rounded arms and legs, and shoe-like feet. Keep its body/head proportions and polished one-color pictogram language. Where a staff is requested, preserve the original slim slightly leaning staff, circular orb, four-point white sparkle and small collar. Exactly two arms, two hands and two legs. Keep deliberate white separations at grips and overlaps.\n\nSmooth continuous silhouette curves, seamless shoulder/elbow/hip joins, balanced hands and feet, and crisp intentional negative spaces are essential. No bumpy primitive overlaps, kinks, extra limbs or fingers, facial features, beard, costume ornaments, gradients, texture or shading. Solid pure black artwork on a plain pure white background. Full figure, hat, hands, feet and every requested accessory entirely visible with generous white margin on all sides, square canvas and framing comparable to the reference. A simple short ground stroke is acceptable for standing actions. No lettering, labels, border, scene, watermark, collage, extra characters or SVG/code. This is a raster proposal for owner selection before faithful vector tracing.\n\nACTION: Push a simple compact two-wheel janitor trolley toward screen-right. Lean slightly forward, both hands visibly gripping one push bar. The trolley has a clear tray/frame, two round wheels and a single simple bucket silhouette. Keep broad shapes and clear white gaps; avoid tiny tool clutter. Both feet show a natural walking step. The staff is omitted for this two-handed task. The mascot remains the dominant readable shape.",
+      "status": "selected-by-owner / traced-v03",
+      "image": "media/mascot-chatgpt-round-02/pushing-equipment-02.png",
+      "source_image": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_ChatGPT_Round_02/pushing-equipment-02.png",
+      "sha256": "8684ecdd180c8d9dcad4b8a54345bba866948ed6f9ca04cef8462a97059f544e",
+      "size": [
+        1254,
+        1254
+      ],
+      "agent_review": "Two hands on the push bar, two visible wheels and one bucket; staff omitted for the task.",
+      "review": "MASCOT_TRACES_V03.md"
+    },
+    {
+      "id": "carrying-supplies-02",
+      "title": "Carrying supplies",
+      "action": "Carry one modest open supplies box against the lower chest with both hands supporting its left and right sides from below. Two simple bottle tops and one folded cloth project from the box enough to communicate cleaning supplies. Keep the round head, hat and upper shoulders fully visible above the box. Show a gentle walking step and both legs clearly. Use broad simple silhouettes and clean grip separation. The staff is omitted for the two-handed carry. No labels on bottles or box.",
+      "prompt": "Use the supplied ORIGINAL greeting JPG as the sole visual identity and finish-quality reference. Create ONE standalone action image of this exact company wizard mascot. Change the action, preserving the character design.\n\nMatch the original round featureless black head, tall bent pointed wizard hat with its tip bending toward screen-right, broad elliptical brim and short curved white hat-band cutout; simple gently tapered torso, rounded arms and legs, and shoe-like feet. Keep its body/head proportions and polished one-color pictogram language. Where a staff is requested, preserve the original slim slightly leaning staff, circular orb, four-point white sparkle and small collar. Exactly two arms, two hands and two legs. Keep deliberate white separations at grips and overlaps.\n\nSmooth continuous silhouette curves, seamless shoulder/elbow/hip joins, balanced hands and feet, and crisp intentional negative spaces are essential. No bumpy primitive overlaps, kinks, extra limbs or fingers, facial features, beard, costume ornaments, gradients, texture or shading. Solid pure black artwork on a plain pure white background. Full figure, hat, hands, feet and every requested accessory entirely visible with generous white margin on all sides, square canvas and framing comparable to the reference. A simple short ground stroke is acceptable for standing actions. No lettering, labels, border, scene, watermark, collage, extra characters or SVG/code. This is a raster proposal for owner selection before faithful vector tracing.\n\nACTION: Carry one modest open supplies box against the lower chest with both hands supporting its left and right sides from below. Two simple bottle tops and one folded cloth project from the box enough to communicate cleaning supplies. Keep the round head, hat and upper shoulders fully visible above the box. Show a gentle walking step and both legs clearly. Use broad simple silhouettes and clean grip separation. The staff is omitted for the two-handed carry. No labels on bottles or box.",
+      "status": "selected-by-owner / traced-v03",
+      "image": "media/mascot-chatgpt-round-02/carrying-supplies-02.png",
+      "source_image": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_ChatGPT_Round_02/carrying-supplies-02.png",
+      "sha256": "ebe9ae2830da46d988eab9aefc462e0d21c107c8ec74ab53f4d38ff591bc7642",
+      "size": [
+        1254,
+        1254
+      ],
+      "agent_review": "Two hands support one box containing two bottles and a cloth; staff omitted. The bottles and cloth use white cutouts against the torso.",
+      "review": "MASCOT_TRACES_V03.md"
+    },
+    {
+      "id": "explaining-instructions-02",
+      "title": "Explaining instructions",
+      "action": "Stand upright as a company spokesperson explaining a procedure. Hold the original staff in the screen-right hand. Bend the screen-left arm naturally forward with its forearm open horizontally and palm facing upward at chest level, a clear presenting/explaining gesture. Keep the hand below head height and avoid a pointed index finger or raised waving hand. No board, paper, text, speech bubble or additional props.",
+      "prompt": "Use the supplied ORIGINAL greeting JPG as the sole visual identity and finish-quality reference. Create ONE standalone action image of this exact company wizard mascot. Change the action, preserving the character design.\n\nMatch the original round featureless black head, tall bent pointed wizard hat with its tip bending toward screen-right, broad elliptical brim and short curved white hat-band cutout; simple gently tapered torso, rounded arms and legs, and shoe-like feet. Keep its body/head proportions and polished one-color pictogram language. Where a staff is requested, preserve the original slim slightly leaning staff, circular orb, four-point white sparkle and small collar. Exactly two arms, two hands and two legs. Keep deliberate white separations at grips and overlaps.\n\nSmooth continuous silhouette curves, seamless shoulder/elbow/hip joins, balanced hands and feet, and crisp intentional negative spaces are essential. No bumpy primitive overlaps, kinks, extra limbs or fingers, facial features, beard, costume ornaments, gradients, texture or shading. Solid pure black artwork on a plain pure white background. Full figure, hat, hands, feet and every requested accessory entirely visible with generous white margin on all sides, square canvas and framing comparable to the reference. A simple short ground stroke is acceptable for standing actions. No lettering, labels, border, scene, watermark, collage, extra characters or SVG/code. This is a raster proposal for owner selection before faithful vector tracing.\n\nACTION: Stand upright as a company spokesperson explaining a procedure. Hold the original staff in the screen-right hand. Bend the screen-left arm naturally forward with its forearm open horizontally and palm facing upward at chest level, a clear presenting/explaining gesture. Keep the hand below head height and avoid a pointed index finger or raised waving hand. No board, paper, text, speech bubble or additional props.",
+      "status": "selected-by-owner / traced-v03",
+      "image": "media/mascot-chatgpt-round-02/explaining-instructions-02.png",
+      "source_image": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_ChatGPT_Round_02/explaining-instructions-02.png",
+      "sha256": "021039d7ee54f541e477e1bebdb3f46f11ed96a97cdc9490d970a9aebf6e0bb5",
+      "size": [
+        1254,
+        1254
+      ],
+      "agent_review": "Open palm at chest height presents information without pointing or waving; staff retained.",
+      "review": "MASCOT_TRACES_V03.md"
+    },
+    {
+      "id": "slipping-falling-02",
+      "title": "Slipping / falling",
+      "action": "Show an unmistakable backward slip in profile/three-quarter silhouette: torso tilted diagonally backward, one leg kicked forward and the other bent under the body, both arms thrown out for balance. The same wizard hat stays on the head with its original silhouette and white band; do not detach the head or hat. Preserve exactly two visible arms and two legs with clean separations. Omit the staff to keep this accident action clear. One short curved motion stroke below a shoe is acceptable; no puddle or scene. Frame the entire diagonal figure with generous margin.",
+      "prompt": "Use the supplied ORIGINAL greeting JPG as the sole visual identity and finish-quality reference. Create ONE standalone action image of this exact company wizard mascot. Change the action, preserving the character design.\n\nMatch the original round featureless black head, tall bent pointed wizard hat with its tip bending toward screen-right, broad elliptical brim and short curved white hat-band cutout; simple gently tapered torso, rounded arms and legs, and shoe-like feet. Keep its body/head proportions and polished one-color pictogram language. Where a staff is requested, preserve the original slim slightly leaning staff, circular orb, four-point white sparkle and small collar. Exactly two arms, two hands and two legs. Keep deliberate white separations at grips and overlaps.\n\nSmooth continuous silhouette curves, seamless shoulder/elbow/hip joins, balanced hands and feet, and crisp intentional negative spaces are essential. No bumpy primitive overlaps, kinks, extra limbs or fingers, facial features, beard, costume ornaments, gradients, texture or shading. Solid pure black artwork on a plain pure white background. Full figure, hat, hands, feet and every requested accessory entirely visible with generous white margin on all sides, square canvas and framing comparable to the reference. A simple short ground stroke is acceptable for standing actions. No lettering, labels, border, scene, watermark, collage, extra characters or SVG/code. This is a raster proposal for owner selection before faithful vector tracing.\n\nACTION: Show an unmistakable backward slip in profile/three-quarter silhouette: torso tilted diagonally backward, one leg kicked forward and the other bent under the body, both arms thrown out for balance. The same wizard hat stays on the head with its original silhouette and white band; do not detach the head or hat. Preserve exactly two visible arms and two legs with clean separations. Omit the staff to keep this accident action clear. One short curved motion stroke below a shoe is acceptable; no puddle or scene. Frame the entire diagonal figure with generous margin.",
+      "status": "superseded-proposal / revision-requested",
+      "image": "media/mascot-chatgpt-round-02/slipping-falling-02.png",
+      "source_image": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_ChatGPT_Round_02/slipping-falling-02.png",
+      "sha256": "643bdcb00067a022690e052f977d5acd74ac6a873437dfe2abb6e34a209a9faf",
+      "size": [
+        1254,
+        1254
+      ],
+      "agent_review": "Backward diagonal slip, one extended and one bent leg, two outstretched arms. Staff omitted; hat stays worn.",
+      "review": "MASCOT_ROUND_03_REVIEW.md"
+    },
+    {
+      "id": "electrical-accident-02",
+      "title": "Electrical accident",
+      "action": "Show the wizard recoiling from an electric shock with a tense slightly arched torso, two arms bent and splayed outward, two separated legs and the original hat still worn. Place two small simple jagged lightning-bolt silhouettes beside the torso, isolated with generous white gaps, enough to convey electrocution. Keep the body a solid black pictogram like the original, without a skeleton, bones, facial features or costume detail. The staff is omitted. No cables, machines, plugs or environmental scene. Entire figure and bolts remain fully framed.",
+      "prompt": "Use the supplied ORIGINAL greeting JPG as the sole visual identity and finish-quality reference. Create ONE standalone action image of this exact company wizard mascot. Change the action, preserving the character design.\n\nMatch the original round featureless black head, tall bent pointed wizard hat with its tip bending toward screen-right, broad elliptical brim and short curved white hat-band cutout; simple gently tapered torso, rounded arms and legs, and shoe-like feet. Keep its body/head proportions and polished one-color pictogram language. Where a staff is requested, preserve the original slim slightly leaning staff, circular orb, four-point white sparkle and small collar. Exactly two arms, two hands and two legs. Keep deliberate white separations at grips and overlaps.\n\nSmooth continuous silhouette curves, seamless shoulder/elbow/hip joins, balanced hands and feet, and crisp intentional negative spaces are essential. No bumpy primitive overlaps, kinks, extra limbs or fingers, facial features, beard, costume ornaments, gradients, texture or shading. Solid pure black artwork on a plain pure white background. Full figure, hat, hands, feet and every requested accessory entirely visible with generous white margin on all sides, square canvas and framing comparable to the reference. A simple short ground stroke is acceptable for standing actions. No lettering, labels, border, scene, watermark, collage, extra characters or SVG/code. This is a raster proposal for owner selection before faithful vector tracing.\n\nACTION: Show the wizard recoiling from an electric shock with a tense slightly arched torso, two arms bent and splayed outward, two separated legs and the original hat still worn. Place two small simple jagged lightning-bolt silhouettes beside the torso, isolated with generous white gaps, enough to convey electrocution. Keep the body a solid black pictogram like the original, without a skeleton, bones, facial features or costume detail. The staff is omitted. No cables, machines, plugs or environmental scene. Entire figure and bolts remain fully framed.",
+      "status": "superseded-proposal / revision-requested",
+      "image": "media/mascot-chatgpt-round-02/electrical-accident-02.png",
+      "source_image": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_ChatGPT_Round_02/electrical-accident-02.png",
+      "sha256": "c497652e47d96402abf833e45b447b9756e27d7587ffb304e00329c6d3073d28",
+      "size": [
+        1254,
+        1254
+      ],
+      "agent_review": "Recoiling figure with two isolated lightning bolts. Solid pictogram body, with no skeleton or extra apparatus.",
+      "review": "MASCOT_ROUND_03_REVIEW.md"
+    },
+    {
+      "id": "chemical-accident-02",
+      "title": "Chemical / acid accident",
+      "action": "Show a clearly readable chemical spill accident. The wizard holds one small simple tilted laboratory flask with the screen-left hand; two or three large clean black drops fall from its mouth toward the other outstretched hand. The receiving arm recoils slightly, the head and torso lean away and the two planted feet stay clearly separated. Both hands and the flask remain visually distinct with deliberate white gaps. Keep the entire body intact, solid black and non-graphic: no wound, skeleton or dissolving anatomy. The staff is omitted. No text, hazard label, splash clutter or extra lab apparatus.",
+      "prompt": "Use the supplied ORIGINAL greeting JPG as the sole visual identity and finish-quality reference. Create ONE standalone action image of this exact company wizard mascot. Change the action, preserving the character design.\n\nMatch the original round featureless black head, tall bent pointed wizard hat with its tip bending toward screen-right, broad elliptical brim and short curved white hat-band cutout; simple gently tapered torso, rounded arms and legs, and shoe-like feet. Keep its body/head proportions and polished one-color pictogram language. Where a staff is requested, preserve the original slim slightly leaning staff, circular orb, four-point white sparkle and small collar. Exactly two arms, two hands and two legs. Keep deliberate white separations at grips and overlaps.\n\nSmooth continuous silhouette curves, seamless shoulder/elbow/hip joins, balanced hands and feet, and crisp intentional negative spaces are essential. No bumpy primitive overlaps, kinks, extra limbs or fingers, facial features, beard, costume ornaments, gradients, texture or shading. Solid pure black artwork on a plain pure white background. Full figure, hat, hands, feet and every requested accessory entirely visible with generous white margin on all sides, square canvas and framing comparable to the reference. A simple short ground stroke is acceptable for standing actions. No lettering, labels, border, scene, watermark, collage, extra characters or SVG/code. This is a raster proposal for owner selection before faithful vector tracing.\n\nACTION: Show a clearly readable chemical spill accident. The wizard holds one small simple tilted laboratory flask with the screen-left hand; two or three large clean black drops fall from its mouth toward the other outstretched hand. The receiving arm recoils slightly, the head and torso lean away and the two planted feet stay clearly separated. Both hands and the flask remain visually distinct with deliberate white gaps. Keep the entire body intact, solid black and non-graphic: no wound, skeleton or dissolving anatomy. The staff is omitted. No text, hazard label, splash clutter or extra lab apparatus.",
+      "status": "superseded-proposal / revision-requested",
+      "image": "media/mascot-chatgpt-round-02/chemical-accident-02.png",
+      "source_image": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_ChatGPT_Round_02/chemical-accident-02.png",
+      "sha256": "f9f5b18136557702a9dc5388a7e85c987621c54f65fabd6de55c7fbfa6861fe1",
+      "size": [
+        1254,
+        1254
+      ],
+      "agent_review": "Tilted flask and two drops above the other hand. The lower drop sits close to the forearm; check that the spill reads clearly and does not look like intentional pouring.",
+      "review": "MASCOT_ROUND_03_REVIEW.md"
+    },
+    {
+      "id": "fleeing-fire-magic-02",
+      "title": "Fleeing fire / magic",
+      "action": "Show the wizard running urgently toward screen-right away from one compact magical flame shape behind on screen-left. Torso leans forward, one leg reaches forward while the other bends back, and two arms swing naturally. Hold the original orb staff in the forward hand at a slight forward diagonal; the other arm swings backward. Keep the staff clear of the face and feet, and the hat on the head with its original bent tip. The chasing flame has only three broad simple tongues, is separate from the figure and is much smaller than the mascot. No fire touching the body, scenery, smoke cloud or multiple flames. Entire figure, staff and flame fully visible.",
+      "prompt": "Use the supplied ORIGINAL greeting JPG as the sole visual identity and finish-quality reference. Create ONE standalone action image of this exact company wizard mascot. Change the action, preserving the character design.\n\nMatch the original round featureless black head, tall bent pointed wizard hat with its tip bending toward screen-right, broad elliptical brim and short curved white hat-band cutout; simple gently tapered torso, rounded arms and legs, and shoe-like feet. Keep its body/head proportions and polished one-color pictogram language. Where a staff is requested, preserve the original slim slightly leaning staff, circular orb, four-point white sparkle and small collar. Exactly two arms, two hands and two legs. Keep deliberate white separations at grips and overlaps.\n\nSmooth continuous silhouette curves, seamless shoulder/elbow/hip joins, balanced hands and feet, and crisp intentional negative spaces are essential. No bumpy primitive overlaps, kinks, extra limbs or fingers, facial features, beard, costume ornaments, gradients, texture or shading. Solid pure black artwork on a plain pure white background. Full figure, hat, hands, feet and every requested accessory entirely visible with generous white margin on all sides, square canvas and framing comparable to the reference. A simple short ground stroke is acceptable for standing actions. No lettering, labels, border, scene, watermark, collage, extra characters or SVG/code. This is a raster proposal for owner selection before faithful vector tracing.\n\nACTION: Show the wizard running urgently toward screen-right away from one compact magical flame shape behind on screen-left. Torso leans forward, one leg reaches forward while the other bends back, and two arms swing naturally. Hold the original orb staff in the forward hand at a slight forward diagonal; the other arm swings backward. Keep the staff clear of the face and feet, and the hat on the head with its original bent tip. The chasing flame has only three broad simple tongues, is separate from the figure and is much smaller than the mascot. No fire touching the body, scenery, smoke cloud or multiple flames. Entire figure, staff and flame fully visible.",
+      "status": "superseded-proposal / revision-requested",
+      "image": "media/mascot-chatgpt-round-02/fleeing-fire-magic-02.png",
+      "source_image": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_ChatGPT_Round_02/fleeing-fire-magic-02.png",
+      "sha256": "0dc1e44c8797e90ed00d8419b6ed2f9a7ad8edad9e0a2e732b92b32969942d0b",
+      "size": [
+        1254,
+        1254
+      ],
+      "agent_review": "Running toward the right with a staff and one separate flame behind. Compare the larger action framing with the standing poses.",
+      "review": "MASCOT_ROUND_03_REVIEW.md"
+    }
+  ],
+  "status": "owner-reviewed: 01–06 selected, 07–10 revised",
+  "completed_submissions": 10
+}

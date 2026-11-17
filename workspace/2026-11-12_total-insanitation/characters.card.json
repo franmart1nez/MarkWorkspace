@@ -1,0 +1,31 @@
+{
+  "format": "mrmak-card",
+  "version": 1,
+  "template": "gallery",
+  "title": "Characters / available Unreal coverage",
+  "summary": "The project currently contains Manny and Quinn as engine template placeholders. The owner character sources have no verified corresponding Unreal assets. This category makes that missing coverage explicit.",
+  "items": [
+    {
+      "id": "asset-097",
+      "title": "Characters / engine placeholders / SKM_Manny_Simple",
+      "image": "media/unreal-2026-11-17/asset-097.webp",
+      "alt": "Native Unreal preview of SKM_Manny_Simple",
+      "body": "**Unreal asset:** `/Game/Characters/Mannequins/Meshes/SKM_Manny_Simple`\n\n**Family:** Characters / engine placeholders. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** Skeletal asset; preview in its current native pose.\n\n**Source relationship:** Unreal template asset; no owner Blender source assigned.. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Proportion and animation placeholder only. This is not one of the owner-authored fantasy characters.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-098",
+      "title": "Characters / engine placeholders / SKM_Quinn_Simple",
+      "image": "media/unreal-2026-11-17/asset-098.webp",
+      "alt": "Native Unreal preview of SKM_Quinn_Simple",
+      "body": "**Unreal asset:** `/Game/Characters/Mannequins/Meshes/SKM_Quinn_Simple`\n\n**Family:** Characters / engine placeholders. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** Skeletal asset; preview in its current native pose.\n\n**Source relationship:** Unreal template asset; no owner Blender source assigned.. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Proportion and animation placeholder only. This is not one of the owner-authored fantasy characters.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "character-coverage-gap",
+      "title": "Owner character species / Unreal coverage missing",
+      "status": "idea",
+      "body": "**Coverage gap, not a new production request.** The stage-2 catalog contains nine saved character blends under `Characters/<species>/<variant>/Blender/`. The current project registry has no matching imported fantasy-character skeletal assets. `/Game/Art/Characters` remains the confirmed future destination and has not been created here.\n\nNo character was invented, generated or imported for this library. Manny and Quinn above are existing engine placeholders. Chicken and Tongue Mop remain cleaning-tool references in Assets. See [File rules](FILE_PLACEMENT.md) for the existing source/export audit. Review date: 2026-11-17."
+    }
+  ]
+}

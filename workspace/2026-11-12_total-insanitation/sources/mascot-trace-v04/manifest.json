@@ -1,0 +1,126 @@
+{
+  "version": "trace-v04",
+  "status": "owner-selected-rasters / SVG review",
+  "method": "Adobe image_vectorize and the v02 winding-aware compound path method",
+  "canonical_source": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_Trace_v04",
+  "items": [
+    {
+      "pose": "slipping-falling",
+      "title": "Slipping / falling",
+      "number": 7,
+      "approved_raster": "media/mascot-chatgpt-round-03/slipping-falling-03.png",
+      "approved_raster_sha256": "9a7092037cb9f669ea59354078bfa5306f762536b55cdabac9823929040fc5c2",
+      "raw_adobe_svg_sha256": "19ac1203493e5f910061a24650216ce4e365b74a5a1a9f8412001f072e294d20",
+      "adobe_path_count": 7,
+      "compound_contours": 6,
+      "svg": "wizard-slipping-falling-v04.svg",
+      "white_svg": "wizard-slipping-falling-v04-white.svg",
+      "fidelity": {
+        "foreground_iou_percent": 99.73980522935989,
+        "different_binary_pixels": 797,
+        "outside_one_pixel_band": 0
+      },
+      "black_white_alpha_max_difference_by_px": {
+        "32": 0,
+        "48": 0,
+        "64": 1,
+        "96": 1,
+        "128": 1,
+        "256": 1,
+        "512": 0,
+        "1024": 0
+      }
+    },
+    {
+      "pose": "electrical-accident",
+      "title": "Electrical accident",
+      "number": 8,
+      "approved_raster": "media/mascot-chatgpt-round-04/electrical-accident-04.png",
+      "approved_raster_sha256": "6457d01244fa87dffffa131ef216a10d43cbdbf42fff0d90456a6a7d64232cb9",
+      "raw_adobe_svg_sha256": "1ffcbb004570bd56b9bb3fa4fd499a82d25c091adfeb22999db9c618832fc767",
+      "adobe_path_count": 29,
+      "compound_contours": 28,
+      "svg": "wizard-electrical-accident-v04.svg",
+      "white_svg": "wizard-electrical-accident-v04-white.svg",
+      "fidelity": {
+        "foreground_iou_percent": 99.26703612138911,
+        "different_binary_pixels": 1767,
+        "outside_one_pixel_band": 0
+      },
+      "black_white_alpha_max_difference_by_px": {
+        "32": 0,
+        "48": 1,
+        "64": 1,
+        "96": 1,
+        "128": 1,
+        "256": 1,
+        "512": 0,
+        "1024": 0
+      }
+    },
+    {
+      "pose": "chemical-accident",
+      "title": "Acid on the floor",
+      "number": 9,
+      "approved_raster": "media/mascot-chatgpt-round-03/chemical-accident-03.png",
+      "approved_raster_sha256": "29e2a4d47addf689402fb6e0578fb327ff7b54f68b68e7141e714f735511c460",
+      "raw_adobe_svg_sha256": "c9dc8721e92b05ce24ec229a440df0d226c99191cc8bb5601d8d15588bf559e8",
+      "adobe_path_count": 9,
+      "compound_contours": 7,
+      "svg": "wizard-chemical-accident-v04.svg",
+      "white_svg": "wizard-chemical-accident-v04-white.svg",
+      "fidelity": {
+        "foreground_iou_percent": 99.67987066957721,
+        "different_binary_pixels": 701,
+        "outside_one_pixel_band": 0
+      },
+      "black_white_alpha_max_difference_by_px": {
+        "32": 0,
+        "48": 1,
+        "64": 1,
+        "96": 1,
+        "128": 1,
+        "256": 1,
+        "512": 0,
+        "1024": 0
+      }
+    },
+    {
+      "pose": "fleeing-fire-magic",
+      "title": "Fleeing fire",
+      "number": 10,
+      "approved_raster": "media/mascot-chatgpt-round-03/fleeing-fire-magic-03.png",
+      "approved_raster_sha256": "b47155dcbab4cf2b37e457ef03f610804b3b9e49f9ae8b13f4bf73a3f4d59b3c",
+      "raw_adobe_svg_sha256": "d4074b630caf54c78831ddc70e7c3c5bb97797394891202ca6dceb45b51224bf",
+      "adobe_path_count": 9,
+      "compound_contours": 8,
+      "svg": "wizard-fleeing-fire-magic-v04.svg",
+      "white_svg": "wizard-fleeing-fire-magic-v04-white.svg",
+      "fidelity": {
+        "foreground_iou_percent": 99.69451437936165,
+        "different_binary_pixels": 1234,
+        "outside_one_pixel_band": 0
+      },
+      "black_white_alpha_max_difference_by_px": {
+        "32": 0,
+        "48": 0,
+        "64": 0,
+        "96": 0,
+        "128": 1,
+        "256": 1,
+        "512": 0,
+        "1024": 0
+      }
+    }
+  ],
+  "svg_hashes": {
+    "wizard-slipping-falling-v04.svg": "5d7e6ce3ea8de577a726362f2587f2996ca4e96c3decad0348ba8c1ce2942af2",
+    "wizard-slipping-falling-v04-white.svg": "b2d16c4145006cb845b8f92678f9aac019e32701f8d0da85ffb2ed4a6e87766c",
+    "wizard-electrical-accident-v04.svg": "76d04c43f9473b86afa85f31fa12e7f4265df566651495cb4a432ca8772fd6b4",
+    "wizard-electrical-accident-v04-white.svg": "173828d54108ae6c7e1958b4d7aea5f38ab12db8856b805610dd7577463d00f1",
+    "wizard-chemical-accident-v04.svg": "0b44633570d8d538cf02021e349303603a1e5f8f9eb61068451e78e915420a15",
+    "wizard-chemical-accident-v04-white.svg": "fb58587b1480b3a4be769ebc1304e7be21b76a200cb161e12a58916ded9e5944",
+    "wizard-fleeing-fire-magic-v04.svg": "6cf715a38611465bb637fc95a6485e25ad50209b1ec8643fd8a33cb364ef3580",
+    "wizard-fleeing-fire-magic-v04-white.svg": "8a6d40ea4b864fa6ae44f8b21b588c5b0083308e3cb855329952990ea54b7dcb"
+  }
+}

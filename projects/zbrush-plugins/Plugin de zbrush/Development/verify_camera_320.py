@@ -11,7 +11,7 @@ from verify_merge import parts, get
 
 class Camera320(unittest.TestCase):
     def host(self):
-        h=Host();h.load(ROOT/'Camera Bank/CameraBank25.txt');return h
+        h=Host();h.load(ROOT/'Development/tests/fixtures/legacy_camera_321.txt');return h
 
     def legacy(self):
         h=self.host();h.call('CB29_SaveSlot',0);h.call('CB29_SaveSlot',1)
@@ -20,7 +20,7 @@ class Camera320(unittest.TestCase):
         return h
 
     def button(self,h,label):
-        node=next(n for n in parse((ROOT/'Camera Bank/CameraBank25.txt').read_text())
+        node=next(n for n in parse((ROOT/'Development/tests/fixtures/legacy_camera_321.txt').read_text())
                   if n[0]=='IButton' and n[1].strip('"').endswith(':'+label))
         h.run(node[3])
 
@@ -38,7 +38,7 @@ class Camera320(unittest.TestCase):
         self.assertEqual(h.names[0][:20],h.names[2][:20])
         self.assertNotEqual(h.names[0][:20],h.names[1][:20])
         self.assertTrue(all(n[20:]=='Same' for n in h.names))
-        self.assertNotIn('PREPARE TRANSFER',(ROOT/'Camera Bank/CameraBank25.txt').read_text())
+        self.assertNotIn('PREPARE TRANSFER',(ROOT/'Development/tests/fixtures/legacy_camera_321.txt').read_text())
         parts(h,[h.names[1],h.names[2],h.names[0]])
         h.call('CB29_LoadSlot',0)
         self.assertEqual([s&1 for s in h.status],[0,1,1])
@@ -244,7 +244,7 @@ class Camera320(unittest.TestCase):
         h.call('CB29_LoadSlot',1);self.assertEqual([s&1 for s in h.status],[1,0])
         # Scan every If condition in both generated outputs, including branches
         # that this particular fixture may not execute.
-        for path in [ROOT/'Camera Bank/CameraBank25.txt',ROOT/'Development/camera_reader.inc']:
+        for path in [ROOT/'Development/tests/fixtures/legacy_camera_321.txt',ROOT/'Development/camera_reader.inc']:
             source=clean(path.read_text(encoding='ascii'))
             for match in re.finditer(r'\[If,',source):
                 condition=node(source,match.start())[0][1]
@@ -268,7 +268,7 @@ class Camera320(unittest.TestCase):
             for literal in re.findall(r'"([^"\n]*)"',source):
                 self.assertLessEqual(len(literal),255,f'{path.relative_to(ROOT)}: {len(literal)} characters')
             checked.append(path)
-        self.assertIn(ROOT/'Camera Bank/CameraBank25.txt',checked)
+        self.assertIn(ROOT/'Development/tests/fixtures/legacy_camera_321.txt',checked)
         self.assertIn(ROOT/'Development/camera_reader.inc',checked)
 
     def test_native_strmerge_arity_and_group_identifier_format(self):
@@ -379,7 +379,7 @@ class Camera320(unittest.TestCase):
                 self.assertNotIn('CB32RenameState',h.mem)
 
     def test_generated_shared_reader_matches_camera_routines(self):
-        camera={n[1]:n[2:] for n in parse((ROOT/'Camera Bank/CameraBank25.txt').read_text()) if n[0]=='RoutineDef'}
+        camera={n[1]:n[2:] for n in parse((ROOT/'Development/tests/fixtures/legacy_camera_321.txt').read_text()) if n[0]=='RoutineDef'}
         reader=parse((ROOT/'Development/camera_reader.inc').read_text())
         for n in reader:
             if n[0]!='RoutineDef':continue

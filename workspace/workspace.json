@@ -3,11 +3,11 @@
     {
       "id": "total-insanitation",
       "title": "Total (in)Sanitation",
-      "description": "Stages 1â€“2 complete: reset and source/FBX/Unreal file contract verified. Resource issues classified; native production files preserved. Stages 3â€“7 pending.",
+      "description": "Stages 1–4 complete. Art bible → Signage & UI has the Stage 5 review with four signs, HUD and menu proposals. Mascot contains the twelve approved poses.",
       "type": "group",
       "category": "game",
       "created": "2026-11-12",
-      "updated": "2026-11-17T02:37:14.481274+00:00",
+      "updated": "2026-11-17T22:12:44.366Z",
       "folder": "2026-11-12_total-insanitation",
       "status": "active",
       "pinned": true,
@@ -43,6 +43,47 @@
         {
           "name": "File rules",
           "path": "FILE_PLACEMENT.md",
+          "parent": "TOOLS.md"
+        },
+        {
+          "name": "Environments",
+          "path": "environments.card.json",
+          "viewer": "card",
+          "parent": "art-bible.card.json"
+        },
+        {
+          "name": "Materials",
+          "path": "materials.card.json",
+          "viewer": "card",
+          "parent": "art-bible.card.json"
+        },
+        {
+          "name": "Assets",
+          "path": "assets.card.json",
+          "viewer": "card",
+          "parent": "art-bible.card.json"
+        },
+        {
+          "name": "Characters",
+          "path": "characters.card.json",
+          "viewer": "card",
+          "parent": "art-bible.card.json"
+        },
+        {
+          "name": "Mascot",
+          "path": "mascot.card.json",
+          "viewer": "card",
+          "parent": "art-bible.card.json"
+        },
+        {
+          "name": "Signage & UI",
+          "path": "signage-ui.card.json",
+          "viewer": "card",
+          "parent": "art-bible.card.json"
+        },
+        {
+          "name": "Capture notes",
+          "path": "REFERENCE_LIBRARY.md",
           "parent": "TOOLS.md"
         }
       ]
@@ -149,11 +190,11 @@
     {
       "id": "zbrush-plugins",
       "title": "ZBrush plugins",
-      "description": "3.2.3: Exportar ID exports manually prepared colors without regenerating mesh data. ZPass_1 reuse, overwrite notices and per-SubTool display restoration retained. 52 focused tests.",
+      "description": "3.2.5: Render Capture and both ID actions use the unchanged standalone Camera Bank Fast by default. 67 automated checks plus native Fast/legacy isolation and export checks.",
       "type": "group",
       "category": "dev",
       "created": "2026-11-13",
-      "updated": "2026-11-16T20:59:27.801001+00:00",
+      "updated": "2026-11-17T21:29:15.546994+00:00",
       "folder": "2026-11-13_zbrush-plugins",
       "status": "active",
       "defaultStep": 0,
@@ -177,6 +218,10 @@
         {
           "name": "3.2.1 verification",
           "path": "verification-3.2.1.md"
+        },
+        {
+          "name": "Camera Bank Fast",
+          "path": "camera-bank-fast.md"
         }
       ]
     }

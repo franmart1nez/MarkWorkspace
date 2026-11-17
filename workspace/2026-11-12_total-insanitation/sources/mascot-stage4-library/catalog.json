@@ -1,0 +1,147 @@
+{
+  "title": "Wizard mascot / stage 4 pose library",
+  "size_px": [
+    32,
+    48,
+    64,
+    96,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "poses": [
+    {
+      "pose": "neutral-welcome",
+      "title": "Welcome",
+      "version": "v03",
+      "black_svg": "sources/mascot-trace-v03/wizard-neutral-welcome-v03.svg",
+      "white_svg": "sources/mascot-trace-v03/wizard-neutral-welcome-v03-white.svg",
+      "source_raster": "media/mascot-chatgpt-round-02/neutral-welcome-02.png",
+      "source_raster_sha256": "6d65f8b6089470cc32b5422931e818573ca215386421e07640d423e830206e21",
+      "black_svg_sha256": "1a29b3ab1be78fa04c4830f70f4b91eceb954c38910c26dbfcbdedc00c940868",
+      "white_svg_sha256": "25073910b15316c9a709a0659a0f4c603bbbf53a55a1b91907b6a42d8f607612"
+    },
+    {
+      "pose": "greeting",
+      "title": "Greeting",
+      "version": "v03",
+      "black_svg": "sources/mascot-trace-v03/wizard-greeting-v03.svg",
+      "white_svg": "sources/mascot-trace-v03/wizard-greeting-v03-white.svg",
+      "source_raster": "media/mascot-chatgpt-round-02/greeting-02.png",
+      "source_raster_sha256": "e647211fc8ab1c7c3e99f3d411714b57217531a964242b206cde33922c9b620c",
+      "black_svg_sha256": "a3708a371c968975f54cae18e5cdc5ff659586f3ee4a387cc45d748e870c3a2d",
+      "white_svg_sha256": "065348fa7f528acf6b2c6efa71c3009ad0c06ec8988a8bbaffd31b9f16442712"
+    },
+    {
+      "pose": "point-left",
+      "title": "Pointing left",
+      "version": "v02",
+      "black_svg": "sources/mascot-trace-v02/wizard-point-left-v02.svg",
+      "white_svg": "sources/mascot-trace-v02/wizard-point-left-v02-white.svg",
+      "source_raster": "media/mascot-chatgpt-round-01/point-left-01.png",
+      "source_raster_sha256": "ae900f40c40f1e08aa9bb85196340d57c8e5aff8346cc218efb6a9bfa74b55e4",
+      "black_svg_sha256": "8fc0297ca63500be4a4ba1cb1c0c2bd8f0157b9fe963b35f34491cb4f97e29d2",
+      "white_svg_sha256": "91e5a3469eb0e379e59ed154ff14a718d120c4c23b28344eec45752ef3554872"
+    },
+    {
+      "pose": "point-right",
+      "title": "Pointing right",
+      "version": "v03",
+      "black_svg": "sources/mascot-trace-v03/wizard-point-right-v03.svg",
+      "white_svg": "sources/mascot-trace-v03/wizard-point-right-v03-white.svg",
+      "source_raster": "media/mascot-chatgpt-round-02/point-right-02.png",
+      "source_raster_sha256": "c3522dc2100e3edc7e4029513fce3514216ccde252fdd0b7eb94f5015ba1b7d6",
+      "black_svg_sha256": "9188c955dc140bac2a4a8520b0b5b0fb5a411d674b4e7065d7ada56098b9a52c",
+      "white_svg_sha256": "34c1f95cfa7f628702310ffe76209a2b49d3488d90fafa95a17ad6f5fb6da244"
+    },
+    {
+      "pose": "mopping",
+      "title": "Mopping",
+      "version": "v02",
+      "black_svg": "sources/mascot-trace-v02/wizard-mopping-v02.svg",
+      "white_svg": "sources/mascot-trace-v02/wizard-mopping-v02-white.svg",
+      "source_raster": "media/mascot-chatgpt-round-01/mopping-01.png",
+      "source_raster_sha256": "f8ee92c248bf76d57c72c0f48c2551906285a8a4877b4ba56146e0619a874f32",
+      "black_svg_sha256": "71977598a3b3d3e8b7a6794edfda5b62e0fadfecd42a9e686d1cd9ca6ab9b361",
+      "white_svg_sha256": "304a44f8253b2bf5e11c741763def97e91d18c8f96af66c9c663f4cc3e054d1f"
+    },
+    {
+      "pose": "pushing-equipment",
+      "title": "Pushing equipment",
+      "version": "v03",
+      "black_svg": "sources/mascot-trace-v03/wizard-pushing-equipment-v03.svg",
+      "white_svg": "sources/mascot-trace-v03/wizard-pushing-equipment-v03-white.svg",
+      "source_raster": "media/mascot-chatgpt-round-02/pushing-equipment-02.png",
+      "source_raster_sha256": "8684ecdd180c8d9dcad4b8a54345bba866948ed6f9ca04cef8462a97059f544e",
+      "black_svg_sha256": "d448157fb03ef18bd043f5f6bd2533b431fdb37f2261516a2e1dd3b0fd95d01b",
+      "white_svg_sha256": "9288baa80608b15e9a948663b05871edf883c01a9f7dbb7e0b8915ae13ecdc6f"
+    },
+    {
+      "pose": "carrying-supplies",
+      "title": "Carrying supplies",
+      "version": "v03",
+      "black_svg": "sources/mascot-trace-v03/wizard-carrying-supplies-v03.svg",
+      "white_svg": "sources/mascot-trace-v03/wizard-carrying-supplies-v03-white.svg",
+      "source_raster": "media/mascot-chatgpt-round-02/carrying-supplies-02.png",
+      "source_raster_sha256": "ebe9ae2830da46d988eab9aefc462e0d21c107c8ec74ab53f4d38ff591bc7642",
+      "black_svg_sha256": "832a35472908454f16410d2678f923e1d0cc64b02814c923eb08e0b26a2e7e9f",
+      "white_svg_sha256": "3599f52f1fc4b312f6a9dde971d46f610080cd017b87b266b8bbb6d525957237"
+    },
+    {
+      "pose": "explaining-instructions",
+      "title": "Explaining instructions",
+      "version": "v03",
+      "black_svg": "sources/mascot-trace-v03/wizard-explaining-instructions-v03.svg",
+      "white_svg": "sources/mascot-trace-v03/wizard-explaining-instructions-v03-white.svg",
+      "source_raster": "media/mascot-chatgpt-round-02/explaining-instructions-02.png",
+      "source_raster_sha256": "021039d7ee54f541e477e1bebdb3f46f11ed96a97cdc9490d970a9aebf6e0bb5",
+      "black_svg_sha256": "28a57f14e533450bda2b04dd502d8bde62f6a0cc86f0ae7da737cbf63008e305",
+      "white_svg_sha256": "46453c0ea585d9b5b842f1c28fe14b26f796b4e7f75fcc65849110a651def5af"
+    },
+    {
+      "pose": "slipping-falling",
+      "title": "Slipping / falling",
+      "version": "v04",
+      "black_svg": "sources/mascot-trace-v04/wizard-slipping-falling-v04.svg",
+      "white_svg": "sources/mascot-trace-v04/wizard-slipping-falling-v04-white.svg",
+      "source_raster": "media/mascot-chatgpt-round-03/slipping-falling-03.png",
+      "source_raster_sha256": "9a7092037cb9f669ea59354078bfa5306f762536b55cdabac9823929040fc5c2",
+      "black_svg_sha256": "5d7e6ce3ea8de577a726362f2587f2996ca4e96c3decad0348ba8c1ce2942af2",
+      "white_svg_sha256": "b2d16c4145006cb845b8f92678f9aac019e32701f8d0da85ffb2ed4a6e87766c"
+    },
+    {
+      "pose": "electrical-accident",
+      "title": "Electrical accident",
+      "version": "v04",
+      "black_svg": "sources/mascot-trace-v04/wizard-electrical-accident-v04.svg",
+      "white_svg": "sources/mascot-trace-v04/wizard-electrical-accident-v04-white.svg",
+      "source_raster": "media/mascot-chatgpt-round-04/electrical-accident-04.png",
+      "source_raster_sha256": "6457d01244fa87dffffa131ef216a10d43cbdbf42fff0d90456a6a7d64232cb9",
+      "black_svg_sha256": "76d04c43f9473b86afa85f31fa12e7f4265df566651495cb4a432ca8772fd6b4",
+      "white_svg_sha256": "173828d54108ae6c7e1958b4d7aea5f38ab12db8856b805610dd7577463d00f1"
+    },
+    {
+      "pose": "chemical-accident",
+      "title": "Acid on the floor",
+      "version": "v04",
+      "black_svg": "sources/mascot-trace-v04/wizard-chemical-accident-v04.svg",
+      "white_svg": "sources/mascot-trace-v04/wizard-chemical-accident-v04-white.svg",
+      "source_raster": "media/mascot-chatgpt-round-03/chemical-accident-03.png",
+      "source_raster_sha256": "29e2a4d47addf689402fb6e0578fb327ff7b54f68b68e7141e714f735511c460",
+      "black_svg_sha256": "0b44633570d8d538cf02021e349303603a1e5f8f9eb61068451e78e915420a15",
+      "white_svg_sha256": "fb58587b1480b3a4be769ebc1304e7be21b76a200cb161e12a58916ded9e5944"
+    },
+    {
+      "pose": "fleeing-fire-magic",
+      "title": "Fleeing fire",
+      "version": "v04",
+      "black_svg": "sources/mascot-trace-v04/wizard-fleeing-fire-magic-v04.svg",
+      "white_svg": "sources/mascot-trace-v04/wizard-fleeing-fire-magic-v04-white.svg",
+      "source_raster": "media/mascot-chatgpt-round-03/fleeing-fire-magic-03.png",
+      "source_raster_sha256": "b47155dcbab4cf2b37e457ef03f610804b3b9e49f9ae8b13f4bf73a3f4d59b3c",
+      "black_svg_sha256": "6cf715a38611465bb637fc95a6485e25ad50209b1ec8643fd8a33cb364ef3580",
+      "white_svg_sha256": "8a6d40ea4b864fa6ae44f8b21b588c5b0083308e3cb855329952990ea54b7dcb"
+    }
+  ]
+}

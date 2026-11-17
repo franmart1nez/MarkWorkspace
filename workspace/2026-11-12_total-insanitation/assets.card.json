@@ -1,0 +1,561 @@
+{
+  "format": "mrmak-card",
+  "version": 1,
+  "template": "gallery",
+  "title": "Assets / current native references",
+  "summary": "69 selected existing assets, ordered by native building/tool/prop family. Native thumbnails show geometry and current default bindings; Environments shows scene overrides. The [reference index](REFERENCE_INDEX.json) also retains metadata and previews for all 98 inspected static/skeletal assets. Long legacy floor/trim bundles with unhelpful tiny thumbnails are catalogued there instead of presented as finished art. [Capture notes](REFERENCE_LIBRARY.md).",
+  "items": [
+    {
+      "id": "asset-001",
+      "title": "Building / Janitor_Elevator_01",
+      "image": "media/unreal-2026-11-17/asset-001.webp",
+      "alt": "Native Unreal preview of Janitor_Elevator_01",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Building/Janitor/Elevator/Janitor_Elevator_01`\n\n**Family:** Building. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 4.62 × 6.56 × 4.22 m (X × Y × Z)\n\n**Source relationship:** `Assets/Building/Interior_Building.blend`. Current matching export: `Assets/Building/Delivery/Janitor/Elevator.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-002",
+      "title": "Building / Janitor_Elevator_Doors_01",
+      "image": "media/unreal-2026-11-17/asset-002.webp",
+      "alt": "Native Unreal preview of Janitor_Elevator_Doors_01",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Building/Janitor/Elevator/Janitor_Elevator_Doors_01`\n\n**Family:** Building. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.22 × 6.52 × 12.00 m (X × Y × Z)\n\n**Source relationship:** `Assets/Building/Interior_Building.blend`. Current matching export: `Assets/Building/Delivery/Janitor/Elevator.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-015",
+      "title": "Building / Floor_01",
+      "image": "media/unreal-2026-11-17/asset-015.webp",
+      "alt": "Native Unreal preview of Floor_01",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Building/Modular_Blocks/Floor/Floor_01`\n\n**Family:** Building. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 4.00 × 4.00 × 0.15 m (X × Y × Z)\n\n**Source relationship:** `Assets/Building/Interior_Building.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Modular materials are assigned through the existing Blueprint workflow. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-020",
+      "title": "Building / Fluorescent_Light_Basement_01",
+      "image": "media/unreal-2026-11-17/asset-020.webp",
+      "alt": "Native Unreal preview of Fluorescent_Light_Basement_01",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Building/Modular_Blocks/Lights/Fluorescent_Light_Basement_01`\n\n**Family:** Building. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 1.94 × 0.47 × 0.20 m (X × Y × Z)\n\n**Source relationship:** `Assets/Building/Interior_Building.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Modular materials are assigned through the existing Blueprint workflow. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-021",
+      "title": "Building / Wall_01",
+      "image": "media/unreal-2026-11-17/asset-021.webp",
+      "alt": "Native Unreal preview of Wall_01",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Building/Modular_Blocks/Modular_Walls/Wall_01`\n\n**Family:** Building. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 4.00 × 0.15 × 4.00 m (X × Y × Z)\n\n**Source relationship:** `Assets/Building/Interior_Building.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Modular materials are assigned through the existing Blueprint workflow. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-022",
+      "title": "Building / Wall_02",
+      "image": "media/unreal-2026-11-17/asset-022.webp",
+      "alt": "Native Unreal preview of Wall_02",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Building/Modular_Blocks/Modular_Walls/Wall_02`\n\n**Family:** Building. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 4.00 × 0.15 × 4.00 m (X × Y × Z)\n\n**Source relationship:** `Assets/Building/Interior_Building.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Modular materials are assigned through the existing Blueprint workflow. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-023",
+      "title": "Building / Wall_Corner_01",
+      "image": "media/unreal-2026-11-17/asset-023.webp",
+      "alt": "Native Unreal preview of Wall_Corner_01",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Building/Modular_Blocks/Modular_Walls/Wall_Corner_01`\n\n**Family:** Building. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 3.85 × 0.15 × 4.00 m (X × Y × Z)\n\n**Source relationship:** `Assets/Building/Interior_Building.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Modular materials are assigned through the existing Blueprint workflow. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-024",
+      "title": "Building / Wall_Corner_VertexColor_01",
+      "image": "media/unreal-2026-11-17/asset-024.webp",
+      "alt": "Native Unreal preview of Wall_Corner_VertexColor_01",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Building/Modular_Blocks/Modular_Walls/Wall_Corner_VertexColor_01`\n\n**Family:** Building. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 3.85 × 0.15 × 4.00 m (X × Y × Z)\n\n**Source relationship:** `Assets/Building/Interior_Building.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Modular materials are assigned through the existing Blueprint workflow. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-025",
+      "title": "Building / Wall_VertexColor_01",
+      "image": "media/unreal-2026-11-17/asset-025.webp",
+      "alt": "Native Unreal preview of Wall_VertexColor_01",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Building/Modular_Blocks/Modular_Walls/Wall_VertexColor_01`\n\n**Family:** Building. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 4.00 × 0.15 × 4.00 m (X × Y × Z)\n\n**Source relationship:** `Assets/Building/Interior_Building.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Modular materials are assigned through the existing Blueprint workflow. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-026",
+      "title": "Building / Wall_VertexColor_02",
+      "image": "media/unreal-2026-11-17/asset-026.webp",
+      "alt": "Native Unreal preview of Wall_VertexColor_02",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Building/Modular_Blocks/Modular_Walls/Wall_VertexColor_02`\n\n**Family:** Building. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 4.00 × 0.15 × 4.00 m (X × Y × Z)\n\n**Source relationship:** `Assets/Building/Interior_Building.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Modular materials are assigned through the existing Blueprint workflow. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-027",
+      "title": "Building / Wall_VertexColor_03",
+      "image": "media/unreal-2026-11-17/asset-027.webp",
+      "alt": "Native Unreal preview of Wall_VertexColor_03",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Building/Modular_Blocks/Modular_Walls/Wall_VertexColor_03`\n\n**Family:** Building. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 4.00 × 0.15 × 4.00 m (X × Y × Z)\n\n**Source relationship:** `Assets/Building/Interior_Building.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Modular materials are assigned through the existing Blueprint workflow. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-028",
+      "title": "Building / Roof_01",
+      "image": "media/unreal-2026-11-17/asset-028.webp",
+      "alt": "Native Unreal preview of Roof_01",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Building/Modular_Blocks/Roof/Roof_01`\n\n**Family:** Building. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 4.00 × 4.00 × 0.15 m (X × Y × Z)\n\n**Source relationship:** `Assets/Building/Interior_Building.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Modular materials are assigned through the existing Blueprint workflow. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-029",
+      "title": "Building / Roof_02",
+      "image": "media/unreal-2026-11-17/asset-029.webp",
+      "alt": "Native Unreal preview of Roof_02",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Building/Modular_Blocks/Roof/Roof_02`\n\n**Family:** Building. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 4.00 × 4.00 × 0.15 m (X × Y × Z)\n\n**Source relationship:** `Assets/Building/Interior_Building.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Modular materials are assigned through the existing Blueprint workflow. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-033",
+      "title": "Building / Stair_01",
+      "image": "media/unreal-2026-11-17/asset-033.webp",
+      "alt": "Native Unreal preview of Stair_01",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Building/Modular_Blocks/Stairs/Stair_01`\n\n**Family:** Building. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 4.00 × 4.00 × 2.00 m (X × Y × Z)\n\n**Source relationship:** `Assets/Building/Interior_Building.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Modular materials are assigned through the existing Blueprint workflow. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-034",
+      "title": "Building / Wall_Decorations_01",
+      "image": "media/unreal-2026-11-17/asset-034.webp",
+      "alt": "Native Unreal preview of Wall_Decorations_01",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Building/Modular_Blocks/Wall_Decorations/Wall_Decorations_01`\n\n**Family:** Building. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 4.00 × 0.06 × 0.66 m (X × Y × Z)\n\n**Source relationship:** `Assets/Building/Interior_Building.blend`. Current matching export: `Assets/Building/Delivery/Modular_Blocks/Wall_Decorations_01.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Modular materials are assigned through the existing Blueprint workflow. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-035",
+      "title": "Building / Wall_Decorations_Corner_01",
+      "image": "media/unreal-2026-11-17/asset-035.webp",
+      "alt": "Native Unreal preview of Wall_Decorations_Corner_01",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Building/Modular_Blocks/Wall_Decorations/Wall_Decorations_Corner_01`\n\n**Family:** Building. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 4.06 × 0.06 × 0.66 m (X × Y × Z)\n\n**Source relationship:** `Assets/Building/Interior_Building.blend`. Current matching export: `Assets/Building/Delivery/Modular_Blocks/Wall_Decorations_Corner_01.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Modular materials are assigned through the existing Blueprint workflow. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-044",
+      "title": "Clean_Tools / Box_Bucket_Tool",
+      "image": "media/unreal-2026-11-17/asset-044.webp",
+      "alt": "Native Unreal preview of Box_Bucket_Tool",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Clean_Tools/Box_Bucket_Tool`\n\n**Family:** Clean_Tools. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.84 × 0.84 × 0.66 m (X × Y × Z)\n\n**Source relationship:** Existing per-tool source under `Assets/Cleaning_Tools/`. Current matching export: `Assets/Cleaning_Tools/Cleaning_Tools/Box/Box_Bucket_Tool.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-045",
+      "title": "Clean_Tools / Chicken",
+      "image": "media/unreal-2026-11-17/asset-045.webp",
+      "alt": "Native Unreal preview of Chicken",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Clean_Tools/Chicken/Chicken`\n\n**Family:** Clean_Tools. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** Skeletal asset; preview in its current native pose.\n\n**Source relationship:** Existing per-tool source under `Assets/Cleaning_Tools/`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-046",
+      "title": "Clean_Tools / Cleaning_Bucket_Tool",
+      "image": "media/unreal-2026-11-17/asset-046.webp",
+      "alt": "Native Unreal preview of Cleaning_Bucket_Tool",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Clean_Tools/Cleaning_Bucket_Tool`\n\n**Family:** Clean_Tools. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.73 × 0.78 × 0.76 m (X × Y × Z)\n\n**Source relationship:** Existing per-tool source under `Assets/Cleaning_Tools/`. Current matching export: `Assets/Cleaning_Tools/Cleaning_Tools/Bucket/Cleaning_Bucket_Tool.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-047",
+      "title": "Clean_Tools / Janitor_Cart",
+      "image": "media/unreal-2026-11-17/asset-047.webp",
+      "alt": "Native Unreal preview of Janitor_Cart",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Clean_Tools/Janitor_Cart/Janitor_Cart`\n\n**Family:** Clean_Tools. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 1.85 × 3.39 × 1.18 m (X × Y × Z)\n\n**Source relationship:** Existing per-tool source under `Assets/Cleaning_Tools/`. Current matching export: `Assets/Cleaning_Tools/Cleaning_Tools/Janitor_Cart/Janitor_Cart.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-048",
+      "title": "Clean_Tools / Janitor_Cart_Tool_01",
+      "image": "media/unreal-2026-11-17/asset-048.webp",
+      "alt": "Native Unreal preview of Janitor_Cart_Tool_01",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Clean_Tools/Janitor_Cart/Janitor_Cart_Tool_01`\n\n**Family:** Clean_Tools. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 1.40 × 2.91 × 0.12 m (X × Y × Z)\n\n**Source relationship:** Existing per-tool source under `Assets/Cleaning_Tools/`. Current matching export: `Assets/Cleaning_Tools/Cleaning_Tools/Janitor_Cart/Janitor_Cart.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-049",
+      "title": "Clean_Tools / Tongue_Mop",
+      "image": "media/unreal-2026-11-17/asset-049.webp",
+      "alt": "Native Unreal preview of Tongue_Mop",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Clean_Tools/Tongue_Mop/Tongue_Mop`\n\n**Family:** Clean_Tools. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** Skeletal asset; preview in its current native pose.\n\n**Source relationship:** Existing per-tool source under `Assets/Cleaning_Tools/`. Current matching export: `Assets/Cleaning_Tools/Tongue_Mop/Tongue_Mop.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-050",
+      "title": "Clean_Tools / Triangle_Bucket_Tool",
+      "image": "media/unreal-2026-11-17/asset-050.webp",
+      "alt": "Native Unreal preview of Triangle_Bucket_Tool",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Clean_Tools/Triangle_Bucket_Tool`\n\n**Family:** Clean_Tools. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.85 × 0.76 × 0.66 m (X × Y × Z)\n\n**Source relationship:** Existing per-tool source under `Assets/Cleaning_Tools/`. Current matching export: `Assets/Cleaning_Tools/Cleaning_Tools/Triangle/Triangle_Bucket_Tool.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-051",
+      "title": "Clean_Tools / Water_Gem",
+      "image": "media/unreal-2026-11-17/asset-051.webp",
+      "alt": "Native Unreal preview of Water_Gem",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Clean_Tools/Water_Gem/Water_Gem`\n\n**Family:** Clean_Tools. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.21 × 0.08 × 0.36 m (X × Y × Z)\n\n**Source relationship:** Existing per-tool source under `Assets/Cleaning_Tools/`. Current matching export: `Assets/Cleaning_Tools/Water_Gem/Water_Gem.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-052",
+      "title": "Environment props / Concrete_Pieces / Concrete_01",
+      "image": "media/unreal-2026-11-17/asset-052.webp",
+      "alt": "Native Unreal preview of Concrete_01",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Concrete_Pieces/Concrete_01`\n\n**Family:** Environment props / Concrete_Pieces. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.29 × 0.14 × 0.11 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_01.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-053",
+      "title": "Environment props / Concrete_Pieces / Concrete_02",
+      "image": "media/unreal-2026-11-17/asset-053.webp",
+      "alt": "Native Unreal preview of Concrete_02",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Concrete_Pieces/Concrete_02`\n\n**Family:** Environment props / Concrete_Pieces. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.35 × 0.27 × 0.16 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_02.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-054",
+      "title": "Environment props / Concrete_Pieces / Concrete_03",
+      "image": "media/unreal-2026-11-17/asset-054.webp",
+      "alt": "Native Unreal preview of Concrete_03",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Concrete_Pieces/Concrete_03`\n\n**Family:** Environment props / Concrete_Pieces. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.31 × 0.24 × 0.22 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_03.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-055",
+      "title": "Environment props / Concrete_Pieces / Concrete_04",
+      "image": "media/unreal-2026-11-17/asset-055.webp",
+      "alt": "Native Unreal preview of Concrete_04",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Concrete_Pieces/Concrete_04`\n\n**Family:** Environment props / Concrete_Pieces. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.37 × 0.29 × 0.08 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_04.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-056",
+      "title": "Environment props / Concrete_Pieces / Concrete_05",
+      "image": "media/unreal-2026-11-17/asset-056.webp",
+      "alt": "Native Unreal preview of Concrete_05",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Concrete_Pieces/Concrete_05`\n\n**Family:** Environment props / Concrete_Pieces. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.49 × 0.33 × 0.08 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_05.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-057",
+      "title": "Environment props / Concrete_Pieces / Concrete_06",
+      "image": "media/unreal-2026-11-17/asset-057.webp",
+      "alt": "Native Unreal preview of Concrete_06",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Concrete_Pieces/Concrete_06`\n\n**Family:** Environment props / Concrete_Pieces. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.34 × 0.29 × 0.07 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_06.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-058",
+      "title": "Environment props / Concrete_Pieces / Concrete_07",
+      "image": "media/unreal-2026-11-17/asset-058.webp",
+      "alt": "Native Unreal preview of Concrete_07",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Concrete_Pieces/Concrete_07`\n\n**Family:** Environment props / Concrete_Pieces. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.44 × 0.33 × 0.10 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_07.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-059",
+      "title": "Environment props / Concrete_Pieces / Concrete_08",
+      "image": "media/unreal-2026-11-17/asset-059.webp",
+      "alt": "Native Unreal preview of Concrete_08",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Concrete_Pieces/Concrete_08`\n\n**Family:** Environment props / Concrete_Pieces. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.41 × 0.29 × 0.11 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Concrete_Pieces/Concrete_08.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-060",
+      "title": "Environment props / Glass_Pieces / Glass_Piece_01",
+      "image": "media/unreal-2026-11-17/asset-060.webp",
+      "alt": "Native Unreal preview of Glass_Piece_01",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Glass_Pieces/Glass_Piece_01`\n\n**Family:** Environment props / Glass_Pieces. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.52 × 0.38 × 0.16 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_01.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-061",
+      "title": "Environment props / Glass_Pieces / Glass_Piece_02",
+      "image": "media/unreal-2026-11-17/asset-061.webp",
+      "alt": "Native Unreal preview of Glass_Piece_02",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Glass_Pieces/Glass_Piece_02`\n\n**Family:** Environment props / Glass_Pieces. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.26 × 0.18 × 0.05 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_02.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-062",
+      "title": "Environment props / Glass_Pieces / Glass_Piece_03",
+      "image": "media/unreal-2026-11-17/asset-062.webp",
+      "alt": "Native Unreal preview of Glass_Piece_03",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Glass_Pieces/Glass_Piece_03`\n\n**Family:** Environment props / Glass_Pieces. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.23 × 0.21 × 0.08 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_03.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-063",
+      "title": "Environment props / Glass_Pieces / Glass_Piece_04",
+      "image": "media/unreal-2026-11-17/asset-063.webp",
+      "alt": "Native Unreal preview of Glass_Piece_04",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Glass_Pieces/Glass_Piece_04`\n\n**Family:** Environment props / Glass_Pieces. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.22 × 0.18 × 0.05 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_04.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-064",
+      "title": "Environment props / Glass_Pieces / Glass_Piece_05",
+      "image": "media/unreal-2026-11-17/asset-064.webp",
+      "alt": "Native Unreal preview of Glass_Piece_05",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Glass_Pieces/Glass_Piece_05`\n\n**Family:** Environment props / Glass_Pieces. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.33 × 0.36 × 0.05 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_05.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-065",
+      "title": "Environment props / Glass_Pieces / Glass_Piece_06",
+      "image": "media/unreal-2026-11-17/asset-065.webp",
+      "alt": "Native Unreal preview of Glass_Piece_06",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Glass_Pieces/Glass_Piece_06`\n\n**Family:** Environment props / Glass_Pieces. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.47 × 0.19 × 0.09 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_06.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-066",
+      "title": "Environment props / Glass_Pieces / Glass_Piece_07",
+      "image": "media/unreal-2026-11-17/asset-066.webp",
+      "alt": "Native Unreal preview of Glass_Piece_07",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Glass_Pieces/Glass_Piece_07`\n\n**Family:** Environment props / Glass_Pieces. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.33 × 0.26 × 0.09 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_07.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-067",
+      "title": "Environment props / Glass_Pieces / Glass_Piece_08",
+      "image": "media/unreal-2026-11-17/asset-067.webp",
+      "alt": "Native Unreal preview of Glass_Piece_08",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Glass_Pieces/Glass_Piece_08`\n\n**Family:** Environment props / Glass_Pieces. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.23 × 0.15 × 0.10 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Glass_Pieces/Glass_Piece_08.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-068",
+      "title": "Environment props / Lab / SM_Fridge",
+      "image": "media/unreal-2026-11-17/asset-068.webp",
+      "alt": "Native Unreal preview of SM_Fridge",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Lab/Big/SM_Fridge`\n\n**Family:** Environment props / Lab. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 1.30 × 1.64 × 2.40 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Some LaCarlota test actors have missing mesh assignments despite this asset being loadable; no actor link was repaired. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-069",
+      "title": "Environment props / Lab / SM_LabShelf",
+      "image": "media/unreal-2026-11-17/asset-069.webp",
+      "alt": "Native Unreal preview of SM_LabShelf",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Lab/Big/SM_LabShelf`\n\n**Family:** Environment props / Lab. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 1.84 × 0.62 × 1.04 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Some LaCarlota test actors have missing mesh assignments despite this asset being loadable; no actor link was repaired. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-070",
+      "title": "Environment props / Lab / SM_Worktable",
+      "image": "media/unreal-2026-11-17/asset-070.webp",
+      "alt": "Native Unreal preview of SM_Worktable",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Lab/Big/SM_Worktable`\n\n**Family:** Environment props / Lab. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 1.84 × 0.87 × 1.00 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Some LaCarlota test actors have missing mesh assignments despite this asset being loadable; no actor link was repaired. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-071",
+      "title": "Environment props / Lab / SM_Window_Big",
+      "image": "media/unreal-2026-11-17/asset-071.webp",
+      "alt": "Native Unreal preview of SM_Window_Big",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Lab/Enormes/SM_Window_Big`\n\n**Family:** Environment props / Lab. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 3.55 × 0.09 × 2.79 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Lab/Enormes/SM_Window_Big.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Some LaCarlota test actors have missing mesh assignments despite this asset being loadable; no actor link was repaired. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-072",
+      "title": "Environment props / Lab / SM_Window_Medium",
+      "image": "media/unreal-2026-11-17/asset-072.webp",
+      "alt": "Native Unreal preview of SM_Window_Medium",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Lab/Enormes/SM_Window_Medium`\n\n**Family:** Environment props / Lab. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 1.85 × 0.09 × 2.79 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Lab/Enormes/SM_Window_Medium.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Some LaCarlota test actors have missing mesh assignments despite this asset being loadable; no actor link was repaired. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-073",
+      "title": "Environment props / Lab / SM_Window_Small",
+      "image": "media/unreal-2026-11-17/asset-073.webp",
+      "alt": "Native Unreal preview of SM_Window_Small",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Lab/Enormes/SM_Window_Small`\n\n**Family:** Environment props / Lab. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 2.64 × 0.09 × 1.60 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Lab/Enormes/SM_Window_Small.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Some LaCarlota test actors have missing mesh assignments despite this asset being loadable; no actor link was repaired. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-074",
+      "title": "Environment props / Lab / SM_Centrifuge",
+      "image": "media/unreal-2026-11-17/asset-074.webp",
+      "alt": "Native Unreal preview of SM_Centrifuge",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Lab/Medium/SM_Centrifuge`\n\n**Family:** Environment props / Lab. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.50 × 0.57 × 0.85 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Some LaCarlota test actors have missing mesh assignments despite this asset being loadable; no actor link was repaired. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-075",
+      "title": "Environment props / Lab / SM_Dissecator",
+      "image": "media/unreal-2026-11-17/asset-075.webp",
+      "alt": "Native Unreal preview of SM_Dissecator",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Lab/Medium/SM_Dissecator`\n\n**Family:** Environment props / Lab. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.37 × 0.37 × 0.45 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Some LaCarlota test actors have missing mesh assignments despite this asset being loadable; no actor link was repaired. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-076",
+      "title": "Environment props / Lab / SM_Microscope",
+      "image": "media/unreal-2026-11-17/asset-076.webp",
+      "alt": "Native Unreal preview of SM_Microscope",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Lab/Medium/SM_Microscope`\n\n**Family:** Environment props / Lab. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.22 × 0.45 × 0.53 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Some LaCarlota test actors have missing mesh assignments despite this asset being loadable; no actor link was repaired. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-077",
+      "title": "Environment props / Lab / SM_Stool",
+      "image": "media/unreal-2026-11-17/asset-077.webp",
+      "alt": "Native Unreal preview of SM_Stool",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Lab/Medium/SM_Stool`\n\n**Family:** Environment props / Lab. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.73 × 0.73 × 0.81 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Some LaCarlota test actors have missing mesh assignments despite this asset being loadable; no actor link was repaired. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-078",
+      "title": "Environment props / Lab / SM_WaterBath",
+      "image": "media/unreal-2026-11-17/asset-078.webp",
+      "alt": "Native Unreal preview of SM_WaterBath",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Lab/Medium/SM_WaterBath`\n\n**Family:** Environment props / Lab. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.52 × 0.84 × 0.37 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Some LaCarlota test actors have missing mesh assignments despite this asset being loadable; no actor link was repaired. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-079",
+      "title": "Environment props / Lab / SM_Beaker",
+      "image": "media/unreal-2026-11-17/asset-079.webp",
+      "alt": "Native Unreal preview of SM_Beaker",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Lab/Small/SM_Beaker`\n\n**Family:** Environment props / Lab. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.15 × 0.14 × 0.18 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Some LaCarlota test actors have missing mesh assignments despite this asset being loadable; no actor link was repaired. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-080",
+      "title": "Environment props / Lab / SM_ErlenmeyerFlask",
+      "image": "media/unreal-2026-11-17/asset-080.webp",
+      "alt": "Native Unreal preview of SM_ErlenmeyerFlask",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Lab/Small/SM_ErlenmeyerFlask`\n\n**Family:** Environment props / Lab. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.13 × 0.13 × 0.24 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Some LaCarlota test actors have missing mesh assignments despite this asset being loadable; no actor link was repaired. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-081",
+      "title": "Environment props / Lab / SM_GraduatedCylinder",
+      "image": "media/unreal-2026-11-17/asset-081.webp",
+      "alt": "Native Unreal preview of SM_GraduatedCylinder",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Lab/Small/SM_GraduatedCylinder`\n\n**Family:** Environment props / Lab. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.12 × 0.14 × 0.33 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Some LaCarlota test actors have missing mesh assignments despite this asset being loadable; no actor link was repaired. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-082",
+      "title": "Environment props / Lab / SM_StirringRod",
+      "image": "media/unreal-2026-11-17/asset-082.webp",
+      "alt": "Native Unreal preview of SM_StirringRod",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Lab/Small/SM_StirringRod`\n\n**Family:** Environment props / Lab. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.02 × 0.30 × 0.02 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Some LaCarlota test actors have missing mesh assignments despite this asset being loadable; no actor link was repaired. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-083",
+      "title": "Environment props / Lab / SM_TestTube",
+      "image": "media/unreal-2026-11-17/asset-083.webp",
+      "alt": "Native Unreal preview of SM_TestTube",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Lab/Small/SM_TestTube`\n\n**Family:** Environment props / Lab. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.03 × 0.03 × 0.17 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Some LaCarlota test actors have missing mesh assignments despite this asset being loadable; no actor link was repaired. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-084",
+      "title": "Environment props / Lab / SM_TestTubeHolder",
+      "image": "media/unreal-2026-11-17/asset-084.webp",
+      "alt": "Native Unreal preview of SM_TestTubeHolder",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Lab/Small/SM_TestTubeHolder`\n\n**Family:** Environment props / Lab. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.51 × 0.23 × 0.11 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Some LaCarlota test actors have missing mesh assignments despite this asset being loadable; no actor link was repaired. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-085",
+      "title": "Environment props / Lab / SM_VortexMixer",
+      "image": "media/unreal-2026-11-17/asset-085.webp",
+      "alt": "Native Unreal preview of SM_VortexMixer",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Lab/Small/SM_VortexMixer`\n\n**Family:** Environment props / Lab. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.21 × 0.26 × 0.25 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. Some LaCarlota test actors have missing mesh assignments despite this asset being loadable; no actor link was repaired. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-086",
+      "title": "Environment props / Pipes_And_Cigarette / Ashtray_01",
+      "image": "media/unreal-2026-11-17/asset-086.webp",
+      "alt": "Native Unreal preview of Ashtray_01",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Pipes_And_Cigarette/Ashtray_01`\n\n**Family:** Environment props / Pipes_And_Cigarette. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.31 × 0.31 × 0.08 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Ashtray_01.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-087",
+      "title": "Environment props / Pipes_And_Cigarette / Cigarette_01",
+      "image": "media/unreal-2026-11-17/asset-087.webp",
+      "alt": "Native Unreal preview of Cigarette_01",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Pipes_And_Cigarette/Cigarette_01`\n\n**Family:** Environment props / Pipes_And_Cigarette. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.09 × 0.16 × 0.06 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Cigarette_01.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-088",
+      "title": "Environment props / Pipes_And_Cigarette / Cigarette_02",
+      "image": "media/unreal-2026-11-17/asset-088.webp",
+      "alt": "Native Unreal preview of Cigarette_02",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Pipes_And_Cigarette/Cigarette_02`\n\n**Family:** Environment props / Pipes_And_Cigarette. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.03 × 0.11 × 0.04 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Cigarette_02.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-089",
+      "title": "Environment props / Pipes_And_Cigarette / Cigarette_03",
+      "image": "media/unreal-2026-11-17/asset-089.webp",
+      "alt": "Native Unreal preview of Cigarette_03",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Pipes_And_Cigarette/Cigarette_03`\n\n**Family:** Environment props / Pipes_And_Cigarette. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.07 × 0.20 × 0.05 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Cigarette_03.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-090",
+      "title": "Environment props / Pipes_And_Cigarette / Cigarette_04",
+      "image": "media/unreal-2026-11-17/asset-090.webp",
+      "alt": "Native Unreal preview of Cigarette_04",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Pipes_And_Cigarette/Cigarette_04`\n\n**Family:** Environment props / Pipes_And_Cigarette. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.03 × 0.25 × 0.04 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Cigarette_04.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-091",
+      "title": "Environment props / Pipes_And_Cigarette / Cigarette_05",
+      "image": "media/unreal-2026-11-17/asset-091.webp",
+      "alt": "Native Unreal preview of Cigarette_05",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Pipes_And_Cigarette/Cigarette_05`\n\n**Family:** Environment props / Pipes_And_Cigarette. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.04 × 0.13 × 0.06 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Cigarette_05.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-092",
+      "title": "Environment props / Pipes_And_Cigarette / Pipes_01",
+      "image": "media/unreal-2026-11-17/asset-092.webp",
+      "alt": "Native Unreal preview of Pipes_01",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Pipes_And_Cigarette/Pipes_01`\n\n**Family:** Environment props / Pipes_And_Cigarette. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.03 × 0.70 × 0.04 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Pipes_01.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-093",
+      "title": "Environment props / Pipes_And_Cigarette / Pipes_02",
+      "image": "media/unreal-2026-11-17/asset-093.webp",
+      "alt": "Native Unreal preview of Pipes_02",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Pipes_And_Cigarette/Pipes_02`\n\n**Family:** Environment props / Pipes_And_Cigarette. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.10 × 0.49 × 0.16 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Pipes_02.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-094",
+      "title": "Environment props / Pipes_And_Cigarette / Pipes_03",
+      "image": "media/unreal-2026-11-17/asset-094.webp",
+      "alt": "Native Unreal preview of Pipes_03",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Enviroment_Assets/Pipes_And_Cigarette/Pipes_03`\n\n**Family:** Environment props / Pipes_And_Cigarette. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 0.14 × 0.46 × 0.16 m (X × Y × Z)\n\n**Source relationship:** `Assets/Enviroment_Assets/Enviroment_Assets.blend`. Current matching export: `Assets/Enviroment_Assets/Delivery/Pipes_And_Cigarette/Pipes_03.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-095",
+      "title": "Trash / Portal",
+      "image": "media/unreal-2026-11-17/asset-095.webp",
+      "alt": "Native Unreal preview of Portal",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Trash/Black_Hole/Portal`\n\n**Family:** Trash. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 2.54 × 2.54 × 0.65 m (X × Y × Z)\n\n**Source relationship:** `Assets/Trash/Black_Hole/Black_Hole.blend`. Current matching export: `Assets/Trash/Black_Hole/Portal.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    },
+    {
+      "id": "asset-096",
+      "title": "Trash / Trash_Hole",
+      "image": "media/unreal-2026-11-17/asset-096.webp",
+      "alt": "Native Unreal preview of Trash_Hole",
+      "body": "**Unreal asset:** `/Game/Art/Assets/Trash/Black_Hole/Trash_Hole`\n\n**Family:** Trash. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** 4.71 × 4.90 × 0.52 m (X × Y × Z)\n\n**Source relationship:** `Assets/Trash/Black_Hole/Black_Hole.blend`. Current matching export: `Assets/Trash/Black_Hole/Trash_Hole.fbx`\n\n**Intended use:** Existing geometry and silhouette reference; compare its contextual level capture before reuse.\n\n**Review:** Current native preview, available for owner review. The mesh defaults include WorldGrid. This is geometry evidence; final appearance depends on the scene/Blueprint material overrides. Animation, collision and runtime behavior were not accepted by this still-image review.",
+      "status": "review"
+    }
+  ]
+}

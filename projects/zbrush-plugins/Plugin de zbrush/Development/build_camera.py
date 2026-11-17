@@ -1,3 +1,5 @@
+raise SystemExit("Legacy Camera Bank is retired. Build ../Camera Bank Fast/Development/build_fast.py instead.")
+
 from pathlib import Path
 import re, runpy
 

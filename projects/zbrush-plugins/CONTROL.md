@@ -1,5 +1,61 @@
 # Native ZBrush control
 
+## Completed Fast 0.3
+
+The exact release compiled and was installed in ZBrush 2023.2.1. Public import
+added eight orange cameras after eight existing gray slots. Public bulk controls
+set the enabled count to zero and then sixteen. Only Render flags changed during
+the bulk actions. The prior bank was restored byte for byte and the installed
+palette was reloaded without restarting ZBrush. Runtime receipts are under
+`.cache/zbrush-fast-03/`. See `Camera Bank Fast/VERIFICATION.md`.
+
+## Completed Fast 0.2 / Render-ID 3.2.6 - 2026-11-17
+
+Fast is the only active writer; the old camera folder/installer option is retired.
+Native VWS import reads and validates the native 320-byte layout and appends gray
+cameras in one recoverable transaction. 90 automated checks passed. Native exact
+source compilation, supplied eight-view public import, repeated append and public
+01/08 recall passed. Native save fixtures verified normalization. The original
+project/Tool and recorded view settings were restored, and the original Fast bank
+is byte-identical. Small native rotation-Z quantization is recorded in verification.
+Final sources/binaries were installed. No running app was closed or restarted.
+No client file was changed or bundled. Runtime evidence: `.cache/zbrush-vws/`.
+See `Plugin de zbrush/Development/VERIFICATION_3.2.6.md` and Fast's README.
+
+
+## Completed 3.2.5 Fast-provider integration — 2026-11-17
+
+Render and both ID actions use FB25Data / standalone Fast by default. Native
+independent compilation, actual manual/generating ID exports and focused Render
+preflight/recall/export checks passed with a conflicting legacy bank. Default
+installation updated only Render/ID; all standalone Fast files and its ZIP are
+unchanged. Original document pixels and the Fast bank were restored exactly.
+The initial combined harness exceeded a ZScript variable limit and crashed the
+private test scene; the owner authorized reopening. The independent scripts
+then passed. The owner disabled the screensaver during this session; preserve
+that preference. Runtime evidence: `.cache/zbrush-325/`. See package
+`Development/VERIFICATION_3.2.5.md`. Desktop control was released and its client
+closed; ZBrush remained open on the restored document.
+
+## Completed Camera Bank Fast 0.1 — 2026-11-17
+
+Compiled, installed and hot-loaded the independent Fast variant. Native tests
+used 100 and 300 private SubTools with distinct IDs, a real compatible
+MergeDown (300 to 299), post-merge saves and public 01/02 controls. The original
+Tool/view/recorded settings were restored; the original bank is byte-identical.
+Fast test cameras were cleared. No owner mesh was edited, project replaced or
+application restarted. Evidence is ignored under `.cache/zbrush-fast/`; the
+standalone package records its checks in `Camera Bank Fast/VERIFICATION.md`.
+
+## Completed 3.2.4 update — 2026-11-17
+
+Compiled and installed Render/ID. The public Exportar ID action produced exact
+prepared RGB for two private cameras with all Colorize flags initially off.
+A repeat export replaced existing outputs without notices; images are identical
+and the before/after display records match. No owner project was opened or
+active application restarted. Evidence: `.cache/zbrush-324/` and package
+`Development/VERIFICATION_3.2.4.md`.
+
 ## Completed 3.2.3 update — 2026-11-16
 
 Added and installed Exportar ID. ZBrush was closed, then launched independently

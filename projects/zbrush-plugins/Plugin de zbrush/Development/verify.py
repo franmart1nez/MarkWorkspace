@@ -292,7 +292,7 @@ class Regression(unittest.TestCase):
         self.assertEqual(zmath('2 + (3 * 4)',{}),14)
         self.assertEqual(zmath('20 + (24*20)',{}),500)
     def host(self):
-        h=Host();h.load(ROOT/'Camera Bank/CameraBank25.txt');return h
+        h=Host();h.load(ROOT/'Development/tests/fixtures/legacy_camera_321.txt');return h
     def test_01_full_legacy_migration(self):
         h=self.host();old=bytearray(102180)
         struct.pack_into('<3f',old,0,252523,6,25)
@@ -318,7 +318,7 @@ class Regression(unittest.TestCase):
         h=self.host();h.call('CB29_SaveSlot',0)
         h.ui.update({'Document:Width':800,'Document:Height':600,'Draw:Perspective':0,'Draw:Field Of View(deg)':70})
         h.call('CB29_SaveSlot',1)
-        h.load(ROOT/'Camera Bank/CameraBank25.txt')
+        h.load(ROOT/'Development/tests/fixtures/legacy_camera_321.txt')
         self.assertEqual(struct.unpack_from('<f',h.mem['CB25Data'],5*4)[0],2)
         h.calls=[];h.call('CB29_LoadSlot',0)
         self.assertEqual(h.dims,[1920,1080]);self.assertEqual(h.ui['Draw:Field Of View(deg)'],45)
@@ -437,7 +437,7 @@ class Regression(unittest.TestCase):
     def test_08_mode_switches_remain_enabled_and_store_works(self):
         h=self.host()
         prefix='ZPlugin:Camera Bank 25:'
-        nodes=parse((ROOT/'Camera Bank/CameraBank25.txt').read_text())
+        nodes=parse((ROOT/'Development/tests/fixtures/legacy_camera_321.txt').read_text())
         explicitly_enabled={n[1].strip('"') for n in nodes if n[0]=='IEnable'}
         for name in ['STORE NEW','CLEAR']:
             self.assertIn(prefix+name,explicitly_enabled)

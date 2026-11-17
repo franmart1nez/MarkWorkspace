@@ -1,0 +1,2043 @@
+// Camera Bank Fast 0.3 - active VWS imports and bulk render flags. Data v9.
+// First binding / structural edits may inspect all SubTools.
+// Routine saves use stable per-mesh markers; see README.txt.
+// Fast variant: indexed identity checks between full model bindings.
+[VarDef,fxCacheHit,0]
+[VarDef,fxWriteFast,0]
+[VarDef,fxStoreCheck,0]
+[VarDef,fxUsedLow,0]
+[VarDef,fxUsedHigh,0]
+[VarDef,fxHead(2048),-1]
+[VarDef,fxNext(1000),-1]
+[VarDef,fxLow(1000),0]
+[VarDef,fxHigh(1000),0]
+[VarDef,fxUsed(1000),0]
+[RoutineDef,FBF_Invalidate,
+    [If,[MemGetSize,FBFCache]>0,[MemDelete,FBFCache]]
+]
+[RoutineDef,FBF_UsedCameras,
+    [VarSet,fxUsedLow,0][VarSet,fxUsedHigh,0]
+    [Loop,25,
+        [If,[MVarGet,FB25Data,20+(fxS*20)]==1,
+            [RoutineCall,FB32_Bit,fxS]
+            [If,fbTrackHalf==0,[VarSet,fxUsedLow,fxUsedLow+fbTrackBit],[VarSet,fxUsedHigh,fxUsedHigh+fbTrackBit]]
+        ]
+    ,fxS]
+]
+[RoutineDef,FBF_Publish,
+    [RoutineCall,FBF_Invalidate]
+    [MVarDef,FBFCache,16+([SubToolGetCount]*5),0]
+    [MVarSet,FBFCache,1,[SubToolGetCount]]
+    [MVarSet,FBFCache,2,[ToolGetActiveIndex]]
+    [MVarSet,FBFCache,3,[MVarGet,FB25Data,8]]
+    [MVarSet,FBFCache,4,[MVarGet,FB25Data,9]]
+    [MVarSet,FBFCache,5,[MVarGet,FB25Data,25745]]
+    [RoutineCall,FBF_UsedCameras]
+    [Loop,2048,[VarSet,fxHead(fxI),-1],fxI]
+    [Loop,[SubToolGetCount],
+        [VarSet,fxID,[SubToolGetID,fxI]]
+        [VarSet,fxHigh(fxI),INT(fxID/65536)]
+        [VarSet,fxLow(fxI),fxID-(fxHigh(fxI)*65536)]
+        [VarSet,fxB,16+(fxI*5)]
+        [MVarSet,FBFCache,fxB,fxLow(fxI)]
+        [MVarSet,FBFCache,fxB+1,fxHigh(fxI)]
+        [MVarSet,FBFCache,fxB+2,fbTrackGroups(fxI)]
+        [VarSet,fxBucket,(fxLow(fxI)+(fxHigh(fxI)*17))&2047]
+        [VarSet,fxPeer,fxHead(fxBucket)]
+        [Loop,fxI,
+            [If,fxPeer<0,[LoopExit]]
+            [If,(fxLow(fxPeer)==fxLow(fxI))&&(fxHigh(fxPeer)==fxHigh(fxI)),
+                [VarSet,fxG,fbTrackGroups(fxI)-1]
+                [VarSet,fxP,fbTrackGroups(fxPeer)-1]
+                [If,fxG!=fxP,
+                    [MVarSet,FBFCache,fxB+4,1][MVarSet,FBFCache,16+(fxPeer*5)+4,1]
+                    [If,(([MVarGet,FB25Data,25746+(fxG*2)]&fxUsedLow)!=([MVarGet,FB25Data,25746+(fxP*2)]&fxUsedLow))||(([MVarGet,FB25Data,25747+(fxG*2)]&fxUsedHigh)!=([MVarGet,FB25Data,25747+(fxP*2)]&fxUsedHigh)),
+                        [MVarSet,FBFCache,fxB+3,1][MVarSet,FBFCache,16+(fxPeer*5)+3,1]
+                    ]
+                ]
+            ]
+            [VarSet,fxPeer,fxNext(fxPeer)]
+        ]
+        [VarSet,fxNext(fxI),fxHead(fxBucket)][VarSet,fxHead(fxBucket),fxI]
+    ,fxI]
+    // Publish only after every cache entry and ambiguity flag is complete.
+    [MVarSet,FBFCache,0,1]
+]
+[RoutineDef,FBF_TryCache,
+    [VarSet,fxCacheHit,0]
+    [If,[MemGetSize,FBFCache]>0,
+        [If,[MVarGet,FBFCache,0]==1,
+            [If,([MVarGet,FBFCache,1]==[SubToolGetCount])&&([MVarGet,FBFCache,2]==[ToolGetActiveIndex]),
+                [If,([MVarGet,FBFCache,3]==[MVarGet,FB25Data,8])&&([MVarGet,FBFCache,4]==[MVarGet,FB25Data,9]),
+                    [If,[MVarGet,FBFCache,5]==[MVarGet,FB25Data,25745],[VarSet,fxCacheHit,1]]
+                ]
+            ]
+        ]
+    ]
+    [If,fxCacheHit==1,
+        [Loop,[SubToolGetCount],
+            [VarSet,fxB,16+(fxI*5)]
+            [VarSet,fxID,[SubToolGetID,fxI]][VarSet,fxHi,INT(fxID/65536)]
+            [VarSet,fxLo,fxID-(fxHi*65536)]
+            [If,(fxLo!=[MVarGet,FBFCache,fxB])||(fxHi!=[MVarGet,FBFCache,fxB+1]),[VarSet,fxCacheHit,0][LoopExit]]
+            [VarSet,fbTrackGroups(fxI),[MVarGet,FBFCache,fxB+2]]
+        ,fxI]
+    ]
+    [If,fxCacheHit==1,
+        [VarSet,fxSelected,[SubToolGetActiveIndex]]
+        [VarSet,fbTrackPrefix,[StrMerge,"CB",[MVarGet,FB25Data,8],[MVarGet,FB25Data,9],"G"]]
+        [RoutineCall,FB32_ReadName][RoutineCall,FB32_ParseTag,fbTrackName]
+        [If,fbParsedGroup!=fbTrackGroups(fxSelected),
+            [VarSet,fxCacheHit,0]
+            // Preserve the reviewed first-SubTool filename alias exception.
+            [If,(fxSelected==0)&&(fbTagCount==0),
+                [VarSet,fxTool,[ToolGetActiveIndex]][VarSet,fxPath,[ToolGetPath,fxTool]]
+                [VarSet,fxAlias,[FileNameExtract,fxPath,6]]
+                [If,([StrLength,fxAlias]>0)&&([StrLength,fxAlias]==[StrLength,fbTrackName]),
+                    [If,[StrFind,fxAlias,fbTrackName]==0,
+                        [RoutineCall,FB321_ResolveFirstID]
+                        [If,fbFirstIdGroup==fbTrackGroups(0),[VarSet,fxCacheHit,1]]
+                    ]
+                ]
+            ]
+        ]
+    ]
+    [If,fxCacheHit==1,
+        [VarSet,fxNeedsSelection,0]
+        [Loop,[SubToolGetCount],
+            [If,[MVarGet,FBFCache,16+(fxI*5)+3+fxStoreCheck]==1,[VarSet,fxNeedsSelection,1][LoopExit]]
+        ,fxI]
+        [If,fxNeedsSelection==1,
+            [If,[MemGetSize,FBFReadView]>0,[MemDelete,FBFReadView]]
+            [MVarDef,FBFReadView,12,0][MTransformGet,FBFReadView,0]
+            [MVarSet,FBFReadView,9,[CanvasZoomGet]]
+            [MVarSet,FBFReadView,10,[CanvasPanGetH]][MVarSet,FBFReadView,11,[CanvasPanGetV]]
+            [IFreeze,[Loop,[SubToolGetCount],
+                [If,[MVarGet,FBFCache,16+(fxI*5)+3+fxStoreCheck]==1,
+                    [SubToolSelect,fxI][RoutineCall,FB32_ReadName][RoutineCall,FB32_ParseTag,fbTrackName]
+                    [If,fbParsedGroup!=fbTrackGroups(fxI),[VarSet,fxCacheHit,0][LoopExit]]
+                ]
+            ,fxI]]
+            [SubToolSelect,fxSelected][MTransformSet,FBFReadView,0]
+            [CanvasZoomSet,[MVarGet,FBFReadView,9]][CanvasPanSet,[MVarGet,FBFReadView,10],[MVarGet,FBFReadView,11]]
+            [MemDelete,FBFReadView]
+        ]
+    ]
+]
+[RoutineDef,FB32_CheckTracked,
+    [RoutineCall,FBF_TryCache]
+    [If,fxCacheHit==1,[VarSet,fbTrackValid,1][VarSet,fbTrackError,""],
+        [RoutineCall,FBF_Invalidate]
+        [IFreeze,[RoutineCall,FBF_FullCheck]]
+        [If,fbTrackValid==1,[RoutineCall,FBF_Publish]]
+    ]
+]
+[RoutineDef,FBF_CanFastWrite,
+    [VarSet,fxWriteFast,0]
+    [If,[MVarGet,FB25Data,27771]==[SubToolGetCount],
+        [VarSet,fxWriteFast,1]
+        [Loop,1000,[VarSet,fxUsed(fxI),0],fxI]
+        [Loop,[SubToolGetCount],
+            [VarSet,fxG,fbTrackGroups(fxI)-1]
+            // Every mesh must already have its own stable marker.
+            [If,fxUsed(fxG)==1,[VarSet,fxWriteFast,0][LoopExit]]
+            [VarSet,fxUsed(fxG),1]
+            [VarSet,fxID,[SubToolGetID,fxI]][VarSet,fxHi,INT(fxID/65536)]
+            [VarSet,fxLo,fxID-(fxHi*65536)]
+            [If,(fxLo!=[MVarGet,FB25Data,27772+(fxI*3)])||(fxHi!=[MVarGet,FB25Data,27773+(fxI*3)]),[VarSet,fxWriteFast,0][LoopExit]]
+            [If,fbTrackGroups(fxI)!=[MVarGet,FB25Data,27774+(fxI*3)],[VarSet,fxWriteFast,0][LoopExit]]
+        ,fxI]
+    ]
+]
+[RoutineDef,FB32_BeginTransaction,
+    [If,fxWriteFast==0,[RoutineCall,FBF_FullBegin],
+        [MemCreate,FBFOriginal,123088,0][MemCopy,FB25Data,0,FBFOriginal,0,123088]
+        [MVarDef,FBFTxn,16+([SubToolGetCount]*3),0]
+        [MVarSet,FBFTxn,1,[SubToolGetCount]][MVarSet,FBFTxn,2,[ToolGetActiveIndex]]
+        [MVarSet,FBFTxn,3,[SubToolGetActiveIndex]]
+        [MTransformGet,FBFTxn,4]
+        [MVarSet,FBFTxn,13,[CanvasZoomGet]][MVarSet,FBFTxn,14,[CanvasPanGetH]][MVarSet,FBFTxn,15,[CanvasPanGetV]]
+        [Loop,[SubToolGetCount],
+            [VarSet,fxID,[SubToolGetID,fxI]][VarSet,fxHi,INT(fxID/65536)]
+            [MVarSet,FBFTxn,16+(fxI*3),fxID-(fxHi*65536)]
+            [MVarSet,FBFTxn,17+(fxI*3),fxHi]
+            [MVarSet,FBFTxn,18+(fxI*3),[SubToolGetStatus,fxI]]
+        ,fxI]
+        [MVarSet,FBFTxn,0,1]
+    ]
+]
+[RoutineDef,FBF_Cleanup,
+    [If,[MemGetSize,FBFTxn]>0,[MemDelete,FBFTxn]]
+    [If,[MemGetSize,FBFOriginal]>0,[MemDelete,FBFOriginal]]
+    [VarSet,fxWriteFast,0]
+]
+[RoutineDef,FB32_Recover,
+    [If,[MemGetSize,FBFTxn]>0,
+        [If,[MVarGet,FBFTxn,0]==1,
+            [VarSet,fxRecoverOK,1]
+            [If,([MVarGet,FBFTxn,1]!=[SubToolGetCount])||([MVarGet,FBFTxn,2]!=[ToolGetActiveIndex]),[VarSet,fxRecoverOK,0]]
+            [If,fxRecoverOK==1,
+                [Loop,[SubToolGetCount],
+                    [VarSet,fxID,[SubToolGetID,fxI]][VarSet,fxHi,INT(fxID/65536)]
+                    [If,((fxID-(fxHi*65536))!=[MVarGet,FBFTxn,16+(fxI*3)])||(fxHi!=[MVarGet,FBFTxn,17+(fxI*3)]),[VarSet,fxRecoverOK,0][LoopExit]]
+                ,fxI]
+            ]
+            [If,fxRecoverOK==0,[MessageOK,"An interrupted Fast camera update needs the same Tool and SubTool order. Restore that Tool before continuing; the saved bank is still in session memory.","Camera Bank Fast"][Exit]]
+            [MemCopy,FBFOriginal,0,FB25Data,0,123088]
+            [Loop,[SubToolGetCount],[SubToolSetStatus,fxI,[MVarGet,FBFTxn,18+(fxI*3)]],fxI]
+            [SubToolSelect,[MVarGet,FBFTxn,3]][MTransformSet,FBFTxn,4]
+            [CanvasZoomSet,[MVarGet,FBFTxn,13]][CanvasPanSet,[MVarGet,FBFTxn,14],[MVarGet,FBFTxn,15]]
+            [RoutineCall,FBF_Invalidate]
+        ]
+        [RoutineCall,FBF_Cleanup]
+    ,
+        [If,[MemGetSize,FBFOriginal]>0,[RoutineCall,FBF_Cleanup]]
+    ]
+    [RoutineCall,FBF_FullRecover]
+]
+[RoutineDef,FB32_RefreshIdentifiers,
+    [If,[MemGetSize,FBFTxn]==0,[IFreeze,[RoutineCall,FBF_FullRefresh]],
+        // Ordinary camera updates change bank masks, never mesh names.
+        [RoutineCall,FBF_Invalidate]
+        [Loop,[MVarGet,FB25Data,25745],
+            [MVarSet,FB25Data,25746+(fxG*2),0][MVarSet,FB25Data,25747+(fxG*2),0]
+        ,fxG]
+        [Loop,[SubToolGetCount],
+            [VarSet,fxLowMask,0][VarSet,fxHighMask,0]
+            [Loop,25,
+                [If,[MVarGet,FB25Data,20+(fxS*20)]==1,
+                    [If,([MVarGet,FB25Data,521+(fxS*1001)+fxI]&4)!=0,
+                        [RoutineCall,FB32_Bit,fxS]
+                        [If,fbTrackHalf==0,[VarSet,fxLowMask,fxLowMask+fbTrackBit],[VarSet,fxHighMask,fxHighMask+fbTrackBit]]
+                    ]
+                ]
+            ,fxS]
+            [VarSet,fxG,fbTrackGroups(fxI)-1]
+            [MVarSet,FB25Data,25746+(fxG*2),fxLowMask][MVarSet,FB25Data,25747+(fxG*2),fxHighMask]
+        ,fxI]
+        [MVarSet,FB25Data,7,1]
+        // Commit before cache rebuilding; Escape cannot roll back a completed save.
+        [MVarSet,FBFTxn,0,2]
+        [RoutineCall,FBF_Cleanup][RoutineCall,FBF_Publish]
+    ]
+]
+[RoutineDef,FBF_Rescan,
+    [RoutineCall,FB32_Recover][RoutineCall,FB31_Require3D]
+    [RoutineCall,FBF_Invalidate][VarSet,fxStoreCheck,1]
+    [RoutineCall,FB32_CheckTracked][VarSet,fxStoreCheck,0]
+    [If,fbTrackValid==0,[MessageOK,fbTrackError,"Camera Bank Fast"][Exit]]
+    [Note,"Model bindings refreshed. Camera visibility and mesh data were kept.",,2]
+]
+
+[RoutineDef,FBV_CaptureSlot,
+    [VarSet,base,20+(slot*20)][VarSet,displaySlot,slot+1]
+    [MTransformGet,
+        FB25Data,
+        base + 1
+    ]
+    [If,[IExists,"Draw:Perspective"],
+        [If,[IGet,"Draw:Perspective"] != 0,
+            [MVarSet,
+                FB25Data,
+                base + 10,
+                1
+            ]
+        ,
+            [MVarSet,
+                FB25Data,
+                base + 10,
+                0
+            ]
+        ]
+    ,
+        [MVarSet,
+            FB25Data,
+            base + 10,
+            -1
+        ]
+    ]
+    [MVarSet,
+        FB25Data,
+        base + 15,
+        0
+    ]
+    [If,[IExists,"Draw:Focal Length(mm)"],
+        [MVarSet,
+            FB25Data,
+            base + 11,
+            [IGet,"Draw:Focal Length(mm)"]
+        ]
+        [MVarSet,
+            FB25Data,
+            base + 15,
+            1
+        ]
+    ,
+        [If,[IExists,"Draw:Focal Length"],
+            [MVarSet,
+                FB25Data,
+                base + 11,
+                [IGet,"Draw:Focal Length"]
+            ]
+            [MVarSet,
+                FB25Data,
+                base + 15,
+                2
+            ]
+        ,
+            [MVarSet,
+                FB25Data,
+                base + 11,
+                -9999
+            ]
+            [MVarSet,
+                FB25Data,
+                base + 15,
+                0
+            ]
+        ]
+    ]
+    [MVarSet,
+        FB25Data,
+        base + 12,
+        [CanvasZoomGet]
+    ]
+    [MVarSet,
+        FB25Data,
+        base + 13,
+        [CanvasPanGetH]
+    ]
+    [MVarSet,
+        FB25Data,
+        base + 14,
+        [CanvasPanGetV]
+    ]
+    [RoutineCall,FB30_SaveExtra,slot]
+    [RoutineCall,
+        FB29_SaveVisualState,
+        slot
+    ]
+    [RoutineCall,FB32_RecordEffective,slot]
+    [MVarSet,FB25Data,base,1]
+    [MVarSet,FB25Data,base+16,fbKeepRender]
+    [MVarSet,
+        FB25Data,
+        base + 17,
+        0
+    ]
+    [MVarSet,
+        FB25Data,
+        5,
+        displaySlot
+    ]
+
+,slot,fbKeepRender]
+
+// Native ZAppLink .vws: eight records of ten float32 cells, little endian.
+// Order: Front, Back, Rght, Left, Top, Botm, Cust1, Cust2. Cell 9 is occupied.
+// No external executable, native ZAppLink replacement or filename lens guessing.
+[VarDef,vwsSources(8),0]
+[VarDef,vwsSlots(8),0]
+[VarDef,vwsImported,0]
+[RoutineDef,FBV_Reject,
+    [If,[MemGetSize,FBVInput]>0,[MemDelete,FBVInput]]
+    [MessageOK,vwsError,"Camera Bank Fast"][Exit]
+,vwsError]
+[RoutineDef,FBV_AcceptVWS,
+    [VarSet,vwsImported,0]
+    [If,[MemGetSize,FBVInput]!=320,
+        [RoutineCall,FBV_Reject,"Unsupported VWS layout. Expected the native 320-byte ZAppLink views file. Current cameras were kept."]
+    ]
+    [VarSet,vwsCount,0]
+    [Loop,8,
+        [VarSet,vwsFlag,[MVarGet,FBVInput,(vwsI*10)+9]]
+        [If,(vwsFlag!=0)&&(vwsFlag!=1),
+            [RoutineCall,FBV_Reject,"Invalid VWS view flag. Current cameras were kept."]
+        ]
+        [If,vwsFlag==1,
+            [Loop,9,
+                [VarSet,vwsValue,[MVarGet,FBVInput,(vwsI*10)+vwsJ]]
+                [If,(vwsValue>=-100000000)&&(vwsValue<=100000000),,
+                    [RoutineCall,FBV_Reject,"Invalid VWS transform (non-finite or out of range). Current cameras were kept."]
+                ]
+                [If,(vwsJ>=3)&&(vwsJ<=5),
+                    [If,vwsValue<=0,[RoutineCall,FBV_Reject,"Invalid VWS view scale. Current cameras were kept."]]
+                ]
+            ,vwsJ]
+            [VarSet,vwsSources(vwsCount),vwsI][VarInc,vwsCount]
+        ]
+    ,vwsI]
+    [If,vwsCount==0,[RoutineCall,FBV_Reject,"This VWS file contains no stored views. Current cameras were kept."]]
+    [RoutineCall,FB31_Require3D]
+    [If,[SubToolGetCount]>1000,[RoutineCall,FBV_Reject,"Camera Bank Fast supports up to 1000 SubTools."]]
+    [RoutineCall,FB32_Recover]
+    [VarSet,vwsFree,0][VarSet,vwsOccupied,0]
+    [Loop,25,
+        [If,[MVarGet,FB25Data,20+(vwsI*20)]==1,
+            [VarInc,vwsOccupied]
+        ,
+            [If,vwsFree<vwsCount,[VarSet,vwsSlots(vwsFree),vwsI][VarInc,vwsFree]]
+        ]
+    ,vwsI]
+    [If,vwsFree<vwsCount,[RoutineCall,FBV_Reject,"Not enough free camera slots for this entire VWS set. Export your bank or free slots, then retry. No cameras were replaced."]]
+    [If,(vwsOccupied>0)&&([MVarGet,FB25Data,7]!=1),
+        [RoutineCall,FBV_Reject,"Review and UPDATE ACTIVE for every untracked legacy camera before adding VWS views, or start an empty bank."]
+    ]
+    [VarSet,vwsActive,[MVarGet,FB25Data,5]]
+    [VarSet,currentSubCount,[SubToolGetCount]]
+    [VarSet,fxStoreCheck,1][VarSet,fxWriteFast,0]
+    [If,[MVarGet,FB25Data,7]==1,
+        [RoutineCall,FB32_RebaseForEdit]
+    ,
+        [RoutineCall,FB32_BeginTransaction]
+    ]
+    // One existing recoverable writer transaction covers the complete batch,
+    // including initial model binding. No native view or document is changed.
+    [Loop,vwsCount,
+        [RoutineCall,FBV_CaptureSlot,vwsSlots(vwsI),1]
+        [VarSet,base,20+(vwsSlots(vwsI)*20)]
+        [MemCopy,FBVInput,vwsSources(vwsI)*40,FB25Data,(base+1)*4,36]
+        [MVarSet,FB25Data,base+1,[MVarGet,FB25Data,base+1]*[IGet,"Document:Width"]]
+        [MVarSet,FB25Data,base+2,[MVarGet,FB25Data,base+2]*[IGet,"Document:Height"]]
+        [Loop,3,
+            [MVarSet,FB25Data,base+4+vwsJ,[MVarGet,FB25Data,base+4+vwsJ]*[IGet,"Document:Width"]]
+        ,vwsJ]
+    ,vwsI]
+    [MVarSet,FB25Data,5,vwsActive]
+    [RoutineCall,FB32_FinishStore]
+    [VarSet,fxStoreCheck,0]
+    [VarSet,vwsImported,vwsCount]
+    [MemDelete,FBVInput]
+    [RoutineCall,FB29_SyncVisuals]
+]
+[RoutineDef,FBV_ImportVWS,
+    [VarSet,vwsImported,0]
+    [VarSet,vwsFile,[FileNameAsk,"ZAppLink Views (*.vws)|*.vws||",,"Import native ZBrush views"]]
+    [If,[StrLength,vwsFile]==0,[Exit]]
+    [If,[MemGetSize,FBVInput]>0,[MemDelete,FBVInput]]
+    [MemCreateFromFile,FBVInput,vwsFile]
+    [RoutineCall,FBV_AcceptVWS]
+    [MessageOK,[StrMerge,vwsImported," VWS views added to free slots with Render ON. Current canvas, lens and visibility were used. To adjust a view, recall it and press UPDATE ACTIVE after editing. Save the matching ZTL/ZPR and EXPORT BANK."],"Camera Bank Fast"]
+]
+
+// Camera Bank 25 v3.2.1 - Windows / ZBrush 2023.2.1 target.
+// v3.2.1: native-ID fallback for the first SubTool filename alias.
+// Derived from the supplied CameraBank25_v2_9, retaining its slot UI.
+// Data v9: 30772 floats / 123088 bytes. See Development/DATA_FORMAT.md.
+// Automatic identifier updates use the bundled ZFileUtils library.
+// Native acceptance and limitations: Development/VERIFICATION_3.2.1.md.
+[VarDef,fbFovPath,""]
+[VarDef,fbUniversalPath,""]
+[VarDef,fbImportValid,0]
+[VarDef,fbImportVersion,0]
+[VarDef,fbTrackValid,0]
+[VarDef,fbTrackError,""]
+[VarDef,fbTrackPrefix,""]
+[VarDef,fbTrackName,""]
+[VarDef,fbParsedGroup,0]
+[VarDef,fbTagStart,-1]
+[VarDef,fbTrackVisible,0]
+[VarDef,fbTrackBit,1]
+[VarDef,fbTrackHalf,0]
+[VarDef,fbTrackGroups(1000),0]
+[VarDef,fbTrackSeen(1000),0]
+[VarDef,fbTrackEye(1000),0]
+[VarDef,fbTagCount,0]
+[VarDef,fbLegacyName,""]
+[VarDef,fbAliasPath,""]
+[VarDef,fbAliasName,""]
+[VarDef,fbIdRemaining(1000),0]
+[VarDef,fbFirstIdGroup,0]
+[RoutineDef,FB321_ResolveFirstID,
+    [VarSet,fbFirstIdGroup,0]
+    [If,[MemGetSize,FB25Data]>=123088,
+        [VarSet,fbIdRecords,[MVarGet,FB25Data,27771]]
+        [VarSet,fbTargetId,[SubToolGetID,0]]
+        [VarSet,fbTargetHi,INT(fbTargetId/65536)]
+        [VarSet,fbTargetLo,fbTargetId-(fbTargetHi*65536)]
+        [VarSet,fbIdOK,1]
+        [Loop,1000,[VarSet,fbIdRemaining(fbIdI),0],fbIdI]
+        [Loop,fbIdRecords,
+            [If,([MVarGet,FB25Data,27772+(fbIdI*3)]==fbTargetLo)&&([MVarGet,FB25Data,27773+(fbIdI*3)]==fbTargetHi),
+                [VarSet,fbIdGroup,[MVarGet,FB25Data,27774+(fbIdI*3)]-1]
+                [VarInc,fbIdRemaining(fbIdGroup)]
+            ]
+        ,fbIdI]
+        [Loop,[SubToolGetCount]-1,
+            [VarSet,fbIdPeer,fbIdI+1]
+            [If,[SubToolGetID,fbIdPeer]==fbTargetId,
+                [VarSet,fbIdGroup,fbTrackGroups(fbIdPeer)-1]
+                [VarSet,fbIdRemaining(fbIdGroup),fbIdRemaining(fbIdGroup)-1]
+                [If,fbIdRemaining(fbIdGroup)<0,[VarSet,fbIdOK,0]]
+            ]
+        ,fbIdI]
+        [Loop,[MVarGet,FB25Data,25745],
+            [If,fbIdRemaining(fbIdI)>0,
+                [If,fbFirstIdGroup>0,[VarSet,fbIdOK,0]]
+                [VarSet,fbFirstIdGroup,fbIdI+1]
+            ]
+        ,fbIdI]
+        [If,fbIdOK==0,[VarSet,fbFirstIdGroup,0]]
+    ]
+]
+[RoutineDef,FB32_Bit,
+    [VarSet,fbTrackHalf,0][VarSet,fbBitSlot,fbSlot]
+    [If,fbSlot>=13,[VarSet,fbTrackHalf,1][VarSet,fbBitSlot,fbSlot-13]]
+    [VarSet,fbTrackBit,1]
+    [Loop,fbBitSlot,[VarSet,fbTrackBit,fbTrackBit*2]]
+,fbSlot]
+[RoutineDef,FB32_GroupVisible,
+    [RoutineCall,FB32_Bit,fbSlot]
+    [VarSet,fbTrackVisible,0]
+    [If,([MVarGet,FB25Data,25746+((fbGroup-1)*2)+fbTrackHalf]&fbTrackBit)!=0,
+        [VarSet,fbTrackVisible,1]
+    ]
+,fbGroup,fbSlot]
+[RoutineDef,FB32_ReadName,
+    [VarSet,fbTrackName,[IGetTitle,"Tool:ItemInfo"]]
+    [VarSet,fbNameLength,[StrLength,fbTrackName]]
+    [If,fbNameLength>0,
+        [VarSet,fbNameLastAsc,[StrToAsc,fbTrackName,fbNameLength-1]]
+        [If,fbNameLastAsc==46,
+            [VarSet,fbTrackName,[StrExtract,fbTrackName,0,fbNameLength-2]]
+        ]
+    ]
+]
+[RoutineDef,FB32_ParseTag,
+    [VarSet,fbParsedGroup,0][VarSet,fbTagStart,-1][VarSet,fbTagCount,0]
+    [Loop,[StrLength,fbTagName],
+        [If,[StrLength,fbTagName]>=(fbPos+15),
+            [VarSet,fbNativeA,[StrToAsc,fbTagName,fbPos]]
+            [VarSet,fbNativeB,[StrToAsc,fbTagName,fbPos+1]]
+            [VarSet,fbNativeC,[StrToAsc,fbTagName,fbPos+14]]
+            [If,(fbNativeA==67)&&(fbNativeB==66)&&(fbNativeC==71),
+                [VarSet,fbDigitsOK,1]
+                [Loop,12,
+                    [VarSet,fbDigit,[StrToAsc,fbTagName,fbPos+2+fbDigitIndex]]
+                    [If,(fbDigit<48)||(fbDigit>57),[VarSet,fbDigitsOK,0]]
+                ,fbDigitIndex]
+                [If,fbDigitsOK==1,
+                    [VarInc,fbTagCount][VarSet,fbTagStart,fbPos]
+                    [If,[StrLength,fbTagName]>=(fbPos+20),
+                        [VarSet,fbGroupDigits,0]
+                        [Loop,4,
+                            [VarSet,fbDigit,[StrToAsc,fbTagName,fbPos+15+fbDigitIndex]-48]
+                            [If,(fbDigit<0)||(fbDigit>9),[VarSet,fbDigitsOK,0]]
+                            [VarSet,fbGroupDigits,(fbGroupDigits*10)+fbDigit]
+                        ,fbDigitIndex]
+                        [VarSet,fbNativeEnd,[StrToAsc,fbTagName,fbPos+19]]
+                        [If,(fbNativeEnd==95)&&(fbDigitsOK==1),
+                            [If,[StrLength,fbTrackPrefix]==15,
+                                [If,[StrFind,fbTrackPrefix,[StrExtract,fbTagName,fbPos,fbPos+14]]==0,[VarSet,fbParsedGroup,fbGroupDigits]]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ,fbPos]
+    [If,fbTagCount!=1,[VarSet,fbParsedGroup,0]]
+,fbTagName]
+[RoutineDef,FB32_CheckLegacyOrder,
+    [VarSet,fbTrackValid,1]
+    [If,[MemGetSize,FB32LegacyState]>0,
+        [If,([SubToolGetCount]!=[MVarGet,FB32LegacyState,0])||([ToolGetActiveIndex]!=[MVarGet,FB32LegacyState,1]),
+            [VarSet,fbTrackValid,0]
+        ,
+            [VarSet,fbLegacySelected,[SubToolGetActiveIndex]]
+            [If,[MemGetSize,FB32ReadView]>0,[MemDelete,FB32ReadView]]
+            [MVarDef,FB32ReadView,12,0][MTransformGet,FB32ReadView,0]
+            [MVarSet,FB32ReadView,9,[CanvasZoomGet]]
+            [MVarSet,FB32ReadView,10,[CanvasPanGetH]][MVarSet,FB32ReadView,11,[CanvasPanGetV]]
+            [Loop,[SubToolGetCount],
+                [SubToolSelect,fbIndex][RoutineCall,FB32_ReadName]
+                [MemReadString,FB32LegacyNames,fbLegacyName,fbIndex*1024,0]
+                [If,([StrLength,fbLegacyName]!=[StrLength,fbTrackName])||([StrFind,fbLegacyName,fbTrackName]!=0)||([SubToolGetID,fbIndex]!=[MVarGet,FB32LegacyState,2+fbIndex]),
+                    [VarSet,fbTrackValid,0][LoopExit]
+                ]
+            ,fbIndex]
+            [SubToolSelect,fbLegacySelected]
+            [MTransformSet,FB32ReadView,0][CanvasZoomSet,[MVarGet,FB32ReadView,9]]
+            [CanvasPanSet,[MVarGet,FB32ReadView,10],[MVarGet,FB32ReadView,11]]
+            [MemDelete,FB32ReadView]
+        ]
+        [If,fbTrackValid==0,
+            [MessageOK,"The untracked legacy Tool/order/names changed during review. Restore the original unchanged Tool, or re-import the bank and restart review. No positional remapping was attempted.","Camera Bank Fast"][Exit]
+        ]
+    ]
+]
+[RoutineDef,FBF_FullCheck,
+    [VarSet,fbTrackValid,1][VarSet,fbTrackError,""]
+    [VarSet,fbPendingFirst,0]
+    [VarSet,fbTrackPrefix,[StrMerge,"CB",[MVarGet,FB25Data,8],[MVarGet,FB25Data,9],"G"]]
+    [VarSet,fbOldSelected,[SubToolGetActiveIndex]]
+    [If,([SubToolGetCount]<1)||([SubToolGetCount]>1000),
+        [VarSet,fbTrackValid,0][VarSet,fbTrackError,"A tracked model must have 1 to 1000 SubTools."]
+    ]
+    [Loop,1000,[VarSet,fbTrackSeen(fbIndex),0],fbIndex]
+    [If,fbTrackValid==1,
+        [If,[MemGetSize,FB32ReadView]>0,[MemDelete,FB32ReadView]]
+        [MVarDef,FB32ReadView,12,0][MTransformGet,FB32ReadView,0]
+        [MVarSet,FB32ReadView,9,[CanvasZoomGet]]
+        [MVarSet,FB32ReadView,10,[CanvasPanGetH]][MVarSet,FB32ReadView,11,[CanvasPanGetV]]
+        [Loop,[SubToolGetCount],
+            [SubToolSelect,fbIndex][RoutineCall,FB32_ReadName]
+            [RoutineCall,FB32_ParseTag,fbTrackName]
+            [If,(fbParsedGroup<1)||(fbParsedGroup>[MVarGet,FB25Data,25745]),
+                [VarSet,fbAliasOK,0]
+                [If,(fbIndex==0)&&(fbTagCount==0),
+                    [VarSet,fbAliasTool,[ToolGetActiveIndex]]
+                    [VarSet,fbAliasPath,[ToolGetPath,fbAliasTool]]
+                    [VarSet,fbAliasName,[FileNameExtract,fbAliasPath,6]]
+                    [If,([StrLength,fbAliasName]>0)&&([StrLength,fbAliasName]==[StrLength,fbTrackName]),
+                        [If,[StrFind,fbAliasName,fbTrackName]==0,[VarSet,fbAliasOK,1]]
+                    ]
+                ]
+                [If,fbAliasOK==1,
+                    [VarSet,fbPendingFirst,1][VarSet,fbTrackGroups(0),0]
+                ,
+                    [VarSet,fbTrackValid,0]
+                    [VarSet,fbTrackError,"A SubTool has no valid identifier for this bank. Open the matching ZTL/ZPR. Only a first-SubTool filename alias with a verified native-ID match can be recovered."]
+                    [LoopExit]
+                ]
+            ,
+                [VarSet,fbTrackGroups(fbIndex),fbParsedGroup]
+                [VarSet,fbTrackSeen(fbParsedGroup-1),1]
+            ]
+        ,fbIndex]
+        [SubToolSelect,fbOldSelected]
+        [MTransformSet,FB32ReadView,0][CanvasZoomSet,[MVarGet,FB32ReadView,9]]
+        [CanvasPanSet,[MVarGet,FB32ReadView,10],[MVarGet,FB32ReadView,11]]
+        [MemDelete,FB32ReadView]
+    ]
+    [If,(fbTrackValid==1)&&(fbPendingFirst==1),
+        [RoutineCall,FB321_ResolveFirstID]
+        [If,fbFirstIdGroup>0,
+            [VarSet,fbTrackGroups(0),fbFirstIdGroup]
+            [VarSet,fbTrackSeen(fbFirstIdGroup-1),1]
+        ,
+            [VarSet,fbTrackValid,0]
+            [VarSet,fbTrackError,"The first SubTool lost its name identifier and this bank has no unambiguous native-ID match. For an older bank, import it once on the matching marked Tool in 3.2.1 and export again."]
+        ]
+    ]
+    [VarSet,fbUsedLow,0][VarSet,fbUsedHigh,0]
+    [Loop,25,
+        [If,[MVarGet,FB25Data,20+(fbSlot*20)]==1,
+            [RoutineCall,FB32_Bit,fbSlot]
+            [If,fbTrackHalf==0,[VarSet,fbUsedLow,fbUsedLow+fbTrackBit],[VarSet,fbUsedHigh,fbUsedHigh+fbTrackBit]]
+        ]
+    ,fbSlot]
+    [If,fbTrackValid==1,
+        [Loop,[MVarGet,FB25Data,25745],
+            [If,fbTrackSeen(fbGroupIndex)==0,
+                [VarSet,fbMissingLow,([MVarGet,FB25Data,25746+(fbGroupIndex*2)]&fbUsedLow)]
+                [VarSet,fbMissingHigh,([MVarGet,FB25Data,25747+(fbGroupIndex*2)]&fbUsedHigh)]
+                [If,(fbMissingLow!=0)||(fbMissingHigh!=0),
+                    [VarSet,fbEquivalent,0]
+                    [Loop,[MVarGet,FB25Data,25745],
+                        [If,fbTrackSeen(fbOtherGroup)==1,
+                            [If,(([MVarGet,FB25Data,25746+(fbOtherGroup*2)]&fbUsedLow)==fbMissingLow)&&(([MVarGet,FB25Data,25747+(fbOtherGroup*2)]&fbUsedHigh)==fbMissingHigh),
+                                [VarSet,fbEquivalent,1][LoopExit]
+                            ]
+                        ]
+                    ,fbOtherGroup]
+                    [If,fbEquivalent==0,
+                        [VarSet,fbTrackValid,0]
+                        [VarSet,fbTrackError,"A visibility group used by a stored camera is missing. Restore the complete model and merge only parts with identical visibility in ALL stored cameras."]
+                    ]
+                ]
+            ]
+        ,fbGroupIndex]
+    ]
+]
+[RoutineDef,FB32_RequireVisibility,
+    [If,([MemGetSize,FB32RenameState]>0)||([MemGetSize,FB32OriginalBank]>0),
+        [MessageOK,"An identifier update was interrupted. Use a Camera Bank button on the same Tool to recover it before recalling or rendering.","Camera Bank Fast"][Exit]
+    ]
+    [If,[MVarGet,FB25Data,7]==1,
+        [RoutineCall,FB32_CheckTracked]
+        [If,fbTrackValid==0,[MessageOK,fbTrackError,"Camera Bank Fast"][Exit]]
+    ,
+        [VarSet,fbSavedCount,[MVarGet,FB25Data,520+(fbSlot*1001)]]
+        [If,(fbSavedCount>0)&&(fbSavedCount!=[SubToolGetCount]),
+            [MessageOK,"This camera has positional visibility only. Use its original unmerged Tool and review/UPDATE ACTIVE for every camera before reordering or merging. Tracking will complete automatically.","Camera Bank Fast"][Exit]
+        ]
+        [RoutineCall,FB32_CheckLegacyOrder]
+        [If,[MemGetSize,FB32LegacyState]==0,
+            [If,[MessageYesNo,"This bank has no name ancestry. Continue ONLY on its ORIGINAL unmerged Tool with the original SubTool order. Equal counts cannot prove identity. Review this view, then UPDATE ACTIVE. Continue?","Camera Bank Fast"]!=1,[Exit]]
+        ]
+    ]
+,fbSlot]
+[RoutineDef,FB32_VisibleNow,
+    [VarSet,fbTrackVisible,0]
+    [If,([SubToolGetStatus,fbIndex]&1)!=0,[VarSet,fbTrackVisible,1]]
+    [VarSet,fbFolder,[SubToolGetFolderIndex,fbIndex]]
+    [If,fbFolder>=0,
+        [If,([SubToolGetStatus,fbFolder]&2)==0,[VarSet,fbTrackVisible,0]]
+    ]
+    [If,[IExists,"Transform:Solo"],
+        [If,[IGet,"Transform:Solo"]==1,[VarSet,fbTrackVisible,0]]
+    ]
+    [If,fbIndex==[SubToolGetActiveIndex],[VarSet,fbTrackVisible,1]]
+,fbIndex]
+[RoutineDef,FB32_RestoreEffective,
+    [VarSet,fbOldSelected,[SubToolGetActiveIndex]][VarSet,fbFirstVisible,-1]
+    [Loop,[SubToolGetCount],
+        [If,[MVarGet,FB25Data,7]==1,
+            [RoutineCall,FB32_GroupVisible,fbTrackGroups(fbIndex),fbSlot]
+        ,
+            [VarSet,fbTrackVisible,0]
+            [If,([MVarGet,FB25Data,521+(fbSlot*1001)+fbIndex]&4)!=0,[VarSet,fbTrackVisible,1]]
+        ]
+        [VarSet,fbTrackEye(fbIndex),fbTrackVisible]
+        [If,(fbTrackVisible==1)&&(fbFirstVisible<0),[VarSet,fbFirstVisible,fbIndex]]
+    ,fbIndex]
+    [If,fbFirstVisible<0,[MessageOK,"No visible part remains for this camera.","Camera Bank Fast"][Exit]]
+    [If,fbTrackEye(fbOldSelected)==1,[VarSet,fbFirstVisible,fbOldSelected]]
+    [If,[IExists,"Transform:Solo"],[IUnPress,"Transform:Solo"]]
+    [SubToolSelect,fbFirstVisible]
+    [Loop,[SubToolGetCount],
+        [VarSet,fbStatus,[SubToolGetStatus,fbIndex]]
+        [SubToolSetStatus,fbIndex,(fbStatus-(fbStatus&3))+fbTrackEye(fbIndex)+2]
+    ,fbIndex]
+    [IUpdate,1,1]
+,fbSlot]
+[VarDef,fbRenameDLL,""]
+[VarDef,fbWriteName,""]
+[VarDef,fbBaseName,""]
+[VarDef,fbRenameOK,0]
+[VarDef,fbRecoveryOK,1]
+[RoutineDef,FB321_RecordNativeIDs,
+    [If,([MVarGet,FB25Data,7]==1)&&([IGet,"Transform:Edit"]==1),
+        [RoutineCall,FB32_CheckTracked]
+        [If,fbTrackValid==1,
+            [VarSet,fbIdsValid,1]
+            [Loop,[SubToolGetCount],
+                [VarSet,fbNativeId,[SubToolGetID,fbIndex]]
+                [If,(fbNativeId<1)||(fbNativeId>4294967295),[VarSet,fbIdsValid,0]]
+            ,fbIndex]
+            [If,fbIdsValid==1,
+                [Loop,[SubToolGetCount],
+                    [VarSet,fbNativeId,[SubToolGetID,fbIndex]]
+                    [VarSet,fbNativeHi,INT(fbNativeId/65536)]
+                    [MVarSet,FB25Data,27772+(fbIndex*3),fbNativeId-(fbNativeHi*65536)]
+                    [MVarSet,FB25Data,27773+(fbIndex*3),fbNativeHi]
+                    [MVarSet,FB25Data,27774+(fbIndex*3),fbTrackGroups(fbIndex)]
+                ,fbIndex]
+                [MVarSet,FB25Data,27771,[SubToolGetCount]]
+            ]
+        ]
+    ]
+]
+[RoutineDef,FB32_ClearLegacyBinding,
+    [If,[MemGetSize,FB32LegacyNames]>0,[MemDelete,FB32LegacyNames]]
+    [If,[MemGetSize,FB32LegacyState]>0,[MemDelete,FB32LegacyState]]
+]
+[RoutineDef,FB32_ResetUnboundLegacy,
+    [If,([MVarGet,FB25Data,7]==0)&&([MemGetSize,FB32LegacyState]==0),
+        [Loop,25,[MVarSet,FB25Data,27746+fbS,0],fbS]
+    ]
+]
+[RoutineDef,FB32_CheckLegacyEdit,
+    [RoutineCall,FB32_CheckLegacyOrder]
+    [VarSet,fbHasLegacy,0]
+    [Loop,25,
+        [If,[MVarGet,FB25Data,20+(fbS*20)]==1,
+            [VarSet,fbHasLegacy,1]
+            [VarSet,fbLegacyCount,[MVarGet,FB25Data,520+(fbS*1001)]]
+            [If,(fbLegacyCount>0)&&(fbLegacyCount!=[SubToolGetCount]),
+                [MessageOK,"Legacy visibility has no names and the SubTool count differs. Restore the original unmerged Tool before reviewing/updating cameras.","Camera Bank Fast"][Exit]
+            ]
+        ]
+    ,fbS]
+    [If,(fbHasLegacy==1)&&([MemGetSize,FB32LegacyState]==0),
+        [If,[MessageYesNo,"Update only after reviewing this view on the ORIGINAL unmerged Tool in its original order. Names/ancestry of untracked cameras are unknown. Continue?","Camera Bank Fast"]!=1,[Exit]]
+    ]
+]
+[RoutineDef,FB32_FinishStore,
+    [VarSet,fbAllReviewed,1]
+    [Loop,25,
+        [If,[MVarGet,FB25Data,20+(fbS*20)]==1,
+            [If,[MVarGet,FB25Data,27746+fbS]!=[SubToolGetCount],[VarSet,fbAllReviewed,0]]
+        ]
+    ,fbS]
+    [If,fbAllReviewed==1,
+        [RoutineCall,FB32_RefreshIdentifiers]
+    ,
+        [If,[MemGetSize,FB32LegacyState]==0,
+            [MemCreate,FB32LegacyNames,[SubToolGetCount]*1024,0]
+            [MemCopy,FB32OldNames,0,FB32LegacyNames,0,[SubToolGetCount]*1024]
+            [MVarDef,FB32LegacyState,2+[SubToolGetCount],0]
+            [MVarSet,FB32LegacyState,0,[SubToolGetCount]]
+            [MVarSet,FB32LegacyState,1,[ToolGetActiveIndex]]
+            [Loop,[SubToolGetCount],
+                [MVarSet,FB32LegacyState,2+fbIndex,[SubToolGetID,fbIndex]]
+            ,fbIndex]
+        ]
+        [MVarSet,FB32RenameState,3,2]
+        [RoutineCall,FB32_Cleanup]
+    ]
+]
+[RoutineDef,FB32_CheckRenameDLL,
+    [VarSet,fbRenameDLL,[FileNameResolvePath,"MakCameraBankFastData/ZFileUtils64.dll"]]
+    [If,[FileExists,fbRenameDLL]==0,[VarSet,fbRenameDLL,[FileNameResolvePath,"ZFileUtils64.dll"]]]
+    [If,[FileExists,fbRenameDLL]==0,[VarSet,fbRenameDLL,[FileNameResolvePath,"../Render Capture/RenderCaptureData/ZFileUtils64.dll"]]]
+    [If,[FileExists,fbRenameDLL]==0,[VarSet,fbRenameDLL,[FileNameResolvePath,"ZBRUSH_ZSTARTUP/ZPlugs64/MacroData/ZFileUtils64.dll"]]]
+    [If,[FileExists,fbRenameDLL]==0,[MessageOK,"ZFileUtils64.dll is required to track SubTool identifiers automatically. Run INSTALAR.cmd or keep the complete source package together.","Camera Bank Fast"][Exit]]
+    [If,[FileExecute,fbRenameDLL,"Version"]<8,[MessageOK,"ZFileUtils v8 or newer is required.","Camera Bank Fast"][Exit]]
+    [If,([IExists,"Tool:SubTool:Rename"]==0)||([IsEnabled,"Tool:SubTool:Rename"]==0),
+        [MessageOK,"SubTool Rename is unavailable. Select a live editable Tool first.","Camera Bank Fast"][Exit]
+    ]
+]
+[RoutineDef,FB32_Rename,
+    [VarSet,fbRenameOK,0]
+    [FileExecute,fbRenameDLL,"RenameSetNext",fbWriteName]
+    [IPress,"Tool:SubTool:Rename"]
+    [RoutineCall,FB32_ReadName]
+    [If,([StrLength,fbTrackName]==[StrLength,fbWriteName])&&([StrFind,fbWriteName,fbTrackName]==0),
+        [VarSet,fbRenameOK,1]
+    ]
+]
+[RoutineDef,FB32_Cleanup,
+    [If,[MemGetSize,FBFFullIDs]>0,[MemDelete,FBFFullIDs]]
+    [If,[MemGetSize,FB32OriginalBank]>0,[MemDelete,FB32OriginalBank]]
+    [If,[MemGetSize,FB32OldNames]>0,[MemDelete,FB32OldNames]]
+    [If,[MemGetSize,FB32Stage]>0,[MemDelete,FB32Stage]]
+    [If,[MemGetSize,FB32NewGroups]>0,[MemDelete,FB32NewGroups]]
+    [If,[MemGetSize,FB32RenameState]>0,[MemDelete,FB32RenameState]]
+]
+[RoutineDef,FB32_RestoreEditingView,
+    [VarSet,fbViewBase,4+([SubToolGetCount]*2)]
+    [If,[MVarGet,FB32RenameState,fbViewBase+12]==1,
+        [MTransformSet,FB32RenameState,fbViewBase]
+        [CanvasZoomSet,[MVarGet,FB32RenameState,fbViewBase+9]]
+        [CanvasPanSet,[MVarGet,FB32RenameState,fbViewBase+10],[MVarGet,FB32RenameState,fbViewBase+11]]
+    ]
+]
+[RoutineDef,FBF_FullRecover,
+    [VarSet,fbRecoveryOK,1]
+    [If,[MemGetSize,FB32RenameState]>0,
+        [If,[MVarGet,FB32RenameState,3]==2,
+            [If,[MVarGet,FB25Data,7]==1,[RoutineCall,FB32_ClearLegacyBinding]]
+            [RoutineCall,FB32_Cleanup]
+        ,
+        [If,[MVarGet,FB32RenameState,3]==0,
+            [If,([SubToolGetCount]==[MVarGet,FB32RenameState,0])&&([ToolGetActiveIndex]==[MVarGet,FB32RenameState,2]),
+                [SubToolSelect,[MVarGet,FB32RenameState,1]]
+                [RoutineCall,FB32_RestoreEditingView]
+            ]
+            [RoutineCall,FB32_Cleanup]
+        ,
+        [If,([SubToolGetCount]!=[MVarGet,FB32RenameState,0])||([ToolGetActiveIndex]!=[MVarGet,FB32RenameState,2]),
+            [MessageOK,"An identifier update was interrupted. Select the same Tool with its unchanged SubTool list to recover the previous names and bank.","Camera Bank Fast"][Exit]
+        ]
+        [Loop,[SubToolGetCount],
+            [VarSet,fxID,[SubToolGetID,fbIndex]][VarSet,fxHi,INT(fxID/65536)]
+            [If,((fxID-(fxHi*65536))!=[MVarGet,FBFFullIDs,fbIndex*2])||(fxHi!=[MVarGet,FBFFullIDs,(fbIndex*2)+1]),
+                [MessageOK,"The SubTool list changed during an identifier update. Restore that Tool before recovering; the prior bank and names remain in session memory.","Camera Bank Fast"][Exit]
+            ]
+        ,fbIndex]
+        [RoutineCall,FB32_CheckRenameDLL]
+        [Loop,[SubToolGetCount],
+            [SubToolSelect,fbIndex]
+            [VarSet,fbWriteName,""]
+            [MemReadString,FB32OldNames,fbWriteName,fbIndex*1024,0]
+            [RoutineCall,FB32_ReadName]
+            [If,([StrLength,fbTrackName]!=[StrLength,fbWriteName])||([StrFind,fbWriteName,fbTrackName]!=0),
+                [RoutineCall,FB32_Rename]
+                [If,fbRenameOK==0,[VarSet,fbRecoveryOK,0]]
+            ]
+        ,fbIndex]
+        [Loop,[SubToolGetCount],
+            [SubToolSetStatus,fbIndex,[MVarGet,FB32RenameState,5+(fbIndex*2)]]
+        ,fbIndex]
+        [SubToolSelect,[MVarGet,FB32RenameState,1]]
+        [RoutineCall,FB32_RestoreEditingView]
+        [If,fbRecoveryOK==0,
+            [MessageOK,"Could not restore every SubTool name. The previous bank and names remain in memory; retry on the same Tool before continuing.","Camera Bank Fast"][Exit]
+        ]
+        [MemCopy,FB32OriginalBank,0,FB25Data,0,[MemGetSize,FB32OriginalBank]]
+        [VarSet,fbViewBase,4+([SubToolGetCount]*2)]
+        [If,[MemGetSize,FB32RenameState]<((fbViewBase+14)*4),
+            [RoutineCall,FB32_ClearLegacyBinding]
+        ,
+            [If,[MVarGet,FB32RenameState,fbViewBase+13]==0,[RoutineCall,FB32_ClearLegacyBinding]]
+        ]
+        [RoutineCall,FB32_Cleanup]
+        ]
+        ]
+    ,
+        [If,[MemGetSize,FB32OriginalBank]>0,[RoutineCall,FB32_Cleanup]]
+    ]
+]
+[RoutineDef,FB32_Fail,
+    [RoutineCall,FB32_Recover]
+    [MessageOK,fbMessage,"Camera Bank Fast"][Exit]
+,fbMessage]
+[RoutineDef,FBF_FullBegin,
+    [RoutineCall,FB32_CheckRenameDLL]
+    [VarSet,fbBeforeSelected,[SubToolGetActiveIndex]]
+    [MemCreate,FB32OriginalBank,123088,0]
+    [MemCopy,FB25Data,0,FB32OriginalBank,0,123088]
+    [MemCreate,FB32OldNames,[SubToolGetCount]*1024,0]
+    [MVarDef,FB32RenameState,18+([SubToolGetCount]*2),0]
+    [MVarSet,FB32RenameState,0,[SubToolGetCount]]
+    [MVarSet,FB32RenameState,1,fbBeforeSelected]
+    [MVarSet,FB32RenameState,2,[ToolGetActiveIndex]]
+    [VarSet,fbViewBase,4+([SubToolGetCount]*2)]
+    [If,[MemGetSize,FB32LegacyState]>0,[MVarSet,FB32RenameState,fbViewBase+13,1]]
+    [MTransformGet,FB32RenameState,fbViewBase]
+    [MVarSet,FB32RenameState,fbViewBase+9,[CanvasZoomGet]]
+    [MVarSet,FB32RenameState,fbViewBase+10,[CanvasPanGetH]][MVarSet,FB32RenameState,fbViewBase+11,[CanvasPanGetV]]
+    [MVarSet,FB32RenameState,fbViewBase+12,1]
+    [If,[MemGetSize,FBFFullIDs]>0,[MemDelete,FBFFullIDs]]
+    [MVarDef,FBFFullIDs,[SubToolGetCount]*2,0]
+    [Loop,[SubToolGetCount],
+        [VarSet,fxID,[SubToolGetID,fbIndex]][VarSet,fxHi,INT(fxID/65536)]
+        [MVarSet,FBFFullIDs,fbIndex*2,fxID-(fxHi*65536)]
+        [MVarSet,FBFFullIDs,(fbIndex*2)+1,fxHi]
+        [MVarSet,FB32RenameState,5+(fbIndex*2),[SubToolGetStatus,fbIndex]]
+    ,fbIndex]
+    [Loop,[SubToolGetCount],
+        [SubToolSelect,fbIndex][RoutineCall,FB32_ReadName]
+        [MemWriteString,FB32OldNames,fbTrackName,fbIndex*1024]
+    ,fbIndex]
+    [SubToolSelect,fbBeforeSelected]
+    [RoutineCall,FB32_RestoreEditingView]
+    [MVarSet,FB32RenameState,3,1]
+]
+[RoutineDef,FB32_RecordEffective,
+    [Loop,[SubToolGetCount],
+        [RoutineCall,FB32_VisibleNow,fbIndex]
+        [VarSet,fbCell,521+(fbSlot*1001)+fbIndex]
+        [MVarSet,FB25Data,fbCell,([MVarGet,FB25Data,fbCell]&3)+(fbTrackVisible*4)]
+    ,fbIndex]
+    [MVarSet,FB25Data,27746+fbSlot,[SubToolGetCount]]
+,fbSlot]
+[RoutineDef,FB32_RebaseForEdit,
+    [RoutineCall,FB32_CheckTracked]
+    [If,fbTrackValid==0,[MessageOK,fbTrackError,"Camera Bank Fast"][Exit]]
+    [RoutineCall,FBF_CanFastWrite]
+    [RoutineCall,FB32_BeginTransaction]
+    [Loop,25,
+        [If,[MVarGet,FB25Data,20+(fbSlot*20)]==1,
+            [MVarSet,FB25Data,520+(fbSlot*1001),[SubToolGetCount]]
+            [MVarSet,FB25Data,27746+fbSlot,[SubToolGetCount]]
+            [Loop,[SubToolGetCount],
+                [RoutineCall,FB32_GroupVisible,fbTrackGroups(fbIndex),fbSlot]
+                [MVarSet,FB25Data,521+(fbSlot*1001)+fbIndex,(fbTrackVisible*5)+2]
+            ,fbIndex]
+        ]
+    ,fbSlot]
+    [MVarSet,FB25Data,7,0]
+]
+[RoutineDef,FB32_StripTag,
+    [VarSet,fbBaseName,fbTrackName]
+    [VarSet,fbStripped,0]
+    [RoutineCall,FB32_ParseTag,fbTrackName]
+    [If,fbTagCount>1,[RoutineCall,FB32_Fail,"A SubTool name contains ambiguous camera identifiers. Names and cameras were kept; restore a single valid source marker before updating."]]
+    [Loop,[StrLength,fbTrackName],
+        [If,[StrLength,fbTrackName]>=(fbPos+20),
+            [VarSet,fbNativeA,[StrToAsc,fbTrackName,fbPos]]
+            [VarSet,fbNativeB,[StrToAsc,fbTrackName,fbPos+1]]
+            [If,(fbNativeA==67)&&(fbNativeB==66),
+                [VarSet,fbNativeC,[StrToAsc,fbTrackName,fbPos+14]]
+                [VarSet,fbNativeEnd,[StrToAsc,fbTrackName,fbPos+19]]
+                [If,(fbNativeC==71)&&(fbNativeEnd==95),
+                    [VarSet,fbValidTag,1]
+                    [Loop,12,
+                        [VarSet,fbChar,[StrToAsc,fbTrackName,fbPos+2+fbPart]]
+                        [If,(fbChar<48)||(fbChar>57),[VarSet,fbValidTag,0]]
+                    ,fbPart]
+                    [Loop,4,
+                        [VarSet,fbChar,[StrToAsc,fbTrackName,fbPos+15+fbPart]]
+                        [If,(fbChar<48)||(fbChar>57),[VarSet,fbValidTag,0]]
+                    ,fbPart]
+                    [If,fbValidTag==1,
+                        [VarSet,fbLeft,""][VarSet,fbRight,""]
+                        [If,fbPos>0,[VarSet,fbLeft,[StrExtract,fbTrackName,0,fbPos-1]]]
+                        [If,[StrLength,fbTrackName]>(fbPos+20),[VarSet,fbRight,[StrExtract,fbTrackName,fbPos+20,[StrLength,fbTrackName]-1]]]
+                        [VarSet,fbBaseName,[StrMerge,fbLeft,fbRight]][VarSet,fbStripped,1][LoopExit]
+                    ]
+                ]
+            ]
+        ]
+    ,fbPos]
+    [If,(fbTagCount==1)&&(fbStripped==0),[RoutineCall,FB32_Fail,"A SubTool has a malformed camera identifier. Restore its original name before storing/updating; previous cameras and names were kept."]]
+]
+[RoutineDef,FBF_FullRefresh,
+    [VarSet,fbCameraCount,0]
+    [Loop,25,
+        [If,[MVarGet,FB25Data,20+(fbSlot*20)]==1,
+            [VarInc,fbCameraCount]
+            [If,[MVarGet,FB25Data,27746+fbSlot]!=[SubToolGetCount],
+                [RoutineCall,FB32_Fail,"A camera has no current effective-visibility snapshot. Recall, review and UPDATE ACTIVE on the ORIGINAL unmerged Tool."]
+            ]
+        ]
+    ,fbSlot]
+    [If,fbCameraCount==0,[RoutineCall,FB32_Fail,"Store at least one camera before tracking visibility."]]
+    [If,[MemGetSize,FB32RenameState]==0,[RoutineCall,FB32_BeginTransaction]]
+    [MemCreate,FB32Stage,123088,0][MemCopy,FB25Data,0,FB32Stage,0,123088]
+    [MVarDef,FB32NewGroups,[SubToolGetCount],0]
+    [VarSet,fbGroups,0]
+    [Loop,[SubToolGetCount],
+        [VarSet,fbLow,0][VarSet,fbHigh,0]
+        [Loop,25,
+            [If,[MVarGet,FB25Data,20+(fbSlot*20)]==1,
+                [If,([MVarGet,FB25Data,521+(fbSlot*1001)+fbIndex]&4)!=0,
+                    [RoutineCall,FB32_Bit,fbSlot]
+                    [If,fbTrackHalf==0,[VarSet,fbLow,fbLow+fbTrackBit],[VarSet,fbHigh,fbHigh+fbTrackBit]]
+                ]
+            ]
+        ,fbSlot]
+        [VarSet,fbMatch,fbIndex+1]
+        [VarSet,fbGroups,[SubToolGetCount]]
+        [MVarSet,FB32Stage,25746+(fbIndex*2),fbLow]
+        [MVarSet,FB32Stage,25747+(fbIndex*2),fbHigh]
+        [MVarSet,FB32NewGroups,fbIndex,fbMatch]
+        [VarSet,fbNativeId,[SubToolGetID,fbIndex]]
+        [If,(fbNativeId<1)||(fbNativeId>4294967295),
+            [RoutineCall,FB32_Fail,"A native SubTool ID is outside the supported exact range. Previous names and cameras were kept."]
+        ]
+        [VarSet,fbNativeHi,INT(fbNativeId/65536)]
+        [MVarSet,FB32Stage,27772+(fbIndex*3),fbNativeId-(fbNativeHi*65536)]
+        [MVarSet,FB32Stage,27773+(fbIndex*3),fbNativeHi]
+        [MVarSet,FB32Stage,27774+(fbIndex*3),fbMatch]
+    ,fbIndex]
+    [VarSet,fbBankA,100000+IRAND(899999)][VarSet,fbBankB,100000+IRAND(899999)]
+    [If,(fbBankA==[MVarGet,FB25Data,8])&&(fbBankB==[MVarGet,FB25Data,9]),
+        [If,fbBankB<999999,[VarInc,fbBankB],[VarSet,fbBankB,100000]]
+    ]
+    [MVarSet,FB32Stage,7,1][MVarSet,FB32Stage,8,fbBankA][MVarSet,FB32Stage,9,fbBankB]
+    [MVarSet,FB32Stage,25745,fbGroups]
+    [MVarSet,FB32Stage,27771,[SubToolGetCount]]
+    [Loop,[SubToolGetCount],
+        [NoteBar,"Tracking camera visibility identifiers",fbIndex/[SubToolGetCount]]
+        [SubToolSelect,fbIndex][RoutineCall,FB32_ReadName][RoutineCall,FB32_StripTag]
+        [If,([StrLength,fbBaseName]<1)||([StrLength,fbBaseName]>235),
+            [RoutineCall,FB32_Fail,"A SubTool name cannot accommodate its 20-character identifier without truncation. Shorten its human-readable name and retry."]
+        ]
+        [VarSet,fbGroupValue,10000+[MVarGet,FB32NewGroups,fbIndex]]
+        [VarSet,fbGroupText,[StrMerge,"",fbGroupValue]]
+        [VarSet,fbGroupText,[StrExtract,fbGroupText,1,4]]
+        [VarSet,fbWriteName,[StrMerge,"CB",fbBankA,fbBankB,"G",fbGroupText,"_",fbBaseName]]
+        [RoutineCall,FB32_Rename]
+        [If,fbRenameOK==0,[RoutineCall,FB32_Fail,"Could not verify a SubTool identifier. Previous names and camera bank were restored."]]
+    ,fbIndex]
+    [Loop,[SubToolGetCount],[SubToolSetStatus,fbIndex,[MVarGet,FB32RenameState,5+(fbIndex*2)]],fbIndex]
+    [SubToolSelect,[MVarGet,FB32RenameState,1]]
+    [RoutineCall,FB32_RestoreEditingView]
+    [MemCopy,FB32Stage,0,FB25Data,0,123088]
+    [Loop,[SubToolGetCount],[VarSet,fbTrackGroups(fbIndex),[MVarGet,FB32NewGroups,fbIndex]],fbIndex]
+    [RoutineCall,FBF_Publish]
+    [MVarSet,FB32RenameState,3,2]
+    [RoutineCall,FB32_ClearLegacyBinding]
+    [RoutineCall,FB32_Cleanup]
+]
+[ISubPalette,
+    "ZPlugin:Camera Bank Fast"
+]
+[RoutineDef,FB29_CreateEmptyBank,
+    [RoutineCall,FBF_Invalidate]
+    [RoutineCall,FB32_ClearLegacyBinding]
+    [If,[MemGetSize,FB25Data] > 0,
+        [MemDelete,
+            FB25Data
+        ]
+    ]
+    [MVarDef,
+        FB25Data,
+        30772,
+        0
+    ]
+    [MVarSet,FB25Data,0,252523]
+    [MVarSet,FB25Data,1,9]
+    [MVarSet,FB25Data,2,25]
+    [MVarSet,FB25Data,3,0]
+    [MVarSet,FB25Data,4,0]
+    [MVarSet,FB25Data,5,0]
+    [MVarSet,FB25Data,6,0]
+]
+[RoutineDef,FB29_NormalizeRenderFlags,
+    [VarSet,nrSlot,0]
+    [Loop,25,
+        [VarSet,nrBase,
+            20 + (nrSlot * 20)
+        ]
+        [If,[MVarGet,FB25Data,nrBase] == 1,
+            [If,forceOn == 1,
+                [MVarSet,
+                    FB25Data,
+                    nrBase + 16,
+                    1
+                ]
+            ,
+                [VarSet,nrEnabled,
+                    [MVarGet,FB25Data,nrBase + 16]
+                ]
+                [If,
+                    (nrEnabled != 0)
+                    &&
+                    (nrEnabled != 1),
+                    [MVarSet,
+                        FB25Data,
+                        nrBase + 16,
+                        1
+                    ]
+                ]
+            ]
+            [MVarSet,
+                FB25Data,
+                nrBase + 17,
+                0
+            ]
+        ,
+            [MVarSet,
+                FB25Data,
+                nrBase + 16,
+                0
+            ]
+            [MVarSet,
+                FB25Data,
+                nrBase + 17,
+                0
+            ]
+        ]
+        [VarInc,nrSlot]
+    ]
+,forceOn]
+[RoutineDef,FB30_AcceptImport,
+    [VarSet,fbImportValid,0]
+    [If,(fbImportSize==2080)||(fbImportSize==102180)||(fbImportSize==102980)||(fbImportSize==111084)||(fbImportSize==123088),
+        [If,([MVarGet,FB29ImportTemp,0]==252523)&&([MVarGet,FB29ImportTemp,2]==25),
+            [VarSet,fbImportVersion,[MVarGet,FB29ImportTemp,1]]
+            [If,(fbImportSize==111084)&&(fbImportVersion==8),[VarSet,fbImportValid,1]]
+            [If,(fbImportSize==123088)&&(fbImportVersion==9),[VarSet,fbImportValid,1]]
+            [If,(fbImportSize==102980)&&(fbImportVersion==7),[VarSet,fbImportValid,1]]
+            [If,(fbImportSize==102180)&&((fbImportVersion>=3)&&(fbImportVersion<=6)),[VarSet,fbImportValid,1]]
+            [If,(fbImportSize==2080)&&((fbImportVersion>=1)&&(fbImportVersion<=6)),[VarSet,fbImportValid,1]]
+            [If,(fbImportValid==1)&&(fbImportVersion>=8),
+                [VarSet,fbTracked,[MVarGet,FB29ImportTemp,7]]
+                [If,(fbTracked!=0)&&(fbTracked!=1),[VarSet,fbImportValid,0]]
+                [If,fbTracked==1,
+                    [Loop,2,
+                        [VarSet,fbNonce,[MVarGet,FB29ImportTemp,8+fbN]]
+                        [If,((fbNonce<100000)||(fbNonce>999999))||(fbNonce!=INT(fbNonce)),[VarSet,fbImportValid,0]]
+                    ,fbN]
+                    [VarSet,fbGroups,[MVarGet,FB29ImportTemp,25745]]
+                    [If,((fbGroups<1)||(fbGroups>1000))||(fbGroups!=INT(fbGroups)),[VarSet,fbImportValid,0]]
+                    [If,fbImportValid==1,
+                        [Loop,fbGroups,
+                            [VarSet,fbLo,[MVarGet,FB29ImportTemp,25746+(fbG*2)]]
+                            [VarSet,fbHi,[MVarGet,FB29ImportTemp,25747+(fbG*2)]]
+                            [If,((fbLo<0)||(fbLo>8191))||(fbLo!=INT(fbLo)),[VarSet,fbImportValid,0]]
+                            [If,((fbHi<0)||(fbHi>4095))||(fbHi!=INT(fbHi)),[VarSet,fbImportValid,0]]
+                        ,fbG]
+                    ]
+                ]
+                [Loop,25,
+                    [VarSet,fbReady,[MVarGet,FB29ImportTemp,27746+fbS]]
+                    [If,((fbReady<0)||(fbReady>1000))||(fbReady!=INT(fbReady)),[VarSet,fbImportValid,0]]
+                ,fbS]
+                [If,(fbImportValid==1)&&(fbImportVersion==9),
+                    [VarSet,fbIdCount,[MVarGet,FB29ImportTemp,27771]]
+                    [If,((fbIdCount<0)||(fbIdCount>1000))||(fbIdCount!=INT(fbIdCount)),[VarSet,fbImportValid,0]]
+                    [If,(fbTracked==0)&&(fbIdCount!=0),[VarSet,fbImportValid,0]]
+                    [If,fbImportValid==1,
+                        [Loop,fbIdCount,
+                            [VarSet,fbImportId,[MVarGet,FB29ImportTemp,27772+(fbIdI*3)]]
+                            [VarSet,fbImportHi,[MVarGet,FB29ImportTemp,27773+(fbIdI*3)]]
+                            [VarSet,fbImportGroup,[MVarGet,FB29ImportTemp,27774+(fbIdI*3)]]
+                            [If,((fbImportId<0)||(fbImportId>65535))||(fbImportId!=INT(fbImportId)),[VarSet,fbImportValid,0]]
+                            [If,((fbImportHi<0)||(fbImportHi>65535))||(fbImportHi!=INT(fbImportHi)),[VarSet,fbImportValid,0]]
+                            [If,(fbImportHi==0)&&(fbImportId==0),[VarSet,fbImportValid,0]]
+                            [If,((fbImportGroup<1)||(fbImportGroup>fbGroups))||(fbImportGroup!=INT(fbImportGroup)),[VarSet,fbImportValid,0]]
+                        ,fbIdI]
+                    ]
+                ]
+            ]
+        ]
+    ]
+    [If,fbImportValid==1,
+        [RoutineCall,FB29_CreateEmptyBank]
+        [MemCopy,FB29ImportTemp,0,FB25Data,0,fbImportSize]
+        [If,fbImportVersion<8,
+            [MVarSet,FB25Data,7,0][MVarSet,FB25Data,8,0][MVarSet,FB25Data,9,0]
+        ]
+        [If,[MVarGet,FB25Data,7]==0,
+            [Loop,25,[MVarSet,FB25Data,27746+fbS,0],fbS]
+        ]
+        [If,fbImportVersion<7,
+            [Loop,25,
+                [MVarSet,FB25Data,20+(fbS*20)+18,0][MVarSet,FB25Data,20+(fbS*20)+19,0]
+                [Loop,6,[MVarSet,FB25Data,25547+(fbS*8)+fbUnknown,-1],fbUnknown]
+            ,fbS]
+        ]
+        [MVarSet,FB25Data,1,9]
+        [MVarSet,FB25Data,3,0][MVarSet,FB25Data,4,0][MVarSet,FB25Data,5,0][MVarSet,FB25Data,6,0]
+        [If,fbImportVersion>=6,[RoutineCall,FB29_NormalizeRenderFlags,0],[RoutineCall,FB29_NormalizeRenderFlags,1]]
+        [If,fbImportVersion<9,[RoutineCall,FB321_RecordNativeIDs]]
+    ]
+,fbImportSize]
+[RoutineCall,FB32_Recover]
+[If,[MemGetSize,FB25Data]>0,
+    [VarSet,fbStartupSize,[MemGetSize,FB25Data]]
+    [VarSet,fbAlreadyV9,0]
+    [If,fbStartupSize==123088,
+        [If,([MVarGet,FB25Data,0]==252523)&&([MVarGet,FB25Data,1]==9)&&([MVarGet,FB25Data,2]==25),
+            [VarSet,fbAlreadyV9,1]
+        ]
+    ]
+    [If,fbAlreadyV9==1,
+        [MVarSet,FB25Data,3,0][MVarSet,FB25Data,4,0][MVarSet,FB25Data,6,0]
+        [RoutineCall,FB29_NormalizeRenderFlags,0]
+    ,
+        [If,[MemGetSize,FB29ImportTemp]>0,[MemDelete,FB29ImportTemp]]
+        [MemCreate,FB29ImportTemp,fbStartupSize,0]
+        [MemCopy,FB25Data,0,FB29ImportTemp,0,fbStartupSize]
+        [RoutineCall,FB30_AcceptImport,fbStartupSize]
+        [MemDelete,FB29ImportTemp]
+        [If,fbImportValid==0,
+            [MessageOK,"Unsupported in-memory bank. Export it with its original plugin before loading this version.","Camera Bank Fast"]
+            [Exit]
+        ]
+    ]
+,
+    [RoutineCall,FB29_CreateEmptyBank]
+]
+[RoutineCall,FB32_ResetUnboundLegacy]
+[RoutineDef,FB29_SaveVisualState,
+    [VarSet,visBase,
+        520 + (slot * 1001)
+    ]
+    [VarSet,subCount,
+        [SubToolGetCount]
+    ]
+    [MVarSet,
+        FB25Data,
+        visBase,
+        subCount
+    ]
+    [VarSet,st,0]
+    [Loop,subCount,
+        [VarSet,status,
+            [SubToolGetStatus,st]
+        ]
+        [VarSet,stateBits,
+            (status & 0x03)
+        ]
+        [MVarSet,
+            FB25Data,
+            visBase + 1 + st,
+            stateBits
+        ]
+        [VarInc,st]
+    ]
+,slot]
+[RoutineDef,FB32_RestoreLegacyVisualState,
+    [VarSet,visBase,
+        520 + (slot * 1001)
+    ]
+    [VarSet,savedCount,
+        [MVarGet,FB25Data,visBase]
+    ]
+    [VarSet,currentCount,
+        [SubToolGetCount]
+    ]
+    [If,
+        (savedCount > 0)
+        &&
+        (savedCount == currentCount),
+        [VarSet,st,0]
+        [Loop,savedCount,
+            [VarSet,savedState,
+                [MVarGet,
+                    FB25Data,
+                    visBase + 1 + st
+                ]
+            ]
+            [VarSet,savedEye,
+                (savedState & 0x01)
+            ]
+            [VarSet,currentStatus,
+                [SubToolGetStatus,st]
+            ]
+            [VarSet,currentEye,
+                (currentStatus & 0x01)
+            ]
+            [SubToolSetStatus,
+                st,
+                (currentStatus - currentEye) + savedEye
+            ]
+            [VarInc,st]
+        ]
+        [VarSet,st,0]
+        [Loop,savedCount,
+            [VarSet,savedState,
+                [MVarGet,
+                    FB25Data,
+                    visBase + 1 + st
+                ]
+            ]
+            [VarSet,savedFolderEye,
+                (savedState & 0x02)
+            ]
+            [VarSet,currentStatus,
+                [SubToolGetStatus,st]
+            ]
+            [VarSet,currentFolderEye,
+                (currentStatus & 0x02)
+            ]
+            [SubToolSetStatus,
+                st,
+                (currentStatus - currentFolderEye) + savedFolderEye
+            ]
+            [VarInc,st]
+        ]
+        [IUpdate,1,1]
+    ]
+,slot]
+[RoutineDef,FB31_Require3D,
+    [If,([IsEnabled,"Transform:Edit"]==0)||([IGet,"Transform:Edit"]==0),
+        [MessageOK,"No live 3D model is in Edit mode. Select your Tool, draw it on the canvas and press T (Edit), then try again. The camera has not been changed.","Camera Bank Fast"]
+        [Exit]
+    ]
+    [If,[SubToolGetCount]<1,
+        [MessageOK,"No editable mesh was found. If this is a primitive or ZSphere, make a PolyMesh3D/adaptive skin first, then store the camera. Automatic conversion is avoided to preserve your Tool.","Camera Bank Fast"]
+        [Exit]
+    ]
+]
+[RoutineDef,FB30_LensPaths,
+    [VarSet,fbFovPath,""]
+    [VarSet,fbUniversalPath,""]
+    [If,[IExists,"Draw:Angle Of View"],[VarSet,fbFovPath,"Draw:Angle Of View"]]
+    [If,[IExists,"Draw:Field of View"],[VarSet,fbFovPath,"Draw:Field of View"]]
+    [If,[IExists,"Draw:Field Of View(deg)"],[VarSet,fbFovPath,"Draw:Field Of View(deg)"]]
+    [If,[IExists,"Draw:Universal Camera"],[VarSet,fbUniversalPath,"Draw:Universal Camera"]]
+    [If,[IExists,"Draw:UniversalCamera"],[VarSet,fbUniversalPath,"Draw:UniversalCamera"]]
+    [If,[IExists,"Draw:Camera Mode"],[VarSet,fbUniversalPath,"Draw:Camera Mode"]]
+    [If,[IExists,"Draw:Camera"],[VarSet,fbUniversalPath,"Draw:Camera"]]
+    [If,[StrLength,fbUniversalPath]>0,
+        [If,[IGet,[Var,fbUniversalPath]]==0,
+            [If,[IExists,"Draw:Angle Of View"],[VarSet,fbFovPath,"Draw:Angle Of View"]]
+        ]
+    ]
+]
+[RoutineDef,FB30_SaveExtra,
+    [VarSet,fbBase,20 + (fbSlot*20)]
+    [VarSet,fbExtra,25545 + (fbSlot*8)]
+    [MVarSet,FB25Data,fbBase+18,[IGet,"Document:Width"]]
+    [MVarSet,FB25Data,fbBase+19,[IGet,"Document:Height"]]
+    [Loop,8,[MVarSet,FB25Data,fbExtra+fbIndex,0],fbIndex]
+    [RoutineCall,FB30_LensPaths]
+    [If,[StrLength,fbFovPath]>0,
+        [MVarSet,FB25Data,fbExtra,[IGet,[Var,fbFovPath]]]
+        [MVarSet,FB25Data,fbExtra+1,1]
+    ]
+    [MVarSet,FB25Data,fbExtra+2,-1]
+    [If,[StrLength,fbUniversalPath]>0,[MVarSet,FB25Data,fbExtra+2,[IGet,[Var,fbUniversalPath]]]]
+    [MVarSet,FB25Data,fbExtra+3,-1]
+    [If,[IExists,"Draw:Align To Object"],[MVarSet,FB25Data,fbExtra+3,[IGet,"Draw:Align To Object"]]]
+    [MVarSet,FB25Data,fbExtra+4,-1]
+    [If,[IExists,"Draw:Auto Adjust Distance"],[MVarSet,FB25Data,fbExtra+4,[IGet,"Draw:Auto Adjust Distance"]]]
+    [MVarSet,FB25Data,fbExtra+5,-1]
+    [If,[IExists,"Draw:Crop Factor"],[MVarSet,FB25Data,fbExtra+5,[IGet,"Draw:Crop Factor"]]]
+    [MVarSet,FB25Data,fbExtra+6,-1]
+    [If,[IExists,"Draw:Horizontal"],[MVarSet,FB25Data,fbExtra+6,[IGet,"Draw:Horizontal"]]]
+    [MVarSet,FB25Data,fbExtra+7,-1]
+    [If,[IExists,"Draw:Vertical"],[MVarSet,FB25Data,fbExtra+7,[IGet,"Draw:Vertical"]]]
+,fbSlot]
+[RoutineDef,FB30_Resize,
+    [If,(fbW>0)&&(fbH>0),
+        [If,(fbW>[IGetMax,"Document:Width"])||(fbH>[IGetMax,"Document:Height"]),
+            [MessageOK,"Saved canvas size exceeds this ZBrush version's limits.","Camera Bank Fast"]
+            [Exit]
+        ]
+        [If,(fbW!=[IGet,"Document:Width"])||(fbH!=[IGet,"Document:Height"]),
+            [RoutineCall,FB31_Require3D]
+            [VarSet,fbPro,[IGet,"Document:Pro"]]
+            [If,[IExists,"Preferences:LightBox:LightBox"],
+                [ISet,"Preferences:LightBox:LightBox",0]
+            ]
+            [VarSet,fbThumbnail,0]
+            [If,[IExists,"Preferences:Thumbnail:T.Thumbnail"],
+                [VarSet,fbThumbnail,[IGet,"Preferences:Thumbnail:T.Thumbnail"]]
+                [IUnPress,"Preferences:Thumbnail:T.Thumbnail"]
+            ]
+            [IUnPress,"Transform:Edit"]
+            [IPress,"Layer:Clear"]
+            [IUnPress,"Document:Pro"]
+            [ISet,"Document:Width",fbW]
+            [ISet,"Document:Height",fbH]
+            [IKeyPress,13,[IPress,"Document:Resize"]]
+            [ISet,"Document:Pro",fbPro]
+            [IPress,"Transform:Draw Pointer"]
+            [CanvasClick,10,10,20,20]
+            [IPress,"Transform:Edit"]
+            [IUpdate,1,1]
+            [If,[IExists,"Preferences:Thumbnail:T.Thumbnail"],
+                [ISet,"Preferences:Thumbnail:T.Thumbnail",fbThumbnail]
+            ]
+            [RoutineCall,FB31_Require3D]
+        ]
+    ]
+,fbW,fbH]
+[RoutineDef,FB30_RestoreLens,
+    [VarSet,fbBase,20 + (fbSlot*20)]
+    [VarSet,fbExtra,25545 + (fbSlot*8)]
+    [RoutineCall,FB30_LensPaths]
+    [If,[StrLength,fbUniversalPath]>0,
+        [If,[MVarGet,FB25Data,fbExtra+2]>=0,[ISet,[Var,fbUniversalPath],[MVarGet,FB25Data,fbExtra+2]]]
+    ]
+    [RoutineCall,FB30_LensPaths]
+    [If,[IExists,"Draw:Perspective"],[IPress,"Draw:Perspective"]]
+    [If,[IsEnabled,"Draw:Crop Factor"],
+        [If,[MVarGet,FB25Data,fbExtra+5]>0,[ISet,"Draw:Crop Factor",[MVarGet,FB25Data,fbExtra+5]]]
+    ]
+    [If,[IsEnabled,"Draw:Horizontal"],
+        [If,[MVarGet,FB25Data,fbExtra+6]==1,[IPress,"Draw:Horizontal"]]
+    ]
+    [If,[IsEnabled,"Draw:Vertical"],
+        [If,[MVarGet,FB25Data,fbExtra+7]==1,[IPress,"Draw:Vertical"]]
+    ]
+    [If,[MVarGet,FB25Data,fbBase+15]==1,
+        [If,[IsEnabled,"Draw:Focal Length(mm)"],[ISet,"Draw:Focal Length(mm)",[MVarGet,FB25Data,fbBase+11]]]
+    ]
+    [If,[MVarGet,FB25Data,fbBase+15]==2,
+        [If,[IExists,"Draw:Focal Length"],
+            [If,[IsEnabled,"Draw:Focal Length"],[ISet,"Draw:Focal Length",[MVarGet,FB25Data,fbBase+11]]]
+        ]
+    ]
+    [If,([MVarGet,FB25Data,fbExtra+1]==1)&&([StrLength,fbFovPath]>0),
+        [ISet,[Var,fbFovPath],[MVarGet,FB25Data,fbExtra]]
+    ]
+    [If,[IExists,"Draw:Align To Object"],
+        [If,[MVarGet,FB25Data,fbExtra+3]>=0,[ISet,"Draw:Align To Object",[MVarGet,FB25Data,fbExtra+3]]]
+    ]
+    [If,[IExists,"Draw:Auto Adjust Distance"],
+        [If,[MVarGet,FB25Data,fbExtra+4]>=0,[ISet,"Draw:Auto Adjust Distance",[MVarGet,FB25Data,fbExtra+4]]]
+    ]
+    [If,[IExists,"Draw:Perspective"],
+        [If,[MVarGet,FB25Data,fbBase+10]>=0,[ISet,"Draw:Perspective",[MVarGet,FB25Data,fbBase+10]]]
+    ]
+,fbSlot]
+[RoutineDef,FB29_SaveSlot,
+    [VarSet,fxStoreCheck,1][VarSet,fxWriteFast,0]
+    [RoutineCall,FB32_Recover]
+    [VarSet,displaySlot,
+        slot + 1
+    ]
+    [VarSet,base,
+        20 + (slot * 20)
+    ]
+    [RoutineCall,FB31_Require3D]
+    [VarSet,currentSubCount,
+        [SubToolGetCount]
+    ]
+    [If,currentSubCount > 1000,
+        [MessageOK,
+            "Camera Bank 25 supports up to 1000 SubTools.",
+            "Camera Bank Fast"
+        ]
+        [Exit]
+    ]
+    [VarSet,fbKeepRender,1]
+    [If,[MVarGet,FB25Data,base]==1,[VarSet,fbKeepRender,[MVarGet,FB25Data,base+16]]]
+    [If,[MVarGet,FB25Data,7]==1,
+        [RoutineCall,FB32_RebaseForEdit]
+    ,
+        [RoutineCall,FB32_CheckLegacyEdit]
+        [RoutineCall,FB32_BeginTransaction]
+    ]
+    [RoutineCall,FBV_CaptureSlot,slot,fbKeepRender]
+    [RoutineCall,FB32_FinishStore]
+    [VarSet,fxStoreCheck,0]
+    [If,[MVarGet,FB25Data,7]==1,
+        [NoteBar,[StrMerge,"Camera ",displaySlot," stored | Render ",fbKeepRender,". Save the matching ZTL/ZPR and bank."],1]
+    ,
+        [Note,"View stored. Review/UPDATE ACTIVE for the remaining legacy cameras; tracking completes automatically.",,2]
+    ]
+,slot]
+[RoutineDef,FB29_LoadSlot,
+    [VarSet,fxStoreCheck,0]
+    [RoutineCall,FB32_Recover]
+    [VarSet,base,20+(slot*20)]
+    [If,[MVarGet,FB25Data,base]!=1,[Exit]]
+    [RoutineCall,FB31_Require3D]
+    [RoutineCall,FB32_RequireVisibility,slot]
+    [If,([MVarGet,FB25Data,base+18]==0)&&([MVarGet,FB25Data,25546+(slot*8)]==0),
+        [Loop,6,[MVarSet,FB25Data,25547+(slot*8)+fbUnknown,-1],fbUnknown]
+    ]
+    [VarSet,fbLock,0]
+    [If,[IExists,"Draw:Lock Camera"],
+        [VarSet,fbLock,[IGet,"Draw:Lock Camera"]]
+        [IUnPress,"Draw:Lock Camera"]
+    ]
+    [RoutineCall,FB30_Resize,[MVarGet,FB25Data,base+18],[MVarGet,FB25Data,base+19]]
+    [RoutineCall,FB30_RestoreLens,slot]
+    [RoutineCall,FB29_RestoreVisualState,slot]
+    [MTransformSet,FB25Data,base+1]
+    [CanvasZoomSet,[MVarGet,FB25Data,base+12]]
+    [CanvasPanSet,[MVarGet,FB25Data,base+13],[MVarGet,FB25Data,base+14]]
+    [If,[IExists,"Draw:Lock Camera"],[ISet,"Draw:Lock Camera",fbLock]]
+    [MVarSet,FB25Data,5,slot+1]
+    [IUpdate,2,1]
+,slot]
+[RoutineDef,FB29_ClearSlot,
+    [RoutineCall,FBF_Invalidate]
+    [RoutineCall,FB32_Recover]
+    [VarSet,displaySlot,
+        slot + 1
+    ]
+    [VarSet,base,
+        20 + (slot * 20)
+    ]
+    [VarSet,visBase,
+        520 + (slot * 1001)
+    ]
+    [If,[MVarGet,FB25Data,5] == displaySlot,
+        [MVarSet,
+            FB25Data,
+            5,
+            0
+        ]
+    ]
+    [VarSet,n,0]
+    [Loop,20,
+        [MVarSet,
+            FB25Data,
+            base + n,
+            0
+        ]
+        [VarInc,n]
+    ]
+    [VarSet,n,0]
+    [Loop,1001,
+        [MVarSet,
+            FB25Data,
+            visBase + n,
+            0
+        ]
+        [VarInc,n]
+    ]
+    [MVarSet,FB25Data,27746+slot,0]
+    [Loop,8,[MVarSet,FB25Data,25545+(slot*8)+fbClearIndex,0],fbClearIndex]
+    [Note,
+        [StrMerge,
+            "Camera ",
+            displaySlot,
+            " CLEARED"
+        ],
+        ,
+        2
+    ]
+,slot]
+[RoutineDef,FB29_ApplyVisual,
+    [VarSet,base,
+        20 + (slot * 20)
+    ]
+    [VarSet,displaySlot,
+        slot + 1
+    ]
+    [If,displaySlot < 10,
+        [VarSet,buttonPath,
+            [StrMerge,
+                "ZPlugin:Camera Bank Fast:0",
+                displaySlot
+            ]
+        ]
+    ,
+        [VarSet,buttonPath,
+            [StrMerge,
+                "ZPlugin:Camera Bank Fast:",
+                displaySlot
+            ]
+        ]
+    ]
+    [VarSet,isStored,
+        [MVarGet,FB25Data,base]
+    ]
+    [VarSet,renderEnabled,
+        [MVarGet,FB25Data,base + 16]
+    ]
+    [IEnable,
+        [Var,buttonPath]
+    ]
+    [If,isStored == 1,
+        [ISet,
+            [Var,buttonPath],
+            renderEnabled
+        ]
+    ,
+        [ISet,
+            [Var,buttonPath],
+            0
+        ]
+    ]
+    [If,[MVarGet,FB25Data,6] == 1,
+        [If,isStored == 1,
+            [IDisable,
+                [Var,buttonPath]
+            ]
+        ,
+            [IEnable,
+                [Var,buttonPath]
+            ]
+        ]
+    ,
+        [If,isStored == 1,
+            [IEnable,
+                [Var,buttonPath]
+            ]
+        ,
+            [IDisable,
+                [Var,buttonPath]
+            ]
+        ]
+    ]
+,slot]
+[RoutineDef,FB29_SyncVisuals,
+    [IEnable,"ZPlugin:Camera Bank Fast:STORE NEW"]
+    [IEnable,"ZPlugin:Camera Bank Fast:CLEAR"]
+    [MVarSet,
+        FB25Data,
+        4,
+        1
+    ]
+    [VarSet,syncSlot,0]
+    [Loop,25,
+        [RoutineCall,
+            FB29_ApplyVisual,
+            syncSlot
+        ]
+        [VarInc,syncSlot]
+    ]
+    [ISet,
+        "ZPlugin:Camera Bank Fast:STORE NEW",
+        [MVarGet,FB25Data,6]
+    ]
+    [ISet,
+        "ZPlugin:Camera Bank Fast:CLEAR",
+        [MVarGet,FB25Data,3]
+    ]
+    [IUpdate,1,1]
+    [MVarSet,
+        FB25Data,
+        4,
+        0
+    ]
+]
+[RoutineDef,FB29_EnterStoreMode,
+    [RoutineCall,FB32_Recover]
+    [VarSet,emptyCount,0]
+    [VarSet,testSlot,0]
+    [Loop,25,
+        [VarSet,testBase,
+            20 + (testSlot * 20)
+        ]
+        [If,[MVarGet,FB25Data,testBase] != 1,
+            [VarInc,emptyCount]
+        ]
+        [VarInc,testSlot]
+    ]
+    [If,emptyCount == 0,
+        [MVarSet,FB25Data,6,0]
+        [MessageOK,
+            "All 25 camera slots are already occupied.",
+            "Camera Bank Fast"
+        ]
+        [RoutineCall,
+            FB29_SyncVisuals
+        ]
+    ,
+        [MVarSet,FB25Data,3,0]
+        [MVarSet,FB25Data,6,1]
+        [RoutineCall,
+            FB29_SyncVisuals
+        ]
+        [Note,
+            "STORE NEW - Click an EMPTY camera slot",
+            ,
+            2
+        ]
+    ]
+]
+[RoutineDef,FB29_ExitStoreMode,
+    [MVarSet,FB25Data,6,0]
+    [RoutineCall,
+        FB29_SyncVisuals
+    ]
+]
+[RoutineDef,FB29_SlotClick,
+    [RoutineCall,FB32_Recover]
+    [If,[MVarGet,FB25Data,4] == 0,
+        [VarSet,base,
+            20 + (slot * 20)
+        ]
+        [VarSet,displaySlot,
+            slot + 1
+        ]
+        [If,[MVarGet,FB25Data,6] == 1,
+            [If,[MVarGet,FB25Data,base] != 1,
+                [RoutineCall,
+                    FB29_SaveSlot,
+                    slot
+                ]
+            ]
+            [MVarSet,FB25Data,6,0]
+            [MVarSet,FB25Data,3,0]
+            [RoutineCall,
+                FB29_SyncVisuals
+            ]
+        ,
+            [If,[MVarGet,FB25Data,3] == 1,
+                [If,[MVarGet,FB25Data,base] == 1,
+                    [RoutineCall,
+                        FB29_ClearSlot,
+                        slot
+                    ]
+                ]
+                [MVarSet,FB25Data,3,0]
+                [MVarSet,FB25Data,6,0]
+                [RoutineCall,
+                    FB29_SyncVisuals
+                ]
+            ,
+                [If,[MVarGet,FB25Data,base] == 1,
+                    [RoutineCall,
+                        FB29_LoadSlot,
+                        slot
+                    ]
+                    [If,[MVarGet,FB25Data,base + 17] == 0,
+                        [MVarSet,
+                            FB25Data,
+                            base + 17,
+                            1
+                        ]
+                        [If,[MVarGet,FB25Data,base + 16] == 1,
+                            [MVarSet,
+                                FB25Data,
+                                5,
+                                displaySlot
+                            ]
+                            [NoteBar,[StrMerge,
+                                    "Camera ",
+                                    displaySlot,
+                                    " RECALLED | RENDER ON"
+                                ],1]
+                        ,
+                            [MVarSet,FB25Data,5,displaySlot]
+                            [NoteBar,[StrMerge,
+                                    "Camera ",
+                                    displaySlot,
+                                    " RECALLED | RENDER OFF"
+                                ],1]
+                        ]
+                    ,
+                        [If,[MVarGet,FB25Data,base + 16] == 1,
+                            [MVarSet,
+                                FB25Data,
+                                base + 16,
+                                0
+                            ]
+                            [MVarSet,FB25Data,5,displaySlot]
+                            [NoteBar,[StrMerge,
+                                    "Camera ",
+                                    displaySlot,
+                                    " | RENDER OFF"
+                                ],1]
+                        ,
+                            [MVarSet,
+                                FB25Data,
+                                base + 16,
+                                1
+                            ]
+                            [MVarSet,
+                                FB25Data,
+                                5,
+                                displaySlot
+                            ]
+                            [NoteBar,[StrMerge,
+                                    "Camera ",
+                                    displaySlot,
+                                    " | RENDER ON"
+                                ],1]
+                        ]
+                    ]
+                    [RoutineCall,
+                        FB29_SyncVisuals
+                    ]
+                ]
+            ]
+        ]
+    ]
+,slot]
+[RoutineDef,FB29_CheckActive,
+    [VarSet,activeCamera,
+        [MVarGet,FB25Data,5]
+    ]
+    [If,activeCamera > 0,
+        [Note,
+            [StrMerge,
+                "ACTIVE CAMERA = ",
+                activeCamera
+            ],
+            ,
+            4
+        ]
+    ,
+        [Note,
+            "ACTIVE CAMERA = NONE",
+            ,
+            4
+        ]
+    ]
+]
+[RoutineDef,FB29_ClearAll,
+    [RoutineCall,FB32_Recover]
+    [VarSet,answer,
+        [MessageYesNo,
+            "Clear all 25 stored cameras and visibility snapshots?",
+            "Camera Bank Fast"
+        ]
+    ]
+    [If,answer == 1,
+        [RoutineCall,
+            FB29_CreateEmptyBank
+        ]
+        [RoutineCall,
+            FB29_SyncVisuals
+        ]
+        [MessageOK,
+            "All 25 camera slots have been cleared.",
+            "Camera Bank Fast"
+        ]
+    ]
+]
+[RoutineDef,FB29_ExportBank,
+    [VarSet,saveFile,[FileNameAsk,"Camera Bank (*.zcv)|*.zcv||","CameraBankFast25_v0_3.zcv","Export Camera Bank Fast 0.3"]]
+    [If,[StrLength,saveFile]==0,[Exit]]
+    [RoutineCall,FB32_Recover]
+    [If,[MemGetSize,FB32Export]>0,[MemDelete,FB32Export]]
+    [If,[MemGetSize,FB32ExportCheck]>0,[MemDelete,FB32ExportCheck]]
+    [MemCreate,FB32Export,123088,0]
+    [MemCopy,FB25Data,0,FB32Export,0,123088]
+    [MVarSet,FB32Export,1,9]
+    [MVarSet,FB32Export,3,0][MVarSet,FB32Export,4,0][MVarSet,FB32Export,6,0]
+    [Loop,25,[MVarSet,FB32Export,20+(fbS*20)+17,0],fbS]
+    [VarSet,saveResult,[MemSaveToFile,FB32Export,saveFile,1]]
+    [VarSet,fbExportOK,0]
+    [If,saveResult==123088,
+        [If,[MemCreateFromFile,FB32ExportCheck,saveFile]==123088,
+            [VarSet,fbExportOK,1]
+            [Loop,30772,
+                [If,[MVarGet,FB32Export,fbCell]!=[MVarGet,FB32ExportCheck,fbCell],
+                    [VarSet,fbExportOK,0][LoopExit]
+                ]
+            ,fbCell]
+        ]
+    ]
+    [MemDelete,FB32Export]
+    [If,[MemGetSize,FB32ExportCheck]>0,[MemDelete,FB32ExportCheck]]
+    [If,fbExportOK==1,
+        [If,[MVarGet,FB25Data,7]==1,
+            [MessageOK,"Camera bank exported and read-back verified. Send it with the matching ZTL/ZPR saved AFTER the latest store/update. Keep CB name markers and merge only equal-visibility parts across ALL occupied cameras.","Camera Bank Fast"]
+        ,
+            [MessageOK,"Camera bank exported and read-back verified. This bank is still UNTRACKED: it contains no reliable name ancestry. Review and UPDATE ACTIVE for every camera on the ORIGINAL unmerged Tool; tracking completes automatically after the last update.","Camera Bank Fast"]
+        ]
+    ,
+        [MessageOK,[StrMerge,"Export could not be verified (write result ",saveResult,"). Cameras were kept in memory. The selected destination may be incomplete; retry to a writable path."],"Camera Bank Fast"]
+    ]
+]
+[RoutineDef,FB29_ImportBank,
+    [VarSet,fbFile,[FileNameAsk,"Camera Bank (*.zcv)|*.zcv||",,"Import Camera Bank"]]
+    [If,[StrLength,fbFile]>0,
+        [RoutineCall,FB32_Recover]
+        [If,[MemGetSize,FB29ImportTemp]>0,[MemDelete,FB29ImportTemp]]
+        [VarSet,fbSize,[MemCreateFromFile,FB29ImportTemp,fbFile]]
+        [RoutineCall,FB30_AcceptImport,fbSize]
+        [If,[MemGetSize,FB29ImportTemp]>0,[MemDelete,FB29ImportTemp]]
+        [If,fbImportValid==1,
+            [RoutineCall,FB29_SyncVisuals]
+            [If,[MVarGet,FB25Data,7]==0,
+                [MessageOK,"Untracked bank: ancestry is unknown. On the ORIGINAL unmerged Tool, review and UPDATE ACTIVE for every camera. Tracking then completes automatically. Save the matching ZTL/ZPR and bank. Older banks may need canvas/lens corrections.","Camera Bank Fast"]
+            ,
+                [MessageOK,"Camera Bank imported.","Camera Bank Fast"]
+            ]
+        ,
+            [MessageOK,"Invalid or unsupported bank. Current cameras were kept.","Camera Bank Fast"]
+        ]
+    ]
+]
+[RoutineDef,FBF_SetAllRender,
+    [RoutineCall,FB32_Recover]
+    [Loop,25,
+        [VarSet,bulkBase,20+(bulkSlot*20)]
+        [If,[MVarGet,FB25Data,bulkBase]==1,
+            [MVarSet,FB25Data,bulkBase+16,bulkRender]
+        ]
+    ,bulkSlot]
+    [RoutineCall,FB29_SyncVisuals]
+,bulkRender]
+[IButton,"ZPlugin:Camera Bank Fast:Desactivar todas las camaras","Set Render OFF for every stored camera.",[RoutineCall,FBF_SetAllRender,0],,1]
+[IButton,"ZPlugin:Camera Bank Fast:Activar todas las camaras","Set Render ON for every stored camera.",[RoutineCall,FBF_SetAllRender,1],,1]
+[ISwitch,"ZPlugin:Camera Bank Fast:01",[MVarGet,FB25Data,36],"Camera 01",
+[RoutineCall,FB29_SlotClick,0],[RoutineCall,FB29_SlotClick,0],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:02",[MVarGet,FB25Data,56],"Camera 02",
+[RoutineCall,FB29_SlotClick,1],[RoutineCall,FB29_SlotClick,1],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:03",[MVarGet,FB25Data,76],"Camera 03",
+[RoutineCall,FB29_SlotClick,2],[RoutineCall,FB29_SlotClick,2],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:04",[MVarGet,FB25Data,96],"Camera 04",
+[RoutineCall,FB29_SlotClick,3],[RoutineCall,FB29_SlotClick,3],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:05",[MVarGet,FB25Data,116],"Camera 05",
+[RoutineCall,FB29_SlotClick,4],[RoutineCall,FB29_SlotClick,4],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:06",[MVarGet,FB25Data,136],"Camera 06",
+[RoutineCall,FB29_SlotClick,5],[RoutineCall,FB29_SlotClick,5],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:07",[MVarGet,FB25Data,156],"Camera 07",
+[RoutineCall,FB29_SlotClick,6],[RoutineCall,FB29_SlotClick,6],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:08",[MVarGet,FB25Data,176],"Camera 08",
+[RoutineCall,FB29_SlotClick,7],[RoutineCall,FB29_SlotClick,7],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:09",[MVarGet,FB25Data,196],"Camera 09",
+[RoutineCall,FB29_SlotClick,8],[RoutineCall,FB29_SlotClick,8],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:10",[MVarGet,FB25Data,216],"Camera 10",
+[RoutineCall,FB29_SlotClick,9],[RoutineCall,FB29_SlotClick,9],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:11",[MVarGet,FB25Data,236],"Camera 11",
+[RoutineCall,FB29_SlotClick,10],[RoutineCall,FB29_SlotClick,10],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:12",[MVarGet,FB25Data,256],"Camera 12",
+[RoutineCall,FB29_SlotClick,11],[RoutineCall,FB29_SlotClick,11],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:13",[MVarGet,FB25Data,276],"Camera 13",
+[RoutineCall,FB29_SlotClick,12],[RoutineCall,FB29_SlotClick,12],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:14",[MVarGet,FB25Data,296],"Camera 14",
+[RoutineCall,FB29_SlotClick,13],[RoutineCall,FB29_SlotClick,13],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:15",[MVarGet,FB25Data,316],"Camera 15",
+[RoutineCall,FB29_SlotClick,14],[RoutineCall,FB29_SlotClick,14],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:16",[MVarGet,FB25Data,336],"Camera 16",
+[RoutineCall,FB29_SlotClick,15],[RoutineCall,FB29_SlotClick,15],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:17",[MVarGet,FB25Data,356],"Camera 17",
+[RoutineCall,FB29_SlotClick,16],[RoutineCall,FB29_SlotClick,16],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:18",[MVarGet,FB25Data,376],"Camera 18",
+[RoutineCall,FB29_SlotClick,17],[RoutineCall,FB29_SlotClick,17],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:19",[MVarGet,FB25Data,396],"Camera 19",
+[RoutineCall,FB29_SlotClick,18],[RoutineCall,FB29_SlotClick,18],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:20",[MVarGet,FB25Data,416],"Camera 20",
+[RoutineCall,FB29_SlotClick,19],[RoutineCall,FB29_SlotClick,19],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:21",[MVarGet,FB25Data,436],"Camera 21",
+[RoutineCall,FB29_SlotClick,20],[RoutineCall,FB29_SlotClick,20],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:22",[MVarGet,FB25Data,456],"Camera 22",
+[RoutineCall,FB29_SlotClick,21],[RoutineCall,FB29_SlotClick,21],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:23",[MVarGet,FB25Data,476],"Camera 23",
+[RoutineCall,FB29_SlotClick,22],[RoutineCall,FB29_SlotClick,22],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:24",[MVarGet,FB25Data,496],"Camera 24",
+[RoutineCall,FB29_SlotClick,23],[RoutineCall,FB29_SlotClick,23],0,.2]
+[ISwitch,"ZPlugin:Camera Bank Fast:25",[MVarGet,FB25Data,516],"Camera 25",
+[RoutineCall,FB29_SlotClick,24],[RoutineCall,FB29_SlotClick,24],0,.2]
+[ISwitch,
+    "ZPlugin:Camera Bank Fast:STORE NEW",
+    0,
+    "Enable empty camera slots so one new camera can be stored.",
+    [If,[MVarGet,FB25Data,4] == 0,
+        [RoutineCall,
+            FB29_EnterStoreMode
+        ]
+    ],
+    [If,[MVarGet,FB25Data,4] == 0,
+        [RoutineCall,
+            FB29_ExitStoreMode
+        ]
+    ],
+    0,
+    1
+]
+[ISwitch,
+    "ZPlugin:Camera Bank Fast:CLEAR",
+    0,
+    "Activate Clear Mode. Then click one stored camera.",
+    [If,[MVarGet,FB25Data,4] == 0,
+        [MVarSet,FB25Data,6,0]
+        [MVarSet,FB25Data,3,1]
+        [RoutineCall,
+            FB29_SyncVisuals
+        ]
+        [Note,
+            "CLEAR MODE - Click a stored camera",
+            ,
+            2
+        ]
+    ],
+    [If,[MVarGet,FB25Data,4] == 0,
+        [MVarSet,FB25Data,3,0]
+        [RoutineCall,
+            FB29_SyncVisuals
+        ]
+        [Note,
+            "CLEAR MODE cancelled",
+            ,
+            1
+        ]
+    ],
+    0,
+    .5
+]
+[IButton,
+    "ZPlugin:Camera Bank Fast:CLEAR ALL",
+    "Delete all stored cameras.",
+    [RoutineCall,
+        FB29_ClearAll
+    ]
+    ,
+    ,
+    .5
+]
+[IButton,
+    "ZPlugin:Camera Bank Fast:CHECK ACTIVE",
+    "Display active camera.",
+    [RoutineCall,
+        FB29_CheckActive
+    ]
+    ,
+    ,
+    1
+]
+[IButton,
+    "ZPlugin:Camera Bank Fast:EXPORT BANK",
+    "Export Camera Bank.",
+    [RoutineCall,
+        FB29_ExportBank
+    ]
+    ,
+    ,
+    .5
+]
+[IButton,
+    "ZPlugin:Camera Bank Fast:IMPORT BANK",
+    "Import Camera Bank.",
+    [RoutineCall,
+        FB29_ImportBank
+    ]
+    ,
+    ,
+    .5
+]
+[RoutineCall,
+    FB29_SyncVisuals
+]
+[IButton,"ZPlugin:Camera Bank Fast:UPDATE ACTIVE","Replace the active camera with the current view, canvas size, lens and visibility. Keeps its Render flag.",
+    [RoutineCall,FB32_Recover]
+    [VarSet,fbActive,[MVarGet,FB25Data,5]-1]
+    [If,fbActive<0,[MessageOK,"Recall a stored camera first.","Camera Bank Fast"][Exit]]
+    [RoutineCall,FB29_SaveSlot,fbActive]
+    [RoutineCall,FB29_SyncVisuals]
+,,1]
+[IEnable,"ZPlugin:Camera Bank Fast:STORE NEW"]
+[IEnable,"ZPlugin:Camera Bank Fast:CLEAR"]
+[RoutineDef,FB29_RestoreVisualState,
+    [If,([MVarGet,FB25Data,7]==1)||([MVarGet,FB25Data,27746+slot]>0),
+        [RoutineCall,FB32_RestoreEffective,slot]
+    ,
+        [RoutineCall,FB32_RestoreLegacyVisualState,slot]
+    ]
+,slot]
+
+[IButton,"ZPlugin:Camera Bank Fast:RESCAN MODEL","Revalidate every name after external identifier edits. Structural changes are detected automatically.",[RoutineCall,FBF_Rescan],,1]
+
+[IButton,"ZPlugin:Camera Bank Fast:IMPORT VWS","Append native ZAppLink views to free slots with Render ON. Uses current canvas, lens and visibility.",[RoutineCall,FBV_ImportVWS],,1]

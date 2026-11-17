@@ -10,7 +10,7 @@ from verify_merge import parts, get
 
 class ZtlIdentity(unittest.TestCase):
     def host(self):
-        h=Host();h.load(ROOT/'Camera Bank/CameraBank25.txt');return h
+        h=Host();h.load(ROOT/'Development/tests/fixtures/legacy_camera_321.txt');return h
 
     def bank(self, duplicate_ids=False):
         h=self.host();parts(h,['Shirt','Body','Pack'],[1,1,1])
@@ -115,7 +115,10 @@ class ZtlIdentity(unittest.TestCase):
         for source,routine in [('Render Capture/RenderCapture.txt','RC_CB29_LoadSlot'),
                                ('Generate and Export ID/GenerateExportID.txt','ID_CB29_LoadSlot')]:
             with self.subTest(source=source):
-                h=self.bank();self.alias(h);h.load(ROOT/source)
+                h=Host();h.load(ROOT.parent/'Camera Bank Fast/CameraBankFast25.txt')
+                parts(h,['A','B','C']);h.ids=[16777219,16777218,4294967295]
+                h.call('FB29_SaveSlot',0);h.status=[0,1,0];h.st=1;h.call('FB29_SaveSlot',1)
+                self.alias(h);h.load(ROOT/source)
                 h.call(routine,1);self.assertEqual([s&1 for s in h.status],[0,1,0])
 
 

@@ -1,0 +1,120 @@
+{
+  "version": "0.3",
+  "variant": "Camera Bank Fast",
+  "experimental": false,
+  "bank_data_version": 9,
+  "bank_bytes": 123088,
+  "updated": "2026-11-17T21:29:15.546994+00:00",
+  "compiled": {
+    "source": "CameraBankFast25.txt",
+    "source_sha256": "2bc8bd3b5a736e102f27f1e6fde2dc2cbf0898cd142992ebeb52cd9454faba6e",
+    "binary": "CameraBankFast25.zsc",
+    "binary_sha256": "96adb609486c13bb7e437448efbd501f20ae8d17333a2809ee8258eacf368943",
+    "bytes": 99112
+  },
+  "validation": "23 standalone tests and 8 focused Render/ID integration tests passed. Native VWS imported 8 enabled views; bulk buttons switched 16 stored cameras OFF and ON in ZBrush 2023.2.1.",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 25,
+      "sha256": "3acc74c14cdf9fee3fe6c48af21dd6386e90b55e7d53ae6771f0afeca0a1c5e0"
+    },
+    {
+      "path": "CameraBankFast25.txt",
+      "bytes": 81999,
+      "sha256": "2bc8bd3b5a736e102f27f1e6fde2dc2cbf0898cd142992ebeb52cd9454faba6e"
+    },
+    {
+      "path": "CameraBankFast25.zsc",
+      "bytes": 99112,
+      "sha256": "96adb609486c13bb7e437448efbd501f20ae8d17333a2809ee8258eacf368943"
+    },
+    {
+      "path": "DESINSTALAR FAST.cmd",
+      "bytes": 92,
+      "sha256": "388a956c0c0c7aa0baa2a7a31d372a0dcfbbc2fb8c0b2b3c7f7faf81cbcf5c85"
+    },
+    {
+      "path": "Development/build_fast.py",
+      "bytes": 9737,
+      "sha256": "a171e023533628f02d0db022c3d3030ba628ff25361bda2aa8a5fd1dfefbd4b0"
+    },
+    {
+      "path": "Development/fast.inc",
+      "bytes": 10435,
+      "sha256": "a28203f22a5fa53ae982df81e8b2e21bde89df1c6db517f5725360522cd5bd18"
+    },
+    {
+      "path": "Development/fast_test_host.py",
+      "bytes": 16020,
+      "sha256": "1263b48d6c0cd664ed1c52ee3bf2ba989f6ef196c25eaed48979540ea240467c"
+    },
+    {
+      "path": "Development/standard_camera_baseline.txt",
+      "bytes": 67933,
+      "sha256": "96ff50fe65cd1e457660cd94fb1aad3a0d17c1a87ca5d9337265e2e7f156f364"
+    },
+    {
+      "path": "Development/test_fast.py",
+      "bytes": 10852,
+      "sha256": "d168aa5d3953c6d24c6f6fb29895f9d44eb9597bb0d1b86750949448b03cbdf5"
+    },
+    {
+      "path": "Development/test_install_fast.py",
+      "bytes": 2250,
+      "sha256": "4e945cd39d10bc745fa5c4d7eb698db20041c64c8fb12991adc875dae75ff2ce"
+    },
+    {
+      "path": "Development/test_vws.py",
+      "bytes": 7983,
+      "sha256": "3ea94eb5b22e433f9cfbf06fd55a1f96f39615683df487630d2710fd53caf6f8"
+    },
+    {
+      "path": "Development/vws.inc",
+      "bytes": 4138,
+      "sha256": "6e9dfcbeeff27373425e7b5c48e06ca1ff32398e64881e4377b134ca27f49352"
+    },
+    {
+      "path": "INSTALAR FAST.cmd",
+      "bytes": 90,
+      "sha256": "67d7432047a8196798836b5341932ed3055d52a5e051bbbbd7e6ee83b2ab5446"
+    },
+    {
+      "path": "Install.ps1",
+      "bytes": 11370,
+      "sha256": "ff74a99e77227857e505d0ec6a956f405f7b7818192a13ebe177e71428114f74"
+    },
+    {
+      "path": "MakCameraBankFastData/PROVENANCE.txt",
+      "bytes": 185,
+      "sha256": "b97b4f31323eb88bdc583a16ee8e55cc57d927a08204281975a42df8a3d0fecf"
+    },
+    {
+      "path": "MakCameraBankFastData/ZFileUtils64.dll",
+      "bytes": 521728,
+      "sha256": "0e113ff2c859ed80b75a9b6139be59b4b3fe832605765ec2ebab5b95e61240ef"
+    },
+    {
+      "path": "README.txt",
+      "bytes": 3573,
+      "sha256": "c2b8426fa7ad2e3ac4c40b56a25693564ca8ee322c8b4c16210cce50bf8aee0d"
+    },
+    {
+      "path": "Uninstall.ps1",
+      "bytes": 3142,
+      "sha256": "8e2ac841d07cae90405ccd39a1c46fefe0f1746e581f005ef8fd4602d9e170e8"
+    },
+    {
+      "path": "VERIFICATION.md",
+      "bytes": 7754,
+      "sha256": "6fe465b04e8620d514dbad99a26b39d03f7f6d5ef9c32df5a854b2a4b4d162ff"
+    }
+  ],
+  "native_vws_import": {
+    "layout_bytes": 320,
+    "max_views_per_file": 8,
+    "append_only": true,
+    "default_render_enabled": true,
+    "bank_schema_unchanged": true
+  }
+}

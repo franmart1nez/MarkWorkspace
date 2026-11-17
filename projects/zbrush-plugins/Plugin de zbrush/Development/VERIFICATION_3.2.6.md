@@ -1,0 +1,23 @@
+# Render/ID 3.2.6 and Camera Bank Fast 0.2
+
+Camera Bank Fast is now the only active camera writer. The consumer package no longer includes the old `Camera Bank` folder, compiled writer or camera launcher. The installer has no Camera component; All/Both select both consumers. Explicit old installed writer files are backed up and retired through the existing verified rollback mechanism. Saved banks, Fast and unrelated plugins are preserved. A historical source fixture remains under Development for compatibility tests; the old builder exits without recreating a plugin.
+
+Fast 0.2 adds **IMPORT VWS**. It reads the native 320-byte ZAppLink layout, validates all occupied records and appends the complete set to free slots. Native order is Front, Back, Rght, Left, Top, Botm, Cust1, Cust2. Empty views are skipped. Insufficient capacity rejects the entire set. Positions and all scale components are converted from the native normalized representation; rotations are retained. The current document, lens, zoom/pan and effective visibility supply the missing defaults. Imported cameras start gray (Render OFF). They are regular editable/exportable v9 Fast cameras.
+
+One existing recoverable writer transaction covers all imported cameras and initial name binding. The importer does not call ZAppLink, modify its views or infer a focal length from a filename. The Fast schema and consumer recall routines are unchanged. Render/ID sources were rebuilt against the current Fast reference and independently compiled; their changed provenance comment does not introduce a new render pipeline.
+
+## Automated checks
+
+**90 tests passed:** 22 standalone Fast tests in 29.076 seconds and 68 consumer/installer/identity tests in 76.333 seconds. The new cases cover all eight views, normalization, partial view sets, free-slot holes, preservation of existing camera records and gray flags, malformed/empty/non-finite input, cancellation, Edit-mode and capacity checks, interrupted batch rollback, initial name recovery, update/export/import, and native string limits. Both consumers accept enabled imported views and reject the initial all-gray set. Installer tests include legacy retirement, saved-bank/Fast isolation, repeat installation, locked DLL handling and rollback of an already retired legacy writer after a later failure.
+
+## Native ZBrush 2023.2.1
+
+The exact final sources for Fast, Render and ID were compiled separately. The final Fast success notice was shortened after QA exposed the native 255-character string limit; the corrected public import completed successfully. Source/binary receipts and hashes are recorded locally and in the delivery manifests.
+
+The owner's supplied client VWS example contains eight occupied views. Public IMPORT VWS added them as gray slots 01-08 on a private DemoSoldier clone. Repeating it added 09-16. The first eight persistent camera records were preserved; only a subsequent public click's transient click-state cell changed. The normalized client transforms matched the stored bank to float32 rounding (maximum absolute coordinate/scale difference under 0.0002 pixels at 1872 x 1280). All eight cameras captured the same effective visibility defaults. Public 01 and 08 recalled the expected positions and rotations. ZBrush's own MTransformSet/Get introduces small rotation-Z quantization (below 0.006 degrees in these checks), also observed on the original view; bank rotation cells retain the source float values.
+
+Native ZAppLink save fixtures independently confirmed X/width, Y/height and all scale components/width, including nonuniform scales and empty view flags. The client file was read only. No client model, VWS or private camera data is bundled. These checks establish import and recall; they do not claim a visual match against the client's sculpture, whose geometry and lens must match the source shots. VWS carries no document size, visibility or focal length; a filename containing a lens value is not camera metadata.
+
+All three final binaries were installed without closing or restarting a running application. Fast's loader now also updates its adjacent compiled copy. The saved original Tool/project was reopened, the original Fast bank was restored byte for byte, and recorded canvas/lens/zoom/pan settings were restored. Native view test data was cleared by restoring the original ZAppLink views. Runtime backups, client samples, scripts and receipts remain ignored in `.cache/zbrush-vws/`.
+
+No new full BPR or ID-generation rendering acceptance is claimed. Existing render/ID behavior and historical native export evidence remain documented in the 3.2.5 and earlier verification records.

@@ -1,0 +1,228 @@
+{
+  "version": "trace-v02",
+  "status": "approved-raster-derived-vector",
+  "approval": "Owner accepted both generated action images before tracing",
+  "method": "Adobe image_vectorize; existing vector paths consolidated with winding-aware union/difference",
+  "geometry_policy": "No anatomy reconstruction, pose normalization, path smoothing or baseline removal",
+  "viewbox_policy": "Preserve approved 1254-square raster coordinates and framing",
+  "ink_policy": "One solid ink; source white/light regions become transparent negative spaces",
+  "new_generation_calls": 0,
+  "native_imported": false,
+  "items": [
+    {
+      "pose": "point-left",
+      "approved_raster": "media/mascot-chatgpt-round-01/point-left-01.png",
+      "approved_raster_sha256": "ae900f40c40f1e08aa9bb85196340d57c8e5aff8346cc218efb6a9bfa74b55e4",
+      "raw_adobe_svg_sha256": "0b1079528816520ef1f93e9ac73cd558d16584a6232878a180ec034956f16b88",
+      "adobe_path_count": 7,
+      "compound_contours": 6,
+      "svg": "wizard-point-left-v02.svg",
+      "white_svg": "wizard-point-left-v02-white.svg"
+    },
+    {
+      "pose": "mopping",
+      "approved_raster": "media/mascot-chatgpt-round-01/mopping-01.png",
+      "approved_raster_sha256": "f8ee92c248bf76d57c72c0f48c2551906285a8a4877b4ba56146e0619a874f32",
+      "raw_adobe_svg_sha256": "e60ae2e2ecd029935e8fe63d1cc6c914b1d4a5ae023a4e23296a132793d7fc2b",
+      "adobe_path_count": 13,
+      "compound_contours": 10,
+      "svg": "wizard-mopping-v02.svg",
+      "white_svg": "wizard-mopping-v02-white.svg"
+    }
+  ],
+  "svg_hashes": {
+    "backgrounds-v02.svg": "01b335c87e1785273ac41fbb4b961c45dc5dd4b10d428266b666b003371faaea",
+    "sizes-v02.svg": "8e7f6d2ac977c74abb6a614b76bc1220a17d47372d55a35bb9cdce5a4106e16a",
+    "trace-comparison-v02.svg": "5a7fefbb70e2880c7070c4630eade222b95c18fa9e00c43a31a943a4e6741284",
+    "wizard-mopping-v02-white.svg": "304a44f8253b2bf5e11c741763def97e91d18c8f96af66c9c663f4cc3e054d1f",
+    "wizard-mopping-v02.svg": "71977598a3b3d3e8b7a6794edfda5b62e0fadfecd42a9e686d1cd9ca6ab9b361",
+    "wizard-point-left-v02-white.svg": "91e5a3469eb0e379e59ed154ff14a718d120c4c23b28344eec45752ef3554872",
+    "wizard-point-left-v02.svg": "8fc0297ca63500be4a4ba1cb1c0c2bd8f0157b9fe963b35f34491cb4f97e29d2"
+  },
+  "png_exports": [
+    "wizard-mopping-v02-1024.png",
+    "wizard-mopping-v02-128.png",
+    "wizard-mopping-v02-256.png",
+    "wizard-mopping-v02-32.png",
+    "wizard-mopping-v02-48.png",
+    "wizard-mopping-v02-512.png",
+    "wizard-mopping-v02-64.png",
+    "wizard-mopping-v02-96.png",
+    "wizard-mopping-v02-white-1024.png",
+    "wizard-mopping-v02-white-128.png",
+    "wizard-mopping-v02-white-256.png",
+    "wizard-mopping-v02-white-32.png",
+    "wizard-mopping-v02-white-48.png",
+    "wizard-mopping-v02-white-512.png",
+    "wizard-mopping-v02-white-64.png",
+    "wizard-mopping-v02-white-96.png",
+    "wizard-point-left-v02-1024.png",
+    "wizard-point-left-v02-128.png",
+    "wizard-point-left-v02-256.png",
+    "wizard-point-left-v02-32.png",
+    "wizard-point-left-v02-48.png",
+    "wizard-point-left-v02-512.png",
+    "wizard-point-left-v02-64.png",
+    "wizard-point-left-v02-96.png",
+    "wizard-point-left-v02-white-1024.png",
+    "wizard-point-left-v02-white-128.png",
+    "wizard-point-left-v02-white-256.png",
+    "wizard-point-left-v02-white-32.png",
+    "wizard-point-left-v02-white-48.png",
+    "wizard-point-left-v02-white-512.png",
+    "wizard-point-left-v02-white-64.png",
+    "wizard-point-left-v02-white-96.png"
+  ],
+  "fidelity": [
+    {
+      "pose": "point-left",
+      "foreground_iou_percent": 99.53354113618403,
+      "reference_ink_pixels": 181734,
+      "different_binary_pixels": 850,
+      "outside_chebyshev_band_pixels": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "true_alpha_range": [
+        0,
+        255
+      ],
+      "ink_bounds": [
+        253,
+        150,
+        925,
+        1103
+      ],
+      "white_black_alpha_identical": true,
+      "alpha_max_difference": 0
+    },
+    {
+      "pose": "mopping",
+      "foreground_iou_percent": 99.41362012418071,
+      "reference_ink_pixels": 190462,
+      "different_binary_pixels": 1121,
+      "outside_chebyshev_band_pixels": {
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "true_alpha_range": [
+        0,
+        255
+      ],
+      "ink_bounds": [
+        282,
+        151,
+        953,
+        1105
+      ],
+      "white_black_alpha_identical": true,
+      "alpha_max_difference": 0
+    }
+  ],
+  "export_alpha_checks": [
+    {
+      "pose": "point-left",
+      "canvas_px": 32,
+      "alpha": true,
+      "black_white_alpha_max_8bit_difference": 0
+    },
+    {
+      "pose": "point-left",
+      "canvas_px": 48,
+      "alpha": true,
+      "black_white_alpha_max_8bit_difference": 1
+    },
+    {
+      "pose": "point-left",
+      "canvas_px": 64,
+      "alpha": true,
+      "black_white_alpha_max_8bit_difference": 1
+    },
+    {
+      "pose": "point-left",
+      "canvas_px": 96,
+      "alpha": true,
+      "black_white_alpha_max_8bit_difference": 1
+    },
+    {
+      "pose": "point-left",
+      "canvas_px": 128,
+      "alpha": true,
+      "black_white_alpha_max_8bit_difference": 1
+    },
+    {
+      "pose": "point-left",
+      "canvas_px": 256,
+      "alpha": true,
+      "black_white_alpha_max_8bit_difference": 1
+    },
+    {
+      "pose": "point-left",
+      "canvas_px": 512,
+      "alpha": true,
+      "black_white_alpha_max_8bit_difference": 0
+    },
+    {
+      "pose": "point-left",
+      "canvas_px": 1024,
+      "alpha": true,
+      "black_white_alpha_max_8bit_difference": 0
+    },
+    {
+      "pose": "mopping",
+      "canvas_px": 32,
+      "alpha": true,
+      "black_white_alpha_max_8bit_difference": 0
+    },
+    {
+      "pose": "mopping",
+      "canvas_px": 48,
+      "alpha": true,
+      "black_white_alpha_max_8bit_difference": 1
+    },
+    {
+      "pose": "mopping",
+      "canvas_px": 64,
+      "alpha": true,
+      "black_white_alpha_max_8bit_difference": 1
+    },
+    {
+      "pose": "mopping",
+      "canvas_px": 96,
+      "alpha": true,
+      "black_white_alpha_max_8bit_difference": 1
+    },
+    {
+      "pose": "mopping",
+      "canvas_px": 128,
+      "alpha": true,
+      "black_white_alpha_max_8bit_difference": 1
+    },
+    {
+      "pose": "mopping",
+      "canvas_px": 256,
+      "alpha": true,
+      "black_white_alpha_max_8bit_difference": 1
+    },
+    {
+      "pose": "mopping",
+      "canvas_px": 512,
+      "alpha": true,
+      "black_white_alpha_max_8bit_difference": 0
+    },
+    {
+      "pose": "mopping",
+      "canvas_px": 1024,
+      "alpha": true,
+      "black_white_alpha_max_8bit_difference": 0
+    }
+  ],
+  "dependencies": {
+    "skia-pathops": "0.9.2",
+    "fonttools": "4.68.0",
+    "pillow": "13.0.0"
+  },
+  "canonical_source": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet/Development/Stage4_Trace_v02"
+}

@@ -2,8 +2,8 @@
   "format": "mrmak-card",
   "version": 1,
   "template": "research",
-  "title": "Art bible / confirmed foundations",
-  "summary": "Owner-confirmed direction retained after the reset. The categorized Unreal image library is pending stage 3. These decisions are not completed art deliverables; use Plan → Progress for execution status.",
+  "title": "Art bible / direction and reference index",
+  "summary": "1970s corporate interiors with medieval fantasy accents, combining semi-realism and stylization. Browse current Unreal environments, 88 rendered materials, assets and available characters. The Mascot tab contains the twelve approved poses. [Capture notes and evidence](REFERENCE_LIBRARY.md).",
   "items": [
     {
       "id": "identity",
@@ -21,7 +21,7 @@
       "id": "public-private",
       "title": "Public polish / neglected service spaces",
       "status": "done",
-      "body": "Public spaces are clean, polished and professional. Hidden service areas are neglected and can feel dungeon-like. Apply this contrast through actual environments and materials, with fresh Unreal references in stage 3."
+      "body": "Public spaces are clean, polished and professional. Hidden service areas are neglected and can feel dungeon-like. The Environments tab records the current Unreal baseline; unfinished map areas are not approved final direction."
     },
     {
       "id": "surfaces",
@@ -33,25 +33,25 @@
       "id": "technical-target",
       "title": "Density and intentional tileable exceptions",
       "status": "done",
-      "body": "The owner confirmed 256/512 px/m as normal references. Some floors and ceilings intentionally differ to align tileable textures. Preserve those UV scales and material tiling. Recheck current file links during stage 2."
+      "body": "The owner confirmed 256/512 px/m as normal references. Some floors and ceilings intentionally differ to align tileables. Preserve those UV scales and material tiling. The new material rig uses explicit 1 m / 2 m comparison shapes without changing production UVs."
     },
     {
       "id": "mascot-direction",
-      "title": "Wizard mascot / prototype to standardize",
-      "status": "idea",
-      "body": "**Owner-selected identity.** A simple figure with a wizard hat and staff, used as the company/game spokesperson across signs and decoration. Source prototypes remain in `Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Pet`. Master design and consistent poses are stage 4; none has been regenerated in the reset."
+      "title": "Wizard mascot",
+      "status": "done",
+      "body": "Open **Mascot** to browse the twelve approved poses and download black and white SVGs and transparent PNGs. [Full library ZIP](sources/mascot-stage4-library.zip)."
     },
     {
       "id": "graphic-direction",
-      "title": "Signage and UI / definition pending",
-      "status": "idea",
-      "body": "Stage 5 will define coherent typography, signs, decoration, mascot applications and the current UI. **Confirmed:** English game text with future localization; Unreal graphics/UI under `/Game/Art/UI`; characters under `/Game/Art/Characters`. Review examples before atlas or UI implementation."
+      "title": "Signage and UI / graphic review ready",
+      "status": "review",
+      "body": "Open **Signage & UI** for four in-scene signs, a first-person health study and a main menu proposal. The review covers type, color, wear, localization space and current atlas dependencies. [Review notes](SIGNAGE_UI_STAGE5_REVIEW.md)."
     },
     {
       "id": "review-contract",
-      "title": "Reference library and review status",
-      "status": "idea",
-      "body": "Stage 3 will organize Unreal captures by environments, materials, assets and characters, with dedicated mascot and signage/UI entries. Owner originals remain in project `Temp`; they are not a replacement for fresh captures. Keep proposals, implementation, technical checks and owner approval distinct. The retired production image galleries have been removed."
+      "title": "Library categories and review status",
+      "status": "review",
+      "body": "Use Environments for the allowed maps, Materials for all 88 Utility_Materials instances, Assets for native mesh previews and Characters for the available engine meshes and coverage gaps. The Unreal references name their exact package or map. Signage & UI records the native baseline alongside design proposals."
     }
   ]
 }

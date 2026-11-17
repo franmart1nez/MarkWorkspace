@@ -15,7 +15,7 @@ import unittest
 from build_id import compose, OUTPUT
 from verify import Host, Exit, parse, node, clean, ROOT
 
-CAMERA_ROOT = Path(os.environ.get('ZBRUSH_ID_CAMERA_ROOT', ROOT))
+CAMERA_ROOT = Path(os.environ.get('ZBRUSH_ID_CAMERA_ROOT', ROOT.parent / 'Camera Bank Fast'))
 
 
 def commands(source):
@@ -247,14 +247,14 @@ class IDHost(Host):
 
 def cell(h, index, value=None):
     if value is None:
-        return struct.unpack_from('<f', h.mem['CB25Data'], index * 4)[0]
-    struct.pack_into('<f', h.mem['CB25Data'], index * 4, value)
+        return struct.unpack_from('<f', h.mem['FB25Data'], index * 4)[0]
+    struct.pack_into('<f', h.mem['FB25Data'], index * 4, value)
 
 
 class IDExport(unittest.TestCase):
     def host(self, reorder=False):
         h = IDHost()
-        h.load(CAMERA_ROOT / 'Camera Bank/CameraBank25.txt')
+        h.load(CAMERA_ROOT / 'CameraBankFast25.txt')
         h.names = ['A', 'B', 'C', 'Never', 'GrayOnly']
         h.ids = [123, 123, 16777219, 10004, 10005]  # Duplicates and IDs > float precision.
         h.status = [1, 1, 0, 0, 0]
@@ -262,15 +262,15 @@ class IDExport(unittest.TestCase):
         h.tx = [1, 1, 1, 1, 0]
         h.folders = [-1] * 5
         h.st = 0
-        h.call('CB29_SaveSlot', 0)
+        h.call('FB29_SaveSlot', 0)
         h.status = [0, 1, 1, 0, 0]
         h.st = 1
         h.ui.update({'Document:Width': 800, 'Document:Height': 600})
         h.dims = [800, 600]
-        h.call('CB29_SaveSlot', 9)
+        h.call('FB29_SaveSlot', 9)
         h.status = [0, 0, 0, 0, 1]
         h.st = 4
-        h.call('CB29_SaveSlot', 24)
+        h.call('FB29_SaveSlot', 24)
         cell(h, 20+24*20+16, 0)
         self.assertEqual(cell(h, 7), 1)  # Store/update tracks automatically.
         if reorder:
@@ -325,7 +325,9 @@ class IDExport(unittest.TestCase):
                     if n[0] == 'IPress' and h.e(n[1]) == 'Document:Export':
                         self.assertEqual(h.ui['Render:Flat'], 1)
                         self.assertEqual(h.meshes, before)
-                        self.assertEqual((h.pp, h.tx), state[:2])
+                        self.assertEqual(h.tx, state[1])
+                        self.assertEqual(h.pp, [1 if h.v['idNeeded'][i] else pp
+                                               for i, pp in enumerate(state[0])])
                     return original(n)
                 h.cmd = inspect
                 self.export_only(h)
@@ -347,16 +349,56 @@ class IDExport(unittest.TestCase):
             self.assertEqual(len(h.exports), 2)
             self.assertTrue(all(e[0] == 'export' for e in h.events))
 
-    def test_manual_export_repeat_notifies_and_generation_button_still_generates(self):
+    def test_manual_export_repeat_is_silent_and_generation_button_still_generates(self):
         with tempfile.TemporaryDirectory() as d:
             h = self.host(); h.chosen = d
             self.export_only(h)
             h.messages.clear()
             self.export_only(h)
-            self.assertTrue(any('01/ID.png' in m for m in h.messages))
+            self.assertFalse(any('overwrite' in m.lower() for m in h.messages))
             self.assertTrue(all(m['generation'] == 0 for m in h.meshes))
             self.click(h)
             self.assertEqual([m['generation'] for m in h.meshes], [1,1,1,0,0])
+
+    def test_manual_export_enables_polypaint_before_every_camera_and_restores(self):
+        with tempfile.TemporaryDirectory() as d:
+            h = self.host(); h.chosen = d
+            h.pp = [0] * 5
+            h.selection_moves_camera = True
+            original = h.cmd
+            def inspect(n):
+                if n[0] == 'IPress' and h.e(n[1]) == 'Document:Export':
+                    self.assertEqual(h.pp, [1, 1, 1, 0, 0])
+                    base = 20 + h.v['idExportSlot'] * 20
+                    self.assertEqual(h.transform, [cell(h, base + 1 + i) for i in range(9)])
+                result = original(n)
+                # Model display flags being cleared between camera exports.
+                if n[0] == 'IPress' and h.e(n[1]) == 'Document:Export':
+                    h.pp = [0] * 5
+                return result
+            h.cmd = inspect
+            self.export_only(h)
+            self.assertEqual(len(h.exports), 2)
+            self.assertEqual(h.pp, [0] * 5)
+
+    def test_manual_export_aborts_and_recovers_if_polypaint_cannot_be_enabled(self):
+        for blocked in ('disabled', 'ignored'):
+            with self.subTest(blocked=blocked), tempfile.TemporaryDirectory() as d:
+                h = self.host(); h.chosen = d
+                state = h.pp[:], h.tx[:], h.status[:], h.st, h.transform[:]
+                before = copy.deepcopy(h.meshes)
+                if blocked == 'disabled':
+                    h.mesh_disabled[2] = {'Tool:Polypaint:Colorize'}
+                else:
+                    original = h.cmd
+                    def ignore(n):
+                        if n[0] == 'ISet' and h.e(n[1]) == 'Tool:Polypaint:Colorize' and h.e(n[2]) == 1 and h.st == 2:
+                            return
+                        return original(n)
+                    h.cmd = ignore
+                with self.assertRaises(Exit): self.export_only(h)
+                self.unchanged_meshes(h, before)
+                self.assertEqual((h.pp,h.tx,h.status,h.st,h.transform), state)
 
     def test_manual_export_failure_restores_without_mesh_changes(self):
         with tempfile.TemporaryDirectory() as d:
@@ -506,7 +548,7 @@ class IDExport(unittest.TestCase):
             self.click(h)
             self.assertEqual(Path(h.v['idRoot']).name, 'ZPass_1')
 
-    def test_collision_notified_before_mutation_and_overwritten(self):
+    def test_collision_silently_overwritten(self):
         with tempfile.TemporaryDirectory() as d:
             h = self.host()
             h.chosen = d
@@ -517,7 +559,7 @@ class IDExport(unittest.TestCase):
             original = h.cmd
             def inspect(n):
                 if n[0] == 'IPress' and h.e(n[1]) == 'Color:FillObject':
-                    self.assertTrue(any('10/ID.png' in m for m in h.messages))
+                    self.assertFalse(any('overwrite' in m.lower() for m in h.messages))
                 return original(n)
             h.cmd = inspect
             self.click(h)
@@ -526,6 +568,7 @@ class IDExport(unittest.TestCase):
             self.assertFalse(any(e[0] == 'backup' for e in h.events))
             self.assertFalse(list(Path(d).rglob('*.ztl')))
             self.assertFalse((Path(d)/'ZPass_2').exists())
+            self.assertFalse(any('overwrite' in m.lower() for m in h.messages))
 
 
     def test_cancel_choose_has_no_mesh_changes(self):
@@ -554,7 +597,7 @@ class IDExport(unittest.TestCase):
                 if case == 'edit':
                     h.ui['Transform:Edit'] = 0
                 if case == 'no_bank':
-                    del h.mem['CB25Data']
+                    del h.mem['FB25Data']
                 if case == 'empty_bank':
                     for s in range(25):
                         cell(h, 20+s*20+16, 0)
@@ -653,7 +696,7 @@ class IDExport(unittest.TestCase):
 
     def test_folder_and_solo_effective_visibility_define_the_union(self):
         h = IDHost()
-        h.load(CAMERA_ROOT / 'Camera Bank/CameraBank25.txt')
+        h.load(CAMERA_ROOT / 'CameraBankFast25.txt')
         h.names = ['Outside', 'FolderHead', 'Child', 'Active']
         h.status = [1, 0x401, 1, 0]
         h.ids = [501, 502, 503, 504]
@@ -661,10 +704,10 @@ class IDExport(unittest.TestCase):
         h.tx = [1] * 4
         h.folders = [-1, 1, 1, -1]
         h.st = 3
-        h.call('CB29_SaveSlot', 0)
+        h.call('FB29_SaveSlot', 0)
         h.ui['Transform:Solo'] = 1
         h.st = 2
-        h.call('CB29_SaveSlot', 9)
+        h.call('FB29_SaveSlot', 9)
         self.assertEqual(cell(h, 7), 1)  # No public prepare step.
         h.meshes = [dict(rgb=[(20, 40, 60)] * 2, material='Original',
                          groups=(88, 99), generation=0, masked=False) for _ in range(4)]

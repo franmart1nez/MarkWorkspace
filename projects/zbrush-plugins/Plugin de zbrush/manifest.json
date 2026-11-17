@@ -1,50 +1,28 @@
 {
-  "version": "3.2.3",
+  "version": "3.2.6",
   "bank_data_version": 9,
   "bank_bytes": 123088,
-  "updated": "2026-11-16T21:05:24.413774+00:00",
-  "delivery": "Three editable/generated sources and genuine native ZSC files, compiled, loaded and installed in ZBrush 2023.2.1. No commit or push.",
-  "source_validation": "52 focused ID, installer/uninstaller and camera-identity tests passed. Five new export-only regressions.",
-  "native_validation": "Actual Exportar ID button exported two 640x480 cameras with exact independently prepared RGB, retaining assigned metallic materials. Native source compiled and installed; see Development/VERIFICATION_3.2.3.md.",
+  "updated": "2026-11-17T21:29:15.546994+00:00",
+  "delivery": "Render/ID 3.2.6 compiled and installed. Legacy Camera Bank removed; Camera Bank Fast 0.2 is the only active writer.",
+  "source_validation": "68 consumer/installer/identity tests passed; 22 standalone Fast tests passed separately.",
+  "native_validation": "All three final sources compiled separately in ZBrush 2023.2.1. Native Fast public VWS import, append and recall passed. See Development/VERIFICATION_3.2.6.md.",
   "compiled": [
     {
-      "source": "Camera Bank/CameraBank25.txt",
-      "source_sha256": "96ff50fe65cd1e457660cd94fb1aad3a0d17c1a87ca5d9337265e2e7f156f364",
-      "binary": "Camera Bank/CameraBank25.zsc",
-      "binary_sha256": "4bedb619bced75144e3fe8553b6ffaa11ae0687964e89086024aa44cbf9b0ff0",
-      "bytes": 86544
-    },
-    {
       "source": "Render Capture/RenderCapture.txt",
-      "source_sha256": "61b17c194af9592447b9b7b4b2485b6f4488708d2efedab947b3dffa8693cf91",
+      "source_sha256": "010d0968da1fd64f3c7d324bfb173a6d903ca0e77159205378d5ddc094aca9a0",
       "binary": "Render Capture/RenderCapture.zsc",
-      "binary_sha256": "1b713075a879f5c7ef5097f717f27117b0ff2e994eab270156787de561e7bba8",
-      "bytes": 72644
+      "binary_sha256": "2bb93667403915a430534e68bee7e872d6fc6a43a5ba969a4937e7ed84adc08c",
+      "bytes": 77592
     },
     {
       "source": "Generate and Export ID/GenerateExportID.txt",
-      "source_sha256": "acc3f004b4e7e54b7d1b47ade20ed10ad7a111c376e56f92f84614a0f40acea7",
+      "source_sha256": "af0271780bb3a4f0e469ba6138f195a35ecd6fc18a317a486a4fe40e7291c66f",
       "binary": "Generate and Export ID/GenerateExportID.zsc",
-      "binary_sha256": "7a3701d4e8f5a345422ec6ef3a1ca2b039e74d6db2397ed4c7530a53046fa93b",
-      "bytes": 79736
+      "binary_sha256": "fbfda178865ee121782bfbdcb62eb7ccb1631fcf819612a73ed712c36ab1ebb0",
+      "bytes": 86308
     }
   ],
   "files": [
-    {
-      "path": "Camera Bank/CameraBank25.txt",
-      "bytes": 67933,
-      "sha256": "96ff50fe65cd1e457660cd94fb1aad3a0d17c1a87ca5d9337265e2e7f156f364"
-    },
-    {
-      "path": "Camera Bank/CameraBank25.zsc",
-      "bytes": 86544,
-      "sha256": "4bedb619bced75144e3fe8553b6ffaa11ae0687964e89086024aa44cbf9b0ff0"
-    },
-    {
-      "path": "Camera Bank/INSTALAR CAMERA BANK.cmd",
-      "bytes": 56,
-      "sha256": "1fb5016d32a1b5e25510ed0ca7dc680e152e2a5758f9454ba459ffbd5f48cae5"
-    },
     {
       "path": "DESINSTALAR.cmd",
       "bytes": 96,
@@ -59,6 +37,11 @@
       "path": "Development/DATA_FORMAT.md",
       "bytes": 5146,
       "sha256": "2003334a31886fa50a92db9d4f47dc62782c141293af954ce918889e4ab2285f"
+    },
+    {
+      "path": "Development/FAST_PROVIDER.md",
+      "bytes": 1744,
+      "sha256": "032c397a34eae8fdc880f9af2ff968f9ad07d3aaa6e6a8c52421295f25408fd2"
     },
     {
       "path": "Development/ID_3.2.0_RESULT.md",
@@ -106,19 +89,39 @@
       "sha256": "d7879080ff727e73fe04bd852b69c07706aabeb329fa9497acaccebec6c0f472"
     },
     {
+      "path": "Development/VERIFICATION_3.2.4.md",
+      "bytes": 2790,
+      "sha256": "ace19ce1882f9240139daf646cb98862e7094a8509b24b1ad3cb57c944c2abbf"
+    },
+    {
+      "path": "Development/VERIFICATION_3.2.5.md",
+      "bytes": 3880,
+      "sha256": "a4aeac762fdf6e096d469d6537a6c8afc648d82138679179f3bac010510a5866"
+    },
+    {
+      "path": "Development/VERIFICATION_3.2.6.md",
+      "bytes": 4652,
+      "sha256": "bd26ef991c6633e3e4d8b42cc52b346f63c93f821a9f2b1045eadca5f5d47807"
+    },
+    {
       "path": "Development/build_all.py",
-      "bytes": 480,
-      "sha256": "10204eadd69a59a2ec4d086558daefa6fac88e053f4d70aa06be863c39101958"
+      "bytes": 506,
+      "sha256": "82ab59cd9522f295ed2df710cb511edfd0cc3ceea61aedf6d7ca6f5daabf2611"
     },
     {
       "path": "Development/build_camera.py",
-      "bytes": 17048,
-      "sha256": "ca909c668cff2ffa2603c35e08cb388a71d28d66450dbe95e0cd34ddfe5f5d7b"
+      "bytes": 17163,
+      "sha256": "bddb481ca4e8a6eafc659399852c8d5351860948d00bca2ee54d2944d2bc2678"
+    },
+    {
+      "path": "Development/build_fast_reader.py",
+      "bytes": 5031,
+      "sha256": "5d889764fef1fcf978dde614481abe4b37126de5508c8e00036c89fce1df5d16"
     },
     {
       "path": "Development/build_id.py",
-      "bytes": 3585,
-      "sha256": "071ceb148175c373bca4cebba445d5eef2a15899b3ffae7985de8f524dcc1b97"
+      "bytes": 3272,
+      "sha256": "e8b4728dd0189a38015599ecb08fe2cc472d03c5d6c7d17b6c34633d0f054570"
     },
     {
       "path": "Development/build_visibility.py",
@@ -127,13 +130,18 @@
     },
     {
       "path": "Development/camera_reader.inc",
-      "bytes": 21244,
-      "sha256": "4e0809465797a34622a8cfcd1108629bbb9261bf72be948b664c494935f75aaa"
+      "bytes": 27527,
+      "sha256": "4d8613b2b767d99506fb14cdb8717281b6dfbb1486e9eea0c785bde75bf552e5"
+    },
+    {
+      "path": "Development/fast_camera_reference.txt",
+      "bytes": 81487,
+      "sha256": "09c495e7c729181cbe6b536f89ef97a2dab780f5e32a677c18aaf66534d0603f"
     },
     {
       "path": "Development/id_body.txt",
-      "bytes": 31637,
-      "sha256": "83a5d01f888a19c291108f78df7b30337edbfba8f7d88f88bd8fa996cdf22487"
+      "bytes": 32730,
+      "sha256": "33c1b115cc45c353ed0b4db83274bed814e32e0174b619f5c2edbd6bd32cebdc"
     },
     {
       "path": "Development/merge_visibility.inc",
@@ -152,23 +160,28 @@
     },
     {
       "path": "Development/render_body.txt",
-      "bytes": 24174,
-      "sha256": "c6e08fd2462ac55eb6db18ab866b3cd5382c699d8d0963489f9b7efe110079d8"
+      "bytes": 23588,
+      "sha256": "3e384be201d1a2c31614eb6d81f95993d59cf22c69e8fe55c56714b2d8eef23e"
+    },
+    {
+      "path": "Development/test_fast_default.py",
+      "bytes": 8888,
+      "sha256": "b4c799de3fa819f806f167bf86be45faa7c0f6cd48d182dc3dc4e58965cedda7"
     },
     {
       "path": "Development/test_id_export.py",
-      "bytes": 48736,
-      "sha256": "e84230c976ce8e1791d5dbf512b14f595b6774ecb55d05f5e67bcd1a4d646e99"
+      "bytes": 51032,
+      "sha256": "729267e51dc408281f1ee90176973acd231ac093501c8254963e874742cc8189"
     },
     {
       "path": "Development/test_installer.py",
-      "bytes": 11222,
-      "sha256": "0d7e834875f0eddbbf5098c0c560d43df5a844114e469322a5b85b6d1084508a"
+      "bytes": 10768,
+      "sha256": "5f1e2b1f3c8dab66c8c1c698acecd9d7c339043e2e4975947cd2908cbd00bc6d"
     },
     {
       "path": "Development/test_render_layout.py",
-      "bytes": 11570,
-      "sha256": "49b5d3ae65b94d8cde2ddf92b8dc6e5a9d123e5f6ae40ebbc3f0c0e3f26222ae"
+      "bytes": 11558,
+      "sha256": "93b4c1d3248080aebfdcf721d8418b0ba1ea231cdb191e750e7f2b4e6905eba4"
     },
     {
       "path": "Development/test_uninstaller.py",
@@ -177,8 +190,8 @@
     },
     {
       "path": "Development/test_ztl_identity.py",
-      "bytes": 6583,
-      "sha256": "f09ed6c6d32b04dff2d3c2ab9093aae6d879eceb311e7ec552bc9cde730d5370"
+      "bytes": 6845,
+      "sha256": "58181269e048b401b2341893253ae0c10cdd62272e2501a98b3bd87e3d5707b4"
     },
     {
       "path": "Development/tests/fixtures/camera_310_export.inc",
@@ -186,29 +199,34 @@
       "sha256": "e737490325cc0b562346529288210bdabb029319c65accf85b954ab7dbb59d1f"
     },
     {
+      "path": "Development/tests/fixtures/legacy_camera_321.txt",
+      "bytes": 67933,
+      "sha256": "96ff50fe65cd1e457660cd94fb1aad3a0d17c1a87ca5d9337265e2e7f156f364"
+    },
+    {
       "path": "Development/verify.py",
-      "bytes": 28369,
-      "sha256": "25353bd3cfdea2155886314cecb4612969a3d31c24f4c41853d2c4ea49a89bd5"
+      "bytes": 28429,
+      "sha256": "6b29ad9dcfd59348456e82743b4d2af291cc0162adbd86d20eacc4226d06306f"
     },
     {
       "path": "Development/verify_camera_320.py",
-      "bytes": 23786,
-      "sha256": "4b49effca4e441b3f66763b19d10665c9632b648253004829fa06d945bfef292"
+      "bytes": 23906,
+      "sha256": "8992009852e25c6b2067f6b507ec0b9a628def3d5ea5d2ee2f248344fcae6b38"
     },
     {
       "path": "Development/verify_merge.py",
-      "bytes": 12393,
-      "sha256": "c16fdfc7918dae87d5274a01f05771bbbd92d0d04bb92618de58767546048eca"
+      "bytes": 12640,
+      "sha256": "9a7d87ba891ae0c06b565fc5b7e91c7f45d7f94889a33ab6050b79a53578158d"
     },
     {
       "path": "Generate and Export ID/GenerateExportID.txt",
-      "bytes": 53724,
-      "sha256": "acc3f004b4e7e54b7d1b47ade20ed10ad7a111c376e56f92f84614a0f40acea7"
+      "bytes": 62041,
+      "sha256": "af0271780bb3a4f0e469ba6138f195a35ecd6fc18a317a486a4fe40e7291c66f"
     },
     {
       "path": "Generate and Export ID/GenerateExportID.zsc",
-      "bytes": 79736,
-      "sha256": "7a3701d4e8f5a345422ec6ef3a1ca2b039e74d6db2397ed4c7530a53046fa93b"
+      "bytes": 86308,
+      "sha256": "fbfda178865ee121782bfbdcb62eb7ccb1631fcf819612a73ed712c36ab1ebb0"
     },
     {
       "path": "Generate and Export ID/INSTALAR ID.cmd",
@@ -222,13 +240,13 @@
     },
     {
       "path": "Install.ps1",
-      "bytes": 11926,
-      "sha256": "baddcde6b6815b1b3057aba67fcf0bdca9a69c34e8c8bfa9e97b0559280a1322"
+      "bytes": 12957,
+      "sha256": "f60eee4ab000d0aff2f92f7b8e89dd17e4f17869eed0bdb8d5e893bd4a6c6d42"
     },
     {
       "path": "README.txt",
-      "bytes": 7377,
-      "sha256": "71de6c192819fc8ae7898a4de94e90cea12e6a6672a898fdf686883978b6d493"
+      "bytes": 5484,
+      "sha256": "6729e5d3bcdc97b46fc30898bda3d1edd82d6e36a255c74467ab1c1a0d12b06c"
     },
     {
       "path": "Render Capture/INSTALAR RENDER CAPTURE.cmd",
@@ -237,13 +255,13 @@
     },
     {
       "path": "Render Capture/RenderCapture.txt",
-      "bytes": 45422,
-      "sha256": "61b17c194af9592447b9b7b4b2485b6f4488708d2efedab947b3dffa8693cf91"
+      "bytes": 51749,
+      "sha256": "010d0968da1fd64f3c7d324bfb173a6d903ca0e77159205378d5ddc094aca9a0"
     },
     {
       "path": "Render Capture/RenderCapture.zsc",
-      "bytes": 72644,
-      "sha256": "1b713075a879f5c7ef5097f717f27117b0ff2e994eab270156787de561e7bba8"
+      "bytes": 77592,
+      "sha256": "2bb93667403915a430534e68bee7e872d6fc6a43a5ba969a4937e7ed84adc08c"
     },
     {
       "path": "Render Capture/RenderCaptureData/PROVENANCE.txt",
@@ -340,5 +358,16 @@
       "bytes": 8649,
       "sha256": "1b5e4447ae3c73f625138af18d61c34094f799bfe6bc50c999c7be2e8fcf85a5"
     }
-  ]
+  ],
+  "default_installer_component": "RenderID",
+  "camera_provider": {
+    "name": "Camera Bank Fast",
+    "version": "0.2",
+    "bank_memory": "FB25Data",
+    "data_version": 9,
+    "standalone": true,
+    "modified": true,
+    "source_sha256": "09c495e7c729181cbe6b536f89ef97a2dab780f5e32a677c18aaf66534d0603f",
+    "verified_compatible_version": "0.3"
+  }
 }

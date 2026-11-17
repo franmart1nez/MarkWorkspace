@@ -1,0 +1,47 @@
+{
+  "revision": "stage-5-review-v01",
+  "palette": {
+    "paper": "#F4E7CA",
+    "green": "#193C35",
+    "ink": "#1D211E",
+    "yellow": "#F3C841",
+    "rust": "#A43E22",
+    "chalk": "#FFF7E4",
+    "metal": "#787466"
+  },
+  "sources": {
+    "point-left": {
+      "master": "sources/mascot-trace-v02/wizard-point-left-v02.svg",
+      "sha256": "8fc0297ca63500be4a4ba1cb1c0c2bd8f0157b9fe963b35f34491cb4f97e29d2"
+    },
+    "slipping-falling": {
+      "master": "sources/mascot-trace-v04/wizard-slipping-falling-v04.svg",
+      "sha256": "5d7e6ce3ea8de577a726362f2587f2996ca4e96c3decad0348ba8c1ce2942af2"
+    },
+    "mopping": {
+      "master": "sources/mascot-trace-v02/wizard-mopping-v02-white.svg",
+      "sha256": "304a44f8253b2bf5e11c741763def97e91d18c8f96af66c9c663f4cc3e054d1f"
+    },
+    "greeting": {
+      "master": "sources/mascot-trace-v03/wizard-greeting-v03-white.svg",
+      "sha256": "065348fa7f528acf6b2c6efa71c3009ad0c06ec8988a8bbaffd31b9f16442712"
+    },
+    "ui-greeting": {
+      "master": "sources/mascot-trace-v03/wizard-greeting-v03.svg",
+      "sha256": "a3708a371c968975f54cae18e5cdc5ff659586f3ee4a387cc45d748e870c3a2d"
+    }
+  },
+  "native_capture_original_png_sha256": {
+    "lobby-scene.webp": "6786c2744e03ea41b6300949135674d36d75ff00cba7acb9af52abcd60c074fb",
+    "lobby-menu-scene.webp": "54fbf6a7385c7e8be6942006b77814e28bc6902c0c95d1f0242ca254ed963f39",
+    "lobby-damage-scene.webp": "6f1d2f22ae7dd9a175fd53dea8ce80624d40994904276d8af5f41549ffefe918",
+    "native-lobby-baseline.webp": "4d97cab19027c7a7f41dbba906fc1c16144da7f9d7baee618e8c63fb58395ebc",
+    "native-main-menu.webp": "562fdd608490704d8ba9b9d250f806be279a8e5b5fde48ba1ab159170cc71d9d"
+  },
+  "editor_capture_sha256": {
+    "lobby-entry.png": "225f88514b785bca9ceda0914b341d0ade582e18977de35c78e239a425e50431",
+    "basement-corridor.png": "7a7ec399d3ba386aad3ab2d984dba92636d3552c961c9cf2a222aececa45a169",
+    "janitor-service.png": "7cc33f06091a41febb431301ed3b3769e593839b0881f05ca546b95a513c0363",
+    "lobby-reverse.png": "32da7081e080e8b97814c5ab184d3bc7d39b709f0b18e01a3d8b6b46d261e95a"
+  }
+}

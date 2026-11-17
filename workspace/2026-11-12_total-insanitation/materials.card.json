@@ -1,0 +1,713 @@
+{
+  "format": "mrmak-card",
+  "version": 1,
+  "template": "gallery",
+  "title": "Materials / native Unreal library",
+  "summary": "88 existing Utility_Materials instances, ordered by native family. Consistent scale, camera and fixed lighting reveal base color, surface response and UV scale. [Capture setup, coverage and limitations](REFERENCE_LIBRARY.md). The rendered reference index records exact parameters, texture dependencies and verified source matches. Native renders are technical evidence; owner artistic approval remains separate.",
+  "items": [
+    {
+      "id": "material-001",
+      "title": "Concrete / MI_Brutalist_Concrete_01_01",
+      "image": "media/unreal-2026-11-17/material-001.webp",
+      "alt": "Concrete material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Concrete/Brutalist_Concrete_01/MI_Brutalist_Concrete_01_01`\n\n**Family / use:** Concrete. Service-space walls, floors, masonry and repair details.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 001. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Concrete/Brutalist_Concrete_01/Brutalist_Concrete_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded scene consumer:** `/Game/Levels/Streaming_Levels/Basement` → `BP_Roof_Concrete_Lights_01`. Compare the service/Basement captures in Environments; those scenes preserve their authored tiling and Blueprint overrides.",
+      "status": "review"
+    },
+    {
+      "id": "material-002",
+      "title": "Concrete / MI_CobbleStone_02",
+      "image": "media/unreal-2026-11-17/material-002.webp",
+      "alt": "Concrete material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Concrete/CobbleStone_02/MI_CobbleStone_02`\n\n**Family / use:** Concrete. Service-space walls, floors, masonry and repair details.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 002. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Concrete/CobbleStone_02/CobbleStone_02.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane69`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-003",
+      "title": "Concrete / MI_CobbleStone_01",
+      "image": "media/unreal-2026-11-17/material-003.webp",
+      "alt": "Concrete material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Concrete/Cobblestone_01/MI_CobbleStone_01`\n\n**Family / use:** Concrete. Service-space walls, floors, masonry and repair details.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 003. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Concrete/CobbleStone_01/CobbleStone_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded scene consumer:** `/Game/Levels/Inteior_Lobby` → `Janitor_Satirs_01_Blend`. Compare the service/Basement captures in Environments; those scenes preserve their authored tiling and Blueprint overrides.",
+      "status": "review"
+    },
+    {
+      "id": "material-004",
+      "title": "Concrete / MI_Concrete_01_01",
+      "image": "media/unreal-2026-11-17/material-004.webp",
+      "alt": "Concrete material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Concrete/Concrete_01/MI_Concrete_01_01`\n\n**Family / use:** Concrete. Service-space walls, floors, masonry and repair details.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 004. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Concrete/Concrete_01/Concrete_01 & 2.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded scene consumer:** `/Game/Levels/Streaming_Levels/Basement` → `BP_Floor_Concrete_01`. Compare the service/Basement captures in Environments; those scenes preserve their authored tiling and Blueprint overrides.",
+      "status": "review"
+    },
+    {
+      "id": "material-005",
+      "title": "Concrete / MI_Concrete_02_01",
+      "image": "media/unreal-2026-11-17/material-005.webp",
+      "alt": "Concrete material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Concrete/Concrete_02/MI_Concrete_02_01`\n\n**Family / use:** Concrete. Service-space walls, floors, masonry and repair details.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 005. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Concrete/Concrete_01/Concrete_01 & 2.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded scene consumer:** `/Game/Levels/Streaming_Levels/Basement` → `BP_Floor_Concrete_5`. Compare the service/Basement captures in Environments; those scenes preserve their authored tiling and Blueprint overrides.",
+      "status": "review"
+    },
+    {
+      "id": "material-006",
+      "title": "Concrete / Construction_Grilles_01",
+      "image": "media/unreal-2026-11-17/material-006.webp",
+      "alt": "Concrete material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Concrete/Construction_Grilles_01/Construction_Grilles_01`\n\n**Family / use:** Concrete. Service-space walls, floors, masonry and repair details.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 006. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Concrete/Construction_Grilles_01/Construction_Grilles_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane68`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-007",
+      "title": "Concrete / Dirty_Bricks_01",
+      "image": "media/unreal-2026-11-17/material-007.webp",
+      "alt": "Concrete material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Concrete/Dirty_Bricks_01/Dirty_Bricks_01`\n\n**Family / use:** Concrete. Service-space walls, floors, masonry and repair details.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 007. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 1.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Concrete/Dirty_Bricks_01/Dirty_Bricks_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane17`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-008",
+      "title": "Concrete / Dirty_Bricks_02",
+      "image": "media/unreal-2026-11-17/material-008.webp",
+      "alt": "Concrete material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Concrete/Dirty_Bricks_02/Dirty_Bricks_02`\n\n**Family / use:** Concrete. Service-space walls, floors, masonry and repair details.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 008. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 1.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Concrete/Dirty_Bricks_02/Dirty_Bricks_02.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane18`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-009",
+      "title": "Concrete / MI_Granite_Concrete_01_01",
+      "image": "media/unreal-2026-11-17/material-009.webp",
+      "alt": "Concrete material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Concrete/Granite_Concrete_01/MI_Granite_Concrete_01_01`\n\n**Family / use:** Concrete. Service-space walls, floors, masonry and repair details.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 009. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 0.750000, g: 0.750000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Concrete/Granite_Concrete_01/Granite_Concrete_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded scene consumer:** `/Game/Levels/Inteior_Lobby` → `100_Floor_Building_Glass_001`. Compare the service/Basement captures in Environments; those scenes preserve their authored tiling and Blueprint overrides.",
+      "status": "review"
+    },
+    {
+      "id": "material-010",
+      "title": "Concrete / MI_Granite_Concrete_01_02",
+      "image": "media/unreal-2026-11-17/material-010.webp",
+      "alt": "Concrete material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Concrete/Granite_Concrete_01/MI_Granite_Concrete_01_02`\n\n**Family / use:** Concrete. Service-space walls, floors, masonry and repair details.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 010. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Concrete/Granite_Concrete_01/Granite_Concrete_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane67`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-011",
+      "title": "Concrete / MI_Grunge_01",
+      "image": "media/unreal-2026-11-17/material-011.webp",
+      "alt": "Concrete material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Concrete/Grunge_01/MI_Grunge_01`\n\n**Family / use:** Concrete. Service-space walls, floors, masonry and repair details.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 011. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Concrete/Grunge_01/Grunge_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane53`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-012",
+      "title": "Concrete / MI_Grunge_02",
+      "image": "media/unreal-2026-11-17/material-012.webp",
+      "alt": "Concrete material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Concrete/Grunge_02/MI_Grunge_02`\n\n**Family / use:** Concrete. Service-space walls, floors, masonry and repair details.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 012. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Concrete/Grunge_02/Grunge_02.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane48`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-013",
+      "title": "Concrete / Stylized_Concrete_01",
+      "image": "media/unreal-2026-11-17/material-013.webp",
+      "alt": "Concrete material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Concrete/Stylized_Concrete_01/Stylized_Concrete_01`\n\n**Family / use:** Concrete. Service-space walls, floors, masonry and repair details.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 013. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 0.500000, g: 0.500000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Concrete/Stylized_Concrete_01/Stylized_Concrete_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded scene consumer:** `/Game/Levels/Inteior_Lobby` → `100_Floor_Building_Glass_034`. Compare the service/Basement captures in Environments; those scenes preserve their authored tiling and Blueprint overrides.",
+      "status": "review"
+    },
+    {
+      "id": "material-014",
+      "title": "Concrete / Stylized_Concrete_02",
+      "image": "media/unreal-2026-11-17/material-014.webp",
+      "alt": "Concrete material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Concrete/Stylized_Concrete_01/Stylized_Concrete_02`\n\n**Family / use:** Concrete. Service-space walls, floors, masonry and repair details.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 014. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 0.500000, g: 0.500000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Concrete/Stylized_Concrete_01/Stylized_Concrete_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane19`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-015",
+      "title": "Concrete / Stylized_Concrete_03",
+      "image": "media/unreal-2026-11-17/material-015.webp",
+      "alt": "Concrete material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Concrete/Stylized_Concrete_01/Stylized_Concrete_03`\n\n**Family / use:** Concrete. Service-space walls, floors, masonry and repair details.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 015. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Concrete/Stylized_Concrete_01/Stylized_Concrete_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane66`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-016",
+      "title": "Durlock / Tiled_Ceiling_01",
+      "image": "media/unreal-2026-11-17/material-016.webp",
+      "alt": "Durlock material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Durlock/Tiled_Ceiling_01/Tiled_Ceiling_01`\n\n**Family / use:** Durlock. Suspended corporate ceilings and lighting panels.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 016. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Durlock/Tiled_Ceiling_01/Tiled_Ceiling_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane57`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-017",
+      "title": "Durlock / Tiled_Ceiling_Lights_01",
+      "image": "media/unreal-2026-11-17/material-017.webp",
+      "alt": "Durlock material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Durlock/Tiled_Ceiling_Lights_01/Tiled_Ceiling_Lights_01`\n\n**Family / use:** Durlock. Suspended corporate ceilings and lighting panels.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 017. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Durlock/Tiled_Ceiling_Lights_01/Tiled_Ceiling_Lights_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane58`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-018",
+      "title": "Glass / MI_Refraction_Glass_01",
+      "image": "media/unreal-2026-11-17/material-018.webp",
+      "alt": "Glass material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Glass/Refraction/MI_Refraction_Glass_01`\n\n**Family / use:** Glass. Glazing and laboratory glass; check refraction against the striped target.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 018. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** No instance tiling override recorded; native parent defaults apply.\n\n**Source relationship:** Native Unreal material parent; no external Substance source was established for this instance.\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Refraction_Glass.MM_Refraction_Glass`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved. Black/white bars behind these samples expose transparency/refraction.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane3`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-019",
+      "title": "Glass / MI_Refraction_Glass_02",
+      "image": "media/unreal-2026-11-17/material-019.webp",
+      "alt": "Glass material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Glass/Refraction/MI_Refraction_Glass_02`\n\n**Family / use:** Glass. Glazing and laboratory glass; check refraction against the striped target.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 019. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** No instance tiling override recorded; native parent defaults apply.\n\n**Source relationship:** Native Unreal material parent; no external Substance source was established for this instance.\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Refraction_Glass.MM_Refraction_Glass`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved. Black/white bars behind these samples expose transparency/refraction.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane21`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-020",
+      "title": "Glass / MI_Refraction_Glass_03",
+      "image": "media/unreal-2026-11-17/material-020.webp",
+      "alt": "Glass material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Glass/Refraction/MI_Refraction_Glass_03`\n\n**Family / use:** Glass. Glazing and laboratory glass; check refraction against the striped target.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 020. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** No instance tiling override recorded; native parent defaults apply.\n\n**Source relationship:** Native Unreal material parent; no external Substance source was established for this instance.\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Refraction_Glass.MM_Refraction_Glass`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved. Black/white bars behind these samples expose transparency/refraction.\n\n**Recorded scene consumer:** `/Game/Levels/Inteior_Lobby` → `100_Floor_Building_Glass`. Compare the service/Basement captures in Environments; those scenes preserve their authored tiling and Blueprint overrides.",
+      "status": "review"
+    },
+    {
+      "id": "material-021",
+      "title": "LOD / MI_LOD_Glass_01",
+      "image": "media/unreal-2026-11-17/material-021.webp",
+      "alt": "LOD material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/LOD/MI_LOD_Glass_01`\n\n**Family / use:** LOD. Existing distant/glazing utility; inspect transitions in its actual consumer before reuse.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 021. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** No instance tiling override recorded; native parent defaults apply.\n\n**Source relationship:** Native Unreal material parent; no external Substance source was established for this instance.\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_NoTexturePBR.MM_NoTexturePBR`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved. Black/white bars behind these samples expose transparency/refraction.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Glass_Piece_01`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-022",
+      "title": "LOD / MI_LOD_Glass_02",
+      "image": "media/unreal-2026-11-17/material-022.webp",
+      "alt": "LOD material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/LOD/MI_LOD_Glass_02`\n\n**Family / use:** LOD. Existing distant/glazing utility; inspect transitions in its actual consumer before reuse.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 022. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** No instance tiling override recorded; native parent defaults apply.\n\n**Source relationship:** Native Unreal material parent; no external Substance source was established for this instance.\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_NoTexturePBR.MM_NoTexturePBR`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved. Black/white bars behind these samples expose transparency/refraction.\n\n**Context coverage gap:** No direct assignment in the inspected lobby/Basement/LaCarlota actors was found for this exact instance. The controlled rig is its current diagnostic reference; this does not establish final scene use.",
+      "status": "review"
+    },
+    {
+      "id": "material-023",
+      "title": "Leather / MI_Leather_01",
+      "image": "media/unreal-2026-11-17/material-023.webp",
+      "alt": "Leather material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Leather/Leather_01/MI_Leather_01`\n\n**Family / use:** Leather. Upholstery and soft equipment details.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 023. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 10.000000, g: 10.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Leather/Leather_01/Leather_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane26`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-024",
+      "title": "Leather / MI_Leather_02",
+      "image": "media/unreal-2026-11-17/material-024.webp",
+      "alt": "Leather material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Leather/Leather_01/MI_Leather_02`\n\n**Family / use:** Leather. Upholstery and soft equipment details.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 024. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 8.000000, g: 8.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Leather/Leather_01/Leather_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Cleaning_Bucket_Tool`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-025",
+      "title": "Leather / MI_Leather_03",
+      "image": "media/unreal-2026-11-17/material-025.webp",
+      "alt": "Leather material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Leather/Leather_01/MI_Leather_03`\n\n**Family / use:** Leather. Upholstery and soft equipment details.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 025. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 7.000000, g: 7.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Leather/Leather_01/Leather_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane46`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-026",
+      "title": "Magic / MI_Magic_Electricity_01",
+      "image": "media/unreal-2026-11-17/material-026.webp",
+      "alt": "Magic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Magic/Magic_Electricity/MI_Magic_Electricity_01`\n\n**Family / use:** Magic. Existing magical/electrical effect surfaces; still images do not validate animation.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 026. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** Native Unreal material parent; no external Substance source was established for this instance.\n\n**Native parent:** `/Game/Art/MM/Utility_Materials/MM_Emmisive_Mask_Panner.MM_Emmisive_Mask_Panner`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved. The existing emissive-mask/panner branch reports a missing FabLauncher `MF_Tiling` dependency on loading LaCarlota; no dependency repair is included.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane38`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately. **Visible issue:** The native output shows a checker fallback. Do not use this capture as an approved magical finish; its missing dependency needs a separate repair.",
+      "status": "review"
+    },
+    {
+      "id": "material-027",
+      "title": "Magic / MI_Magic_Electricity_02",
+      "image": "media/unreal-2026-11-17/material-027.webp",
+      "alt": "Magic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Magic/Magic_Electricity/MI_Magic_Electricity_02`\n\n**Family / use:** Magic. Existing magical/electrical effect surfaces; still images do not validate animation.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 027. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** Native Unreal material parent; no external Substance source was established for this instance.\n\n**Native parent:** `/Game/Art/MM/Utility_Materials/MM_Emmisive_Mask_Panner.MM_Emmisive_Mask_Panner`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved. The existing emissive-mask/panner branch reports a missing FabLauncher `MF_Tiling` dependency on loading LaCarlota; no dependency repair is included.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane47`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately. **Visible issue:** The native output shows a checker fallback. Do not use this capture as an approved magical finish; its missing dependency needs a separate repair.",
+      "status": "review"
+    },
+    {
+      "id": "material-028",
+      "title": "Metallic / MI_Directional_Metallic_01",
+      "image": "media/unreal-2026-11-17/material-028.webp",
+      "alt": "Metallic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_01`\n\n**Family / use:** Metallic. Equipment, hardware, metal panels and worn service surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 028. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 5.000000, g: 5.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Metallic/Directional_Metallic_01/Directional_Metallic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane8`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-029",
+      "title": "Metallic / MI_Directional_Metallic_02",
+      "image": "media/unreal-2026-11-17/material-029.webp",
+      "alt": "Metallic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_02`\n\n**Family / use:** Metallic. Equipment, hardware, metal panels and worn service surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 029. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 10.000000, g: 10.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Metallic/Directional_Metallic_01/Directional_Metallic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane7`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-030",
+      "title": "Metallic / MI_Directional_Metallic_03",
+      "image": "media/unreal-2026-11-17/material-030.webp",
+      "alt": "Metallic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_03`\n\n**Family / use:** Metallic. Equipment, hardware, metal panels and worn service surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 030. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 15.000000, g: 10.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Metallic/Directional_Metallic_01/Directional_Metallic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Cleaning_Bucket_Tool`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-031",
+      "title": "Metallic / MI_Directional_Metallic_04",
+      "image": "media/unreal-2026-11-17/material-031.webp",
+      "alt": "Metallic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_04`\n\n**Family / use:** Metallic. Equipment, hardware, metal panels and worn service surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 031. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 5.000000, g: 5.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Metallic/Directional_Metallic_01/Directional_Metallic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane13`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-032",
+      "title": "Metallic / MI_Directional_Metallic_05",
+      "image": "media/unreal-2026-11-17/material-032.webp",
+      "alt": "Metallic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_05`\n\n**Family / use:** Metallic. Equipment, hardware, metal panels and worn service surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 032. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 15.000000, g: 10.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Metallic/Directional_Metallic_01/Directional_Metallic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane16`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-033",
+      "title": "Metallic / MI_Directional_Metallic_06",
+      "image": "media/unreal-2026-11-17/material-033.webp",
+      "alt": "Metallic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06`\n\n**Family / use:** Metallic. Equipment, hardware, metal panels and worn service surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 033. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 2.000000, g: 2.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Metallic/Directional_Metallic_01/Directional_Metallic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded scene consumer:** `/Game/Levels/Streaming_Levels/Basement` → `BP_Roof_Concrete_Lights_01`. Compare the service/Basement captures in Environments; those scenes preserve their authored tiling and Blueprint overrides.",
+      "status": "review"
+    },
+    {
+      "id": "material-034",
+      "title": "Metallic / Dented_Metal_01",
+      "image": "media/unreal-2026-11-17/material-034.webp",
+      "alt": "Metallic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Metallic/Dented_Metal_01/Dented_Metal_01`\n\n**Family / use:** Metallic. Equipment, hardware, metal panels and worn service surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 034. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 2.000000, g: 2.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Metallic/Dented_Metal_01/Dented_Metal_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Cleaning_Bucket_Tool`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-035",
+      "title": "Metallic / Dented_Metal_02",
+      "image": "media/unreal-2026-11-17/material-035.webp",
+      "alt": "Metallic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Metallic/Dented_Metal_01/Dented_Metal_02`\n\n**Family / use:** Metallic. Equipment, hardware, metal panels and worn service surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 035. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 3.000000, g: 3.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Metallic/Dented_Metal_01/Dented_Metal_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Cleaning_Bucket_Tool`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-036",
+      "title": "Metallic / Dented_Metal_03",
+      "image": "media/unreal-2026-11-17/material-036.webp",
+      "alt": "Metallic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Metallic/Dented_Metal_01/Dented_Metal_03`\n\n**Family / use:** Metallic. Equipment, hardware, metal panels and worn service surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 036. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 2.000000, g: 2.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Metallic/Dented_Metal_01/Dented_Metal_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded scene consumer:** `/Game/Levels/Inteior_Lobby` → `Janitor_Elevator_01`. Compare the service/Basement captures in Environments; those scenes preserve their authored tiling and Blueprint overrides.",
+      "status": "review"
+    },
+    {
+      "id": "material-037",
+      "title": "Metallic / MI_Directional_Metallic_02_01",
+      "image": "media/unreal-2026-11-17/material-037.webp",
+      "alt": "Metallic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Metallic/Directional_Metallic_02/MI_Directional_Metallic_02_01`\n\n**Family / use:** Metallic. Equipment, hardware, metal panels and worn service surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 037. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 10.000000, g: 10.000000, b: 1.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Metallic/Directional_Metallic_02/Directional_Metallic_02.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane12`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-038",
+      "title": "Metallic / Metal_Blinds_01",
+      "image": "media/unreal-2026-11-17/material-038.webp",
+      "alt": "Metallic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Metallic/Metal_Blinds_01/Metal_Blinds_01`\n\n**Family / use:** Metallic. Equipment, hardware, metal panels and worn service surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 038. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Metallic/Metal_Blinds_01/Metal_Blinds_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded scene consumer:** `/Game/Levels/Streaming_Levels/Basement` → `Basement_Shop`. Compare the service/Basement captures in Environments; those scenes preserve their authored tiling and Blueprint overrides.",
+      "status": "review"
+    },
+    {
+      "id": "material-039",
+      "title": "Metallic / Metal_Classic_01",
+      "image": "media/unreal-2026-11-17/material-039.webp",
+      "alt": "Metallic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01`\n\n**Family / use:** Metallic. Equipment, hardware, metal panels and worn service surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 039. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded scene consumer:** `/Game/Levels/Inteior_Lobby` → `Janitor_Elevator_01`. Compare the service/Basement captures in Environments; those scenes preserve their authored tiling and Blueprint overrides.",
+      "status": "review"
+    },
+    {
+      "id": "material-040",
+      "title": "Metallic / Metal_Classic_02",
+      "image": "media/unreal-2026-11-17/material-040.webp",
+      "alt": "Metallic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_02/Metal_Classic_02`\n\n**Family / use:** Metallic. Equipment, hardware, metal panels and worn service surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 040. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Metallic/Metal_Classic_02/Metal_Classic_02.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane71`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-041",
+      "title": "Metallic / Metal_Rusty_01",
+      "image": "media/unreal-2026-11-17/material-041.webp",
+      "alt": "Metallic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Metallic/Metal_Rusty_01/Metal_Rusty_01`\n\n**Family / use:** Metallic. Equipment, hardware, metal panels and worn service surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 041. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Metallic/Metal_Rusty_01/Metal_Rusty_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane9`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-042",
+      "title": "Mosaics / Mosaic_Granite_01_01",
+      "image": "media/unreal-2026-11-17/material-042.webp",
+      "alt": "Mosaics material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Mosaics/Mosaic_Granite_01/Mosaic_Granite_01_01`\n\n**Family / use:** Mosaics. Corporate floor finishes.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 042. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Mosaics/Mosaic_Granite_01/Mosaic_Granite_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane65`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-043",
+      "title": "Plastic / MI_Circle_Tile_01",
+      "image": "media/unreal-2026-11-17/material-043.webp",
+      "alt": "Plastic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Plastic/Circle_Tile/MI_Circle_Tile_01`\n\n**Family / use:** Plastic. Laboratory equipment, cleaning tools and molded surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 043. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 15.000000, g: 15.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Plastic/Circle_Tile/Circle_Tile.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane4`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-044",
+      "title": "Plastic / MI_Hexagon_01",
+      "image": "media/unreal-2026-11-17/material-044.webp",
+      "alt": "Plastic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Plastic/Hexagon/MI_Hexagon_01`\n\n**Family / use:** Plastic. Laboratory equipment, cleaning tools and molded surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 044. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 25.000000, g: 25.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Plastic/Neutral_Plastic_01/Neutral_Plastic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane50`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-045",
+      "title": "Plastic / MI_Hexagon_02",
+      "image": "media/unreal-2026-11-17/material-045.webp",
+      "alt": "Plastic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Plastic/Hexagon/MI_Hexagon_02`\n\n**Family / use:** Plastic. Laboratory equipment, cleaning tools and molded surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 045. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 25.000000, g: 25.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Plastic/Neutral_Plastic_01/Neutral_Plastic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Context coverage gap:** No direct assignment in the inspected lobby/Basement/LaCarlota actors was found for this exact instance. The controlled rig is its current diagnostic reference; this does not establish final scene use.",
+      "status": "review"
+    },
+    {
+      "id": "material-046",
+      "title": "Plastic / MI_Neutral_Plastic_01",
+      "image": "media/unreal-2026-11-17/material-046.webp",
+      "alt": "Plastic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Plastic/Neutral_Plastic_01/MI_Neutral_Plastic_01`\n\n**Family / use:** Plastic. Laboratory equipment, cleaning tools and molded surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 046. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 4.000000, g: 4.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Plastic/Neutral_Plastic_01/Neutral_Plastic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane24`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-047",
+      "title": "Plastic / MI_Neutral_Plastic_02",
+      "image": "media/unreal-2026-11-17/material-047.webp",
+      "alt": "Plastic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Plastic/Neutral_Plastic_01/MI_Neutral_Plastic_02`\n\n**Family / use:** Plastic. Laboratory equipment, cleaning tools and molded surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 047. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 4.000000, g: 4.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Plastic/Neutral_Plastic_01/Neutral_Plastic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane27`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-048",
+      "title": "Plastic / MI_Neutral_Plastic_03",
+      "image": "media/unreal-2026-11-17/material-048.webp",
+      "alt": "Plastic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Plastic/Neutral_Plastic_01/MI_Neutral_Plastic_03`\n\n**Family / use:** Plastic. Laboratory equipment, cleaning tools and molded surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 048. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 4.000000, g: 4.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Plastic/Neutral_Plastic_01/Neutral_Plastic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane29`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-049",
+      "title": "Plastic / MI_Neutral_Plastic_04",
+      "image": "media/unreal-2026-11-17/material-049.webp",
+      "alt": "Plastic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Plastic/Neutral_Plastic_01/MI_Neutral_Plastic_04`\n\n**Family / use:** Plastic. Laboratory equipment, cleaning tools and molded surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 049. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 4.000000, g: 4.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Plastic/Neutral_Plastic_01/Neutral_Plastic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane28`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-050",
+      "title": "Plastic / MI_Neutral_Plastic_05",
+      "image": "media/unreal-2026-11-17/material-050.webp",
+      "alt": "Plastic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Plastic/Neutral_Plastic_01/MI_Neutral_Plastic_05`\n\n**Family / use:** Plastic. Laboratory equipment, cleaning tools and molded surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 050. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 4.000000, g: 4.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Plastic/Neutral_Plastic_01/Neutral_Plastic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane33`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-051",
+      "title": "Plastic / MI_Neutral_Plastic_06",
+      "image": "media/unreal-2026-11-17/material-051.webp",
+      "alt": "Plastic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Plastic/Neutral_Plastic_01/MI_Neutral_Plastic_06`\n\n**Family / use:** Plastic. Laboratory equipment, cleaning tools and molded surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 051. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 4.000000, g: 4.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Plastic/Neutral_Plastic_01/Neutral_Plastic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane32`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-052",
+      "title": "Plastic / MI_Neutral_Plastic_07",
+      "image": "media/unreal-2026-11-17/material-052.webp",
+      "alt": "Plastic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Plastic/Neutral_Plastic_01/MI_Neutral_Plastic_07`\n\n**Family / use:** Plastic. Laboratory equipment, cleaning tools and molded surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 052. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 4.000000, g: 4.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Plastic/Neutral_Plastic_01/Neutral_Plastic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane31`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-053",
+      "title": "Plastic / MI_Neutral_Plastic_08",
+      "image": "media/unreal-2026-11-17/material-053.webp",
+      "alt": "Plastic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Plastic/Neutral_Plastic_01/MI_Neutral_Plastic_08`\n\n**Family / use:** Plastic. Laboratory equipment, cleaning tools and molded surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 053. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 4.000000, g: 4.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Plastic/Neutral_Plastic_01/Neutral_Plastic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane30`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-054",
+      "title": "Plastic / MI_Neutral_Plastic_09",
+      "image": "media/unreal-2026-11-17/material-054.webp",
+      "alt": "Plastic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Plastic/Neutral_Plastic_01/MI_Neutral_Plastic_09`\n\n**Family / use:** Plastic. Laboratory equipment, cleaning tools and molded surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 054. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 4.000000, g: 4.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Plastic/Neutral_Plastic_01/Neutral_Plastic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane37`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-055",
+      "title": "Plastic / MI_Neutral_Plastic_10",
+      "image": "media/unreal-2026-11-17/material-055.webp",
+      "alt": "Plastic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Plastic/Neutral_Plastic_01/MI_Neutral_Plastic_10`\n\n**Family / use:** Plastic. Laboratory equipment, cleaning tools and molded surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 055. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Plastic/Neutral_Plastic_01/Neutral_Plastic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Box_Bucket_Tool4`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-056",
+      "title": "Plastic / MI_Neutral_Plastic_Metallic_01",
+      "image": "media/unreal-2026-11-17/material-056.webp",
+      "alt": "Plastic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Plastic/Neutral_Plastic_01/MI_Neutral_Plastic_Metallic_01`\n\n**Family / use:** Plastic. Laboratory equipment, cleaning tools and molded surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 056. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 4.000000, g: 4.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Plastic/Neutral_Plastic_01/Neutral_Plastic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane35`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-057",
+      "title": "Plastic / MI_Neutral_Plastic_Metallic_02",
+      "image": "media/unreal-2026-11-17/material-057.webp",
+      "alt": "Plastic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Plastic/Neutral_Plastic_01/MI_Neutral_Plastic_Metallic_02`\n\n**Family / use:** Plastic. Laboratory equipment, cleaning tools and molded surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 057. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 4.000000, g: 4.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Plastic/Neutral_Plastic_01/Neutral_Plastic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane34`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-058",
+      "title": "Plastic / MI_Neutral_Plastic_Metallic_03",
+      "image": "media/unreal-2026-11-17/material-058.webp",
+      "alt": "Plastic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Plastic/Neutral_Plastic_01/MI_Neutral_Plastic_Metallic_03`\n\n**Family / use:** Plastic. Laboratory equipment, cleaning tools and molded surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 058. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 2.000000, g: 2.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Plastic/Neutral_Plastic_01/Neutral_Plastic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Context coverage gap:** No direct assignment in the inspected lobby/Basement/LaCarlota actors was found for this exact instance. The controlled rig is its current diagnostic reference; this does not establish final scene use.",
+      "status": "review"
+    },
+    {
+      "id": "material-059",
+      "title": "Plastic / Worn_Plastic_01_01",
+      "image": "media/unreal-2026-11-17/material-059.webp",
+      "alt": "Plastic material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Plastic/Worn_Plastic_01/Worn_Plastic_01_01`\n\n**Family / use:** Plastic. Laboratory equipment, cleaning tools and molded surfaces.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 059. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Plastic/Worn_Plastic_01/Worn_Plastic_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane55`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-060",
+      "title": "Rug / Luxurious_Rug_01_01",
+      "image": "media/unreal-2026-11-17/material-060.webp",
+      "alt": "Rug material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Rug/Luxurious_Rug_01/Luxurious_Rug_01_01`\n\n**Family / use:** Rug. Public/corporate carpet finishes.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 060. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Rug/Luxurious_Rug_01/Luxurious_Rug_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane62`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-061",
+      "title": "Rug / Simple_Rug_01_01",
+      "image": "media/unreal-2026-11-17/material-061.webp",
+      "alt": "Rug material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Rug/Simple_Rug_01/Simple_Rug_01_01`\n\n**Family / use:** Rug. Public/corporate carpet finishes.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 061. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Rug/Simple_Rug_01/Simple_Rug_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane56`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-062",
+      "title": "Rug / Simple_Rug_01_02",
+      "image": "media/unreal-2026-11-17/material-062.webp",
+      "alt": "Rug material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Rug/Simple_Rug_01/Simple_Rug_01_02`\n\n**Family / use:** Rug. Public/corporate carpet finishes.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 062. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Rug/Simple_Rug_01/Simple_Rug_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Context coverage gap:** No direct assignment in the inspected lobby/Basement/LaCarlota actors was found for this exact instance. The controlled rig is its current diagnostic reference; this does not establish final scene use.",
+      "status": "review"
+    },
+    {
+      "id": "material-063",
+      "title": "Rug / Simple_Rug_02_01",
+      "image": "media/unreal-2026-11-17/material-063.webp",
+      "alt": "Rug material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Rug/Simple_Rug_02/Simple_Rug_02_01`\n\n**Family / use:** Rug. Public/corporate carpet finishes.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 063. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Rug/Simple_Rug_02/Simple_Rug_02.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane63`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-064",
+      "title": "Simple / MI_Full_Black",
+      "image": "media/unreal-2026-11-17/material-064.webp",
+      "alt": "Simple material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Simple/MI_Full_Black`\n\n**Family / use:** Simple. Existing configurable utility surfaces; choose the exact instance deliberately.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 064. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** No instance tiling override recorded; native parent defaults apply.\n\n**Source relationship:** Native Unreal material parent; no external Substance source was established for this instance.\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_NoTexturePBR.MM_NoTexturePBR`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded scene consumer:** `/Game/Levels/Inteior_Lobby` → `Janitor_Elevator_01`. Compare the service/Basement captures in Environments; those scenes preserve their authored tiling and Blueprint overrides.",
+      "status": "review"
+    },
+    {
+      "id": "material-065",
+      "title": "Simple / MI_Simple_Emmisive_01",
+      "image": "media/unreal-2026-11-17/material-065.webp",
+      "alt": "Simple material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Emmisive_01`\n\n**Family / use:** Simple. Existing configurable utility surfaces; choose the exact instance deliberately.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 065. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** No instance tiling override recorded; native parent defaults apply.\n\n**Source relationship:** Native Unreal material parent; no external Substance source was established for this instance.\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_NoTexturePBR.MM_NoTexturePBR`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Context coverage gap:** No direct assignment in the inspected lobby/Basement/LaCarlota actors was found for this exact instance. The controlled rig is its current diagnostic reference; this does not establish final scene use.",
+      "status": "review"
+    },
+    {
+      "id": "material-066",
+      "title": "Simple / MI_Simple_Emmisive_02",
+      "image": "media/unreal-2026-11-17/material-066.webp",
+      "alt": "Simple material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Emmisive_02`\n\n**Family / use:** Simple. Existing configurable utility surfaces; choose the exact instance deliberately.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 066. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** No instance tiling override recorded; native parent defaults apply.\n\n**Source relationship:** Native Unreal material parent; no external Substance source was established for this instance.\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_NoTexturePBR.MM_NoTexturePBR`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded scene consumer:** `/Game/Levels/Streaming_Levels/Basement` → `BP_Roof_Concrete_Lights_01`. Compare the service/Basement captures in Environments; those scenes preserve their authored tiling and Blueprint overrides.",
+      "status": "review"
+    },
+    {
+      "id": "material-067",
+      "title": "Simple / MI_Simple_Emmisive_03",
+      "image": "media/unreal-2026-11-17/material-067.webp",
+      "alt": "Simple material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Emmisive_03`\n\n**Family / use:** Simple. Existing configurable utility surfaces; choose the exact instance deliberately.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 067. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** No instance tiling override recorded; native parent defaults apply.\n\n**Source relationship:** Native Unreal material parent; no external Substance source was established for this instance.\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_NoTexturePBR.MM_NoTexturePBR`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Context coverage gap:** No direct assignment in the inspected lobby/Basement/LaCarlota actors was found for this exact instance. The controlled rig is its current diagnostic reference; this does not establish final scene use.",
+      "status": "review"
+    },
+    {
+      "id": "material-068",
+      "title": "Simple / MI_Simple_Glass_01",
+      "image": "media/unreal-2026-11-17/material-068.webp",
+      "alt": "Simple material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Glass_01`\n\n**Family / use:** Simple. Existing configurable utility surfaces; choose the exact instance deliberately.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 068. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** No instance tiling override recorded; native parent defaults apply.\n\n**Source relationship:** Native Unreal material parent; no external Substance source was established for this instance.\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_NoTexturePBR.MM_NoTexturePBR`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved. Black/white bars behind these samples expose transparency/refraction.\n\n**Context coverage gap:** No direct assignment in the inspected lobby/Basement/LaCarlota actors was found for this exact instance. The controlled rig is its current diagnostic reference; this does not establish final scene use.",
+      "status": "review"
+    },
+    {
+      "id": "material-069",
+      "title": "Simple / MI_Simple_Liquid_01",
+      "image": "media/unreal-2026-11-17/material-069.webp",
+      "alt": "Simple material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Liquid_01`\n\n**Family / use:** Simple. Existing configurable utility surfaces; choose the exact instance deliberately.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 069. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** No instance tiling override recorded; native parent defaults apply.\n\n**Source relationship:** Native Unreal material parent; no external Substance source was established for this instance.\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_NoTexturePBR.MM_NoTexturePBR`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved. Black/white bars behind these samples expose transparency/refraction.\n\n**Context coverage gap:** No direct assignment in the inspected lobby/Basement/LaCarlota actors was found for this exact instance. The controlled rig is its current diagnostic reference; this does not establish final scene use.",
+      "status": "review"
+    },
+    {
+      "id": "material-070",
+      "title": "Simple / MI_Simple_Metallic_01",
+      "image": "media/unreal-2026-11-17/material-070.webp",
+      "alt": "Simple material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_01`\n\n**Family / use:** Simple. Existing configurable utility surfaces; choose the exact instance deliberately.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 070. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** No instance tiling override recorded; native parent defaults apply.\n\n**Source relationship:** Native Unreal material parent; no external Substance source was established for this instance.\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_NoTexturePBR.MM_NoTexturePBR`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Box_Bucket_Tool`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-071",
+      "title": "Simple / MI_Simple_Metallic_02",
+      "image": "media/unreal-2026-11-17/material-071.webp",
+      "alt": "Simple material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_02`\n\n**Family / use:** Simple. Existing configurable utility surfaces; choose the exact instance deliberately.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 071. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** No instance tiling override recorded; native parent defaults apply.\n\n**Source relationship:** Native Unreal material parent; no external Substance source was established for this instance.\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_NoTexturePBR.MM_NoTexturePBR`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `BP_Roof_Lights_01`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-072",
+      "title": "Simple / MI_Simple_Metallic_03",
+      "image": "media/unreal-2026-11-17/material-072.webp",
+      "alt": "Simple material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_03`\n\n**Family / use:** Simple. Existing configurable utility surfaces; choose the exact instance deliberately.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 072. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** No instance tiling override recorded; native parent defaults apply.\n\n**Source relationship:** Native Unreal material parent; no external Substance source was established for this instance.\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_NoTexturePBR.MM_NoTexturePBR`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Context coverage gap:** No direct assignment in the inspected lobby/Basement/LaCarlota actors was found for this exact instance. The controlled rig is its current diagnostic reference; this does not establish final scene use.",
+      "status": "review"
+    },
+    {
+      "id": "material-073",
+      "title": "Simple / MI_Simple_Plastic_01",
+      "image": "media/unreal-2026-11-17/material-073.webp",
+      "alt": "Simple material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Plastic_01`\n\n**Family / use:** Simple. Existing configurable utility surfaces; choose the exact instance deliberately.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 073. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** No instance tiling override recorded; native parent defaults apply.\n\n**Source relationship:** Native Unreal material parent; no external Substance source was established for this instance.\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_NoTexturePBR.MM_NoTexturePBR`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Context coverage gap:** No direct assignment in the inspected lobby/Basement/LaCarlota actors was found for this exact instance. The controlled rig is its current diagnostic reference; this does not establish final scene use.",
+      "status": "review"
+    },
+    {
+      "id": "material-074",
+      "title": "Simple / MI_Simple_Plastic_02",
+      "image": "media/unreal-2026-11-17/material-074.webp",
+      "alt": "Simple material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Plastic_02`\n\n**Family / use:** Simple. Existing configurable utility surfaces; choose the exact instance deliberately.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 074. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** No instance tiling override recorded; native parent defaults apply.\n\n**Source relationship:** Native Unreal material parent; no external Substance source was established for this instance.\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_NoTexturePBR.MM_NoTexturePBR`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Context coverage gap:** No direct assignment in the inspected lobby/Basement/LaCarlota actors was found for this exact instance. The controlled rig is its current diagnostic reference; this does not establish final scene use.",
+      "status": "review"
+    },
+    {
+      "id": "material-075",
+      "title": "Simple / MI_Simple_Plastic_03",
+      "image": "media/unreal-2026-11-17/material-075.webp",
+      "alt": "Simple material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Plastic_03`\n\n**Family / use:** Simple. Existing configurable utility surfaces; choose the exact instance deliberately.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 075. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** No instance tiling override recorded; native parent defaults apply.\n\n**Source relationship:** Native Unreal material parent; no external Substance source was established for this instance.\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_NoTexturePBR.MM_NoTexturePBR`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Context coverage gap:** No direct assignment in the inspected lobby/Basement/LaCarlota actors was found for this exact instance. The controlled rig is its current diagnostic reference; this does not establish final scene use.",
+      "status": "review"
+    },
+    {
+      "id": "material-076",
+      "title": "Simple / MI_Simple_Plastic_04",
+      "image": "media/unreal-2026-11-17/material-076.webp",
+      "alt": "Simple material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Plastic_04`\n\n**Family / use:** Simple. Existing configurable utility surfaces; choose the exact instance deliberately.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 076. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** No instance tiling override recorded; native parent defaults apply.\n\n**Source relationship:** Native Unreal material parent; no external Substance source was established for this instance.\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_NoTexturePBR.MM_NoTexturePBR`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Context coverage gap:** No direct assignment in the inspected lobby/Basement/LaCarlota actors was found for this exact instance. The controlled rig is its current diagnostic reference; this does not establish final scene use.",
+      "status": "review"
+    },
+    {
+      "id": "material-077",
+      "title": "TrimSheet / Trimsheet_Wall_01",
+      "image": "media/unreal-2026-11-17/material-077.webp",
+      "alt": "TrimSheet material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/TrimSheet/Trimsheet_Wall_01/Trimsheet_Wall_01`\n\n**Family / use:** TrimSheet. Authored structural trim UV regions; retain the original UV layout.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 077. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/TrimSheet&Atlas/Trimsheet_Structure_01/Trimsheet_Structure_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved. Generic shapes are diagnostic only; use the authored trim consumer for final UV placement.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane44`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-078",
+      "title": "TrimSheet / Trimsheet_Wall_02",
+      "image": "media/unreal-2026-11-17/material-078.webp",
+      "alt": "TrimSheet material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/TrimSheet/Trimsheet_Wall_01/Trimsheet_Wall_02`\n\n**Family / use:** TrimSheet. Authored structural trim UV regions; retain the original UV layout.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 078. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** No instance tiling override recorded; native parent defaults apply.\n\n**Source relationship:** `Utility_Materials/TrimSheet&Atlas/Trimsheet_Structure_01/Trimsheet_Structure_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_BasicMaterial_Mask.MM_BasicMaterial_Mask`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved. Generic shapes are diagnostic only; use the authored trim consumer for final UV placement.\n\n**Recorded scene consumer:** `/Game/Levels/Streaming_Levels/Basement` → `BP_Wall_VertexConcrete_2`. Compare the service/Basement captures in Environments; those scenes preserve their authored tiling and Blueprint overrides.",
+      "status": "review"
+    },
+    {
+      "id": "material-079",
+      "title": "WallPaper / MI_WallPaper_01_01",
+      "image": "media/unreal-2026-11-17/material-079.webp",
+      "alt": "WallPaper material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/WallPaper/WallPaper_01/MI_WallPaper_01_01`\n\n**Family / use:** WallPaper. Corporate wall finish.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 079. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 2.000000, g: 2.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/WallPaper/WallPaper_01/WallPaper_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded scene consumer:** `/Game/Levels/Inteior_Lobby` → `Cube_006`. Compare the service/Basement captures in Environments; those scenes preserve their authored tiling and Blueprint overrides.",
+      "status": "review"
+    },
+    {
+      "id": "material-080",
+      "title": "Wood / Natural_Wood_01",
+      "image": "media/unreal-2026-11-17/material-080.webp",
+      "alt": "Wood material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Wood/Natural_Wood_01/Natural_Wood_01`\n\n**Family / use:** Wood. Wood panels, planks, veneer and flooring.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 080. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 2.000000, g: 2.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Wood/Natural_Wood_01/Natural_Wood_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded scene consumer:** `/Game/Levels/Inteior_Lobby` → `Janitor_Satirs_02`. Compare the service/Basement captures in Environments; those scenes preserve their authored tiling and Blueprint overrides.",
+      "status": "review"
+    },
+    {
+      "id": "material-081",
+      "title": "Wood / Natural_Wood_01",
+      "image": "media/unreal-2026-11-17/material-081.webp",
+      "alt": "Wood material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Wood/Natural_Wood_02/Natural_Wood_01`\n\n**Family / use:** Wood. Wood panels, planks, veneer and flooring.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 081. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Wood/Natural_Wood_02/Natural_Wood_02.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane39`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-082",
+      "title": "Wood / Natural_Wood_02",
+      "image": "media/unreal-2026-11-17/material-082.webp",
+      "alt": "Wood material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Wood/Natural_Wood_02/Natural_Wood_02`\n\n**Family / use:** Wood. Wood panels, planks, veneer and flooring.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 082. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Wood/Natural_Wood_02/Natural_Wood_02.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Triangle_Bucket_Tool2`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-083",
+      "title": "Wood / Plank_Wood_01",
+      "image": "media/unreal-2026-11-17/material-083.webp",
+      "alt": "Wood material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Wood/Plank_Wood_01/Plank_Wood_01`\n\n**Family / use:** Wood. Wood panels, planks, veneer and flooring.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 083. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Wood/Plank_Wood_01/Plank_Wood_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane41`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-084",
+      "title": "Wood / Plank_Wood_02",
+      "image": "media/unreal-2026-11-17/material-084.webp",
+      "alt": "Wood material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Wood/Plank_Wood_02/Plank_Wood_02`\n\n**Family / use:** Wood. Wood panels, planks, veneer and flooring.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 084. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.500000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Wood/Plank_Wood_02/Plank_Wood_02.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Box_Bucket_Tool`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-085",
+      "title": "Wood / Wood_Floor_01_01",
+      "image": "media/unreal-2026-11-17/material-085.webp",
+      "alt": "Wood material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Wood/Wood_Floor_01/Wood_Floor_01_01`\n\n**Family / use:** Wood. Wood panels, planks, veneer and flooring.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 085. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Wood/Wood_Floor_01/Wood_Floor_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane64`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-086",
+      "title": "Wood / Wood_Wall_01_01",
+      "image": "media/unreal-2026-11-17/material-086.webp",
+      "alt": "Wood material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Wood/Wood_Wall_01/Wood_Wall_01_01`\n\n**Family / use:** Wood. Wood panels, planks, veneer and flooring.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 086. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Wood/Wood_Wall_01/Wood_Wall_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane43`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-087",
+      "title": "Wood / Wood_Wall_01_02",
+      "image": "media/unreal-2026-11-17/material-087.webp",
+      "alt": "Wood material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Wood/Wood_Wall_01/Wood_Wall_01_02`\n\n**Family / use:** Wood. Wood panels, planks, veneer and flooring.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 087. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Wood/Wood_Wall_01/Wood_Wall_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Wall_3`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    },
+    {
+      "id": "material-088",
+      "title": "Wood / Wood_Wall_01_03",
+      "image": "media/unreal-2026-11-17/material-088.webp",
+      "alt": "Wood material on flat, curved and edged Unreal samples",
+      "body": "**Unreal MI:** `/Game/Art/MI/Utility_Materials/Wood/Wood_Wall_01/Wood_Wall_01_03`\n\n**Family / use:** Wood. Wood panels, planks, veneer and flooring.\n\n**Capture:** 2026-11-17 · editor viewport · `/Game/Levels/Art_Material_Reference` · station 088. From left: 2 m flat, 1 m cube, 1 m diameter sphere, 1 m flat. All engine UV domains remain 0–1; the 2 m panel intentionally stretches the same UV domain. These are comparison samples, not a 256/512 px/m calibration.\n\n**Tiling:** `{name: \"Tiling/Offset\", association: GlobalParameter, index: -1}, parameter_value: {r: 1.000000, g: 1.000000, b: 0.000000, a: 0.000000}}`\n\n**Source relationship:** `Utility_Materials/Wood/Wood_Wall_01/Wood_Wall_01.sbs`\n\n**Native parent:** `/Game/Art/MM/Basic_Materials/MM_Tile_BasicMaterial.MM_Tile_BasicMaterial`\n\n**Review:** Current native appearance, available for owner review. Material instances and production UVs were preserved.\n\n**Recorded showcase consumer:** `/Game/Levels/LaCarlota` → `Plane59`. No direct assignment in the inspected lobby/Basement actors was found for this exact instance; select contextual use deliberately.",
+      "status": "review"
+    }
+  ]
+}
