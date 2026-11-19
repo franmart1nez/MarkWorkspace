@@ -9,10 +9,16 @@ Stages 1–4 of the approved art reset are complete. Keep the Office Level Build
 - Card: `workspace/2026-11-12_total-insanitation/`, ID `total-insanitation`.
 - Stage status: the card's `EXECUTION_LOG.md` (Plan → Progress). Stage-2 source/FBX/
   Unreal rules and resource classifications are recorded in Rules & tools → File
-  rules. Art bible has six category tabs, 88 native material renders and current
+  rules. Art bible has 88 native material renders and current
   environment and asset references. **Art bible → Mascot** contains the twelve
   approved poses as editable SVGs and transparent PNGs. **Art bible → Signage & UI**
-  has the four sign proposals, HUD and main menu for Stage 5 owner review.
+  has the approved editable SVGs for the ten Basement signs, Wet Floor and A Clean Start.
+  **Art bible → Building concepts** has the initial Stage 6 structural studies of Basement
+  and Level_01, focused on fixed walls and ceilings in Building and Modular Blocks.
+- NPC species reference: current provisional Doom-style coworker and future-enemy
+  sprites under `/Game/Programming/Enemies/FlipBooks`, with art sources under
+  `D:/GameJam/Total (in)Sanitation/Characters`. Art bible → Characters records these
+  families. The owner's goblin skull is a danger pictogram example.
 - Sources: `D:/GameJam/Total (in)Sanitation/`; Unreal:
   `D:/GItHub/BoomeRacist/BoomeRacist.uproject`. Existing native sources are preserved.
   Stage 3 added only `/Game/Levels/Art_Material_Reference` and its neutral helper;
@@ -23,8 +29,9 @@ Stages 1–4 of the approved art reset are complete. Keep the Office Level Build
   recipe. Keep 256/512 px/m references and intentional floor/ceiling UV exceptions.
 - Game text: English with future localization. Future UI goes under `/Game/Art/UI`;
   characters under `/Game/Art/Characters`. Use current Unreal visual references.
-- The graphic direction decision comes before atlas specification, native sign
-  and UI work, Basement direction and individual assets using
+- Signage artwork is approved. The owner selected the Basement service corridor and counter
+  for Stage 7. **Art bible → Basement assets** lists individual components, native material
+  references and the companion signage atlas proposal. The concept materials start from
   `/Game/Art/MI/Utility_Materials`.
 
 ## Sculpture Colorization
@@ -53,19 +60,16 @@ Reusable workflow for independent sculpture colorization projects.
 
 ## World in Dreams (world simulation)
 
-Stage 1 of the personal isekai project, started 2026-11-10. On 2026-11-11 the
-owner redirected it to a close-up MVP (v0.2): one walled city, five villages and
-some wildlife, every inhabitant simulated minute by minute, no tile grid, and the
-painted look of the art bible's Zoom 01–03. The same day the owner chose to
-deepen this region rather than add another: v0.3 adds simple building interiors
-and a closed, more realistic economy (employers, rents, taxes, prices) and keeps
-the 48-day year. v0.35 (same day) concentrates on the people: timetables by
-trade and season, trades that follow demand, death from many causes, crime, the
-law and abuses of power, and the weather of the year. Other cities and species, the protagonist and text RPG ("much
-later"), the AI agents and anything commercial are deferred. The continent-scale
-v0.1 is kept in `projects/world-in-dreams/archive/v1-continent/`.
+A painted fantasy world that simulates itself and is watched, not played.
+v0.3.5: one walled city and five villages, about 1,800 people simulated minute
+by minute (timetables, interiors, closed economy, lives, illness, crime). On
+2026-11-18 the documentation was reset and audited; the project's first goal
+(continent of 33 species, protagonist, RPG, AI agents, the GDD) is abandoned
+and must be ignored. The new roadmap has twelve milestones: a living land with
+animals and no people (M1–M3), today's kingdom moved onto it (M4–M6), society
+and chaos (M7–M8), attributes, combat and magic (M9–M10), richer cities and
+monster peoples (M11–M12). The owner keeps the current art.
 
-- Project brief and how to run: `projects/world-in-dreams/README.md`
-- Rules, data model, the owner's answers: `projects/world-in-dreams/docs/design.md`
-- Workspace card: `workspace/2026-11-10_world-in-dreams/PROJECT.md`
-- Source GDD v0.2 (Spanish): Google Doc linked in the project README
+- Agent rules and reading order: `projects/world-in-dreams/AGENTS.md`
+- Workspace card: `workspace/2026-11-10_world-in-dreams/` (Overview, Roadmap, Art bible)
+- Roadmap: `workspace/2026-11-10_world-in-dreams/ROADMAP.md`; refresh progress with `npm run roadmap`

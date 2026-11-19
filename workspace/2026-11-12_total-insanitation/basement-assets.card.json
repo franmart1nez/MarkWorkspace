@@ -1,0 +1,150 @@
+{
+  "format": "mrmak-card",
+  "version": 1,
+  "template": "gallery",
+  "title": "Basement assets / Stage 7",
+  "summary": "Individual concept sheets for the selected service corridor and counter. Open each part for its fit and native material references. [Asset and material brief](BASEMENT_ASSETS_STAGE7.md) · [Signage Atlas proposal](SIGNAGE_ATLAS_STAGE7.md).",
+  "items": [
+    {
+      "id": "asset-overview",
+      "title": "Basement kit / Component overview",
+      "image": "media/basement-stage7/asset-overview.webp",
+      "alt": "Twelve isolated Stage 7 concept sheets of Basement construction and material treatments",
+      "body": "Ten mesh studies and two surface studies for the selected corridor and counter. [Asset brief and missing materials](BASEMENT_ASSETS_STAGE7.md) · [Exact MI paths and generation record](sources/basement-stage7-assets.json)."
+    },
+    {
+      "id": "pipe-pilot-blender",
+      "title": "400 cm ceiling bay / Blender pilot",
+      "image": "media/basement-stage7/pipe-pilot-blender.webp",
+      "alt": "Blender assembly and close-up of the straight pipe, overhead hanger and sleeve joining the curved elbow",
+      "status": "review",
+      "body": "The four editable meshes are in the Building source. Reopening the source and FBXs verified pivots and two UV channels. A transient Unreal import matched dimensions and resolved all three existing metal instances. Lighting review is pending. [Models and measurements](BASEMENT_ASSETS_STAGE7.md#400-cm-blender-pilot)."
+    },
+    {
+      "id": "pipe-straight",
+      "title": "Straight service pipe",
+      "image": "media/basement-stage7/pipe-straight.png",
+      "alt": "Straight service pipe shown as an isolated concept study",
+      "status": "review",
+      "body": "Metal Classic 01 on the shell. Compare Directional Metal 06 on smaller dark runs under the existing fluorescents. 400 cm grid run. Start with 20/16 cm and 7.5/5 cm diameter families. End-center pivot, axial UV0 and matching bore and lip across every fitting. Confirm ceiling clearance on the assembled run. [Native MI 39](media/unreal-2026-11-17/material-039.webp) · [Native MI 33](media/unreal-2026-11-17/material-033.webp) · [Source scene](media/building-stage6/basement-corridor-concept-v2.png)."
+    },
+    {
+      "id": "pipe-elbow",
+      "title": "90° service-pipe elbow",
+      "image": "media/basement-stage7/pipe-elbow.png",
+      "alt": "90° service-pipe elbow shown as an isolated concept study",
+      "status": "review",
+      "body": "Match the pipe shell. Align the metal grain to the bend and preserve the run's texel density. Match the end diameter, lip, centerline and connection orientation. Try a centerline radius of 1–1.5 pipe diameters before checking it at the counter. Keep straights tangent to the bend. [Native MI 39](media/unreal-2026-11-17/material-039.webp) · [Native MI 33](media/unreal-2026-11-17/material-033.webp) · [Source scene](media/building-stage6/basement-counter-concept-v2.png)."
+    },
+    {
+      "id": "pipe-coupling",
+      "title": "Sleeve coupling",
+      "image": "media/basement-stage7/pipe-coupling.png",
+      "alt": "Sleeve coupling shown as an isolated concept study",
+      "status": "review",
+      "body": "Use the selected pipe finish on the ring and dark Directional Metal 06 on the closure hardware. Simple Metallic 01 can cover small bolts. Shared size variants follow the selected diameters, with a short overlap at joints. Place the pivot on the midpoint of the ring axis for reuse. [Native MI 39](media/unreal-2026-11-17/material-039.webp) · [Native MI 33](media/unreal-2026-11-17/material-033.webp) · [Native MI 70](media/unreal-2026-11-17/material-070.webp) · [Source scene](media/building-stage6/basement-corridor-concept-v2.png)."
+    },
+    {
+      "id": "pipe-hanger",
+      "title": "Overhead pipe hanger",
+      "image": "media/basement-stage7/pipe-hanger.png",
+      "alt": "Overhead pipe hanger shown as an isolated concept study",
+      "status": "review",
+      "body": "Directional Metal 06 for the dark support. Metal Classic 01 or Simple Metallic 01 for used steel straps and fasteners. Shared crossbar and ceiling anchor. Build the four-run and two-run variants from common parts. Shorten the illustrative drop rods to fit the native ceiling and stay clear of the fluorescents. [Native MI 33](media/unreal-2026-11-17/material-033.webp) · [Native MI 39](media/unreal-2026-11-17/material-039.webp) · [Native MI 70](media/unreal-2026-11-17/material-070.webp) · [Source scene](media/building-stage6/basement-corridor-concept-v2.png)."
+    },
+    {
+      "id": "cable-tray",
+      "title": "Perforated cable tray",
+      "image": "media/basement-stage7/cable-tray.png",
+      "alt": "Perforated cable tray shown as an isolated concept study",
+      "status": "review",
+      "body": "Directional Metal 06 on the tray. Model the silhouette openings that are visible from below and simplify the small perforations where appropriate. Use the 400 cm module connection pitch. Start around 15–25 cm wide. Preserve the join tab, shallow U-section, rolled edge and existing tray/pipe offsets in the block. [Native MI 33](media/unreal-2026-11-17/material-033.webp) · [Native MI 39](media/unreal-2026-11-17/material-039.webp) · [Source scene](media/building-stage6/basement-counter-concept-v2.png)."
+    },
+    {
+      "id": "inspection-hatch",
+      "title": "Wall inspection hatch",
+      "image": "media/basement-stage7/inspection-hatch.png",
+      "alt": "Wall inspection hatch shown as an isolated concept study",
+      "status": "review",
+      "body": "Green-gray enamel over Metal Classic 01 or Directional Metal 06. Use a shared paint mask finish and dark metal for the exposed hardware. First pass about 40 × 40 cm with a shallow return lip, four fasteners and a centered wall-face pivot. Fit the centered hatch to the existing pier and corridor panel. [Native MI 39](media/unreal-2026-11-17/material-039.webp) · [Native MI 33](media/unreal-2026-11-17/material-033.webp) · [Source scene](media/building-stage6/basement-counter-concept-v2.png)."
+    },
+    {
+      "id": "return-grille",
+      "title": "Flush ceiling return grille",
+      "image": "media/basement-stage7/return-grille.png",
+      "alt": "Flush ceiling return grille shown as an isolated concept study",
+      "status": "review",
+      "body": "Directional Metal 06 on frame and louvers. Darken the cavity through depth and a subdued unpainted finish. First pass about 45 × 25 cm, shallow faceplate against the existing roof slab. Keep the dark recess compact and separate from the fluorescent and pipe mounts. [Native MI 33](media/unreal-2026-11-17/material-033.webp) · [Native MI 39](media/unreal-2026-11-17/material-039.webp) · [Native MI 70](media/unreal-2026-11-17/material-070.webp) · [Source scene](media/building-stage6/basement-corridor-concept-v2.png)."
+    },
+    {
+      "id": "wall-bumper",
+      "title": "Wall impact rail",
+      "image": "media/basement-stage7/wall-bumper.png",
+      "alt": "Wall impact rail shown as an isolated concept study",
+      "status": "review",
+      "body": "Directional Metal 06 for the bolted rail. Reuse Trimsheet Wall 02 on the separate existing base-trim parts and preserve the authored UVs there. 400 cm straight with a 385 cm corner-compatible span. Start with a face height around 8 cm and minimal projection. Put the join and end pivot on the wall bay seam and develop an inside return. [Native MI 33](media/unreal-2026-11-17/material-033.webp) · [Native MI 39](media/unreal-2026-11-17/material-039.webp) · [Native MI 78](media/unreal-2026-11-17/material-078.webp) · [Source scene](media/building-stage6/basement-corridor-concept-v2.png)."
+    },
+    {
+      "id": "counter-facing",
+      "title": "Counter jamb and lintel facings",
+      "image": "media/basement-stage7/counter-facing.png",
+      "alt": "Counter jamb and lintel facings shown as an isolated concept study",
+      "status": "review",
+      "body": "Shared green-gray enamel with exposed steel at the edges. Keep Metal Blinds 01 on the existing corrugated apron. Left and right sleeves plus a horizontal cap. Measure the actual shop opening and place returns against the existing steel edge. Keep gate profile and unobstructed aperture and counter height. [Native MI 39](media/unreal-2026-11-17/material-039.webp) · [Native MI 33](media/unreal-2026-11-17/material-033.webp) · [Native MI 38](media/unreal-2026-11-17/material-038.webp) · [Source scene](media/building-stage6/basement-counter-concept-v2.png)."
+    },
+    {
+      "id": "light-guard",
+      "title": "Fluorescent light guard",
+      "image": "media/basement-stage7/light-guard.png",
+      "alt": "Fluorescent light guard shown as an isolated concept study",
+      "status": "review",
+      "body": "Use dark galvanized or directional metal for the wire frame. Preserve the existing fluorescent's lens, emissive slot and Blueprint light settings. Size to Fluorescent_Light_Basement_01 and its current mounting. Match cross-section and end tabs to the fixture envelope and leave the light unobscured from the floor view. [Native MI 39](media/unreal-2026-11-17/material-039.webp) · [Native MI 33](media/unreal-2026-11-17/material-033.webp) · [Native MI 70](media/unreal-2026-11-17/material-070.webp) · [Source scene](media/building-stage6/basement-counter-concept-v2.png)."
+    },
+    {
+      "id": "cement-repair",
+      "title": "Flush cement floor repair",
+      "image": "media/basement-stage7/cement-repair.png",
+      "alt": "Flush cement floor repair shown as an isolated concept study",
+      "status": "review",
+      "body": "Use Concrete 01/02 as the base and as the first comparison for a slightly lighter, drier cement fill. Add a narrow edge and variation mask. Start with approximately 120 × 75 cm and a smaller sibling footprint. Keep the existing slab collision and UVs. Evaluate projected DBuffer or a floor material layer under grazing light. [Native MI 04](media/unreal-2026-11-17/material-004.webp) · [Native MI 05](media/unreal-2026-11-17/material-005.webp) · [Native MI 01](media/unreal-2026-11-17/material-001.webp) · [Source scene](media/building-stage6/basement-corridor-concept-v2.png)."
+    },
+    {
+      "id": "painted-concrete",
+      "title": "Painted concrete wall band",
+      "image": "media/basement-stage7/painted-concrete.png",
+      "alt": "Painted concrete wall band shown as an isolated concept study",
+      "status": "review",
+      "body": "Keep the existing concrete, overlay a muted dielectric paint layer and use paint loss to reveal the same concrete. Leave the current structural trim maps assigned. Start with a low band around 75–95 cm tall, aligned to the impact rail. Carry the height around corners with a shared mask. Confirm the existing vertex channels before adding a painted override. [Native MI 01](media/unreal-2026-11-17/material-001.webp) · [Native MI 04](media/unreal-2026-11-17/material-004.webp) · [Native MI 78](media/unreal-2026-11-17/material-078.webp) · [Source scene](media/building-stage6/basement-corridor-concept-v2.png)."
+    },
+    {
+      "id": "clean-start-print",
+      "title": "A Clean Start wall print",
+      "image": "media/signage-stage5-svg/clean-start-poster.png",
+      "alt": "A Clean Start wall print shown as an isolated concept study",
+      "status": "done",
+      "body": "Use the exact editable approved SVG as the production art source and the Signage Atlas paper instance as the surface. Start at 45 × 67.5 cm on the solid wall above the gate. Use a thin card with a back-face mount pivot and no added collision. In these concepts the generated sign demonstrates placement. [Approved SVG](sources/signage-stage5-svg/clean-start-poster.svg) · [Source scene](media/building-stage6/basement-counter-concept-v2.png)."
+    },
+    {
+      "id": "signage-atlas",
+      "title": "Signage Atlas / Twelve approved graphics",
+      "image": "media/basement-stage7/signage-atlas-designer.webp",
+      "alt": "Twelve approved graphics in the delivered 2048-pixel Substance Designer atlas",
+      "body": "The independent Substance Designer package links 2048-square Base Color and Coverage pages. Both outputs rendered from the delivered file with an exact pixel match. [Designer package and Unreal checks](SIGNAGE_ATLAS_STAGE7.md) · [Pixel coordinates and UV layout](sources/basement-stage7-atlas-layout.json)."
+    },
+    {
+      "id": "signage-pilot",
+      "title": "Signage Atlas / Two-sign raster proof",
+      "image": "media/basement-stage7/signage-pilot-proof.webp",
+      "alt": "A Clean Start and Low Clearance from the approved SVGs with enlarged samples at mips 3, 4 and 5",
+      "status": "review",
+      "body": "A Clean Start and Low Clearance use their proposed rectangles and padded edges. The color and coverage passed the offline mip 0–5 padding test. The small copy degrades around mip 4. [Raster proof and native checks](SIGNAGE_ATLAS_STAGE7.md#two-sign-raster-proof) · [Base Color PNG](sources/basement-stage7-signage-pilot/signage-pilot-basecolor.png) · [Linear Coverage PNG](sources/basement-stage7-signage-pilot/signage-pilot-coverage.png)."
+    },
+    {
+      "id": "legacy-atlas",
+      "title": "Legacy Text_Atlas / Blender consumer audit",
+      "image": "media/basement-stage7/legacy-atlas-audit.webp",
+      "alt": "Native legacy atlas output alongside the summed Blender UV coverage in green",
+      "body": "Ten saved Props consumers cover about 93% of the legacy sheet. The Stage 7 signage proposal uses an independent page. [Legacy audit and proposed layout](SIGNAGE_ATLAS_STAGE7.md)."
+    }
+  ]
+}

@@ -2,30 +2,52 @@
   "format": "mrmak-card",
   "version": 1,
   "template": "gallery",
-  "title": "Characters / available Unreal coverage",
-  "summary": "The project currently contains Manny and Quinn as engine template placeholders. The owner character sources have no verified corresponding Unreal assets. This category makes that missing coverage explicit.",
+  "title": "Characters / Fantasy NPC references",
+  "summary": "The company’s coworkers and future enemies are represented here by provisional Doom-style 2D sprites. Use them as species references for art direction and pictograms. The current Unreal assets are under `/Game/Programming/Enemies/FlipBooks`. The editable owner sources are under `D:/GameJam/Total (in)Sanitation/Characters`. [NPC source and package index](NPC_REFERENCE.md).",
   "items": [
     {
-      "id": "asset-097",
-      "title": "Characters / engine placeholders / SKM_Manny_Simple",
-      "image": "media/unreal-2026-11-17/asset-097.webp",
-      "alt": "Native Unreal preview of SKM_Manny_Simple",
-      "body": "**Unreal asset:** `/Game/Characters/Mannequins/Meshes/SKM_Manny_Simple`\n\n**Family:** Characters / engine placeholders. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** Skeletal asset; preview in its current native pose.\n\n**Source relationship:** Unreal template asset; no owner Blender source assigned.. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Proportion and animation placeholder only. This is not one of the owner-authored fantasy characters.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
-      "status": "review"
+      "id": "npc-elves",
+      "title": "Elves",
+      "image": "media/npc-flipbooks/elves.webp",
+      "alt": "Two native front-walk sprite frames labeled Elf and ElfM",
+      "status": "review",
+      "body": "Current Unreal folders are `Elf` and `ElfM`. The art sources are `Characters/Elf/Female` and `Characters/Elf/Male`. The paired native frame previews show current species cues."
     },
     {
-      "id": "asset-098",
-      "title": "Characters / engine placeholders / SKM_Quinn_Simple",
-      "image": "media/unreal-2026-11-17/asset-098.webp",
-      "alt": "Native Unreal preview of SKM_Quinn_Simple",
-      "body": "**Unreal asset:** `/Game/Characters/Mannequins/Meshes/SKM_Quinn_Simple`\n\n**Family:** Characters / engine placeholders. **Capture:** 2026-11-17 · native Unreal asset preview, 256 × 256 px.\n\n**Dimensions:** Skeletal asset; preview in its current native pose.\n\n**Source relationship:** Unreal template asset; no owner Blender source assigned.. Current matching export: No unique current FBX was established; consult File rules before reimport.\n\n**Intended use:** Proportion and animation placeholder only. This is not one of the owner-authored fantasy characters.\n\n**Review:** Current native preview, available for owner review. Animation, collision and runtime behavior were not accepted by this still-image review.",
-      "status": "review"
+      "id": "npc-fairy",
+      "title": "Fairy",
+      "image": "media/npc-flipbooks/fairy.webp",
+      "alt": "Native Fairy front-walk frame on the Unreal texture checkerboard",
+      "status": "review",
+      "body": "Current Unreal folder is `Fairy`. The art source is `Characters/Fairy/Female`. The native front-walk frame is an example of the current sprite representation."
+    },
+    {
+      "id": "npc-goblins",
+      "title": "Goblins",
+      "image": "media/npc-flipbooks/goblins.webp",
+      "alt": "Two native front-walk sprite frames labeled Goblin and GoblinF",
+      "status": "review",
+      "body": "Current Unreal folders are `Goblin` and `GoblinF`. The art sources are `Characters/Goblin/Female` and `Characters/Goblin/Male`. The owner’s warning experiment uses a pointed-ear goblin skull as a danger pictogram. The approved Toxic Vapors sign shows how it was carried into the sign family. [Toxic Vapors SVG](sources/signage-stage5-svg/08-toxic-vapors-goblin.svg)."
+    },
+    {
+      "id": "npc-orcs",
+      "title": "Orcs",
+      "image": "media/npc-flipbooks/orcs.webp",
+      "alt": "Three native front-walk sprite frames labeled FemOrc, Orc, and OrcF",
+      "status": "review",
+      "body": "Current Unreal folders are `FemOrc`, `Orc` and `OrcF`. The art sources are `Characters/Orc/Female`, `Characters/Orc/Femboy` and `Characters/Orc/Male`. Source and runtime folder names are kept as filed."
+    },
+    {
+      "id": "npc-demon-source",
+      "title": "Demon / Source reference",
+      "status": "idea",
+      "body": "The owner source includes `Characters/Demon/Female/Blender/Female_Demon.blend` and the corresponding FBX. The current FlipBooks inventory covers four other species. Refer to the source branch for the Demon design."
     },
     {
       "id": "character-coverage-gap",
-      "title": "Owner character species / Unreal coverage missing",
-      "status": "idea",
-      "body": "**Coverage gap, not a new production request.** The stage-2 catalog contains nine saved character blends under `Characters/<species>/<variant>/Blender/`. The current project registry has no matching imported fantasy-character skeletal assets. `/Game/Art/Characters` remains the confirmed future destination and has not been created here.\n\nNo character was invented, generated or imported for this library. Manny and Quinn above are existing engine placeholders. Chicken and Tongue Mop remain cleaning-tool references in Assets. See [File rules](FILE_PLACEMENT.md) for the existing source/export audit. Review date: 2026-11-17."
+      "title": "Engine template references",
+      "status": "review",
+      "body": "Manny and Quinn remain engine proportion and animation templates. The earlier [mesh reference index](REFERENCE_INDEX.json) contains their native preview records. New project character art has a confirmed future destination at `/Game/Art/Characters`."
     }
   ]
 }

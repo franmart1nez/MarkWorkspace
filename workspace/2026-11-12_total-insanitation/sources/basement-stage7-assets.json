@@ -1,0 +1,453 @@
+{
+  "title": "Selected Basement corridor and counter / Stage 7 asset concepts",
+  "status": "Concept and material approval pending",
+  "generation": "ChatGPT built-in image generation. Model ID and seed unavailable.",
+  "asset_concepts": {
+    "pipe-straight": {
+      "title": "Straight service pipe",
+      "type": "New modular mesh",
+      "image": "media/basement-stage7/pipe-straight.png",
+      "sha256": "0560deef1708d21e907493028644dc6cd5a7762fa8c4b42ddb9837e78809bf10",
+      "size_px": [
+        1632,
+        964
+      ],
+      "ref_scene": "media/building-stage6/basement-corridor-concept-v2.png",
+      "ref_scene_sha256": "45e28a9782d78d61ccd7368d00a72be2763eb26e1fcce5ac2ee99cf957ba1a82",
+      "editable_artwork": null,
+      "prompt": "Produce ONE isolated landscape game asset concept sheet for the semi-realistic stylized 1970s pharmaceutical-company service basement in Total (in)Sanitation. The attached approved Unreal-based scene is a design, proportion, finish and usage reference only. Extract the one named component, presenting it isolated and unobstructed on a plain pale warm-gray studio surface, with soft even neutral illumination, enough contrast to see the dark metal and joint edges. Show a large 3/4 hero view plus two small coherent orthogonal or connection detail views of that exact same component. Consistent proportions between all views, recognizable period construction, light grounded wear, straight edges, practical shapes for a repeatable modular FPS asset. Full silhouettes and joints inside frame. Clean negative space, no graphical frames, no text, no dimensions, no legend, no backdrop architecture, no floating loose unrelated hardware. Component only, presentation as a Blender modeling reference proposal. One long straight round dull galvanized steel pipe segment, with a uniform cylindrical shell and matched plain circular ends, as used in the left overhead bank. Show at usable viewing size, with one cut-end detail clearly showing the circular lip and a restrained longitudinal or spiral manufactured seam plus faint oxidation. Show just one straight pipe, no flanges, couplings, clamps or bends; the same end profile will support more than one diameter.",
+      "building_source": "Assets/Building/Interior_Building.blend",
+      "collection": "Modular_Blocks/Roof_Decorations",
+      "proposed_fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Pipe_Straight.fbx",
+      "proposed_unreal_package": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Straight",
+      "fit": "400 cm grid run. Start with 20/16 cm and 7.5/5 cm diameter families. End-center pivot, axial UV0 and matching bore and lip across every fitting. Confirm ceiling clearance on the assembled run.",
+      "finish": "Metal Classic 01 on the shell. Compare Directional Metal 06 on smaller dark runs under the existing fluorescents.",
+      "existing_mis": [
+        {
+          "station": 39,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01",
+          "image": "media/unreal-2026-11-17/material-039.webp"
+        },
+        {
+          "station": 33,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+          "image": "media/unreal-2026-11-17/material-033.webp"
+        }
+      ]
+    },
+    "pipe-elbow": {
+      "title": "90° service-pipe elbow",
+      "type": "New modular mesh",
+      "image": "media/basement-stage7/pipe-elbow.png",
+      "sha256": "fcd4436d5a7230ae969cc3777c5913500b0b7b8243f6809f77bb92caa4724887",
+      "size_px": [
+        1536,
+        1024
+      ],
+      "ref_scene": "media/building-stage6/basement-counter-concept-v2.png",
+      "ref_scene_sha256": "d0b44811e037e8d9933b8e6287e13afedb215d122af9b18d8d42a5a92659ac84",
+      "editable_artwork": null,
+      "prompt": "Produce ONE isolated landscape game asset concept sheet for the semi-realistic stylized 1970s pharmaceutical-company service basement in Total (in)Sanitation. The attached approved Unreal-based scene is a design, proportion, finish and usage reference only. Extract the one named component, presenting it isolated and unobstructed on a plain pale warm-gray studio surface, with soft even neutral illumination, enough contrast to see the dark metal and joint edges. Show a large 3/4 hero view plus two small coherent orthogonal or connection detail views of that exact same component. Consistent proportions between all views, recognizable period construction, light grounded wear, straight edges, practical shapes for a repeatable modular FPS asset. Full silhouettes and joints inside frame. Clean negative space, no graphical frames, no text, no dimensions, no legend, no backdrop architecture, no floating loose unrelated hardware. Component only, presentation as a Blender modeling reference proposal. One short-radius 90-degree galvanized service-pipe elbow copied from the bend above the counter, with tangent circular inlet and outlet and a tidy circumferential seam. Show end alignment and cross section in the detail views. Compact pipe bend, two straight tangents at a true right angle, subtly used galvanized steel with dark seam; no additional attachment.",
+      "building_source": "Assets/Building/Interior_Building.blend",
+      "collection": "Modular_Blocks/Roof_Decorations",
+      "proposed_fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Pipe_Elbow.fbx",
+      "proposed_unreal_package": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Elbow",
+      "fit": "Match the end diameter, lip, centerline and connection orientation. Try a centerline radius of 1–1.5 pipe diameters before checking it at the counter. Keep straights tangent to the bend.",
+      "finish": "Match the pipe shell. Align the metal grain to the bend and preserve the run's texel density.",
+      "existing_mis": [
+        {
+          "station": 39,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01",
+          "image": "media/unreal-2026-11-17/material-039.webp"
+        },
+        {
+          "station": 33,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+          "image": "media/unreal-2026-11-17/material-033.webp"
+        }
+      ]
+    },
+    "pipe-coupling": {
+      "title": "Sleeve coupling",
+      "type": "New modular mesh",
+      "image": "media/basement-stage7/pipe-coupling.png",
+      "sha256": "92fd02667508b09d7a58deca99e52584586a250189c4f2e91bc24a5ebdd7be94",
+      "size_px": [
+        1536,
+        1024
+      ],
+      "ref_scene": "media/building-stage6/basement-corridor-concept-v2.png",
+      "ref_scene_sha256": "45e28a9782d78d61ccd7368d00a72be2763eb26e1fcce5ac2ee99cf957ba1a82",
+      "editable_artwork": null,
+      "prompt": "Produce ONE isolated landscape game asset concept sheet for the semi-realistic stylized 1970s pharmaceutical-company service basement in Total (in)Sanitation. The attached approved Unreal-based scene is a design, proportion, finish and usage reference only. Extract the one named component, presenting it isolated and unobstructed on a plain pale warm-gray studio surface, with soft even neutral illumination, enough contrast to see the dark metal and joint edges. Show a large 3/4 hero view plus two small coherent orthogonal or connection detail views of that exact same component. Consistent proportions between all views, recognizable period construction, light grounded wear, straight edges, practical shapes for a repeatable modular FPS asset. Full silhouettes and joints inside frame. Clean negative space, no graphical frames, no text, no dimensions, no legend, no backdrop architecture, no floating loose unrelated hardware. Component only, presentation as a Blender modeling reference proposal. One reusable galvanized steel sleeve coupling between two straight round pipe ends, weathered narrow ring body around the pipe with two low raised seams, a split clamp join and two modest bolt features. Show only the coupling as its own annular object, with the complete circular bore, outside circumference and closure seam clear. Ring physically fits around an existing straight pipe and repeats. No attached pipe segments.",
+      "building_source": "Assets/Building/Interior_Building.blend",
+      "collection": "Modular_Blocks/Roof_Decorations",
+      "proposed_fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Pipe_Coupling.fbx",
+      "proposed_unreal_package": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Coupling",
+      "fit": "Shared size variants follow the selected diameters, with a short overlap at joints. Place the pivot on the midpoint of the ring axis for reuse.",
+      "finish": "Use the selected pipe finish on the ring and dark Directional Metal 06 on the closure hardware. Simple Metallic 01 can cover small bolts.",
+      "existing_mis": [
+        {
+          "station": 39,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01",
+          "image": "media/unreal-2026-11-17/material-039.webp"
+        },
+        {
+          "station": 33,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+          "image": "media/unreal-2026-11-17/material-033.webp"
+        },
+        {
+          "station": 70,
+          "path": "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_01",
+          "image": "media/unreal-2026-11-17/material-070.webp"
+        }
+      ]
+    },
+    "pipe-hanger": {
+      "title": "Overhead pipe hanger",
+      "type": "New modular mesh",
+      "image": "media/basement-stage7/pipe-hanger.png",
+      "sha256": "80d4e77fcd9e8f1000191b2e5886744b15144fee90ab2b3202e86f5ae251ffe0",
+      "size_px": [
+        1632,
+        964
+      ],
+      "ref_scene": "media/building-stage6/basement-corridor-concept-v2.png",
+      "ref_scene_sha256": "45e28a9782d78d61ccd7368d00a72be2763eb26e1fcce5ac2ee99cf957ba1a82",
+      "editable_artwork": null,
+      "prompt": "Produce ONE isolated landscape game asset concept sheet for the semi-realistic stylized 1970s pharmaceutical-company service basement in Total (in)Sanitation. The attached approved Unreal-based scene is a design, proportion, finish and usage reference only. Extract the one named component, presenting it isolated and unobstructed on a plain pale warm-gray studio surface, with soft even neutral illumination, enough contrast to see the dark metal and joint edges. Show a large 3/4 hero view plus two small coherent orthogonal or connection detail views of that exact same component. Consistent proportions between all views, recognizable period construction, light grounded wear, straight edges, practical shapes for a repeatable modular FPS asset. Full silhouettes and joints inside frame. Clean negative space, no graphical frames, no text, no dimensions, no legend, no backdrop architecture, no floating loose unrelated hardware. Component only, presentation as a Blender modeling reference proposal. One rigid dark steel overhead pipe support bracket from the left group: simple shallow galvanized trapeze support with a horizontal slotted Unistrut crossbar, two short vertical drop rods, simple ceiling anchor plates and four removable curved pipe strap positions matching two large and two smaller diameters. Orient the empty mount normally with supports above crossbar. Show only the one empty hanger assembly, no actual long pipes, so the mounting and clearance are visible.",
+      "building_source": "Assets/Building/Interior_Building.blend",
+      "collection": "Modular_Blocks/Roof_Decorations",
+      "proposed_fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Pipe_Hanger.fbx",
+      "proposed_unreal_package": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Hanger",
+      "fit": "Shared crossbar and ceiling anchor. Build the four-run and two-run variants from common parts. Shorten the illustrative drop rods to fit the native ceiling and stay clear of the fluorescents.",
+      "finish": "Directional Metal 06 for the dark support. Metal Classic 01 or Simple Metallic 01 for used steel straps and fasteners.",
+      "existing_mis": [
+        {
+          "station": 33,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+          "image": "media/unreal-2026-11-17/material-033.webp"
+        },
+        {
+          "station": 39,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01",
+          "image": "media/unreal-2026-11-17/material-039.webp"
+        },
+        {
+          "station": 70,
+          "path": "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_01",
+          "image": "media/unreal-2026-11-17/material-070.webp"
+        }
+      ]
+    },
+    "cable-tray": {
+      "title": "Perforated cable tray",
+      "type": "New modular mesh",
+      "image": "media/basement-stage7/cable-tray.png",
+      "sha256": "da2297029fc683a59470d1c2a98c68103461a3bca950dded37a401be4af41f6a",
+      "size_px": [
+        1774,
+        887
+      ],
+      "ref_scene": "media/building-stage6/basement-counter-concept-v2.png",
+      "ref_scene_sha256": "d0b44811e037e8d9933b8e6287e13afedb215d122af9b18d8d42a5a92659ac84",
+      "editable_artwork": null,
+      "prompt": "Produce ONE isolated landscape game asset concept sheet for the semi-realistic stylized 1970s pharmaceutical-company service basement in Total (in)Sanitation. The attached approved Unreal-based scene is a design, proportion, finish and usage reference only. Extract the one named component, presenting it isolated and unobstructed on a plain pale warm-gray studio surface, with soft even neutral illumination, enough contrast to see the dark metal and joint edges. Show a large 3/4 hero view plus two small coherent orthogonal or connection detail views of that exact same component. Consistent proportions between all views, recognizable period construction, light grounded wear, straight edges, practical shapes for a repeatable modular FPS asset. Full silhouettes and joints inside frame. Clean negative space, no graphical frames, no text, no dimensions, no legend, no backdrop architecture, no floating loose unrelated hardware. Component only, presentation as a Blender modeling reference proposal. One open narrow perforated galvanized U-channel cable tray segment like the tray just above the counter, shallow rectangle with a rolled edge, repeated elongated side slots, perforated bottom, minimally turned end flange and clean join tab. Dark directional metal, mild worn edges. Show the open end, underside slot detail and complete length. No cables, lamps, ceiling panels or pipes.",
+      "building_source": "Assets/Building/Interior_Building.blend",
+      "collection": "Modular_Blocks/Roof_Decorations",
+      "proposed_fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Cable_Tray.fbx",
+      "proposed_unreal_package": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Cable_Tray",
+      "fit": "Use the 400 cm module connection pitch. Start around 15–25 cm wide. Preserve the join tab, shallow U-section, rolled edge and existing tray/pipe offsets in the block.",
+      "finish": "Directional Metal 06 on the tray. Model the silhouette openings that are visible from below and simplify the small perforations where appropriate.",
+      "existing_mis": [
+        {
+          "station": 33,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+          "image": "media/unreal-2026-11-17/material-033.webp"
+        },
+        {
+          "station": 39,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01",
+          "image": "media/unreal-2026-11-17/material-039.webp"
+        }
+      ]
+    },
+    "inspection-hatch": {
+      "title": "Wall inspection hatch",
+      "type": "New modular mesh",
+      "image": "media/basement-stage7/inspection-hatch.png",
+      "sha256": "ce341cc101478668e1af80b0006cbc270377b887cb582d62e29a388c89670993",
+      "size_px": [
+        1536,
+        1024
+      ],
+      "ref_scene": "media/building-stage6/basement-counter-concept-v2.png",
+      "ref_scene_sha256": "d0b44811e037e8d9933b8e6287e13afedb215d122af9b18d8d42a5a92659ac84",
+      "editable_artwork": null,
+      "prompt": "Produce ONE isolated landscape game asset concept sheet for the semi-realistic stylized 1970s pharmaceutical-company service basement in Total (in)Sanitation. The attached approved Unreal-based scene is a design, proportion, finish and usage reference only. Extract the one named component, presenting it isolated and unobstructed on a plain pale warm-gray studio surface, with soft even neutral illumination, enough contrast to see the dark metal and joint edges. Show a large 3/4 hero view plus two small coherent orthogonal or connection detail views of that exact same component. Consistent proportions between all views, recognizable period construction, light grounded wear, straight edges, practical shapes for a repeatable modular FPS asset. Full silhouettes and joints inside frame. Clean negative space, no graphical frames, no text, no dimensions, no legend, no backdrop architecture, no floating loose unrelated hardware. Component only, presentation as a Blender modeling reference proposal. One flat worn gray-green painted steel access hatch, matching the approved wall plate on the central pier. Simple square inner metal door, thin recessed backing lip and perimeter frame, four shallow visible fasteners. Face plan and side profile show shallow projection against the wall, narrow shadow line, slightly rubbed gray-green enamel. One closed hatch only, no handles or logo, no wall section.",
+      "building_source": "Assets/Building/Interior_Building.blend",
+      "collection": "Modular_Blocks/Wall_Decorations",
+      "proposed_fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Inspection_Hatch.fbx",
+      "proposed_unreal_package": "/Game/Art/Assets/Building/Modular_Blocks/Wall_Decorations/SM_Basement_Inspection_Hatch",
+      "fit": "First pass about 40 × 40 cm with a shallow return lip, four fasteners and a centered wall-face pivot. Fit the centered hatch to the existing pier and corridor panel.",
+      "finish": "Green-gray enamel over Metal Classic 01 or Directional Metal 06. Use a shared paint mask finish and dark metal for the exposed hardware.",
+      "existing_mis": [
+        {
+          "station": 39,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01",
+          "image": "media/unreal-2026-11-17/material-039.webp"
+        },
+        {
+          "station": 33,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+          "image": "media/unreal-2026-11-17/material-033.webp"
+        }
+      ]
+    },
+    "return-grille": {
+      "title": "Flush ceiling return grille",
+      "type": "New modular mesh",
+      "image": "media/basement-stage7/return-grille.png",
+      "sha256": "cca79252f0789bb9683866f9fe3b608b1e65ee22aec006c8641056a59ec0e91d",
+      "size_px": [
+        1632,
+        964
+      ],
+      "ref_scene": "media/building-stage6/basement-corridor-concept-v2.png",
+      "ref_scene_sha256": "45e28a9782d78d61ccd7368d00a72be2763eb26e1fcce5ac2ee99cf957ba1a82",
+      "editable_artwork": null,
+      "prompt": "Produce ONE isolated landscape game asset concept sheet for the semi-realistic stylized 1970s pharmaceutical-company service basement in Total (in)Sanitation. The attached approved Unreal-based scene is a design, proportion, finish and usage reference only. Extract the one named component, presenting it isolated and unobstructed on a plain pale warm-gray studio surface, with soft even neutral illumination, enough contrast to see the dark metal and joint edges. Show a large 3/4 hero view plus two small coherent orthogonal or connection detail views of that exact same component. Consistent proportions between all views, recognizable period construction, light grounded wear, straight edges, practical shapes for a repeatable modular FPS asset. Full silhouettes and joints inside frame. Clean negative space, no graphical frames, no text, no dimensions, no legend, no backdrop architecture, no floating loose unrelated hardware. Component only, presentation as a Blender modeling reference proposal. One small recessed rectangular ceiling return grille from the approved corridor: slightly inset straight directional louvers in a shallow flush rectangular dark gray galvanized faceplate with four quiet fasteners. Show front and slim side depth plus an oblique main view. One rectangle, plain without markings or larger HVAC unit.",
+      "building_source": "Assets/Building/Interior_Building.blend",
+      "collection": "Modular_Blocks/Roof_Decorations",
+      "proposed_fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Return_Grille.fbx",
+      "proposed_unreal_package": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Return_Grille",
+      "fit": "First pass about 45 × 25 cm, shallow faceplate against the existing roof slab. Keep the dark recess compact and separate from the fluorescent and pipe mounts.",
+      "finish": "Directional Metal 06 on frame and louvers. Darken the cavity through depth and a subdued unpainted finish.",
+      "existing_mis": [
+        {
+          "station": 33,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+          "image": "media/unreal-2026-11-17/material-033.webp"
+        },
+        {
+          "station": 39,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01",
+          "image": "media/unreal-2026-11-17/material-039.webp"
+        },
+        {
+          "station": 70,
+          "path": "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_01",
+          "image": "media/unreal-2026-11-17/material-070.webp"
+        }
+      ]
+    },
+    "wall-bumper": {
+      "title": "Wall impact rail",
+      "type": "New modular mesh",
+      "image": "media/basement-stage7/wall-bumper.png",
+      "sha256": "219c54bc9bb108ebfbbf55bb7946156a74bf44838c3f020a4a3b0fb3927a44ec",
+      "size_px": [
+        1632,
+        964
+      ],
+      "ref_scene": "media/building-stage6/basement-corridor-concept-v2.png",
+      "ref_scene_sha256": "45e28a9782d78d61ccd7368d00a72be2763eb26e1fcce5ac2ee99cf957ba1a82",
+      "editable_artwork": null,
+      "prompt": "Produce ONE isolated landscape game asset concept sheet for the semi-realistic stylized 1970s pharmaceutical-company service basement in Total (in)Sanitation. The attached approved Unreal-based scene is a design, proportion, finish and usage reference only. Extract the one named component, presenting it isolated and unobstructed on a plain pale warm-gray studio surface, with soft even neutral illumination, enough contrast to see the dark metal and joint edges. Show a large 3/4 hero view plus two small coherent orthogonal or connection detail views of that exact same component. Consistent proportions between all views, recognizable period construction, light grounded wear, straight edges, practical shapes for a repeatable modular FPS asset. Full silhouettes and joints inside frame. Clean negative space, no graphical frames, no text, no dimensions, no legend, no backdrop architecture, no floating loose unrelated hardware. Component only, presentation as a Blender modeling reference proposal. One continuous shallow horizontal bolted impact-rail segment from the service corridor. Long straight low-sheen dark gray folded-steel strip with rolled or chamfered safe edges, small flush fasteners and a very shallow return at the ends. Show front and clear simple profile. A small separate perspective detail can show the same profile turning an inside corner. Use the solid bolted rail from the reference, no wall panel, paint band, pipes or architecture.",
+      "building_source": "Assets/Building/Interior_Building.blend",
+      "collection": "Modular_Blocks/Wall_Decorations",
+      "proposed_fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Wall_Bumper.fbx",
+      "proposed_unreal_package": "/Game/Art/Assets/Building/Modular_Blocks/Wall_Decorations/SM_Basement_Wall_Bumper",
+      "fit": "400 cm straight with a 385 cm corner-compatible span. Start with a face height around 8 cm and minimal projection. Put the join and end pivot on the wall bay seam and develop an inside return.",
+      "finish": "Directional Metal 06 for the bolted rail. Reuse Trimsheet Wall 02 on the separate existing base-trim parts and preserve the authored UVs there.",
+      "existing_mis": [
+        {
+          "station": 33,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+          "image": "media/unreal-2026-11-17/material-033.webp"
+        },
+        {
+          "station": 39,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01",
+          "image": "media/unreal-2026-11-17/material-039.webp"
+        },
+        {
+          "station": 78,
+          "path": "/Game/Art/MI/Utility_Materials/TrimSheet/Trimsheet_Wall_01/Trimsheet_Wall_02",
+          "image": "media/unreal-2026-11-17/material-078.webp"
+        }
+      ]
+    },
+    "counter-facing": {
+      "title": "Counter jamb and lintel facings",
+      "type": "Custom shop assembly",
+      "image": "media/basement-stage7/counter-facing.png",
+      "sha256": "ea4eef7eda43cf80fb7fd25be4ff0527c947699bdaad0805f5cde7f7e49bc980",
+      "size_px": [
+        1632,
+        964
+      ],
+      "ref_scene": "media/building-stage6/basement-counter-concept-v2.png",
+      "ref_scene_sha256": "d0b44811e037e8d9933b8e6287e13afedb215d122af9b18d8d42a5a92659ac84",
+      "editable_artwork": null,
+      "prompt": "Produce ONE isolated landscape game asset concept sheet for the semi-realistic stylized 1970s pharmaceutical-company service basement in Total (in)Sanitation. The attached approved Unreal-based scene is a design, proportion, finish and usage reference only. Extract the one named component, presenting it isolated and unobstructed on a plain pale warm-gray studio surface, with soft even neutral illumination, enough contrast to see the dark metal and joint edges. Show a large 3/4 hero view plus two small coherent orthogonal or connection detail views of that exact same component. Consistent proportions between all views, recognizable period construction, light grounded wear, straight edges, practical shapes for a repeatable modular FPS asset. Full silhouettes and joints inside frame. Clean negative space, no graphical frames, no text, no dimensions, no legend, no backdrop architecture, no floating loose unrelated hardware. Component only, presentation as a Blender modeling reference proposal. One three-piece bolt-on protective frame assembly isolated from the approved service counter: two thin upright painted steel jamb sleeves plus the single horizontal lintel facing meeting them at simple square joints, with modest exposed fasteners. Show the shallow wrap profile and rear mounting tabs so it can fit the unchanged shop aperture. The uprights match each other; green-gray paint with worn edge metal. Present the trim as an open three-sided framing profile, without a door, counter, bars, gate or masonry.",
+      "building_source": "Assets/Building/Interior_Building.blend",
+      "collection": "Floors/Basement/Shop",
+      "proposed_fbx": "Assets/Building/Delivery/Basement/Shop/SM_Basement_Counter_Facing.fbx",
+      "proposed_unreal_package": "/Game/Art/Assets/Building/Floors/Basement/Shop/SM_Basement_Counter_Facing",
+      "fit": "Left and right sleeves plus a horizontal cap. Measure the actual shop opening and place returns against the existing steel edge. Keep gate profile and unobstructed aperture and counter height.",
+      "finish": "Shared green-gray enamel with exposed steel at the edges. Keep Metal Blinds 01 on the existing corrugated apron.",
+      "existing_mis": [
+        {
+          "station": 39,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01",
+          "image": "media/unreal-2026-11-17/material-039.webp"
+        },
+        {
+          "station": 33,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+          "image": "media/unreal-2026-11-17/material-033.webp"
+        },
+        {
+          "station": 38,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Blinds_01/Metal_Blinds_01",
+          "image": "media/unreal-2026-11-17/material-038.webp"
+        }
+      ]
+    },
+    "light-guard": {
+      "title": "Fluorescent light guard",
+      "type": "New accessory for existing light",
+      "image": "media/basement-stage7/light-guard.png",
+      "sha256": "0b178c552d6260192c0671cf4c9f724977d8a2e65ddbc5101426b763662ef59b",
+      "size_px": [
+        1632,
+        964
+      ],
+      "ref_scene": "media/building-stage6/basement-counter-concept-v2.png",
+      "ref_scene_sha256": "d0b44811e037e8d9933b8e6287e13afedb215d122af9b18d8d42a5a92659ac84",
+      "editable_artwork": null,
+      "prompt": "Produce ONE isolated landscape game asset concept sheet for the semi-realistic stylized 1970s pharmaceutical-company service basement in Total (in)Sanitation. The attached approved Unreal-based scene is a design, proportion, finish and usage reference only. Extract the one named component, presenting it isolated and unobstructed on a plain pale warm-gray studio surface, with soft even neutral illumination, enough contrast to see the dark metal and joint edges. Show a large 3/4 hero view plus two small coherent orthogonal or connection detail views of that exact same component. Consistent proportions between all views, recognizable period construction, light grounded wear, straight edges, practical shapes for a repeatable modular FPS asset. Full silhouettes and joints inside frame. Clean negative space, no graphical frames, no text, no dimensions, no legend, no backdrop architecture, no floating loose unrelated hardware. Component only, presentation as a Blender modeling reference proposal. One narrow 1970s fluorescent light guard fitted over the existing long service counter light: a simple shallow wire cage with evenly spaced curved cross wires, longitudinal rails and two compact steel mount tabs. Show wire spacing, a clear cross section and its tabs from the side. Restrained dull galvanized or dark-steel finish, clear open cage. Present only the empty protective wire guard. No lamp tubes, shade, electric hardware or tray.",
+      "building_source": "Assets/Building/Interior_Building.blend",
+      "collection": "Modular_Blocks/Lights",
+      "proposed_fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Fluorescent_Guard.fbx",
+      "proposed_unreal_package": "/Game/Art/Assets/Building/Modular_Blocks/Lights/SM_Basement_Fluorescent_Guard",
+      "fit": "Size to Fluorescent_Light_Basement_01 and its current mounting. Match cross-section and end tabs to the fixture envelope and leave the light unobscured from the floor view.",
+      "finish": "Use dark galvanized or directional metal for the wire frame. Preserve the existing fluorescent's lens, emissive slot and Blueprint light settings.",
+      "existing_mis": [
+        {
+          "station": 39,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01",
+          "image": "media/unreal-2026-11-17/material-039.webp"
+        },
+        {
+          "station": 33,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+          "image": "media/unreal-2026-11-17/material-033.webp"
+        },
+        {
+          "station": 70,
+          "path": "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_01",
+          "image": "media/unreal-2026-11-17/material-070.webp"
+        }
+      ]
+    },
+    "cement-repair": {
+      "title": "Flush cement floor repair",
+      "type": "Surface study",
+      "image": "media/basement-stage7/cement-repair.png",
+      "sha256": "339f4be88b89c98457fb77527e0314f935870c51a0f8e809d57ad4d8085e54ea",
+      "size_px": [
+        1536,
+        1024
+      ],
+      "ref_scene": "media/building-stage6/basement-corridor-concept-v2.png",
+      "ref_scene_sha256": "45e28a9782d78d61ccd7368d00a72be2763eb26e1fcce5ac2ee99cf957ba1a82",
+      "editable_artwork": null,
+      "prompt": "Produce ONE isolated landscape game asset concept sheet for the semi-realistic stylized 1970s pharmaceutical-company service basement in Total (in)Sanitation. The attached approved Unreal-based scene is a design, proportion, finish and usage reference only. Extract the one named component, presenting it isolated and unobstructed on a plain pale warm-gray studio surface, with soft even neutral illumination, enough contrast to see the dark metal and joint edges. Show a large 3/4 hero view plus two small coherent orthogonal or connection detail views of that exact same component. Consistent proportions between all views, recognizable period construction, light grounded wear, straight edges, practical shapes for a repeatable modular FPS asset. Full silhouettes and joints inside frame. Clean negative space, no graphical frames, no text, no dimensions, no legend, no backdrop architecture, no floating loose unrelated hardware. Component only, presentation as a Blender modeling reference proposal. An isolated surface treatment material look-development sheet for one flush cement repair in the approved service corridor. Large neutral-lit straight-down square patch of the existing older charcoal-gray roughly troweled concrete with a rectangular repair subtly offset. Repair is dry, slightly lighter warm gray, with fine trowel direction, hairline broken saw-cut edges and tiny edge chipping. Add a smaller inset showing the seam close-up and a grazing-angle inset showing the same flush surface. One cohesive illustrative material study. No raised trim, plate, border, markings, props, big fracture or standing water.",
+      "building_source": "Assets/Building/Interior_Building.blend",
+      "collection": "Modular_Blocks/Floor",
+      "proposed_fbx": null,
+      "proposed_unreal_package": "/Game/Art/MI/Utility_Materials/Concrete/Basement/MI_Basement_Cement_Repair",
+      "fit": "Start with approximately 120 × 75 cm and a smaller sibling footprint. Keep the existing slab collision and UVs. Evaluate projected DBuffer or a floor material layer under grazing light.",
+      "finish": "Use Concrete 01/02 as the base and as the first comparison for a slightly lighter, drier cement fill. Add a narrow edge and variation mask.",
+      "existing_mis": [
+        {
+          "station": 4,
+          "path": "/Game/Art/MI/Utility_Materials/Concrete/Concrete_01/MI_Concrete_01_01",
+          "image": "media/unreal-2026-11-17/material-004.webp"
+        },
+        {
+          "station": 5,
+          "path": "/Game/Art/MI/Utility_Materials/Concrete/Concrete_02/MI_Concrete_02_01",
+          "image": "media/unreal-2026-11-17/material-005.webp"
+        },
+        {
+          "station": 1,
+          "path": "/Game/Art/MI/Utility_Materials/Concrete/Brutalist_Concrete_01/MI_Brutalist_Concrete_01_01",
+          "image": "media/unreal-2026-11-17/material-001.webp"
+        }
+      ]
+    },
+    "painted-concrete": {
+      "title": "Painted concrete wall band",
+      "type": "Surface study",
+      "image": "media/basement-stage7/painted-concrete.png",
+      "sha256": "d34ad955b339078420ff2d774ddb34ec9a7ddb72ad02f9f04833cf112036250d",
+      "size_px": [
+        1536,
+        1024
+      ],
+      "ref_scene": "media/building-stage6/basement-corridor-concept-v2.png",
+      "ref_scene_sha256": "45e28a9782d78d61ccd7368d00a72be2763eb26e1fcce5ac2ee99cf957ba1a82",
+      "editable_artwork": null,
+      "prompt": "One isolated landscape material concept sheet for the wall of the Total (in)Sanitation service corridor. Use the attached approved screenshot to identify the green-gray painted lower wall and the board-formed concrete above it, then isolate their surface treatment as one continuous flat straight-on close-up of a single uninterrupted wall bay. Dry gray mottled cast concrete above, low muted gray-green old matte paint below; natural boundary with slight irregular scuffs and restrained chips exposing matching concrete under the green at the bottom and near the boundary. A secondary same-surface macro inset can show the shallow paint break and subtle roughness. Neutral diffuse studio light, detail at useful size, no steel rail, hatch, skirting, props, floor, words, labels, frames or corridor perspective. Keep this a restrained game-material visual concept for masked paint over the existing vertex-painted concrete. Do not present fake PBR map channels.",
+      "building_source": "Assets/Building/Interior_Building.blend",
+      "collection": "Modular_Blocks/Modular_Walls",
+      "proposed_fbx": null,
+      "proposed_unreal_package": "/Game/Art/MI/Utility_Materials/Concrete/Basement/MI_Basement_Concrete_Dado",
+      "fit": "Start with a low band around 75–95 cm tall, aligned to the impact rail. Carry the height around corners with a shared mask. Confirm the existing vertex channels before adding a painted override.",
+      "finish": "Keep the existing concrete, overlay a muted dielectric paint layer and use paint loss to reveal the same concrete. Leave the current structural trim maps assigned.",
+      "existing_mis": [
+        {
+          "station": 1,
+          "path": "/Game/Art/MI/Utility_Materials/Concrete/Brutalist_Concrete_01/MI_Brutalist_Concrete_01_01",
+          "image": "media/unreal-2026-11-17/material-001.webp"
+        },
+        {
+          "station": 4,
+          "path": "/Game/Art/MI/Utility_Materials/Concrete/Concrete_01/MI_Concrete_01_01",
+          "image": "media/unreal-2026-11-17/material-004.webp"
+        },
+        {
+          "station": 78,
+          "path": "/Game/Art/MI/Utility_Materials/TrimSheet/Trimsheet_Wall_01/Trimsheet_Wall_02",
+          "image": "media/unreal-2026-11-17/material-078.webp"
+        }
+      ]
+    },
+    "clean-start-print": {
+      "title": "A Clean Start wall print",
+      "type": "Approved artwork / placement concept",
+      "image": "media/signage-stage5-svg/clean-start-poster.png",
+      "sha256": "c9b28d3a1eca9fb80e253758d4d6c99940e9fdaba76d6aa9739d707be304ba8a",
+      "size_px": [
+        800,
+        1200
+      ],
+      "ref_scene": "media/building-stage6/basement-counter-concept-v2.png",
+      "ref_scene_sha256": "d0b44811e037e8d9933b8e6287e13afedb215d122af9b18d8d42a5a92659ac84",
+      "editable_artwork": "sources/signage-stage5-svg/clean-start-poster.svg",
+      "prompt": null,
+      "building_source": "Assets/Building/Interior_Building.blend",
+      "collection": "Modular_Blocks/Wall_Decorations",
+      "proposed_fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Poster_Plane.fbx",
+      "proposed_unreal_package": "/Game/Art/Assets/Building/Modular_Blocks/Wall_Decorations/SM_Basement_Poster_Plane",
+      "fit": "Start at 45 × 67.5 cm on the solid wall above the gate. Use a thin card with a back-face mount pivot and no added collision. In these concepts the generated sign demonstrates placement.",
+      "finish": "Use the exact editable approved SVG as the production art source and the Signage Atlas paper instance as the surface.",
+      "existing_mis": []
+    }
+  },
+  "atlas_layout": "sources/basement-stage7-atlas-layout.json"
+}

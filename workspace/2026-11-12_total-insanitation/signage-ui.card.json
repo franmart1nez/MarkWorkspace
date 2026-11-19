@@ -2,96 +2,112 @@
   "format": "mrmak-card",
   "version": 1,
   "template": "gallery",
-  "title": "Signage & UI / Stage 5 graphic review",
-  "summary": "Four sign proposals and a HUD and menu study set against current Unreal scenes. Review the cream and green public identity, yellow warnings, service wear and UI placement before production. [Review notes and atlas findings](SIGNAGE_UI_STAGE5_REVIEW.md) · [Editable source ZIP](sources/signage-ui-stage5.zip).",
+  "title": "Signage & UI / Stage 5 artwork",
+  "summary": "The approved set contains the ten Basement signs, Wet Floor and A Clean Start. Open a preview to inspect the artwork or download the editable SVG. [Download all 12 SVGs](sources/signage-stage5-svg.zip) · [Artwork and original PNGs](BASEMENT_SIGNAGE_STAGE5.md).",
   "items": [
     {
-      "id": "stage5-signage-concepts",
-      "title": "Four signage proposals",
-      "image": "media/signage-ui-stage5/signage-concepts.webp",
-      "alt": "Atrium plaque, yellow wet-floor warning, custodial notice and a cream poster with the approved wizard",
-      "status": "review",
-      "body": "Cream and dark green carry public information. Yellow and black identify the hazard. Rust ink is used for the poster. Each design uses an approved mascot path and editable English typography. [Graphic rules](SIGNAGE_UI_STAGE5_REVIEW.md) · [Editable sources](sources/signage-ui-stage5.zip)."
+      "id": "basement-sign-overview",
+      "title": "Stage 5 signage / Twelve editable designs",
+      "image": "media/signage-stage5-svg/signage-overview.webp",
+      "alt": "Comparison of all twelve final Stage 5 sign and poster designs",
+      "status": "done",
+      "body": "[Download the SVG set](sources/signage-stage5-svg.zip) · [Original comparison sheet](media/basement-signs-stage5/basement-signs-overview.webp) · [Original Basement PNGs](sources/basement-signs-stage5.zip)."
     },
     {
-      "id": "stage5-atrium-direction",
-      "title": "Direction / Atrium",
-      "image": "media/signage-ui-stage5/atrium-direction-in-scene.webp",
-      "alt": "Left arrow and Atrium plaque composed onto the wall beside the existing Unreal lobby doorway",
-      "status": "review",
-      "body": "Screen composite over the current Lobby entry. The arrow leads, followed by the destination and the pointing wizard. The proposed route and mount are for placement review. [Editable SVG](sources/signage-ui-stage5/atrium-direction.svg)."
+      "id": "basement-sign-01-employees-only",
+      "title": "01 / Employees Only",
+      "image": "media/signage-stage5-svg/01-employees-only.png",
+      "alt": "Wide cream and bottle-green Employees Only plaque with the wizard and staff",
+      "status": "done",
+      "body": "The left-pointing wizard and slim divider leave the staff-access label as the main read. [Editable SVG](sources/signage-stage5-svg/01-employees-only.svg) · [Original PNG](media/basement-signs-stage5/01-employees-only.png)."
+    },
+    {
+      "id": "basement-sign-02-restricted-area",
+      "title": "02 / Restricted Area",
+      "image": "media/signage-stage5-svg/02-restricted-area.png",
+      "alt": "Square cream Restricted Area placard with charcoal text, an amber stripe, wizard and padlock",
+      "status": "done",
+      "body": "The amber stripe, padlock and approved left-pointing wizard identify a controlled door. [Editable SVG](sources/signage-stage5-svg/02-restricted-area.svg) · [Original PNG](media/basement-signs-stage5/02-restricted-area.png)."
+    },
+    {
+      "id": "basement-sign-03-keep-out",
+      "title": "03 / Keep Out / Authorized Personnel Only",
+      "image": "media/signage-stage5-svg/03-keep-out.png",
+      "alt": "Oxide-red and cream Keep Out sign with Authorized Personnel Only and a small pointing wizard",
+      "status": "done",
+      "body": "The oxide-red band emphasizes the prohibition, with the qualification and approved pointing wizard below. [Editable SVG](sources/signage-stage5-svg/03-keep-out.svg) · [Original PNG](media/basement-signs-stage5/03-keep-out.png)."
+    },
+    {
+      "id": "basement-sign-04-cleaning-equipment",
+      "title": "04 / Cleaning Equipment",
+      "image": "media/signage-stage5-svg/04-cleaning-equipment.png",
+      "alt": "Cream and green Cleaning Equipment sign with the approved wizard pushing a cleaning cart",
+      "status": "done",
+      "body": "The approved **Pushing equipment** pose replaces the proposal pictogram in the cream panel. [Editable SVG](sources/signage-stage5-svg/04-cleaning-equipment.svg) · [Original PNG](media/basement-signs-stage5/04-cleaning-equipment.png)."
+    },
+    {
+      "id": "basement-sign-05-chemical-spill",
+      "title": "05 / Chemical Spill / Keep Clear",
+      "image": "media/signage-stage5-svg/05-chemical-spill.png",
+      "alt": "Yellow Chemical Spill sign showing the approved wizard stepping in acid, with a black Keep Clear footer",
+      "status": "done",
+      "body": "The approved **Acid on the floor** pose shows the wizard stepping in the spill. The black Keep Clear footer stays prominent. [Editable SVG](sources/signage-stage5-svg/05-chemical-spill.svg) · [Original PNG](media/basement-signs-stage5/05-chemical-spill.png)."
+    },
+    {
+      "id": "basement-sign-06-service-stairs",
+      "title": "06 / Service Stairs",
+      "image": "media/signage-stage5-svg/06-service-stairs.png",
+      "alt": "Long cream Service Stairs sign with a downward arrow and the mascot carrying supplies",
+      "status": "done",
+      "body": "The approved Carrying supplies pose stays in the left panel and the arrow carries the downward direction. [Editable SVG](sources/signage-stage5-svg/06-service-stairs.svg) · [Original PNG](media/basement-signs-stage5/06-service-stairs.png)."
+    },
+    {
+      "id": "basement-sign-07-return-tools",
+      "title": "07 / Return Tools / After Use",
+      "image": "media/signage-stage5-svg/07-return-tools.png",
+      "alt": "Square Return Tools After Use notice with a cream mopping wizard in a green pictogram field",
+      "status": "done",
+      "body": "The approved Mopping pose anchors the dark green field against the stacked instruction. [Editable SVG](sources/signage-stage5-svg/07-return-tools.svg) · [Original PNG](media/basement-signs-stage5/07-return-tools.png)."
+    },
+    {
+      "id": "basement-sign-08-toxic-vapors-goblin",
+      "title": "08 / Danger / Toxic Vapors",
+      "image": "media/signage-stage5-svg/08-toxic-vapors-goblin.png",
+      "alt": "Safety-yellow Toxic Vapors sign with a pointed-ear goblin skull in a diamond",
+      "status": "done",
+      "body": "The traced goblin skull keeps the pointed ears and diamond frame of the selected vapor warning. [Editable SVG](sources/signage-stage5-svg/08-toxic-vapors-goblin.svg) · [Original PNG](media/basement-signs-stage5/08-toxic-vapors-goblin.png)."
+    },
+    {
+      "id": "basement-sign-09-low-clearance-orc",
+      "title": "09 / Low Clearance / Watch Your Head",
+      "image": "media/signage-stage5-svg/09-low-clearance-orc.png",
+      "alt": "Amber Low Clearance sign with a tusked orc ducking under an overhead beam",
+      "status": "done",
+      "body": "The traced orc, beam and downward chevrons retain the original low-clearance cue. [Editable SVG](sources/signage-stage5-svg/09-low-clearance-orc.svg) · [Original PNG](media/basement-signs-stage5/09-low-clearance-orc.png)."
+    },
+    {
+      "id": "basement-sign-10-quiet-testing-elf",
+      "title": "10 / Quiet Please / Test in Progress",
+      "image": "media/signage-stage5-svg/10-quiet-testing-elf.png",
+      "alt": "Cream Quiet Please sign with a pointed-ear elf and sound arcs above Test in Progress",
+      "status": "done",
+      "body": "The traced elf silhouette and listening arcs sit above the red divider and testing-room message. [Editable SVG](sources/signage-stage5-svg/10-quiet-testing-elf.svg) · [Original PNG](media/basement-signs-stage5/10-quiet-testing-elf.png)."
     },
     {
       "id": "stage5-wet-floor",
-      "title": "Hazard / Wet floor",
-      "image": "media/signage-ui-stage5/wet-floor-in-scene.webp",
-      "alt": "Yellow CAUTION WET FLOOR A-frame with slipping wizard in the Basement corridor",
-      "status": "review",
-      "body": "Screen composite over the current Basement corridor. The owner’s Stop prototype informs the stripes and header, and the approved slipping pose supplies the pictogram. Review near and at the corridor approach. [Editable SVG](sources/signage-ui-stage5/wet-floor.svg)."
-    },
-    {
-      "id": "stage5-custodial-notice",
-      "title": "Staff instruction / Custodial notice",
-      "image": "media/signage-ui-stage5/custodial-notice-in-scene.webp",
-      "alt": "Custodial notice with mopping wizard on the existing janitor stair wall",
-      "status": "review",
-      "body": "Screen composite over the janitor stair. Edge wear gives the panel a service-area finish. The sentence and mopping silhouette stay clear for close reading. [Editable SVG](sources/signage-ui-stage5/custodial-notice.svg) · [Wear comparison](media/signage-ui-stage5/service-wear.webp)."
+      "title": "Hazard / Wet Floor",
+      "image": "media/signage-stage5-svg/wet-floor.png",
+      "alt": "Standalone black and yellow wet-floor sign with a slipping wizard",
+      "status": "done",
+      "body": "The original editable warning uses the approved **Slipping / falling** pose and a single diagonal stripe band. [Editable SVG](sources/signage-stage5-svg/wet-floor.svg) · [Original PNG](media/signage-ui-stage5-raster-review/wet-floor.png)."
     },
     {
       "id": "stage5-clean-start-poster",
       "title": "Corporate poster / A clean start",
-      "image": "media/signage-ui-stage5/clean-start-poster-in-scene.webp",
-      "alt": "Cream and rust corporate poster with the waving wizard in the current Unreal lobby",
-      "status": "review",
-      "body": "Screen composite over the reverse Lobby view. Warm ink, display serif type and the greeting pose distinguish the corporate poster from the directional signs. [Editable SVG](sources/signage-ui-stage5/clean-start-poster.svg)."
-    },
-    {
-      "id": "stage5-projected-sizes",
-      "title": "Readability at projected sizes",
-      "image": "media/signage-ui-stage5/projected-sizes.webp",
-      "alt": "All four signs rendered at three labeled pixel widths down to 72 pixels",
-      "status": "review",
-      "body": "Open at 100% to compare arrow, warning and text readability by pixel width. The scene examples and samples establish a visual target for later Unreal distance and mip checks."
-    },
-    {
-      "id": "stage5-hud",
-      "title": "HUD / Health and hit feedback",
-      "image": "media/signage-ui-stage5/proposal-hud-damage-1280.webp",
-      "alt": "Proposed upper-left health readout below the native red damage vignette in the first-person Lobby view",
-      "status": "review",
-      "body": "The proposed card leaves both hands, the center and the captured hit vignette visible. The value is a mockup sample. [Full-health mockup](media/signage-ui-stage5/proposal-hud-1600.webp) · [Untouched Lobby capture](media/signage-ui-stage5/native-lobby-baseline.webp) · [Native hit feedback](media/signage-ui-stage5/native-damage-feedback.webp)."
-    },
-    {
-      "id": "stage5-menu",
-      "title": "Main menu / Five current actions",
-      "image": "media/signage-ui-stage5/proposal-menu-1600.webp",
-      "alt": "Main menu concept with a dark green title panel and five existing actions over the Unreal Lobby",
-      "status": "review",
-      "body": "The mockup pairs the title and greeting wizard with the existing action order. The background uses the gameplay camera with the pawn hidden for the capture. [Native main menu](media/signage-ui-stage5/native-main-menu.webp) · [Long labels and control states](media/signage-ui-stage5/menu-localization-stress.webp)."
-    },
-    {
-      "id": "ui-stop",
-      "title": "Existing graphics / yellow-black stripe texture",
-      "image": "media/unreal-2026-11-17/ui-stop.webp",
-      "alt": "Native preview of the existing hazard stripe texture",
-      "status": "review",
-      "body": "**Unreal asset:** `/Game/Programming/DialogueSystem/Example/Stop_Sign/TX_Stop_Sign`\n\n**Capture:** 2026-11-17 · native Unreal texture thumbnail. This is an asset preview, not a gameplay/HUD screenshot.\n\n**Source relationship:** `UI/Stop_Sign/Stop_Sign.sbs`; existing material `/Game/Programming/DialogueSystem/Example/Stop_Sign/MI_Stop_Sign`. The current texture shows hazard stripes; the asset name is not proof of a completed sign design.\n\n**Intended use:** Existing graphic/UI baseline for stage 5. Runtime timing, localization and UI readability remain to be reviewed there. **Review:** Current native evidence; no UI migration or replacement was made."
-    },
-    {
-      "id": "ui-blood",
-      "title": "Existing UI / blood-cover texture frame 50",
-      "image": "media/unreal-2026-11-17/ui-blood.webp",
-      "alt": "Native preview of the existing blood cover frame",
-      "status": "review",
-      "body": "**Unreal asset:** `/Game/Programming/Cleaning/FlipBooks/Screen_Cover_Blood/Screen_Cover_Blood_50`\n\n**Capture:** 2026-11-17 · native Unreal texture thumbnail. This is an asset preview, not a gameplay/HUD screenshot.\n\n**Source relationship:** `UI/Screen_Cover_Blood/Screen_Cover_Blood.sbs` and its Delivery sequence; current flipbook `/Game/Programming/Cleaning/FlipBooks/Screen_Cover_Blood/Screen_Cover_Blood` is referenced by `BP_FirstPersonCharacter`.\n\n**Intended use:** Existing graphic/UI baseline for stage 5. Runtime timing, localization and UI readability remain to be reviewed there. **Review:** Current native evidence; no UI migration or replacement was made."
-    },
-    {
-      "id": "goblin-warning-development",
-      "title": "Goblin warning / preserved development experiment",
-      "image": "media/development/Warning_sign_with_toxic_text_Goblin.png",
-      "alt": "Owner-selected goblin warning prototype",
-      "status": "idea",
-      "body": "**Development reference · not an implemented Unreal example.**\n\n**Source:** `D:\\GameJam\\Total (in)Sanitation\\Utility_Materials\\TrimSheet&Atlas\\General_Atlas\\Resources\\Warning_Sign_Goblin\\Warning_sign_with_toxic_text_Goblin.png`\n\n**Reviewed:** 2026-11-17. **Unreal path:** none verified for this graphic.\n\n**Intended use:** Compare warning hierarchy and mascot detail in stage 5. The Aseprite source remains beside the original. The existing General Atlas graph is not empty and was not repacked. No typography, palette, wear rules or new sign text has been approved here."
+      "image": "media/signage-stage5-svg/clean-start-poster.png",
+      "alt": "1970s poster with a greeting wizard, stepped green orange and mustard stripes, and bold dark green lettering",
+      "status": "done",
+      "body": "The approved Greeting pose sits inside the orange circle above the stepped stripes and editable two-line slogan. [Editable SVG](sources/signage-stage5-svg/clean-start-poster.svg) · [Original PNG](media/signage-ui-stage5-raster-review/clean-start-02.png)."
     }
   ]
 }

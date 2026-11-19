@@ -4,12 +4,14 @@ Editor-only generator for 4 m modular levels like the Basement, aimed at the
 Office floors. It reads three marker Blueprints placed in the current level:
 
   BP_OLB_Builder  piece selection (walls, corner, floors, ceilings, lit ceiling)
-  BP_OLB_Room     a rectangle of 4 m cells (actor scale = cells); touching rooms merge
+  BP_OLB_Room     a volume of 4 m cells (actor scale = cells); ordinary rooms merge
   BP_OLB_Stair    1 x 2 cell stair; the arrow points downhill, placed on the upper floor
 
 and spawns the owner's ordinary modular Blueprint actors (as in the Basement).
-Walls go on every edge between a room cell and empty space, facing into the room,
-with their 15 cm thickness outside the room. Where two walls meet at an open
+Walls face the occupied cell at the outside of a room and at changes in ceiling
+height. Enclosed Room markers add a partition and their own floor and ceiling
+within an ordinary room. Keep Shared Walls gives two touching rooms one wall
+each. Priority sets which room keeps its face on the grid line. Where two walls meet at an open
 (convex) corner their thickness overlaps; one of them becomes the shorter 385 cm
 "corner" Blueprint so the faces do not Z-fight (mirrored with X scale -1 when the
 short end must be at the wall's start, exactly as in the Basement).
@@ -23,10 +25,12 @@ Without OLB_GROUPS it uses the groups of the selected OLB actors, else every gro
 Everything happens in one undo transaction (Ctrl+Z reverts a build).
 """
 import zlib
+from dataclasses import dataclass
 import unreal
 
 CELL = 400.0
 LEVEL_H = 400.0
+WALL_THICKNESS = 15.0
 TOOL = '/Game/Art/Tools/OfficeLevelBuilder/'
 WALLS_DIR = '/Game/Art/Assets/Building/Modular_Blocks/BP_Modular_Walls'
 GEN_TAG = 'OLB_Generated'
@@ -135,7 +139,7 @@ class Matcher:
         self.owner = {}  # wall id -> conflict index
 
     def _try(self, ci, seen):
-        for wid, _end in self.conflicts[ci]['options']:
+        for wid, _end, _amount in self.conflicts[ci]['options']:
             if wid in seen:
                 continue
             seen.add(wid)
@@ -150,6 +154,173 @@ class Matcher:
         return failed
 
 
+@dataclass(frozen=True)
+class RoomVolume:
+    actor: object
+    rect: tuple
+    bottom: int
+    top: int
+    rank: tuple
+    enclosed: bool
+    keep_shared_walls: bool
+
+    def positions(self):
+        x0, y0, x1, y1 = self.rect
+        for k in range(self.bottom, self.top):
+            for i in range(x0, x1):
+                for j in range(y0, y1):
+                    yield k, i, j
+
+    def contains(self, inner):
+        x0, y0, x1, y1 = self.rect
+        ix0, iy0, ix1, iy1 = inner.rect
+        return (self.rect != inner.rect and x0 <= ix0 < ix1 <= x1 and y0 <= iy0 < iy1 <= y1
+                and self.bottom <= inner.bottom < inner.top <= self.top)
+
+    def overlaps(self, other):
+        x0, y0, x1, y1 = self.rect
+        ox0, oy0, ox1, oy1 = other.rect
+        return (x0 < ox1 and ox0 < x1 and y0 < oy1 and oy0 < y1
+                and self.bottom < other.top and other.bottom < self.top)
+
+
+def room_cells(rooms, origin, warnings):
+    volumes = []
+    for room in rooms:
+        x0, y0, x1, y1 = snapped_rect(room, origin.x, origin.y, CELL, CELL)
+        k = round((room.get_actor_location().z - origin.z) / LEVEL_H)
+        height = max(1, round(room.get_actor_scale3d().z))
+        rot = room.get_actor_rotation()
+        room.set_actor_location_and_rotation(
+            unreal.Vector(origin.x + x0 * CELL, origin.y + y0 * CELL, origin.z + k * LEVEL_H),
+            unreal.Rotator(pitch=0, yaw=0, roll=0), False, False)
+        room.set_actor_scale3d(unreal.Vector(x1 - x0, y1 - y0, height))
+        if abs(rot.pitch) > 0.1 or abs(rot.roll) > 0.1:
+            warnings.append(f'{room.get_actor_label()}: pitch/roll ignored')
+        rank = (prop(room, 'Priority', 0) or 0, -(x1 - x0) * (y1 - y0))
+        volumes.append(RoomVolume(room, (x0, y0, x1, y1), k, k + height, rank,
+                                  bool(prop(room, 'EnclosedRoom', False)),
+                                  bool(prop(room, 'KeepSharedWalls', False))))
+
+    open_rooms = [room for room in volumes if not room.enclosed]
+    cover = {}
+    for room in open_rooms:
+        for pos in room.positions():
+            cover.setdefault(pos, []).append(room)
+    # Later markers win tied piece priorities, as in the original builder.
+    cells = {pos: max(reversed(stack), key=lambda room: room.rank) for pos, stack in cover.items()}
+
+    enclosed_rooms = []
+    for room in volumes:
+        if not room.enclosed:
+            continue
+        if any(outer.contains(room) for outer in open_rooms):
+            enclosed_rooms.append(room)
+        else:
+            warnings.append(f'{room.actor.get_actor_label()}: Enclosed Room needs a larger room '
+                            'in this group that contains its footprint and height')
+    for room in enclosed_rooms:
+        if any(room is not other and room.overlaps(other) for other in enclosed_rooms):
+            warnings.append(f'{room.actor.get_actor_label()}: overlapping Enclosed Rooms; room skipped')
+            continue
+        for pos in room.positions():
+            cells[pos] = room
+    return cells, cover
+
+
+def shared_wall_edges(cells, cover, stair_cells):
+    """Find opted-in boundaries and align any extensions above or below them."""
+    shared = {}
+    extensions = {}
+    for (k, i, j), room in cells.items():
+        left = (room,) if room.enclosed else cover[(k, i, j)]
+        if not any(r.keep_shared_walls for r in left):
+            continue
+        for side, opposite in (('E', 'W'), ('N', 'S')):
+            dx, dy = SIDES[side][2]
+            x, y = i + dx, j + dy
+            neighbor = cells.get((k, x, y))
+            if neighbor is None or neighbor.enclosed != room.enclosed:
+                continue
+            right = (neighbor,) if neighbor.enclosed else cover[(k, x, y)]
+            if not any(r.keep_shared_walls for r in right) or set(left).intersection(right):
+                continue  # overlapping markers still act as one open room
+
+            left_priority = max(r.rank[0] for r in left if r.keep_shared_walls)
+            right_priority = max(r.rank[0] for r in right if r.keep_shared_walls)
+            # Keep the higher priority face on the grid. The lower room takes
+            # both modules' thickness. Equal priorities center the partition.
+            left_inset = WALL_THICKNESS
+            if left_priority > right_priority:
+                left_inset = 0
+            elif left_priority < right_priority:
+                left_inset = 2 * WALL_THICKNESS
+            for u, v, edge, stack, inset in ((i, j, side, left, left_inset),
+                                            (x, y, opposite, right, 2 * WALL_THICKNESS - left_inset)):
+                shared[k, u, v, edge] = inset
+                ex, ey = SIDES[edge][2]
+                spans = (range(k - 1, min(r.bottom for r in stack) - 1, -1),
+                         range(k + 1, max(r.top for r in stack)))
+                for span in spans:
+                    for band in span:
+                        own = cells.get((band, u, v))
+                        other_pos = (band, u + ex, v + ey)
+                        other = cells.get(other_pos)
+                        if own is None or own.enclosed != room.enclosed or other_pos in stair_cells:
+                            break
+                        if other is not None and (not own.enclosed or other.enclosed):
+                            break
+                        extended = (band, u, v, edge)
+                        # A tall room between two shorter neighbors can have
+                        # different insets at either end. Use the nearer join.
+                        candidate = (abs(band - k), k, inset)
+                        if extended not in extensions or candidate < extensions[extended]:
+                            extensions[extended] = candidate
+    return {**{edge: entry[2] for edge, entry in extensions.items()}, **shared}
+
+
+def wall_bounds(start, end, thick_cell, inset):
+    """XY bounds of the 15 cm wall body before resolving corner overlaps."""
+    thickness_axis = 0 if start[0] == end[0] else 1
+    spans = [(min(a, b) * CELL, max(a, b) * CELL) for a, b in zip(start, end)]
+    line = start[thickness_axis] * CELL
+    if thick_cell[thickness_axis] >= start[thickness_axis]:
+        spans[thickness_axis] = (line, line + WALL_THICKNESS)
+    else:
+        spans[thickness_axis] = (line - WALL_THICKNESS, line)
+    # Inset walls occupy their own cell. For 15 cm the original line is their
+    # back, and for 30 cm their back is already one thickness inside that cell.
+    if inset > WALL_THICKNESS:
+        lo, hi = spans[thickness_axis]
+        offset = WALL_THICKNESS if lo == line else -WALL_THICKNESS
+        spans[thickness_axis] = (lo + offset, hi + offset)
+    return spans
+
+
+def corner_cut(start, end, vertex, other_bounds):
+    """Distance from the corner endpoint to the far side of the crossing wall."""
+    axis = 0 if start[0] != end[0] else 1
+    lo, hi = other_bounds[axis]
+    coordinate = vertex[axis] * CELL
+    return hi - coordinate if vertex[axis] == min(start[axis], end[axis]) else coordinate - lo
+
+
+@dataclass(frozen=True)
+class WallSegment:
+    wall_id: int | None
+    start: tuple
+    end: tuple
+    inset: float = 0
+    shared: bool = False
+
+    @property
+    def length_axis(self):
+        return 0 if self.start[0] != self.end[0] else 1
+
+    def cut_at(self, vertex, amount):
+        return self.wall_id, 'start' if self.start == vertex else 'end', amount
+
+
 def build_group(group, builder, rooms, stairs, eas):
     origin = builder.get_actor_location()
     ox, oy, oz = origin.x, origin.y, origin.z
@@ -157,27 +328,8 @@ def build_group(group, builder, rooms, stairs, eas):
     report = {'walls': 0, 'corners': 0, 'floors': 0, 'ceilings': 0, 'stairs': 0, 'warnings': []}
 
     # ---------------------------------------------------------------- cells
-    cells = {}  # (k, i, j) -> (priority, -area, room)
-    cover = {}  # (k, i, j) -> [(rank, room), ...] every room over the cell
-    rects = {}  # room -> snapped (x0, y0, x1, y1)
-    for room in rooms:
-        x0, y0, x1, y1 = snapped_rect(room, ox, oy, CELL, CELL)
-        k = round((room.get_actor_location().z - oz) / LEVEL_H)
-        rot = room.get_actor_rotation()
-        room.set_actor_location_and_rotation(
-            unreal.Vector(ox + x0 * CELL, oy + y0 * CELL, oz + k * LEVEL_H),
-            unreal.Rotator(pitch=0, yaw=0, roll=0), False, False)
-        room.set_actor_scale3d(unreal.Vector(x1 - x0, y1 - y0, 1))
-        if abs(rot.pitch) > 0.1 or abs(rot.roll) > 0.1:
-            report['warnings'].append(f'{room.get_actor_label()}: pitch/roll ignored')
-        rank = (prop(room, 'Priority', 0) or 0, -(x1 - x0) * (y1 - y0))
-        rects[room] = (x0, y0, x1, y1)
-        for i in range(x0, x1):
-            for j in range(y0, y1):
-                cover.setdefault((k, i, j), []).append((rank, room))
-                cur = cells.get((k, i, j))
-                if cur is None or rank >= cur[0]:
-                    cells[(k, i, j)] = (rank, room)
+    cells, cover = room_cells(rooms, origin, report['warnings'])
+    enclosed_cells = {pos for pos, room in cells.items() if room.enclosed}
 
     # ---------------------------------------------------------------- stairs
     stair_cells = {}  # (k, i, j) -> info, for both the upper (k) and lower (k-1) floor
@@ -204,11 +356,18 @@ def build_group(group, builder, rooms, stairs, eas):
         if not stair_cls:
             report['warnings'].append(f'{st.get_actor_label()}: no StairClass')
             continue
+        upper_landing = (a[0] - d[0], a[1] - d[1])
+        lower_landing = (b[0] + d[0], b[1] + d[1])
+        stair_levels = ((k, (a, upper_landing)), (k - 1, (b, lower_landing)))
+        if any((lvl, *cell) in enclosed_cells
+               for lvl, (_, landing) in stair_levels for cell in (a, b, landing)):
+            report['warnings'].append(f'{st.get_actor_label()}: stair crosses an Enclosed Room; stair skipped')
+            continue
         partner = pivot + rot2d(yaw, 400, 800)
         stair_spawns.append((stair_cls, pivot, yaw, unreal.Vector(1, 1, 1), f'{k}_{a[0]}_{a[1]}'))
         stair_spawns.append((stair_cls, partner, yaw + 180.0, unreal.Vector(1, 1, -1), f'{k}_{a[0]}_{a[1]}_ceiling'))
         side = (d[1], -d[0])
-        for lvl, open_edge in ((k, (a, (a[0] - d[0], a[1] - d[1]))), (k - 1, (b, (b[0] + d[0], b[1] + d[1])))):
+        for lvl, open_edge in stair_levels:
             for cc in (a, b):
                 stair_cells[(lvl, cc[0], cc[1])] = {'open': open_edge, 'side': side}
                 cells.pop((lvl, cc[0], cc[1]), None)
@@ -220,12 +379,20 @@ def build_group(group, builder, rooms, stairs, eas):
         report['stairs'] += 1
 
     # ---------------------------------------------------------------- walls
+    shared_offsets = shared_wall_edges(cells, cover, stair_cells)
     walls = []  # dict(k, cell, side, room, start(v), end(v), thick)
-    for (k, i, j), (_rank, room) in cells.items():
+    for (k, i, j), room in cells.items():
         for side, (yaw, piv, nb) in SIDES.items():
+            edge = (k, i, j, side)
+            shared_edge = edge in shared_offsets
+            inset = shared_offsets.get(edge, 0)
             n = (i + nb[0], j + nb[1])
-            if (k, n[0], n[1]) in cells:
-                continue
+            neighbor = cells.get((k, *n))
+            if neighbor is not None and not shared_edge:
+                if not room.enclosed or neighbor is room:
+                    continue
+                if neighbor.enclosed and (i, j) > n:
+                    continue  # neighboring enclosures share one wall
             sc = stair_cells.get((k, n[0], n[1]))
             if sc is not None:
                 if {tuple(sc['open'][0]), tuple(sc['open'][1])} == {n, (i, j)}:
@@ -236,33 +403,65 @@ def build_group(group, builder, rooms, stairs, eas):
             start = (i + piv[0], j + piv[1])
             ang = {0.0: (1, 0), 90.0: (0, 1), 180.0: (-1, 0), -90.0: (0, -1)}[yaw]
             end = (start[0] + ang[0], start[1] + ang[1])
-            walls.append({'k': k, 'cell': (i, j), 'side': side, 'yaw': yaw, 'room': room,
-                          'start': start, 'end': end, 'thick': n, 'short': None})
+            wall_room = room.actor
+            if shared_edge and not room.enclosed and not prop(wall_room, 'WallClasses'):
+                # A floor-only patch leaves the underlying room's partition finish.
+                candidates = (r for r in reversed(cover[(k, i, j)]) if prop(r.actor, 'WallClasses'))
+                wall_room = max(candidates, key=lambda r: r.rank, default=room).actor
+            walls.append({'k': k, 'cell': (i, j), 'side': side, 'yaw': yaw, 'room': wall_room,
+                          'start': start, 'end': end, 'thick': (i, j) if inset else n,
+                          'inset': inset, 'shared': shared_edge, 'cuts': {}})
 
     # ---------------------------------------------------------------- open-corner conflicts
     by_thick = {}
     for wid, w in enumerate(walls):
-        by_thick.setdefault((w['k'], w['thick']), []).append(('w', wid, w['start'], w['end']))
+        by_thick.setdefault((w['k'], w['thick']), []).append(
+            WallSegment(wid, w['start'], w['end'], w['inset'], w['shared']))
     for (k, nb, v0, v1) in fixed:
-        by_thick.setdefault((k, nb), []).append(('f', None, v0, v1))
+        by_thick.setdefault((k, nb), []).append(WallSegment(None, v0, v1))
     conflicts = []
     for key, items in by_thick.items():
-        for x in range(len(items)):
-            for y in range(x + 1, len(items)):
-                A, B = items[x], items[y]
-                shared = {A[2], A[3]} & {B[2], B[3]}
+        asymmetric_vertices = {vertex for item in items if item.shared and item.inset != WALL_THICKNESS
+                               for vertex in (item.start, item.end)}
+        offset_corners = {}
+        for x, a in enumerate(items):
+            for b in items[x + 1:]:
+                shared = {a.start, a.end} & {b.start, b.end}
                 if not shared:
                     continue
                 v = shared.pop()
-                opts = [(it[1], 'start' if it[2] == v else 'end') for it in (A, B) if it[0] == 'w']
+                if a.shared or b.shared or v in asymmetric_vertices:
+                    a_bounds = wall_bounds(a.start, a.end, key[1], a.inset)
+                    b_bounds = wall_bounds(b.start, b.end, key[1], b.inset)
+                    if any(min(aa[1], bb[1]) <= max(aa[0], bb[0]) for aa, bb in zip(a_bounds, b_bounds)):
+                        continue
+                    if v in asymmetric_vertices:
+                        offset_corners.setdefault(v, []).append(((a, b_bounds), (b, a_bounds)))
+                        continue
+                opts = [item.cut_at(v, WALL_THICKNESS) for item in (a, b) if item.wall_id is not None]
                 if opts:
                     conflicts.append({'k': key[0], 'v': v, 'options': opts})
+        for vertex, crossings in offset_corners.items():
+            # Treat adjacent layers as a single corner. Stopping both layers
+            # on one axis avoids cutting a gap between four crossing modules.
+            fixed_axes = {item.length_axis for pair in crossings for item, _ in pair
+                          if item.wall_id is None}
+            cut_axis = 1 if 0 in fixed_axes else 0
+            for pair in crossings:
+                movable = [(item, bounds) for item, bounds in pair if item.wall_id is not None]
+                if not movable:
+                    continue
+                item, bounds = next((part for part in movable if part[0].length_axis == cut_axis), movable[0])
+                wid, end, amount = item.cut_at(vertex, corner_cut(item.start, item.end, vertex, bounds))
+                cuts = walls[wid]['cuts']
+                cuts[end] = max(cuts.get(end, 0), amount)
     m = Matcher(conflicts)
     for ci in m.solve():
         c = conflicts[ci]
         report['warnings'].append(f"L{c['k']} vertex {c['v']}: no wall left to shorten (possible Z-fighting)")
     for wid, ci in m.owner.items():
-        walls[wid]['short'] = [e for w_, e in conflicts[ci]['options'] if w_ == wid][0]
+        end, amount = next((end, amount) for w_, end, amount in conflicts[ci]['options'] if w_ == wid)
+        walls[wid]['cuts'][end] = amount
 
     # ---------------------------------------------------------------- spawn
     def spawn(cls, loc, yaw, scale, kind, label, k):
@@ -288,33 +487,57 @@ def build_group(group, builder, rooms, stairs, eas):
             report['warnings'].append('no WallClasses set')
             break
         label = f"{w['cell'][0]}_{w['cell'][1]}_{w['side']}"
-        if w['short']:
-            # room's explicit corner > corner of the chosen wall's family > builder's corner
-            corner_cls = (prop(w['room'], 'CornerClass') or family_corner(wall_cls)
-                          or prop(builder, 'CornerClass'))
+        offset = unreal.Vector(0, 0, 0)
+        if w['inset']:
+            dx, dy = SIDES[w['side']][2]
+            offset = unreal.Vector(-dx * w['inset'], -dy * w['inset'], 0)
+        cuts = w['cuts']
+        if len(cuts) == 2:
+            start, end = w['start'], w['end']
+            direction = unreal.Vector(end[0] - start[0], end[1] - start[1], 0)
+            scale = unreal.Vector((CELL - cuts['start'] - cuts['end']) / CELL, 1, 1)
+            loc = world(w['k'], start) + offset + direction * cuts['start']
+            spawn(wall_cls, loc, w['yaw'], scale, 'Corner', label, w['k'])
+            report['corners'] += 1
+        elif cuts:
+            end, amount = next(iter(cuts.items()))
+            corner_cls = None
+            if amount == WALL_THICKNESS:
+                corner_cls = prop(w['room'], 'CornerClass') or family_corner(wall_cls)
+            length_scale = 1.0
+            if corner_cls is None and (w['shared'] or amount != WALL_THICKNESS):
+                # Keep the same finish for a nonstandard cut, or when the
+                # selected wall family has no matching corner.
+                corner_cls = wall_cls
+                length_scale = (CELL - amount) / CELL
+            elif corner_cls is None:
+                corner_cls = prop(builder, 'CornerClass')
             if corner_cls is None:
                 report['warnings'].append(f'{label}: no corner Blueprint for {wall_cls.get_name()}')
                 corner_cls = wall_cls
-            if w['short'] == 'end':
-                spawn(corner_cls, world(w['k'], w['start']), w['yaw'], None, 'Corner', label, w['k'])
-            else:  # short end at the start: pivot at the end, mirrored (Basement convention)
-                spawn(corner_cls, world(w['k'], w['end']), w['yaw'], unreal.Vector(-1, 1, 1), 'Corner', label, w['k'])
+            # Mirror about the end pivot to shorten from the start (Basement convention).
+            mirrored = end == 'start'
+            pivot = w['end'] if mirrored else w['start']
+            scale_x = -length_scale if mirrored else length_scale
+            scale = unreal.Vector(scale_x, 1, 1) if scale_x != 1 else None
+            spawn(corner_cls, world(w['k'], pivot) + offset, w['yaw'], scale, 'Corner', label, w['k'])
             report['corners'] += 1
         else:
-            spawn(wall_cls, world(w['k'], w['start']), w['yaw'], None, 'Wall', label, w['k'])
+            spawn(wall_cls, world(w['k'], w['start']) + offset, w['yaw'], None, 'Wall', label, w['k'])
             report['walls'] += 1
 
-    def light_room(cell):
+    def light_room(stack):
         """Highest-priority covering room that sets its own lights, else the base (lowest) room.
         A rug/priority patch without light settings keeps the surrounding room's light pattern."""
-        stack = sorted(cover[cell], key=lambda rr: rr[0], reverse=True)
-        for _rank, r in stack:
+        stack = sorted(stack, key=lambda room: room.rank, reverse=True)
+        for room in stack:
+            r = room.actor
             own_x = prop(r, 'LightSpacingX', -1)
             own_y = prop(r, 'LightSpacingY', -1)
             own_class = prop(r, 'CeilingLightClass')
             if (own_x is not None and own_x >= 0) or (own_y is not None and own_y >= 0) or own_class:
-                return r
-        return stack[-1][1]
+                return room
+        return stack[-1]
 
     def on_axis(n, lo, hi, step):
         """Every `step` cells along one axis, centred in the room; a room narrower than the
@@ -324,16 +547,22 @@ def build_group(group, builder, rooms, stairs, eas):
         size = hi - lo
         return (n - lo - ((size - 1) % step) // 2) % step == 0
 
-    for (k, i, j), (_rank, room) in sorted(cells.items(), key=lambda kv: kv[0]):
-        st = Settings(builder, room)
+    for (k, i, j), room in sorted(cells.items()):
+        # A continuous open volume has no slab between its own 4 m bands.
+        # An enclosed volume supplies its own surfaces, including any shared slab.
+        stack = (room,) if room.enclosed else cover[(k, i, j)]
+        st = Settings(builder, room.actor)
         key = f'{seed}:{k}:{i}:{j}'
-        floor_cls = pick(st.get('FloorClasses'), key + ':floor')
-        if floor_cls:
-            spawn(floor_cls, world(k, (i, j)), 0.0, None, 'Floor', f'{i}_{j}', k)
-            report['floors'] += 1
-        lr = light_room((k, i, j))
-        lst = Settings(builder, lr)
-        x0, y0, x1, y1 = rects[lr]
+        if all(r.bottom == k for r in stack):
+            floor_cls = pick(st.get('FloorClasses'), key + ':floor')
+            if floor_cls:
+                spawn(floor_cls, world(k, (i, j)), 0.0, None, 'Floor', f'{i}_{j}', k)
+                report['floors'] += 1
+        if any(r.top > k + 1 for r in stack):
+            continue
+        lr = light_room(stack)
+        lst = Settings(builder, lr.actor)
+        x0, y0, x1, y1 = lr.rect
         lit = on_axis(i, x0, x1, lst.get('LightSpacingX') or 0) and on_axis(j, y0, y1, lst.get('LightSpacingY') or 0)
         ceil_cls = lst.get('CeilingLightClass') if lit else None
         ceil_cls = ceil_cls or pick(st.get('CeilingClasses'), key + ':ceiling')

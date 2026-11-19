@@ -1,0 +1,610 @@
+{
+  "title": "Stage 6 Building concepts / native views and paintovers",
+  "capture_date": "2026-11-18",
+  "generation": "ChatGPT built-in image generation in the current conversation. Underlying model ID and seed are unavailable.",
+  "source_blend": "Assets/Building/Interior_Building.blend",
+  "unreal_root": "/Game/Art/Assets/Building/Modular_Blocks/",
+  "design_grid_cm": 400,
+  "native": {
+    "office-peek": {
+      "image": "media/building-stage6/office-peek-native.webp",
+      "sha256": "8c72175f6ce8ae5f581d6246eefa87e041f2257ce7822f0a26bd93635358b05b",
+      "native_png_sha256": "26256117eaa489b85b2170df6b45e1186b568e15160260715e4f2b6edf4789b3",
+      "pixel_sha256": "e1143387f3530f47c9bbce7e31b997ec8b415360772266c30fdbbe42dca1e8e0",
+      "size_px": [
+        2013,
+        1187
+      ],
+      "level": "/Game/Levels/Streaming_Levels/Level_01",
+      "persistent_world": "/Game/Levels/Streaming_Levels/Level_01",
+      "streamed_lighting": "/Game/Levels/Streaming_Levels/Main_Lights",
+      "capture": "Lit Unreal editor viewport",
+      "camera_cm": {
+        "x": -1081.084456698177,
+        "y": 577.9421305808078,
+        "z": 184.10371279003476
+      },
+      "rotation_deg": {
+        "pitch": -6.799898892641065,
+        "yaw": 139.8000219464302,
+        "roll": -8.007715238450695e-16
+      },
+      "fov_deg": 90
+    },
+    "office-executive": {
+      "image": "media/building-stage6/office-executive-native.webp",
+      "sha256": "77e438deed3466425ba612897f2c9f63abf87b5f7d489867303c21c71cf3f065",
+      "native_png_sha256": "19fd8b188a4ef78285803c4a71a400abc9f208c764ff52e65bf211173eb32aef",
+      "pixel_sha256": "5a79f0e0c1735e834288d4f7d1ad67375e22f12b825b61ceb585500c1e2babbd",
+      "size_px": [
+        2013,
+        1187
+      ],
+      "level": "/Game/Levels/Streaming_Levels/Level_01",
+      "persistent_world": "/Game/Levels/Streaming_Levels/Level_01",
+      "streamed_lighting": "/Game/Levels/Streaming_Levels/Main_Lights",
+      "capture": "Lit Unreal editor viewport",
+      "camera_cm": {
+        "x": 620,
+        "y": 3270,
+        "z": 171
+      },
+      "rotation_deg": {
+        "pitch": 0,
+        "yaw": 28.00000000000001,
+        "roll": 0
+      },
+      "fov_deg": 90
+    },
+    "basement-entry": {
+      "image": "media/building-stage6/basement-entry-native.webp",
+      "sha256": "2a6aa81a58b2da97742f24c53791316a8c45b782f7482aa9bcf7c23cafb3ae87",
+      "native_png_sha256": "f6cf0c323d92f84e2ecec139fd2888f2fb1c7c3a52e6833dac41b0845df8647e",
+      "pixel_sha256": "b6e2fd20d2e8f76e43fb2e048c30091dfa5dfaeb2363ae1f2da2b0e6e3adcce1",
+      "size_px": [
+        2013,
+        1187
+      ],
+      "level": "/Game/Levels/Streaming_Levels/Basement",
+      "persistent_world": "/Game/Levels/Inteior_Lobby",
+      "streamed_lighting": "/Game/Levels/Streaming_Levels/Main_Lights",
+      "capture": "Lit Unreal editor viewport",
+      "camera_cm": {
+        "x": -100,
+        "y": -1900,
+        "z": 160
+      },
+      "rotation_deg": {
+        "pitch": -20.000000000000007,
+        "yaw": -90.00000000000001,
+        "roll": 0
+      },
+      "fov_deg": 75
+    },
+    "basement-corridor": {
+      "image": "media/building-stage6/basement-corridor-native.webp",
+      "sha256": "3d0685d9ca9162b89ad65efe7503668e93bedbb4f4faaf1f4ecf8f5e59fd2756",
+      "native_png_sha256": "74df49493dcd5b9e4c60953a89c2f336bca20867c9f78662a3ee4a4712c91d99",
+      "pixel_sha256": "89607f66d208a581a23a1011b1f347d3246a89c4c3bced8cf0086f61e2e15282",
+      "size_px": [
+        2013,
+        1187
+      ],
+      "level": "/Game/Levels/Streaming_Levels/Basement",
+      "persistent_world": "/Game/Levels/Inteior_Lobby",
+      "streamed_lighting": "/Game/Levels/Streaming_Levels/Main_Lights",
+      "capture": "Lit Unreal editor viewport",
+      "camera_cm": {
+        "x": 0,
+        "y": -2900,
+        "z": -230
+      },
+      "rotation_deg": {
+        "pitch": 0,
+        "yaw": 0,
+        "roll": 0
+      },
+      "fov_deg": 75
+    },
+    "basement-descent": {
+      "image": "media/building-stage6/basement-descent-native.webp",
+      "sha256": "5cff8cce2def10815563b427079b44f2801718c55265958a9b8ac8fcd1da121e",
+      "native_png_sha256": "dd17e85de03ab86f237f3d02cea61fc265f89743c94346f848111a1140f3bab2",
+      "pixel_sha256": "8131a2fb22e489e3b63759a1822a55fb613d87f4f3d29dc644a71c8144bf8b5b",
+      "size_px": [
+        2013,
+        1187
+      ],
+      "level": "/Game/Levels/Streaming_Levels/Basement",
+      "persistent_world": "/Game/Levels/Inteior_Lobby",
+      "streamed_lighting": "/Game/Levels/Streaming_Levels/Main_Lights",
+      "capture": "Lit Unreal editor viewport",
+      "camera_cm": {
+        "x": 2800,
+        "y": -4500,
+        "z": -1030
+      },
+      "rotation_deg": {
+        "pitch": -5.000000000000003,
+        "yaw": -90.00000000000003,
+        "roll": 0
+      },
+      "fov_deg": 75
+    },
+    "basement-counter": {
+      "image": "media/building-stage6/basement-counter-native.webp",
+      "sha256": "cf09e5443d901969c68c467da5a8694e646133d9f5c3cf50781f2f1e1cf38ebc",
+      "native_png_sha256": "b7735b1a5cea3523e138724a2c30a76fb28485988702a80ad505602fcbc2da81",
+      "pixel_sha256": "830c4578cc93443adff4643e5321b3d33462183147983077c86af87a397bec83",
+      "size_px": [
+        2013,
+        1187
+      ],
+      "level": "/Game/Levels/Streaming_Levels/Basement",
+      "persistent_world": "/Game/Levels/Inteior_Lobby",
+      "streamed_lighting": "/Game/Levels/Streaming_Levels/Main_Lights",
+      "capture": "Lit Unreal editor viewport",
+      "camera_cm": {
+        "x": 7000,
+        "y": -7900,
+        "z": -1830
+      },
+      "rotation_deg": {
+        "pitch": 0,
+        "yaw": 20,
+        "roll": 0
+      },
+      "fov_deg": 75
+    },
+    "basement-return": {
+      "image": "media/building-stage6/basement-return-native.webp",
+      "sha256": "d0ae3796118151650974d80c27bc2c9bdef68dea35aa1bb3d2968f2f56ef7af2",
+      "native_png_sha256": "4532cb9b4d4cd9dc4b3baa8b3479df3e887f66ab9fbb49dddec0f551d7aeed44",
+      "pixel_sha256": "59aea4331fd36678f3897dbb608e60a6e95a13ab85756623eb34370506556cec",
+      "size_px": [
+        2013,
+        1187
+      ],
+      "level": "/Game/Levels/Streaming_Levels/Basement",
+      "persistent_world": "/Game/Levels/Inteior_Lobby",
+      "streamed_lighting": "/Game/Levels/Streaming_Levels/Main_Lights",
+      "capture": "Lit Unreal editor viewport",
+      "camera_cm": {
+        "x": 1530,
+        "y": -2900,
+        "z": -230
+      },
+      "rotation_deg": {
+        "pitch": 0,
+        "yaw": 180,
+        "roll": 0
+      },
+      "fov_deg": 75
+    }
+  },
+  "concepts": {
+    "office-primary": {
+      "title": "Level_01 · Shared offices",
+      "status": "Owner review",
+      "image": "media/building-stage6/office-primary-concept.png",
+      "sha256": "849527628fe03ff5f1162e57785034d5a34430f923ca3207f6b0e3530c68a95c",
+      "size_px": [
+        1633,
+        963
+      ],
+      "inputs": [
+        {
+          "image": "media/building-stage6/office-peek-native.webp",
+          "role": "Native edit target and geometry plate",
+          "supplied_png_sha256": "26256117eaa489b85b2170df6b45e1186b568e15160260715e4f2b6edf4789b3"
+        }
+      ],
+      "prompt": "Architectural environment concept paintover for the semi-stylized 1970s pharmaceutical company game Total (in)Sanitation. Input image is a native Unreal screenshot of the blockout Level_01, and it is the edit target, the perspective and geometry plate. Render ONE landscape scene, maintaining the same aspect framing, floor/ceiling vanishing lines, camera and rough focal length. Keep the big foreground carpet span, low continuous drop ceiling at this camera, each visible fluorescent troffer at its exact existing position, the alternating solid dark walnut panels and dark patterned panels on the left walls, the open walk-through just beyond the left foreground wall, and the offset distant circulation route and partitions on the right. Maintain these existing openings and floor plan, no window or door carved into a solid wall. The brief is to show architectural finish and small fixed building components that can be repeated over a 4-meter grid and built as Unreal Modular Blocks: preserve existing carpet and wall families, make the walnut veneer and patterned wall faces legible through restrained warm bounce, give timber wall bays a simple two-piece cap and green-black rubber skirting, add a pale linen/acoustic upper strip only in one or two flat wall bays and a flush bronze perforated transfer grille near the top of one wall. Make ceiling tiles an off-white mineral-fiber and pale-gray T-bar grid with shallow flush return-air and inspection tiles the size of one existing ceiling grid cell; swap the appearance of existing fluorescent diffusers to 1970s prism lenses while holding their positions. Keep all details flush or shallow and deliberately repeatable, modest corporate finish and a slight medieval craft influence in the walnut joinery only. A very small unlettered deep-green enamel plaque on a solid wall is permitted as a scale cue. Maintain a readable mid-dark office with soft warm fluorescent bounce, grounded slightly stylized game materials and existing carpet palette. Quiet after-hours atmosphere. No office chairs, tables, computers, loose props, people, UI, labels, annotations, new doorways, new wall placements, elaborate moldings, daylight windows, or change to camera. One polished production design image, specific to this exact Unreal camera.",
+      "existing_material_reference": [
+        {
+          "station": 16,
+          "path": "/Game/Art/MI/Utility_Materials/Durlock/Tiled_Ceiling_01/Tiled_Ceiling_01",
+          "image": "media/unreal-2026-11-17/material-016.webp"
+        },
+        {
+          "station": 17,
+          "path": "/Game/Art/MI/Utility_Materials/Durlock/Tiled_Ceiling_Lights_01/Tiled_Ceiling_Lights_01",
+          "image": "media/unreal-2026-11-17/material-017.webp"
+        },
+        {
+          "station": 39,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01",
+          "image": "media/unreal-2026-11-17/material-039.webp"
+        },
+        {
+          "station": 59,
+          "path": "/Game/Art/MI/Utility_Materials/Plastic/Worn_Plastic_01/Worn_Plastic_01_01",
+          "image": "media/unreal-2026-11-17/material-059.webp"
+        },
+        {
+          "station": 79,
+          "path": "/Game/Art/MI/Utility_Materials/WallPaper/WallPaper_01/MI_WallPaper_01_01",
+          "image": "media/unreal-2026-11-17/material-079.webp"
+        },
+        {
+          "station": 87,
+          "path": "/Game/Art/MI/Utility_Materials/Wood/Wood_Wall_01/Wood_Wall_01_02",
+          "image": "media/unreal-2026-11-17/material-087.webp"
+        },
+        {
+          "station": 88,
+          "path": "/Game/Art/MI/Utility_Materials/Wood/Wood_Wall_01/Wood_Wall_01_03",
+          "image": "media/unreal-2026-11-17/material-088.webp"
+        }
+      ],
+      "nearby_actor_inventory": {
+        "classes": {
+          "BP_OLB_Room": 5,
+          "BP_Wall_Wood_Corner_01": 6,
+          "BP_Wall_Wallpaper_01": 14,
+          "BP_Wall_Wood_01": 2,
+          "BP_Wall_Wood_02": 4,
+          "BP_Floor_Wood_01": 11,
+          "BP_Roof_Lights_01": 13,
+          "BP_Roof_01": 34,
+          "BP_Floor_Rug_01": 36
+        },
+        "materials": {
+          "/Game/Art/MI/Utility_Materials/Wood/Wood_Wall_01/Wood_Wall_01_02": 8,
+          "/Game/Art/MI/Utility_Materials/Plastic/Worn_Plastic_01/Worn_Plastic_01_01": 26,
+          "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01": 26,
+          "/Game/Art/MI/Utility_Materials/WallPaper/WallPaper_01/MI_WallPaper_01_01": 14,
+          "/Game/Art/MI/Utility_Materials/Wood/Wood_Wall_01/Wood_Wall_01_03": 4,
+          "/Game/Art/MI/Utility_Materials/Wood/Wood_Floor_01/Wood_Floor_01_01": 11,
+          "/Game/Art/MI/Utility_Materials/Durlock/Tiled_Ceiling_01/Tiled_Ceiling_01": 47,
+          "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_02": 13,
+          "/Game/Art/MI/Utility_Materials/Durlock/Tiled_Ceiling_Lights_01/Tiled_Ceiling_Lights_01": 13,
+          "/Game/Art/MI/Utility_Materials/Rug/Simple_Rug_02/Simple_Rug_02_01": 36
+        },
+        "meshes": {
+          "Wall_Corner_01": 6,
+          "Floor_Decorations_Corner_01": 6,
+          "Roof_Decorations_Corner_01": 6,
+          "Wall_01": 20,
+          "Roof_Decorations_01": 20,
+          "Floor_Decorations_01": 20,
+          "Floor_01": 47,
+          "Roof_02": 13,
+          "Roof_01": 34
+        }
+      }
+    },
+    "office-secondary": {
+      "title": "Level_01 · Executive room",
+      "status": "Owner review",
+      "image": "media/building-stage6/office-secondary-concept.png",
+      "sha256": "2d06cfb29cacdae7ad657eea6ad881a037635335be4c9ce7754321d12ff3c086",
+      "size_px": [
+        1633,
+        963
+      ],
+      "inputs": [
+        {
+          "image": "media/building-stage6/office-executive-native.webp",
+          "role": "Native edit target and geometry plate",
+          "supplied_png_sha256": "19fd8b188a4ef78285803c4a71a400abc9f208c764ff52e65bf211173eb32aef"
+        },
+        {
+          "image": "media/building-stage6/office-primary-concept.png",
+          "role": "Shared office finish and diffuser reference",
+          "sha256": "849527628fe03ff5f1162e57785034d5a34430f923ca3207f6b0e3530c68a95c"
+        }
+      ],
+      "prompt": "One landscape architectural paintover for Total (in)Sanitation. Input 1, the empty red-carpet wood-panel room with two ceiling lights, is the exact Unreal edit target, camera and geometry. Input 2, a separate broad Level_01 view, is ONLY the accepted design language reference for warm walnut joints, cream mineral-fiber T-bar ceiling, green-black base trim and period diffuser design. Reproduce ONLY Input 1's framing and room shape, the empty red carpet, existing solid endpoints, all three visible wall faces, and two existing light positions. Develop a richer but still production-economical executive office shell: break up the uninterrupted solid walnut with broad matte warm-cream woven or muted olive acoustic inserts set FLUSH between walnut stiles, repeatable from the right sidewall into one bay on the back wall. Keep walnut as the dominant surface, green-black rubber skirting and simple timber cap, one small flush punched bronze return grille above eye level where a ceiling-adjacent bay has clearance. Keep the red carpet recognizably unchanged. Maintain pale mineral-fiber flat ceiling grid aligned to the original, two period warm fluorescent prismatic diffusers at exactly the current positions, one flush unobtrusive service access tile; show the face of the ceiling and upper joinery clearly. Contemporary game concept rendering of a quiet circa-1975 pharmaceutical office with deliberate restrained 1970s geometry, mildly worn on edges and medium-dark warm bounce. No furniture, desk, windows, people, freestanding props, door or window cut in existing walls, artworks, logos, labels, subtitles, room expansion, architecture rearrangement or changed camera. One polished environment concept painting keyed to the Unreal view.",
+      "existing_material_reference": [
+        {
+          "station": 16,
+          "path": "/Game/Art/MI/Utility_Materials/Durlock/Tiled_Ceiling_01/Tiled_Ceiling_01",
+          "image": "media/unreal-2026-11-17/material-016.webp"
+        },
+        {
+          "station": 17,
+          "path": "/Game/Art/MI/Utility_Materials/Durlock/Tiled_Ceiling_Lights_01/Tiled_Ceiling_Lights_01",
+          "image": "media/unreal-2026-11-17/material-017.webp"
+        },
+        {
+          "station": 39,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01",
+          "image": "media/unreal-2026-11-17/material-039.webp"
+        },
+        {
+          "station": 60,
+          "path": "/Game/Art/MI/Utility_Materials/Rug/Luxurious_Rug_01/Luxurious_Rug_01_01",
+          "image": "media/unreal-2026-11-17/material-060.webp"
+        },
+        {
+          "station": 87,
+          "path": "/Game/Art/MI/Utility_Materials/Wood/Wood_Wall_01/Wood_Wall_01_02",
+          "image": "media/unreal-2026-11-17/material-087.webp"
+        },
+        {
+          "station": 88,
+          "path": "/Game/Art/MI/Utility_Materials/Wood/Wood_Wall_01/Wood_Wall_01_03",
+          "image": "media/unreal-2026-11-17/material-088.webp"
+        }
+      ],
+      "nearby_actor_inventory": {
+        "classes": {
+          "BP_OLB_Room": 1,
+          "BP_Wall_Wood_01": 8,
+          "BP_Wall_Wood_02": 5,
+          "BP_Floor_Rug_03": 12,
+          "BP_Roof_Lights_01": 4,
+          "BP_Roof_01": 8
+        },
+        "materials": {
+          "/Game/Art/MI/Utility_Materials/Wood/Wood_Wall_01/Wood_Wall_01_02": 8,
+          "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01": 13,
+          "/Game/Art/MI/Utility_Materials/Plastic/Worn_Plastic_01/Worn_Plastic_01_01": 13,
+          "/Game/Art/MI/Utility_Materials/Wood/Wood_Wall_01/Wood_Wall_01_03": 5,
+          "/Game/Art/MI/Utility_Materials/Rug/Luxurious_Rug_01/Luxurious_Rug_01_01": 12,
+          "/Game/Art/MI/Utility_Materials/Durlock/Tiled_Ceiling_01/Tiled_Ceiling_01": 12,
+          "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_02": 4,
+          "/Game/Art/MI/Utility_Materials/Durlock/Tiled_Ceiling_Lights_01/Tiled_Ceiling_Lights_01": 4
+        },
+        "meshes": {
+          "Wall_01": 13,
+          "Roof_Decorations_01": 13,
+          "Floor_Decorations_01": 13,
+          "Floor_01": 12,
+          "Roof_02": 4,
+          "Roof_01": 8
+        }
+      }
+    },
+    "basement-primary": {
+      "title": "Basement · Service corridor",
+      "status": "Owner review",
+      "image": "media/building-stage6/basement-primary-concept.png",
+      "sha256": "5e7000ef2d26faa9152f2cb040be06d4972fd18405e312cb02eccfea58fa66c7",
+      "size_px": [
+        1633,
+        963
+      ],
+      "inputs": [
+        {
+          "image": "media/building-stage6/basement-corridor-native.webp",
+          "role": "Native edit target and geometry plate",
+          "supplied_png_sha256": "74df49493dcd5b9e4c60953a89c2f336bca20867c9f78662a3ee4a4712c91d99"
+        }
+      ],
+      "prompt": "One landscape architectural paintover of the attached native Unreal Basement service corridor in the game Total (in)Sanitation. The single attached image is the edit target and absolute reference for framing, center vanishing point, corridor width, solid walls, flat floor and low ceiling. Keep the same eye-level straight camera, same distances and passage cross-section, darkest end, and the TWO existing white twin-tube light locations (one cropped at the top, another in the distance). Preserve the underlit and slightly neglected service-side atmosphere, with grounded, legible game rendering. Propose only practical fixed 1970s building shell details that read as parts of repeated 4-meter modular blocks. On the side walls maintain board-formed, largely bare mottled gray concrete, add shallow formwork seams roughly once per wall bay, a low dark gray-green painted wall dado with scuffed edge and thin protective rubber/steel bumper band attached flush, plus one old inset steel wall inspection panel with small visible fasteners. A few mid-scale vertical concrete recess seams establish a regular modular rhythm without forming arches or narrowing the passage. In the ceiling keep the existing flat plane. Add one restrained narrow run of matte dark metal cable tray or boxed duct tucked tight to the top-right wall-ceiling joint, support and removable cover seams that stop cleanly at the module boundaries, with two small accessible galvanised register faces on the ceiling plane. One or two old small brackets and a thin oxidized service conduit next to the fixed ceiling fixtures can hint at the institution's age. Add focused cool fluorescent bounce just enough to read the wall and overhead trim without turning into a bright sci-fi set. This should still read as the humble neglected basement of a 1970s pharmaceutical company, with a slight dungeon-like weight from its concrete, not a fantasy ruin. No added doors, no new openings, no raised steps, no architecture changes, no windows, no clutter, props, pipes on the floor, large conduits that eat headroom, large labels, people, effects or gameplay UI. One one-frame scene. No captions or presentation border.",
+      "existing_material_reference": [
+        {
+          "station": 1,
+          "path": "/Game/Art/MI/Utility_Materials/Concrete/Brutalist_Concrete_01/MI_Brutalist_Concrete_01_01",
+          "image": "media/unreal-2026-11-17/material-001.webp"
+        },
+        {
+          "station": 4,
+          "path": "/Game/Art/MI/Utility_Materials/Concrete/Concrete_01/MI_Concrete_01_01",
+          "image": "media/unreal-2026-11-17/material-004.webp"
+        },
+        {
+          "station": 33,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+          "image": "media/unreal-2026-11-17/material-033.webp"
+        },
+        {
+          "station": 78,
+          "path": "/Game/Art/MI/Utility_Materials/TrimSheet/Trimsheet_Wall_01/Trimsheet_Wall_02",
+          "image": "media/unreal-2026-11-17/material-078.webp"
+        }
+      ],
+      "nearby_actor_inventory": {
+        "classes": {
+          "BP_Floor_Concrete_01": 5,
+          "BP_Roof_Concrete_Lights_01": 3,
+          "BP_Roof_Concrete_01": 5,
+          "BP_Wall_VertexConcrete_06": 6,
+          "BP_Wall_VertexConcrete_Corner_01": 1,
+          "BP_Floor_Concrete_02": 3,
+          "BP_Wall_VertexConcrete_05": 1,
+          "BP_Wall_VertexConcrete_03": 3,
+          "BP_Wall_VertexConcrete_02": 2,
+          "BP_Stair_Basement_01": 1
+        },
+        "materials": {
+          "/Game/Art/MI/Utility_Materials/Concrete/Concrete_01/MI_Concrete_01_01": 6,
+          "/Game/Art/MI/Utility_Materials/Concrete/Brutalist_Concrete_01/MI_Brutalist_Concrete_01_01": 8,
+          "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Emmisive_02": 3,
+          "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06": 3,
+          "/Game/Art/MI/Utility_Materials/TrimSheet/Trimsheet_Wall_01/Trimsheet_Wall_02": 14,
+          "/Game/Art/MI/Utility_Materials/Concrete/Concrete_02/MI_Concrete_02_01": 4
+        },
+        "meshes": {
+          "Floor_01": 8,
+          "Roof_01": 8,
+          "Fluorescent_Light_Basement_01": 3,
+          "Wall_VertexColor_03": 9,
+          "Floor_Decorations_Concrete_01": 13,
+          "Wall_Corner_VertexColor_01": 1,
+          "Floor_Decorations_Concrete_Corner_01": 1,
+          "Wall_VertexColor_02": 3,
+          "Stair_01": 2,
+          "Wall_01": 4
+        }
+      }
+    },
+    "basement-secondary": {
+      "title": "Basement · Service counter",
+      "status": "Owner review",
+      "image": "media/building-stage6/basement-secondary-concept.png",
+      "sha256": "e3b59f90c8e48a850df68842f352f5f99ad216cb3650fa7e3d0fa781be835f40",
+      "size_px": [
+        1633,
+        963
+      ],
+      "inputs": [
+        {
+          "image": "media/building-stage6/basement-counter-native.webp",
+          "role": "Native edit target and geometry plate",
+          "supplied_png_sha256": "b7735b1a5cea3523e138724a2c30a76fb28485988702a80ad505602fcbc2da81"
+        },
+        {
+          "image": "media/building-stage6/basement-primary-concept.png",
+          "role": "Service corridor paint and hardware reference",
+          "sha256": "5e7000ef2d26faa9152f2cb040be06d4972fd18405e312cb02eccfea58fa66c7"
+        },
+        {
+          "image": "media/building-stage6/basement-materials.jpg",
+          "role": "Native concrete and metal swatches",
+          "sha256": "e53375c5e615ca928ac1b2f52571f342152337cbced1f1611ba7e91572a5d0aa"
+        }
+      ],
+      "prompt": "One carefully aligned landscape environment concept paintover for the Basement service counter in the game Total (in)Sanitation. Input 1 is the authoritative native Unreal edit target: retain its exact camera, aspect framing, image-plane positions, and built layout. The pointed wrought-steel gate occupies the lower left; keep that same opening and exact gate height and spear-tip motif. The central wide rough masonry pier separates gate and counter; keep its location and width. The existing right-hand serving aperture with vertical overhead bars, dark open shelf, continuous low worktop and horizontal corrugated apron stays in place at its start and current perspective. Preserve all openings and their visible depth. The low existing concrete ceiling is visible in a thin top strip; keep the height and crossing direction. Input 2 is the companion service corridor paintover and controls ONLY the sober low green-gray wall band, restrained metal hardware, removable panels and concrete tonal range. Input 3 is a native Unreal material reference for concrete, dark directional metal and ribbed metal; keep their grounded, worn finish, do not show swatch shapes or text. Add only integrated architectural pieces: thin painted steel jamb sleeves bolted INSIDE the existing gate and counter edges with no appreciable reduction to clear openings, and a small, practical bent-metal lintel facing on the counter shop frame. Against the exposed edge of the central concrete pier place one compact flush-mounted square service hatch in green-gray enamel, leaving most of the worn masonry visible; treat the dado as paint and end it cleanly at the jamb. Add one modest short ceiling cable-tray section and a shallow fixed light guard along the wall-ceiling junction near the existing counter, only within the existing overhead clearance; no ceiling drop or new powered fixtures. Hardware and steel may have light worn contact edges. Keep the left gate and shop aperture separable at a glance, cool shadow and restrained focused bounce so the building structure reads. No huge pipes, no room expansion, no new door or window, no props or merchandise, no furniture, no characters, no enlarged counter or changes to its height, no replacement of bars or gate, no sign text, no UI, no captions or styling border. One grounded 1970s industrial institutional art concept with the original faint medieval gate cue.",
+      "existing_material_reference": [
+        {
+          "station": 1,
+          "path": "/Game/Art/MI/Utility_Materials/Concrete/Brutalist_Concrete_01/MI_Brutalist_Concrete_01_01",
+          "image": "media/unreal-2026-11-17/material-001.webp"
+        },
+        {
+          "station": 4,
+          "path": "/Game/Art/MI/Utility_Materials/Concrete/Concrete_01/MI_Concrete_01_01",
+          "image": "media/unreal-2026-11-17/material-004.webp"
+        },
+        {
+          "station": 33,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+          "image": "media/unreal-2026-11-17/material-033.webp"
+        },
+        {
+          "station": 38,
+          "path": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Blinds_01/Metal_Blinds_01",
+          "image": "media/unreal-2026-11-17/material-038.webp"
+        },
+        {
+          "station": 78,
+          "path": "/Game/Art/MI/Utility_Materials/TrimSheet/Trimsheet_Wall_01/Trimsheet_Wall_02",
+          "image": "media/unreal-2026-11-17/material-078.webp"
+        }
+      ],
+      "nearby_actor_inventory": {
+        "classes": {
+          "BP_Wall_VertexConcrete_03": 2,
+          "BP_Wall_VertexConcrete_Corner_01": 2,
+          "BP_Wall_VertexConcrete_06": 2,
+          "BP_Wall_VertexConcrete_05": 1,
+          "BP_Wall_VertexConcrete_01": 1,
+          "BP_Floor_Concrete_02": 6,
+          "BP_Floor_Concrete_01": 3,
+          "BP_Wall_VertexConcrete_04": 1,
+          "BP_Stair_Basement_01": 1,
+          "BP_Roof_Concrete_01": 5,
+          "BP_Roof_Concrete_Lights_01": 4,
+          "Basement_Shop": 1
+        },
+        "materials": {
+          "/Game/Art/MI/Utility_Materials/TrimSheet/Trimsheet_Wall_01/Trimsheet_Wall_02": 10,
+          "/Game/Art/MI/Utility_Materials/Concrete/Concrete_02/MI_Concrete_02_01": 7,
+          "/Game/Art/MI/Utility_Materials/Concrete/Concrete_01/MI_Concrete_01_01": 5,
+          "/Game/Art/MI/Utility_Materials/Concrete/Brutalist_Concrete_01/MI_Brutalist_Concrete_01_01": 9,
+          "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Emmisive_02": 4,
+          "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06": 4,
+          "/Game/Art/MI/Utility_Materials/Metallic/Metal_Blinds_01/Metal_Blinds_01": 2,
+          "/Game/Art/MI/Utility_Materials/Concrete/Stylized_Concrete_01/Stylized_Concrete_01": 2,
+          "/Game/Art/MI/Utility_Materials/Simple/MI_Full_Black": 1
+        },
+        "meshes": {
+          "Wall_VertexColor_03": 4,
+          "Floor_Decorations_Concrete_01": 8,
+          "Wall_Corner_VertexColor_01": 2,
+          "Floor_Decorations_Concrete_Corner_01": 2,
+          "Wall_VertexColor_02": 1,
+          "Wall_VertexColor_01": 2,
+          "Floor_01": 9,
+          "Stair_01": 2,
+          "Wall_01": 4,
+          "Roof_01": 9,
+          "Fluorescent_Light_Basement_01": 4,
+          "Cube_003": 1,
+          "Cube_051": 1,
+          "Cube_079": 1,
+          "Cube_082": 1,
+          "Cube_089": 1,
+          "Cube_090": 1,
+          "Cube_091": 1,
+          "Cube_097": 1,
+          "Cube_098": 1,
+          "Cube_102": 1,
+          "Cube_103": 1,
+          "Cube_104": 1,
+          "Cube_105": 1,
+          "Cube_113": 1,
+          "Plane_010": 1,
+          "Cube_114": 1
+        }
+      }
+    }
+  },
+  "basement_refinement": {
+    "title": "Stage 6 Basement refinement",
+    "status": "Selected for Stage 7 concept development",
+    "generation": "ChatGPT built-in image generation",
+    "comparison": "media/building-stage6/basement-refinement-comparison.webp",
+    "revisions": {
+      "basement-primary": {
+        "image": "media/building-stage6/basement-corridor-concept-v2.png",
+        "sha256": "45e28a9782d78d61ccd7368d00a72be2763eb26e1fcce5ac2ee99cf957ba1a82",
+        "size_px": [
+          1632,
+          963
+        ],
+        "base_image": "media/building-stage6/basement-primary-concept.png",
+        "native_view": "media/building-stage6/basement-corridor-native.webp",
+        "prompt": "Edit Image 1, the existing landscape Basement corridor concept for Total (in)Sanitation, into a focused version 2. Image 1 controls the exact framing, eye-height camera, vanishing point, same left and right walls, wall green-gray dado and metal rail, left hatch, floor plane, ceiling height, two fluorescent fixtures, and the dark far end. Preserve those features and keep the same full landscape aspect and framing. Image 2 is the owner's reference only for the visible density, grouping, and positions of overhead metal pipes. Its framing, walls, floor sheen, doors, black borders and any text are unrelated.\n\nOn the existing concrete ceiling in Image 1, visibly add about six separate steel pipe runs in two asymmetrical banks, sized to the current architecture. On camera-left, four parallel old galvanized round pipes of different diameters run back close to the ceiling, with metal strap hangers and legible couplings. Keep two dominant pipes thicker and two visibly smaller, silver-gray with subtle oxidation and cool low highlights. On camera-right, add two smaller visible steel runs alongside the existing shallow tray, with restrained bends and occasional cross-supports. Near the far third one short branch may turn or cross above the clear route, organized and supported. Keep the two existing fluorescent fixtures exposed between the banks and leave their glow and positions intact. Pipes are part of a practical institutional service ceiling, with one visible bracket repeating at modular bay intervals. They should be a clear step up in ceiling density, tightly attached to the existing ceiling, preserving headroom and keeping the wall hatch accessible.\n\nOn the existing dark concrete floor add one broad rectangular flush cut-and-repair cement patch in the near foreground slightly left of center, with narrow imperfect saw-cut edges, drier light gray tone, subtle trowel variation and a small nearby crack that meets the older slab. Add a smaller undertone repair farther down near one wall. Keep the old floor texture and the existing wall finishes dominant. Dry, worn 1970s pharmaceutical service building, restrained and readable like Image 1. No people, props, water, new doors, additional fixtures, signs, frame tilt or new camera. One finished landscape concept, rendered as the same shot with those two revisions.",
+        "inputs": [
+          {
+            "image": "media/building-stage6/basement-primary-concept.png",
+            "role": "First-pass concept and edit target",
+            "sha256": "5e7000ef2d26faa9152f2cb040be06d4972fd18405e312cb02eccfea58fa66c7"
+          },
+          {
+            "path_relative_to_building_source": "Resources/ben-wilson-basement-screen-01.jpg",
+            "role": "Owner-supplied reference for pipe quantity, layering and placement",
+            "sha256": "59552c35aee889ac801e817e35c9deda9dbe1bf162d5ed1db65bbde139fc8acf"
+          }
+        ],
+        "visual_review": "The six overhead runs form a four-pipe bank and a two-pipe bank. Both fluorescent positions, the wall hatch and rails are visible. The foreground repair and smaller distant repair sit flush with the slab. The same camera lines and unobstructed passage read in the comparison.",
+        "status": "Selected for Stage 7 concept development"
+      },
+      "basement-secondary": {
+        "image": "media/building-stage6/basement-counter-concept-v2.png",
+        "sha256": "d0b44811e037e8d9933b8e6287e13afedb215d122af9b18d8d42a5a92659ac84",
+        "size_px": [
+          1632,
+          963
+        ],
+        "base_image": "media/building-stage6/basement-secondary-concept.png",
+        "native_view": "media/building-stage6/basement-counter-native.webp",
+        "prompt": "Edit Image 1, the existing landscape Basement service-counter concept for Total (in)Sanitation. Treat Image 1 as the exact image to edit and the geometry and composition plate. Preserve its camera and crop, the width and height of the rough center pier, rusty spear-tip gate in the lower left, entire right-hand counter aperture, vertical bars, corrugated apron and concrete worktop, green-gray wall band, hatch, jambs and main light. Image 2 is a visual reference ONLY for the spacing, ceiling-edge position, and visibly grouped density of practical overhead steel pipes. Do not borrow its corridor geometry or tilted camera. Image 3 is the game's approved A Clean Start poster artwork; reproduce it as a real installed paper print.\n\nMake only three architectural changes. First, show a short run of three to four parallel dull steel pipes of varied diameters grouped in the visible ceiling zone above the counter, supported by believable brackets and collars, with one right-angle turn at the top of the frame and continuity alongside the existing tray. Keep the pipes above the lintel and clear of the existing light guard and aperture. Second, add one clearly visible small flush cement repair with weathered imperfect rectangular edges and a lighter dry troweled texture in the foreground near the counter, integrated into the dark slab. Third, attach ONE portrait A Clean Start poster, about 45 by 68 cm in-world, to the large flat solid wall above the left-hand gate, with a few centimeters of visible clearance from the gate frame and floor hardware. Make it comfortably visible and fully inside frame, in the middle of that concrete wall patch, following the wall's perspective but not dramatically skewed. As faithfully as possible reproduce Image 3: cream stock, orange circle with the exact pale greeting wizard silhouette and staff, green-orange-mustard stepped stripes and the exact headline 'A CLEAN START' above the exact smaller slogan 'TO EVERY SHIFT'. Subdued warm highlights and slight dusty edge wear, with the typography and graphic still legible. Give the poster a trace of ambient shading from the wall like a real mounted print. Keep the original light level and little else in the scene. No new text elsewhere, no substitutions, no second poster, no shelves or props, no change to architecture or framing. One finished landscape concept from the same camera.",
+        "inputs": [
+          {
+            "image": "media/building-stage6/basement-secondary-concept.png",
+            "role": "First-pass concept and edit target",
+            "sha256": "e3b59f90c8e48a850df68842f352f5f99ad216cb3650fa7e3d0fa781be835f40"
+          },
+          {
+            "path_relative_to_building_source": "Resources/ben-wilson-basement-screen-01.jpg",
+            "role": "Owner-supplied reference for pipe quantity, layering and placement",
+            "sha256": "59552c35aee889ac801e817e35c9deda9dbe1bf162d5ed1db65bbde139fc8acf"
+          },
+          {
+            "image": "media/signage-stage5-svg/clean-start-poster.png",
+            "role": "Approved poster artwork used for the placement study",
+            "sha256": "c9b28d3a1eca9fb80e253758d4d6c99940e9fdaba76d6aa9739d707be304ba8a",
+            "editable_source": "sources/signage-stage5-svg/clean-start-poster.svg"
+          }
+        ],
+        "visual_review": "The steel group sits above the counter aperture alongside the light guard, with the existing gate, green hatch and counter face visible. The single mounted poster shows the approved layout and correctly reads A CLEAN START / TO EVERY SHIFT. It is a generated placement study. The approved SVG remains the print master.",
+        "status": "Selected for Stage 7 concept development"
+      }
+    }
+  }
+}

@@ -3,11 +3,11 @@
     {
       "id": "total-insanitation",
       "title": "Total (in)Sanitation",
-      "description": "Stages 1–4 complete. Art bible → Signage & UI has the Stage 5 review with four signs, HUD and menu proposals. Mascot contains the twelve approved poses.",
+      "description": "Stage 7 studies the selected Basement corridor and counter kit, current Unreal materials and a new signage atlas page.",
       "type": "group",
       "category": "game",
       "created": "2026-11-12",
-      "updated": "2026-11-17T22:12:44.366Z",
+      "updated": "2026-11-18T19:41:21.148Z",
       "folder": "2026-11-12_total-insanitation",
       "status": "active",
       "pinned": true,
@@ -85,57 +85,69 @@
           "name": "Capture notes",
           "path": "REFERENCE_LIBRARY.md",
           "parent": "TOOLS.md"
+        },
+        {
+          "name": "Building concepts",
+          "path": "building-concepts.card.json",
+          "viewer": "card",
+          "parent": "art-bible.card.json"
+        },
+        {
+          "name": "Basement assets",
+          "path": "basement-assets.card.json",
+          "parent": "art-bible.card.json",
+          "viewer": "card"
         }
       ]
     },
     {
       "id": "world-in-dreams",
       "title": "World in Dreams",
-      "description": "Close-up living simulation of one walled city and five villages: every inhabitant has a home, trade and daily routine, and a place inside buildings with interiors; everyone keeps the hours of their trade and season; money circulates in a closed economy with rents, taxes and prices; trades follow demand; people fall ill, have accidents and die; some steal, fight and kill, and those in power abuse it; fields follow the seasons and the weather of the year; wildlife roams. No tile grid; painted after the art bible. Protagonist, RPG and AI agents much later.",
+      "description": "A painted fantasy world that lives on its own: one walled city, five villages and about 1,800 people simulated minute by minute. Documentation reset and audited on 2026-11-18, with a new twelve-milestone roadmap that starts from the land and its animals.",
       "type": "group",
       "category": "game",
       "created": "2026-11-10",
-      "updated": "2026-11-11",
+      "updated": "2026-11-18T14:35:06.708Z",
       "folder": "2026-11-10_world-in-dreams",
       "steps": [
         {
-          "name": "Project",
-          "path": "PROJECT.md"
+          "name": "Overview",
+          "path": "OVERVIEW.md"
         },
         {
-          "name": "Getting started",
-          "path": "GETTING_STARTED.md"
+          "name": "Systems",
+          "path": "SYSTEMS.md",
+          "parent": "OVERVIEW.md"
         },
         {
-          "name": "Quality of life",
-          "path": "QUALITY_OF_LIFE.md"
+          "name": "Controls",
+          "path": "CONTROLS.md",
+          "parent": "OVERVIEW.md"
         },
         {
-          "name": "Simulation",
-          "path": "SIMULATION.md"
+          "name": "Audit",
+          "path": "AUDIT_2026-11-18.md",
+          "parent": "OVERVIEW.md"
         },
         {
-          "name": "Species",
-          "path": "SPECIES.md"
-        },
-        {
-          "name": "Architecture",
-          "path": "ARCHITECTURE.md"
-        },
-        {
-          "name": "Decisions",
-          "path": "DECISIONS.md"
+          "name": "Roadmap",
+          "path": "ROADMAP.md"
         },
         {
           "name": "Art bible",
-          "path": "art-bible.card.json",
-          "viewer": "card"
+          "path": "ART_DIRECTION.md"
+        },
+        {
+          "name": "Concepts",
+          "path": "art-concepts.card.json",
+          "viewer": "card",
+          "parent": "ART_DIRECTION.md"
         },
         {
           "name": "References",
           "path": "art-references.card.json",
           "viewer": "card",
-          "parent": "art-bible.card.json"
+          "parent": "ART_DIRECTION.md"
         }
       ],
       "defaultStep": 0,

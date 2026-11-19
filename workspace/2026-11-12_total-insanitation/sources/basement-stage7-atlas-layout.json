@@ -1,0 +1,655 @@
+{
+  "status": "Packing study for review. Atlas textures and Unreal materials have a separate implementation step.",
+  "size_px": [
+    2048,
+    2048
+  ],
+  "gutters_px_per_edge": 32,
+  "mips_tested_with_box_filter": [
+    {
+      "mip": 0,
+      "tiles": 12,
+      "samples_per_tile": 9,
+      "filter": "BOX"
+    },
+    {
+      "mip": 1,
+      "tiles": 12,
+      "samples_per_tile": 9,
+      "filter": "BOX"
+    },
+    {
+      "mip": 2,
+      "tiles": 12,
+      "samples_per_tile": 9,
+      "filter": "BOX"
+    },
+    {
+      "mip": 3,
+      "tiles": 12,
+      "samples_per_tile": 9,
+      "filter": "BOX"
+    },
+    {
+      "mip": 4,
+      "tiles": 12,
+      "samples_per_tile": 9,
+      "filter": "BOX"
+    },
+    {
+      "mip": 5,
+      "tiles": 12,
+      "samples_per_tile": 9,
+      "filter": "BOX"
+    }
+  ],
+  "top_left_origin": true,
+  "rect_convention": "xywh content; xyxy allocation with exclusive x1 and y1; no rotation",
+  "allocation_coverage_fraction": 0.7625,
+  "largest_open_rect_xyxy_px": [
+    704,
+    1656,
+    2048,
+    2048
+  ],
+  "rectangles": {
+    "01-employees-only": {
+      "layout_number": 1,
+      "artwork": "sources/signage-stage5-svg/01-employees-only.svg",
+      "svg_sha256": "496e4ddd68f4f595603c17466129062fe2833fa10fbdd128fc09a7a625b599ba",
+      "content_xywh_px": [
+        32,
+        1688,
+        640,
+        171
+      ],
+      "allocation_xyxy_px": [
+        0,
+        1656,
+        704,
+        1892
+      ],
+      "unreal_uv_offset": [
+        0.015869141,
+        0.824462891
+      ],
+      "unreal_uv_scale": [
+        0.312011719,
+        0.083007812
+      ]
+    },
+    "02-restricted-area": {
+      "layout_number": 2,
+      "artwork": "sources/signage-stage5-svg/02-restricted-area.svg",
+      "svg_sha256": "940b9d25869f59eb4be67128167251ead377b1d1c6ec328eb3b36b5723236d60",
+      "content_xywh_px": [
+        1152,
+        608,
+        432,
+        431
+      ],
+      "allocation_xyxy_px": [
+        1120,
+        576,
+        1616,
+        1072
+      ],
+      "unreal_uv_offset": [
+        0.562744141,
+        0.297119141
+      ],
+      "unreal_uv_scale": [
+        0.210449219,
+        0.209960938
+      ]
+    },
+    "03-keep-out": {
+      "layout_number": 3,
+      "artwork": "sources/signage-stage5-svg/03-keep-out.svg",
+      "svg_sha256": "674d617d3ee142744fdadd1a5ab2f40ea98285836c4f528ef283d74c7f5e0d7e",
+      "content_xywh_px": [
+        1648,
+        608,
+        338,
+        496
+      ],
+      "allocation_xyxy_px": [
+        1616,
+        576,
+        2020,
+        1136
+      ],
+      "unreal_uv_offset": [
+        0.804931641,
+        0.297119141
+      ],
+      "unreal_uv_scale": [
+        0.164550781,
+        0.241699219
+      ]
+    },
+    "04-cleaning-equipment": {
+      "layout_number": 4,
+      "artwork": "sources/signage-stage5-svg/04-cleaning-equipment.svg",
+      "svg_sha256": "808b90cafabeb1f26b68582d81e8685c26f801f5c254c10e956ff85073fe122e",
+      "content_xywh_px": [
+        736,
+        32,
+        640,
+        301
+      ],
+      "allocation_xyxy_px": [
+        704,
+        0,
+        1408,
+        368
+      ],
+      "unreal_uv_offset": [
+        0.359619141,
+        0.015869141
+      ],
+      "unreal_uv_scale": [
+        0.312011719,
+        0.146484375
+      ]
+    },
+    "05-chemical-spill": {
+      "layout_number": 5,
+      "artwork": "sources/signage-stage5-svg/05-chemical-spill.svg",
+      "svg_sha256": "94d6ae43e3898435aba5285492745f4db27478e7cf85f38b97c2ac20519bfbdf",
+      "content_xywh_px": [
+        736,
+        400,
+        352,
+        528
+      ],
+      "allocation_xyxy_px": [
+        704,
+        368,
+        1120,
+        960
+      ],
+      "unreal_uv_offset": [
+        0.359619141,
+        0.195556641
+      ],
+      "unreal_uv_scale": [
+        0.171386719,
+        0.257324219
+      ]
+    },
+    "06-service-stairs": {
+      "layout_number": 6,
+      "artwork": "sources/signage-stage5-svg/06-service-stairs.svg",
+      "svg_sha256": "4b4ac5eb0f4bda89f66e247ae64fc6668894f28f040510db5563b5cbe57e8f31",
+      "content_xywh_px": [
+        1368,
+        1436,
+        640,
+        186
+      ],
+      "allocation_xyxy_px": [
+        1336,
+        1404,
+        2040,
+        1656
+      ],
+      "unreal_uv_offset": [
+        0.668212891,
+        0.701416016
+      ],
+      "unreal_uv_scale": [
+        0.312011719,
+        0.090332031
+      ]
+    },
+    "07-return-tools": {
+      "layout_number": 7,
+      "artwork": "sources/signage-stage5-svg/07-return-tools.svg",
+      "svg_sha256": "0807a16b1ac1e5b5be12fb4e402d43f7ec8f115a4e33799fbe6e2cbfcd4edb11",
+      "content_xywh_px": [
+        32,
+        1104,
+        432,
+        429
+      ],
+      "allocation_xyxy_px": [
+        0,
+        1072,
+        496,
+        1568
+      ],
+      "unreal_uv_offset": [
+        0.015869141,
+        0.539306641
+      ],
+      "unreal_uv_scale": [
+        0.210449219,
+        0.208984375
+      ]
+    },
+    "08-toxic-vapors-goblin": {
+      "layout_number": 8,
+      "artwork": "sources/signage-stage5-svg/08-toxic-vapors-goblin.svg",
+      "svg_sha256": "249be4c4f2c89dbf080f47e3ad7f49aba5109940126420e3bfc38c56973e91f9",
+      "content_xywh_px": [
+        1440,
+        32,
+        381,
+        512
+      ],
+      "allocation_xyxy_px": [
+        1408,
+        0,
+        1856,
+        576
+      ],
+      "unreal_uv_offset": [
+        0.703369141,
+        0.015869141
+      ],
+      "unreal_uv_scale": [
+        0.185546875,
+        0.249511719
+      ]
+    },
+    "09-low-clearance-orc": {
+      "layout_number": 9,
+      "artwork": "sources/signage-stage5-svg/09-low-clearance-orc.svg",
+      "svg_sha256": "8c4c68528cf6536230dafc406d26ea99e14b20dd80a0aa10053fe73830d7710d",
+      "content_xywh_px": [
+        1368,
+        1168,
+        640,
+        202
+      ],
+      "allocation_xyxy_px": [
+        1336,
+        1136,
+        2040,
+        1404
+      ],
+      "unreal_uv_offset": [
+        0.668212891,
+        0.570556641
+      ],
+      "unreal_uv_scale": [
+        0.312011719,
+        0.098144531
+      ]
+    },
+    "10-quiet-testing-elf": {
+      "layout_number": 10,
+      "artwork": "sources/signage-stage5-svg/10-quiet-testing-elf.svg",
+      "svg_sha256": "1446fd75111a903ee74bbee1860b90522c99132cfa7c967b1edc51bac005e52f",
+      "content_xywh_px": [
+        972,
+        1104,
+        332,
+        496
+      ],
+      "allocation_xyxy_px": [
+        940,
+        1072,
+        1336,
+        1632
+      ],
+      "unreal_uv_offset": [
+        0.474853516,
+        0.539306641
+      ],
+      "unreal_uv_scale": [
+        0.161621094,
+        0.241699219
+      ]
+    },
+    "clean-start-poster": {
+      "layout_number": 11,
+      "artwork": "sources/signage-stage5-svg/clean-start-poster.svg",
+      "svg_sha256": "e92c38ed9b93f3b4622f654264c8497d560b99e60d34dba957577a4844e621af",
+      "content_xywh_px": [
+        32,
+        32,
+        640,
+        960
+      ],
+      "allocation_xyxy_px": [
+        0,
+        0,
+        704,
+        1024
+      ],
+      "unreal_uv_offset": [
+        0.015869141,
+        0.015869141
+      ],
+      "unreal_uv_scale": [
+        0.312011719,
+        0.468261719
+      ]
+    },
+    "wet-floor": {
+      "layout_number": 12,
+      "artwork": "sources/signage-stage5-svg/wet-floor.svg",
+      "svg_sha256": "2387c2df9705296f5e2a92a5e7dd16f44155d86b104206c8e6efc17f39d30bba",
+      "content_xywh_px": [
+        528,
+        1056,
+        377,
+        480
+      ],
+      "allocation_xyxy_px": [
+        496,
+        1024,
+        940,
+        1568
+      ],
+      "unreal_uv_offset": [
+        0.258056641,
+        0.515869141
+      ],
+      "unreal_uv_scale": [
+        0.18359375,
+        0.233886719
+      ]
+    }
+  },
+  "preview": "media/basement-stage7/signage-atlas-layout.webp",
+  "legacy": {
+    "project": "Utility_Materials/TrimSheet&Atlas/General_Atlas/General_Atlas.sbs",
+    "sha256": "3947002209a66b8adac54a0f6b1516019ff113a0045f57cc416db5330797ee56",
+    "graph": "Text_Atlas",
+    "rendered_size_px": [
+      1024,
+      1024
+    ],
+    "output_sha256": {
+      "basecolor": "b12eb16397ad61f0122c604568395dd9c8b32e22a32a378663e58179b76bd248",
+      "normal": "dfdbb7b07d4e0960503e52f893fd4dcfccb2cb6f2c0fd8ca390264dfeab70571",
+      "reference": "09352ddaab6a0bfe6178cdac8f0ff1ada9d3fdf7690d412075bd805f38e42113",
+      "roughness": "32b509296cfa7968b79083c6ef226d48a3e1007937b9c991b80cdcfe01eeba05"
+    },
+    "basecolor_alpha_row_bands_top_left_px": [
+      [
+        3,
+        513,
+        511,
+        529
+      ],
+      [
+        19,
+        532,
+        237,
+        748
+      ],
+      [
+        2,
+        802,
+        127,
+        833
+      ],
+      [
+        10,
+        911,
+        139,
+        1009
+      ]
+    ],
+    "basecolor_alpha_bounds_top_left_px": [
+      2,
+      513,
+      511,
+      1009
+    ],
+    "reference_has_full_frame_background": true,
+    "uv_union_bounds_top_left_px": [
+      0,
+      0,
+      1024,
+      1024
+    ],
+    "uv_covered_texels_at_1024": 978180,
+    "uv_region_measurement": "Polygon loops for the Atlas material only, active render UV and repeat addressing. Diagnostic raster with point-rounded edges.",
+    "blender_consumers": {
+      "Ashtray_01": {
+        "render_uv_layer": "UVChannel_1",
+        "faces": 64,
+        "bounds_blender_uv": [
+          -1e-07,
+          0.0,
+          0.9999261,
+          1.0
+        ],
+        "sampled_px_bounds_top_left": [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        "dimensions_m": [
+          0.30947,
+          0.30947,
+          0.0808
+        ],
+        "used_texels_at_1024": 848496
+      },
+      "Cigarette_01": {
+        "render_uv_layer": "UVChannel_1",
+        "faces": 529,
+        "bounds_blender_uv": [
+          0.0993014,
+          -0.0,
+          0.9714836,
+          0.9992341
+        ],
+        "sampled_px_bounds_top_left": [
+          102,
+          1,
+          996,
+          1024
+        ],
+        "dimensions_m": [
+          0.08598,
+          0.15784,
+          0.05592
+        ],
+        "used_texels_at_1024": 173766
+      },
+      "Cigarette_02": {
+        "render_uv_layer": "UVChannel_1",
+        "faces": 272,
+        "bounds_blender_uv": [
+          0.0993014,
+          0.6189199,
+          0.5971952,
+          0.9148607
+        ],
+        "sampled_px_bounds_top_left": [
+          102,
+          87,
+          613,
+          391
+        ],
+        "dimensions_m": [
+          0.03424,
+          0.10561,
+          0.03596
+        ],
+        "used_texels_at_1024": 101663
+      },
+      "Cigarette_03": {
+        "render_uv_layer": "UVChannel_1",
+        "faces": 462,
+        "bounds_blender_uv": [
+          0.0,
+          0.0,
+          0.7570542,
+          1.0000001
+        ],
+        "sampled_px_bounds_top_left": [
+          0,
+          0,
+          776,
+          1024
+        ],
+        "dimensions_m": [
+          0.07266,
+          0.19686,
+          0.05391
+        ],
+        "used_texels_at_1024": 226920
+      },
+      "Cigarette_04": {
+        "render_uv_layer": "UVChannel_1",
+        "faces": 386,
+        "bounds_blender_uv": [
+          0.0,
+          0.0,
+          0.8440931,
+          0.9915364
+        ],
+        "sampled_px_bounds_top_left": [
+          0,
+          9,
+          865,
+          1024
+        ],
+        "dimensions_m": [
+          0.03466,
+          0.24861,
+          0.03582
+        ],
+        "used_texels_at_1024": 227081
+      },
+      "Cigarette_05": {
+        "render_uv_layer": "UVChannel_1",
+        "faces": 532,
+        "bounds_blender_uv": [
+          0.1849319,
+          0.5246933,
+          0.9428512,
+          0.9807013
+        ],
+        "sampled_px_bounds_top_left": [
+          189,
+          20,
+          966,
+          488
+        ],
+        "dimensions_m": [
+          0.03823,
+          0.13114,
+          0.0593
+        ],
+        "used_texels_at_1024": 115294
+      },
+      "Pipes_01": {
+        "render_uv_layer": "meshId0-tex0",
+        "faces": 8,
+        "bounds_blender_uv": [
+          0.0513872,
+          0.123218,
+          0.0721201,
+          0.1447233
+        ],
+        "sampled_px_bounds_top_left": [
+          53,
+          876,
+          75,
+          899
+        ],
+        "dimensions_m": [
+          0.03134,
+          0.70035,
+          0.042
+        ],
+        "used_texels_at_1024": 412
+      },
+      "Pipes_02": {
+        "render_uv_layer": "prim1-map0",
+        "faces": 26,
+        "bounds_blender_uv": [
+          0.1076748,
+          0.2841083,
+          0.1618193,
+          0.3442418
+        ],
+        "sampled_px_bounds_top_left": [
+          110,
+          671,
+          167,
+          734
+        ],
+        "dimensions_m": [
+          0.0956,
+          0.48544,
+          0.15693
+        ],
+        "used_texels_at_1024": 2738
+      },
+      "Pipes_03": {
+        "render_uv_layer": "UVChannel_1",
+        "faces": 24,
+        "bounds_blender_uv": [
+          0.3189362,
+          0.1368111,
+          0.3998367,
+          0.2177117
+        ],
+        "sampled_px_bounds_top_left": [
+          327,
+          801,
+          410,
+          885
+        ],
+        "dimensions_m": [
+          0.1355,
+          0.45722,
+          0.15605
+        ],
+        "used_texels_at_1024": 5508
+      },
+      "SM_Centrifuge": {
+        "render_uv_layer": "UVmap_0",
+        "faces": 32,
+        "bounds_blender_uv": [
+          0.0026497,
+          1.3017522,
+          0.4770517,
+          1.5417745
+        ],
+        "sampled_px_bounds_top_left": [
+          3,
+          469,
+          490,
+          716
+        ],
+        "dimensions_m": [
+          0.50194,
+          0.56856,
+          0.84826
+        ],
+        "used_texels_at_1024": 3299
+      }
+    },
+    "image_nodes": [
+      {
+        "name": "Image Texture",
+        "type": "ShaderNodeTexImage",
+        "image": "Text_Atlas_reference.png",
+        "filepath": "//Unreal_Textures\\Text_Atlas_reference.png",
+        "uv_map": null,
+        "extension": "REPEAT"
+      },
+      {
+        "name": "Image Texture.001",
+        "type": "ShaderNodeTexImage",
+        "image": "Text_Atlas_normal.png",
+        "filepath": "//Unreal_Textures\\Text_Atlas_normal.png",
+        "uv_map": null,
+        "extension": "REPEAT"
+      }
+    ],
+    "preview": "media/basement-stage7/legacy-atlas-audit.webp"
+  }
+}

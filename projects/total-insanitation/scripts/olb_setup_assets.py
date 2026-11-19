@@ -44,6 +44,7 @@ T_CLASS = BEL.get_class_reference_type(unreal.Actor.static_class())
 T_CLASSES = BEL.get_array_type(T_CLASS)
 T_INT = BEL.get_basic_type_by_name('int')
 T_STR = BEL.get_basic_type_by_name('string')
+T_BOOL = BEL.get_basic_type_by_name('bool')
 
 
 def var(bp, name, ptype, category, tooltip=None):
@@ -107,6 +108,8 @@ box.set_editor_property('hidden_in_game', True)
 box.set_collision_profile_name('NoCollision')
 var(room, 'Group', T_STR, 'Office Builder')
 var(room, 'Priority', T_INT, 'Office Builder')
+var(room, 'EnclosedRoom', T_BOOL, 'Office Builder')
+var(room, 'KeepSharedWalls', T_BOOL, 'Office Builder')
 piece_vars(room, True)
 
 # ---------------------------------------------------------------- stair
@@ -140,7 +143,8 @@ defaults = {
               'FloorClasses': [kit_class('BP_Floor/BP_Floor_Wood_01')],
               'CeilingClasses': [kit_class('BP_Roof/BP_Roof_01')],
               'CeilingLightClass': kit_class('BP_Roof/BP_Roof_Lights_01'), 'LightSpacingX': 2, 'LightSpacingY': 2},
-    room: {'Group': 'Office', 'Priority': 0, 'LightSpacingX': -1, 'LightSpacingY': -1},
+    room: {'Group': 'Office', 'Priority': 0, 'EnclosedRoom': False, 'KeepSharedWalls': False,
+           'LightSpacingX': -1, 'LightSpacingY': -1},
     stair: {'Group': 'Office', 'StairClass': kit_class('BP_Stairs/BP_Stair_Concrete_01')},
 }
 for bp, values in defaults.items():

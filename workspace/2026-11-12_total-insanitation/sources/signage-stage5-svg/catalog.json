@@ -1,0 +1,318 @@
+{
+  "title": "Total (in)Sanitation · Stage 5 signage",
+  "artwork": {
+    "01-employees-only": {
+      "title": "Employees Only",
+      "reference": "media/basement-signs-stage5/01-employees-only.png",
+      "reference_sha256": "252e856ec40468f4751cde26aa0f69375e9627ff2f87fad2b595eba1882929d4",
+      "mascot": {
+        "pose": "point-left",
+        "master": "sources/mascot-trace-v02/wizard-point-left-v02-white.svg",
+        "sha256": "91e5a3469eb0e379e59ed154ff14a718d120c4c23b28344eec45752ef3554872"
+      },
+      "viewbox": [
+        5,
+        19,
+        591,
+        158
+      ],
+      "exportSize": [
+        1182,
+        316
+      ],
+      "lettering": [
+        "EMPLOYEES ONLY"
+      ],
+      "svg": "sources/signage-stage5-svg/01-employees-only.svg",
+      "svg_sha256": "496e4ddd68f4f595603c17466129062fe2833fa10fbdd128fc09a7a625b599ba",
+      "preview": "media/signage-stage5-svg/01-employees-only.png"
+    },
+    "02-restricted-area": {
+      "title": "Restricted Area",
+      "reference": "media/basement-signs-stage5/02-restricted-area.png",
+      "reference_sha256": "0d2459f86c390ec1eaef5ad5bf875ec675ff3631809b956a6b202ab644212b15",
+      "mascot": {
+        "pose": "point-left",
+        "master": "sources/mascot-trace-v02/wizard-point-left-v02.svg",
+        "sha256": "8fc0297ca63500be4a4ba1cb1c0c2bd8f0157b9fe963b35f34491cb4f97e29d2"
+      },
+      "viewbox": [
+        6,
+        7,
+        588,
+        586
+      ],
+      "exportSize": [
+        1176,
+        1172
+      ],
+      "lettering": [
+        "RESTRICTED",
+        "AREA"
+      ],
+      "svg": "sources/signage-stage5-svg/02-restricted-area.svg",
+      "svg_sha256": "940b9d25869f59eb4be67128167251ead377b1d1c6ec328eb3b36b5723236d60",
+      "preview": "media/signage-stage5-svg/02-restricted-area.png"
+    },
+    "03-keep-out": {
+      "title": "Keep Out · Authorized Personnel Only",
+      "reference": "media/basement-signs-stage5/03-keep-out.png",
+      "reference_sha256": "4f2f0e21778908e4238cc68f5aab8c2677091f439349bb2a556fe68e1763507f",
+      "mascot": {
+        "pose": "point-left",
+        "master": "sources/mascot-trace-v02/wizard-point-left-v02.svg",
+        "sha256": "8fc0297ca63500be4a4ba1cb1c0c2bd8f0157b9fe963b35f34491cb4f97e29d2"
+      },
+      "viewbox": [
+        8,
+        17,
+        385,
+        565
+      ],
+      "exportSize": [
+        770,
+        1130
+      ],
+      "lettering": [
+        "KEEP OUT",
+        "AUTHORIZED",
+        "PERSONNEL ONLY"
+      ],
+      "svg": "sources/signage-stage5-svg/03-keep-out.svg",
+      "svg_sha256": "674d617d3ee142744fdadd1a5ab2f40ea98285836c4f528ef283d74c7f5e0d7e",
+      "preview": "media/signage-stage5-svg/03-keep-out.png"
+    },
+    "04-cleaning-equipment": {
+      "title": "Cleaning Equipment",
+      "reference": "media/basement-signs-stage5/04-cleaning-equipment.png",
+      "reference_sha256": "7a04dc1b9e97b5276d798adfe35cac69609ac55cadcc1a6f1286f072c37b7d35",
+      "mascot": {
+        "pose": "pushing-equipment",
+        "master": "sources/mascot-trace-v03/wizard-pushing-equipment-v03.svg",
+        "sha256": "d448157fb03ef18bd043f5f6bd2533b431fdb37f2261516a2e1dd3b0fd95d01b"
+      },
+      "viewbox": [
+        7,
+        12,
+        586,
+        276
+      ],
+      "exportSize": [
+        1172,
+        552
+      ],
+      "lettering": [
+        "CLEANING",
+        "EQUIPMENT"
+      ],
+      "svg": "sources/signage-stage5-svg/04-cleaning-equipment.svg",
+      "svg_sha256": "808b90cafabeb1f26b68582d81e8685c26f801f5c254c10e956ff85073fe122e",
+      "preview": "media/signage-stage5-svg/04-cleaning-equipment.png"
+    },
+    "05-chemical-spill": {
+      "title": "Chemical Spill · Keep Clear",
+      "reference": "media/basement-signs-stage5/05-chemical-spill.png",
+      "reference_sha256": "76dbf76a7cdbc497fd277e7e5f6fb5aa5e5b88786154942c71acf5f10d1322db",
+      "mascot": {
+        "pose": "chemical-accident",
+        "master": "sources/mascot-trace-v04/wizard-chemical-accident-v04.svg",
+        "sha256": "0b44633570d8d538cf02021e349303603a1e5f8f9eb61068451e78e915420a15"
+      },
+      "viewbox": [
+        0,
+        0,
+        400,
+        600
+      ],
+      "exportSize": [
+        800,
+        1200
+      ],
+      "lettering": [
+        "CHEMICAL",
+        "SPILL",
+        "KEEP CLEAR"
+      ],
+      "svg": "sources/signage-stage5-svg/05-chemical-spill.svg",
+      "svg_sha256": "94d6ae43e3898435aba5285492745f4db27478e7cf85f38b97c2ac20519bfbdf",
+      "preview": "media/signage-stage5-svg/05-chemical-spill.png"
+    },
+    "06-service-stairs": {
+      "title": "Service Stairs",
+      "reference": "media/basement-signs-stage5/06-service-stairs.png",
+      "reference_sha256": "abc108be5e0cf5b3b6450ab0fa359e7e8fe8080116c0a67c3eb5cd158353a63e",
+      "mascot": {
+        "pose": "carrying-supplies",
+        "master": "sources/mascot-trace-v03/wizard-carrying-supplies-v03.svg",
+        "sha256": "832a35472908454f16410d2678f923e1d0cc64b02814c923eb08e0b26a2e7e9f"
+      },
+      "viewbox": [
+        12,
+        15,
+        574,
+        167
+      ],
+      "exportSize": [
+        1148,
+        334
+      ],
+      "lettering": [
+        "SERVICE",
+        "STAIRS"
+      ],
+      "svg": "sources/signage-stage5-svg/06-service-stairs.svg",
+      "svg_sha256": "4b4ac5eb0f4bda89f66e247ae64fc6668894f28f040510db5563b5cbe57e8f31",
+      "preview": "media/signage-stage5-svg/06-service-stairs.png"
+    },
+    "07-return-tools": {
+      "title": "Return Tools · After Use",
+      "reference": "media/basement-signs-stage5/07-return-tools.png",
+      "reference_sha256": "cf0fdecb2a5b84acdd00c96b3c1befdbc8b0f1f9db024b8ec826518b254db7ae",
+      "mascot": {
+        "pose": "mopping",
+        "master": "sources/mascot-trace-v02/wizard-mopping-v02-white.svg",
+        "sha256": "304a44f8253b2bf5e11c741763def97e91d18c8f96af66c9c663f4cc3e054d1f"
+      },
+      "viewbox": [
+        4,
+        5,
+        593,
+        589
+      ],
+      "exportSize": [
+        1186,
+        1178
+      ],
+      "lettering": [
+        "RETURN",
+        "TOOLS",
+        "AFTER",
+        "USE"
+      ],
+      "svg": "sources/signage-stage5-svg/07-return-tools.svg",
+      "svg_sha256": "0807a16b1ac1e5b5be12fb4e402d43f7ec8f115a4e33799fbe6e2cbfcd4edb11",
+      "preview": "media/signage-stage5-svg/07-return-tools.png"
+    },
+    "08-toxic-vapors-goblin": {
+      "title": "Danger · Toxic Vapors",
+      "reference": "media/basement-signs-stage5/08-toxic-vapors-goblin.png",
+      "reference_sha256": "b8ff6c86c4b7ffe10c042fa7a83ab4f4ca69bfb71b681a3702cd820cb0c74cdf",
+      "viewbox": [
+        15,
+        16,
+        420,
+        564
+      ],
+      "exportSize": [
+        840,
+        1128
+      ],
+      "lettering": [
+        "DANGER",
+        "TOXIC VAPORS"
+      ],
+      "svg": "sources/signage-stage5-svg/08-toxic-vapors-goblin.svg",
+      "svg_sha256": "249be4c4f2c89dbf080f47e3ad7f49aba5109940126420e3bfc38c56973e91f9",
+      "preview": "media/signage-stage5-svg/08-toxic-vapors-goblin.png"
+    },
+    "09-low-clearance-orc": {
+      "title": "Low Clearance · Watch Your Head",
+      "reference": "media/basement-signs-stage5/09-low-clearance-orc.png",
+      "reference_sha256": "952db8b6783601b7f7ef7b9d2e3216c8d612606a8cddc90baf6421fc3b6ff058",
+      "viewbox": [
+        2,
+        6,
+        595,
+        188
+      ],
+      "exportSize": [
+        1190,
+        376
+      ],
+      "lettering": [
+        "LOW CLEARANCE",
+        "WATCH YOUR HEAD"
+      ],
+      "svg": "sources/signage-stage5-svg/09-low-clearance-orc.svg",
+      "svg_sha256": "8c4c68528cf6536230dafc406d26ea99e14b20dd80a0aa10053fe73830d7710d",
+      "preview": "media/signage-stage5-svg/09-low-clearance-orc.png"
+    },
+    "10-quiet-testing-elf": {
+      "title": "Quiet Please · Test in Progress",
+      "reference": "media/basement-signs-stage5/10-quiet-testing-elf.png",
+      "reference_sha256": "d407afafabfd7892e87257f5a4df0facaafbd145676f661c7ba7614f4a0979c2",
+      "viewbox": [
+        4,
+        6,
+        392,
+        586
+      ],
+      "exportSize": [
+        784,
+        1172
+      ],
+      "lettering": [
+        "QUIET PLEASE",
+        "TEST IN PROGRESS"
+      ],
+      "svg": "sources/signage-stage5-svg/10-quiet-testing-elf.svg",
+      "svg_sha256": "1446fd75111a903ee74bbee1860b90522c99132cfa7c967b1edc51bac005e52f",
+      "preview": "media/signage-stage5-svg/10-quiet-testing-elf.png"
+    },
+    "clean-start-poster": {
+      "title": "A Clean Start to Every Shift",
+      "reference": "media/signage-ui-stage5-raster-review/clean-start-02.png",
+      "reference_sha256": "1362c31c9b6e3bfe01b9accc6c4a760b18782b237d3250ad62efef9667a69488",
+      "mascot": {
+        "pose": "greeting",
+        "master": "sources/mascot-trace-v03/wizard-greeting-v03-white.svg",
+        "sha256": "065348fa7f528acf6b2c6efa71c3009ad0c06ec8988a8bbaffd31b9f16442712"
+      },
+      "viewbox": [
+        0,
+        0,
+        400,
+        600
+      ],
+      "exportSize": [
+        800,
+        1200
+      ],
+      "lettering": [
+        "A CLEAN START",
+        "TO EVERY SHIFT"
+      ],
+      "svg": "sources/signage-stage5-svg/clean-start-poster.svg",
+      "svg_sha256": "e92c38ed9b93f3b4622f654264c8497d560b99e60d34dba957577a4844e621af",
+      "preview": "media/signage-stage5-svg/clean-start-poster.png"
+    },
+    "wet-floor": {
+      "title": "Caution · Wet Floor",
+      "reference": "media/signage-ui-stage5-raster-review/wet-floor.png",
+      "reference_sha256": "7d1239319bb082df6f8ad0b880c08a01d886b67ff8045d9a6b506eabefd9b422",
+      "reused_svg": "sources/signage-ui-stage5/wet-floor.svg",
+      "mascot": {
+        "pose": "slipping-falling",
+        "master": "sources/mascot-trace-v04/wizard-slipping-falling-v04.svg",
+        "sha256": "5d7e6ce3ea8de577a726362f2587f2996ca4e96c3decad0348ba8c1ce2942af2"
+      },
+      "viewbox": [
+        0,
+        0,
+        460,
+        586
+      ],
+      "exportSize": [
+        460,
+        586
+      ],
+      "lettering": [
+        "CAUTION",
+        "WET FLOOR"
+      ],
+      "svg": "sources/signage-stage5-svg/wet-floor.svg",
+      "svg_sha256": "2387c2df9705296f5e2a92a5e7dd16f44155d86b104206c8e6efc17f39d30bba",
+      "preview": "media/signage-stage5-svg/wet-floor.png"
+    }
+  }
+}

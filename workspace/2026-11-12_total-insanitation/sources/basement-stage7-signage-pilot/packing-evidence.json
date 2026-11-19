@@ -1,0 +1,144 @@
+{
+  "max_verified_box_mip": 5,
+  "signs": {
+    "clean-start-poster": {
+      "svg_sha256": "e92c38ed9b93f3b4622f654264c8497d560b99e60d34dba957577a4844e621af",
+      "size_px": [
+        640,
+        960
+      ],
+      "platform_fonts": [
+        "Impact",
+        "Arial Black"
+      ],
+      "content_xywh_px": [
+        32,
+        32,
+        640,
+        960
+      ],
+      "gutters_ltrb_px": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "uv_points_checked": 5,
+      "mips": [
+        {
+          "level": 0,
+          "sampled_px": [
+            640,
+            960
+          ]
+        },
+        {
+          "level": 1,
+          "sampled_px": [
+            320,
+            480
+          ]
+        },
+        {
+          "level": 2,
+          "sampled_px": [
+            160,
+            240
+          ]
+        },
+        {
+          "level": 3,
+          "sampled_px": [
+            80,
+            120
+          ]
+        },
+        {
+          "level": 4,
+          "sampled_px": [
+            40,
+            60
+          ]
+        },
+        {
+          "level": 5,
+          "sampled_px": [
+            20,
+            30
+          ]
+        }
+      ]
+    },
+    "09-low-clearance-orc": {
+      "svg_sha256": "8c4c68528cf6536230dafc406d26ea99e14b20dd80a0aa10053fe73830d7710d",
+      "size_px": [
+        640,
+        202
+      ],
+      "platform_fonts": [
+        "Bahnschrift"
+      ],
+      "content_xywh_px": [
+        1368,
+        1168,
+        640,
+        202
+      ],
+      "gutters_ltrb_px": [
+        32,
+        32,
+        32,
+        34
+      ],
+      "uv_points_checked": 5,
+      "mips": [
+        {
+          "level": 0,
+          "sampled_px": [
+            640,
+            202
+          ]
+        },
+        {
+          "level": 1,
+          "sampled_px": [
+            320,
+            101
+          ]
+        },
+        {
+          "level": 2,
+          "sampled_px": [
+            160,
+            51
+          ]
+        },
+        {
+          "level": 3,
+          "sampled_px": [
+            80,
+            26
+          ]
+        },
+        {
+          "level": 4,
+          "sampled_px": [
+            41,
+            13
+          ]
+        },
+        {
+          "level": 5,
+          "sampled_px": [
+            21,
+            7
+          ]
+        }
+      ]
+    }
+  },
+  "file_sha256": {
+    "signage-pilot-basecolor.png": "e19b0d7232fdc29c5c7aabfc8591bd7a14211b0b1cce99359349a4a4db50cf99",
+    "signage-pilot-coverage.png": "d614a2bdf7a22bace871238638ac974b2a4735f345adfd808ed85fca4270e149"
+  }
+}

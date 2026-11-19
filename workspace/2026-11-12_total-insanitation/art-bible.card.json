@@ -3,13 +3,13 @@
   "version": 1,
   "template": "research",
   "title": "Art bible / direction and reference index",
-  "summary": "1970s corporate interiors with medieval fantasy accents, combining semi-realism and stylization. Browse current Unreal environments, 88 rendered materials, assets and available characters. The Mascot tab contains the twelve approved poses. [Capture notes and evidence](REFERENCE_LIBRARY.md).",
+  "summary": "1970s corporate interiors with medieval fantasy accents, combining semi-realism and stylization. Browse current Unreal environments, 88 rendered materials, assets and the provisional fantasy NPCs. The Mascot tab contains the twelve approved poses. [Capture notes and evidence](REFERENCE_LIBRARY.md).",
   "items": [
     {
       "id": "identity",
       "title": "The company and the janitor",
       "status": "done",
-      "body": "**Owner-confirmed setting.** A janitor works in a pharmaceutical company, cleaning the consequences of clandestine experiments and facing transformed employees. The art supports this company and its contrast between public presentation and hidden work."
+      "body": "**Owner-confirmed setting.** A janitor works in a pharmaceutical company, cleaning the consequences of clandestine experiments and facing transformed employees. Characters records the fantasy species represented by the provisional coworker and future-enemy sprites. [NPC reference](NPC_REFERENCE.md)."
     },
     {
       "id": "style",
@@ -43,15 +43,27 @@
     },
     {
       "id": "graphic-direction",
-      "title": "Signage and UI / graphic review ready",
+      "title": "Approved signage",
+      "status": "done",
+      "body": "Open **Signage & UI** for the ten Basement signs, Wet Floor and A Clean Start as editable SVGs. [Artwork and original references](BASEMENT_SIGNAGE_STAGE5.md) · [SVG set](sources/signage-stage5-svg.zip)."
+    },
+    {
+      "id": "building-concepts",
+      "title": "Building concepts / Basement and Level_01",
       "status": "review",
-      "body": "Open **Signage & UI** for four in-scene signs, a first-person health study and a main menu proposal. The review covers type, color, wear, localization space and current atlas dependencies. [Review notes](SIGNAGE_UI_STAGE5_REVIEW.md)."
+      "body": "Study the fixed wall and ceiling details in **Building concepts**. The native captures show the current blockout and the paired paintovers propose repeatable finishes and additions for the existing Modular Blocks. [Concept notes](BUILDING_STRUCTURE_CONCEPTS_STAGE6.md)."
+    },
+    {
+      "id": "basement-assets-stage7",
+      "title": "Basement assets / Individual concepts",
+      "status": "review",
+      "body": "The selected service corridor and service counter have individual component sheets with current Unreal material references. The signage atlas proposal includes all twelve approved graphics and the legacy UV audit. [Asset brief](BASEMENT_ASSETS_STAGE7.md) · [Signage atlas](SIGNAGE_ATLAS_STAGE7.md)."
     },
     {
       "id": "review-contract",
       "title": "Library categories and review status",
       "status": "review",
-      "body": "Use Environments for the allowed maps, Materials for all 88 Utility_Materials instances, Assets for native mesh previews and Characters for the available engine meshes and coverage gaps. The Unreal references name their exact package or map. Signage & UI records the native baseline alongside design proposals."
+      "body": "Use Environments for the native map baseline, Materials for all 88 Utility_Materials instances, Assets for native mesh previews and Characters for the provisional NPC species. The Unreal references name their exact package or map. Building concepts records proposals against current native views."
     }
   ]
 }

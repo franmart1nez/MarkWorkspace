@@ -1,0 +1,48 @@
+{
+  "format": "mrmak-card",
+  "version": 1,
+  "template": "gallery",
+  "title": "Building concepts / Basement and Level_01",
+  "summary": "The selected Basement corridor and service counter lead into Stage 7 individual assets. Level_01 retains its current concept studies. [Stage 7 asset and material brief](BASEMENT_ASSETS_STAGE7.md).",
+  "items": [
+    {
+      "id": "building-comparison",
+      "title": "Basement refinement / Compare the two views",
+      "image": "media/building-stage6/basement-refinement-comparison.webp",
+      "alt": "Before and after comparisons of the Basement corridor and service counter with additional pipes and floor repairs",
+      "body": "Review the changes from the first pass. [Kit notes and native views](BUILDING_STRUCTURE_CONCEPTS_STAGE6.md) · [First-pass Basement and office comparisons](media/building-stage6/comparison.webp) · [Generation prompts](sources/building-concepts-stage6.json)."
+    },
+    {
+      "id": "basement-primary",
+      "title": "Basement · Service corridor",
+      "image": "media/building-stage6/basement-corridor-concept-v2.png",
+      "alt": "Basement corridor with four steel pipes on one ceiling edge, two on the other and two flush cement floor repairs",
+      "status": "done",
+      "body": "Four steel runs on one side and two on the other frame the existing fluorescents. A broad dry repair in the foreground and a smaller one farther in break up the concrete slab. [First-pass concept](media/building-stage6/basement-primary-concept.png) · [Native Unreal capture](media/building-stage6/basement-corridor-native.webp) · [Kit notes](BUILDING_STRUCTURE_CONCEPTS_STAGE6.md). [Stage 7 individual concepts](BASEMENT_ASSETS_STAGE7.md)."
+    },
+    {
+      "id": "basement-secondary",
+      "title": "Basement · Service counter",
+      "image": "media/building-stage6/basement-counter-concept-v2.png",
+      "alt": "Basement counter with a compact overhead steel pipe run, a light cement repair and the A Clean Start poster above the spear-tip gate",
+      "status": "done",
+      "body": "The shorter steel run stays above the counter opening. The floor has a small flush repair, and a single lightly weathered A Clean Start print sits on the solid wall above the gate. [First-pass concept](media/building-stage6/basement-secondary-concept.png) · [Native Unreal capture](media/building-stage6/basement-counter-native.webp) · [Kit notes](BUILDING_STRUCTURE_CONCEPTS_STAGE6.md). [Stage 7 individual concepts](BASEMENT_ASSETS_STAGE7.md)."
+    },
+    {
+      "id": "office-primary",
+      "title": "Level_01 · Shared offices",
+      "image": "media/building-stage6/office-primary-concept.png",
+      "alt": "Warm walnut wall caps and dark skirting under a continuous mineral-fiber ceiling with flush vents.",
+      "status": "review",
+      "body": "Keep the visible room openings, carpet and ceiling rhythm. Review the shallow cap and base profiles, one high transfer grille and the flush access and return tiles. [Native Unreal capture](media/building-stage6/office-peek-native.webp) · [Kit and material notes](BUILDING_STRUCTURE_CONCEPTS_STAGE6.md)."
+    },
+    {
+      "id": "office-secondary",
+      "title": "Level_01 · Executive room",
+      "image": "media/building-stage6/office-secondary-concept.png",
+      "alt": "Walnut wall bays with warm and muted olive acoustic inserts and two prismatic ceiling lights.",
+      "status": "review",
+      "body": "Use the same ceiling family, wall cap and base as the shared offices. The proposed woven wall inserts are flush between walnut stiles. [Native Unreal capture](media/building-stage6/office-executive-native.webp) · [Kit and material notes](BUILDING_STRUCTURE_CONCEPTS_STAGE6.md)."
+    }
+  ]
+}

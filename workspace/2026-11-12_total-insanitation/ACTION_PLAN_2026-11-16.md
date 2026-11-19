@@ -14,11 +14,11 @@ This plan follows the owner's reset brief. The old AI asset/Basement production 
 | 2. File contract | Verified source → FBX → Unreal destination rules | Each relevant file family has an existing or owner-confirmed destination |
 | 3. Unreal reference library | Art bible organized by environments, materials, assets and characters | Every production reference has a current Unreal asset/map path and usable images |
 | 4. Mascot | Approved master design and consistent pose library | The same character remains recognizable across poses and at sign/UI sizes |
-| 5. Graphic system | Approved signage/UI rules and atlas specification | Direction, hazard, decoration and UI examples read as one game |
-| 6. Basement concepts | Fresh native captures and proposals in a separate ChatGPT conversation | Owner selects a direction that fits the actual scene and approved graphics |
+| 5. Graphic system | Standalone graphic review, approved signage/UI rules and atlas specification | Direction, hazard, decoration and UI examples read as one game on their own |
+| 6. Basement and Level_01 Building concepts | Fresh Unreal editor captures and architectural paintovers of the fixed wall and ceiling kit | Owner selects repeatable Building details that fit the existing room geometry and modular grid |
 | 7. Asset production | Individual approved asset sheets, material assignments and creation methods | Each asset has a source, export destination, Unreal destination and native acceptance check |
 
-The Stage 3 material showcase informs later concepts. Basement concepts follow graphic approval, and asset production follows Basement concept approval. Atlas implementation follows approval of its content and layout.
+The Stage 3 material showcase informs the Building concepts. Asset production follows owner selection of the structural direction. Atlas implementation follows approval of its content and layout.
 
 ## Evidence already checked
 
@@ -67,7 +67,7 @@ These are the existing locations to respect, not a proposal to rename the projec
 | Shared surfaces | `Utility_Materials/<family>/<material>/` | Existing `/Game/Art/MI/Utility_Materials/<family>/` packages and their actual texture dependencies |
 | Mascot/sign atlas | `Utility_Materials/TrimSheet&Atlas/General_Atlas/General_Atlas.sbs`; references under `Resources/Pet` and `Resources/Warning_Sign_Goblin` | Trace the current atlas material/texture consumers before specifying destinations |
 | UI | Existing `UI/Stop_Sign/` and other `UI/` source branches | `/Game/Art/UI/` — owner-confirmed new destination; directory not created yet |
-| Characters | Existing `Characters/<species>/<variant>/Blender/` source branches | `/Game/Art/Characters/` — owner-confirmed new destination; directory not created yet |
+| Characters | Existing `Characters/<species>/<variant>/Blender/` source branches | Provisional 2D NPCs at `/Game/Programming/Enemies/FlipBooks`. Future character art uses `/Game/Art/Characters/`. [NPC reference](NPC_REFERENCE.md) |
 | Levels | Existing maps; no art assets stored alongside maps | `/Game/Levels`, including `Streaming_Levels/Basement` and `Main_Lights` |
 
 Rules to carry forward:
@@ -102,25 +102,25 @@ Each entry records the exact Unreal asset/MI or map path, family/scenario, captu
 
 ## 5. Define signage, UI and the future atlas
 
-Review `Resources/Warning_Sign_Goblin`, `UI/Stop_Sign` and the current UI in Unreal. Treat the black/yellow hazard graphics and wizard silhouette as existing experiments. Define a coherent 1970s corporate language with the game's fantasy accent using the actual environment/material references.
+Review `Resources/Warning_Sign_Goblin`, `UI/Stop_Sign` and the existing UI baseline. The owner’s goblin skull is an example of a danger pictogram. The provisional coworker and future-enemy sprites supply fantasy species reference. Build a 1970s corporate graphic language from those cues and the approved wizard. [NPC reference](NPC_REFERENCE.md).
 
 Present a compact proposal sheet covering directional arrows/room labels, hazard signs, staff instructions, decorative corporate posters, mascot applications and the currently visible HUD/menu elements. Specify typography roles, spacing, borders, pictogram weight, palette/contrast, icon-and-text hierarchy, tone and wear rules. Directional information, hazard warnings and decoration need distinct priority. UI shares the language while remaining readable over gameplay.
 
-**Owner approval milestone:** approve the graphic rules using concrete sign examples and a HUD/menu mockup in the real scene before final sign production, UI replacement or atlas changes. **Confirmed game-text language: English, with future localization.** Keep wording editable and allow for later translated strings; a second language is not required for the initial batch.
+**Owner approval milestone:** review signs and HUD/menu mockups as standalone designs. Create the first artwork proposals as ChatGPT raster images and obtain owner selection before making faithful SVG versions. English is the source language. Keep production wording editable and leave room for future localization. Review Unreal placement and scene compositions in Stage 6.
 
 Then prepare the **General Atlas specification**: inventory of approved graphics, identifiers, UV regions, padding/mipmap tests, required channels, resolution based on viewing size, reserved expansion area and affected material/UV consumers. Inspect the current `Text_Atlas` graph and consumers before choosing compatible additions versus a controlled repack. Keep variable/localized text editable where appropriate; do not bake all future UI wording into a texture.
 
-Editing `General_Atlas.sbs`, exporting/importing the final texture set and replacing the present UI are later implementation tasks after approval. Verify the atlas on real meshes at distance and in mips, and verify UI at the intended gameplay resolutions. Propose a separate atlas/trim only when the approved inventory demonstrates a need.
+Editing `General_Atlas.sbs`, exporting/importing the final texture set and replacing the present UI are implementation tasks after approval. Stage 6 leads the contextual review of sign placement and gameplay UI. Verify atlas textures on real meshes at distance and in mips when the implementation is available. Propose a separate atlas/trim only when the approved inventory demonstrates a need.
 
-## 6. Capture and generate a new Basement direction
+## 6. Develop Building concepts in Basement and Level_01
 
-After stage 5's direction is approved, capture a fresh Basement route in Unreal: entry/crossing, corridor, stairs, counter/shop and one reverse view. Record map, camera/FOV and important dimensions. Preserve the actual architecture, circulation, collision needs and lighting context in the brief.
+Capture a fresh Basement route with entry/stair, corridor, descent, counter and reverse, plus representative office views in the early `/Game/Levels/Streaming_Levels/Level_01`. Record the map, camera/FOV and scale conventions. Preserve the current plan, passages, ceiling planes and light positions.
 
-Open a **separate ChatGPT conversation** for Basement image exploration, as requested. Attach the new native captures, the short art-direction brief, the approved mascot/sign examples and the Unreal material board. Check the available browser/session and selected generation model at that time; do not silently substitute another provider or an autonomous modeling worker. No chat has been created yet.
+Use the current conversation and the built-in ChatGPT image generator for this pass. Paint over the Unreal views and develop the fixed architectural surfaces and shallow attachments that belong in `Assets/Building/Interior_Building.blend` and the Modular Block Blueprints. Focus on wall panels, trims, ceiling tiles, grilles, access panels and protected service runs. Use the current utility material library as reference.
 
-Begin with one representative view, compare the result to the original, and correct it before expanding to other angles. Request plausible dressing and graphic placement within the real scene. Generated lighting/material appearances are proposals to evaluate against Unreal, not new approved materials.
+Begin with a representative view for each level, compare against the native geometry and extend the same kit language to a second context. Record material and lighting differences as proposal choices. Furniture, freestanding props and scene sign placement can be evaluated separately.
 
-Deliver paired native/concept images and an annotated list of changes, reused assets and proposed additions in this project's single card. **Owner selects the Basement direction before individual asset sheets or modeling begin.**
+Deliver paired native/concept images and an annotated list of reused components and proposed additions in this project's single card. The owner selects which Building details to develop before individual asset sheets or modeling begin.
 
 ## 7. Define individual assets, then produce a small verified set
 
@@ -144,4 +144,4 @@ The owner answered all three planning questions:
 
 No planning clarification remains open. Exact future generation settings, artistic choices, atlas changes and new asset designs will be resolved against concrete review material at their respective stages.
 
-**Most recent execution:** stage 3's native library and 88-material review level are complete and acknowledged. Both ChatGPT action images are owner-approved and now have faithful editable SVG v02 traces with background/size presentation. The remaining pose set, native implementation, new export round trips and stages 5–7 remain future work. Preserve the approved source images and trace contours when making later revisions.
+**Most recent execution:** the owner selected the Basement corridor and counter for Stage 7. Individual component concepts, material gaps and the two existing-graph and proposed-atlas visuals are available for review. Continue iterations between the source scenes and individual sheets as needed. [Basement assets](BASEMENT_ASSETS_STAGE7.md) · [Signage atlas specification](SIGNAGE_ATLAS_STAGE7.md).

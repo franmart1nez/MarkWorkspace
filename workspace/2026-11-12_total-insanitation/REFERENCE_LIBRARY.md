@@ -7,9 +7,10 @@ Stage 3 · captured 2026-11-17 · Unreal 5.8.4. The Art bible now has direct **E
 - **Environments:** 11 unique lit viewport captures; 13 entries including shared-lighting and review-rig explanations. Current implementation includes unfinished areas. These are editor images, not gameplay.
 - **Materials:** all 88 MaterialInstanceConstant assets under `/Game/Art/MI/Utility_Materials`, in 14 native families. Flat, curved and edged comparisons record exact MI/parent, texture sources, instance overrides and inspected map consumers.
 - **Assets:** 69 selected geometry/tool/prop references. Native 256 × 256 previews show mesh defaults; scene overrides may differ.
-- **Characters:** Manny and Quinn native previews and an explicit coverage-gap entry. These are engine placeholders; no owner fantasy characters were imported.
+- **Characters:** the initial skeletal mesh survey covered the Manny and Quinn templates. The owner subsequently identified the provisional fantasy NPCs in `/Game/Programming/Enemies/FlipBooks`. The current Characters gallery now shows their native sprite texture previews. [NPC reference](NPC_REFERENCE.md).
 - **Mascot:** Stage 3 preserved six owner prototypes. The current Mascot gallery contains the [twelve final Stage 4 poses](MASCOT_STAGE4_LIBRARY.md).
-- **Signage & UI:** two native texture previews, preserved goblin prototype and a pending graphic-system entry. Texture evidence and development work are labeled separately; no HUD/atlas replacement.
+- **Signage & UI:** the initial survey captured two native texture previews and the owner’s goblin prototype. The current Stage 5 gallery contains the twelve approved sign designs. [Editable artwork](BASEMENT_SIGNAGE_STAGE5.md).
+- **Building concepts:** Stage 6 pairs fresh Unreal captures with wall and ceiling studies for Basement and Level_01. [Structural concepts](BUILDING_STRUCTURE_CONCEPTS_STAGE6.md).
 
 The [reference index](REFERENCE_INDEX.json) contains exact native paths, camera/FOV metadata, material parameters, texture import records, verified current source matches and all 98 inspected mesh assets, including their native previews. The extra 27 legacy geometry bundles/thin details remain inventory evidence; they are not featured as useful finished-art examples. [File rules](FILE_PLACEMENT.md) and the [FBX map](FILE_MAP.csv) remain the authority before a reimport. Matching a filename is not proof of source/export geometry equivalence.
 
@@ -48,4 +49,4 @@ All **8,014 existing native packages** retained their baseline size and modifica
 
 Full-resolution viewport review images are WebP copies at the original 2014 × 1187 resolution; native mesh previews retain their original 256 × 256 size. Texture previews retain their own source-thumbnail dimensions. No geometry, paint, lighting or colors were edited in the images. Uncompressed original PNG captures and transient native receipts remain local under ignored `.mrmak/total-insanitation/stage-3/`. Initial black/incomplete MCP readbacks and unsuitable camera frames were repeated before delivery. Native captures were visually reviewed as sheets and targeted full-size images. Every gallery preview uses the Workspace enlargement and download controls.
 
-Stage 4's master design, stage 5's graphic review, stage 6's fresh Basement concept route and stage 7's individual production gates remain ahead. This reference library supplies their native baseline; it does not grant artistic approval or authorize those later production batches.
+Stage 4 is complete. This reference library supplies the native baseline for Stage 6 scene studies and Stage 7 individual assets. Stage 5 reviews the graphics on their own.

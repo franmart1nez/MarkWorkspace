@@ -8,7 +8,10 @@ Art production hub for the owner's pharmaceutical-company game. Stages 1–4 are
 - File placement/export contract: [FILE_PLACEMENT.md](../../workspace/2026-11-12_total-insanitation/FILE_PLACEMENT.md), also in Rules & tools → File rules, with the existing-FBX map and audit evidence.
 - Native library: [REFERENCE_LIBRARY.md](../../workspace/2026-11-12_total-insanitation/REFERENCE_LIBRARY.md), six direct Art bible categories and a [reference index](../../workspace/2026-11-12_total-insanitation/REFERENCE_INDEX.json). Includes all 88 Utility_Materials instances, 69 selected asset references and current environment/character coverage.
 - Approved assets: [wizard mascot library](../../workspace/2026-11-12_total-insanitation/MASCOT_STAGE4_LIBRARY.md), with editable SVGs, transparent PNGs and usage guidance in **Art bible → Mascot**.
-- Owner review: [Stage 5 signage and UI](../../workspace/2026-11-12_total-insanitation/SIGNAGE_UI_STAGE5_REVIEW.md), with four signs, HUD and main menu mockups in **Art bible → Signage & UI**.
+- Stage 5 artwork: [twelve approved SVGs and their original references](../../workspace/2026-11-12_total-insanitation/BASEMENT_SIGNAGE_STAGE5.md) and the [atlas baseline](../../workspace/2026-11-12_total-insanitation/SIGNAGE_UI_STAGE5_REVIEW.md).
+- Stage 6 artwork: [Building concepts for Basement and Level_01](../../workspace/2026-11-12_total-insanitation/BUILDING_STRUCTURE_CONCEPTS_STAGE6.md), paired with fresh Unreal captures and notes on which Modular Block components to reuse or extend.
+- Stage 7 artwork: [Basement asset concepts and material gaps](../../workspace/2026-11-12_total-insanitation/BASEMENT_ASSETS_STAGE7.md) and [Signage Atlas packing and legacy UV audit](../../workspace/2026-11-12_total-insanitation/SIGNAGE_ATLAS_STAGE7.md).
+- Character references: [provisional fantasy NPCs](../../workspace/2026-11-12_total-insanitation/NPC_REFERENCE.md), with current FlipBooks and owner source branches in **Art bible → Characters**.
 - Source root: `D:/GameJam/Total (in)Sanitation/`.
 - Unreal project: `D:/GItHub/BoomeRacist/BoomeRacist.uproject`.
 - Owner-supplied original notes/images: `Temp/`; original brief remains under ignored `.mrmak/total-insanitation/owner-brief-original.txt`.

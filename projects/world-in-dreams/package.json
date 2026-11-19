@@ -3,10 +3,11 @@
   "version": "0.3.5",
   "private": true,
   "type": "module",
-  "description": "Close-up living simulation of a fantasy city and its villages, with a painted top-down viewer.",
+  "description": "A painted fantasy world that lives on its own: a walled city and its villages simulated minute by minute.",
   "scripts": {
     "start": "node server.mjs",
     "test": "node --test test/*.test.mjs",
-    "sim": "node scripts/sim.mjs"
+    "sim": "node scripts/sim.mjs",
+    "roadmap": "node scripts/roadmap.mjs"
   }
 }

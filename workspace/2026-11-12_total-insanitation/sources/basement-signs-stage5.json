@@ -1,0 +1,375 @@
+{
+  "title": "Basement signage / Stage 5 standalone raster proposals",
+  "generated_with": "ChatGPT built-in image generation",
+  "created": "2026-11-17T23:17:07.735148+00:00",
+  "scope": "Ten original PNGs, one image generation per concept. Stage 5 review before vector tracing.",
+  "provider_model_and_seed": "Not exposed by tool",
+  "approval_status": "All ten compositions selected as the basis for the approved Stage 5 SVGs.",
+  "designs": [
+    {
+      "id": "01-employees-only",
+      "title": "Employees Only",
+      "theme": "Staff access",
+      "motif": "Wizard",
+      "alt": "Wide cream and bottle-green Employees Only plaque with the wizard and staff",
+      "description": "A small masthead identifies staff access without making the mascot the first thing to read.",
+      "image": "media/basement-signs-stage5/01-employees-only.png",
+      "size_px": [
+        2172,
+        724
+      ],
+      "sha256": "252e856ec40468f4751cde26aa0f69375e9627ff2f87fad2b595eba1882929d4",
+      "inputs": [
+        {
+          "sha256": "d38e51162a4f7f1357f8b9263cd98aa9531db60e0c481329d9278ae822b658d7",
+          "retired_workspace_path": "media/signage-ui-stage5-raster-review/atrium-direction.png"
+        },
+        {
+          "path": "sources/mascot-trace-v03/wizard-neutral-welcome-v03-512.png",
+          "sha256": "7a72ea7de1bd11bdaf5f953188f5e23de18392bb79ddfb99694251f00f5d0fcc"
+        },
+        {
+          "sha256": "4517c1e97555a30ac74c1b9f44bec86479a41a94492bea6b1d256749c73f8926",
+          "derived_from": [
+            "media/unreal-2026-11-17/basement-corridor.webp",
+            "media/unreal-2026-11-17/basement-crossing.webp",
+            "media/unreal-2026-11-17/basement-shop.webp",
+            "media/unreal-2026-11-17/janitor-service.webp"
+          ],
+          "role": "Existing native scenes used in a material reference sheet"
+        }
+      ],
+      "prompt": "Use case: style-transfer\nAsset type: one raster signage concept for Total (in)Sanitation.\nInput 1 is an existing sign and informs only type and palette. Input 2 is the exact approved one-color wizard pose to reproduce as the sign pictogram. Keep its faceless circle head, bent pointed hat, clean outline, pose, proportions, hands and accessories as provided. Ignore all words from Input 1.\nInput 3 shows actual concrete corridors, stairs and a steel gate in this fictional game's basement. Use it only to inform practical enamel or screen-printed material and restrained edge wear. Render ONE complete standalone sign face seen absolutely straight-on on a narrow plain warm-gray studio surround. Keep all four edges and corners visible, with a clear external margin. The sign should be perfectly readable, flat and clean in the message area. No actual wall, room, scene, hands holding the sign, mockup perspective, cast shadow, props, logos, small codes or extra words. Letters are exact English as supplied. Visually belongs to a circa-1975 pharmaceutical firm's back-of-house wayfinding and safety family.\nA wide horizontal gate or staff-door plaque, dark bottle-green enamel with large cream capitals, a fine cream keyline, a small cream vertical divider and one modest cream wizard pictogram block on the left. Keep the wizard's lowered free hand and upright staff as in Input 2. Heavy square-shouldered geometric sans with balanced tracking. The only words are \"EMPLOYEES ONLY\", comfortably centered on one line in the text field.",
+      "review_note": "The raster points left. For a staff-door plate, compare the approved neutral pose during the vector pass."
+    },
+    {
+      "id": "02-restricted-area",
+      "title": "Restricted Area",
+      "theme": "Access control",
+      "motif": "Wizard",
+      "alt": "Square cream Restricted Area placard with charcoal text, an amber stripe, wizard and padlock",
+      "description": "This option uses a lock and a compact wizard to distinguish a controlled door from a general staff entrance.",
+      "image": "media/basement-signs-stage5/02-restricted-area.png",
+      "size_px": [
+        1254,
+        1254
+      ],
+      "sha256": "0d2459f86c390ec1eaef5ad5bf875ec675ff3631809b956a6b202ab644212b15",
+      "inputs": [
+        {
+          "sha256": "d38e51162a4f7f1357f8b9263cd98aa9531db60e0c481329d9278ae822b658d7",
+          "retired_workspace_path": "media/signage-ui-stage5-raster-review/atrium-direction.png"
+        },
+        {
+          "path": "sources/mascot-trace-v03/wizard-explaining-instructions-v03-512.png",
+          "sha256": "d4c152a070dff90bc3d58a0c4c012c25f75d09bf043935f09b16b9750e8ebd09"
+        },
+        {
+          "sha256": "4517c1e97555a30ac74c1b9f44bec86479a41a94492bea6b1d256749c73f8926",
+          "derived_from": [
+            "media/unreal-2026-11-17/basement-corridor.webp",
+            "media/unreal-2026-11-17/basement-crossing.webp",
+            "media/unreal-2026-11-17/basement-shop.webp",
+            "media/unreal-2026-11-17/janitor-service.webp"
+          ],
+          "role": "Existing native scenes used in a material reference sheet"
+        }
+      ],
+      "prompt": "Use case: style-transfer\nAsset type: one raster signage concept for Total (in)Sanitation.\nInput 1 is an existing sign and informs only type and palette. Input 2 is the exact approved one-color wizard pose to reproduce as the sign pictogram. Keep its faceless circle head, bent pointed hat, clean outline, pose, proportions, hands and accessories as provided. Ignore all words from Input 1.\nInput 3 shows actual concrete corridors, stairs and a steel gate in this fictional game's basement. Use it only to inform practical enamel or screen-printed material and restrained edge wear. Render ONE complete standalone sign face seen absolutely straight-on on a narrow plain warm-gray studio surround. Keep all four edges and corners visible, with a clear external margin. The sign should be perfectly readable, flat and clean in the message area. No actual wall, room, scene, hands holding the sign, mockup perspective, cast shadow, props, logos, small codes or extra words. Letters are exact English as supplied. Visually belongs to a circa-1975 pharmaceutical firm's back-of-house wayfinding and safety family.\nA square cream inspection-door plate. The only exact text is \"RESTRICTED AREA\", two large lines in two thirds of the face. Use ink-charcoal typography, a muted mustard-yellow vertical bar, and a compact dark wizard in the bottom left explaining with his palm and staff. Give the word RESTRICTED room, and use one simple closed padlock graphic in the lower right as a separate access cue. Period enamel plate, no arrows, no diagonal stripes, no other detail.",
+      "review_note": "The raster points left. The approved explaining pose is available for a non-directional lock notice."
+    },
+    {
+      "id": "03-keep-out",
+      "title": "Keep Out / Authorized Personnel Only",
+      "theme": "Prohibited entry",
+      "motif": "Wizard",
+      "alt": "Oxide-red and cream Keep Out sign with Authorized Personnel Only and a small pointing wizard",
+      "description": "An oxide-red heading gives the hard prohibition priority over the qualification below.",
+      "image": "media/basement-signs-stage5/03-keep-out.png",
+      "size_px": [
+        1024,
+        1536
+      ],
+      "sha256": "4f2f0e21778908e4238cc68f5aab8c2677091f439349bb2a556fe68e1763507f",
+      "inputs": [
+        {
+          "sha256": "d38e51162a4f7f1357f8b9263cd98aa9531db60e0c481329d9278ae822b658d7",
+          "retired_workspace_path": "media/signage-ui-stage5-raster-review/atrium-direction.png"
+        },
+        {
+          "path": "sources/mascot-trace-v02/wizard-point-left-v02-512.png",
+          "sha256": "a67c310ce479d247af587cc69fbc7f40873d4176818ce2a17a78d5671158d468"
+        },
+        {
+          "sha256": "4517c1e97555a30ac74c1b9f44bec86479a41a94492bea6b1d256749c73f8926",
+          "derived_from": [
+            "media/unreal-2026-11-17/basement-corridor.webp",
+            "media/unreal-2026-11-17/basement-crossing.webp",
+            "media/unreal-2026-11-17/basement-shop.webp",
+            "media/unreal-2026-11-17/janitor-service.webp"
+          ],
+          "role": "Existing native scenes used in a material reference sheet"
+        }
+      ],
+      "prompt": "Use case: style-transfer\nAsset type: one raster signage concept for Total (in)Sanitation.\nInput 1 is an existing sign and informs only type and palette. Input 2 is the exact approved one-color wizard pose to reproduce as the sign pictogram. Keep its faceless circle head, bent pointed hat, clean outline, pose, proportions, hands and accessories as provided. Ignore all words from Input 1.\nInput 3 shows actual concrete corridors, stairs and a steel gate in this fictional game's basement. Use it only to inform practical enamel or screen-printed material and restrained edge wear. Render ONE complete standalone sign face seen absolutely straight-on on a narrow plain warm-gray studio surround. Keep all four edges and corners visible, with a clear external margin. The sign should be perfectly readable, flat and clean in the message area. No actual wall, room, scene, hands holding the sign, mockup perspective, cast shadow, props, logos, small codes or extra words. Letters are exact English as supplied. Visually belongs to a circa-1975 pharmaceutical firm's back-of-house wayfinding and safety family.\nA tall mildly weathered enamel door notice with a deep oxide-red top panel and very large cream \"KEEP OUT\". Below it, a broad warm-cream field with dark charcoal \"AUTHORIZED PERSONNEL ONLY\" stacked on two or three lines. A compact black version of the supplied pointing wizard at the bottom points to screen left, visibly separated as company identity, with no printed arrow. The only words are \"KEEP OUT\" and \"AUTHORIZED PERSONNEL ONLY\". Strong visual separation between the prohibitive header and the explanatory text below. No hazard stripes."
+    },
+    {
+      "id": "04-cleaning-equipment",
+      "title": "Cleaning Equipment",
+      "theme": "Equipment storage",
+      "motif": "Wizard",
+      "alt": "Two-panel green and cream Cleaning Equipment sign featuring the wizard pushing a bucket cart",
+      "description": "A storage label with a cart pictogram aimed at identifying cleaning equipment at a glance.",
+      "image": "media/basement-signs-stage5/04-cleaning-equipment.png",
+      "size_px": [
+        1774,
+        887
+      ],
+      "sha256": "7a04dc1b9e97b5276d798adfe35cac69609ac55cadcc1a6f1286f072c37b7d35",
+      "inputs": [
+        {
+          "sha256": "391f1ee0bb51f2a9580182563cace541f93fca82150d67e1a54ca586720b5245",
+          "retired_workspace_path": "media/signage-ui-stage5-raster-review/custodial-notice-02.png"
+        },
+        {
+          "path": "sources/mascot-trace-v03/wizard-pushing-equipment-v03-512.png",
+          "sha256": "4b24a2d61bfac82f400cc1fd2d2c20e8b1dda8c70a8a1a4d78c7ed7f8475b04c"
+        },
+        {
+          "sha256": "4517c1e97555a30ac74c1b9f44bec86479a41a94492bea6b1d256749c73f8926",
+          "derived_from": [
+            "media/unreal-2026-11-17/basement-corridor.webp",
+            "media/unreal-2026-11-17/basement-crossing.webp",
+            "media/unreal-2026-11-17/basement-shop.webp",
+            "media/unreal-2026-11-17/janitor-service.webp"
+          ],
+          "role": "Existing native scenes used in a material reference sheet"
+        }
+      ],
+      "prompt": "Use case: style-transfer\nAsset type: one raster signage concept for Total (in)Sanitation.\nInput 1 is an existing sign and informs only type and palette. Input 2 is the exact approved one-color wizard pose to reproduce as the sign pictogram. Keep its faceless circle head, bent pointed hat, clean outline, pose, proportions, hands and accessories as provided. Ignore all words from Input 1.\nInput 3 shows actual concrete corridors, stairs and a steel gate in this fictional game's basement. Use it only to inform practical enamel or screen-printed material and restrained edge wear. Render ONE complete standalone sign face seen absolutely straight-on on a narrow plain warm-gray studio surround. Keep all four edges and corners visible, with a clear external margin. The sign should be perfectly readable, flat and clean in the message area. No actual wall, room, scene, hands holding the sign, mockup perspective, cast shadow, props, logos, small codes or extra words. Letters are exact English as supplied. Visually belongs to a circa-1975 pharmaceutical firm's back-of-house wayfinding and safety family.\nLandscape mechanical-room or cabinet label. Use warm cream lettering on dark eucalyptus-green in a single broad right-hand block, and a warm-cream left block with the exact one-color wizard pushing the bucket cart from Input 2, both wheels and the bucket fully visible. Print only \"CLEANING\" then \"EQUIPMENT\" in two large aligned lines. Soft radius on the corners and a very fine contrasting cream inner keyline. Minimal wear and no hardware.",
+      "review_note": "Use the approved two-hand cart pose when refining the pictogram."
+    },
+    {
+      "id": "05-chemical-spill",
+      "title": "Chemical Spill / Keep Clear",
+      "theme": "Floor spill hazard",
+      "motif": "Wizard",
+      "alt": "Amber Chemical Spill warning with the wizard recoiling from a puddle and a black Keep Clear footer",
+      "description": "The chemical-accident pose identifies the floor hazard, while the short footer carries the instruction.",
+      "image": "media/basement-signs-stage5/05-chemical-spill.png",
+      "size_px": [
+        1024,
+        1536
+      ],
+      "sha256": "76dbf76a7cdbc497fd277e7e5f6fb5aa5e5b88786154942c71acf5f10d1322db",
+      "inputs": [
+        {
+          "path": "media/signage-ui-stage5-raster-review/wet-floor.png",
+          "sha256": "7d1239319bb082df6f8ad0b880c08a01d886b67ff8045d9a6b506eabefd9b422"
+        },
+        {
+          "path": "sources/mascot-trace-v04/wizard-chemical-accident-v04-512.png",
+          "sha256": "ff86804eb9c31f5249dc74de0929f8189ff283dc8ab8ceb697affaaa215f6def"
+        },
+        {
+          "sha256": "4517c1e97555a30ac74c1b9f44bec86479a41a94492bea6b1d256749c73f8926",
+          "derived_from": [
+            "media/unreal-2026-11-17/basement-corridor.webp",
+            "media/unreal-2026-11-17/basement-crossing.webp",
+            "media/unreal-2026-11-17/basement-shop.webp",
+            "media/unreal-2026-11-17/janitor-service.webp"
+          ],
+          "role": "Existing native scenes used in a material reference sheet"
+        }
+      ],
+      "prompt": "Use case: style-transfer\nAsset type: one raster signage concept for Total (in)Sanitation.\nInput 1 is an existing sign and informs only type and palette. Input 2 is the exact approved one-color wizard pose to reproduce as the sign pictogram. Keep its faceless circle head, bent pointed hat, clean outline, pose, proportions, hands and accessories as provided. Ignore all words from Input 1.\nInput 3 shows actual concrete corridors, stairs and a steel gate in this fictional game's basement. Use it only to inform practical enamel or screen-printed material and restrained edge wear. Render ONE complete standalone sign face seen absolutely straight-on on a narrow plain warm-gray studio surround. Keep all four edges and corners visible, with a clear external margin. The sign should be perfectly readable, flat and clean in the message area. No actual wall, room, scene, hands holding the sign, mockup perspective, cast shadow, props, logos, small codes or extra words. Letters are exact English as supplied. Visually belongs to a circa-1975 pharmaceutical firm's back-of-house wayfinding and safety family.\nA tall rectangular portable warning sign face in amber safety yellow and near-black. Place dark \"CHEMICAL SPILL\" in two large lines near the top, a clean one-color black silhouette of the exact wizard recoiling from the small smoking puddle in the center, then white \"KEEP CLEAR\" reversed out of a thick black footer band. Keep ample space around hands, puddle and text. One slim black keyline. Only the words \"CHEMICAL SPILL\" and \"KEEP CLEAR\". This is a sign face alone, with four corners visible.",
+      "review_note": "The gesture reads as a slip. Use the approved chemical-accident pose when refining the pictogram."
+    },
+    {
+      "id": "06-service-stairs",
+      "title": "Service Stairs",
+      "theme": "Vertical circulation",
+      "motif": "Wizard",
+      "alt": "Long cream Service Stairs sign with a downward arrow and the mascot carrying supplies",
+      "description": "The large down arrow communicates vertical travel separately from the small service mascot.",
+      "image": "media/basement-signs-stage5/06-service-stairs.png",
+      "size_px": [
+        2170,
+        725
+      ],
+      "sha256": "abc108be5e0cf5b3b6450ab0fa359e7e8fe8080116c0a67c3eb5cd158353a63e",
+      "inputs": [
+        {
+          "sha256": "d38e51162a4f7f1357f8b9263cd98aa9531db60e0c481329d9278ae822b658d7",
+          "retired_workspace_path": "media/signage-ui-stage5-raster-review/atrium-direction.png"
+        },
+        {
+          "path": "sources/mascot-trace-v03/wizard-carrying-supplies-v03-512.png",
+          "sha256": "d065c2341a64ba3e0372dd764a5c3951fc748f7799cf21f51734c355a4ccf055"
+        },
+        {
+          "sha256": "4517c1e97555a30ac74c1b9f44bec86479a41a94492bea6b1d256749c73f8926",
+          "derived_from": [
+            "media/unreal-2026-11-17/basement-corridor.webp",
+            "media/unreal-2026-11-17/basement-crossing.webp",
+            "media/unreal-2026-11-17/basement-shop.webp",
+            "media/unreal-2026-11-17/janitor-service.webp"
+          ],
+          "role": "Existing native scenes used in a material reference sheet"
+        }
+      ],
+      "prompt": "Use case: style-transfer\nAsset type: one raster signage concept for Total (in)Sanitation.\nInput 1 is an existing sign and informs only type and palette. Input 2 is the exact approved one-color wizard pose to reproduce as the sign pictogram. Keep its faceless circle head, bent pointed hat, clean outline, pose, proportions, hands and accessories as provided. Ignore all words from Input 1.\nInput 3 shows actual concrete corridors, stairs and a steel gate in this fictional game's basement. Use it only to inform practical enamel or screen-printed material and restrained edge wear. Render ONE complete standalone sign face seen absolutely straight-on on a narrow plain warm-gray studio surround. Keep all four edges and corners visible, with a clear external margin. The sign should be perfectly readable, flat and clean in the message area. No actual wall, room, scene, hands holding the sign, mockup perspective, cast shadow, props, logos, small codes or extra words. Letters are exact English as supplied. Visually belongs to a circa-1975 pharmaceutical firm's back-of-house wayfinding and safety family.\nA long horizontal aluminum wayfinding plate with matte cream letterfield and ink-green two-line \"SERVICE STAIRS\", a large separate solid green simple downward arrow at the end, and a small dark pictogram of the approved wizard carrying a tray of supplies in the opposite end. Arrange the arrow to be large and unambiguous. No steps connecting to a scene and no other text. A slightly aged machined edge and thin green border are enough. Retain legible type against a light field.",
+      "review_note": "The raster adds a staff and a raised tray. The approved two-handed carrying pose is the planned pictogram."
+    },
+    {
+      "id": "07-return-tools",
+      "title": "Return Tools / After Use",
+      "theme": "Custodial routine",
+      "motif": "Wizard",
+      "alt": "Square Return Tools After Use notice with a cream mopping wizard in a green pictogram field",
+      "description": "An instruction plaque for returning shared tools, using the mopping pose as the custodial cue.",
+      "image": "media/basement-signs-stage5/07-return-tools.png",
+      "size_px": [
+        1254,
+        1254
+      ],
+      "sha256": "cf0fdecb2a5b84acdd00c96b3c1befdbc8b0f1f9db024b8ec826518b254db7ae",
+      "inputs": [
+        {
+          "sha256": "391f1ee0bb51f2a9580182563cace541f93fca82150d67e1a54ca586720b5245",
+          "retired_workspace_path": "media/signage-ui-stage5-raster-review/custodial-notice-02.png"
+        },
+        {
+          "path": "sources/mascot-trace-v02/wizard-mopping-v02-512.png",
+          "sha256": "206224be479c9fef47d0370df68e67b96d7f52fba88e30700ce924918e09e20d"
+        },
+        {
+          "sha256": "4517c1e97555a30ac74c1b9f44bec86479a41a94492bea6b1d256749c73f8926",
+          "derived_from": [
+            "media/unreal-2026-11-17/basement-corridor.webp",
+            "media/unreal-2026-11-17/basement-crossing.webp",
+            "media/unreal-2026-11-17/basement-shop.webp",
+            "media/unreal-2026-11-17/janitor-service.webp"
+          ],
+          "role": "Existing native scenes used in a material reference sheet"
+        }
+      ],
+      "prompt": "Use case: style-transfer\nAsset type: one raster signage concept for Total (in)Sanitation.\nInput 1 is an existing sign and informs only type and palette. Input 2 is the exact approved one-color wizard pose to reproduce as the sign pictogram. Keep its faceless circle head, bent pointed hat, clean outline, pose, proportions, hands and accessories as provided. Ignore all words from Input 1.\nInput 3 shows actual concrete corridors, stairs and a steel gate in this fictional game's basement. Use it only to inform practical enamel or screen-printed material and restrained edge wear. Render ONE complete standalone sign face seen absolutely straight-on on a narrow plain warm-gray studio surround. Keep all four edges and corners visible, with a clear external margin. The sign should be perfectly readable, flat and clean in the message area. No actual wall, room, scene, hands holding the sign, mockup perspective, cast shadow, props, logos, small codes or extra words. Letters are exact English as supplied. Visually belongs to a circa-1975 pharmaceutical firm's back-of-house wayfinding and safety family.\nSquare equipment-station placard, in dark green and cream with a small muted ochre rule. The only exact words are \"RETURN TOOLS\" and \"AFTER USE\". Give the main instruction a tight bold, left-aligned 1970s grotesque composition. Include a large cream mopping wizard from Input 2 inside a clean green pictogram field lower right, fully shown with both hands on the single mop, no staff. Create a modular layout with one border or rule and visibly different composition from the two-panel Cleaning Equipment sign. Clean ink areas."
+    },
+    {
+      "id": "08-toxic-vapors-goblin",
+      "title": "Danger / Toxic Vapors",
+      "theme": "Airborne hazard",
+      "motif": "Goblin",
+      "alt": "Safety-yellow Toxic Vapors sign with a pointed-ear goblin skull in a diamond",
+      "description": "The owner’s original skull idea becomes a simpler warning pictogram for a vapor hazard.",
+      "image": "media/basement-signs-stage5/08-toxic-vapors-goblin.png",
+      "size_px": [
+        1086,
+        1448
+      ],
+      "sha256": "b8ff6c86c4b7ffe10c042fa7a83ab4f4ca69bfb71b681a3702cd820cb0c74cdf",
+      "inputs": [
+        {
+          "sha256": "fc35124c65f013dd8d56d353fde7608c41d0cb2ad0543db75d263e255707e0a4",
+          "retired_workspace_path": "media/development/Warning_sign_with_toxic_text_Goblin.png",
+          "owner_source": "D:/GameJam/Total (in)Sanitation/Utility_Materials/TrimSheet&Atlas/General_Atlas/Resources/Warning_Sign_Goblin/Warning_sign_with_toxic_text_Goblin.png"
+        },
+        {
+          "sha256": "1083db56207181d6471a4ddf28464250198401adbda32ba2ad891f3af16cdcef",
+          "derived_from": [
+            "media/npc-flipbooks/goblins.webp"
+          ],
+          "role": "Re-encoded species reference"
+        },
+        {
+          "sha256": "4517c1e97555a30ac74c1b9f44bec86479a41a94492bea6b1d256749c73f8926",
+          "derived_from": [
+            "media/unreal-2026-11-17/basement-corridor.webp",
+            "media/unreal-2026-11-17/basement-crossing.webp",
+            "media/unreal-2026-11-17/basement-shop.webp",
+            "media/unreal-2026-11-17/janitor-service.webp"
+          ],
+          "role": "Existing native scenes used in a material reference sheet"
+        }
+      ],
+      "prompt": "Use case: style-transfer\nAsset type: one raster signage concept for Total (in)Sanitation.\nInput 1 is the owner's yellow goblin-skull warning. Retain the pointed-ear skull idea and simplify it into a new high-contrast head-on goblin skull symbol with broad geometric eye sockets and visibly long swept ears, not a detailed anatomical drawing. Input 2 shows current goblin NPC sprites for the ear and head character only. Make a portrait yellow enamel warning placard. Put white \"DANGER\" in a black full-width header, the skull in a black-outline diamond in the middle, and bold black \"TOXIC VAPORS\" in the footer. The only words are \"DANGER\" and \"TOXIC VAPORS\". The skull carries the toxic warning and there is no wizard, no fumes illustration and no other species.\nInput 3 shows actual concrete corridors, stairs and a steel gate in this fictional game's basement. Use it only to inform practical enamel or screen-printed material and restrained edge wear. Render ONE complete standalone sign face seen absolutely straight-on on a narrow plain warm-gray studio surround. Keep all four edges and corners visible, with a clear external margin. The sign should be perfectly readable, flat and clean in the message area. No actual wall, room, scene, hands holding the sign, mockup perspective, cast shadow, props, logos, small codes or extra words. Letters are exact English as supplied. Visually belongs to a circa-1975 pharmaceutical firm's back-of-house wayfinding and safety family."
+    },
+    {
+      "id": "09-low-clearance-orc",
+      "title": "Low Clearance / Watch Your Head",
+      "theme": "Overhead clearance",
+      "motif": "Orc",
+      "alt": "Amber Low Clearance sign with a tusked orc ducking under an overhead beam",
+      "description": "The orc’s profile adds a species cue to a sign about the low beam.",
+      "image": "media/basement-signs-stage5/09-low-clearance-orc.png",
+      "size_px": [
+        2172,
+        724
+      ],
+      "sha256": "952db8b6783601b7f7ef7b9d2e3216c8d612606a8cddc90baf6421fc3b6ff058",
+      "inputs": [
+        {
+          "path": "media/signage-ui-stage5-raster-review/wet-floor.png",
+          "sha256": "7d1239319bb082df6f8ad0b880c08a01d886b67ff8045d9a6b506eabefd9b422"
+        },
+        {
+          "sha256": "ef7dcd7b50fa24d7434b613f55d99263a4d4030cafaeae9252465ccf3a010e52",
+          "derived_from": [
+            "media/npc-flipbooks/orcs.webp"
+          ],
+          "role": "Re-encoded species reference"
+        },
+        {
+          "sha256": "4517c1e97555a30ac74c1b9f44bec86479a41a94492bea6b1d256749c73f8926",
+          "derived_from": [
+            "media/unreal-2026-11-17/basement-corridor.webp",
+            "media/unreal-2026-11-17/basement-crossing.webp",
+            "media/unreal-2026-11-17/basement-shop.webp",
+            "media/unreal-2026-11-17/janitor-service.webp"
+          ],
+          "role": "Existing native scenes used in a material reference sheet"
+        }
+      ],
+      "prompt": "Use case: style-transfer\nAsset type: one raster signage concept for Total (in)Sanitation.\nInput 1 informs industrial type and amber hazard palette and its lettering and wizard must not appear. Input 2 shows the project's provisional orc sprites. Draw a friendly, economical black orc-profile pictogram derived from the large orc's broad jaw and one visible characteristic short upturned tusk. Show the profile and shoulders bent under a single low horizontal beam; two compact down chevrons over the beam communicate overhead clearance. Use a horizontal rectangular amber/ink placard with the pictogram on the right and strong left text. The only exact wording is \"LOW CLEARANCE\" and \"WATCH YOUR HEAD\". The text must remain the first read. The orc is a worker reacting to the beam, not the hazard. No mascot, extra icons or detailed character rendering.\nInput 3 shows actual concrete corridors, stairs and a steel gate in this fictional game's basement. Use it only to inform practical enamel or screen-printed material and restrained edge wear. Render ONE complete standalone sign face seen absolutely straight-on on a narrow plain warm-gray studio surround. Keep all four edges and corners visible, with a clear external margin. The sign should be perfectly readable, flat and clean in the message area. No actual wall, room, scene, hands holding the sign, mockup perspective, cast shadow, props, logos, small codes or extra words. Letters are exact English as supplied. Visually belongs to a circa-1975 pharmaceutical firm's back-of-house wayfinding and safety family."
+    },
+    {
+      "id": "10-quiet-testing-elf",
+      "title": "Quiet Please / Test in Progress",
+      "theme": "Testing-room etiquette",
+      "motif": "Elf",
+      "alt": "Cream Quiet Please sign with a pointed-ear elf and sound arcs above Test in Progress",
+      "description": "An elf’s pointed ear becomes a listening symbol for an understated testing-room notice.",
+      "image": "media/basement-signs-stage5/10-quiet-testing-elf.png",
+      "size_px": [
+        1024,
+        1536
+      ],
+      "sha256": "d407afafabfd7892e87257f5a4df0facaafbd145676f661c7ba7614f4a0979c2",
+      "inputs": [
+        {
+          "sha256": "391f1ee0bb51f2a9580182563cace541f93fca82150d67e1a54ca586720b5245",
+          "retired_workspace_path": "media/signage-ui-stage5-raster-review/custodial-notice-02.png"
+        },
+        {
+          "sha256": "92f7e861b14346bab6a34fddab2b61125698f19648915e684512d1cf6afe2662",
+          "derived_from": [
+            "media/npc-flipbooks/elves.webp"
+          ],
+          "role": "Re-encoded species reference"
+        },
+        {
+          "sha256": "4517c1e97555a30ac74c1b9f44bec86479a41a94492bea6b1d256749c73f8926",
+          "derived_from": [
+            "media/unreal-2026-11-17/basement-corridor.webp",
+            "media/unreal-2026-11-17/basement-crossing.webp",
+            "media/unreal-2026-11-17/basement-shop.webp",
+            "media/unreal-2026-11-17/janitor-service.webp"
+          ],
+          "role": "Existing native scenes used in a material reference sheet"
+        }
+      ],
+      "prompt": "Use case: style-transfer\nAsset type: one raster signage concept for Total (in)Sanitation.\nInput 1 is the corporate cream-and-green instruction family and informs only graphic style. Input 2 shows the project's current elf coworkers. Convert the elf's slender profile and pointed ear into a simple bottle-green listener icon with one or two restrained sound arcs near the ear. The icon is a single flat pictogram with enough negative space to read. A portrait door notice uses warm cream screen-print stock, dark bottle-green \"QUIET PLEASE\" at the top, the elf listening pictogram in the center and \"TEST IN PROGRESS\" below a thin divider. A single muted brick-red line can give period emphasis. The only words are \"QUIET PLEASE\" and \"TEST IN PROGRESS\", spelled exactly. No wizard, scenery, long detailed hair, scientific equipment or extra text.\nInput 3 shows actual concrete corridors, stairs and a steel gate in this fictional game's basement. Use it only to inform practical enamel or screen-printed material and restrained edge wear. Render ONE complete standalone sign face seen absolutely straight-on on a narrow plain warm-gray studio surround. Keep all four edges and corners visible, with a clear external margin. The sign should be perfectly readable, flat and clean in the message area. No actual wall, room, scene, hands holding the sign, mockup perspective, cast shadow, props, logos, small codes or extra words. Letters are exact English as supplied. Visually belongs to a circa-1975 pharmaceutical firm's back-of-house wayfinding and safety family."
+    }
+  ]
+}
