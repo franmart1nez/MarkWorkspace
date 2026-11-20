@@ -1,0 +1,29 @@
+{
+  "name": "Total (in)Sanitation safety yellow",
+  "colorSpace": "sRGB",
+  "gradient": [
+    {
+      "position": 0,
+      "hex": "#FFD035"
+    },
+    {
+      "position": 55,
+      "hex": "#FFCA28"
+    },
+    {
+      "position": 100,
+      "hex": "#F6BC22"
+    }
+  ],
+  "solidAccent": "#FFCA28",
+  "gradientSigns": [
+    "Chemical Spill",
+    "Low Clearance",
+    "Toxic Vapors",
+    "Wet Floor"
+  ],
+  "accentUses": [
+    "Restricted Area stripe",
+    "Wet Floor CAUTION lettering"
+  ]
+}

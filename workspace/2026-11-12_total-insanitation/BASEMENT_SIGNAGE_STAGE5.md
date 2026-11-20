@@ -1,6 +1,6 @@
 # Stage 5 signage · Editable artwork
 
-The owner selected all ten Basement signs, Wet Floor and A Clean Start to Every Shift. The twelve vector masters have editable English lettering. The original raster proposals are available alongside the SVGs in **Art bible → Signage & UI**. [Download all twelve SVGs](sources/signage-stage5-svg.zip) · [Original Basement PNGs](sources/basement-signs-stage5.zip).
+The owner selected all ten Basement signs, Wet Floor and A Clean Start to Every Shift. This record contains the original Stage 5 vectors and raster proposals. Art bible → **Signage & UI** shows the current atlas revision. [Current artwork and palette](MASCOT_SIGNAGE_REVISION.md) · [Download the Stage 5 SVGs](sources/signage-stage5-svg.zip) · [Original Basement PNGs](sources/basement-signs-stage5.zip).
 
 ![Comparison of the twelve Stage 5 SVG designs](media/signage-stage5-svg/signage-overview.webp)
 

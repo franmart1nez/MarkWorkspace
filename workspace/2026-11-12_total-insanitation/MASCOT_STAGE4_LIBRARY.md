@@ -1,6 +1,6 @@
 # Wizard mascot library
 
-Art bible → **Mascot** contains twelve owner-approved poses for signs and UI. The electrical accident pose has five visible digits on each hand.
+This archive records the twelve original Stage 4 poses. Art bible → **Mascot** now shows the four-digit revision used by the atlas. [Current mascot and signage resources](MASCOT_SIGNAGE_REVISION.md).
 
 [Download the complete library](sources/mascot-stage4-library.zip). It includes 24 editable SVGs, 192 transparent PNGs in eight sizes from 32 to 1024 px, the selected source rasters, and a contact sheet.
 

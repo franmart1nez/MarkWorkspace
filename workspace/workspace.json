@@ -7,7 +7,7 @@
       "type": "group",
       "category": "game",
       "created": "2026-11-12",
-      "updated": "2026-11-18T19:41:21.148Z",
+      "updated": "2026-11-20T01:23:02.000Z",
       "folder": "2026-11-12_total-insanitation",
       "status": "active",
       "pinned": true,
@@ -97,6 +97,11 @@
           "path": "basement-assets.card.json",
           "parent": "art-bible.card.json",
           "viewer": "card"
+        },
+        {
+          "name": "Mascot & sign palette",
+          "path": "MASCOT_SIGNAGE_REVISION.md",
+          "parent": "art-bible.card.json"
         }
       ]
     },

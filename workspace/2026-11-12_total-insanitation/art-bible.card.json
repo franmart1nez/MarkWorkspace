@@ -39,13 +39,13 @@
       "id": "mascot-direction",
       "title": "Wizard mascot",
       "status": "done",
-      "body": "Open **Mascot** to browse the twelve approved poses and download black and white SVGs and transparent PNGs. [Full library ZIP](sources/mascot-stage4-library.zip)."
+      "body": "Open **Mascot** for the thirteen four-digit poses, including the Stop signal, in black and white SVGs and transparent PNGs. [Current SVGs](sources/mascot-signage-revision.zip) · [Stage 4 archive](MASCOT_STAGE4_LIBRARY.md)."
     },
     {
       "id": "graphic-direction",
       "title": "Approved signage",
       "status": "done",
-      "body": "Open **Signage & UI** for the ten Basement signs, Wet Floor and A Clean Start as editable SVGs. [Artwork and original references](BASEMENT_SIGNAGE_STAGE5.md) · [SVG set](sources/signage-stage5-svg.zip)."
+      "body": "Open **Signage & UI** for the ten Basement signs, Wet Floor and A Clean Start. [Current SVGs](sources/mascot-signage-revision.zip) · [Safety-yellow palette](MASCOT_SIGNAGE_REVISION.md) · [Original artwork](BASEMENT_SIGNAGE_STAGE5.md)."
     },
     {
       "id": "building-concepts",

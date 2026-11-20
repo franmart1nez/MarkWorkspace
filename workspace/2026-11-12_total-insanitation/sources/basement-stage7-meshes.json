@@ -1,0 +1,808 @@
+{
+  "blender_source": "Assets/Building/Interior_Building.blend",
+  "elbow_bend_steps": 10,
+  "elbow_radial_sides": 16,
+  "import_preset": "Unreal_Only_FBX",
+  "centimeters_per_meter": 100,
+  "meshes": {
+    "SM_Basement_Pipe_Elbow": {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Elbow",
+      "fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Pipe_Elbow.fbx",
+      "triangles": 1216,
+      "bounds_cm": [
+        [
+          0.0,
+          -32.5,
+          -10.250003814697266
+        ],
+        [
+          42.749996185302734,
+          10.25,
+          10.25
+        ]
+      ],
+      "materials": {
+        "Metal_Classic_01": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01"
+      },
+      "uv_channels": 2,
+      "simple_collision_count": 0,
+      "package_sha256": "1f1faf11110379883728fe98b44b06aed896adfb29b4c4fb6bce5847a64a20b1",
+      "blender_collection": "Modular_Blocks/Roof_Decorations",
+      "pivot": "Inlet-centered, Blender +X to +Y"
+    },
+    "SM_Basement_Cable_Tray": {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Cable_Tray",
+      "fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Cable_Tray.fbx",
+      "triangles": 3468,
+      "bounds_cm": [
+        [
+          0.0,
+          -12.40000057220459,
+          -11.70000171661377
+        ],
+        [
+          400.0,
+          12.40000057220459,
+          2.012070353885065e-06
+        ]
+      ],
+      "materials": {
+        "Metal_Classic_01": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01",
+        "MI_Directional_Metallic_06": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06"
+      },
+      "uv_channels": 2,
+      "simple_collision_count": 0,
+      "package_sha256": "f881f32109eaad1f60efe32f2237f0af6ea5e1e2e870a3895bc76c68fb8eed55",
+      "blender_collection": "Modular_Blocks/Roof_Decorations",
+      "pivot": "Ceiling mount at start center, pitch 400 cm"
+    },
+    "SM_Basement_Inspection_Hatch": {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Wall_Decorations/SM_Basement_Inspection_Hatch",
+      "fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Inspection_Hatch.fbx",
+      "triangles": 316,
+      "bounds_cm": [
+        [
+          -20.0,
+          -3.2584136988589307e-06,
+          -20.0
+        ],
+        [
+          20.0,
+          2.1000025272369385,
+          20.0
+        ]
+      ],
+      "materials": {
+        "Metal_Classic_01": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/MI_Basement_Green_Enamel",
+        "MI_Directional_Metallic_06": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+        "MI_Simple_Metallic_01": "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_01"
+      },
+      "uv_channels": 2,
+      "simple_collision_count": 0,
+      "package_sha256": "5238edf512fe3933efa0c0274562f181912bdc484c135d5596569fea49d6f5d7",
+      "blender_collection": "Modular_Blocks/Wall_Decorations",
+      "pivot": "Wall face, center of hatch"
+    },
+    "SM_Basement_Return_Grille": {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Return_Grille",
+      "fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Return_Grille.fbx",
+      "triangles": 400,
+      "bounds_cm": [
+        [
+          -22.5,
+          -12.5,
+          -3.400001287460327
+        ],
+        [
+          22.5,
+          12.5,
+          1.8735878484221757e-06
+        ]
+      ],
+      "materials": {
+        "MI_Directional_Metallic_06": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+        "MI_Simple_Metallic_01": "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_01"
+      },
+      "uv_channels": 2,
+      "simple_collision_count": 0,
+      "package_sha256": "fb46cc03d1dfaf52576833213155466a184f1521f619be88d8729add4e932bcd",
+      "blender_collection": "Modular_Blocks/Roof_Decorations",
+      "pivot": "Ceiling face, center of grille"
+    },
+    "SM_Basement_Wall_Bumper": {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Wall_Decorations/SM_Basement_Wall_Bumper",
+      "fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Wall_Bumper.fbx",
+      "triangles": 344,
+      "bounds_cm": [
+        [
+          0.0,
+          -6.516826829283673e-07,
+          -4.0
+        ],
+        [
+          400.0,
+          3.0,
+          4.0
+        ]
+      ],
+      "materials": {
+        "MI_Directional_Metallic_06": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+        "MI_Simple_Metallic_01": "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_01"
+      },
+      "uv_channels": 2,
+      "simple_collision_count": 0,
+      "package_sha256": "41c888ca8d21494710385e7991bc77a3263cdac097201c1f9263be82f16b8db8",
+      "blender_collection": "Modular_Blocks/Wall_Decorations",
+      "pivot": "Wall face and rail center height, 400 cm"
+    },
+    "SM_Basement_Wall_Bumper_385": {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Wall_Decorations/SM_Basement_Wall_Bumper_385",
+      "fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Wall_Bumper_385.fbx",
+      "triangles": 344,
+      "bounds_cm": [
+        [
+          0.0,
+          -6.516826829283673e-07,
+          -4.0
+        ],
+        [
+          385.0,
+          3.0,
+          4.0
+        ]
+      ],
+      "materials": {
+        "MI_Directional_Metallic_06": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+        "MI_Simple_Metallic_01": "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_01"
+      },
+      "uv_channels": 2,
+      "simple_collision_count": 0,
+      "package_sha256": "29c86d1172aaf16bd7835213a795eb163297c0c43eabd992c42b3b5345f0d1e5",
+      "blender_collection": "Modular_Blocks/Wall_Decorations",
+      "pivot": "Wall face and rail center height, 385 cm"
+    },
+    "SM_Basement_Wall_Bumper_Inside_Corner": {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Wall_Decorations/SM_Basement_Wall_Bumper_Inside_Corner",
+      "fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Wall_Bumper_Inside_Corner.fbx",
+      "triangles": 188,
+      "bounds_cm": [
+        [
+          0.0,
+          -6.516826829283673e-07,
+          -4.0
+        ],
+        [
+          15.000000953674316,
+          15.000000953674316,
+          4.000002384185791
+        ]
+      ],
+      "materials": {
+        "MI_Directional_Metallic_06": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+        "MI_Simple_Metallic_01": "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_01"
+      },
+      "uv_channels": 2,
+      "simple_collision_count": 0,
+      "package_sha256": "b0a0e62f0553148332ec6c5f4eeb1593d7eeb079b55905db67176825559fb940",
+      "blender_collection": "Modular_Blocks/Wall_Decorations",
+      "pivot": "Starts at 385 cm rail end, 15 cm turn"
+    },
+    "SM_Basement_Counter_Facing_Jamb_L": {
+      "package": "/Game/Art/Assets/Building/Floors/Basement/Shop/SM_Basement_Counter_Facing_Jamb_L",
+      "fbx": "Assets/Building/Delivery/Basement/Shop/SM_Basement_Counter_Facing_Jamb_L.fbx",
+      "triangles": 328,
+      "bounds_cm": [
+        [
+          -594.1633911132812,
+          -0.23106303811073303,
+          135.215576171875
+        ],
+        [
+          -586.1633911132812,
+          4.218951225280762,
+          238.36776733398438
+        ]
+      ],
+      "materials": {
+        "Metal_Classic_01": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/MI_Basement_Green_Enamel",
+        "MI_Directional_Metallic_06": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+        "MI_Simple_Metallic_01": "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_01"
+      },
+      "uv_channels": 2,
+      "simple_collision_count": 0,
+      "package_sha256": "547e68b18a2bfa9327f1c54d29714693592649ed57bdb2c6a0b5461285c2cf23",
+      "blender_collection": "Floors/Basement/Shop",
+      "pivot": "Native shop origin"
+    },
+    "SM_Basement_Counter_Facing_Jamb_R": {
+      "package": "/Game/Art/Assets/Building/Floors/Basement/Shop/SM_Basement_Counter_Facing_Jamb_R",
+      "fbx": "Assets/Building/Delivery/Basement/Shop/SM_Basement_Counter_Facing_Jamb_R.fbx",
+      "triangles": 328,
+      "bounds_cm": [
+        [
+          -178.07305908203125,
+          -0.23106303811073303,
+          135.215576171875
+        ],
+        [
+          -170.0730743408203,
+          4.218951225280762,
+          238.36776733398438
+        ]
+      ],
+      "materials": {
+        "Metal_Classic_01": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/MI_Basement_Green_Enamel",
+        "MI_Directional_Metallic_06": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+        "MI_Simple_Metallic_01": "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_01"
+      },
+      "uv_channels": 2,
+      "simple_collision_count": 0,
+      "package_sha256": "54314cd80e61a50e9ecbde6812b4df686c75a2a4e472b35e64b1b06b505f9c3c",
+      "blender_collection": "Floors/Basement/Shop",
+      "pivot": "Native shop origin"
+    },
+    "SM_Basement_Counter_Facing_Lintel": {
+      "package": "/Game/Art/Assets/Building/Floors/Basement/Shop/SM_Basement_Counter_Facing_Lintel",
+      "fbx": "Assets/Building/Delivery/Basement/Shop/SM_Basement_Counter_Facing_Lintel.fbx",
+      "triangles": 688,
+      "bounds_cm": [
+        [
+          -594.1633911132812,
+          -0.23106436431407928,
+          238.36776733398438
+        ],
+        [
+          -170.07305908203125,
+          4.218936443328857,
+          246.36776733398438
+        ]
+      ],
+      "materials": {
+        "Metal_Classic_01": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/MI_Basement_Green_Enamel",
+        "MI_Directional_Metallic_06": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+        "MI_Simple_Metallic_01": "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_01"
+      },
+      "uv_channels": 2,
+      "simple_collision_count": 0,
+      "package_sha256": "437db56b9b1d6943fb375705d3e44a23d21ab61fb9eac97c52952ef02ab91171",
+      "blender_collection": "Floors/Basement/Shop",
+      "pivot": "Native shop origin"
+    },
+    "SM_Basement_Fluorescent_Guard": {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Lights/SM_Basement_Fluorescent_Guard",
+      "fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Fluorescent_Guard.fbx",
+      "triangles": 1660,
+      "bounds_cm": [
+        [
+          -102.21360778808594,
+          -27.122026443481445,
+          -20.893251419067383
+        ],
+        [
+          102.21360778808594,
+          27.122026443481445,
+          4.402447302709334e-06
+        ]
+      ],
+      "materials": {
+        "Metal_Classic_01": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01",
+        "MI_Directional_Metallic_06": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+        "MI_Simple_Metallic_01": "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_01"
+      },
+      "uv_channels": 2,
+      "simple_collision_count": 0,
+      "package_sha256": "5ec05620c594f02b2a30318ef7ab4a638ac4765c3dee7370329fa1e07ab3bb8f",
+      "blender_collection": "Modular_Blocks/Lights",
+      "pivot": "Fluorescent_Light_Basement_01 origin and axes",
+      "fbx_sha256": "34887899f496718076dce9103b61da27cdd4885e78feb2edcfdce7e62f5c2535"
+    },
+    "SM_Basement_Pipe_Straight": {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Straight",
+      "fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Pipe_Straight.fbx",
+      "triangles": 256,
+      "bounds_cm": [
+        [
+          0.0,
+          -10.0,
+          -10.0
+        ],
+        [
+          400.0,
+          10.0,
+          10.0
+        ]
+      ],
+      "materials": {
+        "Metal_Classic_01": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01"
+      },
+      "uv_channels": 2,
+      "simple_collision_count": 0,
+      "package_sha256": "9cf479c7a12a6a1f197e40283af7b2896040283c05c7c13938ef7fef7e7601cc",
+      "blender_collection": "Modular_Blocks/Roof_Decorations",
+      "pivot": "See 400 cm pipe pilot"
+    },
+    "SM_Basement_Pipe_Coupling": {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Coupling",
+      "fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Pipe_Coupling.fbx",
+      "triangles": 1320,
+      "bounds_cm": [
+        [
+          -4.5,
+          -11.5,
+          -12.200000762939453
+        ],
+        [
+          4.5,
+          11.5,
+          11.5
+        ]
+      ],
+      "materials": {
+        "Metal_Classic_01": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01",
+        "MI_Directional_Metallic_06": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+        "MI_Simple_Metallic_01": "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_01"
+      },
+      "uv_channels": 2,
+      "simple_collision_count": 0,
+      "package_sha256": "1f7065488f3a6d9fff43e7f105d7863c7209b137ac5ec2129da73592e21d28b8",
+      "blender_collection": "Modular_Blocks/Roof_Decorations",
+      "pivot": "See 400 cm pipe pilot"
+    },
+    "SM_Basement_Pipe_Hanger": {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Hanger",
+      "fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Pipe_Hanger.fbx",
+      "triangles": 2596,
+      "bounds_cm": [
+        [
+          -3.9000000953674316,
+          -23.799999237060547,
+          -33.400001525878906
+        ],
+        [
+          3.9000000953674316,
+          23.799999237060547,
+          3.861219738610089e-06
+        ]
+      ],
+      "materials": {
+        "Metal_Classic_01": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01",
+        "MI_Directional_Metallic_06": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+        "MI_Simple_Metallic_01": "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_01"
+      },
+      "uv_channels": 2,
+      "simple_collision_count": 0,
+      "package_sha256": "51c37b77559e497edf4eb560cb8a112615bd2b05d91d7153d8dfed47589e89ec",
+      "blender_collection": "Modular_Blocks/Roof_Decorations",
+      "pivot": "See 400 cm pipe pilot"
+    }
+  },
+  "basement_integration": {
+    "map": "/Game/Levels/Streaming_Levels/Basement",
+    "blueprint_instances": 10,
+    "mesh_components": 25,
+    "placements": {
+      "BP_Roof_Concrete_Lights_6": {
+        "Pipe_Straight": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Straight",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            300.0,
+            -3000.0,
+            -18.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "collision": "NoCollision"
+        },
+        "Pipe_Hanger": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Hanger",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            500.0,
+            -3000.0,
+            0.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "collision": "NoCollision"
+        },
+        "Pipe_Coupling": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Coupling",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            700.0,
+            -3000.0,
+            -18.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "collision": "NoCollision"
+        },
+        "Cable_Tray": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Cable_Tray",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            300.0,
+            -2760.0,
+            0.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "collision": "NoCollision"
+        }
+      },
+      "BP_Wall_VertexConcrete_41": {
+        "Wall_Bumper": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Wall_Decorations/SM_Basement_Wall_Bumper",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            300.0,
+            -3099.9,
+            -312.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "collision": "NoCollision"
+        }
+      },
+      "BP_Roof_Concrete_12": {
+        "Pipe_Straight": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Straight",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            700.0,
+            -3000.0,
+            -18.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "collision": "NoCollision"
+        },
+        "Pipe_Hanger": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Hanger",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            900.0,
+            -3000.0,
+            0.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "collision": "NoCollision"
+        },
+        "Pipe_Coupling": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Coupling",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            1100.0,
+            -3000.0,
+            -18.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "collision": "NoCollision"
+        },
+        "Cable_Tray": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Cable_Tray",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            700.0,
+            -2760.0,
+            0.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "collision": "NoCollision"
+        },
+        "Return_Grille": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Return_Grille",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            880.0,
+            -2845.0,
+            0.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "collision": "NoCollision"
+        }
+      },
+      "BP_Wall_VertexConcrete_38": {
+        "Wall_Bumper": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Wall_Decorations/SM_Basement_Wall_Bumper",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            700.0,
+            -3099.9,
+            -312.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "collision": "NoCollision"
+        },
+        "Inspection_Hatch": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Wall_Decorations/SM_Basement_Inspection_Hatch",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            840.0,
+            -3099.9,
+            -234.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "collision": "NoCollision"
+        }
+      },
+      "BP_Roof_Concrete_Lights_7": {
+        "Pipe_Elbow": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Elbow",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            1100.0,
+            -3000.0,
+            -18.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "collision": "NoCollision"
+        }
+      },
+      "BP_Wall_VertexConcrete_39": {
+        "Wall_Bumper": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Wall_Decorations/SM_Basement_Wall_Bumper",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            1100.0,
+            -3099.9,
+            -312.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "collision": "NoCollision"
+        }
+      },
+      "Basement_Shop": {
+        "Counter_Facing_Jamb_L": {
+          "mesh": "/Game/Art/Assets/Building/Floors/Basement/Shop/SM_Basement_Counter_Facing_Jamb_L",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            7500.0,
+            -7100.0,
+            -2000.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            90.0
+          ],
+          "collision": "NoCollision"
+        },
+        "Counter_Facing_Jamb_R": {
+          "mesh": "/Game/Art/Assets/Building/Floors/Basement/Shop/SM_Basement_Counter_Facing_Jamb_R",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            7500.0,
+            -7100.0,
+            -2000.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            90.0
+          ],
+          "collision": "NoCollision"
+        },
+        "Counter_Facing_Lintel": {
+          "mesh": "/Game/Art/Assets/Building/Floors/Basement/Shop/SM_Basement_Counter_Facing_Lintel",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            7500.0,
+            -7100.0,
+            -2000.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            90.0
+          ],
+          "collision": "NoCollision"
+        }
+      },
+      "BP_Roof_Concrete_Lights_17": {
+        "Fluorescent_Guard": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Lights/SM_Basement_Fluorescent_Guard",
+          "parent": "Fluorescent_Light_Basement_01",
+          "location_cm": [
+            7300.0,
+            -7700.0,
+            -1602.348
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            90.0
+          ],
+          "collision": "NoCollision"
+        },
+        "Cable_Tray": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Cable_Tray",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            7170.0,
+            -7900.0,
+            -1600.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            90.0
+          ],
+          "collision": "NoCollision"
+        },
+        "Pipe_Straight": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Straight",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            7390.0,
+            -7900.0,
+            -1618.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            90.0
+          ],
+          "collision": "NoCollision"
+        },
+        "Pipe_Hanger": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Hanger",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            7390.0,
+            -7720.0,
+            -1600.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            90.0
+          ],
+          "collision": "NoCollision"
+        },
+        "Pipe_Coupling": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Coupling",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            7390.0,
+            -7500.0,
+            -1618.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            90.0
+          ],
+          "collision": "NoCollision"
+        }
+      },
+      "BP_Roof_Concrete_39": {
+        "Pipe_Elbow": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Elbow",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            7390.0,
+            -7500.0,
+            -1618.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            90.0
+          ],
+          "collision": "NoCollision"
+        }
+      },
+      "BP_Wall_VertexConcrete_16": {
+        "Wall_Bumper_385": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Wall_Decorations/SM_Basement_Wall_Bumper_385",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            1900.0,
+            -7500.1,
+            -1512.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            -180.0
+          ],
+          "collision": "NoCollision"
+        },
+        "Wall_Bumper_Inside_Corner": {
+          "mesh": "/Game/Art/Assets/Building/Modular_Blocks/Wall_Decorations/SM_Basement_Wall_Bumper_Inside_Corner",
+          "parent": "DefaultSceneRoot",
+          "location_cm": [
+            1515.0,
+            -7500.1,
+            -1512.0
+          ],
+          "rotation_deg": [
+            0.0,
+            0.0,
+            -180.0
+          ],
+          "collision": "NoCollision"
+        }
+      }
+    },
+    "finish": {
+      "package": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/MI_Basement_Green_Enamel",
+      "parent": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01",
+      "Secondary_Color": [
+        0.6800000071525574,
+        0.8199999928474426,
+        0.5699999928474426,
+        1.0
+      ],
+      "Metallic_Amount": -0.6600000262260437,
+      "Roughness_Amount": 1.649999976158142,
+      "Roughness_Contrast_Min": 0.3499999940395355,
+      "Roughness_Contrast_Max": 0.699999988079071
+    },
+    "shop_opening_cm": [
+      408.09,
+      103.15
+    ],
+    "guard_below_fixture_cm": 5.35,
+    "crosswire_diameter_mm": {
+      "before": 6.4,
+      "after": 8
+    },
+    "longitudinal_diameter_mm": {
+      "before": 8,
+      "after": 9.6
+    }
+  }
+}

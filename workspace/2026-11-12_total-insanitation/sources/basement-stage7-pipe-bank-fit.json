@@ -1,0 +1,507 @@
+{
+  "map": "/Game/Levels/Inteior_Lobby",
+  "base_map": "/Game/Levels/Streaming_Levels/Basement",
+  "placement": "Transient editor trial in isolated project",
+  "blueprint_templates": {
+    "/Game/Art/Assets/Building/Modular_Blocks/BP_Roof/BP_Roof_Concrete_Lights_01": [
+      "Fluorescent_Light_Basement_01",
+      "Fluorescent_Light_Basement_01",
+      "Roof_01",
+      "Roof_01"
+    ],
+    "/Game/Art/Assets/Building/Modular_Blocks/BP_Modular_Walls/BP_Wall_VertexConcrete_02": [
+      "Floor_Decorations_Concrete_01",
+      "Floor_Decorations_Concrete_01",
+      "Wall_VertexColor_02",
+      "Wall_VertexColor_02"
+    ],
+    "/Game/Art/Assets/Building/Modular_Blocks/BP_Roof/BP_Roof_Concrete_01": [
+      "Roof_01",
+      "Roof_01"
+    ],
+    "/Game/Art/Assets/Building/Modular_Blocks/BP_Modular_Walls/BP_Wall_VertexConcrete_03": [
+      "Floor_Decorations_Concrete_01",
+      "Floor_Decorations_Concrete_01",
+      "Wall_VertexColor_03",
+      "Wall_VertexColor_03"
+    ],
+    "/Game/Art/Assets/Building/Floors/Basement/Shop/Basement_Shop": [
+      "Cube_003",
+      "Cube_003",
+      "Cube_051",
+      "Cube_051",
+      "Cube_079",
+      "Cube_079",
+      "Cube_082",
+      "Cube_082",
+      "Cube_089",
+      "Cube_089",
+      "Cube_090",
+      "Cube_090",
+      "Cube_091",
+      "Cube_091",
+      "Cube_097",
+      "Cube_097",
+      "Cube_098",
+      "Cube_098",
+      "Cube_102",
+      "Cube_102",
+      "Cube_103",
+      "Cube_103",
+      "Cube_104",
+      "Cube_104",
+      "Cube_105",
+      "Cube_105",
+      "Cube_113",
+      "Cube_113",
+      "Cube_114",
+      "Cube_114",
+      "Plane_010",
+      "Plane_010"
+    ],
+    "/Game/Art/Assets/Building/Modular_Blocks/BP_Modular_Walls/BP_Wall_VertexConcrete_06": [
+      "Floor_Decorations_Concrete_01",
+      "Floor_Decorations_Concrete_01",
+      "Wall_VertexColor_03",
+      "Wall_VertexColor_03"
+    ]
+  },
+  "verified_instanced_components": 25,
+  "imports": {
+    "SM_Basement_Pipe_Straight_160": {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Straight_160",
+      "fbx": "SM_Basement_Pipe_Straight_160.fbx",
+      "triangles": 256,
+      "bounds_cm": [
+        [
+          0.0,
+          -8.0,
+          -8.0
+        ],
+        [
+          400.0,
+          8.0,
+          8.0
+        ]
+      ],
+      "materials": {
+        "Metal_Classic_01": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01"
+      },
+      "uv_channels": 2,
+      "simple_collision_count": 0,
+      "fbx_sha256": "106c187d4d7e109b9574d3a3aee5d33bbb423bf09bbd049d22ac1e42e4e704bf",
+      "blender_collection": "Modular_Blocks/Roof_Decorations",
+      "mount": "Start center, +X"
+    },
+    "SM_Basement_Pipe_Elbow_160_R520": {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Elbow_160_R520",
+      "fbx": "SM_Basement_Pipe_Elbow_160_R520.fbx",
+      "triangles": 1216,
+      "bounds_cm": [
+        [
+          0.0,
+          -59.500003814697266,
+          -8.250008583068848
+        ],
+        [
+          67.75,
+          8.25,
+          8.25
+        ]
+      ],
+      "materials": {
+        "Metal_Classic_01": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01"
+      },
+      "uv_channels": 2,
+      "simple_collision_count": 0,
+      "fbx_sha256": "a560f1268dc6f9695fb487774d656800c42bc9d4e0df5d307a55e03c08ee0586",
+      "blender_collection": "Modular_Blocks/Roof_Decorations",
+      "mount": "Inlet center, Blender +X to +Y"
+    },
+    "SM_Basement_Pipe_Coupling_160": {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Coupling_160",
+      "fbx": "SM_Basement_Pipe_Coupling_160.fbx",
+      "triangles": 1320,
+      "bounds_cm": [
+        [
+          -4.5,
+          -9.199999809265137,
+          -9.760000228881836
+        ],
+        [
+          4.5,
+          9.199999809265137,
+          9.199999809265137
+        ]
+      ],
+      "materials": {
+        "Metal_Classic_01": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01",
+        "MI_Directional_Metallic_06": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+        "MI_Simple_Metallic_01": "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_01"
+      },
+      "uv_channels": 2,
+      "simple_collision_count": 0,
+      "fbx_sha256": "dff092b3a574886d188d4452f91fe03dbeb11cbc95a875a26c8fbbb94d68acd8",
+      "blender_collection": "Modular_Blocks/Roof_Decorations",
+      "mount": "Center of joint, +X"
+    },
+    "SM_Basement_Pipe_Hanger_200_160": {
+      "package": "/Game/Art/Assets/Building/Modular_Blocks/Roof_Decorations/SM_Basement_Pipe_Hanger_200_160",
+      "fbx": "SM_Basement_Pipe_Hanger_200_160.fbx",
+      "triangles": 2532,
+      "bounds_cm": [
+        [
+          -3.9000000953674316,
+          -23.799999237060547,
+          -33.400001525878906
+        ],
+        [
+          3.9000000953674316,
+          50.80000305175781,
+          8.260078175226226e-06
+        ]
+      ],
+      "materials": {
+        "Metal_Classic_01": "/Game/Art/MI/Utility_Materials/Metallic/Metal_Classic_01/Metal_Classic_01",
+        "MI_Directional_Metallic_06": "/Game/Art/MI/Utility_Materials/Metallic/DIrectional_Metallic_01/MI_Directional_Metallic_06",
+        "MI_Simple_Metallic_01": "/Game/Art/MI/Utility_Materials/Simple/MI_Simple_Metallic_01"
+      },
+      "uv_channels": 2,
+      "simple_collision_count": 0,
+      "fbx_sha256": "e4c7ed77577948436f1df59c05778fa6a240fc462271b1cc0ce294d2044357e9",
+      "blender_collection": "Modular_Blocks/Roof_Decorations",
+      "mount": "Slab contact above 20 cm cradle"
+    }
+  },
+  "fit": {
+    "corridor": {
+      "floor_clearance_cm": 366.6,
+      "fixture_gap_cm": 25.88,
+      "fixtures": [
+        "/Game/Levels/Streaming_Levels/Basement.Basement:PersistentLevel.BP_Roof_Concrete_Lights_01_C_7.Fluorescent_Light_Basement_01",
+        "/Game/Levels/Streaming_Levels/Basement.Basement:PersistentLevel.BP_Roof_Concrete_Lights_01_C_8.Fluorescent_Light_Basement_01"
+      ],
+      "replaced_for_review": [
+        "/Game/Levels/Streaming_Levels/Basement.Basement:PersistentLevel.BP_Roof_Concrete_Lights_01_C_7.Basement_Pipe_Hanger",
+        "/Game/Levels/Streaming_Levels/Basement.Basement:PersistentLevel.BP_Roof_Concrete_01_C_14.Basement_Pipe_Hanger"
+      ],
+      "prototypes": [
+        {
+          "host_reference": "BP_Roof_Concrete_Lights_6",
+          "part": "Straight_160",
+          "location_cm": [
+            300.0000000000001,
+            -2973.0,
+            -18.0
+          ],
+          "yaw": 0,
+          "bounds_cm": [
+            [
+              300.0000000000001,
+              -2981.0,
+              -26.0
+            ],
+            [
+              700.0000000000001,
+              -2965.0,
+              -10.0
+            ]
+          ]
+        },
+        {
+          "host_reference": "BP_Roof_Concrete_Lights_6",
+          "part": "Coupling_160",
+          "location_cm": [
+            699.9999999999995,
+            -2973.0,
+            -18.0
+          ],
+          "yaw": 0,
+          "bounds_cm": [
+            [
+              695.4999999999995,
+              -2982.199999809265,
+              -27.760000228881836
+            ],
+            [
+              704.4999999999995,
+              -2963.800000190735,
+              -8.800000190734863
+            ]
+          ]
+        },
+        {
+          "host_reference": "BP_Roof_Concrete_Lights_6",
+          "part": "Hanger_200_160",
+          "location_cm": [
+            499.9999999999998,
+            -3000.0,
+            0.0
+          ],
+          "yaw": 0,
+          "bounds_cm": [
+            [
+              496.09999990463234,
+              -3023.7999992370605,
+              -33.400001525878906
+            ],
+            [
+              503.9000000953672,
+              -2949.199996948242,
+              8.260078175226226e-06
+            ]
+          ]
+        },
+        {
+          "host_reference": "BP_Roof_Concrete_12",
+          "part": "Straight_160",
+          "location_cm": [
+            700.0,
+            -2973.0,
+            -18.0
+          ],
+          "yaw": 0,
+          "bounds_cm": [
+            [
+              700.0,
+              -2981.0,
+              -26.0
+            ],
+            [
+              1100.0,
+              -2965.0,
+              -10.0
+            ]
+          ]
+        },
+        {
+          "host_reference": "BP_Roof_Concrete_12",
+          "part": "Coupling_160",
+          "location_cm": [
+            1099.9999999999993,
+            -2973.0,
+            -18.0
+          ],
+          "yaw": 0,
+          "bounds_cm": [
+            [
+              1095.4999999999993,
+              -2982.199999809265,
+              -27.760000228881836
+            ],
+            [
+              1104.4999999999993,
+              -2963.800000190735,
+              -8.800000190734863
+            ]
+          ]
+        },
+        {
+          "host_reference": "BP_Roof_Concrete_12",
+          "part": "Hanger_200_160",
+          "location_cm": [
+            899.9999999999997,
+            -3000.0,
+            0.0
+          ],
+          "yaw": 0,
+          "bounds_cm": [
+            [
+              896.0999999046322,
+              -3023.7999992370605,
+              -33.400001525878906
+            ],
+            [
+              903.9000000953671,
+              -2949.199996948242,
+              8.260078175226226e-06
+            ]
+          ]
+        },
+        {
+          "host_reference": "BP_Roof_Concrete_Lights_7",
+          "part": "Elbow_160_R520",
+          "location_cm": [
+            1100.0,
+            -2973.0,
+            -18.0
+          ],
+          "yaw": 0,
+          "bounds_cm": [
+            [
+              1100.0,
+              -3032.5000038146973,
+              -26.250008583068848
+            ],
+            [
+              1167.75,
+              -2964.75,
+              -9.75
+            ]
+          ]
+        }
+      ]
+    },
+    "counter": {
+      "floor_clearance_cm": 366.6,
+      "fixture_gap_cm": 12.08,
+      "fixtures": [
+        "/Game/Levels/Streaming_Levels/Basement.Basement:PersistentLevel.BP_Roof_Concrete_Lights_01_C_4.Basement_Fluorescent_Guard"
+      ],
+      "replaced_for_review": [
+        "/Game/Levels/Streaming_Levels/Basement.Basement:PersistentLevel.BP_Roof_Concrete_Lights_01_C_4.Basement_Pipe_Hanger"
+      ],
+      "prototypes": [
+        {
+          "host_reference": "BP_Roof_Concrete_Lights_17",
+          "part": "Straight_160",
+          "location_cm": [
+            7363.0,
+            -7900.0,
+            -1618.0
+          ],
+          "yaw": 90,
+          "bounds_cm": [
+            [
+              7355.0,
+              -7900.0,
+              -1626.0
+            ],
+            [
+              7371.0,
+              -7500.0,
+              -1610.0
+            ]
+          ]
+        },
+        {
+          "host_reference": "BP_Roof_Concrete_Lights_17",
+          "part": "Coupling_160",
+          "location_cm": [
+            7363.0,
+            -7500.0,
+            -1618.0
+          ],
+          "yaw": 90,
+          "bounds_cm": [
+            [
+              7353.800000190735,
+              -7504.5,
+              -1627.7600002288818
+            ],
+            [
+              7372.199999809265,
+              -7495.5,
+              -1608.8000001907349
+            ]
+          ]
+        },
+        {
+          "host_reference": "BP_Roof_Concrete_Lights_17",
+          "part": "Hanger_200_160",
+          "location_cm": [
+            7390.0,
+            -7720.0,
+            -1600.0
+          ],
+          "yaw": 90,
+          "bounds_cm": [
+            [
+              7339.199996948242,
+              -7723.900000095367,
+              -1633.400001525879
+            ],
+            [
+              7413.799999237061,
+              -7716.099999904633,
+              -1599.9999917399218
+            ]
+          ]
+        },
+        {
+          "host_reference": "BP_Roof_Concrete_39",
+          "part": "Elbow_160_R520",
+          "location_cm": [
+            7363.0,
+            -7500.0,
+            -1618.0
+          ],
+          "yaw": 90,
+          "bounds_cm": [
+            [
+              7354.75,
+              -7500.0,
+              -1626.2500085830688
+            ],
+            [
+              7422.500003814697,
+              -7432.25,
+              -1609.75
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "pitch_cm": 27.0,
+  "barrel_to_barrel_gap_cm": 9.0,
+  "outlet_centerline_gap_cm": 27.0,
+  "basement_sha256": "ff500497a53e1d0d500ddb7461497dcef5eb80473b42442460969d2acd263224",
+  "source_blend_sha256": "8211f92af80895c1d91f9b9afa308573212bb95b28faf6c8a0b35625b55cf2d9",
+  "review_blend_sha256": "34878959614271aeecda38c6f6f8082da6a6a68090288e5205eb57efc5275534",
+  "review_blend": ".mrmak\\total-insanitation\\stage-7\\pipe-bank-fit\\Interior_Building.pipe-bank-fit.blend",
+  "preset": "Unreal_Only_FBX",
+  "preset_sha256": "d816d404190c33e7e9e4cc9ecb8f58258c7a2e87b2492f829d6beb992e0b1e19",
+  "radial_sides": 16,
+  "bend_divisions": 10,
+  "bend_radius_cm": 52.0,
+  "bend_leads_cm": 7.5,
+  "cameras": {
+    "corridor": [
+      [
+        422,
+        -2864,
+        -199
+      ],
+      12,
+      -6
+    ],
+    "corridor-detail": [
+      [
+        771,
+        -2866,
+        -133
+      ],
+      26,
+      -28
+    ],
+    "counter": [
+      [
+        6990,
+        -7820,
+        -1820
+      ],
+      6,
+      33
+    ],
+    "counter-detail": [
+      [
+        7120,
+        -7789,
+        -1768
+      ],
+      26,
+      23
+    ]
+  },
+  "fov": 75,
+  "media": {
+    "media/basement-stage7/pipe-bank-comparison.webp": "de6e56a5a7c4d1e8fb3d1e648e9fd3b8edcb746f3ca3b2fd69d0283192767a07",
+    "media/basement-stage7/pipe-bank-corridor.webp": "603056390e54eae035e57b4b292ace982b7017c62902870ec6850483d8327dc1",
+    "media/basement-stage7/pipe-bank-corridor-detail.webp": "15878976dbfbabd7845c608637cc440b9105a246df502d06795a779966a97667",
+    "media/basement-stage7/pipe-bank-counter.webp": "e57cec0bf37b79cff9d3638081bfbe7965742cb02dff5eab8f2752a946463b1e",
+    "media/basement-stage7/pipe-bank-counter-detail.webp": "884ac4daa59c9689a4e904bf67e0bd94183d5fd672481efae3bfbf6d771d89b2"
+  },
+  "fbx_zip_sha256": "b83021fe0c1e05eaa952e82e69435ca82c8cdc75993872300836ab071f329542",
+  "verified_transient_trial_actors": 11
+}

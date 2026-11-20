@@ -3,7 +3,7 @@
   "version": 1,
   "template": "gallery",
   "title": "Basement assets / Stage 7",
-  "summary": "Individual concept sheets for the selected service corridor and counter. Open each part for its fit and native material references. [Asset and material brief](BASEMENT_ASSETS_STAGE7.md) · [Signage Atlas proposal](SIGNAGE_ATLAS_STAGE7.md).",
+  "summary": "The Basement kit fitted to existing Blueprint actors, lit Unreal captures and concept sheets for the service corridor and counter. [Asset and material brief](BASEMENT_ASSETS_STAGE7.md) · [Signage resources](SIGNAGE_ATLAS_STAGE7.md).",
   "items": [
     {
       "id": "asset-overview",
@@ -18,7 +18,23 @@
       "image": "media/basement-stage7/pipe-pilot-blender.webp",
       "alt": "Blender assembly and close-up of the straight pipe, overhead hanger and sleeve joining the curved elbow",
       "status": "review",
-      "body": "The four editable meshes are in the Building source. Reopening the source and FBXs verified pivots and two UV channels. A transient Unreal import matched dimensions and resolved all three existing metal instances. Lighting review is pending. [Models and measurements](BASEMENT_ASSETS_STAGE7.md#400-cm-blender-pilot)."
+      "body": "The 20 cm pipe and fittings use a common 16-sided profile. The revised elbow has ten divisions along the bend and 1,216 triangles. The lit Unreal setup measured 366.6 cm of clearance under the hangers. [Revised elbow](media/basement-stage7/production-elbow.webp) · [Models and measurements](BASEMENT_ASSETS_STAGE7.md#400-cm-blender-pilot)."
+    },
+    {
+      "id": "basement-production-unreal",
+      "title": "Basement production / Unreal",
+      "image": "media/basement-stage7/integrated-unreal.webp",
+      "alt": "Saved Basement Blueprint fittings with green enamel on the hatch and counter and thicker bars on the fluorescent guard",
+      "status": "review",
+      "body": "Twenty-five mesh components are saved on ten placed Basement Blueprint actors. In Basement, select a host in the World Outliner to see its Basement_* components in Details. The hatch and shop facings share a gray-green enamel instance. The guard has thicker bars, and both fluorescent tubes remain visible. [Full-size Unreal captures](BASEMENT_ASSETS_STAGE7.md#production-kit-in-unreal) · [Exact hosts and material settings](sources/basement-stage7-meshes.json)."
+    },
+    {
+      "id": "pipe-bank-fit-unreal",
+      "title": "20 and 16 cm pipe bank / Unreal trial",
+      "image": "media/basement-stage7/pipe-bank-comparison.webp",
+      "alt": "Matching Unreal views of the single saved pipe and the paired 20 and 16 cm pipes over the service corridor and counter",
+      "status": "review",
+      "body": "A 16 cm companion and shared two-cradle supports were tested over the installed corridor and counter runs. The supports leave 366.6 cm of floor clearance. The nearest gap to the light or guard is 25.88 cm in the corridor and 12.08 cm at the counter. [Native fit and full-size captures](BASEMENT_ASSETS_STAGE7.md#20-and-16-cm-pipe-bank-trial) · [Four review FBXs](sources/basement-stage7-pipe-bank-fbx.zip) · [Measurements and transforms](sources/basement-stage7-pipe-bank-fit.json)."
     },
     {
       "id": "pipe-straight",
@@ -128,8 +144,8 @@
       "id": "signage-atlas",
       "title": "Signage Atlas / Twelve approved graphics",
       "image": "media/basement-stage7/signage-atlas-designer.webp",
-      "alt": "Twelve approved graphics in the delivered 2048-pixel Substance Designer atlas",
-      "body": "The independent Substance Designer package links 2048-square Base Color and Coverage pages. Both outputs rendered from the delivered file with an exact pixel match. [Designer package and Unreal checks](SIGNAGE_ATLAS_STAGE7.md) · [Pixel coordinates and UV layout](sources/basement-stage7-atlas-layout.json)."
+      "alt": "Twelve approved graphics packed into the earlier 2048-pixel signage proof",
+      "body": "The twelve editable SVG resources now use power-of-two canvases with transparent margins and the original artwork scale. The owner assembles the current page in Substance Designer. [SVG resources and canvas sizes](SIGNAGE_ATLAS_STAGE7.md#power-of-two-resource-canvases) · [Pilot pixel coordinates and UV layout](sources/basement-stage7-atlas-layout.json)."
     },
     {
       "id": "signage-pilot",
