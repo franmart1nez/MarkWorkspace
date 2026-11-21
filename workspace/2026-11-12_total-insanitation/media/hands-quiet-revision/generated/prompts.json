@@ -1,0 +1,1383 @@
+[
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/hand-sheet-take-01.png",
+    "status": "rejected",
+    "prompt": "Use case: logo-brand\nCreate a hand design reference sheet for the wizard mascot in Image 1. Use Image 1 only for the clean silhouette style and arm thickness. Draw six isolated hands in a three-column by two-row grid with generous spacing, each attached to a short forearm stub as thick as the wizard's arms in Image 1. In reading order: (1) open palm facing the viewer, fingers together pointing up, a stop hand; (2) waving hand, fingers slightly spread pointing up; (3) open hand palm up, offering, seen from the side; (4) pointing hand, index finger extended, other two fingers curled, thumb resting on top; (5) fingers spread wide in alarm; (6) relaxed hand hanging down. Every hand has exactly four digits: three plump round-tipped fingers of equal thickness with narrow gaps, plus one shorter thumb set lower on the side of a rounded, slightly wide palm, like classic four-fingered American TV cartoon hands such as The Simpsons. For the offering and pointing poses, use distinct contour lobes to keep the three fingers identifiable in silhouette. The hand is about one and a half times as wide as the forearm, with a gently tapered wrist. Flat solid pure black on pure white, smooth clean vector-like edges. No wizard body, fingernails, knuckle or palm lines, outlines, gray, shading, texture, text or labels. Landscape 2:1 canvas.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/wizard-greeting-v03.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-cb5fe993-c113-414b-ae23-cf66ca8d7f90.png",
+    "reason": "The pointing hand has no distinct thumb contour.",
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/hand-sheet-take-02.png",
+    "status": "rejected",
+    "prompt": "Use case: logo-brand\nCreate a hand design reference sheet for the wizard mascot in Image 1. Use Image 1 only for the clean silhouette style and arm thickness. Draw six isolated hands in a three-column by two-row grid with generous spacing, each attached to a short forearm stub as thick as the wizard's arms in Image 1. In reading order: (1) open palm facing the viewer, fingers together pointing up, a stop hand; (2) waving hand, fingers slightly spread pointing up; (3) open hand palm up, offering, seen from the side; (4) pointing hand, index finger extended, other two fingers curled, thumb resting on top; (5) fingers spread wide in alarm; (6) relaxed hand hanging down. Every hand has exactly four digits: three plump round-tipped fingers of equal thickness with narrow gaps, plus one shorter thumb set lower on the side of a rounded, slightly wide palm, like classic four-fingered American TV cartoon hands such as The Simpsons. For the offering and pointing poses, use distinct contour lobes to keep the three fingers identifiable in silhouette. The hand is about one and a half times as wide as the forearm, with a gently tapered wrist. Flat solid pure black on pure white, smooth clean vector-like edges. No wizard body, fingernails, knuckle or palm lines, outlines, gray, shading, texture, text or labels. Landscape 2:1 canvas.\nCritical contour check: the bottom-left pointing hand must show exactly four distinguishable round-ended lobes at its exterior contour. On that hand the extended index projects right, the two small curled fingertips step downward below it, and a short rounded thumb rests above the base of the index, visible as its own lobe with a small open white notch between thumb tip and index. Avoid merging the thumb into a generic back-of-hand hump. The two upright poses swivel their stubs to approach the wrist from below so the palm reads naturally. Keep each palm broad and give the fingers chunky, matching widths.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/wizard-greeting-v03.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-c277a53b-eef3-4ee9-a706-de411ebac332.png",
+    "reason": "The offering hand shows only two distinct fingertips plus a thumb.",
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": "hand-sheet-01.png",
+    "status": "selected",
+    "prompt": "Use case: logo-brand\nCreate a hand design reference sheet for the wizard mascot in Image 1. Use Image 1 only for the clean silhouette style and arm thickness. Draw six isolated hands in a three-column by two-row grid with generous spacing, each attached to a short forearm stub as thick as the wizard's arms in Image 1. In reading order: (1) open palm facing the viewer, fingers together pointing up, a stop hand; (2) waving hand, fingers slightly spread pointing up; (3) open hand palm up, offering, seen from the side; (4) pointing hand, index finger extended, other two fingers curled, thumb resting on top; (5) fingers spread wide in alarm; (6) relaxed hand hanging down. Every hand has exactly four digits: three plump round-tipped fingers of equal thickness with narrow gaps, plus one shorter thumb set lower on the side of a rounded, slightly wide palm, like classic four-fingered American TV cartoon hands such as The Simpsons. For the offering and pointing poses, use distinct contour lobes to keep the three fingers identifiable in silhouette. The hand is about one and a half times as wide as the forearm, with a gently tapered wrist. Flat solid pure black on pure white, smooth clean vector-like edges. No wizard body, fingernails, knuckle or palm lines, outlines, gray, shading, texture, text or labels. Landscape 2:1 canvas.\nCritical contour check: the bottom-left pointing hand must show exactly four distinguishable round-ended lobes at its exterior contour. On that hand the extended index projects right, the two small curled fingertips step downward below it, and a short rounded thumb rests above the base of the index, visible as its own lobe with a small open white notch between thumb tip and index. Avoid merging the thumb into a generic back-of-hand hump. The two upright poses swivel their stubs to approach the wrist from below so the palm reads naturally. Keep each palm broad and give the fingers chunky, matching widths.\nCritical offering pose check in the upper-right cell: a side view with just enough turn to reveal all fingers. The short thumb is set back and clearly rises off the palm on the upper-left of this hand. At the far right there must be three distinct round fingertips, staggered like a three-step fan and separated by two slim white notches open at the edge. Keep all three fingers joined to the same palm, without a floating finger. Make the alarm pose spread distinctly wider than the wave. Make the background printer-white (#FFFFFF) and the silhouettes ink-black (#000000), with perfectly even interior fills and no gray fringe or paper effect.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/wizard-greeting-v03.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-91d2936f-ee68-4c35-bb47-d41c86574502.png",
+    "review": "1774 × 887. Six four-digit hand silhouettes verified visually. Dominant foreground #000000 and background #FEFEFE. Generated pixels include slight tonal variation."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/quiet-elf-a-take-01.png",
+    "status": "rejected",
+    "prompt": "Use case: logo-brand\nDesign a replacement pictogram for the elf in Image 1, a Quiet Please office sign. Image 1 establishes the character, palette and chest cutoff. Images 2 and 3 establish the bold and simple fantasy species pictogram style. Draw only the new pictogram of a 1970s fantasy elf office worker with simple rounded head, long pointed ears, suit jacket lapels and tie, cut off at the chest with a flat bottom edge. Flat single-color artwork in dark green #123F2C on a plain cream #F8E9CC background. Interior details are cream negative-space shapes. The shh gesture must read instantly at 128 px: one hand raised, index finger straight up and pressed vertically against the center of the lips, the other fingers curled into a fist below the chin. The finger touches the lips only and its rounded tip ends below the nose, well below the eyes. A clear thin cream gap separates the hand and finger from the face and chin apart from the visual contact at the lips. The arm is short and natural, bending up from the elbow. Four digits on the hand are fine. Center the bust on a square canvas with generous margins. No text, sound waves, symbols, border, sign panel, gradient or texture.\nStrict side profile facing right. The lips sit on the profile edge and the raised index finger stands in front of them, so the finger silhouette clearly sticks out past the face line. One long pointed ear, one closed eye.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-10-quiet-current.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-08-toxic-vapors-current.png",
+      "Image 3": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-09-low-clearance-current.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-0abaa372-ba85-4b7a-af8e-e31185e47fab.png",
+    "reason": "A cream stripe disconnects the index finger from the fist.",
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/quiet-elf-a-take-02.png",
+    "status": "rejected",
+    "prompt": "Use case: logo-brand\nDesign a replacement pictogram for the elf in Image 1, a Quiet Please office sign. Image 1 establishes the character, palette and chest cutoff. Images 2 and 3 establish the bold and simple fantasy species pictogram style. Draw only the new pictogram of a 1970s fantasy elf office worker with simple rounded head, long pointed ears, suit jacket lapels and tie, cut off at the chest with a flat bottom edge. Flat single-color artwork in dark green #123F2C on a plain cream #F8E9CC background. Interior details are cream negative-space shapes. The shh gesture must read instantly at 128 px: one hand raised, index finger straight up and pressed vertically against the center of the lips, the other fingers curled into a fist below the chin. The finger touches the lips only and its rounded tip ends below the nose, well below the eyes. A clear thin cream gap separates the hand and finger from the face and chin apart from the visual contact at the lips. The arm is short and natural, bending up from the elbow. Four digits on the hand are fine. Center the bust on a square canvas with generous margins. No text, sound waves, symbols, border, sign panel, gradient or texture.\nStrict side profile facing right. The lips sit on the profile edge and the raised index finger stands in front of them, so the finger silhouette clearly sticks out past the face line. One long pointed ear, one closed eye.\nKeep the index connected to the fist as one unbroken dark green shape. In the profile contour, the pursed mouth projects subtly to meet the inner edge of the upper index tip at one small contact point. Keep a fine cream separation beside the chin and elsewhere around the hand. Do not insert a cream stripe at the base of the index. Reduce the fist to a single bold mitten-like curled shape with at most two tiny finger grooves. Prefer the rounded bald head from Image 1. Make the fills as uniform as possible with the specified exact RGB values.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-10-quiet-current.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-08-toxic-vapors-current.png",
+      "Image 3": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-09-low-clearance-current.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-0d1eb065-fead-4295-85ee-377975cb569c.png",
+    "reason": "A wider cream gap leaves the index visibly separate from the lips.",
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": "quiet-elf-a-01.png",
+    "status": "selected",
+    "prompt": "Use case: logo-brand\nDesign a replacement pictogram for the elf in Image 1, a Quiet Please office sign. Image 1 establishes the character, palette and chest cutoff. Images 2 and 3 establish the bold and simple fantasy species pictogram style. Draw only the new pictogram of a 1970s fantasy elf office worker with simple rounded head, long pointed ears, suit jacket lapels and tie, cut off at the chest with a flat bottom edge. Flat single-color artwork in dark green #123F2C on a plain cream #F8E9CC background. Interior details are cream negative-space shapes. The shh gesture must read instantly at 128 px: one hand raised, index finger straight up and pressed vertically against the center of the lips, the other fingers curled into a fist below the chin. The finger touches the lips only and its rounded tip ends below the nose, well below the eyes. A clear thin cream gap separates the hand and finger from the face and chin apart from the visual contact at the lips. The arm is short and natural, bending up from the elbow. Four digits on the hand are fine. Center the bust on a square canvas with generous margins. No text, sound waves, symbols, border, sign panel, gradient or texture.\nStrict side profile facing right. The lips sit on the profile edge and the raised index finger stands in front of them, so the finger silhouette clearly sticks out past the face line. One long pointed ear, one closed eye.\nKeep the index connected to the fist as one unbroken dark green shape. In the profile contour, the pursed mouth projects subtly to meet the inner edge of the upper index tip at one small contact point. Keep a fine cream separation beside the chin and elsewhere around the hand. Do not insert a cream stripe at the base of the index. Reduce the fist to a single bold mitten-like curled shape with at most two tiny finger grooves. Prefer the rounded bald head from Image 1. Make the fills as uniform as possible with the specified exact RGB values.\nThe finger and the mouth must visibly meet: make the green lower lip extend rightward by a tiny amount so its contour joins the left edge of the index finger at a single narrow contact point. Preserve a cream gap below this contact next to the chin and above this contact next to the nose. The finger should clearly be the index at the forward edge of the hand, with the other fingers flexed below it. Do not add an extra mouth line or visual effects.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-10-quiet-current.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-08-toxic-vapors-current.png",
+      "Image 3": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-09-low-clearance-current.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-cdd0b771-3050-4307-9a4b-69641eff047c.png",
+    "review": "1254 × 1254. Profile gesture checked at 128 px. Dominant foreground #11432E and background #F8E6C9, with slight tonal variation."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/quiet-elf-b-take-01.png",
+    "status": "rejected",
+    "prompt": "Use case: logo-brand\nDesign a replacement pictogram for the elf in Image 1, a Quiet Please office sign. Image 1 establishes the character, palette and chest cutoff. Images 2 and 3 establish the bold and simple fantasy species pictogram style. Draw only the new pictogram of a 1970s fantasy elf office worker with simple rounded head, long pointed ears, suit jacket lapels and tie, cut off at the chest with a flat bottom edge. Flat single-color artwork in dark green #123F2C on a plain cream #F8E9CC background. Interior details are cream negative-space shapes. The shh gesture must read instantly at 128 px: one hand raised, index finger straight up and pressed vertically against the center of the lips, the other fingers curled into a fist below the chin. The finger touches the lips only and its rounded tip ends below the nose, well below the eyes. A clear thin cream gap separates the hand and finger from the face and chin apart from the visual contact at the lips. The arm is short and natural, bending up from the elbow. Four digits on the hand are fine. Center the bust on a square canvas with generous margins. No text, sound waves, symbols, border, sign panel, gradient or texture.\nFront view. The lips are a cream shape visible on both sides of the vertical finger. Closed, calm eyes. Ears point out to both sides. The fist sits just below the chin.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-10-quiet-current.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-08-toxic-vapors-current.png",
+      "Image 3": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-09-low-clearance-current.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-d375cf2a-d593-4dcb-a6c4-fc8406f2256a.png",
+    "reason": "A cream stripe disconnects the index finger from the fist.",
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": "quiet-elf-b-01.png",
+    "status": "selected",
+    "prompt": "Use case: logo-brand\nDesign a replacement pictogram for the elf in Image 1, a Quiet Please office sign. Image 1 establishes the character, palette and chest cutoff. Images 2 and 3 establish the bold and simple fantasy species pictogram style. Draw only the new pictogram of a 1970s fantasy elf office worker with simple rounded head, long pointed ears, suit jacket lapels and tie, cut off at the chest with a flat bottom edge. Flat single-color artwork in dark green #123F2C on a plain cream #F8E9CC background. Interior details are cream negative-space shapes. The shh gesture must read instantly at 128 px: one hand raised, index finger straight up and pressed vertically against the center of the lips, the other fingers curled into a fist below the chin. The finger touches the lips only and its rounded tip ends below the nose, well below the eyes. A clear thin cream gap separates the hand and finger from the face and chin apart from the visual contact at the lips. The arm is short and natural, bending up from the elbow. Four digits on the hand are fine. Center the bust on a square canvas with generous margins. No text, sound waves, symbols, border, sign panel, gradient or texture.\nFront view. The lips are a cream shape visible on both sides of the vertical finger. Closed, calm eyes. Ears point out to both sides. The fist sits just below the chin.\nKeep the green index attached to the green fist as one continuous form without any cream crossbar at their junction. Use a small cream mouth split exactly at its center by the green index, as if the mouth and index overlap. The adjacent cream separation extends along the sides of the index and around the fist. Prefer the rounded bald head from Image 1. Use a compact, bent forearm with the elbow tucked into the bust, and simplify interior details to the essential bold closed eyes, mouth, sleeve, tie and lapels. Make the fills as uniform as possible with the specified exact RGB values.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-10-quiet-current.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-08-toxic-vapors-current.png",
+      "Image 3": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-09-low-clearance-current.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-a2f64135-1e63-4d57-89b3-4b73f1ee8c1a.png",
+    "review": "1254 × 1254. Front gesture checked at 128 px. Dominant foreground #0F422C and background #F7E5C8, with slight tonal variation."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/quiet-elf-c-take-01.png",
+    "status": "rejected",
+    "prompt": "Use case: logo-brand\nDesign a replacement pictogram for the elf in Image 1, a Quiet Please office sign. Image 1 establishes the character, palette and chest cutoff. Images 2 and 3 establish the bold and simple fantasy species pictogram style. Draw only the new pictogram of a 1970s fantasy elf office worker with simple rounded head, long pointed ears, suit jacket lapels and tie, cut off at the chest with a flat bottom edge. Flat single-color artwork in dark green #123F2C on a plain cream #F8E9CC background. Interior details are cream negative-space shapes. The shh gesture must read instantly at 128 px: one hand raised, index finger straight up and pressed vertically against the center of the lips, the other fingers curled into a fist below the chin. The finger touches the lips only and its rounded tip ends below the nose, well below the eyes. A clear thin cream gap separates the hand and finger from the face and chin apart from the visual contact at the lips. The arm is short and natural, bending up from the elbow. Four digits on the hand are fine. Center the bust on a square canvas with generous margins. No text, sound waves, symbols, border, sign panel, gradient or texture.\nThree-quarter view facing right, with both sides of the face perceptible and the nearer cheek dominant. Eyes closed or glancing sideways. Lips slightly pursed around the finger as if saying shh.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-10-quiet-current.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-08-toxic-vapors-current.png",
+      "Image 3": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-09-low-clearance-current.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-b229bbda-c35c-4251-802c-ffa2a0293fa7.png",
+    "reason": "Hair, large face cutouts and extra hand details obscure the simple pictogram style at 128 px.",
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": "quiet-elf-c-01.png",
+    "status": "selected",
+    "prompt": "Use case: logo-brand\nDesign a replacement pictogram for the elf in Image 1, a Quiet Please office sign. Image 1 establishes the character, palette and chest cutoff. Images 2 and 3 establish the bold and simple fantasy species pictogram style. Draw only the new pictogram of a 1970s fantasy elf office worker with simple rounded head, long pointed ears, suit jacket lapels and tie, cut off at the chest with a flat bottom edge. Flat single-color artwork in dark green #123F2C on a plain cream #F8E9CC background. Interior details are cream negative-space shapes. The shh gesture must read instantly at 128 px: one hand raised, index finger straight up and pressed vertically against the center of the lips, the other fingers curled into a fist below the chin. The finger touches the lips only and its rounded tip ends below the nose, well below the eyes. A clear thin cream gap separates the hand and finger from the face and chin apart from the visual contact at the lips. The arm is short and natural, bending up from the elbow. Four digits on the hand are fine. Center the bust on a square canvas with generous margins. No text, sound waves, symbols, border, sign panel, gradient or texture.\nThree-quarter view facing right, with both sides of the face perceptible and the nearer cheek dominant. Eyes closed or glancing sideways. Lips slightly pursed around the finger as if saying shh.\nFavor a rounded bald dark-green head as in Image 1. Use just simple cream marks for the closed eyes and mouth, no large cream facial patch, hairstyle or mask-like eye shapes. At the upper tip of the index, show small pursed lips in direct visual contact with the finger. Keep the dark green index attached to its fist without any cream dividing stripe. The light gap follows the side of the finger and chin only. Use the simplest bold geometry that survives 128 px. Make the fills as uniform as possible with the specified exact RGB values.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-10-quiet-current.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-08-toxic-vapors-current.png",
+      "Image 3": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/sign-09-low-clearance-current.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-ea7d666c-f1f7-4134-b086-2300be531324.png",
+    "review": "1254 × 1254. Three-quarter gesture checked at 128 px. Dominant foreground #0E462D and background #F8E6C7, with slight tonal variation."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/greeting-v03-hand-a-take-01.png",
+    "status": "rejected",
+    "attempt": 1,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Waving hand raised high, palm toward the viewer, fingers slightly spread pointing up, thumb on the right side (toward the head).\nMatch the hand sheet's wave (top middle).\nPreserve the separate cropped hat and head at right, plus the entire diagonal lower-right forearm.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/greeting-v03-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-d9d8c305-ff96-4591-b410-363a119698ec.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        240,
+        230,
+        770,
+        750
+      ],
+      "outside_box_color_differences_after_resampling": 614164,
+      "outside_box_silhouette_differences_after_resampling": 3726
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/greeting-v03-hand-a-take-02.png",
+    "status": "rejected",
+    "attempt": 2,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Waving hand raised high, palm toward the viewer, fingers slightly spread pointing up, thumb on the right side (toward the head).\nMatch the hand sheet's wave (top middle).\nPreserve the separate cropped hat and head at right, plus the entire diagonal lower-right forearm.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Maintain both sleeve edges at the same angle immediately below the wrist. Keep the thumb tip and highest finger tip in their original vicinity.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/greeting-v03-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-b368f7a3-85a2-40df-9f27-d575f7201c1e.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        240,
+        230,
+        770,
+        750
+      ],
+      "outside_box_color_differences_after_resampling": 618582,
+      "outside_box_silhouette_differences_after_resampling": 6424
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": "greeting-v03-hand-a-01.png",
+    "status": "accepted by orchestrator",
+    "attempt": 3,
+    "reference_pick": true,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Waving hand raised high, palm toward the viewer, fingers slightly spread pointing up, thumb on the right side (toward the head).\nMatch the hand sheet's wave (top middle).\nPreserve the separate cropped hat and head at right, plus the entire diagonal lower-right forearm.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Maintain both sleeve edges at the same angle immediately below the wrist. Keep the thumb tip and highest finger tip in their original vicinity.\nRaster edit framing: coordinates are on Image 1 with origin at the upper left. The hand is within approximately x=240–770, y=230–750, with all outside pixels locked. The join is the two contours at approximately (517,736) and (662,652), with the arm descending to the lower right. Image 1 is the full-size backing plate. Keep all source pixels as they were except where the hand silhouette itself needs to change. The required delivered PNG is exactly 1024 pixels wide and 1024 pixels high.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/greeting-v03-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-686b80fd-db4f-4249-8f4b-0d9d05f91050.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        240,
+        230,
+        770,
+        750
+      ],
+      "outside_box_color_differences_after_resampling": 610116,
+      "outside_box_silhouette_differences_after_resampling": 2956
+    },
+    "review": "Preferred rejected take for tracing the hand. Three visible fingers and one thumb with the specified gesture and thumb side.",
+    "orchestrator_note": "Accepted for hand-only splice: the forearm and surroundings come from the approved SVG, so pixel changes outside the hand do not reach the final artwork."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/neutral-welcome-v03-hand-a-take-01.png",
+    "status": "rejected",
+    "attempt": 1,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Welcoming open hand extended down to the left, palm up, fingers pointing left, thumb on the upper side.\nMatch the hand sheet's offering (top right), mirrored.\nPreserve the original small white curved seam at the wrist, the silhouette of the arm above and right of the seam, and the separate black sliver at the lower-right edge.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/neutral-welcome-v03-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-9d73c530-8504-4228-94e9-47a5e0e4efd8.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        250,
+        280,
+        740,
+        750
+      ],
+      "outside_box_color_differences_after_resampling": 673063,
+      "outside_box_silhouette_differences_after_resampling": 324
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/neutral-welcome-v03-hand-a-take-02.png",
+    "status": "rejected",
+    "attempt": 2,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Welcoming open hand extended down to the left, palm up, fingers pointing left, thumb on the upper side.\nMatch the hand sheet's offering (top right), mirrored.\nPreserve the original small white curved seam at the wrist, the silhouette of the arm above and right of the seam, and the separate black sliver at the lower-right edge.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. The fingers fan to the lower left rather than lying on a horizontal axis. Keep the original curved white wrist seam exactly in place.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/neutral-welcome-v03-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-13cdc487-b4bb-4ef2-9707-687afe15f6ef.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        250,
+        280,
+        740,
+        750
+      ],
+      "outside_box_color_differences_after_resampling": 663073,
+      "outside_box_silhouette_differences_after_resampling": 353
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": "neutral-welcome-v03-hand-a-01.png",
+    "status": "accepted by orchestrator",
+    "attempt": 3,
+    "reference_pick": true,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Welcoming open hand extended down to the left, palm up, fingers pointing left, thumb on the upper side.\nMatch the hand sheet's offering (top right), mirrored.\nPreserve the original small white curved seam at the wrist, the silhouette of the arm above and right of the seam, and the separate black sliver at the lower-right edge.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. The fingers fan to the lower left rather than lying on a horizontal axis. Keep the original curved white wrist seam exactly in place.\nRaster edit framing: coordinates are on Image 1 with origin at the upper left. The hand is within approximately x=250–740, y=280–750, with all outside pixels locked. The join is the original curved white seam from approximately (657,378) to (715,530), with the arm rising to the right. Image 1 is the full-size backing plate. Keep all source pixels as they were except where the hand silhouette itself needs to change. The required delivered PNG is exactly 1024 pixels wide and 1024 pixels high.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/neutral-welcome-v03-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-6fa8fd52-2647-44ca-821b-0bfa5ffd7982.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        250,
+        280,
+        740,
+        750
+      ],
+      "outside_box_color_differences_after_resampling": 674312,
+      "outside_box_silhouette_differences_after_resampling": 242
+    },
+    "review": "Preferred rejected take for tracing the hand. Three visible fingers and one thumb with the specified gesture and thumb side.",
+    "orchestrator_note": "Accepted for hand-only splice: the forearm and surroundings come from the approved SVG, so pixel changes outside the hand do not reach the final artwork."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/stop-v01-hand-a-take-01.png",
+    "status": "rejected",
+    "attempt": 1,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Upright \"stop\" hand: palm flat toward the viewer, fingers together pointing straight up, thumb on the right side, slightly apart.\nMatch the hand sheet's stop (top left).\nThe forearm already enters from the right and bends at the hand. Keep that elbow and forearm silhouette as shown, including the hat sliver at upper right.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/stop-v01-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-d8abca0c-8515-49d3-8f86-e4ae40f4417a.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        235,
+        180,
+        755,
+        800
+      ],
+      "outside_box_color_differences_after_resampling": 601537,
+      "outside_box_silhouette_differences_after_resampling": 1055
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/stop-v01-hand-a-take-02.png",
+    "status": "rejected",
+    "attempt": 2,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Upright \"stop\" hand: palm flat toward the viewer, fingers together pointing straight up, thumb on the right side, slightly apart.\nMatch the hand sheet's stop (top left).\nThe forearm already enters from the right and bends at the hand. Keep that elbow and forearm silhouette as shown, including the hat sliver at upper right.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Keep the palm leaning very slightly left, and preserve the low rounded wrist bend and all rightward forearm edges. Shorten fingers mainly at their base so the palm is rounder without a large positional shift.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/stop-v01-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-1649621a-f9e0-4c00-9296-9b83a3c1d701.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        235,
+        180,
+        755,
+        800
+      ],
+      "outside_box_color_differences_after_resampling": 597669,
+      "outside_box_silhouette_differences_after_resampling": 655
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": "stop-v01-hand-a-01.png",
+    "status": "accepted by orchestrator",
+    "attempt": 3,
+    "reference_pick": true,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Upright \"stop\" hand: palm flat toward the viewer, fingers together pointing straight up, thumb on the right side, slightly apart.\nMatch the hand sheet's stop (top left).\nThe forearm already enters from the right and bends at the hand. Keep that elbow and forearm silhouette as shown, including the hat sliver at upper right.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Keep the palm leaning very slightly left, and preserve the low rounded wrist bend and all rightward forearm edges. Shorten fingers mainly at their base so the palm is rounder without a large positional shift.\nRaster edit framing: coordinates are on Image 1 with origin at the upper left. The hand is within approximately x=235–755, y=180–800, with all outside pixels locked. The join is the existing hand–arm bend between approximately (410,680) and (681,641), with the arm exiting right. Image 1 is the full-size backing plate. Keep all source pixels as they were except where the hand silhouette itself needs to change. The required delivered PNG is exactly 1024 pixels wide and 1024 pixels high.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/stop-v01-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-6ceb587f-573e-47a0-88d0-b74a57053582.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        235,
+        180,
+        755,
+        800
+      ],
+      "outside_box_color_differences_after_resampling": 592546,
+      "outside_box_silhouette_differences_after_resampling": 474
+    },
+    "review": "Preferred rejected take for tracing the hand. Three visible fingers and one thumb with the specified gesture and thumb side.",
+    "orchestrator_note": "Accepted for hand-only splice: the forearm and surroundings come from the approved SVG, so pixel changes outside the hand do not reach the final artwork."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/explaining-instructions-v03-hand-a-take-01.png",
+    "status": "rejected",
+    "attempt": 1,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Open hand extended to the left, palm up as if presenting, fingers pointing left, thumb on the upper side pointing up.\nMatch the hand sheet's offering (top right), mirrored.\nPreserve the right-hand side of the crop including the forearm, elbow and steep diagonal upper arm.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/explaining-instructions-v03-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-3c178b0e-f6af-445d-abbf-eb77e575a74c.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        245,
+        295,
+        748,
+        725
+      ],
+      "outside_box_color_differences_after_resampling": 699131,
+      "outside_box_silhouette_differences_after_resampling": 840
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/explaining-instructions-v03-hand-a-take-02.png",
+    "status": "rejected",
+    "attempt": 2,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Open hand extended to the left, palm up as if presenting, fingers pointing left, thumb on the upper side pointing up.\nMatch the hand sheet's offering (top right), mirrored.\nPreserve the right-hand side of the crop including the forearm, elbow and steep diagonal upper arm.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Use a sideways offering hand fanning slightly upward-left. Make the original sleeve/forearm junction unshifted.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/explaining-instructions-v03-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-0415bae6-63c3-494c-82a3-a0b982406130.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        245,
+        295,
+        748,
+        725
+      ],
+      "outside_box_color_differences_after_resampling": 699257,
+      "outside_box_silhouette_differences_after_resampling": 910
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": "explaining-instructions-v03-hand-a-01.png",
+    "status": "accepted by orchestrator",
+    "attempt": 3,
+    "reference_pick": true,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Open hand extended to the left, palm up as if presenting, fingers pointing left, thumb on the upper side pointing up.\nMatch the hand sheet's offering (top right), mirrored.\nPreserve the right-hand side of the crop including the forearm, elbow and steep diagonal upper arm.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Use a sideways offering hand fanning slightly upward-left. Make the original sleeve/forearm junction unshifted.\nRaster edit framing: coordinates are on Image 1 with origin at the upper left. The hand is within approximately x=245–748, y=295–725, with all outside pixels locked. The join is the two contours at approximately (648,649) and (718,517), with the sleeve continuing to the right and down. Image 1 is the full-size backing plate. Keep all source pixels as they were except where the hand silhouette itself needs to change. The required delivered PNG is exactly 1024 pixels wide and 1024 pixels high.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/explaining-instructions-v03-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-5403e9b9-3ad1-4141-8236-1df7238c9c5e.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        245,
+        295,
+        748,
+        725
+      ],
+      "outside_box_color_differences_after_resampling": 696533,
+      "outside_box_silhouette_differences_after_resampling": 800
+    },
+    "review": "Preferred rejected take for tracing the hand. Three visible fingers and one thumb with the specified gesture and thumb side.",
+    "orchestrator_note": "Accepted for hand-only splice: the forearm and surroundings come from the approved SVG, so pixel changes outside the hand do not reach the final artwork."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/point-left-v02-hand-a-take-01.png",
+    "status": "rejected",
+    "attempt": 1,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Pointing left: index finger straight out to the left, the other two fingers curled into the palm, thumb resting on top.\nMatch the hand sheet's pointing (bottom left), mirrored horizontally. The two curled fingers appear as two distinct stacked round lobes below the straight index.\nThe arm silhouette to the right of the wrist is fixed. Keep it at the same right edge coordinates. Put one clearly outlined small thumb above the index base and two curled lobes below the index.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/point-left-v02-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-3d09ca9a-82e3-486a-9f84-86cb6db533f4.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        190,
+        285,
+        750,
+        740
+      ],
+      "outside_box_color_differences_after_resampling": 668408,
+      "outside_box_silhouette_differences_after_resampling": 639
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": "point-left-v02-hand-a-01.png",
+    "status": "accepted by orchestrator",
+    "attempt": 2,
+    "reference_pick": true,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Pointing left: index finger straight out to the left, the other two fingers curled into the palm, thumb resting on top.\nMatch the hand sheet's pointing (bottom left), mirrored horizontally. The two curled fingers appear as two distinct stacked round lobes below the straight index.\nThe arm silhouette to the right of the wrist is fixed. Keep it at the same right edge coordinates. Put one clearly outlined small thumb above the index base and two curled lobes below the index.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Maintain the index on the source's slightly upward pointing axis toward the left and preserve the original tip position. Use a modest, separately visible thumb above its base and two curled lobes below.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/point-left-v02-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-4bbba2cb-d572-4643-9b59-1570103537f6.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        190,
+        285,
+        750,
+        740
+      ],
+      "outside_box_color_differences_after_resampling": 674235,
+      "outside_box_silhouette_differences_after_resampling": 187
+    },
+    "review": "Preferred rejected take for tracing the hand. Three visible fingers and one thumb with the specified gesture and thumb side.",
+    "orchestrator_note": "Accepted for hand-only splice: the forearm and surroundings come from the approved SVG, so pixel changes outside the hand do not reach the final artwork."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/point-left-v02-hand-a-take-03.png",
+    "status": "rejected",
+    "attempt": 3,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Pointing left: index finger straight out to the left, the other two fingers curled into the palm, thumb resting on top.\nMatch the hand sheet's pointing (bottom left), mirrored horizontally. The two curled fingers appear as two distinct stacked round lobes below the straight index.\nThe arm silhouette to the right of the wrist is fixed. Keep it at the same right edge coordinates. Put one clearly outlined small thumb above the index base and two curled lobes below the index.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Maintain the index on the source's slightly upward pointing axis toward the left and preserve the original tip position. Use a modest, separately visible thumb above its base and two curled lobes below.\nRaster edit framing: coordinates are on Image 1 with origin at the upper left. The hand is within approximately x=190–750, y=285–740, with all outside pixels locked. The join is the fixed rightward forearm, at starting points approximately (740,452) and (732,623). Image 1 is the full-size backing plate. Keep all source pixels as they were except where the hand silhouette itself needs to change. The required delivered PNG is exactly 1024 pixels wide and 1024 pixels high.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/point-left-v02-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-9fb7bc27-7600-4d43-b420-6cd13730e351.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        190,
+        285,
+        750,
+        740
+      ],
+      "outside_box_color_differences_after_resampling": 667883,
+      "outside_box_silhouette_differences_after_resampling": 704
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/point-right-v03-hand-a-take-01.png",
+    "status": "rejected",
+    "attempt": 1,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Pointing right: index finger straight out to the right, the other two fingers curled into the palm, thumb resting on top.\nMatch the hand sheet's pointing (bottom left). The two curled fingers appear as two distinct stacked round lobes below the straight index.\nThe arm silhouette to the left of the wrist and tiny black fleck in the upper-left corner are fixed. Put one clearly outlined small thumb above the index base and two curled lobes below the index.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/point-right-v03-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-cada169e-55fc-429a-b7fd-9f3a8ed9ae11.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        290,
+        285,
+        800,
+        750
+      ],
+      "outside_box_color_differences_after_resampling": 682078,
+      "outside_box_silhouette_differences_after_resampling": 338
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": "point-right-v03-hand-a-01.png",
+    "status": "accepted by orchestrator",
+    "attempt": 2,
+    "reference_pick": true,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Pointing right: index finger straight out to the right, the other two fingers curled into the palm, thumb resting on top.\nMatch the hand sheet's pointing (bottom left). The two curled fingers appear as two distinct stacked round lobes below the straight index.\nThe arm silhouette to the left of the wrist and tiny black fleck in the upper-left corner are fixed. Put one clearly outlined small thumb above the index base and two curled lobes below the index.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Maintain the index on the source's slightly upward pointing axis toward the right and preserve the original tip position. Use a modest, separately visible thumb above its base and two curled lobes below.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/point-right-v03-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-0dc6d248-bbd2-437f-9687-fbcb7115c761.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        290,
+        285,
+        800,
+        750
+      ],
+      "outside_box_color_differences_after_resampling": 688084,
+      "outside_box_silhouette_differences_after_resampling": 493
+    },
+    "review": "Preferred rejected take for tracing the hand. Three visible fingers and one thumb with the specified gesture and thumb side.",
+    "orchestrator_note": "Accepted for hand-only splice: the forearm and surroundings come from the approved SVG, so pixel changes outside the hand do not reach the final artwork."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/point-right-v03-hand-a-take-03.png",
+    "status": "rejected",
+    "attempt": 3,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Pointing right: index finger straight out to the right, the other two fingers curled into the palm, thumb resting on top.\nMatch the hand sheet's pointing (bottom left). The two curled fingers appear as two distinct stacked round lobes below the straight index.\nThe arm silhouette to the left of the wrist and tiny black fleck in the upper-left corner are fixed. Put one clearly outlined small thumb above the index base and two curled lobes below the index.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Maintain the index on the source's slightly upward pointing axis toward the right and preserve the original tip position. Use a modest, separately visible thumb above its base and two curled lobes below.\nRaster edit framing: coordinates are on Image 1 with origin at the upper left. The hand is within approximately x=290–800, y=285–750, with all outside pixels locked. The join is the fixed leftward forearm, at ending points approximately (312,477) and (328,626). Image 1 is the full-size backing plate. Keep all source pixels as they were except where the hand silhouette itself needs to change. The required delivered PNG is exactly 1024 pixels wide and 1024 pixels high.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/point-right-v03-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-1f49b147-4af2-411c-bf86-aa6d0067c994.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        290,
+        285,
+        800,
+        750
+      ],
+      "outside_box_color_differences_after_resampling": 676340,
+      "outside_box_silhouette_differences_after_resampling": 495
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/slipping-falling-v04-hand-a-take-01.png",
+    "status": "rejected",
+    "attempt": 1,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Hand flung upward in alarm, fingers spread pointing up, thumb on the left side.\nMatch the hand sheet's alarm (bottom middle), mirrored.\nPreserve the diagonal forearm below the wrist as shown from the wrist to the bottom edge.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/slipping-falling-v04-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-df35569f-f012-4be3-b169-7b30a210bb8c.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        260,
+        200,
+        765,
+        765
+      ],
+      "outside_box_color_differences_after_resampling": 636783,
+      "outside_box_silhouette_differences_after_resampling": 5665
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/slipping-falling-v04-hand-a-take-02.png",
+    "status": "rejected",
+    "attempt": 2,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Hand flung upward in alarm, fingers spread pointing up, thumb on the left side.\nMatch the hand sheet's alarm (bottom middle), mirrored.\nPreserve the diagonal forearm below the wrist as shown from the wrist to the bottom edge.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Do not follow the angle of the style reference wrist. Keep the existing wrist and diagonal forearm absolutely fixed. Broaden the rounded palm without relocating the wrist.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/slipping-falling-v04-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-69322643-d5d0-4054-8ef9-d56b01c280b0.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        260,
+        200,
+        765,
+        765
+      ],
+      "outside_box_color_differences_after_resampling": 638727,
+      "outside_box_silhouette_differences_after_resampling": 7705
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": "slipping-falling-v04-hand-a-01.png",
+    "status": "accepted by orchestrator",
+    "attempt": 3,
+    "reference_pick": true,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Hand flung upward in alarm, fingers spread pointing up, thumb on the left side.\nMatch the hand sheet's alarm (bottom middle), mirrored.\nPreserve the diagonal forearm below the wrist as shown from the wrist to the bottom edge.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Do not follow the angle of the style reference wrist. Keep the existing wrist and diagonal forearm absolutely fixed. Broaden the rounded palm without relocating the wrist.\nRaster edit framing: coordinates are on Image 1 with origin at the upper left. The hand is within approximately x=260–765, y=200–765, with all outside pixels locked. The join is the two edges at approximately (497,711) and (692,669), with the arm descending right. Image 1 is the full-size backing plate. Keep all source pixels as they were except where the hand silhouette itself needs to change. The required delivered PNG is exactly 1024 pixels wide and 1024 pixels high.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/slipping-falling-v04-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-3bc40c7f-041f-4005-a67a-1fe9c5f04c7e.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        260,
+        200,
+        765,
+        765
+      ],
+      "outside_box_color_differences_after_resampling": 634636,
+      "outside_box_silhouette_differences_after_resampling": 427
+    },
+    "review": "Preferred rejected take for tracing the hand. Three visible fingers and one thumb with the specified gesture and thumb side.",
+    "orchestrator_note": "Accepted for hand-only splice: the forearm and surroundings come from the approved SVG, so pixel changes outside the hand do not reach the final artwork."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/slipping-falling-v04-hand-b-take-01.png",
+    "status": "rejected",
+    "attempt": 1,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Arm flung out to the right, fingers spread pointing right, thumb on the upper side.\nMatch the hand sheet's alarm (bottom middle), rotated and oriented to put thumb above.\nPreserve the entering left arm and separate black crescent at the upper left. The thumb is the lone upper-side lobe.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/slipping-falling-v04-hand-b.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-937deb85-c7bb-41f8-a454-beabe85bfe8f.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        233,
+        220,
+        850,
+        812
+      ],
+      "outside_box_color_differences_after_resampling": 564012,
+      "outside_box_silhouette_differences_after_resampling": 710
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": "slipping-falling-v04-hand-b-01.png",
+    "status": "accepted by orchestrator",
+    "attempt": 2,
+    "reference_pick": true,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Arm flung out to the right, fingers spread pointing right, thumb on the upper side.\nMatch the hand sheet's alarm (bottom middle), rotated and oriented to put thumb above.\nPreserve the entering left arm and separate black crescent at the upper left. The thumb is the lone upper-side lobe.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Keep the existing right-and-slightly-downward finger fan and wrist axis. Three fingers and one upper thumb must remain distinct.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/slipping-falling-v04-hand-b.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-809ad351-a910-433b-9163-9cc4deb8e951.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        233,
+        220,
+        850,
+        812
+      ],
+      "outside_box_color_differences_after_resampling": 558357,
+      "outside_box_silhouette_differences_after_resampling": 122
+    },
+    "review": "Preferred rejected take for tracing the hand. Three visible fingers and one thumb with the specified gesture and thumb side.",
+    "orchestrator_note": "Accepted for hand-only splice: the forearm and surroundings come from the approved SVG, so pixel changes outside the hand do not reach the final artwork."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/slipping-falling-v04-hand-b-take-03.png",
+    "status": "rejected",
+    "attempt": 3,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Arm flung out to the right, fingers spread pointing right, thumb on the upper side.\nMatch the hand sheet's alarm (bottom middle), rotated and oriented to put thumb above.\nPreserve the entering left arm and separate black crescent at the upper left. The thumb is the lone upper-side lobe.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Keep the existing right-and-slightly-downward finger fan and wrist axis. Three fingers and one upper thumb must remain distinct.\nRaster edit framing: coordinates are on Image 1 with origin at the upper left. The hand is within approximately x=233–850, y=220–812, with all outside pixels locked. The join is the two left-arm edges at approximately (246,386) and (257,618), with the sleeve entering from the left. Image 1 is the full-size backing plate. Keep all source pixels as they were except where the hand silhouette itself needs to change. The required delivered PNG is exactly 1024 pixels wide and 1024 pixels high.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/slipping-falling-v04-hand-b.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-eb47bf92-fadc-4874-8e64-dffd1e919355.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        233,
+        220,
+        850,
+        812
+      ],
+      "outside_box_color_differences_after_resampling": 562647,
+      "outside_box_silhouette_differences_after_resampling": 182
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/chemical-accident-v04-hand-a-take-01.png",
+    "status": "rejected",
+    "attempt": 1,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Hand thrown up in shock, fingers spread pointing up, thumb on the left side.\nMatch the hand sheet's alarm (bottom middle), mirrored.\nPreserve both black fragments at the left edge and the entire rising rightward-diagonal forearm below the wrist.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/chemical-accident-v04-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-f1381924-7eed-44a9-8829-95ee2b875e80.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        230,
+        220,
+        811,
+        775
+      ],
+      "outside_box_color_differences_after_resampling": 583508,
+      "outside_box_silhouette_differences_after_resampling": 808
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": "chemical-accident-v04-hand-a-01.png",
+    "status": "accepted by orchestrator",
+    "attempt": 2,
+    "reference_pick": true,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Hand thrown up in shock, fingers spread pointing up, thumb on the left side.\nMatch the hand sheet's alarm (bottom middle), mirrored.\nPreserve both black fragments at the left edge and the entire rising rightward-diagonal forearm below the wrist.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Do not recenter the palm. Keep the existing wrist intersection, and preserve the nearby hat brim and head fragments along the left edge.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/chemical-accident-v04-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-ba356fd7-7c9f-4daf-ba2d-3bda665f8e50.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        230,
+        220,
+        811,
+        775
+      ],
+      "outside_box_color_differences_after_resampling": 582519,
+      "outside_box_silhouette_differences_after_resampling": 584
+    },
+    "review": "Preferred rejected take for tracing the hand. Three visible fingers and one thumb with the specified gesture and thumb side.",
+    "orchestrator_note": "Accepted for hand-only splice: the forearm and surroundings come from the approved SVG, so pixel changes outside the hand do not reach the final artwork."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/chemical-accident-v04-hand-a-take-03.png",
+    "status": "rejected",
+    "attempt": 3,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Hand thrown up in shock, fingers spread pointing up, thumb on the left side.\nMatch the hand sheet's alarm (bottom middle), mirrored.\nPreserve both black fragments at the left edge and the entire rising rightward-diagonal forearm below the wrist.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Do not recenter the palm. Keep the existing wrist intersection, and preserve the nearby hat brim and head fragments along the left edge.\nRaster edit framing: coordinates are on Image 1 with origin at the upper left. The hand is within approximately x=230–811, y=220–775, with all outside pixels locked. The join is the two edges at approximately (400,700) and (565,752), with the arm descending left. Image 1 is the full-size backing plate. Keep all source pixels as they were except where the hand silhouette itself needs to change. The required delivered PNG is exactly 1024 pixels wide and 1024 pixels high.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/chemical-accident-v04-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-8e3432aa-8d32-49da-a3ff-032697f9e744.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        230,
+        220,
+        811,
+        775
+      ],
+      "outside_box_color_differences_after_resampling": 583771,
+      "outside_box_silhouette_differences_after_resampling": 771
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/chemical-accident-v04-hand-b-take-01.png",
+    "status": "rejected",
+    "attempt": 1,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Hand hanging down to the lower left with fingers spread pointing down, thumb on the right side.\nMatch the hand sheet's relaxed hand (bottom right), fingers more spread as in alarm.\nPreserve the black arm above the wrist as well as all other separated black silhouette fragments on the right edge.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/chemical-accident-v04-hand-b.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-b87e1131-7d49-459d-9c81-f7e6bd0667de.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        230,
+        225,
+        780,
+        800
+      ],
+      "outside_box_color_differences_after_resampling": 578899,
+      "outside_box_silhouette_differences_after_resampling": 379
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/chemical-accident-v04-hand-b-take-02.png",
+    "status": "rejected",
+    "attempt": 2,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Hand hanging down to the lower left with fingers spread pointing down, thumb on the right side.\nMatch the hand sheet's relaxed hand (bottom right), fingers more spread as in alarm.\nPreserve the black arm above the wrist as well as all other separated black silhouette fragments on the right edge.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Match the original down-left tilt and stay near the current fingertip bounds. Preserve the right edge of the wrist and the unaffected fragments.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/chemical-accident-v04-hand-b.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-d944311e-82e9-4c64-8e3d-dfaa6ff00996.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        230,
+        225,
+        780,
+        800
+      ],
+      "outside_box_color_differences_after_resampling": 583117,
+      "outside_box_silhouette_differences_after_resampling": 533
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": "chemical-accident-v04-hand-b-01.png",
+    "status": "accepted by orchestrator",
+    "attempt": 3,
+    "reference_pick": true,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Hand hanging down to the lower left with fingers spread pointing down, thumb on the right side.\nMatch the hand sheet's relaxed hand (bottom right), fingers more spread as in alarm.\nPreserve the black arm above the wrist as well as all other separated black silhouette fragments on the right edge.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Match the original down-left tilt and stay near the current fingertip bounds. Preserve the right edge of the wrist and the unaffected fragments.\nRaster edit framing: coordinates are on Image 1 with origin at the upper left. The hand is within approximately x=230–780, y=225–800, with all outside pixels locked. The join is the two edges at approximately (468,282) and (626,351), with the arm rising right. Image 1 is the full-size backing plate. Keep all source pixels as they were except where the hand silhouette itself needs to change. The required delivered PNG is exactly 1024 pixels wide and 1024 pixels high.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/chemical-accident-v04-hand-b.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-08388a75-6685-4ff8-ace9-70f01c8e7c22.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        230,
+        225,
+        780,
+        800
+      ],
+      "outside_box_color_differences_after_resampling": 587113,
+      "outside_box_silhouette_differences_after_resampling": 378
+    },
+    "review": "Preferred rejected take for tracing the hand. Three visible fingers and one thumb with the specified gesture and thumb side.",
+    "orchestrator_note": "Accepted for hand-only splice: the forearm and surroundings come from the approved SVG, so pixel changes outside the hand do not reach the final artwork."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/electrical-accident-v04-hand-a-take-01.png",
+    "status": "rejected",
+    "attempt": 1,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Electrocuted skeleton's raised hand, fingers spread pointing up, thumb on the right side. Keep the white bone forearm and white joint cut-outs exactly; only the black hand changes.\nMatch the hand sheet's alarm (bottom middle).\nPreserve the exact white bone shape including the two round lobes in the palm, and all additional black and white shapes along the right and bottom.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/electrical-accident-v04-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-f6443be7-8e87-4aea-b605-5fffd38ce808.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        242,
+        260,
+        786,
+        768
+      ],
+      "outside_box_color_differences_after_resampling": 617752,
+      "outside_box_silhouette_differences_after_resampling": 2096
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": "electrical-accident-v04-hand-a-01.png",
+    "status": "accepted by orchestrator",
+    "attempt": 2,
+    "reference_pick": true,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Electrocuted skeleton's raised hand, fingers spread pointing up, thumb on the right side. Keep the white bone forearm and white joint cut-outs exactly; only the black hand changes.\nMatch the hand sheet's alarm (bottom middle).\nPreserve the exact white bone shape including the two round lobes in the palm, and all additional black and white shapes along the right and bottom.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Treat the white bone and both top joint lobes as locked foreground pixels pasted over the black palm. Do not smooth, scale or change those white lobes or any outline of the surrounding arm.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/electrical-accident-v04-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-fcd2821a-3eb9-46ba-88f4-cac5b1f8ba44.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        242,
+        260,
+        786,
+        768
+      ],
+      "outside_box_color_differences_after_resampling": 614184,
+      "outside_box_silhouette_differences_after_resampling": 1127
+    },
+    "review": "Preferred rejected take for tracing the hand. Three visible fingers and one thumb with the specified gesture and thumb side.",
+    "orchestrator_note": "Accepted for hand-only splice: the forearm and surroundings come from the approved SVG, so pixel changes outside the hand do not reach the final artwork."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/electrical-accident-v04-hand-a-take-03.png",
+    "status": "rejected",
+    "attempt": 3,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Electrocuted skeleton's raised hand, fingers spread pointing up, thumb on the right side. Keep the white bone forearm and white joint cut-outs exactly; only the black hand changes.\nMatch the hand sheet's alarm (bottom middle).\nPreserve the exact white bone shape including the two round lobes in the palm, and all additional black and white shapes along the right and bottom.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Treat the white bone and both top joint lobes as locked foreground pixels pasted over the black palm. Do not smooth, scale or change those white lobes or any outline of the surrounding arm.\nRaster edit framing: coordinates are on Image 1 with origin at the upper left. The hand is within approximately x=242–786, y=260–768, with all outside pixels locked. The join is the exact existing bone through the joint in the palm and the black wrist edges on either side at approximately y=740. Image 1 is the full-size backing plate. Keep all source pixels as they were except where the hand silhouette itself needs to change. The required delivered PNG is exactly 1024 pixels wide and 1024 pixels high.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/electrical-accident-v04-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-3e1727d3-e2e1-475f-9167-fdbd0fa1eea5.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        242,
+        260,
+        786,
+        768
+      ],
+      "outside_box_color_differences_after_resampling": 608076,
+      "outside_box_silhouette_differences_after_resampling": 1370
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/electrical-accident-v04-hand-b-take-01.png",
+    "status": "rejected",
+    "attempt": 1,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Electrocuted skeleton's raised hand, fingers spread pointing up, thumb on the left side. Keep the white bone forearm and white joint cut-outs exactly; only the black hand changes.\nMatch the hand sheet's alarm (bottom middle), mirrored.\nPreserve the exact white bone shape including the two round lobes in the palm, and all the head, hat, torso and arm silhouette at the left and bottom.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/electrical-accident-v04-hand-b.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-65bdcfcf-9b9c-478c-a54a-41c346c99311.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        238,
+        240,
+        792,
+        780
+      ],
+      "outside_box_color_differences_after_resampling": 541582,
+      "outside_box_silhouette_differences_after_resampling": 546
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": "electrical-accident-v04-hand-b-01.png",
+    "status": "accepted by orchestrator",
+    "attempt": 2,
+    "reference_pick": true,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Electrocuted skeleton's raised hand, fingers spread pointing up, thumb on the left side. Keep the white bone forearm and white joint cut-outs exactly; only the black hand changes.\nMatch the hand sheet's alarm (bottom middle), mirrored.\nPreserve the exact white bone shape including the two round lobes in the palm, and all the head, hat, torso and arm silhouette at the left and bottom.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Treat the white bone and both top joint lobes as locked foreground pixels pasted over the black palm. Do not smooth, scale or change those white lobes or any outline of the surrounding arm.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/electrical-accident-v04-hand-b.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-b7a07860-e00a-4cb4-bea6-bb3f47c4a32c.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        238,
+        240,
+        792,
+        780
+      ],
+      "outside_box_color_differences_after_resampling": 539217,
+      "outside_box_silhouette_differences_after_resampling": 486
+    },
+    "review": "Preferred rejected take for tracing the hand. Three visible fingers and one thumb with the specified gesture and thumb side.",
+    "orchestrator_note": "Accepted for hand-only splice: the forearm and surroundings come from the approved SVG, so pixel changes outside the hand do not reach the final artwork."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/electrical-accident-v04-hand-b-take-03.png",
+    "status": "rejected",
+    "attempt": 3,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Electrocuted skeleton's raised hand, fingers spread pointing up, thumb on the left side. Keep the white bone forearm and white joint cut-outs exactly; only the black hand changes.\nMatch the hand sheet's alarm (bottom middle), mirrored.\nPreserve the exact white bone shape including the two round lobes in the palm, and all the head, hat, torso and arm silhouette at the left and bottom.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Treat the white bone and both top joint lobes as locked foreground pixels pasted over the black palm. Do not smooth, scale or change those white lobes or any outline of the surrounding arm.\nRaster edit framing: coordinates are on Image 1 with origin at the upper left. The hand is within approximately x=238–792, y=240–780, with all outside pixels locked. The join is the exact existing bone through the joint in the palm and the black wrist edges at approximately (340,650) and (500,740). Image 1 is the full-size backing plate. Keep all source pixels as they were except where the hand silhouette itself needs to change. The required delivered PNG is exactly 1024 pixels wide and 1024 pixels high.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/electrical-accident-v04-hand-b.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-90fdafd2-d454-461f-85a9-20f6526b7ecc.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        238,
+        240,
+        792,
+        780
+      ],
+      "outside_box_color_differences_after_resampling": 543752,
+      "outside_box_silhouette_differences_after_resampling": 612
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/fleeing-fire-magic-v04-hand-a-take-01.png",
+    "status": "rejected",
+    "attempt": 1,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Hand raised beside the head, palm out, fingers spread pointing up, thumb on the right side. Keep the head and hat unchanged.\nMatch the hand sheet's alarm (bottom middle).\nPreserve all black shapes in the margins, both the right and left contours of the bent arm, its elbow, the head, the hat and flames.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/fleeing-fire-magic-v04-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-c0cf259b-0890-46eb-a089-fe1b0d526d42.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        285,
+        245,
+        730,
+        770
+      ],
+      "outside_box_color_differences_after_resampling": 524815,
+      "outside_box_silhouette_differences_after_resampling": 1493
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  },
+  {
+    "output": "fleeing-fire-magic-v04-hand-a-01.png",
+    "status": "accepted by orchestrator",
+    "attempt": 2,
+    "reference_pick": true,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Hand raised beside the head, palm out, fingers spread pointing up, thumb on the right side. Keep the head and hat unchanged.\nMatch the hand sheet's alarm (bottom middle).\nPreserve all black shapes in the margins, both the right and left contours of the bent arm, its elbow, the head, the hat and flames.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Do not move the hand away from its wrist. Keep both contours of the elbow and forearm, all surrounding flame shapes, and the hat and head exactly in place.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/fleeing-fire-magic-v04-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-01bc52ee-b6a0-4259-8dd9-fa3568f7a55a.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        285,
+        245,
+        730,
+        770
+      ],
+      "outside_box_color_differences_after_resampling": 522622,
+      "outside_box_silhouette_differences_after_resampling": 630
+    },
+    "review": "Preferred rejected take for tracing the hand. Three visible fingers and one thumb with the specified gesture and thumb side.",
+    "orchestrator_note": "Accepted for hand-only splice: the forearm and surroundings come from the approved SVG, so pixel changes outside the hand do not reach the final artwork."
+  },
+  {
+    "output": ".mrmak/total-insanitation/hands-quiet-revision/rejected/fleeing-fire-magic-v04-hand-a-take-03.png",
+    "status": "rejected",
+    "attempt": 3,
+    "reference_pick": false,
+    "prompt": "Use case: precise-object-edit\nImage 1 is a 1024 × 1024 close-up crop of the wizard mascot and the edit target. Image 2 is the approved hand style reference only. Redraw only the black hand in Image 1 using the hand design from Image 2: exactly four digits, three plump fingers of equal thickness with round tips and narrow white gaps plus a visibly separate, shorter thumb set lower on the side of a rounded, wide palm, like classic four-fingered TV cartoon hands such as The Simpsons. Keep the new hand within approximately the original footprint (it may be a little larger), in the same position and joined at precisely the same wrist. Use a tightly localized edit. Copy every pixel outside the hand directly from Image 1, including all the unchanged forearm on both sides, its angle and thickness, all other shapes, every contact with canvas edges, the white background and the exact 1024 × 1024 framing. No translation, rescaling, recropping, or cleanup outside the edit. Flat solid black on white, without outlines, shading, nails, knuckle or palm lines, shading, texture or text.\nGesture: Hand raised beside the head, palm out, fingers spread pointing up, thumb on the right side. Keep the head and hat unchanged.\nMatch the hand sheet's alarm (bottom middle).\nPreserve all black shapes in the margins, both the right and left contours of the bent arm, its elbow, the head, the hat and flames.\nUse the input canvas itself as the edit canvas and retain the original exact 1024 × 1024 pixel grid. This is an in-place replacement of a hand, with the unedited crop remaining as an unchanged plate. Every detail visible at the four edges must line up at the exact same edge coordinates as in Image 1. No added border or margin. Do not move the hand away from its wrist. Keep both contours of the elbow and forearm, all surrounding flame shapes, and the hat and head exactly in place.\nRaster edit framing: coordinates are on Image 1 with origin at the upper left. The hand is within approximately x=285–730, y=245–770, with all outside pixels locked. The join is the arm outlines immediately at approximately (370,686) and (480,759), with the sleeve descending left. Image 1 is the full-size backing plate. Keep all source pixels as they were except where the hand silhouette itself needs to change. The required delivered PNG is exactly 1024 pixels wide and 1024 pixels high.",
+    "inputs": {
+      "Image 1": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/inputs/crops/fleeing-fire-magic-v04-hand-a.png",
+      "Image 2": "workspace/2026-11-12_total-insanitation/media/hands-quiet-revision/generated/hand-sheet-01.png"
+    },
+    "original_path": "C:\\Users\\franc\\.codex\\generated_images\\01a1f973-51a9-7ec0-adb1-e32c174fb467\\exec-dd0b4793-a8c3-412f-8f6f-e1df5a7e8c0d.png",
+    "reason": "Generated at 1254 x 1254. Silhouette pixels outside the hand area differ even after resampling for comparison.",
+    "verification": {
+      "generated_size": [
+        1254,
+        1254
+      ],
+      "requested_size": [
+        1024,
+        1024
+      ],
+      "hand_comparison_box_xyxy": [
+        285,
+        245,
+        730,
+        770
+      ],
+      "outside_box_color_differences_after_resampling": 519506,
+      "outside_box_silhouette_differences_after_resampling": 813
+    },
+    "location_note": "Rejected take moved to the ignored runtime folder; not in Git."
+  }
+]

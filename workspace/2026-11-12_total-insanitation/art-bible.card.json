@@ -39,7 +39,7 @@
       "id": "mascot-direction",
       "title": "Wizard mascot",
       "status": "done",
-      "body": "Open **Mascot** for the thirteen four-digit poses, including the Stop signal, in black and white SVGs and transparent PNGs. [Current SVGs](sources/mascot-signage-revision.zip) · [Stage 4 archive](MASCOT_STAGE4_LIBRARY.md)."
+      "body": "Open **Mascot** for the thirteen poses with four-digit cartoon hands, including the Stop signal, in black and white SVGs and transparent PNGs. [Current SVGs](sources/mascot-signage-revision.zip) · [Stage 4 archive](MASCOT_STAGE4_LIBRARY.md)."
     },
     {
       "id": "graphic-direction",
@@ -55,9 +55,9 @@
     },
     {
       "id": "basement-assets-stage7",
-      "title": "Basement assets / Individual concepts",
+      "title": "Basement assets / Construction kit",
       "status": "review",
-      "body": "The selected service corridor and service counter have individual component sheets with current Unreal material references. The signage atlas proposal includes all twelve approved graphics and the legacy UV audit. [Asset brief](BASEMENT_ASSETS_STAGE7.md) · [Signage atlas](SIGNAGE_ATLAS_STAGE7.md)."
+      "body": "The construction kit is available in the existing Basement roof, wall and Shop Blueprints. The gallery includes the service corridor and counter concepts and native material references. [Blueprint paths](BASEMENT_ASSETS_STAGE7.md#production-kit-in-unreal)."
     },
     {
       "id": "review-contract",

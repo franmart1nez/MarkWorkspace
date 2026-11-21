@@ -3,7 +3,7 @@
   "version": 1,
   "template": "gallery",
   "title": "Basement assets / Stage 7",
-  "summary": "The Basement kit fitted to existing Blueprint actors, lit Unreal captures and concept sheets for the service corridor and counter. [Asset and material brief](BASEMENT_ASSETS_STAGE7.md) · [Signage resources](SIGNAGE_ATLAS_STAGE7.md).",
+  "summary": "The Basement construction kit in the original roof, wall and Shop Blueprints, with lit Unreal captures and concept sheets. [Blueprint paths and asset brief](BASEMENT_ASSETS_STAGE7.md#production-kit-in-unreal).",
   "items": [
     {
       "id": "asset-overview",
@@ -26,7 +26,7 @@
       "image": "media/basement-stage7/integrated-unreal.webp",
       "alt": "Saved Basement Blueprint fittings with green enamel on the hatch and counter and thicker bars on the fluorescent guard",
       "status": "review",
-      "body": "Twenty-five mesh components are saved on ten placed Basement Blueprint actors. In Basement, select a host in the World Outliner to see its Basement_* components in Details. The hatch and shop facings share a gray-green enamel instance. The guard has thicker bars, and both fluorescent tubes remain visible. [Full-size Unreal captures](BASEMENT_ASSETS_STAGE7.md#production-kit-in-unreal) · [Exact hosts and material settings](sources/basement-stage7-meshes.json)."
+      "body": "The 14 production meshes are editable in Components on six existing Blueprint assets. Basement keeps all 25 fitted pieces in their saved positions. The hatch and shop facings share a gray-green enamel instance. Both fluorescent tubes are visible through the thicker guard. [Blueprint paths and full-size captures](BASEMENT_ASSETS_STAGE7.md#production-kit-in-unreal) · [Placement and material record](sources/basement-stage7-meshes.json)."
     },
     {
       "id": "pipe-bank-fit-unreal",
@@ -131,36 +131,6 @@
       "alt": "Painted concrete wall band shown as an isolated concept study",
       "status": "review",
       "body": "Keep the existing concrete, overlay a muted dielectric paint layer and use paint loss to reveal the same concrete. Leave the current structural trim maps assigned. Start with a low band around 75–95 cm tall, aligned to the impact rail. Carry the height around corners with a shared mask. Confirm the existing vertex channels before adding a painted override. [Native MI 01](media/unreal-2026-11-17/material-001.webp) · [Native MI 04](media/unreal-2026-11-17/material-004.webp) · [Native MI 78](media/unreal-2026-11-17/material-078.webp) · [Source scene](media/building-stage6/basement-corridor-concept-v2.png)."
-    },
-    {
-      "id": "clean-start-print",
-      "title": "A Clean Start wall print",
-      "image": "media/signage-stage5-svg/clean-start-poster.png",
-      "alt": "A Clean Start wall print shown as an isolated concept study",
-      "status": "done",
-      "body": "Use the exact editable approved SVG as the production art source and the Signage Atlas paper instance as the surface. Start at 45 × 67.5 cm on the solid wall above the gate. Use a thin card with a back-face mount pivot and no added collision. In these concepts the generated sign demonstrates placement. [Approved SVG](sources/signage-stage5-svg/clean-start-poster.svg) · [Source scene](media/building-stage6/basement-counter-concept-v2.png)."
-    },
-    {
-      "id": "signage-atlas",
-      "title": "Signage Atlas / Twelve approved graphics",
-      "image": "media/basement-stage7/signage-atlas-designer.webp",
-      "alt": "Twelve approved graphics packed into the earlier 2048-pixel signage proof",
-      "body": "The twelve editable SVG resources now use power-of-two canvases with transparent margins and the original artwork scale. The owner assembles the current page in Substance Designer. [SVG resources and canvas sizes](SIGNAGE_ATLAS_STAGE7.md#power-of-two-resource-canvases) · [Pilot pixel coordinates and UV layout](sources/basement-stage7-atlas-layout.json)."
-    },
-    {
-      "id": "signage-pilot",
-      "title": "Signage Atlas / Two-sign raster proof",
-      "image": "media/basement-stage7/signage-pilot-proof.webp",
-      "alt": "A Clean Start and Low Clearance from the approved SVGs with enlarged samples at mips 3, 4 and 5",
-      "status": "review",
-      "body": "A Clean Start and Low Clearance use their proposed rectangles and padded edges. The color and coverage passed the offline mip 0–5 padding test. The small copy degrades around mip 4. [Raster proof and native checks](SIGNAGE_ATLAS_STAGE7.md#two-sign-raster-proof) · [Base Color PNG](sources/basement-stage7-signage-pilot/signage-pilot-basecolor.png) · [Linear Coverage PNG](sources/basement-stage7-signage-pilot/signage-pilot-coverage.png)."
-    },
-    {
-      "id": "legacy-atlas",
-      "title": "Legacy Text_Atlas / Blender consumer audit",
-      "image": "media/basement-stage7/legacy-atlas-audit.webp",
-      "alt": "Native legacy atlas output alongside the summed Blender UV coverage in green",
-      "body": "Ten saved Props consumers cover about 93% of the legacy sheet. The Stage 7 signage proposal uses an independent page. [Legacy audit and proposed layout](SIGNAGE_ATLAS_STAGE7.md)."
     }
   ]
 }

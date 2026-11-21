@@ -4,7 +4,8 @@ Editor-only generator for 4 m modular levels like the Basement, aimed at the
 Office floors. It reads three marker Blueprints placed in the current level:
 
   BP_OLB_Builder  piece selection (walls, corner, floors, ceilings, lit ceiling)
-  BP_OLB_Room     a volume of 4 m cells (actor scale = cells); ordinary rooms merge
+  BP_OLB_Room     a volume of 4 m cells (actor scale = cells); ordinary rooms merge.
+                  Yaw (90 degree steps) turns its floor/ceiling tiles and light pattern
   BP_OLB_Stair    1 x 2 cell stair; the arrow points downhill, placed on the upper floor
 
 and spawns the owner's ordinary modular Blueprint actors (as in the Basement).
@@ -23,6 +24,11 @@ Run from the Builder/Room/Stair "Build" button, or the Cmd box:
 OLB_ACTION: 'build' (default) or 'clear'. Optional OLB_GROUPS: list of group names.
 Without OLB_GROUPS it uses the groups of the selected OLB actors, else every group.
 Everything happens in one undo transaction (Ctrl+Z reverts a build).
+A Build that produces nothing explains why in a dialog (OLB_QUIET=True skips it) and
+keeps that group's previously generated actors. Piece classes are read from the
+markers, so the kit's Blueprint folders (Modular_Blocks/BP/<Area>/<PieceType>/) can move.
+Generated actors go to <Builder Outliner Folder>/<Group>/L<floor>/<Kind>s in the World
+Outliner (empty folder name = OfficeBuilder); folders a rebuild or Clear leaves empty are removed.
 """
 import zlib
 from dataclasses import dataclass
@@ -32,11 +38,13 @@ CELL = 400.0
 LEVEL_H = 400.0
 WALL_THICKNESS = 15.0
 TOOL = '/Game/Art/Tools/OfficeLevelBuilder/'
-WALLS_DIR = '/Game/Art/Assets/Building/Modular_Blocks/BP_Modular_Walls'
+KIT_BP = '/Game/Art/Assets/Building/Modular_Blocks/BP'  # BP/<Area>/<PieceType>/
 GEN_TAG = 'OLB_Generated'
+DEFAULT_FOLDER = 'OfficeBuilder'  # Builder 'OutlinerFolder' when empty
 
 ACTION = globals().get('OLB_ACTION', 'build')
 FORCED_GROUPS = globals().get('OLB_GROUPS')
+WARNINGS = []  # every warning of this run, for scripted checks
 
 # yaw, pivot offset (cells) from the cell's min corner, thickness-side neighbour
 SIDES = {
@@ -46,6 +54,9 @@ SIDES = {
     'W': (-90.0, (0, 1), (-1, 0)),
 }
 DIR_OF = {(0, 1): 0.0, (-1, 0): 90.0, (0, -1): 180.0, (1, 0): -90.0}  # stair downhill -> yaw
+# Floor/ceiling tiles span local 0..400 x 0..400 from their corner pivot. Turned by
+# a room's yaw, the pivot moves to this corner of the cell (in cells).
+TILE_PIVOT = {0: (0, 0), 90: (1, 0), 180: (1, 1), 270: (0, 1)}
 
 
 def log(msg):
@@ -53,6 +64,7 @@ def log(msg):
 
 
 def warn(msg):
+    WARNINGS.append(msg)
     unreal.log_warning('OLB: ' + msg)
 
 
@@ -77,8 +89,25 @@ def pick(classes, key):
 _corner_cache = {}
 
 
+def blueprints_in(path, recursive):
+    """{asset name: package name} of the Blueprints (not redirectors) under a folder."""
+    reg = unreal.AssetRegistryHelpers.get_asset_registry()
+    found = {}
+    for a in reg.get_assets_by_path(path, recursive=recursive):
+        try:
+            asset_class = str(a.asset_class_path.asset_name)
+        except AttributeError:
+            asset_class = str(a.asset_class)
+        if asset_class == 'Blueprint':
+            found.setdefault(str(a.asset_name), str(a.package_name))
+    return found
+
+
 def family_corner(wall_cls):
-    """BP_Wall_Wood_02 -> BP_Wall_Wood_Corner_01 when that Blueprint exists."""
+    """BP_Wall_Wood_02 -> BP_Wall_Wood_Corner_01 when that Blueprint exists.
+
+    Looks beside the wall first (BP/<Area>/Wall/), then anywhere under
+    Modular_Blocks/BP, so it follows the kit when its folders are reorganised."""
     if wall_cls is None:
         return None
     name = wall_cls.get_name()[:-2] if wall_cls.get_name().endswith('_C') else wall_cls.get_name()
@@ -89,12 +118,13 @@ def family_corner(wall_cls):
     if '_Corner_' in name:
         found = wall_cls
     elif len(parts) >= 3:
-        base = '_'.join(parts[:-1])
-        reg = unreal.AssetRegistryHelpers.get_asset_registry()
-        cands = sorted(str(a.asset_name) for a in reg.get_assets_by_path(WALLS_DIR, recursive=True)
-                       if str(a.asset_name).startswith(base + '_Corner_'))
-        if cands:
-            found = unreal.load_class(None, f'{WALLS_DIR}/{cands[0]}.{cands[0]}_C')
+        prefix = '_'.join(parts[:-1]) + '_Corner_'
+        own_folder = wall_cls.get_path_name().rsplit('/', 1)[0]
+        for folder, recursive in ((own_folder, False), (KIT_BP, True)):
+            cands = sorted((n, p) for n, p in blueprints_in(folder, recursive).items() if n.startswith(prefix))
+            if cands:
+                found = unreal.load_class(None, f'{cands[0][1]}.{cands[0][0]}_C')
+                break
     _corner_cache[name] = found
     return found
 
@@ -163,6 +193,18 @@ class RoomVolume:
     rank: tuple
     enclosed: bool
     keep_shared_walls: bool
+    yaw: int = 0  # 0/90/180/270; orients this room's floor and ceiling tiles
+
+    def local_cell(self, i, j):
+        """World cell -> (u, v, w, h): the cell and the size in the room's own axes."""
+        x0, y0, x1, y1 = self.rect
+        if self.yaw == 90:
+            return j - y0, x1 - 1 - i, y1 - y0, x1 - x0
+        if self.yaw == 180:
+            return x1 - 1 - i, y1 - 1 - j, x1 - x0, y1 - y0
+        if self.yaw == 270:
+            return y1 - 1 - j, i - x0, y1 - y0, x1 - x0
+        return i - x0, j - y0, x1 - x0, y1 - y0
 
     def positions(self):
         x0, y0, x1, y1 = self.rect
@@ -187,20 +229,27 @@ class RoomVolume:
 def room_cells(rooms, origin, warnings):
     volumes = []
     for room in rooms:
+        # Yaw snaps to 90 degree steps and is kept: the footprint is the rotated
+        # box, and the room's floor/ceiling tiles and light pattern turn with it.
+        rot = room.get_actor_rotation()
+        yaw = int(round(rot.yaw / 90.0)) * 90 % 360
+        room.set_actor_rotation(unreal.Rotator(pitch=0, yaw=yaw, roll=0), False)
         x0, y0, x1, y1 = snapped_rect(room, origin.x, origin.y, CELL, CELL)
         k = round((room.get_actor_location().z - origin.z) / LEVEL_H)
         height = max(1, round(room.get_actor_scale3d().z))
-        rot = room.get_actor_rotation()
+        px, py = TILE_PIVOT[yaw]  # the rect corner at the marker's pivot
+        local_w, local_h = (x1 - x0, y1 - y0) if yaw in (0, 180) else (y1 - y0, x1 - x0)
         room.set_actor_location_and_rotation(
-            unreal.Vector(origin.x + x0 * CELL, origin.y + y0 * CELL, origin.z + k * LEVEL_H),
-            unreal.Rotator(pitch=0, yaw=0, roll=0), False, False)
-        room.set_actor_scale3d(unreal.Vector(x1 - x0, y1 - y0, height))
+            unreal.Vector(origin.x + (x1 if px else x0) * CELL, origin.y + (y1 if py else y0) * CELL,
+                          origin.z + k * LEVEL_H),
+            unreal.Rotator(pitch=0, yaw=yaw, roll=0), False, False)
+        room.set_actor_scale3d(unreal.Vector(local_w, local_h, height))
         if abs(rot.pitch) > 0.1 or abs(rot.roll) > 0.1:
             warnings.append(f'{room.get_actor_label()}: pitch/roll ignored')
         rank = (prop(room, 'Priority', 0) or 0, -(x1 - x0) * (y1 - y0))
         volumes.append(RoomVolume(room, (x0, y0, x1, y1), k, k + height, rank,
                                   bool(prop(room, 'EnclosedRoom', False)),
-                                  bool(prop(room, 'KeepSharedWalls', False))))
+                                  bool(prop(room, 'KeepSharedWalls', False)), yaw))
 
     open_rooms = [room for room in volumes if not room.enclosed]
     cover = {}
@@ -321,10 +370,47 @@ class WallSegment:
         return self.wall_id, 'start' if self.start == vertex else 'end', amount
 
 
+def outliner_base(builder):
+    """Builder's Outliner Folder (nested paths allowed); empty means OfficeBuilder."""
+    value = str(prop(builder, 'OutlinerFolder', '') or '')
+    return '/'.join(p.strip() for p in value.replace('\\', '/').split('/') if p.strip()) or DEFAULT_FOLDER
+
+
+def folder_chain(path):
+    """'A/B/C' -> ['A/B/C', 'A/B', 'A'] (deepest first)."""
+    parts = path.split('/')
+    return ['/'.join(parts[:i]) for i in range(len(parts), 0, -1)]
+
+
+def actor_folder(actor):
+    path = str(actor.get_folder_path() or '')
+    return '' if path == 'None' else path  # an unset Name prints as 'None'
+
+
+def prune_folders(old_paths, eas):
+    """Remove Outliner folders that held generated actors and are now empty,
+    e.g. the previous Outliner Folder after a rename or a floor that was removed."""
+    if not old_paths:
+        return
+    in_use = set()
+    for a in eas.get_all_level_actors():
+        path = actor_folder(a)
+        if path:
+            in_use.update(folder_chain(path))
+    stale = {p for path in old_paths for p in folder_chain(path)} - in_use
+    les = unreal.get_editor_subsystem(unreal.LevelEditorSubsystem)
+    for path in sorted(stale, key=lambda p: p.count('/'), reverse=True):
+        try:
+            les.delete_actor_folder(unreal.Name(path))
+        except Exception as exc:
+            warn(f'could not remove empty Outliner folder "{path}": {exc}')
+
+
 def build_group(group, builder, rooms, stairs, eas):
     origin = builder.get_actor_location()
     ox, oy, oz = origin.x, origin.y, origin.z
     seed = prop(builder, 'RandomSeed', 0) or 0
+    base = outliner_base(builder)
     report = {'walls': 0, 'corners': 0, 'floors': 0, 'ceilings': 0, 'stairs': 0, 'warnings': []}
 
     # ---------------------------------------------------------------- cells
@@ -473,11 +559,16 @@ def build_group(group, builder, rooms, stairs, eas):
             actor.set_actor_scale3d(scale)
         actor.tags = [unreal.Name(GEN_TAG), unreal.Name('OLB_Group_' + group)]
         actor.set_actor_label(f'OLB_{group}_L{k}_{kind}_{label}')
-        actor.set_folder_path(f'OfficeBuilder/{group}/L{k}/{kind}s')
+        actor.set_folder_path(f'{base}/{group}/L{k}/{kind}s')
         return actor
 
     def world(k, v):
         return unreal.Vector(ox + v[0] * CELL, oy + v[1] * CELL, oz + k * LEVEL_H)
+
+    def tile(k, i, j, yaw):
+        """Location and yaw that put a corner-pivot floor/ceiling tile on cell (i, j)."""
+        dx, dy = TILE_PIVOT[yaw]
+        return world(k, (i + dx, j + dy)), float(yaw)
 
     for w in walls:
         st = Settings(builder, w['room'])
@@ -556,18 +647,22 @@ def build_group(group, builder, rooms, stairs, eas):
         if all(r.bottom == k for r in stack):
             floor_cls = pick(st.get('FloorClasses'), key + ':floor')
             if floor_cls:
-                spawn(floor_cls, world(k, (i, j)), 0.0, None, 'Floor', f'{i}_{j}', k)
+                # The room that supplies the floor piece also orients it.
+                spawn(floor_cls, *tile(k, i, j, room.yaw), None, 'Floor', f'{i}_{j}', k)
                 report['floors'] += 1
         if any(r.top > k + 1 for r in stack):
             continue
         lr = light_room(stack)
         lst = Settings(builder, lr.actor)
-        x0, y0, x1, y1 = lr.rect
-        lit = on_axis(i, x0, x1, lst.get('LightSpacingX') or 0) and on_axis(j, y0, y1, lst.get('LightSpacingY') or 0)
+        # Light spacing X/Y and the ceiling orientation follow the light room's own axes,
+        # so a rotated corridor keeps its pipes and fixtures running along its length.
+        u, v, size_u, size_v = lr.local_cell(i, j)
+        lit = (on_axis(u, 0, size_u, lst.get('LightSpacingX') or 0)
+               and on_axis(v, 0, size_v, lst.get('LightSpacingY') or 0))
         ceil_cls = lst.get('CeilingLightClass') if lit else None
         ceil_cls = ceil_cls or pick(st.get('CeilingClasses'), key + ':ceiling')
         if ceil_cls:
-            spawn(ceil_cls, world(k, (i, j)), 0.0, None, 'Ceiling', f'{i}_{j}', k)
+            spawn(ceil_cls, *tile(k, i, j, lr.yaw), None, 'Ceiling', f'{i}_{j}', k)
             report['ceilings'] += 1
 
     for cls, loc, yaw, scale, label in stair_spawns:
@@ -593,13 +688,24 @@ def edge_vertices(cell, s):
     return (i, j), (i + 1, j)
 
 
+def notify(text):
+    """Modal summary when a Build produces nothing; details stay in the Output Log."""
+    if globals().get('OLB_QUIET'):
+        return
+    try:
+        unreal.EditorDialog.show_message('Office Level Builder', text, unreal.AppMsgType.OK)
+    except Exception:
+        pass
+
+
 def main():
     eas = unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
     world = unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world()
     b_cls, r_cls, s_cls = load_cls('BP_OLB_Builder'), load_cls('BP_OLB_Room'), load_cls('BP_OLB_Stair')
 
     def group_of(a):
-        return str(prop(a, 'Group', '') or 'Office')
+        # Stray spaces typed in the Details panel would otherwise split a group.
+        return str(prop(a, 'Group', '') or '').strip() or 'Office'
 
     builders = {}
     for b in unreal.GameplayStatics.get_all_actors_of_class(world, b_cls):
@@ -608,39 +714,76 @@ def main():
             warn(f'more than one Builder for group "{g}"; using {builders[g].get_actor_label()}')
             continue
         builders[g] = b
+
+    rooms = unreal.GameplayStatics.get_all_actors_of_class(world, r_cls)
+    stairs = unreal.GameplayStatics.get_all_actors_of_class(world, s_cls)
+    markers = {}  # group -> [rooms, stairs]
+    for index, actors in enumerate((rooms, stairs)):
+        for a in actors:
+            markers.setdefault(group_of(a), [0, 0])[index] += 1
+
+    def marker_text(g):
+        n_rooms, n_stairs = markers.get(g, (0, 0))
+        return f'{n_rooms} room(s), {n_stairs} stair(s)'
+
+    def builder_groups():
+        return ', '.join(f'"{b}"' for b in sorted(builders)) or 'none'
+
     if FORCED_GROUPS:
-        groups = set(FORCED_GROUPS)
+        groups = {str(g).strip() for g in FORCED_GROUPS}
     else:
         sel = [a for a in eas.get_selected_level_actors() if a.get_class() in (b_cls, r_cls, s_cls)]
         groups = {group_of(a) for a in sel} or set(builders)
     if not groups:
         warn('no BP_OLB_Builder in the level. Drag one in from /Game/Art/Tools/OfficeLevelBuilder.')
+        if ACTION == 'build':
+            notify('Nothing was built: there is no BP_OLB_Builder in this level.\n\n'
+                   'Drag one in from /Game/Art/Tools/OfficeLevelBuilder and give it the same Group as the markers.')
         return
 
-    rooms = unreal.GameplayStatics.get_all_actors_of_class(world, r_cls)
-    stairs = unreal.GameplayStatics.get_all_actors_of_class(world, s_cls)
     generated = [a for a in unreal.GameplayStatics.get_all_actors_with_tag(world, GEN_TAG)]
+    built = 0
+    old_folders = set()  # folders of replaced actors, removed afterwards if left empty
 
     with unreal.ScopedEditorTransaction(f'Office Level Builder: {ACTION}'):
         for g in sorted(groups):
             old = [a for a in generated if unreal.Name('OLB_Group_' + g) in a.tags]
-            if old:
-                eas.destroy_actors(old)
             if ACTION == 'clear':
+                if old:
+                    old_folders.update(filter(None, map(actor_folder, old)))
+                    eas.destroy_actors(old)
                 log(f'group "{g}": cleared {len(old)} actors')
                 continue
+            kept = f' Kept its {len(old)} previously generated actors.' if old else ''
             builder = builders.get(g)
             if builder is None:
-                warn(f'group "{g}" has rooms but no Builder')
+                warn(f'group "{g}" has {marker_text(g)} but no Builder with that Group '
+                     f'(Builder groups in this level: {builder_groups()}). Give the markers and the '
+                     f'Builder the same Office Builder > Group.{kept}')
                 continue
-            rep = build_group(g, builder,
-                              [r for r in rooms if group_of(r) == g],
-                              [s for s in stairs if group_of(s) == g], eas)
+            group_rooms = [r for r in rooms if group_of(r) == g]
+            group_stairs = [s for s in stairs if group_of(s) == g]
+            if not group_rooms and not group_stairs:
+                others = [f'"{m}" ({marker_text(m)})' for m in sorted(markers) if m not in builders]
+                hint = f' Markers without a Builder use: {", ".join(others)}.' if others else ''
+                warn(f'group "{g}": no BP_OLB_Room or BP_OLB_Stair has Group "{g}", so nothing was '
+                     f'built.{hint} Set Office Builder > Group on those markers to "{g}".{kept}')
+                continue
+            if old:
+                old_folders.update(filter(None, map(actor_folder, old)))
+                eas.destroy_actors(old)
+            rep = build_group(g, builder, group_rooms, group_stairs, eas)
+            built += sum(rep[k] for k in ('walls', 'corners', 'floors', 'ceilings', 'stairs'))
             log(f'group "{g}": removed {len(old)}, walls {rep["walls"]}, corners {rep["corners"]}, '
                 f'floors {rep["floors"]}, ceilings {rep["ceilings"]}, stairs {rep["stairs"]}')
             for w in rep['warnings']:
                 warn(f'group "{g}": {w}')
             globals()['OLB_LAST_REPORT'] = rep
+        prune_folders(old_folders, eas)
+
+    if ACTION == 'build' and not built and WARNINGS:
+        notify('Nothing was built.\n\n' + '\n\n'.join(WARNINGS[:5])
+               + '\n\nSee the Output Log (filter "OLB") for every warning.')
 
 
 main()

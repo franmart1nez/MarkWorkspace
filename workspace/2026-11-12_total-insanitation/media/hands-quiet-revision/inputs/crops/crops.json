@@ -1,0 +1,14 @@
+{"crop_size_in_1254_frame":320,"render_px":1024,"crops":[
+{"pose":"greeting-v03","hand":"a","x":227,"y":188,"file":"greeting-v03-hand-a.png"},
+{"pose":"neutral-welcome-v03","hand":"a","x":230,"y":565,"file":"neutral-welcome-v03-hand-a.png"},
+{"pose":"stop-v01","hand":"a","x":209,"y":324,"file":"stop-v01-hand-a.png"},
+{"pose":"explaining-instructions-v03","hand":"a","x":205,"y":405,"file":"explaining-instructions-v03-hand-a.png"},
+{"pose":"point-left-v02","hand":"a","x":160,"y":380,"file":"point-left-v02-hand-a.png"},
+{"pose":"point-right-v03","hand":"a","x":770,"y":342,"file":"point-right-v03-hand-a.png"},
+{"pose":"slipping-falling-v04","hand":"a","x":345,"y":230,"file":"slipping-falling-v04-hand-a.png"},
+{"pose":"slipping-falling-v04","hand":"b","x":916,"y":638,"file":"slipping-falling-v04-hand-b.png"},
+{"pose":"chemical-accident-v04","hand":"a","x":457,"y":185,"file":"chemical-accident-v04-hand-a.png"},
+{"pose":"chemical-accident-v04","hand":"b","x":84,"y":607,"file":"chemical-accident-v04-hand-b.png"},
+{"pose":"electrical-accident-v04","hand":"a","x":248,"y":226,"file":"electrical-accident-v04-hand-a.png"},
+{"pose":"electrical-accident-v04","hand":"b","x":749,"y":328,"file":"electrical-accident-v04-hand-b.png"},
+{"pose":"fleeing-fire-magic-v04","hand":"a","x":568,"y":335,"file":"fleeing-fire-magic-v04-hand-a.png"}]}

@@ -2,8 +2,10 @@
 "use strict";
 
 const Classify = (() => {
-  const S = { jobs: [], job: null, jobId: null, sel: new Set(), edits: {}, filter: "review", sort: "order", bulkMin: 70, pendingRender: false };
+  const S = { jobs: [], job: null, jobId: null, sel: new Set(), edits: {}, filter: "review", sort: "order", bulkMin: 70, pendingRender: false,
+    folders: [], foldersLoaded: false, typing: null, recent: [] };
   let pollTimer = null;
+  try { S.recent = JSON.parse(localStorage.getItem("clf.recentDest") || "[]"); } catch { /* ignore */ }
 
   /* ---------------------------------------------------------------- form */
   function initForm() {
@@ -146,6 +148,7 @@ const Classify = (() => {
     if (!S.job) { box.innerHTML = ""; box.append(h("div", { class: "empty big", html: "Elige una carpeta de origen y pulsa <b>Clasificar</b>. Las propuestas aparecerán aquí." })); return; }
     if (box.contains(document.activeElement) && document.activeElement.matches(".dest input")) { S.pendingRender = true; return; }
     S.pendingRender = false;
+    if (!S.foldersLoaded) { S.foldersLoaded = true; destFolders().then((l) => { S.folders = l; render(); }).catch(() => {}); }
     const j = S.job;
     const st = j.status, dec = j.decisions;
     const working = (st.queued || 0) + (st.working || 0);
@@ -184,6 +187,14 @@ const Classify = (() => {
       h("label", { class: "check" }, h("input", { type: "checkbox", checked: selectable.length && selectable.every((i) => S.sel.has(i.id)),
         onchange: (e) => { selectable.forEach((i) => (e.target.checked ? S.sel.add(i.id) : S.sel.delete(i.id))); render(); } }), "Todas"),
       h("button", { class: "btn small primary", disabled: !S.sel.size, onclick: () => applyItems([...S.sel]) }, `Aplicar seleccionadas (${S.sel.size})`),
+      h("button", { class: "btn small", disabled: !S.sel.size, title: "Elige una carpeta y mueve allí todas las seleccionadas", onclick: async () => {
+        const ids = [...S.sel];
+        const p = await pickFolder({ title: `Enviar ${ids.length} imagen(es) a…` });
+        if (!p) return;
+        const rel = relTo(App.cfg.settings.destination, p);
+        if (!rel) return toast("Elige una subcarpeta dentro de Clasificadas", "error");
+        applyItems(ids, Object.fromEntries(ids.map((id) => [id, rel])));
+      } }, `Enviar seleccionadas a… (${S.sel.size})`),
       h("button", { class: "btn small", disabled: !S.sel.size, onclick: () => reject([...S.sel]) }, "Descartar seleccionadas"),
       h("span", { class: "sep" }),
       h("button", { class: "btn small", disabled: !reviewable, onclick: () => applyItems(j.items.filter((i) => isReviewable(i) && i.confidence >= S.bulkMin).map((i) => i.id)) },
@@ -209,27 +220,18 @@ const Classify = (() => {
       : it.decision === "applied" ? h("span", { class: "badge ok" }, j.mode === "copy" ? "copiada" : "movida")
       : it.decision === "rejected" ? h("span", { class: "badge" }, "descartada")
       : h("span", { class: "badge warn" }, "para revisar");
-    const destInput = h("input", { value: S.edits[editKey] ?? it.proposal ?? "", list: "dest-folders", disabled: !reviewable,
-      title: "Carpeta de destino relativa a la carpeta Clasificadas. Puedes escribir otra o una nueva.",
-      oninput: (e) => (S.edits[editKey] = e.target.value),
-      onkeydown: (e) => { e.stopPropagation(); if (e.key === "Enter") { e.preventDefault(); applyItems([it.id]); } },
-      onblur: () => { if (S.pendingRender) setTimeout(render, 0); } });
     const thumb = h("img", { class: "thumb", loading: "lazy", src: thumbUrl(it.decision === "applied" && it.dest ? it.dest : it.file, 200), onclick: () => openViewer(it) });
-    return h("div", { class: `ritem ${it.decision}` },
+    const edited = S.edits[editKey] !== undefined && S.edits[editKey] !== it.proposal;
+    return h("div", { class: `ritem ${it.decision}`, "data-id": it.id },
       reviewable ? h("input", { type: "checkbox", checked: S.sel.has(it.id), onchange: (e) => { e.target.checked ? S.sel.add(it.id) : S.sel.delete(it.id); render(); } }) : h("span"),
       thumb,
       h("div", { class: "info" },
         h("div", { class: "row" }, h("span", { class: "fname grow", title: it.file }, it.name), statusBadge,
           it.confidence !== null && it.confidence !== undefined ? h("span", { class: "conf", title: "Confianza de la IA" },
             h("i", {}, h("b", { style: { width: it.confidence + "%", background: confColor(it.confidence, j.threshold) } })), it.confidence + "%") : null),
-        it.status === "done" ? h("div", { class: "dest" }, destInput,
-          reviewable ? h("button", { class: "icon-btn", title: "Elegir carpeta", html: icon("folder"), onclick: async () => {
-            const p = await pickFolder({ title: "Destino para " + it.name });
-            const rel = p && relTo(App.cfg.settings.destination, p);
-            if (rel === null && p) return toast("Elige una carpeta dentro de Clasificadas", "error");
-            if (p) { S.edits[editKey] = rel; render(); }
-          } }) : null) : null,
-        it.reason ? h("div", { class: "reason" }, it.reason) : null,
+        it.status === "done" ? destEditor(it, editKey, reviewable) : null,
+        edited && reviewable ? h("div", { class: "edited-note" }, `Cambiada por ti · la IA proponía ${it.proposal}`) : null,
+        it.reason ? h("div", { class: "reason selectable" }, it.reason) : null,
         it.decision === "applied" && it.dest ? h("div", { class: "reason" }, "→ " + it.dest) : null,
         it.error ? h("div", { class: "err" }, it.error) : null),
       h("div", { class: "acts" },
@@ -237,6 +239,143 @@ const Classify = (() => {
         reviewable ? h("button", { class: "btn small", onclick: () => reject([it.id]) }, "✗ Descartar") : null,
         ["error", "stopped"].includes(it.status) || it.decision === "rejected" || reviewable ? h("button", { class: "btn small", title: "Volver a preguntar a la IA", onclick: () => retry([it.id]) }, "↻") : null));
   }
+  /* ---------------------------------------------------------------- destination editor
+     The proposal is shown as clickable folders: each one opens the alternatives at that level
+     (tree folders, existing variable values, folders on disk), keeping the rest of the path when it still fits. */
+  const splitRel = (s) => String(s || "").replace(/\\/g, "/").split("/").map((x) => x.trim()).filter(Boolean);
+  const editKeyOf = (it) => `${S.job.id}:${it.id}`;
+  const curParts = (it) => splitRel(S.edits[editKeyOf(it)] ?? it.proposal);
+  function diskChildren(prefix) {
+    const pre = prefix.join("/").toLowerCase();
+    return S.folders.filter((f) => { const i = f.rel.lastIndexOf("/"); return (i < 0 ? "" : f.rel.slice(0, i).toLowerCase()) === pre; })
+      .map((f) => baseName(f.rel));
+  }
+  function levelOptions(prefix) {
+    const options = [], seen = new Set();
+    const add = (name, hint) => { const k = norm(name); if (k && !seen.has(k)) { seen.add(k); options.push({ name, hint }); } };
+    const node = Tree.nodeAtRel(prefix);
+    const disk = diskChildren(prefix);
+    let newLabel = "Nueva carpeta…", variable = null;
+    if (node) {
+      variable = node.children.find((c) => c.kind === "variable") || null;
+      if (variable) { disk.forEach((d) => add(d, "")); newLabel = `Nuevo valor de {${variable.name}}…`; }
+      else {
+        node.children.forEach((c) => add(c.name, Tree.crit(c).description));
+        if (!node.children.length && node.open) { disk.forEach((d) => add(d, "subcarpeta")); newLabel = "Nueva subcarpeta…"; }
+      }
+    }
+    disk.forEach((d) => add(d, "solo en disco"));
+    return { options, newLabel, variable };
+  }
+  /* Replaces level i and keeps the following folders while they still exist under the new branch. */
+  function rebuild(parts, i, name) {
+    const out = [...parts.slice(0, i), name];
+    for (const t of parts.slice(i + 1)) {
+      const node = Tree.nodeAtRel(out);
+      const fixed = node?.children.find((c) => c.kind !== "variable" && norm(c.name) === norm(t));
+      const fits = fixed || node?.children.some((c) => c.kind === "variable") || (node && !node.children.length && node.open) ||
+        diskChildren(out).some((d) => norm(d) === norm(t));
+      if (!fits) break;
+      out.push(fixed ? fixed.name : t);
+    }
+    return out;
+  }
+  const needsMore = (parts) => !!Tree.nodeAtRel(parts)?.children.length;
+  function setDest(it, parts, { next = true } = {}) {
+    const key = editKeyOf(it), rel = parts.join("/");
+    if (rel === it.proposal) delete S.edits[key]; else S.edits[key] = rel;
+    render();
+    if (next && needsMore(parts)) {
+      const btn = $(`.ritem[data-id="${CSS.escape(it.id)}"] .seg-btn.need`);
+      if (btn) chooseLevel(btn, it, parts.length);
+    }
+  }
+  async function chooseLevel(anchor, it, i) {
+    S.folders = await destFolders().catch(() => S.folders);
+    const parts = curParts(it);
+    const { options, newLabel, variable } = levelOptions(parts.slice(0, i));
+    const cur = parts[i];
+    const items = options.map((o) => ({ label: o.name, hint: o.hint, on: cur !== undefined && norm(o.name) === norm(cur),
+      fn: () => setDest(it, rebuild(parts, i, o.name)) }));
+    if (items.length) items.push("-");
+    items.push({ label: newLabel, cls: "plain", always: true, fn: async (typed) => {
+      const v = await promptBox(newLabel.replace("…", ""), `Dentro de ${parts.slice(0, i).join("/") || "Clasificadas"}`, typed || "");
+      if (!v) return;
+      const name = variable ? norm(v).replace(/[<>:"/\\|?*{}]/g, "").replace(/\s+/g, " ").trim() : Tree.cleanName(v);
+      if (name) setDest(it, rebuild(parts, i, name));
+    } });
+    if (i > 0 && i < parts.length) items.push({ label: `Dejarla en «${parts[i - 1]}»`, cls: "plain", always: true, title: "Quita esta carpeta y las siguientes",
+      fn: () => setDest(it, parts.slice(0, i), { next: false }) });
+    popMenu(anchor, items, { placeholder: variable ? `Buscar o escribir ${variable.name}…` : "Buscar…" });
+  }
+  function destMenu(anchor, it) {
+    const root = App.cfg.settings.destination;
+    const now = curParts(it).join("/");
+    const items = [];
+    const recent = S.recent.filter((r) => r !== now);
+    if (recent.length) {
+      items.push({ header: "Usadas hace poco" });
+      recent.forEach((r) => items.push({ label: r, fn: () => setDest(it, splitRel(r), { next: false }) }));
+    }
+    const shorts = App.shortcuts().map((p, k) => ({ rel: relTo(root, p), k })).filter((x) => x.rel);
+    if (shorts.length) {
+      items.push({ header: "Atajos" });
+      shorts.forEach((x) => items.push({ label: x.rel, hint: `tecla ${x.k + 1}`, fn: () => setDest(it, splitRel(x.rel), { next: false }) }));
+    }
+    if (items.length) items.push("-");
+    items.push({ label: "Buscar en todas las carpetas…", cls: "plain", fn: async () => {
+      const p = await pickFolder({ title: "Destino para " + it.name });
+      if (!p) return;
+      const rel = relTo(root, p);
+      if (!rel) return toast("Elige una subcarpeta dentro de Clasificadas", "error");
+      setDest(it, splitRel(rel), { next: false });
+    } });
+    popMenu(anchor, items, { filter: false });
+  }
+  function destEditor(it, editKey, reviewable) {
+    const value = S.edits[editKey] ?? it.proposal ?? "";
+    if (!reviewable) return h("div", { class: "dest" }, h("span", { class: "dest-static" }, value));
+    if (S.typing === editKey) {
+      return h("div", { class: "dest" }, h("input", { value, list: "dest-folders",
+        title: "Ruta dentro de Clasificadas. Enter aplica, Esc vuelve.",
+        oninput: (e) => (S.edits[editKey] = e.target.value),
+        onkeydown: (e) => {
+          e.stopPropagation();
+          if (e.key === "Enter") { e.preventDefault(); S.typing = null; e.target.blur(); applyItems([it.id]); }
+          else if (e.key === "Escape") { e.preventDefault(); S.typing = null; e.target.blur(); }
+        },
+        onblur: () => { S.typing = null; setTimeout(render, 0); } }));
+    }
+    const parts = splitRel(value);
+    const edited = S.edits[editKey] !== undefined && S.edits[editKey] !== it.proposal;
+    const path = h("div", { class: "dest-path" + (edited ? " edited" : ""), title: "Clic en una carpeta para cambiarla por otra del mismo nivel" });
+    parts.forEach((p, i) => {
+      if (i) path.append(h("span", { class: "slash" }, "/"));
+      path.append(h("button", { class: "seg-btn", onclick: (e) => chooseLevel(e.currentTarget, it, i) }, p));
+    });
+    const node = Tree.nodeAtRel(parts);
+    if (node && node.children.length) {
+      if (parts.length) path.append(h("span", { class: "slash" }, "/"));
+      path.append(h("button", { class: "seg-btn add need", title: "Esta carpeta tiene subcarpetas: elige una", onclick: (e) => chooseLevel(e.currentTarget, it, parts.length) }, "elige… ▾"));
+    } else if ((node && node.open) || diskChildren(parts).length) {
+      path.append(h("button", { class: "seg-btn add", title: "Añadir una subcarpeta", onclick: (e) => chooseLevel(e.currentTarget, it, parts.length) }, "+"));
+    }
+    return h("div", { class: "dest" }, path,
+      h("button", { class: "icon-btn", title: "Escribir la ruta a mano", html: icon("edit"), onclick: () => {
+        S.typing = editKey; render();
+        const inp = $(`.ritem[data-id="${CSS.escape(it.id)}"] .dest input`);
+        if (inp) { inp.focus(); inp.select(); }
+      } }),
+      h("button", { class: "icon-btn", title: "Recientes, atajos o buscar entre todas las carpetas", html: icon("folder"), onclick: (e) => destMenu(e.currentTarget, it) }),
+      edited ? h("button", { class: "icon-btn", title: `Volver a la propuesta de la IA (${it.proposal})`, html: icon("reset"), onclick: () => { delete S.edits[editKey]; render(); } }) : null);
+  }
+  function rememberDest(rels) {
+    const used = [...new Set(rels.filter(Boolean))];
+    if (!used.length) return;
+    S.recent = [...used, ...S.recent.filter((r) => !used.includes(r))].slice(0, 8);
+    try { localStorage.setItem("clf.recentDest", JSON.stringify(S.recent)); } catch { /* ignore */ }
+  }
+
   function datalist() {
     const dl = h("datalist", { id: "dest-folders" });
     destFolders().then((list) => list.forEach((f) => dl.append(h("option", { value: f.rel }))));
@@ -260,6 +399,7 @@ const Classify = (() => {
     try {
       const r = await POST(`/api/jobs/${S.job.id}/apply`, { items });
       ids.forEach((id) => S.sel.delete(id));
+      if (r.applied) rememberDest(items.map((x) => splitRel(x.dest).join("/")));
       toast(`${r.applied} imagen(es) ${S.job.mode === "copy" ? "copiadas" : "movidas"}${r.errors.length ? ` · ${r.errors.length} errores: ${r.errors[0]}` : ""}`,
         r.errors.length ? "error" : "ok", r.applied ? { label: "Deshacer", fn: async () => { await Images.undoLast(); refresh(true); } } : null);
       folderCache.time = 0;
@@ -298,9 +438,132 @@ const Classify = (() => {
     for (const id of ["run-source", "run-limit", "run-threads"]) $("#" + id).addEventListener("change", saveForm);
     $("#run-start").onclick = (e) => start(e.currentTarget);
     $("#btn-undo-batch").onclick = async () => { await Images.undoLast(); refresh(true); };
+    $("#dup-open").innerHTML = icon("copies") + "Buscar imágenes repetidas";
+    $("#dup-open").onclick = () => Dups.open();
     loadJobs();
     setInterval(() => { if (S.jobs.some((j) => !j.finished && !j.stopped) || document.visibilityState === "visible") loadJobs(); }, 5000);
   }
 
-  return { init, initForm, startFiles, quickAsk, loadJobs, showPrompt, render };
+  return { init, initForm, startFiles, quickAsk, loadJobs, showPrompt, render, refresh };
+})();
+
+/* ==================================================================== repeated images */
+const Dups = (() => {
+  let timer = null;
+
+  async function open() {
+    const st = await GET("/api/dups").catch(fail);
+    if (!st) return;
+    const view = { body: h("div", {}) };
+    modal({ title: "Imágenes repetidas", wide: true, body: view.body, buttons: [{ label: "Cerrar", value: null }] })
+      .then(() => { clearInterval(timer); timer = null; });
+    if (st.running) progress(view);
+    else options(view, st);
+  }
+
+  function options(view, st) {
+    const s = App.cfg.settings;
+    const src = h("input", { type: "checkbox", checked: true });
+    const rec = h("input", { type: "checkbox", checked: $("#run-recursive").checked });
+    const lib = h("input", { type: "checkbox", checked: true });
+    const level = h("select", {},
+      h("option", { value: "exact" }, "Solo copias exactas (el mismo archivo)"),
+      h("option", { value: "normal", selected: true }, "Casi idénticas: la misma imagen con otro tamaño, formato o compresión (recomendado)"),
+      h("option", { value: "wide" }, "Parecidas: también retoques leves (puede dar falsos positivos)"));
+    const go = h("button", { class: "btn primary", onclick: async () => {
+      if (!src.checked && !lib.checked) return toast("Marca al menos una carpeta", "error");
+      const r = await POST("/api/dups", { source: src.checked, recursive: rec.checked, destination: lib.checked, level: level.value }).catch(fail);
+      if (r) progress(view);
+    } }, "Buscar repetidas");
+    view.body.innerHTML = "";
+    view.body.append(h("div", { class: "dup-opts" },
+      h("p", { class: "hint", style: { margin: 0 } }, "Compara el contenido de las imágenes (no el nombre) en este ordenador, sin gastar IA: encuentra copias exactas y la misma imagen guardada con otro tamaño, formato o compresión. Propone conservar la que ya está en Clasificadas o la de mayor resolución."),
+      h("label", { class: "check" }, src, h("span", {}, "Sin clasificar (origen): ", h("code", {}, s.source))),
+      h("label", { class: "check", style: { marginLeft: "24px" } }, rec, "Incluir sus subcarpetas"),
+      h("label", { class: "check" }, lib, h("span", {}, "Clasificadas: ", h("code", {}, s.destination))),
+      h("label", { class: "field", style: { margin: 0 } }, "Sensibilidad", level),
+      h("div", { class: "btn-row" }, go,
+        st.groups ? h("button", { class: "btn", onclick: () => results(view, st) }, `Ver la búsqueda anterior (${st.groups.length} grupos)`) : null)));
+  }
+
+  function progress(view) {
+    const bar = h("i", { style: { width: "0%", background: "var(--accent)" } });
+    const label = h("div", { class: "muted" }, "Empezando…");
+    view.body.innerHTML = "";
+    view.body.append(label, h("div", { class: "progress" }, bar),
+      h("p", { class: "hint" }, "Puedes cerrar esta ventana: la búsqueda sigue y verás el resultado al volver a abrirla. La primera vez tarda más; después recuerda las imágenes ya analizadas."));
+    clearInterval(timer);
+    timer = setInterval(async () => {
+      if (!view.body.isConnected) { clearInterval(timer); timer = null; return; }
+      const st = await GET("/api/dups").catch(() => null);
+      if (!st) return;
+      label.textContent = st.total ? `${st.phase} ${st.done} / ${st.total}` : st.phase;
+      bar.style.width = st.total ? (100 * st.done / st.total) + "%" : "0%";
+      if (!st.running) {
+        clearInterval(timer); timer = null;
+        if (st.error) label.textContent = "Error: " + st.error;
+        else results(view, st);
+      }
+    }, 600);
+  }
+
+  function results(view, st) {
+    const groups = st.groups || [];
+    view.body.innerHTML = "";
+    const again = h("button", { class: "btn small", onclick: () => options(view, st) }, "Nueva búsqueda");
+    if (!groups.length) {
+      view.body.append(h("p", {}, `No hay imágenes repetidas entre las ${st.files} analizadas. ✔`), again);
+      return;
+    }
+    const marked = new Set();
+    groups.forEach((g) => g.items.forEach((m) => { if (!m.keep) marked.add(m.path); }));
+    const trashBtn = h("button", { class: "btn danger" });
+    const update = () => { trashBtn.textContent = `Enviar ${marked.size} marcadas a la papelera`; trashBtn.disabled = !marked.size; };
+    trashBtn.onclick = async () => {
+      const files = [...marked];
+      if (!(await confirmBox("Enviar a la papelera", `${files.length} imagen(es) repetidas irán a la Papelera de reciclaje de Windows (se pueden recuperar desde allí).`, "Papelera", true))) return;
+      const r = await POST("/api/fs/trash", { files }).catch(fail);
+      if (!r) return;
+      const bad = r.results.filter((x) => !x.ok);
+      toast(`${files.length - bad.length} a la papelera${bad.length ? ` · ${bad.length} con error: ${bad[0].error}` : ""}`, bad.length ? "error" : "ok");
+      Main.refreshStats(); Images.reload(); Classify.loadJobs(); Classify.refresh(true);
+      const fresh = await GET("/api/dups").catch(() => null);
+      if (fresh && view.body.isConnected) results(view, fresh);
+    };
+    const total = groups.reduce((a, g) => a + g.items.length, 0);
+    view.body.append(h("div", { class: "dup-summary" },
+      h("span", {}, `${groups.length} grupo(s) · ${total} imágenes repetidas de ${st.files} analizadas.`),
+      h("span", { class: "muted" }, "Verde: se conserva · rojo: a la papelera. Clic en la miniatura para compararlas en grande."),
+      h("span", { class: "grow" }), again, trashBtn));
+    groups.forEach((g, gi) => view.body.append(groupEl(g, gi, marked, update)));
+    update();
+  }
+
+  function groupEl(g, gi, marked, update) {
+    const el = h("div", { class: "dup-group" });
+    const draw = () => {
+      el.innerHTML = "";
+      const label = (m) => `${m.where === "clasificadas" ? "Clasificadas" : "Origen"}${m.folder ? " / " + m.folder : ""}`;
+      el.append(h("div", { class: "g-top" }, h("b", {}, `Grupo ${gi + 1}`),
+        h("span", { class: "badge " + (g.identical ? "ok" : "warn") }, g.identical ? "copias exactas" : `casi idénticas · diferencia ${g.distance}/64`),
+        h("span", { class: "grow" }),
+        h("button", { class: "btn small", onclick: () => { g.items.forEach((m) => marked.delete(m.path)); draw(); update(); } }, "Conservar todas")),
+        h("div", { class: "dup-items" }, g.items.map((m, i) => {
+          const drop = marked.has(m.path);
+          return h("div", { class: "dup-item " + (drop ? "drop" : "keep"), title: m.path },
+            h("img", { src: thumbUrl(m.path, 320), loading: "lazy",
+              onclick: () => Lightbox.open(g.items.map((x) => ({ path: x.path, name: x.name, size: x.size, extra: label(x) })), i, { over: true }) }),
+            h("span", { class: "where" + (m.where === "clasificadas" ? " lib" : "") }, m.where === "clasificadas" ? "Clasificadas" : "Origen"),
+            h("div", { class: "nm" }, m.name),
+            h("div", { class: "fd" }, `${m.w && m.h ? `${m.w}×${m.h} · ` : ""}${fmtSize(m.size)}`),
+            h("div", { class: "fd", title: label(m) }, m.folder || "(raíz)"),
+            h("label", { class: "check" }, h("input", { type: "checkbox", checked: drop,
+              onchange: (e) => { e.target.checked ? marked.add(m.path) : marked.delete(m.path); draw(); update(); } }), "A la papelera"));
+        })));
+    };
+    draw();
+    return el;
+  }
+
+  return { open };
 })();

@@ -426,28 +426,6 @@
           "image": "media/unreal-2026-11-17/material-078.webp"
         }
       ]
-    },
-    "clean-start-print": {
-      "title": "A Clean Start wall print",
-      "type": "Approved artwork / placement concept",
-      "image": "media/signage-stage5-svg/clean-start-poster.png",
-      "sha256": "c9b28d3a1eca9fb80e253758d4d6c99940e9fdaba76d6aa9739d707be304ba8a",
-      "size_px": [
-        800,
-        1200
-      ],
-      "ref_scene": "media/building-stage6/basement-counter-concept-v2.png",
-      "ref_scene_sha256": "d0b44811e037e8d9933b8e6287e13afedb215d122af9b18d8d42a5a92659ac84",
-      "editable_artwork": "sources/signage-stage5-svg/clean-start-poster.svg",
-      "prompt": null,
-      "building_source": "Assets/Building/Interior_Building.blend",
-      "collection": "Modular_Blocks/Wall_Decorations",
-      "proposed_fbx": "Assets/Building/Delivery/Modular_Blocks/SM_Basement_Poster_Plane.fbx",
-      "proposed_unreal_package": "/Game/Art/Assets/Building/Modular_Blocks/Wall_Decorations/SM_Basement_Poster_Plane",
-      "fit": "Start at 45 × 67.5 cm on the solid wall above the gate. Use a thin card with a back-face mount pivot and no added collision. In these concepts the generated sign demonstrates placement.",
-      "finish": "Use the exact editable approved SVG as the production art source and the Signage Atlas paper instance as the surface.",
-      "existing_mis": []
     }
-  },
-  "atlas_layout": "sources/basement-stage7-atlas-layout.json"
+  }
 }

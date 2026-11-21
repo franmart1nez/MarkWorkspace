@@ -59,6 +59,16 @@ const Tree = (() => {
     }
     return n;
   }
+  /* Tree node of a concrete folder below the destination (a variable matches any name); null when off the tree. */
+  function nodeAtRel(parts) {
+    let n = App.cfg.root;
+    for (const p of parts) {
+      const c = n.children.find((x) => x.kind === "variable") || n.children.find((x) => norm(x.name) === norm(p));
+      if (!c) return null;
+      n = c;
+    }
+    return n;
+  }
   const hasVariableChild = (n, except) => n.children.some((c) => c.kind === "variable" && c !== except);
   function canHoldChild(parent, child) {
     if (hasVariableChild(parent, child)) return "Esa carpeta tiene una variable {…}: la variable debe ser su única subcarpeta";
@@ -443,6 +453,7 @@ const Tree = (() => {
 
     canvas.addEventListener("pointerdown", (e) => {
       if (e.button !== 0 || e.target.closest(".canvas-toolbar, input, textarea, button")) return;
+      window.getSelection()?.removeAllRanges();
       const nodeEl = e.target.closest(".node");
       if (nodeEl) {
         drag = { id: nodeEl.dataset.id, el: nodeEl, sx: e.clientX, sy: e.clientY, moved: false, target: null, zone: null };
@@ -527,6 +538,8 @@ const Tree = (() => {
         "-",
         { label: "✨ Sugerir subcarpetas con IA", fn: () => Inspector.suggestChildren(id) },
         ...(id !== "root" ? [{ label: "✨ Generar descripción con IA", fn: () => { select(id); Inspector.generate(); } },
+          { label: "✨ Analizar imágenes y mejorar descripción", fn: () => Inspector.improve(id) },
+          ...(w.n.children.length ? [{ label: "✨ Mejorar toda la rama en lote…", fn: () => Inspector.improveBatch(id) }] : []),
           { label: w.n.kind === "variable" ? "Convertir en carpeta fija" : "Convertir en variable {…}", fn: () => setKind(id, w.n.kind === "variable" ? "folder" : "variable") },
           { label: `Seleccionar todas las «${w.n.name}»`, fn: () => selectSameName(id) }] : []),
         { label: "Ver imágenes", fn: () => Inspector.openImages(id) },
@@ -643,6 +656,8 @@ const Tree = (() => {
               members.forEach((w) => revealAncestors(w.n.id)); render(); Inspector.render(); fit();
             } }, `Seleccionar ${members.length}`),
             App.sel.size ? h("button", { class: "btn small", onclick: () => assignGroup([...App.sel], g.id) }, "Asignar a selección") : null,
+            h("button", { class: "btn small ai", title: "La IA mira imágenes de todas las carpetas del grupo y mejora su descripción compartida",
+              onclick: () => Inspector.improveBatch(null, [{ kind: "group", id: g.id }]) }, h("span", { class: "i-spark" }), "Mejorar con IA"),
             h("button", { class: "btn small danger", onclick: async () => {
               if (!(await confirmBox("Eliminar grupo", `Las ${members.length} carpetas dejarán de compartir esta descripción.`, "Eliminar", true))) return;
               mutate(() => { App.cfg.groups = App.cfg.groups.filter((x) => x !== g); members.forEach((w) => (w.n.group = null)); });
@@ -709,7 +724,7 @@ const Tree = (() => {
   }
 
   return { W, H, seg, walk, find, crit, groupOf, mutate, edit, undo, redo, render, fit, select, addChild, addSibling,
-    rename, setKind, remove, duplicate, reorder, move, newGroup, assignGroup, revealNode, initCanvas, findByPath,
+    rename, setKind, remove, duplicate, reorder, move, newGroup, assignGroup, revealNode, initCanvas, findByPath, nodeAtRel,
     allIdentifiers, uniqueName, newNode, canHoldChild, cleanName, inlineRename, updateMatches, selectSameName, ensureVisible };
 })();
 
@@ -744,6 +759,7 @@ const Inspector = (() => {
       h("div", { class: "btn-row" },
         h("button", { class: "btn small", onclick: () => Tree.addChild("root") }, "+ Carpeta"),
         h("button", { class: "btn small ai", onclick: () => suggestChildren("root") }, h("span", { class: "i-spark" }), "Sugerir carpetas"),
+        h("button", { class: "btn small ai", title: "Varias IAs a la vez mejoran las descripciones de todo el árbol", onclick: () => improveBatch("root") }, h("span", { class: "i-spark" }), "Mejorar todo en lote"),
         h("button", { class: "btn small", onclick: () => openImages("root") }, "Ver imágenes")));
   }
 
@@ -796,7 +812,13 @@ const Inspector = (() => {
     const preview = h("div", { id: "ai-desc-preview" });
     el.append(h("div", { class: "field" }, h("div", { class: "field-head" }, h("span", {}, descLabel), genBtn),
       h("textarea", { rows: 3, value: n.description, placeholder: isVar ? "especie o tipo, en singular y minúsculas" : "Concreto y visual: qué se ve y en qué se diferencia de las hermanas",
-        oninput: (e) => Tree.edit(key("desc"), () => (n.description = e.target.value)), onchange: () => Tree.render() }), preview));
+        oninput: (e) => Tree.edit(key("desc"), () => (n.description = e.target.value)), onchange: () => Tree.render() }), preview,
+      h("button", { class: "btn small ai", style: { alignSelf: "flex-start", marginTop: "4px" }, disabled: st.images === 0,
+        title: st.images === 0 ? "La carpeta todavía no tiene imágenes" : "La IA mira las imágenes que ya hay en esta carpeta (y las que corregiste a mano al revisar) y propone una definición más precisa",
+        onclick: () => improve(n.id) }, h("span", { class: "i-spark" }), "Analizar imágenes y mejorar descripción"),
+      n.children.length ? h("button", { class: "btn small ai", style: { alignSelf: "flex-start", marginTop: "4px" },
+        title: "Varias IAs a la vez analizan esta carpeta, todas sus subcarpetas y sus grupos",
+        onclick: () => improveBatch(n.id) }, h("span", { class: "i-spark" }), "Mejorar toda la rama en lote") : null));
 
     // identifiers
     if (!isVar) {
@@ -924,6 +946,262 @@ const Inspector = (() => {
     Tree.render(); Tree.ensureVisible(id);
     toast(`${chosen.length} subcarpeta(s) añadidas`, "ok");
   }
+  /* AI looks at the images already stored in a folder (plus review corrections) and proposes better criteria. */
+  async function improve(id) {
+    const w = Tree.find(id);
+    if (!w || id === "root") return;
+    const n = w.n;
+    const isVar = n.kind === "variable";
+    const g = Tree.groupOf(n);
+    const count = h("select", {}, [4, 8, 12, 16].map((v) => h("option", { value: v, selected: v === 8 }, `${v} imágenes`)));
+    const out = h("div", { style: { marginTop: "12px" } });
+    let proposal = null;
+    const ask = (btn) => busy(btn, async () => {
+      await Main.flush();
+      proposal = null;
+      out.innerHTML = "";
+      out.append(h("p", { class: "hint" }, "La IA está mirando las imágenes… puede tardar un par de minutos."));
+      try { show(await POST("/api/ai/improve", { node: id, count: +count.value })); }
+      catch (e) { out.innerHTML = ""; out.append(h("p", { class: "err", style: { color: "var(--err)" } }, e.message)); }
+    });
+    const show = (r) => {
+      const inGroup = (list) => new Set((list || []).map(norm));
+      const gi = inGroup(g?.include), ge = inGroup(g?.exclude);
+      const state = { description: r.description || n.description,
+        include: r.include.filter((x) => !gi.has(norm(x))), exclude: r.exclude.filter((x) => !ge.has(norm(x))) };
+      proposal = state;
+      const ta = h("textarea", { rows: 4, value: state.description, oninput: (e) => (state.description = e.target.value) });
+      const incChips = isVar ? null : chipInput({ values: state.include, inherited: g?.include || [], suggestions: Tree.allIdentifiers, onChange: (v) => (state.include = v) });
+      const excChips = chipInput({ values: state.exclude, inherited: g?.exclude || [], suggestions: Tree.allIdentifiers, onChange: (v) => (state.exclude = v) });
+      const dropped = (old, now) => old.filter((x) => !now.some((y) => norm(y) === norm(x)));
+      const lostInc = isVar ? [] : dropped(n.include, state.include), lostExc = dropped(n.exclude, state.exclude);
+      const roleCls = { "corregida hacia aquí": "into", "corregida fuera": "out" };
+      out.innerHTML = "";
+      fill(out, 
+        h("div", { class: "muted" }, `Imágenes analizadas (${r.images.length}) · clic para verla grande`),
+        h("div", { class: "imp-strip" }, r.images.map((im, i) => h("figure", { class: roleCls[im.role] || "", title: `${im.path}${im.detail ? "\n" + im.detail : ""}` },
+          h("img", { src: thumbUrl(im.path, 200), loading: "lazy", style: { cursor: "zoom-in" },
+            onclick: () => Lightbox.open(r.images.map((x) => ({ path: x.path, name: baseName(x.path), extra: x.role === "ejemplo" ? "" : `${x.role} (${x.detail})` })), i, { over: true }) }),
+          im.role !== "ejemplo" ? h("figcaption", {}, im.role) : null))),
+        r.analysis ? h("div", { class: "imp-analysis selectable" }, r.analysis) : null,
+        h("div", { class: "imp-cols" },
+          h("div", {}, h("div", { class: "muted" }, "Ahora"),
+            h("div", { class: "old selectable" }, n.description || "(sin descripción)",
+              !isVar && n.include.length ? h("div", { style: { marginTop: "6px" } }, "Señales: ", n.include.map((x) => h("span", { class: "chip" }, x))) : null,
+              n.exclude.length ? h("div", { style: { marginTop: "6px" } }, "No si: ", n.exclude.map((x) => h("span", { class: "chip" }, x))) : null)),
+          h("div", {}, h("div", { class: "muted" }, g ? `Propuesta (detalle propio; el grupo «${g.name}» se mantiene)` : "Propuesta (puedes editarla)"), ta)),
+        incChips ? h("div", { class: "field", style: { marginTop: "10px" } }, "Señales a favor", incChips,
+          lostInc.length ? h("span", { class: "hint" }, "Las que tienen + se quitarían: clic en una para conservarla.") : null) : null,
+        h("div", { class: "field", style: { marginTop: incChips ? 0 : "10px" } }, "No va aquí si…", excChips,
+          lostExc.length ? h("span", { class: "hint" }, "Las que tienen + se quitarían: clic en una para conservarla.") : null));
+      if (lostInc.length) incChips.showSuggestions(lostInc);
+      if (lostExc.length) excChips.showSuggestions(lostExc);
+    };
+    const askBtn = h("button", { class: "btn ai", onclick: (e) => ask(e.currentTarget) }, h("span", { class: "i-spark" }), "Analizar");
+    const ok = await modal({ title: `Mejorar la descripción de «${n.name}»`, wide: true,
+      body: h("div", {},
+        h("p", { class: "hint", style: { marginTop: 0 } }, "La IA mira imágenes que ya están en esta carpeta (repartidas entre sus subcarpetas) y las que corregiste a mano al revisar tandas, y reescribe la descripción, las señales y las exclusiones para que en el futuro clasifique mejor. Revisa la propuesta antes de aplicarla."),
+        h("div", { class: "row" }, h("span", { class: "muted" }, "Mirar hasta"), count, askBtn, h("span", { class: "grow" })), out),
+      buttons: [{ label: "Cancelar", value: false },
+        { label: "Aplicar", value: true, primary: true, cls: "ai primary", check: () => { if (!proposal) toast("Primero pulsa «Analizar»"); return !!proposal; } }],
+      onOpen: () => setTimeout(() => askBtn.click(), 50) });
+    if (!ok || !proposal || !Tree.find(id)) return;
+    Tree.mutate(() => {
+      n.description = proposal.description.trim();
+      if (!isVar) n.include = [...new Set(proposal.include)];
+      n.exclude = [...new Set(proposal.exclude)];
+    });
+    Tree.render(); render();
+    toast(`Descripción de «${n.name}» actualizada (Ctrl+Z para deshacer)`, "ok");
+  }
+
+  /* ---------- improve many folders at once: one AI per folder and per shared group, several in parallel */
+  async function improveBatch(id, presetTasks = null) {
+    const cur = await GET("/api/ai/batch").catch(() => null);
+    const view = { body: h("div", {}), timer: null, st: null };
+    modal({ title: "Mejorar descripciones en lote", wide: true, body: view.body, buttons: [{ label: "Cerrar", value: null }] })
+      .then(() => clearInterval(view.timer));
+    const pending = cur?.id && (cur.running || cur.items.some((i) => i.status === "done" && !i.applied));
+    if (pending) return batchProgress(view, cur, id);
+    if (presetTasks) return batchStart(view, presetTasks, 8, App.cfg.settings.threads || 4, id);
+    batchSetup(view, id || "root");
+  }
+
+  function batchSetup(view, id) {
+    const base = Tree.find(id) || Tree.find("root");
+    const imgs = (nid) => App.stats[nid]?.images || 0;
+    const all = [...Tree.walk()];
+    const groups = new Map(), plain = [];
+    for (const x of Tree.walk(base.n)) {
+      if (x.n.id === "root") continue;
+      const g = Tree.groupOf(x.n);
+      if (g) { if (!groups.has(g.id)) groups.set(g.id, g); }
+      else plain.push(x.n);
+    }
+    const rows = [];
+    const pick = (kind, tid, label, detail, n, extra = null) => {
+      const cb = h("input", { type: "checkbox", checked: n > 0, disabled: n === 0 });
+      rows.push({ kind, id: tid, cb });
+      return h("label", { class: "check batch-pick" + (n ? "" : " off"), title: n ? "" : "Sin imágenes todavía: no hay nada que analizar" },
+        cb, extra, h("span", { class: "grow" }, label), h("span", { class: "muted" }, detail));
+    };
+    const count = h("select", {}, [4, 6, 8, 12, 16].map((v) => h("option", { value: v, selected: v === 8 }, `${v} imágenes`)));
+    const threads = h("input", { type: "number", min: 1, max: 16, value: App.cfg.settings.threads || 4, style: { width: "64px", flex: "none" } });
+    const summary = h("span", { class: "muted" });
+    const refresh = () => {
+      const n = rows.filter((r) => r.cb.checked).length;
+      const k = Math.min(n, +threads.value || 1);
+      summary.textContent = `${n} análisis · hasta ${k} IA${k === 1 ? "" : "s"} a la vez`;
+    };
+    const groupRows = [...groups.values()].map((g) => {
+      const members = all.filter((w) => w.n.group === g.id);
+      const n = members.reduce((a, w) => a + imgs(w.n.id), 0);
+      return pick("group", g.id, g.name, `usado en ${members.length} carpetas · ${n} imágenes`, n,
+        h("span", { class: "gdot", style: { background: g.color } }));
+    });
+    const folderRows = plain.map((n) => {
+      const path = Tree.find(n.id).path.join("/");
+      return pick("node", n.id, path, `${imgs(n.id)} imágenes${n.kind === "variable" ? " · variable" : ""}`, imgs(n.id));
+    });
+    rows.forEach((r) => r.cb.addEventListener("change", refresh));
+    threads.addEventListener("input", refresh);
+    const setAll = (on) => { rows.forEach((r) => { if (!r.cb.disabled) r.cb.checked = on; }); refresh(); };
+    const go = h("button", { class: "btn ai primary", onclick: () => {
+      const tasks = rows.filter((r) => r.cb.checked).map((r) => ({ kind: r.kind, id: r.id }));
+      if (!tasks.length) return toast("Marca al menos una carpeta o grupo", "error");
+      batchStart(view, tasks, +count.value, +threads.value || 4, id);
+    } }, h("span", { class: "i-spark" }), "Empezar");
+    view.body.innerHTML = "";
+    fill(view.body, 
+      h("p", { class: "hint", style: { marginTop: 0 } }, `Cada carpeta del árbol dentro de «${base.n.id === "root" ? "todo el árbol" : base.n.name}» y cada grupo que usan se analiza con su propia IA, varias a la vez. ` +
+        "Las carpetas variables {…} comparten un único criterio para todos sus valores (todas las especies), así que se analizan con imágenes de todos ellos. " +
+        "Al terminar revisas cada propuesta y aplicas las que quieras."),
+      h("div", { class: "row", style: { flexWrap: "wrap", marginBottom: "10px" } },
+        h("span", { class: "muted" }, "Imágenes por análisis"), count, h("span", { class: "muted" }, "IAs a la vez"), threads,
+        h("span", { class: "grow" }),
+        h("button", { class: "btn small", onclick: () => setAll(true) }, "Marcar todo"), h("button", { class: "btn small", onclick: () => setAll(false) }, "Nada")),
+      groupRows.length ? h("h3", { style: { margin: "4px 0 6px" } }, "Grupos (descripción compartida)") : null,
+      groupRows.length ? h("div", { class: "batch-list" }, groupRows) : null,
+      groupRows.length ? h("p", { class: "hint" }, "Las carpetas que usan un grupo se mejoran a través de él: su texto vale para todas.") : null,
+      folderRows.length ? h("h3", { style: { margin: "10px 0 6px" } }, "Carpetas") : null,
+      folderRows.length ? h("div", { class: "batch-list" }, folderRows) : null,
+      h("div", { class: "row", style: { marginTop: "12px" } }, summary, h("span", { class: "grow" }), go));
+    refresh();
+  }
+
+  async function batchStart(view, tasks, count, threads, id) {
+    await Main.flush();
+    const r = await POST("/api/ai/batch", { tasks, count, threads }).catch(fail);
+    if (r) batchProgress(view, r, id);
+  }
+
+  function batchProgress(view, st, id) {
+    const state = {};
+    const label = h("span", {});
+    const bar = h("i", { style: { width: "0%", background: "var(--ai)" } });
+    const stopBtn = h("button", { class: "btn small danger", onclick: () => POST("/api/ai/batch/stop").then((s) => update(s)).catch(fail) }, "Detener");
+    const applyBtn = h("button", { class: "btn ai primary" });
+    const list = h("div", {});
+    const chosen = () => (view.st?.items || []).filter((it) => it.status === "done" && !it.applied && state[it.key]?.apply);
+    const countApply = () => { const n = chosen().length; applyBtn.textContent = `Aplicar seleccionadas (${n})`; applyBtn.disabled = !n; };
+    const targetOf = (it) => (it.kind === "group" ? App.cfg.groups.find((g) => g.id === it.id) : Tree.find(it.id)?.n);
+    const badge = (it) => it.applied ? h("span", { class: "badge ok" }, "aplicada")
+      : { queued: h("span", { class: "badge" }, "en cola"), working: h("span", { class: "badge work" }, "analizando…"),
+        done: h("span", { class: "badge warn" }, "propuesta lista"), error: h("span", { class: "badge err" }, "error"),
+        stopped: h("span", { class: "badge" }, "detenida") }[it.status];
+    const draw = (s, it) => {
+      s.el.innerHTML = "";
+      s.el.className = `batch-item ${it.status}${it.applied ? " applied" : ""}`;
+      const target = targetOf(it);
+      const ready = it.status === "done" && it.result && target;
+      s.el.append(h("div", { class: "row" },
+        ready && !it.applied ? h("input", { type: "checkbox", checked: s.apply, onchange: (e) => { s.apply = e.target.checked; countApply(); } }) : null,
+        it.kind === "group" && target ? h("span", { class: "gdot", style: { background: target.color } }) : null,
+        h("b", { class: "grow" }, it.kind === "group" ? `Grupo «${it.label}»` : it.label), badge(it)));
+      if (it.status === "error") s.el.append(h("div", { class: "err" }, it.error));
+      if (it.status === "done" && !target) s.el.append(h("div", { class: "err" }, "Esta carpeta o grupo ya no existe en el árbol."));
+      if (!ready) return;
+      const r = it.result;
+      if (s.desc === null) s.desc = r.description;
+      const ids = [r.include.length ? `Señales: ${r.include.join(", ")}` : "", r.exclude.length ? `No si: ${r.exclude.join(", ")}` : ""].filter(Boolean).join(" · ");
+      fill(s.el, 
+        h("div", { class: "imp-strip mini" }, r.images.map((im, i) => h("img", { src: thumbUrl(im.path, 120), loading: "lazy", class: im.role === "ejemplo" ? "" : im.role === "corregida fuera" ? "out" : "into",
+          title: `${im.role}${im.detail ? " · " + im.detail : ""}\n${im.path}`,
+          onclick: () => Lightbox.open(r.images.map((x) => ({ path: x.path, name: baseName(x.path), extra: x.role === "ejemplo" ? "" : `${x.role} (${x.detail})` })), i, { over: true }) }))),
+        h("div", { class: "imp-cols" },
+          h("div", { class: "old selectable" }, h("div", { class: "muted" }, "Ahora"), target.description || "(sin descripción)"),
+          h("textarea", { rows: 3, value: s.desc, disabled: it.applied, oninput: (e) => (s.desc = e.target.value) })),
+        ids ? h("div", { class: "muted batch-ids selectable" }, ids) : null,
+        r.analysis ? h("div", { class: "hint selectable", style: { margin: "4px 0 0" } }, r.analysis) : null,
+        !it.applied ? h("label", { class: "check", style: { marginTop: "4px" } }, h("input", { type: "checkbox", checked: s.onlyDesc, onchange: (e) => (s.onlyDesc = e.target.checked) }),
+          "Solo la descripción (no tocar señales ni exclusiones)") : null);
+    };
+    const update = (st2) => {
+      view.st = st2;
+      const items = st2.items;
+      const finished = items.filter((i) => !["queued", "working"].includes(i.status)).length;
+      const working = items.filter((i) => i.status === "working").length;
+      const ok = items.filter((i) => i.status === "done").length, err = items.filter((i) => i.status === "error").length;
+      label.textContent = st2.running ? `Analizando… ${finished}/${items.length} terminados · ${working} IA${working === 1 ? "" : "s"} trabajando`
+        : `Terminado: ${ok} propuesta(s)${err ? ` · ${err} con error` : ""}`;
+      bar.style.width = (100 * finished / Math.max(1, items.length)) + "%";
+      stopBtn.hidden = !st2.running;
+      for (const it of items) {
+        let s = state[it.key];
+        if (!s) { s = state[it.key] = { el: h("div", {}), status: null, applied: null, apply: true, onlyDesc: false, desc: null }; list.append(s.el); }
+        if (s.status !== it.status || s.applied !== it.applied) { s.status = it.status; s.applied = it.applied; draw(s, it); }
+      }
+      countApply();
+    };
+    applyBtn.onclick = async () => {
+      const items = chosen();
+      if (!items.length) return;
+      Tree.mutate(() => {
+        for (const it of items) {
+          const s = state[it.key], r = it.result, desc = String(s.desc ?? r.description).trim();
+          if (it.kind === "group") {
+            const g = App.cfg.groups.find((x) => x.id === it.id);
+            if (!g) continue;
+            if (desc) g.description = desc;
+            if (!s.onlyDesc) { if (r.include.length) g.include = [...new Set(r.include)]; if (r.exclude.length) g.exclude = [...new Set(r.exclude)]; }
+          } else {
+            const n = Tree.find(it.id)?.n;
+            if (!n) continue;
+            if (desc) n.description = desc;
+            if (!s.onlyDesc) {
+              const g = Tree.groupOf(n);
+              const gi = new Set((g?.include || []).map(norm)), ge = new Set((g?.exclude || []).map(norm));
+              const inc = r.include.filter((x) => !gi.has(norm(x))), exc = r.exclude.filter((x) => !ge.has(norm(x)));
+              if (n.kind !== "variable" && inc.length) n.include = [...new Set(inc)];
+              if (exc.length) n.exclude = [...new Set(exc)];
+            }
+          }
+        }
+      });
+      Tree.render(); render();
+      const s2 = await POST("/api/ai/batch/applied", { keys: items.map((i) => i.key) }).catch(() => null);
+      if (s2) update(s2);
+      toast(`${items.length} descripción(es) actualizada(s). Ctrl+Z deshace todas de una vez.`, "ok", null, 6000);
+    };
+    view.body.innerHTML = "";
+    view.body.append(
+      h("div", { class: "dup-summary" }, label, h("span", { class: "grow" }), stopBtn,
+        h("button", { class: "btn small", title: "Elegir otra rama y empezar otra tanda", onclick: () => { clearInterval(view.timer); batchSetup(view, id || App.primary || "root"); } }, "Nueva tanda"),
+        applyBtn),
+      h("div", { class: "progress" }, bar),
+      h("p", { class: "hint" }, "Puedes cerrar esta ventana: la tanda sigue y al volver a abrirla verás las propuestas. Edita el texto propuesto si quieres antes de aplicar."),
+      list);
+    update(st);
+    clearInterval(view.timer);
+    if (st.running) view.timer = setInterval(async () => {
+      if (!view.body.isConnected) return clearInterval(view.timer);
+      const s2 = await GET("/api/ai/batch").catch(() => null);
+      if (!s2 || s2.id !== st.id) return;
+      update(s2);
+      if (!s2.running) clearInterval(view.timer);
+    }, 1500);
+  }
+
   async function openImages(id, value = null, sub = null) {
     const st = App.stats[id] || {};
     const w = Tree.find(id);
@@ -941,5 +1219,5 @@ const Inspector = (() => {
     Images.open(path);
   }
 
-  return { render, generate, suggestChildren, openImages };
+  return { render, generate, suggestChildren, openImages, improve, improveBatch };
 })();

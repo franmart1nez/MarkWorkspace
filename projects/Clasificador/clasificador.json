@@ -8,7 +8,7 @@
     "threads": 7,
     "limit": 250,
     "mode": "move",
-    "threshold": 80,
+    "threshold": 100,
     "unhide": true,
     "timeout": 180,
     "instructions": "Mira la imagen y elige la carpeta que mejor la describe. Si hay varios personajes, elige el más prominente.",
@@ -19,39 +19,72 @@
       "id": "94b1515b7d",
       "name": "Contenido General",
       "color": "#4caf7d",
-      "description": "personaje vestido y sin insinuación sexual; señales ropa que cubre torso y genitales, pose neutra. NO si hay desnudo, lencería o pose insinuante. erotico: desnudo o insinuación visible sin acto sexual. explicito: acto sexual visible con penetración o genitales en acción.",
+      "description": "Personaje vestido con ropa que cubre pecho y pelvis, aunque sea ajustada o corta y deje ver brazos, abdomen o muslos; la pose no basta para excluir: no hay pechos, nalgas ni genitales descubiertos.",
       "include": [
-        "ropa completa",
-        "pose neutral"
+        "ropa cubre torso",
+        "pelvis cubierta",
+        "ropa ajustada o corta",
+        "abdomen o muslos visibles",
+        "pose neutra o acción",
+        "rasgos animales o monstruosos",
+        "armadura o uniforme completo",
+        "ropa rasgada sin genitales"
       ],
       "exclude": [
-        "desnudo"
+        "lencería o ropa interior",
+        "pechos o bajo pecho",
+        "nalgas o espalda descubiertas",
+        "genitales visibles",
+        "traje de baño mínimo",
+        "contacto corporal íntimo"
       ]
     },
     {
       "id": "0e1a3f18f4",
       "name": "Contenido erótico",
       "color": "#e0a03a",
-      "description": "Contenido erótico con desnudo o insinuación sexual visible y sin acto explícito. Señales: genitales, pechos o nalgas descubiertos, lencería o ropa interior visible, contacto corporal íntimo. NO si el acto sexual es explícito (penetración o genitales en acción): eso va en sexual.",
+      "description": "Personaje con desnudo parcial, lencería o ropa mínima que muestra pechos, nalgas o zona genital, en pose o encuadre sexualizado, sin acto sexual ni genitales en acción.",
       "include": [
-        "desnudo",
-        "lencería",
+        "desnudo parcial",
+        "pechos descubiertos",
+        "nalgas expuestas",
+        "lencería o ropa interior",
+        "bikini o tela mínima",
+        "escote profundo",
+        "muslos al aire",
         "pose insinuante"
       ],
       "exclude": [
-        "acto sexual explícito",
-        "Un desnudo sin contexto sexual (estudio anatómico, estatua, figura no viva) no va aquí."
+        "pose neutra sin insinuación",
+        "hoja de referencia",
+        "desnudo anatómico o estatua",
+        "penetración o genitales activos",
+        "sexo oral explícito"
       ]
     },
     {
       "id": "f01e24b24a",
       "name": "Contenido sexual",
       "color": "#d9534f",
-      "description": "Contenido sexual explícito",
+      "description": "Figuras desnudas con genitales visibles en pleno acto sexual: penetración, sexo oral, manos sobre genitales o semen sobre el cuerpo, con cuerpos entrelazados y primeros planos genitales.",
       "include": [
-        "acto sexual explícito"
+        "penetración visible",
+        "sexo oral genital-boca",
+        "genitales erectos en contacto",
+        "manos sobre genitales",
+        "semen o fluidos",
+        "cuerpos entrelazados",
+        "primer plano genital",
+        "erección visible"
       ],
-      "exclude": []
+      "exclude": [
+        "desnudo sin acto sexual",
+        "pose insinuante sin penetración",
+        "lencería o ropa interior",
+        "pechos o nalgas descubiertos",
+        "contacto íntimo sin genitales",
+        "personaje vestido"
+      ]
     }
   ],
   "root": {
@@ -69,20 +102,24 @@
         "id": "83ea36e07e",
         "name": "No realista",
         "kind": "folder",
-        "description": "Imágenes dibujadas, pintadas o generadas con formas, colores o materiales estilizados que no buscan parecer fotografía: cartoon, anime, cómic, pixel art, pintura digital y 3D estilizado tipo Pixar o videojuego. Señales: trazo visible, colores planos, contornos marcados, formas simplificadas, proporciones exageradas, materiales tipo plástico. NO si anatomía, piel, tela y luz son físicamente plausibles: eso es foto o render fotorrealista.",
+        "description": "Dibujos y pinturas con línea visible o pinceladas, colores planos, sombreado en bloques y anatomía simplificada o exagerada en personajes inventados; nunca piel real, luz fotográfica ni fondo de habitación real.",
         "include": [
           "trazo visible",
-          "colores planos",
           "contornos marcados",
+          "colores planos",
+          "sombreado en bloques",
           "formas simplificadas",
           "proporciones exageradas",
+          "rostros dibujados",
           "textura pictórica"
         ],
         "exclude": [
-          "fotografía",
-          "render fotorrealista",
+          "fotografía real",
+          "selfie borrosa",
           "piel con poros",
-          "iluminación fotográfica"
+          "luz fotográfica",
+          "fondo de habitación",
+          "render fotorrealista"
         ],
         "group": null,
         "open": false,
@@ -92,9 +129,25 @@
             "id": "312447ed58",
             "name": "personajes",
             "kind": "folder",
-            "description": "Una o varias figuras con aspecto de personaje como sujeto principal",
-            "include": [],
-            "exclude": [],
+            "description": "Figura o figuras de personaje dibujadas o estilizadas: anime, cómic, pintura digital o concept art. Trazo y pinceladas visibles, colores planos, contornos marcados y anatomía exagerada, sin piel ni luz fotográficas.",
+            "include": [
+              "trazo o pinceladas visibles",
+              "colores planos o cel shading",
+              "contornos marcados",
+              "proporciones exageradas",
+              "personaje sobre fondo liso",
+              "pose de concept art",
+              "materiales tipo plástico o 3D",
+              "bocadillos y texto dibujado"
+            ],
+            "exclude": [
+              "piel y luz fotográficas",
+              "render fotorrealista",
+              "foto de persona real",
+              "animal sin rasgos humanos",
+              "figura diminuta en paisaje",
+              "objeto o interfaz"
+            ],
             "group": null,
             "open": false,
             "openHint": "",
@@ -103,9 +156,14 @@
                 "id": "e40441d5fe",
                 "name": "especie",
                 "kind": "variable",
-                "description": "Género aparente del personaje principal: masculino, femenino o desconocido. Usa desconocido si el rostro, la silueta y la ropa no permiten decidirlo (armadura total, casco, cuerpo andrógino, alien). En grupos, decide por el personaje más grande o más cercano a cámara.",
+                "description": "Nombre de la especie o raza del personaje principal, en singular, minúsculas, sin tildes, sin artículos y sin adjetivos: «orco», «elfo», «demonio», «vampiro», «kitsune», «satiro», «arpia», «esfinge», «naga», «hada», «gargola», «alien»; usa dos palabras solo cuando el nombre sea compuesto («muerto viviente»). Escribe la especie, no el género, el color, la edad, el oficio ni un nombre propio. Elígela por rasgos visibles en el dibujo: orejas puntiagudas o de animal, cuernos, colmillos, cola, piel verde, azul, gris o roja, escamas, plumas, pelaje, alas, patas o anatomía monstruosa. Si dudas entre una raza concreta y su genérico, escribe el genérico que se vea («demonio» antes que «tiefling»). Si el personaje no muestra ningún rasgo no humano, escribe «humano»; si los rasgos no bastan para decidir la especie, escribe «desconocido» (nunca «criatura» ni «varias especies»). En grupos, usa la especie del personaje más grande o más cercano a cámara. La imagen debe ser dibujo, pintura o 3D estilizado; si la piel, la tela y la luz son fotográficas, no corresponde a esta rama.",
                 "include": [],
-                "exclude": [],
+                "exclude": [
+                  "foto realista",
+                  "render fotorrealista",
+                  "piel fotografica",
+                  "erotica de piel realista"
+                ],
                 "group": null,
                 "open": false,
                 "openHint": "",
@@ -114,9 +172,24 @@
                     "id": "17f007f6ab",
                     "name": "masculino",
                     "kind": "folder",
-                    "description": "Personaje principal masculino",
-                    "include": [],
-                    "exclude": [],
+                    "description": "Personajes no realistas claramente masculinos como sujeto principal: rostro de hombre con barba o mandíbula marcada, a menudo de especie no humana, pintados al óleo digital o modelados en 3D estilizado.",
+                    "include": [
+                      "rostro masculino visible",
+                      "barba o bigote",
+                      "mandíbula ancha",
+                      "torso musculoso desnudo",
+                      "rasgos no humanos",
+                      "orejas puntiagudas o cuernos",
+                      "piel azul, verde o gris",
+                      "pintura digital o 3D estilizado"
+                    ],
+                    "exclude": [
+                      "personaje femenino",
+                      "rostro cubierto por casco",
+                      "silueta andrógina",
+                      "criatura sin rasgos faciales",
+                      "foto o render fotorrealista"
+                    ],
                     "group": null,
                     "open": false,
                     "openHint": "",
@@ -163,9 +236,24 @@
                     "id": "fdf6e2c5b8",
                     "name": "femenino",
                     "kind": "folder",
-                    "description": "Personaje principal femenino",
-                    "include": [],
-                    "exclude": [],
+                    "description": "Figura no realista con señales femeninas claras: torso o pecho femenino, rostro suave con pestañas o maquillaje, pelo largo y caderas marcadas, incluso si es monstruosa, demoníaca o lleva poca ropa.",
+                    "include": [
+                      "pecho femenino",
+                      "rostro femenino",
+                      "pestañas marcadas",
+                      "labios con maquillaje",
+                      "pelo largo",
+                      "caderas marcadas",
+                      "silueta de cintura",
+                      "piel lisa estilizada"
+                    ],
+                    "exclude": [
+                      "personaje masculino",
+                      "sexo indeterminado",
+                      "cuerpo andrógino",
+                      "silueta sin rasgos femeninos",
+                      "foto o render fotorrealista"
+                    ],
                     "group": null,
                     "open": false,
                     "openHint": "",
@@ -198,70 +286,24 @@
                         "id": "0781b0bda1",
                         "name": "sexual",
                         "kind": "folder",
-                        "description": "",
-                        "include": [],
-                        "exclude": [],
-                        "group": "f01e24b24a",
-                        "open": false,
-                        "openHint": "",
-                        "children": []
-                      }
-                    ]
-                  },
-                  {
-                    "id": "a91b3d8adc",
-                    "name": "desconocido",
-                    "kind": "folder",
-                    "description": "Personajes no realistas cuyo sexo aparente no se puede determinar: cubiertos por armadura, casco, silueta andrógina o cuerpo alienígena.",
-                    "include": [
-                      "casco o armadura total",
-                      "rostro cubierto",
-                      "silueta ambigua",
-                      "cuerpo alienígena",
-                      "rasgos no humanos",
-                      "ropa sin forma"
-                    ],
-                    "exclude": [
-                      "rostro masculino claro",
-                      "rostro femenino claro",
-                      "foto o render realista",
-                      "sin figura de personaje"
-                    ],
-                    "group": null,
-                    "open": false,
-                    "openHint": "",
-                    "children": [
-                      {
-                        "id": "8213fb9309",
-                        "name": "normal",
-                        "kind": "folder",
-                        "description": "",
-                        "include": [],
-                        "exclude": [],
-                        "group": "94b1515b7d",
-                        "open": false,
-                        "openHint": "",
-                        "children": []
-                      },
-                      {
-                        "id": "0f8253d97a",
-                        "name": "erotica",
-                        "kind": "folder",
-                        "description": "",
-                        "include": [],
-                        "exclude": [],
-                        "group": "0e1a3f18f4",
-                        "open": false,
-                        "openHint": "",
-                        "children": []
-                      },
-                      {
-                        "id": "63b1a42fd3",
-                        "name": "sexual",
-                        "kind": "folder",
-                        "description": "",
-                        "include": [],
-                        "exclude": [],
+                        "description": "Una o varias figuras no realistas desnudas realizando un acto sexual visible: penetración, sexo oral o genitales en contacto activo, a menudo con fluidos corporales, primeros planos y cuerpos entrelazados.",
+                        "include": [
+                          "acto sexual en curso",
+                          "pene en boca",
+                          "penetración visible",
+                          "genitales en contacto",
+                          "fluidos corporales",
+                          "varias figuras desnudas",
+                          "primer plano genital",
+                          "pose de coito"
+                        ],
+                        "exclude": [
+                          "desnudo sin acto",
+                          "lencería sin contacto",
+                          "pose insinuante sola",
+                          "personaje vestido",
+                          "render fotorrealista"
+                        ],
                         "group": "f01e24b24a",
                         "open": false,
                         "openHint": "",
@@ -353,19 +395,24 @@
         "id": "5bc0c84d72",
         "name": "realista",
         "kind": "folder",
-        "description": "Imágenes que parecen fotografías o renders fotorrealistas, con luz, materiales y anatomía coherentes con la realidad física.\nTambién pueden incluirse imágenes borrosas como selfies.",
+        "description": "Fotos y renders fotorrealistas de personas, cosplay o criaturas: piel con poros y brillos reales, telas, pelo y metal con textura, luz de cámara y fondos de lugares reales, incluso borrosos o con flash.",
         "include": [
-          "textura de piel real",
+          "piel con poros y vello",
           "luz y sombras físicas",
-          "perspectiva fotográfica",
+          "tela y pelo texturizados",
           "reflejos y materiales reales",
-          "profundidad de campo"
+          "profundidad de campo",
+          "fondo de lugar real",
+          "borrosidad de móvil",
+          "disfraces y prótesis"
         ],
         "exclude": [
           "trazo visible",
           "colores planos",
-          "formas simplificadas",
-          "estilo cartoon"
+          "contornos marcados",
+          "piel plástica sin poros",
+          "anatomía de muñeca 3D",
+          "pintura o ilustración digital"
         ],
         "group": null,
         "open": false,
@@ -375,9 +422,24 @@
             "id": "63276c1a48",
             "name": "personajes",
             "kind": "folder",
-            "description": "personajes: una o varias figuras humanas o antropomorfas son el sujeto principal (retrato, busto, cuerpo completo o grupo), sean personas reales o ficticias. Si hay varias figuras, se elige la más grande o la más cercana a cámara para decidir especie y género. NO si el ser vivo es un animal de anatomía natural, ni si no hay ninguna figura.",
-            "include": [],
-            "exclude": [],
+            "description": "Figura humana o antropomorfa como sujeto principal, de retrato a cuerpo completo, con rostro, piel o anatomía reconocibles; incluye selfies, cosplay y renders hiperrealistas aunque se recorte la cara, nunca paisaje ni objeto.",
+            "include": [
+              "figura humana o antropomorfa",
+              "retrato, busto o cuerpo entero",
+              "selfie o foto casera",
+              "cosplay o disfraz",
+              "desnudo o lencería",
+              "piel y anatomía detalladas",
+              "render hiperrealista"
+            ],
+            "exclude": [
+              "animal de anatomía natural",
+              "paisaje o figura lejana",
+              "objeto o producto",
+              "captura o documento",
+              "dibujo o anime",
+              "maniquí o estatua"
+            ],
             "group": null,
             "open": false,
             "openHint": "",
@@ -386,9 +448,14 @@
                 "id": "f17ca633cb",
                 "name": "especie",
                 "kind": "variable",
-                "description": "Especie o tipo del personaje antropomorfo, en singular, minúsculas y sin tildes (humano, orco, elfo, goblin, dragonborn, androide). Solo cuenta si la figura es bípeda, tiene cara y manos de personaje, lleve ropa o no. NO si el ser vivo tiene anatomía animal natural (cuadrípedo, sin manos ni cara de personaje): eso va en animales.",
+                "description": "Nombre de la especie o tipo del personaje humanoide que es el sujeto principal: una sola palabra, en singular, minúsculas, sin tildes ni artículos (humano, elfo, orco, goblin, cabra, dragonborn, androide). Elígelo solo por rasgos anatómicos visibles en el cuerpo de esa figura (orejas puntiagudas, cuernos, piel o pelo de color no humano, hocico, cola, proporciones no humanas); si no hay ningún rasgo anatómico no humano, escribe siempre 'humano'. Cuenta la figura bípeda de cuerpo humanoide en retrato, busto, cuerpo entero o grupo (se usa la figura más grande o más cercana a cámara), de frente, de perfil o de espaldas, con la cara tapada o el torso recortado, vestida, desnuda o en contenido erótico. El disfraz y los accesorios no crean especie: diademas, orejas postizas, pelucas, lentillas, colmillos falsos, tatuajes, piercings o ropa temática siguen siendo 'humano'. No escribas género, raza, oficio ni rasgo físico (nada de 'mujer', 'negra', 'cosplay'); usa siempre el mismo nombre para el mismo tipo de criatura.",
                 "include": [],
-                "exclude": [],
+                "exclude": [
+                  "animal cuadrúpedo",
+                  "anatomía animal natural",
+                  "criatura no bípeda",
+                  "sin figura antropomorfa"
+                ],
                 "group": null,
                 "open": false,
                 "openHint": "",
@@ -446,9 +513,25 @@
                     "id": "1f28db0ef0",
                     "name": "femenino",
                     "kind": "folder",
-                    "description": "Personaje principal femenino",
-                    "include": [],
-                    "exclude": [],
+                    "description": "Mujer de aspecto fotográfico o render fotorrealista con rasgos femeninos claros (pechos, cadera, rostro y cabello de mujer), vestida, en ropa interior o desnuda, sola o en grupo.",
+                    "include": [
+                      "pechos femeninos visibles",
+                      "rostro de mujer",
+                      "cintura estrecha y caderas",
+                      "cabello largo o melena",
+                      "labios y maquillaje",
+                      "piel fotorrealista",
+                      "pose de selfie o espejo",
+                      "mujer central en grupo"
+                    ],
+                    "exclude": [
+                      "figura masculina",
+                      "sexo no determinable",
+                      "armadura o casco total",
+                      "animal de anatomía natural",
+                      "dibujo o ilustración",
+                      "criatura no antropomorfa"
+                    ],
                     "group": null,
                     "open": false,
                     "openHint": "",
@@ -479,67 +562,6 @@
                       },
                       {
                         "id": "b1e498d6e7",
-                        "name": "sexual",
-                        "kind": "folder",
-                        "description": "",
-                        "include": [],
-                        "exclude": [],
-                        "group": "f01e24b24a",
-                        "open": false,
-                        "openHint": "",
-                        "children": []
-                      }
-                    ]
-                  },
-                  {
-                    "id": "24ec06c138",
-                    "name": "desconocido",
-                    "kind": "folder",
-                    "description": "Personajes no realistas cuyo sexo aparente no se puede determinar: cubiertos por armadura, casco, silueta andrógina o cuerpo alienígena.",
-                    "include": [
-                      "casco o armadura total",
-                      "rostro cubierto",
-                      "silueta ambigua",
-                      "cuerpo alienígena",
-                      "rasgos no humanos",
-                      "ropa sin forma"
-                    ],
-                    "exclude": [
-                      "rostro masculino claro",
-                      "rostro femenino claro",
-                      "foto o render realista",
-                      "sin figura de personaje"
-                    ],
-                    "group": null,
-                    "open": false,
-                    "openHint": "",
-                    "children": [
-                      {
-                        "id": "a950149e75",
-                        "name": "normal",
-                        "kind": "folder",
-                        "description": "",
-                        "include": [],
-                        "exclude": [],
-                        "group": "94b1515b7d",
-                        "open": false,
-                        "openHint": "",
-                        "children": []
-                      },
-                      {
-                        "id": "a4e82bb546",
-                        "name": "erotica",
-                        "kind": "folder",
-                        "description": "",
-                        "include": [],
-                        "exclude": [],
-                        "group": "0e1a3f18f4",
-                        "open": false,
-                        "openHint": "",
-                        "children": []
-                      },
-                      {
-                        "id": "0a4e5a68f5",
                         "name": "sexual",
                         "kind": "folder",
                         "description": "",

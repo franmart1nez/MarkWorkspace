@@ -4,6 +4,7 @@ from __future__ import annotations
 import csv
 import json
 import os
+import random
 import shutil
 import subprocess
 import threading
@@ -344,6 +345,21 @@ class JobManager:
         except OSError:
             pass
 
+    def forget(self, paths: list):
+        """Marks pending proposals whose file went to the recycle bin as discarded."""
+        gone = {os.path.normcase(os.path.normpath(p)) for p in paths}
+        for job in list(self.jobs.values()):
+            changed = False
+            with job.lock:
+                for it in job.items:
+                    if it["decision"] == "pending" and os.path.normcase(os.path.normpath(it["file"])) in gone:
+                        it.update(decision="rejected", error="enviada a la papelera")
+                        changed = True
+                if changed:
+                    job._touch()
+            if changed:
+                job.save()
+
 
 # =========================================================================== authoring help
 
@@ -497,3 +513,291 @@ def assistant(cfg, message: str, selected_id=None) -> dict:
     data = ask_json(cfg["settings"], prompt, timeout=240)
     acts = [a for a in data.get("acciones") or [] if isinstance(a, dict) and a.get("tipo") in ("crear", "editar", "grupo")]
     return {"answer": str(data.get("respuesta") or ""), "actions": acts}
+
+
+# =========================================================================== improve from images
+
+def _node_images(cfg, segs, limit=4000, idx=None) -> list:
+    """Images stored in every concrete folder of a node (all variable values and subfolders)."""
+    dest = Path(cfg["settings"]["destination"])
+    idx = idx or core.DiskIndex(dest)
+    out = []
+    for rel, _ in idx.expand(segs):
+        for root, dirs, files in os.walk(dest.joinpath(*rel)):
+            dirs[:] = [d for d in dirs if not d.startswith(".")]
+            for fn in files:
+                if os.path.splitext(fn)[1].lower() in core.AI_EXT:
+                    out.append(Path(root) / fn)
+            if len(out) >= limit:
+                return out
+    return out
+
+
+def _spread_sample(paths: list, count: int) -> list:
+    """Random images taken in turn from each folder, so every value and subfolder is represented."""
+    by_dir = {}
+    for p in paths:
+        by_dir.setdefault(str(p.parent).lower(), []).append(p)
+    pools = list(by_dir.values())
+    for pool in pools:
+        random.shuffle(pool)
+    random.shuffle(pools)
+    out = []
+    while pools and len(out) < count:
+        for pool in list(pools):
+            while pool:
+                p = pool.pop()
+                try:
+                    if p.stat().st_size <= core.MAX_AI_BYTES:
+                        out.append(p)
+                        break
+                except OSError:
+                    pass
+            if not pool:
+                pools.remove(pool)
+            if len(out) >= count:
+                break
+    return out
+
+
+def _corrections(cfg, segs_list, jobs, limit=3) -> tuple:
+    """Reviewed images the user sent to a different place than the AI proposed, relative to these folders."""
+    dest = cfg["settings"]["destination"]
+    into, out = [], []
+    inside = lambda parts: any(core.path_matches(s, parts) for s in segs_list)  # noqa: E731
+    for job in sorted(list(jobs.jobs.values()) if jobs else [], key=lambda j: -j.created):
+        with job.lock:
+            items = [dict(it) for it in job.items]
+        for it in items:
+            if it.get("decision") != "applied" or not it.get("dest") or not it.get("proposal"):
+                continue
+            target = Path(it["dest"])
+            applied = core.rel_parts(dest, target.parent)
+            if applied is None or target.suffix.lower() not in core.AI_EXT:
+                continue
+            proposed = tuple(x for x in str(it["proposal"]).split("/") if x)
+            here_now, here_ai = inside(applied), inside(proposed)
+            if here_now == here_ai:
+                continue
+            try:
+                if not target.is_file() or target.stat().st_size > core.MAX_AI_BYTES:
+                    continue
+            except OSError:
+                continue
+            entry = {"path": str(target), "proposal": "/".join(proposed), "applied": "/".join(applied)}
+            if here_now and len(into) < limit:
+                into.append(entry)
+            elif here_ai and len(out) < limit:
+                out.append(entry)
+        if len(into) >= limit and len(out) >= limit:
+            break
+    return into, out
+
+
+def _material(cfg, segs_list, count, jobs) -> tuple:
+    """Sample images from the folders plus the corrections that concern them (never the same file twice)."""
+    count = max(2, min(16, int(count or 8)))
+    into, out = _corrections(cfg, segs_list, jobs)
+    skip = {os.path.normcase(e["path"]) for e in into + out}
+    idx = core.DiskIndex(Path(cfg["settings"]["destination"]))
+    paths = []
+    for segs in segs_list:
+        for p in _node_images(cfg, segs, idx=idx):
+            k = os.path.normcase(str(p))
+            if k not in skip:
+                skip.add(k)
+                paths.append(p)
+    samples = _spread_sample(paths, count)
+    if not samples and not into:
+        raise ValueError("Esta carpeta todavía no tiene imágenes que analizar")
+    return samples, into, out
+
+
+def _ask_improve(cfg, header, samples, into, out, task, where) -> dict:
+    images, legend = list(samples), []
+    if samples:
+        legend.append(f"- Imágenes 1 a {len(samples)}: ya están guardadas en {where} (son ejemplos correctos).")
+    for e in into:
+        images.append(Path(e["path"]))
+        legend.append(f"- Imagen {len(images)}: la IA clasificadora la mandó a «{e['proposal']}», pero el usuario la "
+                      f"corrigió y la puso en «{e['applied']}». La nueva definición debe incluir casos así.")
+    for e in out:
+        images.append(Path(e["path"]))
+        legend.append(f"- Imagen {len(images)}: la IA clasificadora la propuso para «{e['proposal']}», pero el usuario la "
+                      f"corrigió y la mandó a «{e['applied']}». La nueva definición debe dejar fuera casos así.")
+    prompt = (INTRO + header +
+              f"\nTe adjunto {len(images)} imagen(es), en este orden:\n" + "\n".join(legend) + "\n\n"
+              f"Analiza qué tienen en común las imágenes de {where} y qué las distingue de las hermanas. "
+              "Generaliza: no describas una imagen concreta.\n" + task +
+              "- analisis: de 1 a 3 frases: qué tienen en común las imágenes y qué has cambiado respecto al criterio actual.\n"
+              "Escribe las señales y exclusiones como etiquetas cortas de 1 a 4 palabras. Responde SOLO con JSON:\n"
+              '{"descripcion": "...", "incluir": ["..."], "excluir": ["..."], "analisis": "..."}')
+    return ask_json(cfg["settings"], prompt, images, timeout=max(300, int(cfg["settings"].get("timeout") or 0)))
+
+
+def _result(data, samples, into, out, with_include=True) -> dict:
+    def clean(xs, cap):
+        return [str(x).strip() for x in (xs or []) if str(x).strip()][:cap]
+
+    used = ([{"path": str(p), "role": "ejemplo"} for p in samples] +
+            [{"path": e["path"], "role": "corregida hacia aquí", "detail": f"la IA dijo {e['proposal']}"} for e in into] +
+            [{"path": e["path"], "role": "corregida fuera", "detail": f"el usuario la puso en {e['applied']}"} for e in out])
+    return {"description": str(data.get("descripcion") or "").strip(),
+            "include": clean(data.get("incluir"), 10) if with_include else [],
+            "exclude": clean(data.get("excluir"), 8),
+            "analysis": str(data.get("analisis") or "").strip(),
+            "images": used}
+
+
+TASK_FOLDER = ("Mejora la definición para que la IA clasificadora acierte más en el futuro:\n"
+               "- descripcion: máx. 35 palabras, concreta y visual: qué se ve en las imágenes que van aquí y en qué "
+               "se diferencian de las carpetas hermanas.\n"
+               "- incluir: la lista COMPLETA de 3 a 8 señales visuales (conserva las actuales que sigan siendo útiles "
+               "y quita las que no encajan con las imágenes).\n"
+               "- excluir: la lista COMPLETA de 0 a 6 casos parecidos que van en otra carpeta.\n")
+
+
+def improve_node(cfg, node_id, count=8, jobs=None) -> dict:
+    """Looks at the images already in a folder (and past corrections) and rewrites its criteria."""
+    n, segs, _ = core.find(cfg, node_id)
+    if not n or node_id == "root":
+        raise KeyError("Carpeta no encontrada")
+    samples, into, out = _material(cfg, [segs], count, jobs)
+    g = core.groups_by_id(cfg).get(n.get("group"))
+    cr = core.criteria(cfg, n)
+    is_var = n["kind"] == "variable"
+    header = _node_brief(cfg, n, segs)
+    if g:
+        header += (f"\nEsta carpeta usa el grupo «{g['name']}», que ya aporta: «{g.get('description') or '(sin descripción)'}»"
+                   f" | señales: {', '.join(g.get('include') or []) or '(ninguna)'}"
+                   f" | NO si: {', '.join(g.get('exclude') or []) or '(ninguna)'}. Ese texto lo comparten otras "
+                   "carpetas y no lo cambias: escribe SOLO el detalle propio de esta carpeta, sin repetir lo del grupo.\n")
+    if is_var:
+        idx = core.DiskIndex(Path(cfg["settings"]["destination"]))
+        vals = {}
+        for rel, binds in idx.expand(segs):
+            v = binds.get(n["name"])
+            vals[v] = vals.get(v, 0) + idx.total.get(rel, 0)
+        listed = ", ".join(f"{k} ({v})" for k, v in sorted(vals.items(), key=lambda kv: -kv[1])[:80]) or "(ninguno todavía)"
+        header += f"Valores que ya ha escrito la IA (nombre e imágenes): {listed}\n"
+        task = ("Es una carpeta VARIABLE: la IA clasificadora escribe el nombre real de la carpeta (p. ej. una especie). "
+                "Mejora la 'descripcion' para que explique con precisión QUÉ nombre debe escribir y con qué formato, "
+                "a la vista de los valores y las imágenes. Si hay valores que deberían unificarse (sinónimos, plurales, "
+                "grafías distintas), dilo en el análisis. Deja 'incluir' vacío; usa 'excluir' solo si hay casos que "
+                "no deben llegar a esta rama.\n")
+    else:
+        task = TASK_FOLDER
+    header += (f"Criterio completo que lee hoy la IA clasificadora: {cr['description'] or '(sin descripción)'}"
+               f" | Señales: {', '.join(cr['include']) or '(ninguna)'} | NO si: {', '.join(cr['exclude']) or '(ninguna)'}\n")
+    data = _ask_improve(cfg, header, samples, into, out, task, "esta carpeta")
+    return _result(data, samples, into, out, with_include=not is_var)
+
+
+def improve_group(cfg, group_id, count=8, jobs=None) -> dict:
+    """Rewrites a shared group from the images of every folder that uses it."""
+    g = core.groups_by_id(cfg).get(group_id)
+    if not g:
+        raise KeyError("Grupo no encontrado")
+    members = [(n, segs, parent) for n, segs, parent in core.walk(cfg["root"]) if n.get("group") == group_id]
+    if not members:
+        raise ValueError("El grupo no se usa en ninguna carpeta")
+    samples, into, out = _material(cfg, [segs for _, segs, _ in members], count, jobs)
+    siblings = {}
+    member_ids = {n["id"] for n, _, _ in members}
+    for _, _, parent in members:
+        for c in (parent or cfg["root"])["children"]:
+            if c["id"] in member_ids:
+                continue
+            cr = core.criteria(cfg, c)
+            siblings.setdefault((core.segment(c), cr["description"]), cr)
+    sib = "\n".join(f"- {name}{' (grupo ' + cr['group'] + ')' if cr['group'] else ''}: {desc or '(sin descripción)'}"
+                    for (name, desc), cr in siblings.items()) or "(ninguna)"
+    used_in = "\n".join(f"- {'/'.join(segs)}" + (f" (además tiene detalle propio: {n['description']})" if n["description"] else "")
+                        for n, segs, _ in members)
+    header = (f"Grupo de descripción compartida: «{g['name']}»\n"
+              f"Descripción actual del grupo: {g.get('description') or '(vacía)'}\n"
+              f"Señales actuales: {', '.join(g.get('include') or []) or '(ninguna)'}\n"
+              f"Exclusiones actuales: {', '.join(g.get('exclude') or []) or '(ninguna)'}\n"
+              f"Lo usan estas carpetas (la IA clasificadora lee el texto del grupo en todas ellas):\n{used_in}\n"
+              f"Carpetas hermanas de las que debe distinguirse:\n{sib}\n")
+    task = ("Mejora el texto COMPARTIDO del grupo para que valga en todas sus carpetas y la IA clasificadora acierte más:\n"
+            "- descripcion: máx. 35 palabras, concreta y visual, sin mencionar una rama concreta (sirve para todas).\n"
+            "- incluir: la lista COMPLETA de 3 a 8 señales visuales (conserva las actuales que sigan siendo útiles).\n"
+            "- excluir: la lista COMPLETA de 0 a 6 casos parecidos que van en una carpeta hermana.\n")
+    data = _ask_improve(cfg, header, samples, into, out, task, "las carpetas de este grupo")
+    return _result(data, samples, into, out)
+
+
+class ImproveBatch:
+    """Many folders and groups analysed at once, each by its own AI call, several in parallel."""
+
+    def __init__(self, cfg, tasks: list, count: int, threads: int, jobs=None):
+        self.id = core.new_id()
+        self.cfg, self.jobs = cfg, jobs
+        self.count = max(2, min(16, int(count or 8)))
+        self.threads = max(1, min(16, int(threads or 4)))
+        self.created = time.time()
+        self.lock = threading.Lock()
+        self.stopped = False
+        groups = core.groups_by_id(cfg)
+        self.items, seen = [], set()
+        for t in tasks:
+            kind, tid = ("group" if t.get("kind") == "group" else "node"), str(t.get("id") or "")
+            if (kind, tid) in seen:
+                continue
+            if kind == "group":
+                if tid not in groups:
+                    continue
+                label = groups[tid]["name"]
+            else:
+                n, segs, _ = core.find(cfg, tid)
+                if not n or tid == "root":
+                    continue
+                label = "/".join(segs)
+            seen.add((kind, tid))
+            self.items.append({"key": f"{kind}:{tid}", "kind": kind, "id": tid, "label": label,
+                               "status": "queued", "result": None, "error": "", "applied": False})
+        if not self.items:
+            raise ValueError("No hay carpetas que analizar")
+
+    def start(self):
+        threading.Thread(target=self._run, daemon=True).start()
+        return self
+
+    def _run(self):
+        with ThreadPoolExecutor(max_workers=min(self.threads, len(self.items))) as pool:
+            list(pool.map(self._one, self.items))
+
+    def _one(self, it):
+        with self.lock:
+            if self.stopped:
+                it["status"] = "stopped"
+                return
+            it["status"] = "working"
+        try:
+            fn = improve_group if it["kind"] == "group" else improve_node
+            res = fn(self.cfg, it["id"], self.count, self.jobs)
+            with self.lock:
+                it.update(status="done", result=res)
+        except Exception as e:
+            with self.lock:
+                it.update(status="error", error=str(e))
+
+    def stop(self):
+        with self.lock:
+            self.stopped = True
+            for it in self.items:
+                if it["status"] == "queued":
+                    it["status"] = "stopped"
+
+    def mark_applied(self, keys: list):
+        with self.lock:
+            for it in self.items:
+                if it["key"] in keys and it["status"] == "done":
+                    it["applied"] = True
+
+    def view(self) -> dict:
+        with self.lock:
+            items = json.loads(json.dumps(self.items))
+        return {"id": self.id, "created": self.created, "count": self.count, "threads": self.threads,
+                "running": any(it["status"] in ("queued", "working") for it in items), "items": items}

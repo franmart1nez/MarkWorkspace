@@ -14,7 +14,9 @@
     <button data-tab="tree" class="active" title="Alt+1">Árbol</button>
     <button data-tab="images" title="Alt+2">Imágenes</button>
     <button data-tab="classify" title="Alt+3">Clasificar <span class="pill" id="review-pill" hidden></span></button>
-    <button data-tab="settings" title="Alt+4">Ajustes</button>
+    <button data-tab="tags" title="Alt+4">Etiquetas <span class="pill ai" id="tags-pill" hidden></span></button>
+    <button data-tab="gaps" title="Alt+5">Huecos <span class="pill ai" id="gaps-pill" hidden></span></button>
+    <button data-tab="settings" title="Alt+6">Ajustes</button>
   </nav>
   <div class="top-actions">
     <span id="save-state" class="save-state">Guardado</span>
@@ -51,11 +53,13 @@
         <span class="sep"></span>
         <button class="btn small" id="btn-prompt" title="Lo que recibe la IA por cada imagen">Ver prompt</button>
         <button class="btn small ai" id="btn-audit" title="La IA busca solapamientos y descripciones vagas"><span class="i-spark"></span>Revisar criterios</button>
+        <button class="btn small ai" id="btn-batch" title="Varias IAs a la vez miran las imágenes de cada carpeta y grupo de la rama seleccionada y mejoran sus descripciones"><span class="i-spark"></span>Mejorar en lote</button>
         <div class="menu-wrap">
           <button class="btn small" id="btn-disk-menu">Disco ▾</button>
           <div class="menu" id="disk-menu" hidden>
             <button data-act="import">Importar carpetas del disco al árbol</button>
             <button data-act="create">Crear en disco las carpetas que faltan</button>
+            <button data-act="clean">Borrar carpetas sin imágenes…</button>
             <button data-act="stats">Actualizar recuentos</button>
           </div>
         </div>
@@ -85,13 +89,16 @@
       <div class="browser-bar">
         <button class="icon-btn" id="btn-up" title="Carpeta superior (Retroceso)"></button>
         <div class="crumbs" id="crumbs"></div>
+        <button class="btn small ai" id="btn-improve-here" hidden><span class="i-spark"></span>Mejorar descripción</button>
         <div class="grow"></div>
+        <button class="btn small" id="btn-clean" title="Envía a la papelera las subcarpetas que no tienen ninguna imagen">Borrar carpetas vacías</button>
         <input id="img-filter" placeholder="Filtrar por nombre…" autocomplete="off">
         <select id="img-sort">
           <option value="name">Nombre</option>
           <option value="mtime">Más recientes</option>
           <option value="size">Tamaño</option>
         </select>
+        <select id="img-group" title="Solo las imágenes de las carpetas de un grupo, en esta carpeta y todas sus subcarpetas"></select>
         <label class="check" title="Mostrar también las imágenes de las subcarpetas"><input type="checkbox" id="img-recursive">Subcarpetas</label>
         <input type="range" id="img-size" min="90" max="420" value="180" title="Tamaño de miniaturas">
       </div>
@@ -103,11 +110,13 @@
         <button class="btn small" data-act="move">Mover a…</button>
         <button class="btn small" data-act="copy">Copiar a…</button>
         <button class="btn small ai" data-act="classify"><span class="i-spark"></span>Clasificar con IA</button>
+        <button class="btn small ai" data-act="tag" title="La IA mira cada imagen y le pone etiquetas (piel, ropa, acción…)"><span class="i-spark"></span>Etiquetar con IA</button>
         <button class="btn small" data-act="reveal">Explorador</button>
         <button class="btn small danger" data-act="trash">Papelera</button>
       </div>
       <div class="browser-body" id="browser-body">
         <div class="dir-tiles" id="dir-tiles"></div>
+        <div class="grid-hint" id="grid-hint" hidden></div>
         <div class="grid" id="grid"></div>
         <div id="grid-sentinel"></div>
         <div class="empty" id="grid-empty" hidden></div>
@@ -139,12 +148,33 @@
       </div>
       <button class="btn primary big" id="run-start"><span class="i-spark"></span>Clasificar</button>
       <p class="hint" id="run-model"></p>
+      <button class="btn big" id="dup-open" title="Encuentra imágenes repetidas en el origen y en Clasificadas">Buscar imágenes repetidas</button>
       <div class="side-head"><h3>Tandas</h3><button class="btn small" id="btn-undo-batch" title="Revierte el último movimiento o copia de archivos">Deshacer último lote</button></div>
       <div id="job-list"></div>
     </aside>
     <div class="review" id="review">
       <div class="empty big">Elige una carpeta de origen y pulsa <b>Clasificar</b>. Las propuestas aparecerán aquí.</div>
     </div>
+  </section>
+
+  <!-- ======================= TAGS ======================= -->
+  <section class="tab-page" id="tab-tags">
+    <aside class="side" id="tags-side"></aside>
+    <div class="browser">
+      <div class="browser-bar" id="tags-bar"></div>
+      <div class="browser-body" id="tags-body">
+        <div class="grid" id="tags-grid"></div>
+        <div id="tags-sentinel"></div>
+        <div class="empty" id="tags-empty" hidden></div>
+      </div>
+    </div>
+    <aside class="side inspector" id="tags-insp"></aside>
+  </section>
+
+  <!-- ======================= GAPS ======================= -->
+  <section class="tab-page" id="tab-gaps">
+    <aside class="side wide" id="gaps-side"></aside>
+    <div class="gaps-main" id="gaps-main"></div>
   </section>
 
   <!-- ======================= SETTINGS ======================= -->
@@ -197,6 +227,8 @@
 <script src="/static/tree.js"></script>
 <script src="/static/images.js"></script>
 <script src="/static/classify.js"></script>
+<script src="/static/tags.js"></script>
+<script src="/static/gaps.js"></script>
 <script src="/static/main.js"></script>
 </body>
 </html>

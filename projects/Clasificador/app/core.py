@@ -85,6 +85,52 @@ DEFAULT_SETTINGS = {
 }
 
 
+def _tag_cat(cid, name, description, values):
+    return {"id": cid, "name": name, "description": description, "values": values, "multi": True, "open": True}
+
+
+DEFAULT_TAGS = {
+    "instructions": ("Describe al personaje o sujeto principal. Si no hay personaje, deja vacías las "
+                     "categorías que solo tienen sentido para personajes."),
+    "categories": [
+        _tag_cat("piel", "piel", "Color o tipo de piel del personaje principal (o pelaje, escamas, plumas).",
+                 ["clara", "morena", "oscura", "verde", "azul", "roja", "gris", "pelaje", "escamas"]),
+        _tag_cat("pelo", "pelo", "Color y forma del pelo.",
+                 ["rubio", "castano", "negro", "blanco", "pelirrojo", "largo", "corto", "calvo"]),
+        _tag_cat("ropa", "ropa", "Prendas, armadura y accesorios que lleva puestos.",
+                 ["armadura", "vestido", "capa", "tunica", "uniforme", "ropa casual", "capucha"]),
+        _tag_cat("accion", "accion", "Qué está haciendo el sujeto principal.",
+                 ["de pie", "caminando", "corriendo", "luchando", "sentado", "lanzando hechizo", "posando"]),
+        _tag_cat("encuadre", "encuadre", "Plano y punto de vista.",
+                 ["retrato", "medio cuerpo", "cuerpo entero", "de espaldas", "de perfil", "primer plano"]),
+        _tag_cat("objetos", "objetos", "Armas u objetos que sostiene o que destacan.",
+                 ["espada", "arco", "baston", "escudo", "hacha", "libro"]),
+        _tag_cat("rasgos", "rasgos", "Rasgos físicos llamativos o no humanos.",
+                 ["cuernos", "alas", "cola", "orejas puntiagudas", "colmillos", "tatuajes", "cicatrices"]),
+        _tag_cat("fondo", "fondo", "Tipo de fondo o lugar.",
+                 ["fondo liso", "bosque", "ciudad", "interior", "mazmorra", "cielo"]),
+    ],
+}
+
+
+def normalize_tags(tags) -> dict:
+    tags = tags if isinstance(tags, dict) else copy.deepcopy(DEFAULT_TAGS)
+    out = {"instructions": str(tags.get("instructions") or ""), "categories": []}
+    seen = set()
+    for c in tags.get("categories") or []:
+        if not isinstance(c, dict) or not str(c.get("name") or "").strip():
+            continue
+        cid = str(c.get("id") or new_id())
+        if cid in seen:
+            cid = new_id()
+        seen.add(cid)
+        vals = list(dict.fromkeys(normalize(v, 40) for v in (c.get("values") or []) if normalize(v, 40)))
+        out["categories"].append({"id": cid, "name": str(c["name"]).strip(), "description": str(c.get("description") or ""),
+                                  "values": vals, "multi": c.get("multi", True) is not False,
+                                  "open": c.get("open", True) is not False})
+    return out
+
+
 def node(name, description="", children=None, kind="folder", **extra):
     n = {"id": new_id(), "name": name, "kind": kind, "description": description,
          "include": [], "exclude": [], "group": None, "open": False, "openHint": "",
@@ -164,6 +210,7 @@ def normalize_config(cfg: dict) -> dict:
     root = cfg.get("root") or {"name": "Clasificadas"}
     root["id"] = "root"
     cfg["root"] = _fill_node(root)
+    cfg["tags"] = normalize_tags(cfg.get("tags"))
     cfg["version"] = 1
     return cfg
 
@@ -814,6 +861,46 @@ def import_from_disk(cfg: dict) -> list:
     return additions
 
 
+def is_image_name(name: str) -> bool:
+    return os.path.splitext(name)[1].lower() in IMAGE_EXT
+
+
+def subtree_summary(path: str, max_depth=25) -> dict:
+    """Image counts of a folder: its own images, its subfolders and every image below it."""
+    direct, subdirs, total, preview, deep = 0, 0, 0, [], []
+    stack = [(path, 0)]
+    while stack:
+        cur, depth = stack.pop()
+        try:
+            with os.scandir(cur) as it:
+                entries = sorted(it, key=lambda e: e.name.lower())
+        except OSError:
+            continue
+        sub = []
+        for e in entries:
+            try:
+                if e.is_dir(follow_symlinks=False):
+                    if e.name.startswith("."):
+                        continue
+                    if depth == 0:
+                        subdirs += 1
+                    if depth < max_depth:
+                        sub.append((e.path, depth + 1))
+                elif is_image_name(e.name):
+                    total += 1
+                    if depth == 0:
+                        direct += 1
+                        if len(preview) < 4:
+                            preview.append(e.path)
+                    elif len(deep) < 4:
+                        deep.append(e.path)
+            except OSError:
+                pass
+        stack.extend(reversed(sub))
+    return {"images": direct, "subdirs": subdirs, "total": total, "preview": preview or deep,
+            "deepPreview": not preview and bool(deep)}
+
+
 def list_dir(path: str, recursive=False, limit=20000) -> dict:
     p = Path(path)
     if not p.is_dir():
@@ -834,20 +921,8 @@ def list_dir(path: str, recursive=False, limit=20000) -> dict:
             if e.is_dir(follow_symlinks=False):
                 if e.name.startswith("."):
                     continue
-                count, sub, preview = 0, 0, []
-                try:
-                    with os.scandir(e.path) as it2:
-                        for e2 in it2:
-                            if e2.is_dir(follow_symlinks=False):
-                                sub += 1
-                            elif Path(e2.name).suffix.lower() in IMAGE_EXT:
-                                count += 1
-                                if len(preview) < 4:
-                                    preview.append(e2.path)
-                except OSError:
-                    pass
-                dirs.append({"name": e.name, "path": e.path, "images": count, "subdirs": sub, "preview": preview})
-            elif Path(e.name).suffix.lower() in IMAGE_EXT:
+                dirs.append({"name": e.name, "path": e.path, **subtree_summary(e.path)})
+            elif is_image_name(e.name):
                 add_image(e)
         except OSError:
             pass
@@ -893,3 +968,105 @@ def dir_tree(path: str, max_nodes=6000) -> dict:
         return out
 
     return {"name": p.name or str(p), "path": str(p), "children": rec(p, 0) if p.is_dir() else []}
+
+
+# --------------------------------------------------------------------------- paths & cleaning
+
+def rel_parts(base, p):
+    """Parts of p below base (case-insensitive on Windows), () for base itself, None when outside."""
+    b = os.path.normcase(os.path.normpath(str(base))).rstrip("\\/")
+    raw = os.path.normpath(str(p))
+    q = os.path.normcase(raw)
+    if q == b:
+        return ()
+    if not q.startswith(b + os.sep):
+        return None
+    return tuple(x for x in raw[len(b) + 1:].split(os.sep) if x)
+
+
+def path_matches(segs, parts) -> bool:
+    """True when a concrete folder (parts) is the tree node segs or lies inside it."""
+    if len(parts) < len(segs):
+        return False
+    for s, p in zip(segs, parts):
+        if not VAR_RE.match(s) and normalize(s, 200) != normalize(p, 200):
+            return False
+    return True
+
+
+def _empty_scan(path: str, depth: int, found: list) -> tuple:
+    """Returns (images, other entries) of a subtree and records every folder without images."""
+    images, others, kids = 0, 0, []
+    try:
+        with os.scandir(path) as it:
+            entries = list(it)
+    except OSError:
+        return 1, 0  # unreadable: never offered for deletion
+    for e in entries:
+        try:
+            if e.is_dir(follow_symlinks=False):
+                if e.name.startswith(".") or depth >= 40:
+                    others += 1  # hidden or too deep: keep the parent
+                else:
+                    kids.append(e.path)
+            elif is_image_name(e.name):
+                images += 1
+            else:
+                others += 1  # other files, links and junctions are counted, not followed
+        except OSError:
+            images += 1
+    for k in kids:
+        i, o = _empty_scan(k, depth + 1, found)
+        images += i
+        others += o
+        if not i:
+            found.append({"path": k, "others": o})
+    return images, others
+
+
+def empty_dirs(path: str, protected=()) -> list:
+    """Top-most folders below path whose whole subtree holds no image."""
+    root = Path(path)
+    if not root.is_dir():
+        raise FileNotFoundError(f"No existe la carpeta: {path}")
+    found = []
+    _empty_scan(str(root), 0, found)
+    keep = {os.path.normcase(os.path.normpath(str(x))) for x in protected if x}
+    found = [f for f in found if os.path.normcase(os.path.normpath(f["path"])) not in keep]
+    paths = {os.path.normcase(f["path"]) for f in found}
+    out = []
+    for f in sorted(found, key=lambda f: f["path"].lower()):
+        parent = os.path.dirname(os.path.normcase(f["path"]))
+        covered = False
+        while len(parent) > len(str(root)):
+            if parent in paths:
+                covered = True
+                break
+            parent = os.path.dirname(parent)
+        if not covered:
+            rel = rel_parts(root, f["path"]) or ()
+            out.append({"path": f["path"], "rel": "/".join(rel), "others": f["others"]})
+    return out
+
+
+def remove_dirs(paths: list, root: str, protected=()) -> dict:
+    """Sends image-free folders inside root to the recycle bin, checking each one again first."""
+    keep = {os.path.normcase(os.path.normpath(str(x))) for x in protected if x}
+    results = []
+    for p in paths:
+        try:
+            rel = rel_parts(root, p)
+            if not rel:
+                raise ValueError("está fuera de la carpeta revisada")
+            if os.path.normcase(os.path.normpath(p)) in keep:
+                raise ValueError("es una carpeta protegida (origen o destino)")
+            if not Path(p).is_dir():
+                raise FileNotFoundError("ya no existe")
+            images, _ = _empty_scan(p, 0, [])
+            if images:
+                raise ValueError("contiene imágenes")
+            _recycle_one(Path(p))
+            results.append({"path": p, "ok": True})
+        except Exception as e:
+            results.append({"path": p, "ok": False, "error": str(e)})
+    return {"results": results}

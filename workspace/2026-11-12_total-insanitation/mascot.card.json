@@ -3,7 +3,7 @@
   "version": 1,
   "template": "gallery",
   "title": "Wizard mascot",
-  "summary": "Thirteen wizard poses with four-digit hands (three fingers and a thumb), supplied as black and white SVGs and transparent PNGs. The Stop signal pose is used on Restricted Area and Keep Out. [Download the atlas-ready SVGs](sources/mascot-signage-revision.zip) · [Contact sheet](media/mascot-signage-revision/mascot-overview.webp) · [Revision and palette](MASCOT_SIGNAGE_REVISION.md).",
+  "summary": "Thirteen wizard poses with four-digit cartoon hands (three plump fingers and a thumb), supplied as black and white SVGs and transparent PNGs. The Stop signal pose is used on Restricted Area and Keep Out. The 2026-11-20 hand revision awaits owner review. [Download the atlas-ready SVGs](sources/mascot-signage-revision.zip) · [Contact sheet](media/mascot-signage-revision/mascot-overview.webp) · [Revision and palette](MASCOT_SIGNAGE_REVISION.md).",
   "items": [
     {
       "id": "pose-neutral-welcome",
@@ -37,7 +37,7 @@
       "id": "pose-stop",
       "title": "Stop signal",
       "image": "media/mascot-signage-revision/mascot/stop.webp",
-      "alt": "Black wizard mascot raising an open four-digit hand in a stop signal, with the staff in the other hand",
+      "alt": "Black wizard mascot raising an open four-digit cartoon hand in a stop signal, with the staff in the other hand",
       "body": "[Black SVG](sources/mascot-signage-revision/Pet/wizard-stop-v01.svg) · [White SVG](sources/mascot-signage-revision/Pet/wizard-stop-v01-white.svg)\n\n[Black PNG](media/mascot-signage-revision/mascot/wizard-stop-v01-1024.png) · [White PNG](media/mascot-signage-revision/mascot/wizard-stop-v01-white-1024.png)"
     },
     {
@@ -95,6 +95,14 @@
       "image": "media/mascot-signage-revision/mascot/fleeing-fire-magic.webp",
       "alt": "Black wizard mascot running from flames while carrying the staff",
       "body": "[Black SVG](sources/mascot-signage-revision/Pet/wizard-fleeing-fire-magic-v04.svg) · [White SVG](sources/mascot-signage-revision/Pet/wizard-fleeing-fire-magic-v04-white.svg)\n\n[Black PNG](media/mascot-signage-revision/mascot/wizard-fleeing-fire-magic-v04-1024.png) · [White PNG](media/mascot-signage-revision/mascot/wizard-fleeing-fire-magic-v04-white-1024.png)"
+    },
+    {
+      "id": "hand-revision-2026-11-20",
+      "title": "Hand revision / before and after",
+      "image": "media/hands-quiet-revision/hands-before-after.webp",
+      "alt": "Ten wizard poses before and after: thin stick fingers replaced by plump four-digit cartoon hands",
+      "status": "review",
+      "body": "ChatGPT redrew the thirteen open hands from a shared four-digit hand sheet. Only the hands changed; each pose matches the previous SVG within one pixel elsewhere. [Hand close-ups](media/hands-quiet-revision/hand-closeups-before-after.webp) · [Hand sheet](media/hands-quiet-revision/generated/hand-sheet-01.png) · [Method and files](MASCOT_SIGNAGE_REVISION.md#hand-and-quiet-elf-revision-2026-11-20)."
     }
   ]
 }

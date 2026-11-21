@@ -3,7 +3,8 @@
 
 const Images = (() => {
   const S = { path: null, data: null, list: [], sel: new Set(), anchor: -1, focus: -1, shown: 0,
-    recursive: false, sort: "name", filter: "", size: 180, expanded: new Set(), tree: null };
+    recursive: false, sort: "name", filter: "", group: "", size: 180, expanded: new Set(), tree: null };
+  const deep = () => S.recursive || !!S.group;  // a group filter looks through every subfolder
   const CHUNK = 240;
   try {
     S.expanded = new Set(JSON.parse(localStorage.getItem("clf.fsExpanded") || "[]"));
@@ -14,7 +15,7 @@ const Images = (() => {
   async function open(path, keepSel = false) {
     if (!path) return;
     try {
-      const data = await GET(`/api/fs/list?path=${encodeURIComponent(path)}${S.recursive ? "&recursive=1" : ""}`);
+      const data = await GET(`/api/fs/list?path=${encodeURIComponent(path)}${deep() ? "&recursive=1" : ""}`);
       if (S.path !== data.path && !keepSel) { S.sel.clear(); S.anchor = -1; S.focus = -1; }
       S.path = data.path; S.data = data;
       try { localStorage.setItem("clf.lastPath", S.path); } catch { /* ignore */ }
@@ -24,9 +25,61 @@ const Images = (() => {
     } catch (e) { fail(e); }
   }
   const reload = () => open(S.path, true);
+  /* Group of a folder: the nearest group along its tree path (folders inside Clasificadas only). */
+  const groupCache = new Map();
+  function groupOfDir(dir) {
+    const key = dir.toLowerCase();
+    if (groupCache.has(key)) return groupCache.get(key);
+    let g = null;
+    const rel = relTo(App.cfg.settings.destination, dir);
+    if (rel !== null) {
+      let n = App.cfg.root;
+      for (const part of rel ? rel.split("/") : []) {
+        const c = n.children.find((x) => x.kind === "variable") || n.children.find((x) => norm(x.name) === norm(part));
+        if (!c) break;
+        n = c;
+        if (c.group) g = c.group;
+      }
+    }
+    groupCache.set(key, g);
+    return g;
+  }
+  const groupSig = () => JSON.stringify([App.cfg.groups, App.cfg.root]);
+  /* Called when the tab is shown: the tree may have new groups or folders since the last listing. */
+  function refreshGroups() { if (S.data && S.sig !== groupSig()) apply(); else renderGroupSelect(S.group ? S.counts : null); }
+  function renderGroupSelect(counts = null) {
+    const sel = $("#img-group");
+    if (!App.cfg) return;
+    const groups = App.cfg.groups;
+    if (S.group && S.group !== "__none" && !groups.some((g) => g.id === S.group)) S.group = "";
+    sel.hidden = !groups.length && !S.group;
+    sel.innerHTML = "";
+    const label = (v, text) => (counts && v ? `${text} (${counts[v] || 0})` : text);
+    sel.append(h("option", { value: "" }, "Todos los grupos"),
+      ...groups.map((g) => h("option", { value: g.id }, label(g.id, "● " + g.name))),
+      h("option", { value: "__none" }, label("__none", "Sin grupo")));
+    sel.value = S.group;
+    const g = groups.find((x) => x.id === S.group);
+    sel.classList.toggle("active-filter", !!S.group);
+    sel.style.borderColor = g ? g.color : "";
+    sel.style.color = g ? g.color : "";
+  }
   function apply() {
     const q = norm(S.filter);
+    groupCache.clear();
+    const valid = new Set(App.cfg.groups.map((g) => g.id));
     let list = S.data ? S.data.images.filter((i) => !q || norm(i.name).includes(q) || norm(i.rel).includes(q)) : [];
+    const counts = {};
+    for (const i of list) {
+      const g = groupOfDir(i.path.replace(/[\\/][^\\/]*$/, ""));
+      i.group = valid.has(g) ? g : null;
+      const k = i.group || "__none";
+      counts[k] = (counts[k] || 0) + 1;
+    }
+    if (S.group) list = list.filter((i) => (S.group === "__none" ? !i.group : i.group === S.group));
+    S.counts = counts;
+    S.sig = groupSig();
+    renderGroupSelect(S.group ? counts : null);
     if (S.sort === "mtime") list = [...list].sort((a, b) => b.mtime - a.mtime);
     else if (S.sort === "size") list = [...list].sort((a, b) => b.size - a.size);
     S.list = list;
@@ -45,17 +98,36 @@ const Images = (() => {
       if (i) c.append(h("span", {}, "›"));
       c.append(h("button", { onclick: () => open(target) }, p));
     });
+    // The folder belongs to the tree: offer to improve its description from the images it holds.
+    const rel = relTo(App.cfg.settings.destination, S.path);
+    const node = rel ? Tree.nodeAtRel(rel.split("/")) : null;
+    const b = $("#btn-improve-here");
+    b.hidden = !node || node.id === "root";
+    if (node) {
+      b.title = `La IA analiza las imágenes de «${node.name}» y mejora su descripción para clasificar mejor`;
+      b.onclick = () => Inspector.improve(node.id);
+    }
+  }
+  function countLine(d) {
+    const total = d.total ?? d.images, deep = total - d.images;
+    const imgs = (n) => `${n} imagen${n === 1 ? "" : "es"}`;
+    const dirs = d.subdirs ? ` · ${d.subdirs} carpeta${d.subdirs === 1 ? "" : "s"}` : "";
+    if (!total) return h("small", {}, `Sin imágenes${dirs}`);
+    if (!d.images) return h("small", { class: "deep", title: "Todas están dentro de sus subcarpetas" }, `${imgs(total)} en subcarpetas${dirs}`);
+    return h("small", {}, `${imgs(d.images)}${deep ? ` (+${deep} en subcarpetas)` : ""}${dirs}`);
   }
   function renderTiles() {
     const box = $("#dir-tiles");
     box.innerHTML = "";
     for (const d of S.data.dirs) {
+      const total = d.total ?? d.images;
       const mosaic = d.preview.length
-        ? h("div", { class: "mosaic" }, [0, 1, 2, 3].map((i) => d.preview[i] ? h("img", { loading: "lazy", src: thumbUrl(d.preview[i], 160) }) : h("div", { class: "blank" })))
+        ? h("div", { class: "mosaic" }, [0, 1, 2, 3].map((i) => d.preview[i] ? h("img", { loading: "lazy", src: thumbUrl(d.preview[i], 160) }) : h("div", { class: "blank" })),
+          d.deepPreview ? h("span", { class: "deep-tag" }, "de las subcarpetas") : null)
         : h("div", { class: "mosaic none", html: icon("folder") });
-      const t = h("div", { class: "dir-tile", title: d.path, onclick: () => open(d.path),
+      const t = h("div", { class: "dir-tile" + (total ? "" : " is-empty"), title: d.path, onclick: () => open(d.path),
         oncontextmenu: (e) => { e.preventDefault(); folderMenu(e, d.path); } }, mosaic,
-        h("div", { class: "meta" }, h("b", {}, d.name), h("small", {}, `${d.images} imágenes${d.subdirs ? ` · ${d.subdirs} carpetas` : ""}`)));
+        h("div", { class: "meta" }, h("b", {}, d.name), countLine(d)));
       dropTarget(t, d.path);
       box.append(t);
     }
@@ -70,6 +142,18 @@ const Images = (() => {
     empty.hidden = !!S.list.length;
     empty.textContent = S.data && S.data.images.length ? "Ninguna imagen coincide con el filtro." : (S.data?.dirs.length ? "" : "No hay imágenes en esta carpeta.");
     if (S.data && !S.data.images.length && S.data.dirs.length) empty.hidden = true;
+    if (S.group && S.path && relTo(App.cfg.settings.destination, S.path) === null) {
+      empty.hidden = false;
+      empty.textContent = "Los grupos solo existen dentro de Clasificadas: abre esa carpeta o una de sus subcarpetas.";
+    } else if (S.group && S.data && S.data.images.length && !S.list.length) {
+      empty.textContent = "Ninguna imagen de este grupo aquí ni en sus subcarpetas.";
+    }
+    const hint = $("#grid-hint");
+    const inside = S.data ? S.data.dirs.reduce((a, d) => a + (d.total ?? d.images), 0) : 0;
+    hint.hidden = !(S.data && !deep() && !S.data.images.length && inside);
+    hint.innerHTML = "";
+    if (!hint.hidden) hint.append(h("span", {}, `Esta carpeta no tiene imágenes sueltas, pero dentro de sus subcarpetas hay ${inside}.`),
+      h("button", { class: "btn small", onclick: () => { $("#img-recursive").checked = true; S.recursive = true; reload(); } }, "Verlas todas aquí"));
     updateSelBar();
   }
   function more() {
@@ -77,10 +161,13 @@ const Images = (() => {
     const end = Math.min(S.list.length, S.shown + CHUNK);
     const frag = document.createDocumentFragment();
     const ts = S.size > 260 ? 640 : 320;
+    const groups = deep() ? new Map(App.cfg.groups.map((g) => [g.id, g])) : null;
     for (let i = S.shown; i < end; i++) {
       const it = S.list[i];
-      frag.append(h("div", { class: "tile" + (S.sel.has(it.path) ? " sel" : "") + (i === S.focus ? " focus" : ""), "data-i": i, draggable: true, title: `${it.rel ? it.rel + "\\" : ""}${it.name}\n${fmtSize(it.size)} · ${fmtDate(it.mtime)}` },
+      const g = groups && it.group ? groups.get(it.group) : null;
+      frag.append(h("div", { class: "tile" + (S.sel.has(it.path) ? " sel" : "") + (i === S.focus ? " focus" : ""), "data-i": i, draggable: true, title: `${it.rel ? it.rel + "\\" : ""}${it.name}\n${fmtSize(it.size)} · ${fmtDate(it.mtime)}${g ? "\nGrupo: " + g.name : ""}` },
         h("img", { loading: "lazy", src: thumbUrl(it.path, ts), alt: "" }), h("span", { class: "tick" }),
+        g ? h("span", { class: "gdot tile-g", style: { background: g.color } }) : null,
         h("div", { class: "cap" }, (it.rel ? it.rel + " / " : "") + it.name)));
     }
     grid.append(frag);
@@ -110,6 +197,7 @@ const Images = (() => {
   }
   function renderSide() {
     if (!App.cfg) return;
+    renderGroupSelect(S.group ? S.counts : null);
     const s = App.cfg.settings;
     const loc = $("#locations");
     loc.innerHTML = "";
@@ -178,9 +266,41 @@ const Images = (() => {
         try { const r = await POST("/api/fs/rename", { path: p, name }); toast("Renombrada. Si la carpeta está en el árbol, renómbrala también allí.");
           loadTree(); if (S.path === p) open(r.path); else reload(); } catch (err) { fail(err); }
       } },
+      { label: "Borrar carpetas vacías dentro…", fn: () => cleanEmpty(p) },
       "-",
       { label: "Mostrar en el Explorador", fn: () => POST("/api/fs/reveal", { path: p }).catch(fail) },
     ]);
+  }
+  /* Lists the folders below root that hold no image at all and sends the chosen ones to the recycle bin. */
+  async function cleanEmpty(root = S.path) {
+    if (!root) return;
+    let r;
+    try { r = await GET(`/api/fs/empty?path=${encodeURIComponent(root)}`); } catch (e) { return fail(e); }
+    if (!r.dirs.length) return toast(`No hay carpetas sin imágenes dentro de «${baseName(root)}»`, "ok");
+    const checks = r.dirs.map((d) => h("input", { type: "checkbox", checked: !d.others }));
+    const withFiles = r.dirs.filter((d) => d.others).length;
+    const body = h("div", {},
+      h("p", { class: "hint", style: { marginTop: 0 } }, `Carpetas dentro de «${baseName(root)}» que no tienen ninguna imagen, ni sueltas ni en sus subcarpetas. Irán a la Papelera de reciclaje de Windows. ` +
+        "Las carpetas del árbol se vuelven a crear solas cuando se clasifique una imagen en ellas."),
+      withFiles ? h("p", { class: "hint" }, `${withFiles} de ellas tienen otros archivos (no imágenes): quedan sin marcar para que decidas.`) : null,
+      h("div", { class: "btn-row", style: { marginBottom: "6px" } },
+        h("button", { class: "btn small", onclick: () => checks.forEach((c) => (c.checked = true)) }, "Marcar todas"),
+        h("button", { class: "btn small", onclick: () => checks.forEach((c) => (c.checked = false)) }, "Ninguna")),
+      h("div", { class: "pick-list", style: { padding: "4px 0" } }, r.dirs.map((d, i) => h("label", { class: "check", style: { display: "flex", padding: "3px 10px" } }, checks[i],
+        h("code", {}, d.rel), d.others ? h("span", { class: "muted" }, `— tiene ${d.others} archivo(s) que no son imágenes`) : null))));
+    const ok = await modal({ title: `Carpetas sin imágenes: ${r.dirs.length}`, wide: true, body,
+      buttons: [{ label: "Cancelar", value: false }, { label: "Enviar marcadas a la papelera", value: true, primary: true, cls: "danger" }] });
+    if (!ok) return;
+    const paths = r.dirs.filter((_, i) => checks[i].checked).map((d) => d.path);
+    if (!paths.length) return;
+    const res = await POST("/api/fs/remove-dirs", { paths, root }).catch(fail);
+    if (!res) return;
+    const bad = res.results.filter((x) => !x.ok);
+    toast(`${paths.length - bad.length} carpeta(s) a la papelera${bad.length ? ` · ${bad.length} sin borrar: ${bad[0].error}` : ""}`, bad.length ? "error" : "ok", null, 7000);
+    folderCache.time = 0;
+    loadTree();
+    if (S.path) reload();
+    Main.refreshStats();
   }
   function dropTarget(el, path) {
     el.addEventListener("dragover", (e) => { if (e.dataTransfer.types.includes("application/x-clf-files")) { e.preventDefault(); el.classList.add("drop"); e.dataTransfer.dropEffect = e.ctrlKey ? "copy" : "move"; } });
@@ -294,6 +414,7 @@ const Images = (() => {
         { label: `Mover ${files.length} a…  (M)`, fn: () => moveWithPicker(files) },
         { label: `Copiar ${files.length} a…`, fn: () => moveWithPicker(files, "copy") },
         { label: `✨ Clasificar ${files.length} con IA`, fn: () => Classify.startFiles(files) },
+        { label: `✨ Etiquetar ${files.length} con IA`, fn: () => Tags.startFiles(files) },
         { label: "Mostrar en el Explorador", fn: () => POST("/api/fs/reveal", { path: p }).catch(fail) },
         { label: "Abrir con la app predeterminada", fn: () => POST("/api/fs/open", { path: p }).catch(fail) },
         "-",
@@ -311,6 +432,9 @@ const Images = (() => {
     $("#img-filter").addEventListener("keydown", (e) => { e.stopPropagation(); if (e.key === "Escape") { e.target.value = ""; S.filter = ""; apply(); e.target.blur(); } });
     $("#img-sort").onchange = (e) => { S.sort = e.target.value; apply(); };
     $("#img-recursive").onchange = (e) => { S.recursive = e.target.checked; reload(); };
+    $("#img-group").onchange = (e) => { S.group = e.target.value; reload(); };
+    renderGroupSelect();
+    $("#btn-clean").onclick = () => cleanEmpty();
     const size = $("#img-size");
     size.value = S.size;
     size.oninput = () => { S.size = +size.value; $("#grid").style.setProperty("--thumb", S.size + "px"); try { localStorage.setItem("clf.thumb", S.size); } catch { /* ignore */ } };
@@ -322,6 +446,7 @@ const Images = (() => {
       if (act === "move") moveWithPicker(files);
       if (act === "copy") moveWithPicker(files, "copy");
       if (act === "classify") Classify.startFiles(files);
+      if (act === "tag") Tags.startFiles(files);
       if (act === "reveal") POST("/api/fs/reveal", { path: files[0] }).catch(fail);
       if (act === "trash") trash(files);
     });
@@ -367,7 +492,7 @@ const Images = (() => {
     });
   }
 
-  return { init, open, reload, loadTree, onKey, moveFiles, renderSide, undoLast, get path() { return S.path; } };
+  return { init, open, reload, loadTree, onKey, moveFiles, renderSide, refreshGroups, undoLast, cleanEmpty, get path() { return S.path; } };
 })();
 
 /* ==================================================================== lightbox */
@@ -378,12 +503,20 @@ const Lightbox = (() => {
   function open(list, i, o = {}) {
     items = list.slice(); opts = o; idx = Math.max(0, Math.min(i, list.length - 1));
     if (!items.length) return;
-    $("#lightbox").hidden = false;
+    const lb = $("#lightbox");
+    lb.hidden = false;
+    // "over": opened from a dialog, shown above it and limited to viewing.
+    lb.classList.toggle("over", !!o.over);
+    $("#lb-move").hidden = !o.onMove;
+    $("#lb-trash").hidden = !o.onTrash;
+    $("#lb-classify").hidden = !!o.over;
+    $("#lb-shortcuts").hidden = !o.onMove;
     show();
     renderShortcuts();
   }
-  function close() { $("#lightbox").hidden = true; $(".lb-answer")?.remove(); img().src = ""; }
+  function close() { $("#lightbox").hidden = true; $("#lightbox").classList.remove("over"); $(".lb-answer")?.remove(); img().src = ""; }
   const isOpen = () => !$("#lightbox").hidden;
+  const isOver = () => isOpen() && $("#lightbox").classList.contains("over");
   function show() {
     const it = items[idx];
     if (!it) return close();
@@ -467,7 +600,7 @@ const Lightbox = (() => {
     $("#lb-close").onclick = close;
     $("#lb-prev").onclick = () => go(-1);
     $("#lb-next").onclick = () => go(1);
-    $("#lb-move").onclick = async () => { const d = await pickFolder({ title: "Mover imagen a…" }); if (d) moveCurrent(d); };
+    $("#lb-move").onclick = async () => { if (!opts.onMove) return; const d = await pickFolder({ title: "Mover imagen a…" }); if (d) moveCurrent(d); };
     $("#lb-trash").onclick = trashCurrent;
     $("#lb-reveal").onclick = () => items[idx] && POST("/api/fs/reveal", { path: items[idx].path }).catch(fail);
     $("#lb-classify").onclick = (e) => where(e.currentTarget);
@@ -489,15 +622,15 @@ const Lightbox = (() => {
     if (k === "Escape") close();
     else if (k === "ArrowLeft") go(-1);
     else if (k === "ArrowRight" || k === " ") go(1);
-    else if (k === "Delete") trashCurrent();
-    else if (k.toLowerCase() === "m") $("#lb-move").click();
+    else if (k === "Delete" && opts.onTrash) trashCurrent();
+    else if (k.toLowerCase() === "m" && opts.onMove) $("#lb-move").click();
     else if (k === "+" || k === "=") { const r = $("#lb-stage").getBoundingClientRect(); zoomAt(1.25, r.width / 2, r.height / 2); }
     else if (k === "-") { const r = $("#lb-stage").getBoundingClientRect(); zoomAt(0.8, r.width / 2, r.height / 2); }
     else if (k === "0") fitView();
-    else if (/^[1-9]$/.test(k)) { const d = App.shortcuts()[+k - 1]; if (d) moveCurrent(d); else toast(`El atajo ${k} no está asignado`); }
+    else if (/^[1-9]$/.test(k) && opts.onMove) { const d = App.shortcuts()[+k - 1]; if (d) moveCurrent(d); else toast(`El atajo ${k} no está asignado`); }
     else return false;
     e.preventDefault();
     return true;
   }
-  return { init, open, close, onKey, isOpen, removed, renderShortcuts };
+  return { init, open, close, onKey, isOpen, isOver, removed, renderShortcuts };
 })();

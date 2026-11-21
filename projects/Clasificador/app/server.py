@@ -19,10 +19,23 @@ from urllib.parse import parse_qs, urlparse
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import ai  # noqa: E402
 import core  # noqa: E402
+import dups  # noqa: E402
+import gaps  # noqa: E402
+import tags  # noqa: E402
 
 WEB_DIR = core.APP_DIR / "web"
 THUMB_DIR = core.DATA_DIR / "thumbs"
 JOBS = ai.JobManager()
+DUPS = dups.Scan()
+BATCH = {"current": None}  # the latest "improve many folders" run
+TAGDB = tags.TagDB()
+TAGJOB = {"current": None}  # the latest AI tagging run
+WEBRUNS = gaps.RunManager()
+
+
+def protected_dirs() -> list:
+    s = core.load_config()["settings"]
+    return [s.get("source"), s.get("destination")]
 
 try:
     from PIL import Image, ImageOps
@@ -197,6 +210,13 @@ class Handler(BaseHTTPRequestHandler):
             return self._json(core.list_dir(q["path"], q.get("recursive") == "1"))
         if path == "/api/fs/tree":
             return self._json(core.dir_tree(q["path"]))
+        if path == "/api/fs/empty":
+            return self._json({"path": q["path"], "dirs": core.empty_dirs(q["path"], protected_dirs())})
+        if path == "/api/dups":
+            return self._json(DUPS.view())
+        if path == "/api/ai/batch":
+            b = BATCH["current"]
+            return self._json(b.view() if b else {"id": None, "running": False, "items": []})
         if path == "/api/fs/info":
             return self._json(image_info(Path(q["path"])))
         if path == "/api/file":
@@ -216,6 +236,27 @@ class Handler(BaseHTTPRequestHandler):
             return self._send(200, data, ctype, cache=True)
         if path == "/api/history":
             return self._json({"history": core.read_history()})
+        if path == "/api/tags/list":
+            return self._json(tags.list_scope(TAGDB, q["path"], q.get("recursive", "1") == "1"))
+        if path == "/api/tags/vocab":
+            return self._json({"vocab": TAGDB.vocab()})
+        if path == "/api/tags/prompt":
+            cfg = core.load_config()
+            return self._json({"prompt": tags.build_prompt(cfg, tags.Vocab(cfg, TAGDB.vocab()))})
+        if path == "/api/tags/job":
+            j = TAGJOB["current"]
+            if j and q.get("v") and int(q["v"]) == j.version:
+                return self._json({"unchanged": True, "version": j.version})
+            return self._json(j.view() if j else {"id": None, "running": False, "items": []})
+        if path == "/api/gaps":
+            return self._json(gaps.analyse(core.load_config(), q.get("node") or "root"))
+        if path == "/api/web/runs":
+            return self._json({"runs": WEBRUNS.list(), "sources": gaps.SOURCES})
+        if path.startswith("/api/web/runs/"):
+            run = WEBRUNS.get(path.split("/")[4])
+            if q.get("v") and int(q["v"]) == run.version:
+                return self._json({"unchanged": True, "version": run.version})
+            return self._json(run.view())
         if path == "/api/jobs":
             return self._json({"jobs": JOBS.list()})
         if path.startswith("/api/jobs/"):
@@ -245,7 +286,24 @@ class Handler(BaseHTTPRequestHandler):
                                             core.load_config()["settings"].get("unhide", True),
                                             label=b.get("label") or f"Manual: {len(b['files'])} → {Path(b['dest']).name}"))
         if path == "/api/fs/trash":
-            return self._json(core.recycle(b["files"]))
+            res = core.recycle(b["files"])
+            gone = [r["path"] for r in res["results"] if r["ok"]]
+            JOBS.forget(gone)
+            DUPS.forget(gone)
+            return self._json(res)
+        if path == "/api/fs/remove-dirs":
+            return self._json(core.remove_dirs(b["paths"], b["root"], protected_dirs()))
+        if path == "/api/dups" and method == "POST":
+            s = core.load_config()["settings"]
+            roots = []
+            if b.get("source", True):
+                roots.append({"path": s["source"], "where": "origen", "recursive": bool(b.get("recursive")),
+                              "skip": [s["destination"]]})
+            if b.get("destination"):
+                roots.append({"path": s["destination"], "where": "clasificadas", "recursive": True})
+            if not roots:
+                raise ValueError("Elige dónde buscar")
+            return self._json(DUPS.start(roots, b.get("level", "normal")))
         if path == "/api/fs/mkdir":
             p = Path(b["parent"]) / core.safe_folder_name(b["name"])
             p.mkdir(parents=True, exist_ok=True)
@@ -286,7 +344,55 @@ class Handler(BaseHTTPRequestHandler):
             res = core.undo_last()
             for job in JOBS.jobs.values():
                 job.reverted(res.get("restored", []))
+            WEBRUNS.reverted(res.get("restored", []))
             return self._json(res)
+
+        # ---------------- tags
+        if path == "/api/tags/edit":
+            return self._json({"items": TAGDB.edit(b["paths"], b.get("add"), b.get("remove"), b.get("set"),
+                                                   bool(b.get("clear")))})
+        if path == "/api/tags/rename":
+            return self._json({"changed": TAGDB.rename_value(b["category"], b["old"], b.get("new", ""))})
+        if path == "/api/tags/job" and method == "POST":
+            cur = TAGJOB["current"]
+            if cur and cur.running:
+                raise ValueError("Ya hay un etiquetado en curso")
+            files = [f for f in b.get("files") or [] if Path(f).suffix.lower() in core.IMAGE_EXT]
+            if not files:
+                raise ValueError("No hay imágenes que etiquetar")
+            cfg = core.load_config()
+            if not cfg["tags"]["categories"]:
+                raise ValueError("Crea al menos una categoría de etiquetas")
+            TAGJOB["current"] = tags.TagJob(cfg, TAGDB, files, b.get("threads") or cfg["settings"].get("threads", 4),
+                                            b.get("label") or f"{len(files)} imágenes").start()
+            return self._json(TAGJOB["current"].view(full=False))
+        if path in ("/api/tags/job/stop", "/api/tags/job/retry"):
+            cur = TAGJOB["current"]
+            if not cur:
+                raise KeyError("No hay ningún etiquetado")
+            cur.stop() if path.endswith("stop") else cur.retry()
+            return self._json(cur.view(full=False))
+
+        # ---------------- web searches for the emptiest folders
+        if path == "/api/web/runs" and method == "POST":
+            cfg = core.load_config()
+            run = WEBRUNS.create(cfg, b.get("targets") or [], b.get("mode", "review"), b.get("threshold", 80),
+                                 b.get("threads") or cfg["settings"].get("threads", 4), b.get("sources"))
+            return self._json(run.view(full=False))
+        if path.startswith("/api/web/runs/"):
+            parts = path.split("/")
+            run = WEBRUNS.get(parts[4])
+            action = parts[5] if len(parts) > 5 else ""
+            if method == "DELETE":
+                WEBRUNS.delete(run.id)
+                return self._json({"ok": True})
+            if action == "stop":
+                run.stop()
+                return self._json(run.view(full=False))
+            if action == "apply":
+                return self._json(run.apply(b["items"]))
+            if action == "discard":
+                return self._json({"discarded": run.discard(b["items"])})
 
         # ---------------- jobs
         if path == "/api/jobs" and method == "POST":
@@ -320,12 +426,30 @@ class Handler(BaseHTTPRequestHandler):
                 job.retry([str(i) for i in b["ids"]])
                 return self._json(job.summary())
 
+        # ---------------- AI: improve many folders in parallel
+        if path == "/api/ai/batch":
+            cur = BATCH["current"]
+            if cur and cur.view()["running"]:
+                raise ValueError("Ya hay una tanda de mejoras en curso")
+            cfg = core.load_config()
+            BATCH["current"] = ai.ImproveBatch(cfg, b.get("tasks") or [], b.get("count", 8),
+                                               b.get("threads") or cfg["settings"].get("threads", 4), JOBS).start()
+            return self._json(BATCH["current"].view())
+        if path in ("/api/ai/batch/stop", "/api/ai/batch/applied"):
+            cur = BATCH["current"]
+            if not cur:
+                raise KeyError("No hay ninguna tanda")
+            cur.stop() if path.endswith("stop") else cur.mark_applied([str(k) for k in b.get("keys") or []])
+            return self._json(cur.view())
+
         # ---------------- AI authoring
         if path.startswith("/api/ai/"):
             cfg = core.load_config()
             kind = path.split("/")[3]
             if kind == "describe":
                 return self._json(ai.describe_node(cfg, b["node"], b.get("images", True)))
+            if kind == "improve":
+                return self._json(ai.improve_node(cfg, b["node"], b.get("count", 8), JOBS))
             if kind == "children":
                 return self._json({"children": ai.suggest_children(cfg, b["node"], b.get("hint", ""))})
             if kind == "identifiers":

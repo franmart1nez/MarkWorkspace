@@ -31,8 +31,8 @@ Stages 1–4 of the approved art reset are complete. Keep the Office Level Build
   characters under `/Game/Art/Characters`. Use current Unreal visual references.
 - Signage artwork is approved. The owner selected the Basement service corridor and counter
   for Stage 7. **Art bible → Basement assets** lists individual components, native material
-  references and the companion signage atlas proposal. The concept materials start from
-  `/Game/Art/MI/Utility_Materials`.
+  references and the installed construction kit. The concept materials start from
+  `/Game/Art/MI/Utility_Materials`. The atlas is linked from **Art bible → Signage & UI**.
 
 ## Sculpture Colorization
 

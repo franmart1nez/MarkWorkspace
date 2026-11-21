@@ -42,10 +42,12 @@ The owner removed the old `Text_Atlas` graph. The saved historical audit documen
 
 A Clean Start uses the recorded 640 × 960 px rectangle at (32, 32). Low Clearance uses 640 × 202 px at (1368, 1168). Its smaller “WATCH YOUR HEAD” line and rounded corners exercise fine lettering and the coverage mask. Both renders match the approved SVG hashes and use the originals' installed fonts. The paper poster is opaque. Low Clearance has a separate linear coverage mask for its rounded panel.
 
+The A Clean Start mounting study places a 45 × 67.5 cm paper plane on the solid wall above the shop gate. Use a back-face mount pivot and the wall's existing collision. The proposed mesh belongs in `Modular_Blocks/Wall_Decorations`. [Approved SVG](sources/mascot-signage-revision/Signage_Atlas/clean-start-poster.svg) · [Counter concept](media/building-stage6/basement-counter-concept-v2.png).
+
 ![A Clean Start and Low Clearance from the two-sign atlas with mip 3, 4 and 5 samples](media/basement-stage7/signage-pilot-proof.webp)
 
 The padding kept both color and coverage identical through mip 5 when the area outside the padded rectangles was filled with contrasting test colors. Five half-texel UV samples per sign matched the top-left atlas coordinates. In the enlarged offline samples, the small copy becomes hard to read by mip 4. Test the wide sign at the distance where the player needs the warning, using the actual mesh, Basement light and Unreal's compression and streaming settings. The FBX V direction and native readability are pending.
 
 [Base Color PNG](sources/basement-stage7-signage-pilot/signage-pilot-basecolor.png) · [Linear Coverage PNG](sources/basement-stage7-signage-pilot/signage-pilot-coverage.png) · [Raster and packing checks](sources/basement-stage7-signage-pilot/packing-evidence.json).
 
-The layout and UV audit are editable as data. Existing signs stay linked to their original SVGs in the asset record. [Atlas layout JSON](sources/basement-stage7-atlas-layout.json) · [Basement kit and material gaps](BASEMENT_ASSETS_STAGE7.md).
+The layout and UV audit are editable as data. [Atlas layout JSON](sources/basement-stage7-atlas-layout.json) · [Base Color proof](sources/basement-stage7-signage-pilot/signage-pilot-basecolor.png) · [Linear Coverage proof](sources/basement-stage7-signage-pilot/signage-pilot-coverage.png).

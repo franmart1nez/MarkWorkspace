@@ -1,10 +1,10 @@
-# Basement asset concepts · Stage 7
+# Basement assets · Stage 7
 
 The owner selected the service corridor and service counter for Stage 7. This pass isolates the components from those concepts for review. Use the sheets to decide silhouette, construction and material breakup. Fit dimensions come from the saved Unreal kit and the actual shop opening. [Selected environment concepts](BUILDING_STRUCTURE_CONCEPTS_STAGE6.md).
 
 ![Stage 7 concept overview for the Basement kit and surface studies](media/basement-stage7/asset-overview.webp)
 
-The gallery has ten mesh concepts, the production kit, two surface studies and the approved A Clean Start print. [Concept catalog](sources/basement-stage7-assets.json) · [Imported meshes and package paths](sources/basement-stage7-meshes.json).
+The gallery has ten mesh concepts, the production kit and two surface studies. [Concept catalog](sources/basement-stage7-assets.json) · [Imported meshes and package paths](sources/basement-stage7-meshes.json).
 
 ## Pieces and production destinations
 
@@ -22,13 +22,12 @@ The gallery has ten mesh concepts, the production kit, two surface studies and t
 | [Fluorescent light guard](media/basement-stage7/light-guard.png) | Protective cage fitted around the existing counter fluorescent | Dark galvanized steel or Directional Metal 06. Keep the native light settings. |
 | [Cement repair](media/basement-stage7/cement-repair.png) | Flush surface breakup on current floor blocks | Concrete 01/02 dry fill plus chipped saw-cut mask |
 | [Painted concrete band](media/basement-stage7/painted-concrete.png) | Low muted finish beneath the impact rail | Existing concrete with a local paint mask |
-| [A Clean Start print](sources/signage-stage5-svg/clean-start-poster.svg) | Thin paper card on the solid wall above the gate | Approved SVG exported to the paper instance of Signage Atlas |
 
-Use `Assets/Building/Interior_Building.blend`. Pipes, fittings, hangers, tray and grille belong in `Modular_Blocks/Roof_Decorations`. Hatch, impact rail and the poster plane go in `Modular_Blocks/Wall_Decorations`, and the cage in `Modular_Blocks/Lights`. Export these through `Assets/Building/Delivery/Modular_Blocks/` to their matching `/Game/Art/Assets/Building/Modular_Blocks/` branches. The counter's fitted sleeves and head belong in `Floors/Basement/Shop`, with its current Delivery and Unreal paths. Material treatments use the current floor and wall modules. [File contract](FILE_PLACEMENT.md) · [400 cm grid and corner rule](../../projects/total-insanitation/MODULE_CONTRACT.md).
+Use `Assets/Building/Interior_Building.blend`. Pipes, fittings, hangers, tray and grille belong in `Modular_Blocks/Roof_Decorations`. The hatch and impact rail go in `Modular_Blocks/Wall_Decorations`, and the cage in `Modular_Blocks/Lights`. Export these through `Assets/Building/Delivery/Modular_Blocks/` to their matching `/Game/Art/Assets/Building/Modular_Blocks/` branches. The counter's fitted sleeves and head belong in `Floors/Basement/Shop`, with its current Delivery and Unreal paths. Material treatments use the current floor and wall modules. [File contract](FILE_PLACEMENT.md) · [400 cm grid and corner rule](../../projects/total-insanitation/MODULE_CONTRACT.md).
 
 ### Geometry already available
 
-Keep the concrete wall variants, `Floor_Decorations_Concrete_01` and its corner counterpart, concrete floor and roof blocks, `Fluorescent_Light_Basement_01` and the existing shop/gate assembly. The three Blender objects called `Pipes_01–03` are in Props' `Pipes and Cigar` collection and measure only 46–70 cm along their longest dimension. Their legacy atlas slots and dimensions make them a different reuse case from the new 400 cm ceiling runs. [UV and source audit](SIGNAGE_ATLAS_STAGE7.md).
+Keep the concrete wall variants, `Floor_Decorations_Concrete_01` and its corner counterpart, concrete floor and roof blocks, `Fluorescent_Light_Basement_01` and the existing shop/gate assembly. The new ceiling pipes span the kit's 400 cm bays.
 
 ## Materials to make or validate
 
@@ -38,7 +37,6 @@ Keep the concrete wall variants, `Floor_Decorations_Concrete_01` and its corner 
 | Worn gray-green steel enamel | [Metal Classic 01](media/unreal-2026-11-17/material-039.webp) and [Directional Metal 06](media/unreal-2026-11-17/material-033.webp) | **Shared layered finish.** Add a gray-green dielectric paint layer on the hatch and jambs. Use an edge-wear or authored mask to lerp to metallic steel where the paint chips. Test color and roughness on both small flat and wrapped parts. |
 | Painted concrete band | [Brutalist Concrete](media/unreal-2026-11-17/material-001.webp) and [Concrete 01](media/unreal-2026-11-17/material-004.webp) | **Mask plus paint finish.** Preserve original material and vertex-paint behavior. Use a confirmed free mask channel, a dedicated local mask or an overlay decal on the affected variants. Fade the chipped edge into the same base concrete across straight and corner pieces. |
 | Flush cement repair | [Concrete 01](media/unreal-2026-11-17/material-004.webp) and [Concrete 02](media/unreal-2026-11-17/material-005.webp) | **Local edge mask and dry fill.** Reuse existing concrete maps for fill first, with an irregular saw-cut mask and a small roughness/normal difference. Start with a DBuffer decal or an embedded floor material layer where the receiver requires it. Verify floor contrast at grazing angles and keep the original collision. [Epic decal documentation](https://dev.epicgames.com/documentation/en-us/unreal-engine/decal-materials-in-unreal-engine). |
-| Paper and enamel signage | The twelve [approved SVGs](BASEMENT_SIGNAGE_STAGE5.md) and existing utility metal references | **Atlas texture and material instances.** Use common color artwork with separate substrate settings for paper and enamel. Make coverage and weathering masks only as needed. The clean vector wording remains the source for each language. [Atlas specification](SIGNAGE_ATLAS_STAGE7.md). |
 
 The render sheets are finish references. Build linear roughness, normal and masks from the chosen utility assets and authored wear or repair data. Keep the source's color maps in sRGB. Retain the current 256/512 px/m references and the intentional tileable exceptions.
 
@@ -95,7 +93,20 @@ The hatch and three counter facings share `MI_Basement_Green_Enamel`, an instanc
 
 ## Production kit in Unreal
 
-The production level `/Game/Levels/Streaming_Levels/Basement` contains **25 mesh components on ten existing Blueprint actors**. Roof instances carry the pipes, couplings, hangers, cable trays and ceiling grille. Wall instances carry the hatch and impact rail, including the 385 cm rail and return grouped on their supporting wall. The three facing pieces attach to `Basement_Shop`. The guard is a child of the fluorescent mesh component. The fittings are instance components scoped to Basement. This lets the shared Blueprint classes serve other levels with their existing defaults.
+The **14 production meshes are built into six original Blueprint assets**. Double-click the assets in the Content Browser to inspect and edit the pieces in **Components**.
+
+| Content Browser folder | Blueprint | Fittings |
+| --- | --- | --- |
+| `Modular_Blocks/BP/Basement/Roof` | `BP_Roof_Concrete_01` | Straight pipe, elbow, coupling, hanger, cable tray and return grille |
+| `Modular_Blocks/BP/Basement/Roof` | `BP_Roof_Concrete_Lights_01` | Straight pipe, elbow, coupling, hanger, cable tray and fluorescent guard |
+| `Modular_Blocks/BP/Basement/Wall` | `BP_Wall_VertexConcrete_02` | Straight impact rail |
+| `Modular_Blocks/BP/Basement/Wall` | `BP_Wall_VertexConcrete_03` | Straight impact rail and inspection hatch |
+| `Modular_Blocks/BP/Basement/Wall` | `BP_Wall_VertexConcrete_06` | 385 cm impact rail and inside return |
+| `Floors/Basement/Shop` | `Basement_Shop` | Left jamb, right jamb and lintel facings |
+
+The paths above are under `/Game/Art/Assets/Building`. Both roof Blueprints preview a straight run. The elbow is available in **Components** with **Visible** off by default. At a turn, adjust the component visibility and fitting in the placed instance. The guard is a child of the fluorescent mesh component.
+
+`/Game/Levels/Streaming_Levels/Basement` retains the original 25 visible fittings on ten actors through instance visibility and transform overrides. The LaCarlota review actors retain their existing appearance through visibility overrides on the new components.
 
 The guard's crosswires increased from **6.4 to 8 mm** and its longitudinal bars from **8 to 9.6 mm**. It still has 1,660 triangles and two UV channels. Both fluorescent tubes are visible. The counter retains its 408.09 × 103.15 cm serving aperture. The fitted components use NoCollision, with the walls, ceiling and counter providing their existing collision. Unreal reopened a verified copy of the production packages and confirmed each component's host, parent, mesh and transform.
 
@@ -105,7 +116,7 @@ The 1600 × 836 captures show the saved fitting in `Inteior_Lobby` with Basement
 
 [Service corridor](media/basement-stage7/integrated-unreal-corridor.webp) · [Service counter](media/basement-stage7/integrated-unreal-counter.webp) · [Hatch close-up](media/basement-stage7/integrated-unreal-hatch.webp) · [Counter overhead](media/basement-stage7/integrated-unreal-counter-overhead.webp) · [Fluorescent guard](media/basement-stage7/integrated-unreal-guard.webp) · [Exact hosts and material settings](sources/basement-stage7-meshes.json).
 
-To edit the installed pieces, open `Basement` and select the placed actor in the World Outliner. The first corridor bay uses `BP_Roof_Concrete_Lights_6`, the counter guard uses `BP_Roof_Concrete_Lights_17`, and the three counter facings use `Basement_Shop`. Their `Basement_*` entries appear in the actor's Details component tree. The owner confirmed that this is where the fittings should live. The Blueprint asset editor shows the class components shared by its instances. [Exact hosts and component names](sources/basement-stage7-meshes.json).
+In the World Outliner, `BP_Roof_Concrete_Lights_6` is the first fitted corridor bay and `BP_Roof_Concrete_Lights_17` is the bay with the counter guard. `Basement_Shop` carries the three counter facings. [Placement and mesh record](sources/basement-stage7-meshes.json).
 
 ## 20 and 16 cm pipe bank trial
 
@@ -126,5 +137,4 @@ The four trial meshes reopened in Blender under `Modular_Blocks/Roof_Decorations
 
 1. **Review the paired run.** Use the 20 and 16 cm fit to develop the 7.5 and 5 cm runs and the four-cradle corridor support. Check those fits before extending the layout.
 2. **Test existing tileables on the wall and floor treatments.** The owner wants the current Unreal tileables first. Bring any gap to the owner before authoring a new material based on the existing library.
-3. **Test the owner's signage export with the poster and a wide sign.** Use A Clean Start and Low Clearance with the final atlas and layout to confirm UVs and mips under Basement lighting. [Atlas specification and layout](SIGNAGE_ATLAS_STAGE7.md).
-4. **Continue concept revisions against the fitted kit.** Use the native bay and shop capture as the next concept references when a joint, clearance or material needs another pass.
+3. **Continue concept revisions against the fitted kit.** Use the native bay and shop capture as the next concept references when a joint, clearance or material needs another pass.

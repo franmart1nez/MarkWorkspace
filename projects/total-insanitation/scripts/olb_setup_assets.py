@@ -95,6 +95,7 @@ builder = get_bp('BP_OLB_Builder')
 comp(builder, unreal.BillboardComponent, 'Sprite')
 var(builder, 'Group', T_STR, 'Office Builder')
 var(builder, 'RandomSeed', T_INT, 'Office Builder')
+var(builder, 'OutlinerFolder', T_STR, 'Office Builder')  # base World Outliner folder of generated actors
 piece_vars(builder, False)
 
 # ---------------------------------------------------------------- room
@@ -136,16 +137,17 @@ for bp, actions in [(builder, [('Build', 'build'), ('Clear', 'clear')]),
     BEL.compile_blueprint(bp)
 
 # ---------------------------------------------------------------- defaults
-wood = [kit_class('BP_Modular_Walls/BP_Wall_Wood_01'), kit_class('BP_Modular_Walls/BP_Wall_Wood_02')]
+# Kit Blueprints live in Modular_Blocks/BP/<Area>/<PieceType>/ (see FILE_PLACEMENT.md).
+wood = [kit_class('BP/Office/Wall/BP_Wall_Wood_01'), kit_class('BP/Office/Wall/BP_Wall_Wood_02')]
 defaults = {
-    builder: {'Group': 'Office', 'RandomSeed': 1970, 'WallClasses': wood,
-              'CornerClass': kit_class('BP_Modular_Walls/BP_Wall_Wood_Corner_01'),
-              'FloorClasses': [kit_class('BP_Floor/BP_Floor_Wood_01')],
-              'CeilingClasses': [kit_class('BP_Roof/BP_Roof_01')],
-              'CeilingLightClass': kit_class('BP_Roof/BP_Roof_Lights_01'), 'LightSpacingX': 2, 'LightSpacingY': 2},
+    builder: {'Group': 'Office', 'RandomSeed': 1970, 'OutlinerFolder': 'OfficeBuilder', 'WallClasses': wood,
+              'CornerClass': kit_class('BP/Office/Wall/BP_Wall_Wood_Corner_01'),
+              'FloorClasses': [kit_class('BP/Office/Floor/BP_Floor_Wood_01')],
+              'CeilingClasses': [kit_class('BP/Office/Roof/BP_Roof_01')],
+              'CeilingLightClass': kit_class('BP/Office/Roof/BP_Roof_Lights_01'), 'LightSpacingX': 2, 'LightSpacingY': 2},
     room: {'Group': 'Office', 'Priority': 0, 'EnclosedRoom': False, 'KeepSharedWalls': False,
            'LightSpacingX': -1, 'LightSpacingY': -1},
-    stair: {'Group': 'Office', 'StairClass': kit_class('BP_Stairs/BP_Stair_Concrete_01')},
+    stair: {'Group': 'Office', 'StairClass': kit_class('BP/Lab/Stairs/BP_Stair_Concrete_01')},
 }
 for bp, values in defaults.items():
     cdo = unreal.get_default_object(bp.generated_class())

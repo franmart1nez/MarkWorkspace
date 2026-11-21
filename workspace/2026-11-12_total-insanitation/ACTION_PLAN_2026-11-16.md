@@ -59,7 +59,7 @@ These are the existing locations to respect, not a proposal to rename the projec
 
 | Family | Editable source / existing FBX location | Unreal destination |
 | --- | --- | --- |
-| Modular building | `Assets/Building/Interior_Building.blend` → `Assets/Building/Delivery/Modular_Blocks/` | `/Game/Art/Assets/Building/Modular_Blocks/`, using its existing mesh, decoration and `BP_*` subfolders |
+| Modular building | `Assets/Building/Interior_Building.blend` → `Assets/Building/Delivery/Modular_Blocks/` | `/Game/Art/Assets/Building/Modular_Blocks/`. Use the mesh and decoration folders for FBX imports and `BP/<Area>/<PieceType>/` for assembled Blueprints. [Current folder map](FILE_PLACEMENT.md) |
 | Basement shop | Same building blend, `Floors/Basement/Shop` → `Assets/Building/Delivery/Basement/Shop/` | `/Game/Art/Assets/Building/Floors/Basement/Shop/` |
 | Janitor-specific building pieces | Same building blend → `Assets/Building/Delivery/Janitor/` | Existing `/Game/Art/Assets/Building/Janitor/` branches; confirm per object |
 | Environment props | `Assets/Enviroment_Assets/Enviroment_Assets.blend` → sibling `Delivery/` category | `/Game/Art/Assets/Enviroment_Assets/`, respecting `Lab/Big`, `Enormes`, `Medium`, `Small`, `Concrete_Pieces`, `Glass_Pieces` and `Pipes_And_Cigarette` |
@@ -144,4 +144,4 @@ The owner answered all three planning questions:
 
 No planning clarification remains open. Exact future generation settings, artistic choices, atlas changes and new asset designs will be resolved against concrete review material at their respective stages.
 
-**Most recent execution:** the owner selected the Basement corridor and counter for Stage 7. Individual component concepts, material gaps and the two existing-graph and proposed-atlas visuals are available for review. Continue iterations between the source scenes and individual sheets as needed. [Basement assets](BASEMENT_ASSETS_STAGE7.md) · [Signage atlas specification](SIGNAGE_ATLAS_STAGE7.md).
+**Most recent execution:** the 14 production meshes are installed in the original Basement roof, wall and Shop Blueprints. The pipe-bank trial and two concrete treatments remain in review. [Basement assets](BASEMENT_ASSETS_STAGE7.md).

@@ -17,7 +17,7 @@ In this table, **Building** means `Assets/Building/Interior_Building.blend`; **P
 
 | Family / source collections | Export directory | Unreal destination / rule |
 | --- | --- | --- |
-| Building: `Modular_Blocks/Modular_Walls`, `Floor`, `Roof`, `Stairs`, `Lights` and decoration collections | `Assets/Building/Delivery/Modular_Blocks/` | `/Game/Art/Assets/Building/Modular_Blocks/`, in matching mesh/decoration branches; preserve the existing `BP_*` branches for assembled material variants |
+| Building: `Modular_Blocks/Modular_Walls`, `Floor`, `Roof`, `Stairs`, `Lights` and decoration collections | `Assets/Building/Delivery/Modular_Blocks/` | Import static meshes into matching branches under `/Game/Art/Assets/Building/Modular_Blocks/`. Find and place assembled variants in the `BP` hierarchy below. |
 | Building: `Floors/Basement/Shop` (16 meshes) | `Assets/Building/Delivery/Basement/Shop/` | `/Game/Art/Assets/Building/Floors/Basement/Shop/`; `Cube.003` → existing `Cube_003.fbx` → `Cube_003` is a verified naming example |
 | Building: `Janitor` and `Janitor_Elevator.002/Janitor_Elevator` | `Assets/Building/Delivery/Janitor/` | `/Game/Art/Assets/Building/Janitor/`; elevator meshes belong in its `Elevator/` branch. Keep collider/bake/backup collections distinct |
 | Building: existing Lobby / other floor geometry | Recorded legacy exports: `Assets/Building/Delivery/Floors/Lobby.fbx`, `Day_1.fbx`; `Assets/Building_Delivery/Day_2.fbx`, `Day_3.fbx` | Existing `/Game/Art/Assets/Building/Floors/Lobby`, `Day_1`, `Day_2`, `Day_3` packages remain. These old-root FBXs are absent from the current source root; do not create those legacy directories or claim a new delivery. Resolve the particular floor before revising it |
@@ -32,12 +32,27 @@ In this table, **Building** means `Assets/Building/Interior_Building.blend`; **P
 | Characters: nine `Characters/<species>/<variant>/Blender/*.blend` sources | Existing FBX beside each blend | Current provisional NPC textures, sprites and flipbooks live under `/Game/Programming/Enemies/FlipBooks`. Future character art goes under the confirmed `/Game/Art/Characters/` path. [NPC sources and runtime folders](NPC_REFERENCE.md) |
 | Retained trash: `Assets/Trash/Black_Hole/Black_Hole.blend`, `Delivery` collection | `Portal.fbx`, `Trash_Hole.fbx` beside the blend | Existing `/Game/Art/Assets/Trash/Black_Hole/` |
 | Letter geometry: `Utility_Materials/01_Letters/Untitled.blend` | Existing `Text*.fbx` beside the blend | Existing `/Game/Art/MI/Utility_Materials/01_Letters/Text*` mesh packages are an observed legacy exception. Preserve them; do not treat this as a destination for new arbitrary meshes |
-| Office Level Builder | Workspace `projects/total-insanitation/scripts/olb_build.py` → installed Unreal `Content/Python/olb_build.py`; no FBX | Retain `/Game/Art/Tools/OfficeLevelBuilder/BP_OLB_Builder`, `BP_OLB_Room`, `BP_OLB_Stair` |
+| Office Level Builder | Workspace `projects/total-insanitation/scripts/olb_build.py` → installed Unreal `Content/Art/Tools/OfficeLevelBuilder/Python/olb_build.py`. No FBX. | Retain `/Game/Art/Tools/OfficeLevelBuilder/BP_OLB_Builder`, `BP_OLB_Room`, `BP_OLB_Stair`. [Builder guide](OFFICE_LEVEL_BUILDER.md) |
 | Levels | Native Unreal maps | `/Game/Levels`; existing review scope includes `Inteior_Lobby`, `LaCarlota`, `Streaming_Levels/Main_Lights`, `Streaming_Levels/Basement` and `Streaming_Levels/Level_01`. Keep art packages outside level folders |
 
 Building has 282 objects and Props 191, both Metric at scale length 1. Neither main source has object parenting: the static Parent Objects mode therefore produces one file per eligible mesh. Preserve the collection hierarchy and explicitly isolate each visible export batch. Props' `Not_For_Now/Medianos.001`, `SM_TestTubeHolder`, backup and importer objects are not automatically new deliveries just because they exist.
 
 The read-only catalog also inspected the existing Crossbow blend (95 objects). Weapons remain outside this plan's production scope; no new destination or export recipe is assigned here.
+
+## Modular Blueprints
+
+Find and save production modular Blueprints under `/Game/Art/Assets/Building/Modular_Blocks/BP/<Area>/<PieceType>/`, choosing the area first and then the piece type. Each area has `Door`, `Floor`, `Roof`, `Stairs` and `Wall` folders. Use `Roof` for ceiling assemblies, including variants with lights.
+
+| Area | Verified example relative to `Modular_Blocks/` |
+| --- | --- |
+| `Basement` | `BP/Basement/Roof/BP_Roof_Concrete_Lights_01` |
+| `Lab` | `BP/Lab/Stairs/BP_Stair_Concrete_01` |
+| `Lobby` | `BP/Lobby/` has all five folders and currently contains no Blueprint assets. |
+| `Office` | `BP/Office/Wall/BP_Wall_Wood_01` |
+
+Find and import the source meshes directly under `Modular_Blocks/` in `Modular_Walls`, `Floor`, `Roof`, `Stairs`, `Lights`, `Wall_Decorations`, `Floor_Decorations` or `Roof_Decorations`, according to the mesh family. Validation assets have their own `Validation/Basement_20261112/` branch.
+
+The live Unreal Asset Registry confirmed 28 Blueprints under `BP/` on 2026-11-20. It also returned 36 redirectors directly under `Modular_Blocks/`. For new references, use the actual package under `BP/` and leave existing redirectors in place.
 
 ## Static FBX recipe
 

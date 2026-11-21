@@ -41,6 +41,12 @@ function h(tag, attrs = {}, ...kids) {
   return e;
 }
 
+/* Element.append writes null as text: this appends only real children. */
+function fill(el, ...kids) {
+  el.append(...kids.flat(Infinity).filter((k) => k !== null && k !== undefined && k !== false));
+  return el;
+}
+
 const ICONS = {
   undo: '<path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 010 12h-3"/>',
   redo: '<path d="M15 14l5-5-5-5"/><path d="M20 9H10a6 6 0 000 12h3"/>',
@@ -52,6 +58,9 @@ const ICONS = {
   refresh: '<path d="M20 11a8 8 0 10-2.3 5.7M20 4v7h-7"/>',
   close: '<path d="M6 6l12 12M18 6L6 18"/>',
   trash: '<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',
+  edit: '<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13 7l4 4"/>',
+  reset: '<path d="M3 12a9 9 0 109-9"/><path d="M3 4v5h5"/>',
+  copies: '<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 00-2-2H6a2 2 0 00-2 2v8a2 2 0 002 2h2"/>',
 };
 function icon(name) {
   return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONS[name] || ""}</svg>`;
@@ -105,8 +114,9 @@ function modal({ title, body, buttons = [{ label: "Cerrar", value: null }], wide
     back.append(m);
     back.addEventListener("mousedown", (e) => { if (e.target === back) close(null); });
     const onKey = (e) => {
+      if (e.target.closest?.("#ctx-menu") || back !== $("#modal-root").lastElementChild || Lightbox.isOver()) return;
       if (e.key === "Escape") { e.stopPropagation(); close(null); }
-      if (e.key === "Enter" && !e.shiftKey && e.target.tagName !== "TEXTAREA") {
+      if (e.key === "Enter" && !e.shiftKey && e.target.tagName !== "TEXTAREA" && !e.target.closest?.(".chips")) {
         const primary = buttons.find((b) => b.primary);
         if (primary) { e.preventDefault(); e.stopPropagation(); foot.children[buttons.indexOf(primary)].click(); }
       }
@@ -129,19 +139,90 @@ async function promptBox(title, label, value = "") {
 }
 
 /* ---------- context menu */
+let menuOnClose = null;
+function closeMenu() {
+  const m = $("#ctx-menu");
+  if (m.hidden) return;
+  m.hidden = true;
+  const fn = menuOnClose; menuOnClose = null;
+  if (fn) fn();
+}
+function placeMenu(m, x, y, below = null) {
+  const r = m.getBoundingClientRect();
+  m.style.left = Math.max(8, Math.min(x, innerWidth - r.width - 8)) + "px";
+  let top = y;
+  if (top + r.height > innerHeight - 8) top = below !== null ? below - r.height : innerHeight - r.height - 8;
+  m.style.top = Math.max(8, top) + "px";
+}
 function contextMenu(x, y, items) {
+  closeMenu();
   const m = $("#ctx-menu");
   m.innerHTML = "";
   for (const it of items) {
     if (it === "-") { m.append(h("hr")); continue; }
-    m.append(h("button", { onclick: () => { m.hidden = true; it.fn(); } }, it.label));
+    m.append(h("button", { onclick: () => { closeMenu(); it.fn(); } }, it.label));
   }
   m.hidden = false;
-  const r = m.getBoundingClientRect();
-  m.style.left = Math.min(x, innerWidth - r.width - 8) + "px";
-  m.style.top = Math.min(y, innerHeight - r.height - 8) + "px";
+  placeMenu(m, x, y);
 }
-document.addEventListener("mousedown", (e) => { if (!e.target.closest("#ctx-menu")) $("#ctx-menu").hidden = true; });
+/* Dropdown under an element. Items: {label, hint, on, fn, always} or "-" or {header}. Long lists get a filter box. */
+function popMenu(anchor, items, { filter = items.filter((i) => i.fn).length > 9, placeholder = "Filtrar…", onClose = null } = {}) {
+  closeMenu();
+  const m = $("#ctx-menu");
+  m.innerHTML = "";
+  const list = h("div", { class: "pm-list" });
+  const input = filter ? h("input", { class: "pm-filter", placeholder }) : null;
+  let rows = [], idx = -1;
+  const choose = (it) => { const q = input ? input.value.trim() : ""; closeMenu(); it.fn(q); };
+  const draw = () => {
+    const q = input ? norm(input.value) : "";
+    const shown = items.filter((it) => typeof it !== "object" || !it.fn || it.always || !q || norm(it.label + " " + (it.hint || "")).includes(q));
+    list.innerHTML = "";
+    rows = [];
+    shown.forEach((it, k) => {
+      if (it === "-") { if (k && shown[k - 1] !== "-" && k < shown.length - 1) list.append(h("hr")); return; }
+      if (it.header) { list.append(h("div", { class: "pm-head" }, it.header)); return; }
+      const b = h("button", { class: (it.on ? "on " : "") + (it.cls || ""), title: it.title || "", onclick: () => choose(it) },
+        h("span", { class: "pm-label" }, it.label), it.hint ? h("small", {}, it.hint) : null);
+      rows.push({ it, b });
+      list.append(b);
+    });
+    idx = q && rows.length ? 0 : rows.findIndex((r) => r.it.on);
+    rows.forEach((r, i) => r.b.classList.toggle("kb", i === idx));
+    if (!rows.length) list.append(h("div", { class: "pm-head" }, "Nada coincide"));
+  };
+  if (input) {
+    input.addEventListener("input", draw);
+    input.addEventListener("keydown", (e) => {
+      e.stopPropagation();
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        if (!rows.length) return;
+        idx = (idx + (e.key === "ArrowDown" ? 1 : -1) + rows.length) % rows.length;
+        rows.forEach((r, i) => r.b.classList.toggle("kb", i === idx));
+        rows[idx].b.scrollIntoView({ block: "nearest" });
+      } else if (e.key === "Enter") { e.preventDefault(); if (rows[idx]) choose(rows[idx].it); }
+      else if (e.key === "Escape") closeMenu();
+    });
+    m.append(input);
+  }
+  m.append(list);
+  draw();
+  m.hidden = false;
+  menuOnClose = onClose;
+  const r = anchor.getBoundingClientRect();
+  placeMenu(m, r.left, r.bottom + 4, r.top - 4);
+  if (input) setTimeout(() => input.focus(), 0);
+}
+document.addEventListener("mousedown", (e) => { if (!e.target.closest("#ctx-menu")) closeMenu(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("#ctx-menu").hidden) { e.stopImmediatePropagation(); e.preventDefault(); closeMenu(); } }, true);
+
+/* ---------- no accidental text selection: only fields and explicitly selectable text can be selected */
+const SELECTABLE = "input, textarea, [contenteditable], pre, .selectable, .msg";
+document.addEventListener("selectstart", (e) => {
+  const t = e.target.nodeType === 1 ? e.target : e.target.parentElement;
+  if (!t || !t.closest(SELECTABLE)) e.preventDefault();
+});
 
 /* ---------- chip input with autocomplete and AI suggestions */
 function chipInput({ values, inherited = [], placeholder = "Añadir…", suggestions = () => [], onChange, onAI }) {

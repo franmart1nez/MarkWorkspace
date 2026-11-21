@@ -3,7 +3,7 @@
   "version": 1,
   "template": "gallery",
   "title": "Signage & UI / Atlas artwork",
-  "summary": "Ten Basement signs, Wet Floor and A Clean Start, with editable lettering. [Download the atlas-ready SVGs](sources/mascot-signage-revision.zip) · [Revision and palette](MASCOT_SIGNAGE_REVISION.md) · [Original artwork](BASEMENT_SIGNAGE_STAGE5.md).",
+  "summary": "Ten Basement signs, Wet Floor and A Clean Start, with editable lettering. [Download the atlas-ready SVGs](sources/mascot-signage-revision.zip) · [Revision and palette](MASCOT_SIGNAGE_REVISION.md) · [Original artwork](BASEMENT_SIGNAGE_STAGE5.md) · [Atlas layout, raster proofs and UV audit](SIGNAGE_ATLAS_STAGE7.md).",
   "items": [
     {
       "id": "basement-sign-overview",
@@ -89,9 +89,9 @@
       "id": "basement-sign-10-quiet-testing-elf",
       "title": "10 / Quiet Please / Test in Progress",
       "image": "media/mascot-signage-revision/signage/10-quiet-testing-elf.webp",
-      "alt": "Cream Quiet Please sign with an elf holding a finger to its lips, eyes closed",
-      "status": "done",
-      "body": "The elf holds a finger to its lips with closed eyes, marking the testing room as a quiet area. [Editable SVG](sources/mascot-signage-revision/Signage_Atlas/10-quiet-testing-elf.svg) · [Original PNG](media/basement-signs-stage5/10-quiet-testing-elf.png)."
+      "alt": "Cream Quiet Please sign with a front-facing elf holding its index finger across its lips",
+      "status": "review",
+      "body": "The front-facing elf presses its index finger across the centre of its lips, with closed eyes, marking the testing room as a quiet area. Redesigned on 2026-11-20 for a readable \"shh\" gesture. [Before and after](media/hands-quiet-revision/quiet-elf-before-after.webp) · [Generated variants](media/hands-quiet-revision/quiet-elf-variants.webp) · [Editable SVG](sources/mascot-signage-revision/Signage_Atlas/10-quiet-testing-elf.svg) · [Original PNG](media/basement-signs-stage5/10-quiet-testing-elf.png)."
     },
     {
       "id": "stage5-wet-floor",

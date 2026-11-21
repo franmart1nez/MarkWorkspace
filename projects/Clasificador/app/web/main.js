@@ -16,7 +16,7 @@ const Main = (() => {
     $("#btn-expand").innerHTML = icon("expand");
     $("#btn-collapse").innerHTML = icon("collapse");
     $("#assistant-close").innerHTML = icon("close");
-    Tree.initCanvas(); Images.init(); Lightbox.init(); Classify.init(); Assistant.init();
+    Tree.initCanvas(); Images.init(); Lightbox.init(); Classify.init(); Tags.init(); Gaps.init(); Assistant.init();
     initTabs(); initToolbar(); initKeys();
     Tree.render(); Inspector.render(); Classify.initForm(); renderSettings();
     requestAnimationFrame(() => Tree.fit());
@@ -70,7 +70,7 @@ const Main = (() => {
     const run = async () => {
       try { App.stats = await GET("/api/stats"); Tree.render(); Inspector.render(); } catch { /* ignore */ }
     };
-    return (now = false) => { clearTimeout(t); if (now) run(); else t = setTimeout(run, 1200); };
+    return (now = false) => { clearTimeout(t); Gaps.markStale(); if (now) run(); else t = setTimeout(run, 1200); };
   })();
 
   /* ---------------------------------------------------------------- tabs */
@@ -83,7 +83,9 @@ const Main = (() => {
     if (name === "tree") requestAnimationFrame(() => Tree.render());
     if (name === "classify") { Classify.initForm(); Classify.loadJobs(); }
     if (name === "settings") renderSettings();
-    if (name === "images") Images.renderSide();
+    if (name === "images") { Images.renderSide(); Images.refreshGroups(); }
+    if (name === "tags") Tags.show();
+    if (name === "gaps") Gaps.show();
   }
   function initTabs() {
     $("#tabs").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) showTab(b.dataset.tab); });
@@ -96,6 +98,7 @@ const Main = (() => {
     $("#btn-new-group").onclick = () => Tree.newGroup(App.sel.size && App.primary !== "root" ? App.primary : null);
     $("#btn-prompt").onclick = () => Classify.showPrompt();
     $("#btn-audit").onclick = (e) => audit(e.currentTarget);
+    $("#btn-batch").onclick = () => Inspector.improveBatch(App.primary || "root");
     const menu = $("#disk-menu");
     $("#btn-disk-menu").onclick = (e) => { e.stopPropagation(); menu.hidden = !menu.hidden; };
     document.addEventListener("click", () => (menu.hidden = true));
@@ -103,6 +106,7 @@ const Main = (() => {
       const act = e.target.dataset.act;
       if (act === "import") importDisk();
       if (act === "create") createOnDisk();
+      if (act === "clean") Images.cleanEmpty(App.cfg.settings.destination);
       if (act === "stats") { refreshStats(true); Images.loadTree(); toast("Recuentos actualizados"); }
     });
   }
@@ -206,10 +210,11 @@ const Main = (() => {
         h("button", { class: "btn small", onclick: async () => { await Images.undoLast(); renderSettings(); } }, "Deshacer último lote")), hist),
       h("h2", {}, "Atajos de teclado"),
       h("div", { class: "card" }, h("pre", { style: { whiteSpace: "pre-wrap", margin: 0, fontFamily: "inherit" } },
-        "Global: Alt+1…4 pestañas · Ctrl+K asistente · Ctrl+Z / Ctrl+Y deshacer y rehacer cambios del árbol\n" +
+        "Global: Alt+1…6 pestañas · Ctrl+K asistente · Ctrl+Z / Ctrl+Y deshacer y rehacer cambios del árbol\n" +
         "Árbol: Tab subcarpeta · Enter hermana · F2 renombrar · doble clic editar · Supr borrar · Ctrl+D duplicar · Ctrl+C / Ctrl+V copiar y pegar rama · flechas navegar · F ajustar · arrastrar para mover (bordes = antes/después, centro = dentro)\n" +
         "Imágenes: flechas mover · Shift+flechas seleccionar · Enter ver · 1–9 mover a atajo · M mover a… · Supr papelera · Retroceso subir · arrastra miniaturas a una carpeta (Ctrl = copiar)\n" +
-        "Visor: ← → navegar · rueda zoom · doble clic 100% · 0 ajustar · 1–9 atajos · M mover · Supr papelera · Esc cerrar")));
+        "Visor: ← → navegar · rueda zoom · doble clic 100% · 0 ajustar · 1–9 atajos · M mover · Supr papelera · Esc cerrar\n" +
+        "Etiquetas: clic, Ctrl+clic y Mayús+clic seleccionar · Ctrl+A todas · Enter ver · Esc quitar selección")));
     GET("/api/history").then((r) => {
       if (!r.history.length) hist.append(h("p", { class: "hint" }, "Sin movimientos todavía."));
       for (const b of r.history) hist.append(h("div", { class: "hist-row" }, h("span", { class: "when" }, fmtDate(b.time)),
@@ -220,10 +225,10 @@ const Main = (() => {
   /* ---------------------------------------------------------------- keys */
   function initKeys() {
     document.addEventListener("keydown", (e) => {
-      if ($("#modal-root").children.length) return;
+      if ($("#modal-root").children.length && !Lightbox.isOver()) return;
       const typing = e.target.matches("input, textarea, select, [contenteditable]");
       const ctrl = e.ctrlKey || e.metaKey;
-      if (e.altKey && /^[1-4]$/.test(e.key)) { e.preventDefault(); return showTab(["tree", "images", "classify", "settings"][+e.key - 1]); }
+      if (e.altKey && /^[1-6]$/.test(e.key)) { e.preventDefault(); return showTab(["tree", "images", "classify", "tags", "gaps", "settings"][+e.key - 1]); }
       if (ctrl && e.key.toLowerCase() === "k") { e.preventDefault(); return Assistant.toggle(true); }
       if (ctrl && e.key.toLowerCase() === "s") { e.preventDefault(); flush(); return; }
       if (typing) return;
@@ -232,6 +237,7 @@ const Main = (() => {
       if (ctrl && e.key.toLowerCase() === "z" && !e.shiftKey) { e.preventDefault(); return Tree.undo(); }
       if (ctrl && (e.key.toLowerCase() === "y" || (e.shiftKey && e.key.toLowerCase() === "z"))) { e.preventDefault(); return Tree.redo(); }
       if (App.tab === "images" && Images.onKey(e)) e.preventDefault();
+      if (App.tab === "tags" && Tags.onKey(e)) e.preventDefault();
       if (App.tab === "tree" && document.activeElement === document.body && (e.key === "Tab" || e.key === "Enter" || e.key === "F2" || e.key === "Delete" || e.key.startsWith("Arrow"))) {
         $("#canvas").focus(); $("#canvas").dispatchEvent(new KeyboardEvent("keydown", { key: e.key, ctrlKey: e.ctrlKey, shiftKey: e.shiftKey, bubbles: true }));
         e.preventDefault();
